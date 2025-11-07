@@ -6,6 +6,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { POST_CATEGORIES } from '@/components/community/post-category';
 import { useToast } from '@/hooks/use-toast';
 import { Send, Loader2, Image as ImageIcon, X } from 'lucide-react';
 
@@ -16,6 +24,7 @@ interface PostComposerProps {
 export function PostComposer({ onPostCreated }: PostComposerProps) {
   const { data: session } = useSession();
   const [content, setContent] = useState('');
+  const [category, setCategory] = useState('GENERAL');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -146,6 +155,7 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
         body: JSON.stringify({
           content: content.trim(),
           imageUrl,
+          category,
         }),
       });
 
@@ -153,6 +163,7 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
 
       if (data.success) {
         setContent('');
+        setCategory('GENERAL');
         handleRemoveImage();
         onPostCreated(data.data.post);
         toast({
@@ -224,7 +235,25 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
             )}
 
             <div className="flex items-center justify-between">
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
+                <Select value={category} onValueChange={setCategory} disabled={isSubmitting}>
+                  <SelectTrigger className="w-[160px]">
+                    <SelectValue placeholder="Category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {POST_CATEGORIES.map((cat) => {
+                      const Icon = cat.icon;
+                      return (
+                        <SelectItem key={cat.value} value={cat.value}>
+                          <div className="flex items-center gap-2">
+                            <Icon className="h-4 w-4" />
+                            {cat.label}
+                          </div>
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
                 <input
                   ref={fileInputRef}
                   type="file"

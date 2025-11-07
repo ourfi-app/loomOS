@@ -27,6 +27,7 @@ import {
 import { CommentSection } from './comment-section';
 import { MemberBadge } from '@/components/community/member-badge';
 import { MemberStatus } from '@/components/community/member-status';
+import { PostCategoryBadge } from '@/components/community/post-category';
 import { useToast } from '@/hooks/use-toast';
 import { Heart, MessageCircle, Pin, MoreVertical, Edit2, Trash2, X, Check } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
@@ -37,6 +38,7 @@ interface Post {
   content: string;
   imageUrl?: string;
   isPinned: boolean;
+  category?: string;
   createdAt: string;
   author: {
     id: string;
@@ -284,7 +286,15 @@ export function PostCard({ post, onLiked, onCommentAdded, onDeleted, onPinned, o
                   <p className="font-semibold">{authorName}</p>
                   <MemberBadge badge={post.author.badge as any} role={post.author.role} />
                 </div>
-                <p className="text-sm text-muted-foreground">{timeAgo}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-muted-foreground">{timeAgo}</p>
+                  {post.category && (
+                    <>
+                      <span className="text-sm text-muted-foreground">·</span>
+                      <PostCategoryBadge category={post.category} />
+                    </>
+                  )}
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-2">
