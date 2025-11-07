@@ -384,3 +384,57 @@ export interface TemplateInfo {
   defaultPages: string[];
   icon: string;
 }
+
+// ============================================================================
+// CLAUDE HELPER TYPES (Dual-AI Architecture)
+// ============================================================================
+
+export interface ClaudeAnalysis {
+  brandDNA: {
+    essence: string;
+    emotionalCore: string;
+    visualDirection: string;
+    differentiators: string[];
+  };
+  refinedPrompts: RefinedPrompt[];
+  designStrategy: string;
+}
+
+export interface RefinedPrompt {
+  id: string;
+  prompt: string;
+  rationale: string;
+  expectedStyle: string;
+  targetArchetype: string;
+}
+
+export interface LogoValidation {
+  conceptId: string;
+  alignmentScore: number; // 0-100
+  strengths: string[];
+  weaknesses: string[];
+  brandFit: string;
+  recommendation: 'excellent' | 'good' | 'needs-refinement';
+}
+
+export interface ConversationMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: Date;
+}
+
+export interface GuidanceResponse {
+  message: string;
+  suggestions?: string[];
+  nextSteps?: string[];
+}
+
+export interface DualAIWorkflowState {
+  stage: 'analysis' | 'generation' | 'validation' | 'identity' | 'website';
+  analysis?: ClaudeAnalysis;
+  concepts?: LogoConcept[];
+  validations?: LogoValidation[];
+  selectedConcept?: LogoConcept;
+  identity?: BrandIdentity;
+  conversation: ConversationMessage[];
+}
