@@ -1,0 +1,29 @@
+{
+  "name": "@loomos/core",
+  "version": "0.1.0",
+  "description": "loomOS Core - Service Abstraction Layer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.920.0",
+    "@aws-sdk/s3-request-presigner": "^3.920.0",
+    "@anthropic-ai/sdk": "^0.36.1",
+    "openai": "^4.77.3",
+    "resend": "^4.0.1",
+    "@sendgrid/mail": "^8.1.6",
+    "stripe": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.2",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
