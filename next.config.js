@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: process.env.NEXT_DIST_DIR || '.next',
-  output: process.env.NEXT_OUTPUT_MODE,
+  ...(process.env.NEXT_OUTPUT_MODE && { output: process.env.NEXT_OUTPUT_MODE }),
 
   // Optimize builds with SWC minification
   swcMinify: true,
