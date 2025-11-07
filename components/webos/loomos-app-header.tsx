@@ -3,7 +3,7 @@
 import React, { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-interface WebOSAppHeaderProps {
+interface LoomOSAppHeaderProps {
   appName?: string;
   title?: string;
   subtitle?: string;
@@ -13,7 +13,7 @@ interface WebOSAppHeaderProps {
   coloredHeader?: boolean;
 }
 
-export function WebOSAppHeader({ 
+export function LoomOSAppHeader({ 
   appName, 
   title, 
   subtitle, 
@@ -21,7 +21,7 @@ export function WebOSAppHeader({
   actions,
   gradient = true,
   coloredHeader = false
-}: WebOSAppHeaderProps) {
+}: LoomOSAppHeaderProps) {
   const displayTitle = title || appName || 'APP';
   
   // Determine background classes

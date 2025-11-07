@@ -33,11 +33,11 @@ import { toast } from 'react-hot-toast';
 import { cn } from '@/lib/utils';
 import { 
   DesktopAppWrapper,
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSActionButton,
-  WebOSEmptyState,
-  WebOSListItemEnhanced,
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSActionButton,
+  LoomOSEmptyState,
+  LoomOSListItemEnhanced,
 } from '@/components/webos';
 import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
 import { ErrorBoundary } from '@/components/common';
@@ -200,14 +200,14 @@ export default function SystemConfigPage() {
   // Toolbar actions
   const toolbarActions = (
     <div className="flex items-center gap-2">
-      <WebOSActionButton
+      <LoomOSActionButton
         icon={<Save className="w-4 h-4" />}
         onClick={saveSettings}
         disabled={loading}
         size="sm"
       >
         {loading ? 'Saving...' : 'Save Changes'}
-      </WebOSActionButton>
+      </LoomOSActionButton>
     </div>
   );
 
@@ -485,7 +485,7 @@ export default function SystemConfigPage() {
       >
         <div className="h-full flex overflow-hidden">
           {/* Navigation Pane - Categories */}
-          <WebOSNavigationPane
+          <LoomOSNavigationPane
             title="SETTINGS"
             items={navigationItems}
           />
@@ -509,7 +509,7 @@ export default function SystemConfigPage() {
             {/* Settings List */}
             <ScrollArea className="flex-1">
               {categorySettings.length === 0 ? (
-                <WebOSEmptyState
+                <LoomOSEmptyState
                   icon={<Settings className="w-12 h-12" />}
                   title="No settings"
                   description="No settings available in this category"
@@ -517,7 +517,7 @@ export default function SystemConfigPage() {
               ) : (
                 <div>
                   {categorySettings.map((setting, index) => (
-                    <WebOSListItemEnhanced
+                    <LoomOSListItemEnhanced
                       key={setting.id}
                       selected={selectedSetting?.id === setting.id}
                       onClick={() => setSelectedSetting(setting)}
@@ -533,7 +533,7 @@ export default function SystemConfigPage() {
                         </div>
                         <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                       </div>
-                    </WebOSListItemEnhanced>
+                    </LoomOSListItemEnhanced>
                   ))}
                 </div>
               )}
@@ -541,7 +541,7 @@ export default function SystemConfigPage() {
           </div>
 
           {/* Detail Pane - Setting Configuration */}
-          <WebOSDetailPane
+          <LoomOSDetailPane
             title={selectedSetting?.name}
             subtitle={selectedSetting?.description}
             isEmpty={!selectedSetting}
@@ -556,7 +556,7 @@ export default function SystemConfigPage() {
                 </div>
               </ScrollArea>
             )}
-          </WebOSDetailPane>
+          </LoomOSDetailPane>
         </div>
       </DesktopAppWrapper>
     </ErrorBoundary>

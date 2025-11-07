@@ -26,7 +26,7 @@ export function FloatingAssistantBubble() {
         assistantApp.gradient,
         "group-hover:scale-105 group-active:scale-95"
       )}>
-        {/* Dark background layer - WebOS style */}
+        {/* Dark background layer - LoomOS style */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/50 to-black/60 rounded-full" />
         
         {/* Subtle color accent */}

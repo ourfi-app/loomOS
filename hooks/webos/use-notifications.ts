@@ -9,7 +9,7 @@ export interface NotificationAction {
   handler: () => void;
 }
 
-export interface WebOSNotification {
+export interface LoomOSNotification {
   id: string;
   tier: NotificationTier;
   icon?: LucideIcon;
@@ -23,8 +23,8 @@ export interface WebOSNotification {
 }
 
 interface NotificationsState {
-  notifications: WebOSNotification[];
-  notify: (notification: Omit<WebOSNotification, 'id' | 'timestamp'>) => void;
+  notifications: LoomOSNotification[];
+  notify: (notification: Omit<LoomOSNotification, 'id' | 'timestamp'>) => void;
   dismissNotification: (id: string) => void;
   markAsRead: (id: string) => void;
   clearAll: () => void;
@@ -35,7 +35,7 @@ export const useNotifications = create<NotificationsState>((set, get) => ({
 
   notify: (notification) => {
     const id = `notification-${Date.now()}-${Math.random()}`;
-    const newNotification: WebOSNotification = {
+    const newNotification: LoomOSNotification = {
       ...notification,
       id,
       timestamp: Date.now(),

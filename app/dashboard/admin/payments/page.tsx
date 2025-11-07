@@ -12,16 +12,16 @@ import { toast } from 'sonner';
 import { format } from 'date-fns';
 import {
   DesktopAppWrapper,
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSListItemEnhanced,
-  WebOSListDivider,
-  WebOSActionButton,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSListItemEnhanced,
+  LoomOSListDivider,
+  LoomOSActionButton,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
-import { WebOSNavListItem } from '@/components/webos/webos-nav-list-item';
+import { LoomOSNavListItem } from '@/components/webos/loomos-nav-list-item';
 
 interface Payment {
   id: string;
@@ -225,7 +225,7 @@ export default function PaymentManagementPage() {
   };
 
   if (status === 'loading' || loading) {
-    return <WebOSLoadingState message="Loading payments..." />;
+    return <LoomOSLoadingState message="Loading payments..." />;
   }
 
   if (userRole !== 'ADMIN') {
@@ -259,7 +259,7 @@ export default function PaymentManagementPage() {
       gradient={APP_COLORS.payments?.light || 'from-green-500 to-emerald-600'}
     >
       {/* Pane 1: Filters Navigation */}
-      <WebOSNavigationPane
+      <LoomOSNavigationPane
         title="FILTERS"
         items={filterOptions.map(filter => ({
           id: filter.id,
@@ -297,7 +297,7 @@ export default function PaymentManagementPage() {
         <div className="flex-1 overflow-y-auto">
           {filteredPayments.length > 0 ? (
             filteredPayments.map((payment) => (
-              <WebOSListItemEnhanced
+              <LoomOSListItemEnhanced
                 key={payment.id}
                 selected={selectedPayment?.id === payment.id}
                 onClick={() => setSelectedPayment(payment)}
@@ -325,10 +325,10 @@ export default function PaymentManagementPage() {
                     {getStatusBadge(payment.status)}
                   </div>
                 </div>
-              </WebOSListItemEnhanced>
+              </LoomOSListItemEnhanced>
             ))
           ) : (
-            <WebOSEmptyState
+            <LoomOSEmptyState
               icon={<DollarSign size={64} className="text-gray-400" />}
               title="No payments found"
               description="Try adjusting your search or filter"
@@ -338,7 +338,7 @@ export default function PaymentManagementPage() {
       </div>
 
       {/* Pane 3: Payment Detail */}
-      <WebOSDetailPane
+      <LoomOSDetailPane
         title={selectedPayment ? `${selectedPayment.user.name}` : 'Payment Details'}
         subtitle={selectedPayment ? `Unit ${selectedPayment.user.unitNumber || 'N/A'}` : undefined}
         actions={detailActions}
@@ -467,7 +467,7 @@ export default function PaymentManagementPage() {
             </div>
           </div>
         )}
-      </WebOSDetailPane>
+      </LoomOSDetailPane>
     </DesktopAppWrapper>
   );
 }

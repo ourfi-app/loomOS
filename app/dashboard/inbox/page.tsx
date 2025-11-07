@@ -8,7 +8,7 @@ import {
   Inbox as InboxIcon
 } from 'lucide-react';
 import {
-  WebOSNavigationPane,
+  LoomOSNavigationPane,
   DesktopAppWrapper
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
@@ -69,7 +69,7 @@ export default function InboxPage() {
       gradient={appDef?.gradient || 'from-blue-500 to-cyan-500'}
     >
       <div className="h-full flex overflow-hidden">
-        <WebOSNavigationPane
+        <LoomOSNavigationPane
           title="Inbox"
           items={navItems}
         />

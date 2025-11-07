@@ -3,12 +3,12 @@
 
 import { useState, useEffect } from 'react';
 import {
-  WebOSNavigationPane,
-  WebOSListPane,
-  WebOSDetailPane,
-  WebOSActionButton,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSNavigationPane,
+  LoomOSListPane,
+  LoomOSDetailPane,
+  LoomOSActionButton,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
   DesktopAppWrapper
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
@@ -481,14 +481,14 @@ export default function CalendarApp() {
   // Header actions
   const headerActions = (
     <>
-      <WebOSActionButton
+      <LoomOSActionButton
         icon={<Command size={16} />}
         variant="default"
         onClick={() => setShowShortcutsDialog(true)}
       >
         Shortcuts
-      </WebOSActionButton>
-      <WebOSActionButton
+      </LoomOSActionButton>
+      <LoomOSActionButton
         icon={<Plus size={16} />}
         variant="primary"
         onClick={() => {
@@ -497,14 +497,14 @@ export default function CalendarApp() {
         }}
       >
         New Event
-      </WebOSActionButton>
+      </LoomOSActionButton>
     </>
   );
 
   // Detail pane actions
   const detailActions = selectedEvent && (
     <>
-      <WebOSActionButton
+      <LoomOSActionButton
         size="sm"
         icon={<Edit size={14} />}
         onClick={() => {
@@ -513,8 +513,8 @@ export default function CalendarApp() {
         }}
       >
         Edit
-      </WebOSActionButton>
-      <WebOSActionButton
+      </LoomOSActionButton>
+      <LoomOSActionButton
         size="sm"
         variant="danger"
         icon={<Trash2 size={14} />}
@@ -532,7 +532,7 @@ export default function CalendarApp() {
         }}
       >
         Delete
-      </WebOSActionButton>
+      </LoomOSActionButton>
     </>
   );
 
@@ -577,7 +577,7 @@ export default function CalendarApp() {
             My Calendars
           </h4>
         </div>
-        <WebOSNavigationPane
+        <LoomOSNavigationPane
           title="My Calendars"
           items={navigationItems}
           className="border-0"
@@ -631,7 +631,7 @@ export default function CalendarApp() {
 
       {/* Pane 2: Events List */}
       {showPane2 && (
-        <WebOSListPane
+        <LoomOSListPane
           title={formatDate(selectedDate)}
           items={listItems}
           loading={loading}
@@ -640,7 +640,7 @@ export default function CalendarApp() {
       )}
 
       {/* Pane 3: Event Detail */}
-      <WebOSDetailPane
+      <LoomOSDetailPane
         title={selectedEvent?.title}
         subtitle={selectedEvent ? `${formatTime(selectedEvent.startTime)} - ${formatTime(selectedEvent.endTime)}` : undefined}
         actions={detailActions}
@@ -735,7 +735,7 @@ export default function CalendarApp() {
             </div>
           </div>
         )}
-      </WebOSDetailPane>
+      </LoomOSDetailPane>
 
       {/* Event Dialog */}
       <Dialog open={eventDialogOpen} onOpenChange={setEventDialogOpen}>

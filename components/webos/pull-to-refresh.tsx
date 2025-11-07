@@ -3,7 +3,7 @@
  * Pull to Refresh Component
  * 
  * Mobile-native pull-to-refresh interaction with haptic feedback
- * Follows WebOS design principles
+ * Follows LoomOS design principles
  */
 
 'use client';

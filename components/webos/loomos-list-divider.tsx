@@ -4,7 +4,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface WebOSListDividerProps {
+export interface LoomOSListDividerProps {
   children: React.ReactNode;
   sticky?: boolean;
   variant?: 'light' | 'dark';
@@ -13,23 +13,23 @@ export interface WebOSListDividerProps {
 }
 
 /**
- * WebOS List Divider
+ * LoomOS List Divider
  * 
- * Separator for list sections with text labels, matching WebOS design patterns.
+ * Separator for list sections with text labels, matching LoomOS design patterns.
  * Reference: list-items-scrolling.png
  * 
  * @example
- * <WebOSListDivider>Today</WebOSListDivider>
- * <WebOSListDivider sticky>Inbox (5)</WebOSListDivider>
- * <WebOSListDivider variant="dark">Archived</WebOSListDivider>
+ * <LoomOSListDivider>Today</LoomOSListDivider>
+ * <LoomOSListDivider sticky>Inbox (5)</LoomOSListDivider>
+ * <LoomOSListDivider variant="dark">Archived</LoomOSListDivider>
  */
-export function WebOSListDivider({
+export function LoomOSListDivider({
   children,
   sticky = false,
   variant = 'light',
   count,
   className
-}: WebOSListDividerProps) {
+}: LoomOSListDividerProps) {
   return (
     <div
       className={cn(
@@ -73,4 +73,4 @@ export function WebOSListDivider({
   );
 }
 
-WebOSListDivider.displayName = 'WebOSListDivider';
+LoomOSListDivider.displayName = 'LoomOSListDivider';

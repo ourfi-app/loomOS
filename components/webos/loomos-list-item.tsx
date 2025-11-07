@@ -5,7 +5,7 @@ import { ReactNode, useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Trash2, Archive, MoreVertical } from 'lucide-react';
 
-interface WebOSListItemProps {
+interface LoomOSListItemProps {
   children: ReactNode;
   selected?: boolean;
   unread?: boolean;
@@ -19,7 +19,7 @@ interface WebOSListItemProps {
   onDrop?: (e: React.DragEvent) => void;
 }
 
-export function WebOSListItem({
+export function LoomOSListItem({
   children,
   selected,
   unread,
@@ -31,7 +31,7 @@ export function WebOSListItem({
   draggable,
   onDragStart,
   onDrop,
-}: WebOSListItemProps) {
+}: LoomOSListItemProps) {
   const itemRef = useRef<HTMLDivElement>(null);
   const [isSwiped, setIsSwiped] = useState(false);
   const touchStartX = useRef(0);
@@ -107,7 +107,7 @@ export function WebOSListItem({
   return (
     <div
       ref={itemRef}
-      className={cn('webos-list-item-swipeable', className)}
+      className={cn('loomos-list-item-swipeable', className)}
       draggable={draggable}
       onDragStart={onDragStart}
       onDrop={onDrop}
@@ -115,7 +115,7 @@ export function WebOSListItem({
     >
       <div
         className={cn(
-          'webos-list-item',
+          'loomos-list-item',
           selected && 'selected',
           unread && 'unread',
           isSwiped && 'swiped'
@@ -132,7 +132,7 @@ export function WebOSListItem({
         {children}
       </div>
       {(onSwipeLeft || onSwipeRight) && (
-        <div className="webos-list-item-actions">
+        <div className="loomos-list-item-actions">
           {swipeActions || (
             <>
               {onSwipeRight && (
@@ -153,7 +153,7 @@ export function WebOSListItem({
   );
 }
 
-interface WebOSListItemContentProps {
+interface LoomOSListItemContentProps {
   title: string | ReactNode;
   subtitle?: string | ReactNode;
   meta?: ReactNode;
@@ -161,21 +161,21 @@ interface WebOSListItemContentProps {
   className?: string;
 }
 
-export function WebOSListItemContent({
+export function LoomOSListItemContent({
   title,
   subtitle,
   meta,
   avatar,
   className,
-}: WebOSListItemContentProps) {
+}: LoomOSListItemContentProps) {
   return (
     <>
       {avatar && <div className="flex-shrink-0 mr-3">{avatar}</div>}
-      <div className={cn('webos-list-item-content', className)}>
-        <div className="webos-list-item-title">{title}</div>
-        {subtitle && <div className="webos-list-item-subtitle">{subtitle}</div>}
+      <div className={cn('loomos-list-item-content', className)}>
+        <div className="loomos-list-item-title">{title}</div>
+        {subtitle && <div className="loomos-list-item-subtitle">{subtitle}</div>}
       </div>
-      {meta && <div className="webos-list-item-meta">{meta}</div>}
+      {meta && <div className="loomos-list-item-meta">{meta}</div>}
     </>
   );
 }

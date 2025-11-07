@@ -9,7 +9,7 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    // WebOS-inspired responsive breakpoints
+    // loomOS-inspired responsive breakpoints
     screens: {
       'sm': '640px',   // Mobile landscape / Small tablet
       'md': '768px',   // Tablet portrait
@@ -183,7 +183,7 @@ const config: Config = {
         shimmer: 'shimmer 2s linear infinite',
       },
       transitionTimingFunction: {
-        'webos': 'cubic-bezier(0.42, 0, 0.58, 1)',
+        'loomos': 'cubic-bezier(0.42, 0, 0.58, 1)',
         'webos-in': 'cubic-bezier(0, 0, 0.58, 1)',
         'webos-out': 'cubic-bezier(0.42, 0, 1, 1)',
       },

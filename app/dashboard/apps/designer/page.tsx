@@ -449,7 +449,7 @@ export default function AppDesigner() {
                   App Designer
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Create custom apps with WebOS design patterns
+                  Create custom apps with LoomOS design patterns
                 </p>
               </div>
             </div>
@@ -1173,7 +1173,7 @@ export default function AppDesigner() {
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label>Gesture Area</Label>
-                              <p className="text-xs text-gray-500">WebOS navigation gestures</p>
+                              <p className="text-xs text-gray-500">LoomOS navigation gestures</p>
                             </div>
                             <Switch
                               checked={currentApp.designPatterns.hasGestureArea}

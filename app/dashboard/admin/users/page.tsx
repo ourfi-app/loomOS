@@ -26,14 +26,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  WebOSPaneContainer,
-  WebOSContainerPane,
-  WebOSNavigationPane,
-  WebOSListPane,
-  WebOSDetailPane,
-  WebOSListItem,
-  WebOSNavListItem,
-  WebOSGroupBox
+  LoomOSPaneContainer,
+  LoomOSContainerPane,
+  LoomOSNavigationPane,
+  LoomOSListPane,
+  LoomOSDetailPane,
+  LoomOSListItem,
+  LoomOSNavListItem,
+  LoomOSGroupBox
 } from '@/components/webos';
 import { DesktopAppWrapper } from '@/components/webos/desktop-app-wrapper';
 import { APP_COLORS } from '@/lib/app-design-system';
@@ -454,13 +454,13 @@ export default function UserManagementPage() {
 
       {/* 3-Pane Layout */}
       <div className="flex-1 overflow-hidden">
-        <WebOSPaneContainer>
+        <LoomOSPaneContainer>
           {/* Navigation Pane - Filters */}
-          <WebOSContainerPane id="filters" type="navigation" width={240}>
+          <LoomOSContainerPane id="filters" type="navigation" width={240}>
             <div className="p-4 space-y-1">
               <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-3">Filters</h3>
               {filterOptions.map(filter => (
-                <WebOSNavListItem
+                <LoomOSNavListItem
                   key={filter.id}
                   label={filter.label}
                   count={filter.count}
@@ -472,11 +472,11 @@ export default function UserManagementPage() {
                 />
               ))}
             </div>
-          </WebOSContainerPane>
+          </LoomOSContainerPane>
 
           {/* List Pane - Users */}
-          <WebOSContainerPane id="list" type="list" width={360}>
-            <WebOSListPane
+          <LoomOSContainerPane id="list" type="list" width={360}>
+            <LoomOSListPane
               searchPlaceholder="Search users..."
               searchValue={searchTerm}
               onSearchChange={setSearchTerm}
@@ -484,11 +484,11 @@ export default function UserManagementPage() {
               emptyMessage="No users found"
               loading={loading}
             />
-          </WebOSContainerPane>
+          </LoomOSContainerPane>
 
           {/* Detail Pane - User Details */}
-          <WebOSContainerPane id="detail" type="detail" fill>
-            <WebOSDetailPane
+          <LoomOSContainerPane id="detail" type="detail" fill>
+            <LoomOSDetailPane
               isEmpty={!selectedUser}
               emptyIcon={<Users className="h-16 w-16" />}
               emptyMessage="No user selected"
@@ -549,7 +549,7 @@ export default function UserManagementPage() {
                   </div>
 
                   {/* Contact Information */}
-                  <WebOSGroupBox title="Contact Information">
+                  <LoomOSGroupBox title="Contact Information">
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <Mail className="h-5 w-5 text-muted-foreground mt-0.5" />
@@ -577,10 +577,10 @@ export default function UserManagementPage() {
                         </div>
                       )}
                     </div>
-                  </WebOSGroupBox>
+                  </LoomOSGroupBox>
 
                   {/* Account Details */}
-                  <WebOSGroupBox title="Account Details">
+                  <LoomOSGroupBox title="Account Details">
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <Calendar className="h-5 w-5 text-muted-foreground mt-0.5" />
@@ -601,12 +601,12 @@ export default function UserManagementPage() {
                         </div>
                       </div>
                     </div>
-                  </WebOSGroupBox>
+                  </LoomOSGroupBox>
                 </div>
               )}
-            </WebOSDetailPane>
-          </WebOSContainerPane>
-        </WebOSPaneContainer>
+            </LoomOSDetailPane>
+          </LoomOSContainerPane>
+        </LoomOSPaneContainer>
       </div>
     </div>
 

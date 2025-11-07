@@ -5,12 +5,12 @@ import { useState, useEffect, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, Menu } from 'lucide-react';
 
-interface WebOSMultiPaneLayoutProps {
+interface LoomOSMultiPaneLayoutProps {
   children: ReactNode;
   className?: string;
 }
 
-interface WebOSPaneProps {
+interface LoomOSPaneProps {
   type: 'navigation' | 'list' | 'detail';
   children: ReactNode;
   className?: string;
@@ -18,7 +18,7 @@ interface WebOSPaneProps {
   onClose?: () => void;
 }
 
-export function WebOSMultiPaneLayout({ children, className }: WebOSMultiPaneLayoutProps) {
+export function LoomOSMultiPaneLayout({ children, className }: LoomOSMultiPaneLayoutProps) {
   return (
     <div className={cn('webos-multi-pane-layout', className)}>
       {children}
@@ -26,7 +26,7 @@ export function WebOSMultiPaneLayout({ children, className }: WebOSMultiPaneLayo
   );
 }
 
-export function WebOSPane({ type, children, className, visible, onClose }: WebOSPaneProps) {
+export function LoomOSPane({ type, children, className, visible, onClose }: LoomOSPaneProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export function WebOSPane({ type, children, className, visible, onClose }: WebOS
   );
 }
 
-interface WebOSPaneHeaderProps {
+interface LoomOSPaneHeaderProps {
   title: string;
   actions?: ReactNode;
   onMenuClick?: () => void;
@@ -77,13 +77,13 @@ interface WebOSPaneHeaderProps {
   className?: string;
 }
 
-export function WebOSPaneHeader({ 
+export function LoomOSPaneHeader({ 
   title, 
   actions, 
   onMenuClick, 
   showMenu,
   className 
-}: WebOSPaneHeaderProps) {
+}: LoomOSPaneHeaderProps) {
   return (
     <div className={cn('webos-header', className)}>
       {showMenu && onMenuClick && (
@@ -101,7 +101,7 @@ export function WebOSPaneHeader({
   );
 }
 
-export function WebOSPaneContent({ 
+export function LoomOSPaneContent({ 
   children, 
   className 
 }: { 
@@ -115,7 +115,7 @@ export function WebOSPaneContent({
   );
 }
 
-export function WebOSPaneFooter({ 
+export function LoomOSPaneFooter({ 
   children, 
   className 
 }: { 

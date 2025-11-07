@@ -33,13 +33,13 @@ import {
 import { format } from 'date-fns';
 import { hasAdminAccess } from '@/lib/auth';
 import {
-  WebOSPaneContainer,
-  WebOSListPane,
-  WebOSDetailPane,
-  WebOSNavListItem,
-  WebOSGroupBox,
-  WebOSListItemEnhanced,
-  WebOSEmptyState,
+  LoomOSPaneContainer,
+  LoomOSListPane,
+  LoomOSDetailPane,
+  LoomOSNavListItem,
+  LoomOSGroupBox,
+  LoomOSListItemEnhanced,
+  LoomOSEmptyState,
 } from '@/components/webos';
 import { DesktopAppWrapper } from '@/components/webos/desktop-app-wrapper';
 import { APP_COLORS } from '@/lib/app-design-system';
@@ -292,7 +292,7 @@ export default function DirectoryRequestsPage() {
       </div>
 
       {/* 3-Pane Layout */}
-      <WebOSPaneContainer>
+      <LoomOSPaneContainer>
         {/* Navigation Pane */}
         <div className="w-60 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col overflow-hidden">
           <div className="p-4 border-b border-gray-200">
@@ -302,28 +302,28 @@ export default function DirectoryRequestsPage() {
           </div>
           <div className="flex-1 overflow-y-auto p-2">
             <div className="space-y-1">
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="All Requests"
                 count={requests.length}
                 selected={selectedFilter === 'all'}
                 onClick={() => setSelectedFilter('all')}
                 icon={<FileEdit className="w-4 h-4" />}
               />
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Pending"
                 count={pendingRequests.length}
                 selected={selectedFilter === 'pending'}
                 onClick={() => setSelectedFilter('pending')}
                 icon={<Clock className="w-4 h-4 text-orange-600" />}
               />
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Approved"
                 count={approvedRequests.length}
                 selected={selectedFilter === 'approved'}
                 onClick={() => setSelectedFilter('approved')}
                 icon={<CheckCircle className="w-4 h-4 text-green-600" />}
               />
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Rejected"
                 count={rejectedRequests.length}
                 selected={selectedFilter === 'rejected'}
@@ -353,14 +353,14 @@ export default function DirectoryRequestsPage() {
           {/* List Items */}
           <div className="flex-1 overflow-y-auto">
             {filteredRequests.length === 0 ? (
-              <WebOSEmptyState
+              <LoomOSEmptyState
                 icon={<FileEdit size={48} />}
                 title={searchTerm ? 'No requests match your search' : 'No requests found'}
               />
             ) : (
               <div className="divide-y divide-gray-100">
                 {filteredRequests.map((request) => (
-                  <WebOSListItemEnhanced
+                  <LoomOSListItemEnhanced
                     key={request.id}
                     selected={selectedRequest?.id === request.id}
                     onClick={() => setSelectedRequest(request)}
@@ -393,7 +393,7 @@ export default function DirectoryRequestsPage() {
                         </div>
                       </div>
                     </div>
-                  </WebOSListItemEnhanced>
+                  </LoomOSListItemEnhanced>
                 ))}
               </div>
             )}
@@ -401,7 +401,7 @@ export default function DirectoryRequestsPage() {
         </div>
 
         {/* Detail Pane */}
-        <WebOSDetailPane
+        <LoomOSDetailPane
           title={selectedRequest ? `Update Request for ${getUserDisplayName(selectedRequest.user)}` : 'No Request Selected'}
           isEmpty={!selectedRequest}
           emptyIcon={<FileEdit size={64} />}
@@ -410,7 +410,7 @@ export default function DirectoryRequestsPage() {
           {selectedRequest && (
             <div className="space-y-6">
               {/* Status Badge */}
-              <WebOSGroupBox title="Status">
+              <LoomOSGroupBox title="Status">
                 <div className="flex items-center gap-3">
                   <Badge
                     variant={selectedRequest.status === 'PENDING' ? 'default' : selectedRequest.status === 'APPROVED' ? 'default' : 'destructive'}
@@ -425,10 +425,10 @@ export default function DirectoryRequestsPage() {
                     Submitted {format(new Date(selectedRequest.createdAt), 'MMM dd, yyyy HH:mm')}
                   </span>
                 </div>
-              </WebOSGroupBox>
+              </LoomOSGroupBox>
 
               {/* Requester Info */}
-              <WebOSGroupBox title="Requester">
+              <LoomOSGroupBox title="Requester">
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
                     <User className="w-4 h-4 text-gray-400" />
@@ -441,23 +441,23 @@ export default function DirectoryRequestsPage() {
                     </div>
                   )}
                 </div>
-              </WebOSGroupBox>
+              </LoomOSGroupBox>
 
               {/* Reason */}
               {selectedRequest.reason && (
-                <WebOSGroupBox title="Reason">
+                <LoomOSGroupBox title="Reason">
                   <p className="text-sm text-gray-700">{selectedRequest.reason}</p>
-                </WebOSGroupBox>
+                </LoomOSGroupBox>
               )}
 
               {/* Requested Changes */}
-              <WebOSGroupBox title="Requested Changes">
+              <LoomOSGroupBox title="Requested Changes">
                 {renderDataComparison(selectedRequest)}
-              </WebOSGroupBox>
+              </LoomOSGroupBox>
 
               {/* Review Info */}
               {selectedRequest.status !== 'PENDING' && selectedRequest.reviewedBy && (
-                <WebOSGroupBox title="Review">
+                <LoomOSGroupBox title="Review">
                   <div className="space-y-2 text-sm">
                     <p className="text-gray-700">
                       Reviewed by <strong>{getUserDisplayName(selectedRequest.reviewedBy)}</strong> on{' '}
@@ -469,7 +469,7 @@ export default function DirectoryRequestsPage() {
                       </div>
                     )}
                   </div>
-                </WebOSGroupBox>
+                </LoomOSGroupBox>
               )}
 
               {/* Actions */}
@@ -495,8 +495,8 @@ export default function DirectoryRequestsPage() {
               )}
             </div>
           )}
-        </WebOSDetailPane>
-      </WebOSPaneContainer>
+        </LoomOSDetailPane>
+      </LoomOSPaneContainer>
 
       {/* Review Dialog */}
       <Dialog open={reviewDialogOpen} onOpenChange={setReviewDialogOpen}>

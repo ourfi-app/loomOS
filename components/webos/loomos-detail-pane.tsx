@@ -2,7 +2,7 @@
 
 import React, { ReactNode } from 'react';
 
-interface WebOSDetailPaneProps {
+interface LoomOSDetailPaneProps {
   title?: string;
   subtitle?: string;
   actions?: ReactNode;
@@ -15,7 +15,7 @@ interface WebOSDetailPaneProps {
   width?: string;
 }
 
-export function WebOSDetailPane({
+export function LoomOSDetailPane({
   title,
   subtitle,
   actions,
@@ -26,7 +26,7 @@ export function WebOSDetailPane({
   isEmpty = false,
   className = '',
   width = 'flex-1'
-}: WebOSDetailPaneProps) {
+}: LoomOSDetailPaneProps) {
   if (isEmpty) {
     return (
       <div className={`${width} bg-white flex items-center justify-center text-gray-400 ${className}`}>

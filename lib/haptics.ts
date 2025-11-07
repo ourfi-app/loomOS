@@ -2,7 +2,7 @@
 /**
  * Haptic Feedback System
  * 
- * Provides tactile feedback for touch interactions following WebOS principles:
+ * Provides tactile feedback for touch interactions following LoomOS principles:
  * - Natural, responsive feedback
  * - Different patterns for different interaction types
  * - Performance-optimized with debouncing

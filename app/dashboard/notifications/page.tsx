@@ -9,12 +9,12 @@ import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import {
-  WebOSAppHeader,
-  WebOSNavigationPane,
-  WebOSListPane,
-  WebOSDetailPane,
-  WebOSSectionHeader,
-  WebOSActionButton
+  LoomOSAppHeader,
+  LoomOSNavigationPane,
+  LoomOSListPane,
+  LoomOSDetailPane,
+  LoomOSSectionHeader,
+  LoomOSActionButton
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 import type { NavigationItem, ListItem } from '@/components/webos';
@@ -174,13 +174,13 @@ export default function NotificationsPage() {
     <ErrorBoundary>
       <div className="flex-1 flex overflow-hidden min-h-0">
           {/* Navigation Pane */}
-          <WebOSNavigationPane
+          <LoomOSNavigationPane
             title="FILTERS"
             items={navigationItems}
           />
 
         {/* List Pane */}
-        <WebOSListPane
+        <LoomOSListPane
           searchPlaceholder="Search notifications..."
           searchValue={searchQuery}
           onSearchChange={setSearchQuery}
@@ -190,27 +190,27 @@ export default function NotificationsPage() {
         />
 
         {/* Detail Pane */}
-        <WebOSDetailPane
+        <LoomOSDetailPane
           title={selectedNotification?.notification.title}
           subtitle={selectedNotification ? format(new Date(selectedNotification.createdAt), 'MMM dd, yyyy  h:mm a') : undefined}
           actions={
             selectedNotification ? (
               <div className="flex items-center gap-2">
                 {!selectedNotification.isRead && (
-                  <WebOSActionButton
+                  <LoomOSActionButton
                     icon={<Check className="w-4 h-4" />}
                     onClick={() => markAsRead(selectedNotification.id)}
                   >
                     Mark Read
-                  </WebOSActionButton>
+                  </LoomOSActionButton>
                 )}
-                <WebOSActionButton
+                <LoomOSActionButton
                   icon={<Trash2 className="w-4 h-4" />}
                   onClick={() => deleteNotification(selectedNotification.id)}
                   variant="danger"
                 >
                   Delete
-                </WebOSActionButton>
+                </LoomOSActionButton>
               </div>
             ) : undefined
           }
@@ -276,7 +276,7 @@ export default function NotificationsPage() {
               </div>
             </div>
           )}
-        </WebOSDetailPane>
+        </LoomOSDetailPane>
       </div>
     </ErrorBoundary>
   );

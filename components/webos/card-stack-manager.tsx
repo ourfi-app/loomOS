@@ -1,7 +1,7 @@
 
 /**
  * Card Stack Manager
- * Implements WebOS-style card-based multitasking
+ * Implements LoomOS-style card-based multitasking
  * Allows users to manage multiple open cards/apps simultaneously
  */
 

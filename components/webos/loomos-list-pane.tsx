@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ReactNode } from 'react';
-import { WebOSSearchInput } from './webos-search-input';
+import { LoomOSSearchInput } from './loomos-search-input';
 import { VirtualList } from '@/components/common';
 
 export interface ListItem {
@@ -17,7 +17,7 @@ export interface ListItem {
   onContextMenu?: (e: React.MouseEvent) => void;
 }
 
-interface WebOSListPaneProps {
+interface LoomOSListPaneProps {
   title?: string;
   searchPlaceholder?: string;
   searchValue?: string;
@@ -30,7 +30,7 @@ interface WebOSListPaneProps {
   estimatedItemHeight?: number;
 }
 
-export function WebOSListPane({
+export function LoomOSListPane({
   title,
   searchPlaceholder = 'Search...',
   searchValue = '',
@@ -41,7 +41,7 @@ export function WebOSListPane({
   className = '',
   enableVirtualScrolling = true, // Enable by default for performance
   estimatedItemHeight = 80
-}: WebOSListPaneProps) {
+}: LoomOSListPaneProps) {
   const renderListItem = (item: ListItem) => (
     <div 
       key={item.id}
@@ -92,7 +92,7 @@ export function WebOSListPane({
       {/* Search Bar */}
       {onSearchChange && (
         <div className="p-3 border-b border-gray-300 bg-gray-50">
-          <WebOSSearchInput
+          <LoomOSSearchInput
             value={searchValue}
             onChange={onSearchChange}
             placeholder={searchPlaceholder}

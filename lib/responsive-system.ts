@@ -1,8 +1,8 @@
 
 /**
- * WebOS-Inspired Responsive Design System
+ * LoomOS-Inspired Responsive Design System
  * 
- * This system provides comprehensive device size responsiveness based on WebOS principles:
+ * This system provides comprehensive device size responsiveness based on LoomOS principles:
  * - Coherent Adaptability: UI adapts intelligently to screen size and input method
  * - Multi-pane layouts that collapse/expand gracefully
  * - Touch-optimized sizing on mobile, precision on desktop
@@ -11,7 +11,7 @@
 
 /**
  * Responsive Breakpoints
- * Following WebOS principle of "Coherent Adaptability"
+ * Following LoomOS principle of "Coherent Adaptability"
  */
 export const BREAKPOINTS = {
   // Mobile (Phone - Portrait)
@@ -76,7 +76,7 @@ export const BREAKPOINTS = {
 } as const;
 
 /**
- * Touch Target Sizes (WebOS Principle: Easy touch targeting)
+ * Touch Target Sizes (LoomOS Principle: Easy touch targeting)
  * Minimum 44px for touch, can be smaller for mouse
  */
 export const TOUCH_TARGETS = {
@@ -195,7 +195,7 @@ export const RESPONSIVE_TYPOGRAPHY = {
 
 /**
  * Responsive Layout Patterns
- * WebOS-inspired multi-pane layouts that adapt gracefully
+ * LoomOS-inspired multi-pane layouts that adapt gracefully
  */
 export const LAYOUT_PATTERNS = {
   // Single column (mobile) → Multi-column (desktop)
@@ -206,7 +206,7 @@ export const LAYOUT_PATTERNS = {
     desktopLarge: 'xl:grid-cols-5 2xl:grid-cols-6',
   },
   
-  // Master-detail pattern (WebOS Email-style)
+  // Master-detail pattern (LoomOS Email-style)
   masterDetail: {
     mobile: 'flex-col',  // Stack vertically on mobile
     tablet: 'sm:flex-row sm:divide-x',  // Side-by-side on tablet+
@@ -333,7 +333,7 @@ export const RESPONSIVE_VISIBILITY = {
 } as const;
 
 /**
- * WebOS Three-Zone UI Architecture
+ * LoomOS Three-Zone UI Architecture
  * Adapts for different screen sizes
  */
 export const UI_ZONES = {

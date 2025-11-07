@@ -373,7 +373,7 @@ function HomePage({ showPage, setShowDemoModal }: { showPage: (id: string) => vo
             </p>
           </div>
 
-          {/* WebOS Inspired Visual */}
+          {/* LoomOS Inspired Visual */}
           <div className="flow-container">
             {/* Card 1 */}
             <div className="flow-card">

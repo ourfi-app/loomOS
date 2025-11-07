@@ -13,9 +13,9 @@ import { DirectoryCardSkeleton } from '@/components/common/skeleton-screens';
 import { toastError } from '@/lib/toast-helpers';
 import { useDirectoryData } from '@/hooks/use-api';
 import {
-  WebOSListItemEnhanced,
-  WebOSGroupBox,
-  WebOSListDivider
+  LoomOSListItemEnhanced,
+  LoomOSGroupBox,
+  LoomOSListDivider
 } from '@/components/webos';
 
 import { 
@@ -567,7 +567,7 @@ export default function DirectoryPage() {
                     </div>
                   ) : (
                     <>
-                      <WebOSListDivider>ACTIVE COMMITTEES</WebOSListDivider>
+                      <LoomOSListDivider>ACTIVE COMMITTEES</LoomOSListDivider>
                       <VirtualList
                         items={filteredCommittees}
                         renderItem={(committee) => {
@@ -575,7 +575,7 @@ export default function DirectoryPage() {
                           const isSelected = selectedCommittee?.id === committee.id;
                           
                           return (
-                            <WebOSListItemEnhanced
+                            <LoomOSListItemEnhanced
                               key={committee.id}
                               selected={isSelected}
                               onClick={() => setSelectedCommittee(committee)}
@@ -609,7 +609,7 @@ export default function DirectoryPage() {
                                   {committee.members.length}
                                 </Badge>
                               </div>
-                            </WebOSListItemEnhanced>
+                            </LoomOSListItemEnhanced>
                           );
                         }}
                         estimatedItemHeight={70}
@@ -631,7 +631,7 @@ export default function DirectoryPage() {
                     </div>
                   ) : (
                     <>
-                      <WebOSListDivider count={filteredResidents.length}>RESIDENTS</WebOSListDivider>
+                      <LoomOSListDivider count={filteredResidents.length}>RESIDENTS</LoomOSListDivider>
                       <VirtualList
                         items={filteredResidents}
                         renderItem={(resident) => {
@@ -639,7 +639,7 @@ export default function DirectoryPage() {
                           const isBoardMember = hasBoardAccess(resident.role);
                           
                           return (
-                            <WebOSListItemEnhanced
+                            <LoomOSListItemEnhanced
                               key={resident.id}
                               selected={isSelected}
                               onClick={() => setSelectedResident(resident)}
@@ -719,7 +719,7 @@ export default function DirectoryPage() {
                                   </div>
                                 </div>
                               </div>
-                            </WebOSListItemEnhanced>
+                            </LoomOSListItemEnhanced>
                           );
                         }}
                         estimatedItemHeight={90}

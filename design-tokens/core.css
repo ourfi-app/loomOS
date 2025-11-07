@@ -21,7 +21,7 @@
   --loomos-orange-subtle: #FFF4E6;    /* Very light background */
 
   /* Secondary Brand Colors */
-  --trust-blue: #2196F3;              /* Reliability & openness */
+  --trust-blue: #F18825;              /* Reliability & openness */
   --trust-blue-light: #42A5F5;        /* Lighter shade */
   --trust-blue-dark: #1976D2;         /* Darker shade */
   --trust-blue-subtle: #E3F2FD;       /* Very light background */
@@ -82,7 +82,7 @@
   --warning-orange-subtle: #FFF3E0;
 
   /* Info */
-  --info-blue: #2196F3;
+  --info-blue: #F18825;
   --info-blue-light: #42A5F5;
   --info-blue-dark: #1976D2;
   --info-blue-subtle: #E3F2FD;

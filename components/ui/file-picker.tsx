@@ -2,8 +2,8 @@
 'use client';
 
 /**
- * WebOS File Picker Component
- * Based on WebOS design patterns for file selection
+ * LoomOS File Picker Component
+ * Based on LoomOS design patterns for file selection
  * Supports single and multi-select modes
  */
 

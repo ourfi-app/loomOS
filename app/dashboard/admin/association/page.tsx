@@ -29,9 +29,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import {
-  WebOSPaneContainer,
-  WebOSNavListItem,
-  WebOSGroupBox,
+  LoomOSPaneContainer,
+  LoomOSNavListItem,
+  LoomOSGroupBox,
 } from '@/components/webos';
 import { DesktopAppWrapper } from '@/components/webos/desktop-app-wrapper';
 import { APP_COLORS } from '@/lib/app-design-system';
@@ -206,7 +206,7 @@ export default function AssociationConfigPage() {
       </div>
 
       {/* 2-Pane Layout */}
-      <WebOSPaneContainer>
+      <LoomOSPaneContainer>
         {/* Navigation Pane */}
         <div className="w-60 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col overflow-hidden">
           <div className="p-4 border-b border-gray-200">
@@ -216,25 +216,25 @@ export default function AssociationConfigPage() {
           </div>
           <div className="flex-1 overflow-y-auto p-2">
             <div className="space-y-1">
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Basic Info"
                 selected={selectedCategory === 'basic'}
                 onClick={() => setSelectedCategory('basic')}
                 icon={<Building2 className="w-4 h-4" />}
               />
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Contact"
                 selected={selectedCategory === 'contact'}
                 onClick={() => setSelectedCategory('contact')}
                 icon={<Phone className="w-4 h-4" />}
               />
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Financial"
                 selected={selectedCategory === 'financial'}
                 onClick={() => setSelectedCategory('financial')}
                 icon={<DollarSign className="w-4 h-4" />}
               />
-              <WebOSNavListItem
+              <LoomOSNavListItem
                 label="Policies"
                 selected={selectedCategory === 'policies'}
                 onClick={() => setSelectedCategory('policies')}
@@ -250,7 +250,7 @@ export default function AssociationConfigPage() {
             {/* Basic Info */}
             {selectedCategory === 'basic' && (
               <>
-                <WebOSGroupBox title="Association Details">
+                <LoomOSGroupBox title="Association Details">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2 md:col-span-2">
                       <Label htmlFor="associationName">Association Name</Label>
@@ -336,9 +336,9 @@ export default function AssociationConfigPage() {
                       />
                     </div>
                   </div>
-                </WebOSGroupBox>
+                </LoomOSGroupBox>
 
-                <WebOSGroupBox title="Location">
+                <LoomOSGroupBox title="Location">
                   <div className="grid grid-cols-1 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="streetAddress">Street Address</Label>
@@ -392,13 +392,13 @@ export default function AssociationConfigPage() {
                       />
                     </div>
                   </div>
-                </WebOSGroupBox>
+                </LoomOSGroupBox>
               </>
             )}
 
             {/* Contact Info */}
             {selectedCategory === 'contact' && (
-              <WebOSGroupBox title="Contact Information">
+              <LoomOSGroupBox title="Contact Information">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="officePhone">Office Phone</Label>
@@ -454,13 +454,13 @@ export default function AssociationConfigPage() {
                     />
                   </div>
                 </div>
-              </WebOSGroupBox>
+              </LoomOSGroupBox>
             )}
 
             {/* Financial */}
             {selectedCategory === 'financial' && (
               <>
-                <WebOSGroupBox title="Financial Configuration">
+                <LoomOSGroupBox title="Financial Configuration">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="defaultMonthlyDues">Default Monthly Dues</Label>
@@ -566,9 +566,9 @@ export default function AssociationConfigPage() {
                       </div>
                     </div>
                   </div>
-                </WebOSGroupBox>
+                </LoomOSGroupBox>
 
-                <WebOSGroupBox title="Unit Configuration">
+                <LoomOSGroupBox title="Unit Configuration">
                   <div className="space-y-2">
                     <Label htmlFor="unitPrefix">Unit Prefix</Label>
                     <Input
@@ -581,13 +581,13 @@ export default function AssociationConfigPage() {
                       e.g., "Unit 101", "Apt 101", "#101"
                     </p>
                   </div>
-                </WebOSGroupBox>
+                </LoomOSGroupBox>
               </>
             )}
 
             {/* Policies */}
             {selectedCategory === 'policies' && (
-              <WebOSGroupBox title="Association Policies">
+              <LoomOSGroupBox title="Association Policies">
                 <div className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="petPolicy">Pet Policy</Label>
@@ -646,11 +646,11 @@ export default function AssociationConfigPage() {
                     </div>
                   </div>
                 </div>
-              </WebOSGroupBox>
+              </LoomOSGroupBox>
             )}
           </div>
         </div>
-      </WebOSPaneContainer>
+      </LoomOSPaneContainer>
     </DesktopAppWrapper>
   );
 }

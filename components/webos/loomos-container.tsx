@@ -6,19 +6,19 @@ import { ModeBanner } from '@/components/mode-banner';
 import { MultitaskingView } from './multitasking-view';
 import { useDesktopCustomization } from '@/lib/desktop-customization-store';
 
-interface WebOSContainerProps {
+interface LoomOSContainerProps {
   children: ReactNode;
   onOpenCustomization?: () => void;
   onOpenQuickSettings?: () => void;
   onOpenMissionControl?: () => void;
 }
 
-export function WebOSContainer({ 
+export function LoomOSContainer({ 
   children, 
   onOpenCustomization, 
   onOpenQuickSettings,
   onOpenMissionControl
-}: WebOSContainerProps) {
+}: LoomOSContainerProps) {
   const { wallpaper } = useDesktopCustomization();
   const [backgroundStyle, setBackgroundStyle] = useState<React.CSSProperties>({});
   
@@ -51,7 +51,7 @@ export function WebOSContainer({
   }, [wallpaper]);
   
   return (
-    <div className="webos-container">
+    <div className="loomos-container">
       {/* Desktop Background Layer - z-index: 0 */}
       <div 
         className="fixed inset-0 pointer-events-none" 
@@ -77,7 +77,7 @@ export function WebOSContainer({
         <ModeBanner />
         
         {/* Main desktop area - Reserve space for dock at bottom */}
-        <div className="webos-touchscreen desktop-area pb-24">
+        <div className="loomos-touchscreen desktop-area pb-24">
           <MultitaskingView>
             {children}
           </MultitaskingView>

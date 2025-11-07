@@ -37,10 +37,10 @@ import { ErrorBoundary, VirtualList } from '@/components/common';
 import { TaskListSkeleton } from '@/components/common/skeleton-screens';
 import { toastSuccess, toastError, toastValidationError, toastCRUD } from '@/lib/toast-helpers';
 import {
-  WebOSNavigationPane,
-  WebOSListPane,
-  WebOSAppHeader,
-  WebOSListItemEnhanced
+  LoomOSNavigationPane,
+  LoomOSListPane,
+  LoomOSAppHeader,
+  LoomOSListItemEnhanced
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
@@ -420,7 +420,7 @@ export default function TasksApp() {
     <ErrorBoundary>
       {/* Tasks Content */}
         <div className="h-full flex flex-col overflow-hidden">
-      <WebOSAppHeader
+      <LoomOSAppHeader
         appName="Tasks"
         actions={
           <div className="flex items-center gap-2">
@@ -447,7 +447,7 @@ export default function TasksApp() {
 
       <div className="flex-1 flex overflow-hidden">
         {/* Navigation Pane - Lists */}
-        <WebOSNavigationPane
+        <LoomOSNavigationPane
           title="LISTS"
           items={navItemsForPane}
         />
@@ -530,7 +530,7 @@ export default function TasksApp() {
                       const isToday = dueDateLabel === 'TODAY';
 
                       return (
-                        <WebOSListItemEnhanced
+                        <LoomOSListItemEnhanced
                           key={task.id}
                           onClick={() => handleEditTask(task)}
                           animationIndex={index}
@@ -603,7 +603,7 @@ export default function TasksApp() {
                               <MoreVertical className="w-4 h-4 text-gray-500" />
                             </button>
                           </div>
-                        </WebOSListItemEnhanced>
+                        </LoomOSListItemEnhanced>
                       );
                     }}
                     estimatedItemHeight={75}

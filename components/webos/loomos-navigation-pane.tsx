@@ -11,13 +11,13 @@ export interface NavigationItem {
   onClick?: () => void;
 }
 
-interface WebOSNavigationPaneProps {
+interface LoomOSNavigationPaneProps {
   title: string;
   items: NavigationItem[];
   className?: string;
 }
 
-export function WebOSNavigationPane({ title, items, className = '' }: WebOSNavigationPaneProps) {
+export function LoomOSNavigationPane({ title, items, className = '' }: LoomOSNavigationPaneProps) {
   return (
     <div className={`w-60 bg-gradient-to-b from-gray-300 to-gray-400 border-r border-gray-500 flex flex-col flex-shrink-0 ${className}`}>
       <div className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-3 py-2 text-[11px] font-bold tracking-wider">

@@ -4,7 +4,7 @@
 import { useSession } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { WebOSContainer } from '@/components/webos/webos-container';
+import { LoomOSContainer } from '@/components/webos/loomos-container';
 import { useCardManager } from '@/lib/card-manager-store';
 import { DesktopWidgets } from '@/components/webos/desktop-widgets';
 import { UniversalSearch } from '@/components/webos/universal-search';
@@ -201,7 +201,7 @@ export default function DashboardLayout({
 
   return (
     <MotionProvider>
-      <WebOSContainer
+      <LoomOSContainer
         onOpenCustomization={() => setShowCustomization(true)}
       >
       {/* Show onboarding modal or dashboard content */}
@@ -252,7 +252,7 @@ export default function DashboardLayout({
           </AnimatePresence>
         </>
       )}
-    </WebOSContainer>
+    </LoomOSContainer>
     </MotionProvider>
   );
 }
