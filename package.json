@@ -64,6 +64,7 @@
     "@craftjs/core": "^0.2.12",
     "@craftjs/utils": "^0.2.5",
     "@floating-ui/react": "0.26.0",
+    "@google/generative-ai": "^0.24.1",
     "@headlessui/react": "1.7.18",
     "@hookform/resolvers": "3.9.0",
     "@loomos/core": "file:./packages/core",
