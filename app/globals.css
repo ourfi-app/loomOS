@@ -1,9 +1,15 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import Design Tokens (Modern Semantic System) */
+/* ========================================
+   loomOS Design System v1.0
+   Import new semantic token architecture
+   ======================================== */
+@import '../design-tokens/semantic.css';  /* Imports core.css automatically */
+@import '../design-tokens/motion.css';
+
+/* Legacy Design Tokens (for backwards compatibility) */
 @import '../styles/design-tokens.css';
 
 /* Import WebOS Design Tokens and Component Styles */

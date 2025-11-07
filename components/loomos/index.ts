@@ -1,36 +1,29 @@
 /**
- * loomOS Components
+ * loomOS Component Library
  *
- * Liberation-focused UI components inspired by webOS principles.
- * Export all loomOS components for easy importing.
+ * Built on the loomOS Design System v1.0
+ * All components use semantic tokens for easy theming
  */
 
-// Card System
-export { LoomOSCard, LoomOSCardGrid, LoomOSCardStack } from './Card';
-export type { LoomOSCardProps, LoomOSCardGridProps, LoomOSCardStackProps } from './Card';
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
 
-// Dock
-export { LoomOSDock, LoomOSDockSeparator, defaultDockApps } from './Dock';
-export type { LoomOSDockProps, DockApp } from './Dock';
-
-// Just Type Universal Search
-export { JustType } from './JustType';
-export type { JustTypeProps, SearchResult } from './JustType';
-
-// App Template (Three-pane layout)
 export {
-  LoomOSAppTemplate,
-  LoomOSNavigationItem,
-  LoomOSContentList,
-  LoomOSContentListItem,
-  LoomOSDetailPane,
-  LoomOSSection,
-} from './AppTemplate';
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from './Card';
 export type {
-  LoomOSAppTemplateProps,
-  NavigationItemProps,
-  ContentListProps,
-  ContentListItemProps,
-  DetailPaneProps,
-  SectionProps,
-} from './AppTemplate';
+  CardProps,
+  CardHeaderProps,
+  CardTitleProps,
+  CardDescriptionProps,
+  CardContentProps,
+  CardFooterProps,
+} from './Card';
+
+export { Badge } from './Badge';
+export type { BadgeProps } from './Badge';

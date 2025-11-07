@@ -18,36 +18,80 @@ const config: Config = {
       '2xl': '1536px', // Extra large desktop
     },
     extend: {
+      // ========================================
+      // SPACING - From design-tokens/core.css
+      // ========================================
       spacing: {
+        // Design token spacing scale (4px grid)
+        'xs': 'var(--space-xs)',      // 4px
+        'sm': 'var(--space-sm)',      // 8px
+        'md': 'var(--space-md)',      // 12px
+        'lg': 'var(--space-lg)',      // 16px
+        'xl': 'var(--space-xl)',      // 24px
+        '2xl': 'var(--space-2xl)',    // 32px
+        '3xl': 'var(--space-3xl)',    // 48px
+        '4xl': 'var(--space-4xl)',    // 64px
+        // Keep custom spacing
         '18': '4.5rem', // 72px - for better dock positioning
       },
+      // ========================================
+      // TYPOGRAPHY - From design-tokens/core.css
+      // ========================================
       fontFamily: {
         sans: ['Titillium Web', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         serif: ['Cambo', 'Georgia', 'serif'],
-        display: ['Cambo', 'Georgia', 'serif'],
+        mono: ['SF Mono', 'Monaco', 'monospace'],
+        display: ['Prelude', 'Cambo', 'Georgia', 'serif'],
         webos: ['Titillium Web', '-apple-system', 'system-ui', 'sans-serif'],
+        loomos: ['Prelude', '-apple-system', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'xs': ['var(--text-xs)', { lineHeight: 'var(--leading-tight)' }],      // 11px
+        'sm': ['var(--text-sm)', { lineHeight: 'var(--leading-normal)' }],     // 13px
+        'base': ['var(--text-base)', { lineHeight: 'var(--leading-normal)' }], // 14px
+        'lg': ['var(--text-lg)', { lineHeight: 'var(--leading-normal)' }],     // 16px
+        'xl': ['var(--text-xl)', { lineHeight: 'var(--leading-normal)' }],     // 18px
+        '2xl': ['var(--text-2xl)', { lineHeight: 'var(--leading-tight)' }],    // 24px
+        '3xl': ['var(--text-3xl)', { lineHeight: 'var(--leading-tight)' }],    // 30px
+        '4xl': ['var(--text-4xl)', { lineHeight: 'var(--leading-tight)' }],    // 36px
+        '5xl': ['var(--text-5xl)', { lineHeight: 'var(--leading-tight)' }],    // 48px
+        '6xl': ['var(--text-6xl)', { lineHeight: 'var(--leading-none)' }],     // 60px
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'chrome-gradient': 'linear-gradient(to bottom, rgb(var(--chrome-dark)), rgb(var(--chrome-darker)))',
       },
+      // ========================================
+      // BORDER RADIUS - From design-tokens/core.css
+      // ========================================
       borderRadius: {
-        lg: '0.75rem',
-        md: '0.5rem',
-        sm: '0.375rem',
-        xl: '1rem',
-        '2xl': '1.5rem',
-        '3xl': '2rem',
+        'none': 'var(--radius-none)',   // 0
+        'sm': 'var(--radius-sm)',       // 4px
+        'DEFAULT': 'var(--radius-base)', // 8px
+        'md': 'var(--radius-md)',       // 8px
+        'lg': 'var(--radius-lg)',       // 12px
+        'xl': 'var(--radius-xl)',       // 16px
+        '2xl': 'var(--radius-2xl)',     // 24px
+        '3xl': 'var(--radius-3xl)',     // 32px
+        'full': 'var(--radius-full)',   // 9999px
       },
+      // ========================================
+      // SHADOWS - From design-tokens/core.css
+      // ========================================
       boxShadow: {
+        'xs': 'var(--shadow-xs)',
         'sm': 'var(--shadow-sm)',
-        'DEFAULT': 'var(--shadow-md)',
+        'DEFAULT': 'var(--shadow-base)',
         'md': 'var(--shadow-md)',
         'lg': 'var(--shadow-lg)',
         'xl': 'var(--shadow-xl)',
-        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-        'inner': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+        '2xl': 'var(--shadow-2xl)',
+        'inner': 'var(--shadow-inner)',
+        'card': 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
+        'card-active': 'var(--shadow-card-active)',
+        'dock': 'var(--shadow-dock)',
         'none': 'none',
       },
       colors: {
@@ -111,12 +155,72 @@ const config: Config = {
         documents: 'hsl(var(--documents))',
         community: 'hsl(var(--community))',
         messaging: 'hsl(var(--messaging))',
-        // loomOS Brand Colors
+        // loomOS Brand Colors (keep for compatibility)
         loomos: {
           orange: '#F18825',
           'orange-light': '#FF9A3C',
           'orange-dark': '#D4751F',
         },
+        // ========================================
+        // DESIGN TOKEN COLORS
+        // ========================================
+        // loomOS Core Brand Colors
+        'loomos-orange': 'var(--loomos-orange)',           // #F18825
+        'loomos-orange-light': 'var(--loomos-orange-light)', // Lighter
+        'loomos-orange-dark': 'var(--loomos-orange-dark)',  // Darker
+        'loomos-orange-subtle': 'var(--loomos-orange-subtle)', // Very light bg
+
+        'trust-blue': 'var(--trust-blue)',                 // #2196F3
+        'trust-blue-light': 'var(--trust-blue-light)',
+        'trust-blue-dark': 'var(--trust-blue-dark)',
+        'trust-blue-subtle': 'var(--trust-blue-subtle)',
+
+        'growth-green': 'var(--growth-green)',             // #4CAF50
+        'growth-green-light': 'var(--growth-green-light)',
+        'growth-green-dark': 'var(--growth-green-dark)',
+        'growth-green-subtle': 'var(--growth-green-subtle)',
+
+        // Semantic Colors (customizable by apps)
+        'semantic-primary': 'var(--semantic-primary)',
+        'semantic-primary-light': 'var(--semantic-primary-light)',
+        'semantic-primary-dark': 'var(--semantic-primary-dark)',
+        'semantic-primary-subtle': 'var(--semantic-primary-subtle)',
+
+        'semantic-accent': 'var(--semantic-accent)',
+        'semantic-accent-light': 'var(--semantic-accent-light)',
+        'semantic-accent-dark': 'var(--semantic-accent-dark)',
+        'semantic-accent-subtle': 'var(--semantic-accent-subtle)',
+
+        // Backgrounds & Surfaces
+        'semantic-bg': 'var(--semantic-bg-base)',
+        'semantic-bg-subtle': 'var(--semantic-bg-subtle)',
+        'semantic-bg-muted': 'var(--semantic-bg-muted)',
+
+        'semantic-surface': 'var(--semantic-surface-base)',
+        'semantic-surface-elevated': 'var(--semantic-surface-elevated)',
+        'semantic-surface-overlay': 'var(--semantic-surface-overlay)',
+        'semantic-surface-hover': 'var(--semantic-surface-hover)',
+        'semantic-surface-active': 'var(--semantic-surface-active)',
+
+        // Text Colors
+        'semantic-text': 'var(--semantic-text-primary)',
+        'semantic-text-secondary': 'var(--semantic-text-secondary)',
+        'semantic-text-tertiary': 'var(--semantic-text-tertiary)',
+        'semantic-text-disabled': 'var(--semantic-text-disabled)',
+        'semantic-text-inverse': 'var(--semantic-text-inverse)',
+        'semantic-text-link': 'var(--semantic-text-link)',
+
+        // Borders
+        'semantic-border': 'var(--semantic-border-light)',
+        'semantic-border-medium': 'var(--semantic-border-medium)',
+        'semantic-border-strong': 'var(--semantic-border-strong)',
+        'semantic-border-focus': 'var(--semantic-border-focus)',
+
+        // Status Colors
+        'semantic-success': 'var(--semantic-success)',
+        'semantic-error': 'var(--semantic-error)',
+        'semantic-warning': 'var(--semantic-warning)',
+        'semantic-info': 'var(--semantic-info)',
       },
       keyframes: {
         'accordion-down': {
@@ -182,12 +286,29 @@ const config: Config = {
         spin: 'spin 1s linear infinite',
         shimmer: 'shimmer 2s linear infinite',
       },
+      // ========================================
+      // TRANSITIONS - From design-tokens/motion.css
+      // ========================================
       transitionTimingFunction: {
+        'standard': 'var(--ease-standard)',
+        'decelerate': 'var(--ease-decelerate)',
+        'accelerate': 'var(--ease-accelerate)',
+        'sharp': 'var(--ease-sharp)',
+        'spring': 'var(--ease-spring)',
+        'bounce': 'var(--ease-bounce)',
+        // Legacy
         'webos': 'cubic-bezier(0.42, 0, 0.58, 1)',
         'webos-in': 'cubic-bezier(0, 0, 0.58, 1)',
         'webos-out': 'cubic-bezier(0.42, 0, 1, 1)',
       },
       transitionDuration: {
+        'instant': 'var(--duration-instant)',   // 100ms
+        'fast': 'var(--duration-fast)',         // 150ms
+        'normal': 'var(--duration-normal)',     // 200ms
+        'slow': 'var(--duration-slow)',         // 300ms
+        'slower': 'var(--duration-slower)',     // 500ms
+        'slowest': 'var(--duration-slowest)',   // 700ms
+        // Legacy
         'webos-micro': '100ms',
         'webos-fast': '200ms',
         'webos-normal': '300ms',
