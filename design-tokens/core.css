@@ -1,0 +1,326 @@
+/**
+ * loomOS Core Design Tokens
+ *
+ * These are IMMUTABLE brand tokens that define the loomOS identity.
+ * Apps MUST NOT override these tokens.
+ * Apps customize their appearance using semantic tokens that reference these.
+ *
+ * Version: 1.0
+ * Last Updated: November 7, 2025
+ */
+
+:root {
+  /* ========================================
+     BRAND COLORS - The loomOS Identity
+     ======================================== */
+
+  /* Primary Brand Color - The loomOS Signature */
+  --loomos-orange: #F18825;           /* Liberation & warmth */
+  --loomos-orange-light: #F39C47;     /* Lighter shade */
+  --loomos-orange-dark: #D77418;      /* Darker shade */
+  --loomos-orange-subtle: #FFF4E6;    /* Very light background */
+
+  /* Secondary Brand Colors */
+  --trust-blue: #2196F3;              /* Reliability & openness */
+  --trust-blue-light: #42A5F5;        /* Lighter shade */
+  --trust-blue-dark: #1976D2;         /* Darker shade */
+  --trust-blue-subtle: #E3F2FD;       /* Very light background */
+
+  --growth-green: #4CAF50;            /* Freedom & progress */
+  --growth-green-light: #66BB6A;      /* Lighter shade */
+  --growth-green-dark: #388E3C;       /* Darker shade */
+  --growth-green-subtle: #E8F5E9;     /* Very light background */
+
+  /* ========================================
+     NEUTRAL COLORS - Warm Gray Scale
+     ======================================== */
+
+  /* Light Mode Neutrals */
+  --neutral-50: #FAFAFA;              /* Lightest */
+  --neutral-100: #F5F5F5;
+  --neutral-200: #EEEEEE;
+  --neutral-300: #E0E0E0;
+  --neutral-400: #BDBDBD;
+  --neutral-500: #9E9E9E;
+  --neutral-600: #757575;
+  --neutral-700: #616161;
+  --neutral-800: #424242;
+  --neutral-900: #212121;             /* Darkest */
+
+  /* Warm Gray Variants (with slight orange tint) */
+  --warm-gray-50: #FAFAF9;
+  --warm-gray-100: #F5F5F4;
+  --warm-gray-200: #E7E5E4;
+  --warm-gray-300: #D6D3D1;
+  --warm-gray-400: #A8A29E;
+  --warm-gray-500: #78716C;
+  --warm-gray-600: #57534E;
+  --warm-gray-700: #44403C;
+  --warm-gray-800: #292524;
+  --warm-gray-900: #1C1917;
+
+  /* ========================================
+     SEMANTIC STATUS COLORS
+     ======================================== */
+
+  /* Success */
+  --success-green: #4CAF50;
+  --success-green-light: #66BB6A;
+  --success-green-dark: #388E3C;
+  --success-green-subtle: #E8F5E9;
+
+  /* Error */
+  --error-red: #F44336;
+  --error-red-light: #EF5350;
+  --error-red-dark: #D32F2F;
+  --error-red-subtle: #FFEBEE;
+
+  /* Warning */
+  --warning-orange: #FF9800;
+  --warning-orange-light: #FFB74D;
+  --warning-orange-dark: #F57C00;
+  --warning-orange-subtle: #FFF3E0;
+
+  /* Info */
+  --info-blue: #2196F3;
+  --info-blue-light: #42A5F5;
+  --info-blue-dark: #1976D2;
+  --info-blue-subtle: #E3F2FD;
+
+  /* ========================================
+     ACTIVITY COLORS
+     ======================================== */
+
+  --activity-email: #4285F4;          /* Google Blue */
+  --activity-calendar: #34A853;       /* Google Green */
+  --activity-tasks: #FBBC04;          /* Google Yellow */
+  --activity-notes: #EA4335;          /* Google Red */
+  --activity-social: #8E24AA;         /* Purple */
+  --activity-photos: #F09433;         /* Instagram gradient start */
+  --activity-music: #1DB954;          /* Spotify Green */
+  --activity-video: #FF0000;          /* YouTube Red */
+
+  /* ========================================
+     SPACING SCALE (4px grid)
+     ======================================== */
+
+  --space-0: 0px;
+  --space-1: 4px;     /* 0.25rem */
+  --space-2: 8px;     /* 0.5rem */
+  --space-3: 12px;    /* 0.75rem */
+  --space-4: 16px;    /* 1rem */
+  --space-5: 20px;    /* 1.25rem */
+  --space-6: 24px;    /* 1.5rem */
+  --space-8: 32px;    /* 2rem */
+  --space-10: 40px;   /* 2.5rem */
+  --space-12: 48px;   /* 3rem */
+  --space-16: 64px;   /* 4rem */
+  --space-20: 80px;   /* 5rem */
+  --space-24: 96px;   /* 6rem */
+
+  /* Semantic Spacing Aliases */
+  --space-xs: var(--space-1);   /* 4px */
+  --space-sm: var(--space-2);   /* 8px */
+  --space-md: var(--space-3);   /* 12px */
+  --space-lg: var(--space-4);   /* 16px */
+  --space-xl: var(--space-6);   /* 24px */
+  --space-2xl: var(--space-8);  /* 32px */
+  --space-3xl: var(--space-12); /* 48px */
+  --space-4xl: var(--space-16); /* 64px */
+
+  /* ========================================
+     TYPOGRAPHY SCALE
+     ======================================== */
+
+  /* Font Families */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-display: "Prelude", var(--font-sans); /* loomOS display font */
+
+  /* Font Sizes */
+  --text-xs: 0.6875rem;   /* 11px */
+  --text-sm: 0.8125rem;   /* 13px */
+  --text-base: 0.875rem;  /* 14px */
+  --text-lg: 1rem;        /* 16px */
+  --text-xl: 1.125rem;    /* 18px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 3.75rem;    /* 60px */
+
+  /* Font Weights */
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ========================================
+     BORDER RADIUS SCALE
+     ======================================== */
+
+  --radius-none: 0px;
+  --radius-sm: 0.25rem;     /* 4px */
+  --radius-base: 0.5rem;    /* 8px */
+  --radius-md: 0.5rem;      /* 8px */
+  --radius-lg: 0.75rem;     /* 12px */
+  --radius-xl: 1rem;        /* 16px */
+  --radius-2xl: 1.5rem;     /* 24px */
+  --radius-3xl: 2rem;       /* 32px */
+  --radius-full: 9999px;    /* Circles/pills */
+
+  /* ========================================
+     SHADOW SCALE
+     ======================================== */
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+  /* Special Shadows */
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-card-active: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --shadow-dock: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+
+  /* ========================================
+     COMPONENT DIMENSIONS
+     ======================================== */
+
+  /* Touch Targets */
+  --touch-target-min: 44px;           /* iOS/Android minimum */
+  --touch-target-comfortable: 48px;   /* Comfortable size */
+
+  /* Cards */
+  --card-radius: var(--radius-lg);    /* 12px */
+  --card-padding: var(--space-4);     /* 16px */
+  --card-padding-sm: var(--space-3);  /* 12px */
+  --card-padding-lg: var(--space-6);  /* 24px */
+
+  /* List Items */
+  --list-item-height: 56px;
+  --list-item-height-sm: 48px;
+  --list-item-height-lg: 64px;
+
+  /* Headers */
+  --header-height: 56px;
+  --header-height-lg: 64px;
+
+  /* Navigation */
+  --dock-height: 72px;
+  --dock-icon-size: 56px;
+  --gesture-area-height: 48px;
+
+  /* Panes (Three-Pane Layout) */
+  --pane-nav-min: 240px;
+  --pane-nav-default: 260px;
+  --pane-nav-max: 300px;
+  --pane-list-min: 300px;
+  --pane-list-default: 360px;
+  --pane-list-max: 400px;
+  --pane-detail-min: 400px;
+
+  /* ========================================
+     Z-INDEX LAYERS
+     ======================================== */
+
+  --z-base: 0;
+  --z-card: 10;
+  --z-card-active: 20;
+  --z-raised: 50;
+  --z-dock: 100;
+  --z-gesture-area: 200;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-notification: 1080;
+
+  /* ========================================
+     BREAKPOINTS (for JS consumption)
+     ======================================== */
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ========================================
+   DARK MODE - Core Color Overrides
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Brand colors stay the same in dark mode */
+    /* Only neutral colors change */
+
+    /* Inverted Neutrals for Dark Mode */
+    --neutral-50: #212121;
+    --neutral-100: #424242;
+    --neutral-200: #616161;
+    --neutral-300: #757575;
+    --neutral-400: #9E9E9E;
+    --neutral-500: #BDBDBD;
+    --neutral-600: #E0E0E0;
+    --neutral-700: #EEEEEE;
+    --neutral-800: #F5F5F5;
+    --neutral-900: #FAFAFA;
+
+    /* Inverted Warm Grays */
+    --warm-gray-50: #1C1917;
+    --warm-gray-100: #292524;
+    --warm-gray-200: #44403C;
+    --warm-gray-300: #57534E;
+    --warm-gray-400: #78716C;
+    --warm-gray-500: #A8A29E;
+    --warm-gray-600: #D6D3D1;
+    --warm-gray-700: #E7E5E4;
+    --warm-gray-800: #F5F5F4;
+    --warm-gray-900: #FAFAF9;
+
+    /* Adjusted shadows for dark mode (stronger) */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-card-active: 0 8px 20px rgba(0, 0, 0, 0.5);
+    --shadow-dock: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
