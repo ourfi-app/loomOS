@@ -8,7 +8,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import {
-  WebOSNavigationPane,
+  LoomOSNavigationPane,
   DesktopAppWrapper
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
@@ -69,7 +69,7 @@ export default function OrganizerPage() {
       gradient={appDef?.gradient || 'from-purple-500 to-indigo-500'}
     >
       <div className="h-full flex overflow-hidden">
-        <WebOSNavigationPane
+        <LoomOSNavigationPane
           title="Organizer"
           items={navItems}
         />

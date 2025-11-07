@@ -23,7 +23,7 @@ export const loomOSTheme = {
   colors: {
     // Signature loomOS Colors
     accent: '#F18825',         // loomOS signature orange - liberation & warmth
-    primary: '#2196F3',        // Trust blue - reliability & openness
+    primary: '#F18825',        // Trust blue - reliability & openness
     success: '#4CAF50',        // Growth green - freedom & progress
     warning: '#FF9800',        // Attention orange
     error: '#F44336',          // Alert red
@@ -58,7 +58,7 @@ export const loomOSTheme = {
 
     // Status Colors
     status: {
-      unread: '#2196F3',
+      unread: '#F18825',
       important: '#F44336',
       archived: '#999999',
     },

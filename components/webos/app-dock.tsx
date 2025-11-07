@@ -25,7 +25,7 @@ import {
 import { toast } from 'sonner';
 
 /**
- * WebOS-style Quick Launch Dock
+ * LoomOS-style Quick Launch Dock
  * 
  * Features:
  * - 5 icons total: 4 customizable app positions + 1 fixed app grid launcher

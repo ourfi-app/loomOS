@@ -403,7 +403,7 @@ export function useWindowManager(): WindowManagerHook {
   }, [highestZIndex]);
 
   const minimizeWindow = useCallback((id: string) => {
-    // In WebOS, minimizing typically sends the window to the dock/card view
+    // In LoomOS, minimizing typically sends the window to the dock/card view
     // For now, we'll restore it to its previous state (unmaximize/unsnap)
     // This provides a consistent "reduce window size" behavior
     restoreWindow(id);

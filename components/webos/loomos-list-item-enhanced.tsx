@@ -21,7 +21,7 @@ export interface BadgeConfig {
   color?: string;
 }
 
-export interface WebOSListItemEnhancedProps {
+export interface LoomOSListItemEnhancedProps {
   children: ReactNode;
   selected?: boolean;
   checked?: boolean;
@@ -43,13 +43,13 @@ export interface WebOSListItemEnhancedProps {
 }
 
 /**
- * WebOS List Item Enhanced
+ * LoomOS List Item Enhanced
  * 
  * Enhanced list item with edit mode, drag handles, status badges, and multi-select.
  * Reference: list-items-editing.png, lists-deleting-items-2.png
  * 
  * @example
- * <WebOSListItemEnhanced
+ * <LoomOSListItemEnhanced
  *   editMode={isEditing}
  *   draggable
  *   unread
@@ -57,9 +57,9 @@ export interface WebOSListItemEnhancedProps {
  *   onSwipeLeft={() => archive()}
  * >
  *   {content}
- * </WebOSListItemEnhanced>
+ * </LoomOSListItemEnhanced>
  */
-export function WebOSListItemEnhanced({
+export function LoomOSListItemEnhanced({
   children,
   selected,
   checked,
@@ -78,7 +78,7 @@ export function WebOSListItemEnhanced({
   badges = [],
   className,
   animationIndex = 0,
-}: WebOSListItemEnhancedProps) {
+}: LoomOSListItemEnhancedProps) {
   const itemRef = useRef<HTMLDivElement>(null);
   const [isSwiped, setIsSwiped] = useState(false);
   const touchStartX = useRef(0);
@@ -328,4 +328,4 @@ function StatusBadge({ type, color }: BadgeConfig) {
   );
 }
 
-WebOSListItemEnhanced.displayName = 'WebOSListItemEnhanced';
+LoomOSListItemEnhanced.displayName = 'LoomOSListItemEnhanced';

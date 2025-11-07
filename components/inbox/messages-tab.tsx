@@ -21,11 +21,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { format, isToday, isYesterday } from 'date-fns';
 import {
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSListItemEnhanced,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSListItemEnhanced,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
 } from '@/components/webos';
 import { useMessages, useMessageMutation } from '@/hooks/use-api';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
@@ -95,7 +95,7 @@ export default function MessagesTab() {
   return (
     <div className="h-full flex">
       {/* Folders Navigation */}
-      <WebOSNavigationPane title="FOLDERS" items={navItems} />
+      <LoomOSNavigationPane title="FOLDERS" items={navItems} />
 
       {/* Messages List */}
       <div className="w-96 flex-shrink-0 border-r border-border flex flex-col">
@@ -121,9 +121,9 @@ export default function MessagesTab() {
 
         <ScrollArea className="flex-1">
           {isLoading ? (
-            <WebOSLoadingState message="Loading messages..." />
+            <LoomOSLoadingState message="Loading messages..." />
           ) : messages.length === 0 ? (
-            <WebOSEmptyState
+            <LoomOSEmptyState
               icon={<Mail className="w-12 h-12" />}
               title="No messages"
               description="Your inbox is empty"
@@ -135,7 +135,7 @@ export default function MessagesTab() {
                 const isStarred = message.recipients?.some((r: any) => r.isStarred);
 
                 return (
-                  <WebOSListItemEnhanced
+                  <LoomOSListItemEnhanced
                     key={message.id}
                     selected={selectedMessage?.id === message.id}
                     onClick={() => {
@@ -168,7 +168,7 @@ export default function MessagesTab() {
                         </p>
                       </div>
                     </div>
-                  </WebOSListItemEnhanced>
+                  </LoomOSListItemEnhanced>
                 );
               })}
             </div>
@@ -225,7 +225,7 @@ export default function MessagesTab() {
           </>
         ) : (
           // Message Detail
-          <WebOSDetailPane
+          <LoomOSDetailPane
             title={selectedMessage?.subject}
             subtitle={selectedMessage?.sender?.name}
             actions={
@@ -275,7 +275,7 @@ export default function MessagesTab() {
                 </div>
               </ScrollArea>
             )}
-          </WebOSDetailPane>
+          </LoomOSDetailPane>
         )}
       </div>
     </div>

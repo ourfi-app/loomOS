@@ -2,8 +2,8 @@
 'use client';
 
 /**
- * WebOS Share Dialog Component
- * Based on WebOS design patterns for sharing content
+ * LoomOS Share Dialog Component
+ * Based on LoomOS design patterns for sharing content
  * Provides preset sharing options (Contact, Email, SMS, etc.)
  */
 

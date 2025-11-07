@@ -11,7 +11,7 @@ export interface SwipeView {
   content: React.ReactNode;
 }
 
-export interface WebOSSwipeNavigationProps {
+export interface LoomOSSwipeNavigationProps {
   views: SwipeView[];
   defaultView?: string;
   onViewChange?: (viewId: string) => void;
@@ -21,13 +21,13 @@ export interface WebOSSwipeNavigationProps {
 }
 
 /**
- * WebOS Swipe Navigation
+ * LoomOS Swipe Navigation
  * 
  * Swipe between views at the same level with visual indicators.
  * Reference: navigating-at-the-same-level-2.png, navigating-at-the-same-level-3.png
  * 
  * @example
- * <WebOSSwipeNavigation 
+ * <LoomOSSwipeNavigation 
  *   views={[
  *     { id: "day", label: "Day", content: <DayView /> },
  *     { id: "week", label: "Week", content: <WeekView /> },
@@ -37,14 +37,14 @@ export interface WebOSSwipeNavigationProps {
  *   showTabs
  * />
  */
-export function WebOSSwipeNavigation({
+export function LoomOSSwipeNavigation({
   views,
   defaultView,
   onViewChange,
   className,
   showIndicators = true,
   showTabs = false
-}: WebOSSwipeNavigationProps) {
+}: LoomOSSwipeNavigationProps) {
   const [currentIndex, setCurrentIndex] = useState(() => {
     if (defaultView) {
       const index = views.findIndex(v => v.id === defaultView);
@@ -187,4 +187,4 @@ export function WebOSSwipeNavigation({
   );
 }
 
-WebOSSwipeNavigation.displayName = 'WebOSSwipeNavigation';
+LoomOSSwipeNavigation.displayName = 'LoomOSSwipeNavigation';

@@ -2,7 +2,7 @@
 import { create } from 'zustand';
 import { LucideIcon } from 'lucide-react';
 
-export interface WebOSCard {
+export interface LoomOSCard {
   id: string;
   title: string;
   icon: LucideIcon;
@@ -12,10 +12,10 @@ export interface WebOSCard {
 }
 
 interface CardManagerState {
-  cards: WebOSCard[];
+  cards: LoomOSCard[];
   activeCardId: string | null;
   isCardView: boolean;
-  addCard: (card: Omit<WebOSCard, 'isActive'>) => void;
+  addCard: (card: Omit<LoomOSCard, 'isActive'>) => void;
   removeCard: (id: string) => void;
   maximizeCard: (id: string) => void;
   closeCard: (id: string) => void;

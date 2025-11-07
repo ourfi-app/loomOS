@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Bell, Signal, Battery, Wifi } from 'lucide-react';
 
-interface WebOSStatusBarProps {
+interface LoomOSStatusBarProps {
   appName: string;
 }
 
-export function WebOSStatusBar({ appName }: WebOSStatusBarProps) {
+export function LoomOSStatusBar({ appName }: LoomOSStatusBarProps) {
   const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {

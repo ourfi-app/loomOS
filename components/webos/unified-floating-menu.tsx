@@ -20,7 +20,7 @@ interface UnifiedFloatingMenuProps {
 }
 
 /**
- * Simplified WebOS-style Floating Menu
+ * Simplified LoomOS-style Floating Menu
  * Based on the webOS prototype design
  * 
  * Features:
@@ -197,7 +197,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
 
   return (
     <>
-      {/* Elegant WebOS-Inspired Dock */}
+      {/* Elegant LoomOS-Inspired Dock */}
       <div 
         ref={containerRef}
         className={cn(

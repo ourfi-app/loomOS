@@ -4,7 +4,7 @@
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 
-interface WebOSNavListItemProps {
+interface LoomOSNavListItemProps {
   label: string;
   count?: number;
   selected?: boolean;
@@ -13,14 +13,14 @@ interface WebOSNavListItemProps {
   icon?: React.ReactNode;
 }
 
-export function WebOSNavListItem({
+export function LoomOSNavListItem({
   label,
   count,
   selected,
   onClick,
   className,
   icon
-}: WebOSNavListItemProps) {
+}: LoomOSNavListItemProps) {
   return (
     <button
       onClick={onClick}

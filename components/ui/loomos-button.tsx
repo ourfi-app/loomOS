@@ -4,21 +4,21 @@
 import { cn } from '@/lib/utils';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
-export type WebOSButtonVariant = 'light' | 'medium' | 'affirmative' | 'negative' | 'blue';
+export type LoomOSButtonVariant = 'light' | 'medium' | 'affirmative' | 'negative' | 'orange';
 
-export interface WebOSButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: WebOSButtonVariant;
+export interface LoomOSButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: LoomOSButtonVariant;
   icon?: React.ReactNode;
 }
 
-export const WebOSButton = forwardRef<HTMLButtonElement, WebOSButtonProps>(
+export const LoomOSButton = forwardRef<HTMLButtonElement, LoomOSButtonProps>(
   ({ variant = 'light', icon, className, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
         className={cn(
-          'webos-button',
-          variant && `webos-button-${variant}`,
+          'loomos-button',
+          variant && `loomos-button-${variant}`,
           className
         )}
         {...props}
@@ -30,4 +30,4 @@ export const WebOSButton = forwardRef<HTMLButtonElement, WebOSButtonProps>(
   }
 );
 
-WebOSButton.displayName = 'WebOSButton';
+LoomOSButton.displayName = 'LoomOSButton';

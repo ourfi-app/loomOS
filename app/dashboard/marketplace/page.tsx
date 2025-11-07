@@ -40,12 +40,12 @@ import { cn } from '@/lib/utils';
 import { toast } from 'react-hot-toast';
 import * as LucideIcons from 'lucide-react';
 import { 
-  WebOSListItemEnhanced,
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSActionButton,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSListItemEnhanced,
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSActionButton,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
   DesktopAppWrapper
 } from '@/components/webos';
 import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
@@ -315,13 +315,13 @@ export default function MarketplacePage() {
           className="pl-9 w-64 webos-pebble"
         />
       </div>
-      <WebOSActionButton
+      <LoomOSActionButton
         icon={<RefreshCw className="w-4 h-4" />}
         onClick={loadInitialData}
         size="sm"
       >
         Refresh
-      </WebOSActionButton>
+      </LoomOSActionButton>
     </div>
   );
 
@@ -331,7 +331,7 @@ export default function MarketplacePage() {
       {isInstalled(selectedApp.id) ? (
         <>
           {hasUpdate(selectedApp.id) && (
-            <WebOSActionButton
+            <LoomOSActionButton
               icon={<ArrowUpCircle className="w-4 h-4" />}
               onClick={() => handleUpdate(selectedApp)}
               disabled={updating === selectedApp.id}
@@ -345,10 +345,10 @@ export default function MarketplacePage() {
               ) : (
                 'Update'
               )}
-            </WebOSActionButton>
+            </LoomOSActionButton>
           )}
           {!selectedApp.isSystem && (
-            <WebOSActionButton
+            <LoomOSActionButton
               icon={<Trash2 className="w-4 h-4" />}
               onClick={() => handleUninstall(selectedApp)}
               disabled={uninstalling === selectedApp.id}
@@ -363,11 +363,11 @@ export default function MarketplacePage() {
               ) : (
                 'Uninstall'
               )}
-            </WebOSActionButton>
+            </LoomOSActionButton>
           )}
         </>
       ) : (
-        <WebOSActionButton
+        <LoomOSActionButton
           icon={<Download className="w-4 h-4" />}
           onClick={() => handleInstall(selectedApp)}
           disabled={installing === selectedApp.id}
@@ -381,7 +381,7 @@ export default function MarketplacePage() {
           ) : (
             'Install'
           )}
-        </WebOSActionButton>
+        </LoomOSActionButton>
       )}
     </div>
   ) : undefined;
@@ -396,7 +396,7 @@ export default function MarketplacePage() {
       >
         <div className="h-full flex overflow-hidden">
           {/* Navigation Pane - Categories */}
-          <WebOSNavigationPane
+          <LoomOSNavigationPane
             title="CATEGORIES"
             items={navigationItems}
           />
@@ -420,9 +420,9 @@ export default function MarketplacePage() {
             {/* Apps List */}
             <ScrollArea className="flex-1">
               {loading ? (
-                <WebOSLoadingState message="Loading apps..." />
+                <LoomOSLoadingState message="Loading apps..." />
               ) : filteredApps.length === 0 ? (
-                <WebOSEmptyState
+                <LoomOSEmptyState
                   icon={<Store className="w-12 h-12" />}
                   title="No apps found"
                   description={searchQuery ? 'Try adjusting your search' : 'No apps available in this category'}
@@ -435,7 +435,7 @@ export default function MarketplacePage() {
                     const updateAvailable = hasUpdate(app.id);
 
                     return (
-                      <WebOSListItemEnhanced
+                      <LoomOSListItemEnhanced
                         key={app.id}
                         selected={selectedApp?.id === app.id}
                         onClick={() => setSelectedApp(app)}
@@ -483,7 +483,7 @@ export default function MarketplacePage() {
                             </div>
                           </div>
                         </div>
-                      </WebOSListItemEnhanced>
+                      </LoomOSListItemEnhanced>
                     );
                   })}
                 </div>
@@ -492,7 +492,7 @@ export default function MarketplacePage() {
           </div>
 
           {/* Detail Pane - App Details */}
-          <WebOSDetailPane
+          <LoomOSDetailPane
             title={selectedApp?.name}
             subtitle={selectedApp ? `by ${selectedApp.developer}` : undefined}
             actions={detailActions}
@@ -653,7 +653,7 @@ export default function MarketplacePage() {
                 </ScrollArea>
               );
             })()}
-          </WebOSDetailPane>
+          </LoomOSDetailPane>
         </div>
       </DesktopAppWrapper>
     </ErrorBoundary>

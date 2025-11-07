@@ -6,7 +6,7 @@ import { FileText, Users, MessageSquare } from 'lucide-react';
 import { DocumentsTab } from '@/components/my-community/documents-tab';
 import { DirectoryTab } from '@/components/my-community/directory-tab';
 import { PostsTab } from '@/components/my-community/posts-tab';
-import { WebOSNavigationPane } from '@/components/webos';
+import { LoomOSNavigationPane } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
 export default function MyCommunityPage() {
@@ -38,7 +38,7 @@ export default function MyCommunityPage() {
 
   return (
     <div className="h-full flex overflow-hidden">
-      <WebOSNavigationPane
+      <LoomOSNavigationPane
         title="My Community"
         items={navItems}
       />

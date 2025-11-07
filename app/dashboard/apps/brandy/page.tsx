@@ -52,8 +52,8 @@ import { ErrorBoundary } from '@/components/common';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
 import { 
   DesktopAppWrapper,
-  WebOSActionButton,
-  WebOSEmptyState,
+  LoomOSActionButton,
+  LoomOSEmptyState,
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
@@ -879,7 +879,7 @@ export default function BrandyApp() {
               <TabsContent value="projects" className="flex-1 m-0 p-4 overflow-auto">
                 <div className="space-y-2">
                   {projects.length === 0 ? (
-                    <WebOSEmptyState
+                    <LoomOSEmptyState
                       icon={<Folder className="w-12 h-12" />}
                       title="No Projects"
                       description="Create your first logo project"
@@ -1111,7 +1111,7 @@ export default function BrandyApp() {
                   <TabsContent value="pages" className="flex-1 m-0 p-4 overflow-auto">
                     <div className="space-y-2">
                       {webPages.length === 0 ? (
-                        <WebOSEmptyState
+                        <LoomOSEmptyState
                           icon={<FileCode className="w-12 h-12" />}
                           title="No Web Pages"
                           description="Generate your first web page"

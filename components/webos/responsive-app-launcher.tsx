@@ -3,7 +3,7 @@
 
 /**
  * Responsive App Launcher
- * Demonstrates WebOS-inspired responsive design patterns
+ * Demonstrates LoomOS-inspired responsive design patterns
  */
 
 import { useState, useMemo } from 'react';

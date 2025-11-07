@@ -15,11 +15,11 @@ import { PaletteSelector } from '@/components/palette-selector';
 import { getAllPalettes } from '@/lib/color-palettes';
 import {
   DesktopAppWrapper,
-  WebOSNavigationPane,
-  WebOSLoadingState,
+  LoomOSNavigationPane,
+  LoomOSLoadingState,
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
-import { WebOSNavListItem } from '@/components/webos/webos-nav-list-item';
+import { LoomOSNavListItem } from '@/components/webos/loomos-nav-list-item';
 
 interface DuesSettings {
   id?: string;
@@ -159,7 +159,7 @@ export default function SettingsPage() {
   };
 
   if (status === 'loading' || loading) {
-    return <WebOSLoadingState message="Loading settings..." />;
+    return <LoomOSLoadingState message="Loading settings..." />;
   }
 
   if (userRole !== 'ADMIN') {
@@ -173,7 +173,7 @@ export default function SettingsPage() {
       gradient={APP_COLORS.settings?.light || 'from-blue-500 to-indigo-600'}
     >
       {/* Pane 1: Settings Categories */}
-      <WebOSNavigationPane
+      <LoomOSNavigationPane
         title="SETTINGS"
         items={[
           {

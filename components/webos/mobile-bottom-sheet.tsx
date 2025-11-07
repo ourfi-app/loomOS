@@ -3,7 +3,7 @@
  * Mobile Bottom Sheet Component
  * 
  * A mobile-optimized bottom sheet for actions, forms, and content
- * Follows WebOS design principles with haptic feedback
+ * Follows LoomOS design principles with haptic feedback
  */
 
 'use client';

@@ -39,12 +39,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useMessages, useMessageMutation } from '@/hooks/use-api';
 import { useDeepLinkSelection } from '@/hooks/use-deep-link';
 import {
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSListItemEnhanced,
-  WebOSListDivider,
-  WebOSActionButton,
-  WebOSAppHeader
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSListItemEnhanced,
+  LoomOSListDivider,
+  LoomOSActionButton,
+  LoomOSAppHeader
 } from '@/components/webos';
 
 
@@ -758,7 +758,7 @@ export default function MessagesPage() {
     <ErrorBoundary>
       <div className="h-full flex overflow-hidden">
           {/* Navigation Pane - Folders */}
-          <WebOSNavigationPane
+          <LoomOSNavigationPane
             title="FOLDERS"
             items={navItems}
           />
@@ -902,9 +902,9 @@ export default function MessagesPage() {
                   // Render divider
                   if (item.type === 'divider') {
                     return (
-                      <WebOSListDivider key={`divider-${item.groupName}`}>
+                      <LoomOSListDivider key={`divider-${item.groupName}`}>
                         {item.groupName}
-                      </WebOSListDivider>
+                      </LoomOSListDivider>
                     );
                   }
                   
@@ -920,7 +920,7 @@ export default function MessagesPage() {
                   return (
                     <ContextMenu key={message.id}>
                       <ContextMenuTrigger asChild>
-                        <WebOSListItemEnhanced
+                        <LoomOSListItemEnhanced
                           data-message-index={messageIndex}
                           selected={isSelected}
                           checked={isChecked}
@@ -999,7 +999,7 @@ export default function MessagesPage() {
                               </div>
                             </div>
                           </div>
-                        </WebOSListItemEnhanced>
+                        </LoomOSListItemEnhanced>
                       </ContextMenuTrigger>
                       
                       <ContextMenuContent className="w-64">
@@ -1042,7 +1042,7 @@ export default function MessagesPage() {
         </div>
 
         {/* Detail Pane */}
-        <WebOSDetailPane
+        <LoomOSDetailPane
           title={selectedMessage?.subject}
           subtitle={selectedMessage ? `From: ${selectedMessage.sender.name} • ${format(parseISO(selectedMessage.sentAt || selectedMessage.createdAt), 'MMM d, yyyy')}` : undefined}
           actions={detailActions}
@@ -1143,7 +1143,7 @@ export default function MessagesPage() {
               </div>
             </div>
           )}
-        </WebOSDetailPane>
+        </LoomOSDetailPane>
 
         {/* Composer Overlay */}
         <AnimatePresence>

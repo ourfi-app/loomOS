@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface WebOSSearchBarProps {
+interface LoomOSSearchBarProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -14,14 +14,14 @@ interface WebOSSearchBarProps {
   className?: string;
 }
 
-export function WebOSSearchBar({
+export function LoomOSSearchBar({
   value,
   onChange,
   placeholder = 'Search',
   onFocus,
   onBlur,
   className,
-}: WebOSSearchBarProps) {
+}: LoomOSSearchBarProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleClear = () => {
@@ -29,8 +29,8 @@ export function WebOSSearchBar({
   };
 
   return (
-    <div className={cn('webos-search-input', className)}>
-      <Search className="webos-search-input-icon w-4 h-4" />
+    <div className={cn('loomos-search-input', className)}>
+      <Search className="loomos-search-input-icon w-4 h-4" />
       <input
         type="text"
         value={value}
@@ -44,12 +44,12 @@ export function WebOSSearchBar({
           onBlur?.();
         }}
         placeholder={placeholder}
-        className="webos-input"
+        className="loomos-input"
       />
       {value && (
         <button
           onClick={handleClear}
-          className="webos-search-input-clear"
+          className="loomos-search-input-clear"
           aria-label="Clear search"
         >
           <X className="w-4 h-4" />

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export interface WebOSDrawerItemProps {
+export interface LoomOSDrawerItemProps {
   title: string;
   icon?: React.ComponentType<{ className?: string }> | React.ReactNode;
   children: React.ReactNode;
@@ -19,29 +19,29 @@ export interface WebOSDrawerItemProps {
 }
 
 /**
- * WebOS Drawer Item
+ * LoomOS Drawer Item
  * 
  * Expandable/collapsible list item with smooth animations.
  * Reference: list-items-examples.png
  * 
  * @example
- * <WebOSDrawerItem 
+ * <LoomOSDrawerItem 
  *   title="Account Settings"
  *   defaultOpen={false}
  * >
  *   <SettingsContent />
- * </WebOSDrawerItem>
+ * </LoomOSDrawerItem>
  * 
- * <WebOSDrawerItem 
+ * <LoomOSDrawerItem 
  *   title="Advanced"
  *   icon={<Settings className="w-5 h-5" />}
  *   expanded={isExpanded}
  *   onToggle={setIsExpanded}
  * >
  *   <AdvancedSettings />
- * </WebOSDrawerItem>
+ * </LoomOSDrawerItem>
  */
-export function WebOSDrawerItem({
+export function LoomOSDrawerItem({
   title,
   icon,
   children,
@@ -51,7 +51,7 @@ export function WebOSDrawerItem({
   className,
   headerClassName,
   contentClassName
-}: WebOSDrawerItemProps) {
+}: LoomOSDrawerItemProps) {
   // Controlled or uncontrolled state
   const [internalExpanded, setInternalExpanded] = useState(defaultOpen);
   const isExpanded = expanded !== undefined ? expanded : internalExpanded;
@@ -161,4 +161,4 @@ export function WebOSDrawerItem({
   );
 }
 
-WebOSDrawerItem.displayName = 'WebOSDrawerItem';
+LoomOSDrawerItem.displayName = 'LoomOSDrawerItem';

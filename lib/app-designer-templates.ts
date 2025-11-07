@@ -298,7 +298,7 @@ export const DESIGN_PATTERNS = {
   },
   gestureArea: {
     name: 'Gesture Area',
-    description: 'WebOS-style gesture navigation bar',
+    description: 'LoomOS-style gesture navigation bar',
     required: true
   }
 };

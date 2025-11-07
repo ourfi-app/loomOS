@@ -35,12 +35,12 @@ import { toastError, toastCRUD } from '@/lib/toast-helpers';
 import { useNotes, useNoteMutations } from '@/hooks/use-api';
 import { useDeepLinkSelection } from '@/hooks/use-deep-link';
 import {
-  WebOSListItemEnhanced,
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSActionButton,
-  WebOSEmptyState,
-  WebOSLoadingState
+  LoomOSListItemEnhanced,
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSActionButton,
+  LoomOSEmptyState,
+  LoomOSLoadingState
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
@@ -292,48 +292,48 @@ export default function NotesApp() {
           className="pl-9 w-64 webos-pebble"
         />
       </div>
-      <WebOSActionButton
+      <LoomOSActionButton
         icon={<Plus className="w-4 h-4" />}
         onClick={handleCreateNote}
       >
         New Note
-      </WebOSActionButton>
+      </LoomOSActionButton>
     </div>
   );
 
   // Detail pane actions
   const detailActions = selectedNote && !isEditing ? (
     <div className="flex items-center gap-2">
-      <WebOSActionButton
+      <LoomOSActionButton
         icon={<Edit className="w-4 h-4" />}
         onClick={handleEditNote}
         size="sm"
       >
         Edit
-      </WebOSActionButton>
-      <WebOSActionButton
+      </LoomOSActionButton>
+      <LoomOSActionButton
         icon={<Star className={cn("w-4 h-4", selectedNote.isFavorite && "fill-yellow-400 text-yellow-400")} />}
         onClick={handleToggleFavorite}
         size="sm"
       >
         {selectedNote.isFavorite ? 'Unfavorite' : 'Favorite'}
-      </WebOSActionButton>
-      <WebOSActionButton
+      </LoomOSActionButton>
+      <LoomOSActionButton
         icon={<Pin className={cn("w-4 h-4", selectedNote.isPinned && "fill-primary text-primary")} />}
         onClick={handleTogglePin}
         size="sm"
       >
         {selectedNote.isPinned ? 'Unpin' : 'Pin'}
-      </WebOSActionButton>
+      </LoomOSActionButton>
       <div className="flex-1" />
-      <WebOSActionButton
+      <LoomOSActionButton
         icon={<Trash2 className="w-4 h-4" />}
         onClick={handleDeleteNote}
         variant="danger"
         size="sm"
       >
         Delete
-      </WebOSActionButton>
+      </LoomOSActionButton>
     </div>
   ) : undefined;
 
@@ -341,7 +341,7 @@ export default function NotesApp() {
     <ErrorBoundary>
       <div className="h-full flex overflow-hidden">
             {/* Navigation Pane - Categories */}
-            <WebOSNavigationPane
+            <LoomOSNavigationPane
               title="CATEGORIES"
               items={navigationItems}
             />
@@ -365,9 +365,9 @@ export default function NotesApp() {
             {/* Notes List */}
             <ScrollArea className="flex-1">
               {isLoading ? (
-                <WebOSLoadingState message="Loading notes..." />
+                <LoomOSLoadingState message="Loading notes..." />
               ) : filteredNotes.length === 0 ? (
-                <WebOSEmptyState
+                <LoomOSEmptyState
                   icon={<FileText className="w-12 h-12" />}
                   title="No notes found"
                   action={
@@ -383,7 +383,7 @@ export default function NotesApp() {
               ) : (
                 <div>
                   {filteredNotes.map((note, index) => (
-                    <WebOSListItemEnhanced
+                    <LoomOSListItemEnhanced
                       key={note.id}
                       selected={selectedNote?.id === note.id}
                       onClick={() => handleNoteClick(note)}
@@ -425,7 +425,7 @@ export default function NotesApp() {
                           )}
                         </div>
                       </div>
-                    </WebOSListItemEnhanced>
+                    </LoomOSListItemEnhanced>
                   ))}
                 </div>
               )}
@@ -433,7 +433,7 @@ export default function NotesApp() {
           </div>
 
           {/* Detail Pane - Note Content */}
-          <WebOSDetailPane
+          <LoomOSDetailPane
             title={isCreating ? 'New Note' : selectedNote?.title}
             subtitle={!isCreating && selectedNote ? `Updated ${formatDate(selectedNote.updatedAt)}` : undefined}
             actions={detailActions}
@@ -523,7 +523,7 @@ export default function NotesApp() {
                 </div>
               </ScrollArea>
             ) : null}
-          </WebOSDetailPane>
+          </LoomOSDetailPane>
       </div>
     </ErrorBoundary>
   );

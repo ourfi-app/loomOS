@@ -2,8 +2,8 @@
 'use client';
 
 /**
- * WebOS Dialog Components
- * Based on WebOS design patterns for:
+ * loomOS Dialog Components
+ * Based on loomOS design patterns for:
  * - Confirmation dialogs with stacked action buttons
  * - Text entry dialogs
  * - Form popups with dropdowns and textareas
@@ -25,12 +25,12 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const WebOSDialog = DialogPrimitive.Root;
-const WebOSDialogTrigger = DialogPrimitive.Trigger;
-const WebOSDialogPortal = DialogPrimitive.Portal;
-const WebOSDialogClose = DialogPrimitive.Close;
+const LoomOSDialog = DialogPrimitive.Root;
+const LoomOSDialogTrigger = DialogPrimitive.Trigger;
+const LoomOSDialogPortal = DialogPrimitive.Portal;
+const LoomOSDialogClose = DialogPrimitive.Close;
 
-const WebOSDialogOverlay = React.forwardRef<
+const LoomOSDialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
@@ -43,10 +43,10 @@ const WebOSDialogOverlay = React.forwardRef<
     {...props}
   />
 ));
-WebOSDialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+LoomOSDialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-// Base WebOS Dialog Content with proper width constraints
-const WebOSDialogContent = React.forwardRef<
+// Base loomOS Dialog Content with proper width constraints
+const LoomOSDialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
     width?: 'sm' | 'md' | 'lg';
@@ -59,8 +59,8 @@ const WebOSDialogContent = React.forwardRef<
   };
 
   return (
-    <WebOSDialogPortal>
-      <WebOSDialogOverlay />
+    <LoomOSDialogPortal>
+      <LoomOSDialogOverlay />
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
@@ -76,13 +76,13 @@ const WebOSDialogContent = React.forwardRef<
       >
         {children}
       </DialogPrimitive.Content>
-    </WebOSDialogPortal>
+    </LoomOSDialogPortal>
   );
 });
-WebOSDialogContent.displayName = DialogPrimitive.Content.displayName;
+LoomOSDialogContent.displayName = DialogPrimitive.Content.displayName;
 
-// WebOS Dialog Header with proper styling
-const WebOSDialogHeader = ({
+// loomOS Dialog Header with proper styling
+const LoomOSDialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -94,10 +94,10 @@ const WebOSDialogHeader = ({
     {...props}
   />
 );
-WebOSDialogHeader.displayName = 'WebOSDialogHeader';
+LoomOSDialogHeader.displayName = 'LoomOSDialogHeader';
 
-// WebOS Dialog Title - Big text for main message
-const WebOSDialogTitle = React.forwardRef<
+// loomOS Dialog Title - Big text for main message
+const LoomOSDialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
@@ -107,19 +107,19 @@ const WebOSDialogTitle = React.forwardRef<
     {...props}
   />
 ));
-WebOSDialogTitle.displayName = DialogPrimitive.Title.displayName;
+LoomOSDialogTitle.displayName = DialogPrimitive.Title.displayName;
 
-// WebOS Dialog Body with proper padding
-const WebOSDialogBody = ({
+// loomOS Dialog Body with proper padding
+const LoomOSDialogBody = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn('px-4 py-4', className)} {...props} />
 );
-WebOSDialogBody.displayName = 'WebOSDialogBody';
+LoomOSDialogBody.displayName = 'LoomOSDialogBody';
 
-// WebOS Dialog Description - Small text for secondary message
-const WebOSDialogDescription = React.forwardRef<
+// loomOS Dialog Description - Small text for secondary message
+const LoomOSDialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
@@ -129,10 +129,10 @@ const WebOSDialogDescription = React.forwardRef<
     {...props}
   />
 ));
-WebOSDialogDescription.displayName = DialogPrimitive.Description.displayName;
+LoomOSDialogDescription.displayName = DialogPrimitive.Description.displayName;
 
-// WebOS Dialog Footer with STACKED action buttons (primary on top, secondary below)
-const WebOSDialogFooter = ({
+// loomOS Dialog Footer with STACKED action buttons (primary on top, secondary below)
+const LoomOSDialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -144,10 +144,10 @@ const WebOSDialogFooter = ({
     {...props}
   />
 );
-WebOSDialogFooter.displayName = 'WebOSDialogFooter';
+LoomOSDialogFooter.displayName = 'LoomOSDialogFooter';
 
 // Primary action button (dark, prominent) - Goes FIRST in stacked layout
-const WebOSDialogPrimaryAction = React.forwardRef<
+const LoomOSDialogPrimaryAction = React.forwardRef<
   HTMLButtonElement,
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => (
@@ -160,10 +160,10 @@ const WebOSDialogPrimaryAction = React.forwardRef<
     {...props}
   />
 ));
-WebOSDialogPrimaryAction.displayName = 'WebOSDialogPrimaryAction';
+LoomOSDialogPrimaryAction.displayName = 'LoomOSDialogPrimaryAction';
 
 // Secondary action button (light, subtle) - Goes SECOND in stacked layout
-const WebOSDialogSecondaryAction = React.forwardRef<
+const LoomOSDialogSecondaryAction = React.forwardRef<
   HTMLButtonElement,
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => (
@@ -177,7 +177,7 @@ const WebOSDialogSecondaryAction = React.forwardRef<
     {...props}
   />
 ));
-WebOSDialogSecondaryAction.displayName = 'WebOSDialogSecondaryAction';
+LoomOSDialogSecondaryAction.displayName = 'LoomOSDialogSecondaryAction';
 
 // ========================
 // SPECIALIZED DIALOG TYPES
@@ -208,27 +208,27 @@ export function ConfirmationDialog({
   destructive = false,
 }: ConfirmationDialogProps) {
   return (
-    <WebOSDialog open={open} onOpenChange={onOpenChange}>
-      <WebOSDialogContent width="md">
-        <WebOSDialogHeader>
-          <WebOSDialogTitle>{title}</WebOSDialogTitle>
+    <LoomOSDialog open={open} onOpenChange={onOpenChange}>
+      <LoomOSDialogContent width="md">
+        <LoomOSDialogHeader>
+          <LoomOSDialogTitle>{title}</LoomOSDialogTitle>
           {description && (
-            <WebOSDialogDescription>{description}</WebOSDialogDescription>
+            <LoomOSDialogDescription>{description}</LoomOSDialogDescription>
           )}
-        </WebOSDialogHeader>
-        <WebOSDialogFooter>
-          <WebOSDialogPrimaryAction
+        </LoomOSDialogHeader>
+        <LoomOSDialogFooter>
+          <LoomOSDialogPrimaryAction
             onClick={onPrimaryAction}
             className={destructive ? 'bg-destructive hover:bg-destructive/90' : ''}
           >
             {primaryActionLabel}
-          </WebOSDialogPrimaryAction>
-          <WebOSDialogSecondaryAction onClick={onSecondaryAction}>
+          </LoomOSDialogPrimaryAction>
+          <LoomOSDialogSecondaryAction onClick={onSecondaryAction}>
             {secondaryActionLabel}
-          </WebOSDialogSecondaryAction>
-        </WebOSDialogFooter>
-      </WebOSDialogContent>
-    </WebOSDialog>
+          </LoomOSDialogSecondaryAction>
+        </LoomOSDialogFooter>
+      </LoomOSDialogContent>
+    </LoomOSDialog>
   );
 }
 
@@ -274,12 +274,12 @@ export function TextEntryDialog({
   };
 
   return (
-    <WebOSDialog open={open} onOpenChange={onOpenChange}>
-      <WebOSDialogContent width="md">
-        <WebOSDialogHeader>
-          <WebOSDialogTitle>{title}</WebOSDialogTitle>
-        </WebOSDialogHeader>
-        <WebOSDialogBody>
+    <LoomOSDialog open={open} onOpenChange={onOpenChange}>
+      <LoomOSDialogContent width="md">
+        <LoomOSDialogHeader>
+          <LoomOSDialogTitle>{title}</LoomOSDialogTitle>
+        </LoomOSDialogHeader>
+        <LoomOSDialogBody>
           <Input
             type={type}
             placeholder={placeholder}
@@ -288,17 +288,17 @@ export function TextEntryDialog({
             className="w-full"
             autoFocus
           />
-        </WebOSDialogBody>
-        <WebOSDialogFooter>
-          <WebOSDialogSecondaryAction onClick={onSecondaryAction}>
+        </LoomOSDialogBody>
+        <LoomOSDialogFooter>
+          <LoomOSDialogSecondaryAction onClick={onSecondaryAction}>
             {secondaryActionLabel}
-          </WebOSDialogSecondaryAction>
-          <WebOSDialogPrimaryAction onClick={() => onPrimaryAction?.(value)}>
+          </LoomOSDialogSecondaryAction>
+          <LoomOSDialogPrimaryAction onClick={() => onPrimaryAction?.(value)}>
             {primaryActionLabel}
-          </WebOSDialogPrimaryAction>
-        </WebOSDialogFooter>
-      </WebOSDialogContent>
-    </WebOSDialog>
+          </LoomOSDialogPrimaryAction>
+        </LoomOSDialogFooter>
+      </LoomOSDialogContent>
+    </LoomOSDialog>
   );
 }
 
@@ -321,23 +321,23 @@ export function FormPopupDialog({
   onPrimaryAction,
 }: FormPopupDialogProps) {
   return (
-    <WebOSDialog open={open} onOpenChange={onOpenChange}>
-      <WebOSDialogContent width="lg">
+    <LoomOSDialog open={open} onOpenChange={onOpenChange}>
+      <LoomOSDialogContent width="lg">
         {title && (
-          <WebOSDialogHeader>
-            <WebOSDialogTitle>{title}</WebOSDialogTitle>
-          </WebOSDialogHeader>
+          <LoomOSDialogHeader>
+            <LoomOSDialogTitle>{title}</LoomOSDialogTitle>
+          </LoomOSDialogHeader>
         )}
-        <WebOSDialogBody className="space-y-4">
+        <LoomOSDialogBody className="space-y-4">
           {children}
-        </WebOSDialogBody>
-        <WebOSDialogFooter>
-          <WebOSDialogPrimaryAction onClick={onPrimaryAction}>
+        </LoomOSDialogBody>
+        <LoomOSDialogFooter>
+          <LoomOSDialogPrimaryAction onClick={onPrimaryAction}>
             {primaryActionLabel}
-          </WebOSDialogPrimaryAction>
-        </WebOSDialogFooter>
-      </WebOSDialogContent>
-    </WebOSDialog>
+          </LoomOSDialogPrimaryAction>
+        </LoomOSDialogFooter>
+      </LoomOSDialogContent>
+    </LoomOSDialog>
   );
 }
 
@@ -359,15 +359,15 @@ export function FormField({ label, children }: FormFieldProps) {
 }
 
 export {
-  WebOSDialog,
-  WebOSDialogTrigger,
-  WebOSDialogContent,
-  WebOSDialogHeader,
-  WebOSDialogTitle,
-  WebOSDialogDescription,
-  WebOSDialogBody,
-  WebOSDialogFooter,
-  WebOSDialogPrimaryAction,
-  WebOSDialogSecondaryAction,
-  WebOSDialogClose,
+  LoomOSDialog,
+  LoomOSDialogTrigger,
+  LoomOSDialogContent,
+  LoomOSDialogHeader,
+  LoomOSDialogTitle,
+  LoomOSDialogDescription,
+  LoomOSDialogBody,
+  LoomOSDialogFooter,
+  LoomOSDialogPrimaryAction,
+  LoomOSDialogSecondaryAction,
+  LoomOSDialogClose,
 };

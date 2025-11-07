@@ -107,7 +107,7 @@ export default function DesignerTab() {
             <div>
               <h2 className="text-2xl font-bold">App Designer</h2>
               <p className="text-sm text-muted-foreground">
-                Build custom WebOS-style applications with visual tools
+                Build custom LoomOS-style applications with visual tools
               </p>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function DesignerTab() {
               Visual Application Builder
             </CardTitle>
             <CardDescription>
-              Create professional WebOS-style apps without writing code
+              Create professional LoomOS-style apps without writing code
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">

@@ -18,43 +18,43 @@ const PaneContext = createContext<PaneContextValue | undefined>(undefined);
 function usePaneContext() {
   const context = useContext(PaneContext);
   if (!context) {
-    throw new Error('Pane components must be used within WebOSPaneContainer');
+    throw new Error('Pane components must be used within LoomOSPaneContainer');
   }
   return context;
 }
 
-export interface WebOSPaneContainerProps {
+export interface LoomOSPaneContainerProps {
   children: React.ReactNode;
   className?: string;
   defaultPane?: string;
 }
 
 /**
- * WebOS Pane Container
+ * LoomOS Pane Container
  * 
  * Container for multi-pane layouts with peeking animations and responsive behavior.
  * Reference: layouts-pane-peeking.png, layouts-pane-navigation.png
  * 
  * @example
- * <WebOSPaneContainer>
- *   <WebOSContainerPane type="navigation" id="nav" width={240} peekable>
+ * <LoomOSPaneContainer>
+ *   <LoomOSContainerPane type="navigation" id="nav" width={240} peekable>
  *     <Navigation />
- *   </WebOSContainerPane>
+ *   </LoomOSContainerPane>
  *   
- *   <WebOSContainerPane type="list" id="list" width={320}>
+ *   <LoomOSContainerPane type="list" id="list" width={320}>
  *     <ListItems />
- *   </WebOSContainerPane>
+ *   </LoomOSContainerPane>
  *   
- *   <WebOSContainerPane type="detail" id="detail" fill>
+ *   <LoomOSContainerPane type="detail" id="detail" fill>
  *     <DetailView />
- *   </WebOSContainerPane>
- * </WebOSPaneContainer>
+ *   </LoomOSContainerPane>
+ * </LoomOSPaneContainer>
  */
-export function WebOSPaneContainer({
+export function LoomOSPaneContainer({
   children,
   className,
   defaultPane
-}: WebOSPaneContainerProps) {
+}: LoomOSPaneContainerProps) {
   const [activePane, setActivePane] = useState<string | null>(defaultPane || null);
   const [isPeeking, setIsPeeking] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -78,7 +78,7 @@ export function WebOSPaneContainer({
   );
 }
 
-export interface WebOSContainerPaneProps {
+export interface LoomOSContainerPaneProps {
   id: string;
   type: 'navigation' | 'list' | 'detail';
   children: React.ReactNode;
@@ -91,11 +91,11 @@ export interface WebOSContainerPaneProps {
 }
 
 /**
- * WebOS Container Pane
+ * LoomOS Container Pane
  * 
  * Individual pane within a pane container.
  */
-export function WebOSContainerPane({
+export function LoomOSContainerPane({
   id,
   type,
   children,
@@ -105,7 +105,7 @@ export function WebOSContainerPane({
   className,
   showBackButton,
   onBack
-}: WebOSContainerPaneProps) {
+}: LoomOSContainerPaneProps) {
   const { activePane, setActivePane, isPeeking, setIsPeeking } = usePaneContext();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -208,16 +208,16 @@ export function WebOSContainerPane({
 }
 
 /**
- * WebOS Pane Toggle Button
+ * LoomOS Pane Toggle Button
  * 
  * Button to toggle navigation pane visibility on mobile.
  */
-export interface WebOSPaneToggleProps {
+export interface LoomOSPaneToggleProps {
   paneId: string;
   className?: string;
 }
 
-export function WebOSPaneToggle({ paneId, className }: WebOSPaneToggleProps) {
+export function LoomOSPaneToggle({ paneId, className }: LoomOSPaneToggleProps) {
   const { activePane, setActivePane } = usePaneContext();
 
   return (
@@ -237,6 +237,6 @@ export function WebOSPaneToggle({ paneId, className }: WebOSPaneToggleProps) {
   );
 }
 
-WebOSPaneContainer.displayName = 'WebOSPaneContainer';
-WebOSContainerPane.displayName = 'WebOSContainerPane';
-WebOSPaneToggle.displayName = 'WebOSPaneToggle';
+LoomOSPaneContainer.displayName = 'LoomOSPaneContainer';
+LoomOSContainerPane.displayName = 'LoomOSContainerPane';
+LoomOSPaneToggle.displayName = 'LoomOSPaneToggle';

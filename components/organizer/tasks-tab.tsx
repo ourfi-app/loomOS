@@ -26,11 +26,11 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
-  WebOSNavigationPane,
-  WebOSListItemEnhanced,
-  WebOSDetailPane,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSNavigationPane,
+  LoomOSListItemEnhanced,
+  LoomOSDetailPane,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
 } from '@/components/webos';
 import { useTasks, useTaskMutations } from '@/hooks/use-api';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
@@ -215,7 +215,7 @@ export default function TasksTab() {
   return (
     <div className="h-full flex">
       {/* Lists Navigation */}
-      <WebOSNavigationPane title="LISTS" items={navItems} />
+      <LoomOSNavigationPane title="LISTS" items={navItems} />
 
       {/* Tasks List */}
       <div className="w-96 flex-shrink-0 border-r border-border flex flex-col">
@@ -250,9 +250,9 @@ export default function TasksTab() {
 
         <ScrollArea className="flex-1">
           {isLoading ? (
-            <WebOSLoadingState message="Loading tasks..." />
+            <LoomOSLoadingState message="Loading tasks..." />
           ) : filteredTasks.length === 0 ? (
-            <WebOSEmptyState
+            <LoomOSEmptyState
               icon={<ListTodo className="w-12 h-12" />}
               title="No tasks"
               description="Create your first task to get started"
@@ -266,7 +266,7 @@ export default function TasksTab() {
           ) : (
             <div>
               {filteredTasks.map((task: any, index: number) => (
-                <WebOSListItemEnhanced
+                <LoomOSListItemEnhanced
                   key={task.id}
                   selected={selectedTask?.id === task.id}
                   onClick={() => {
@@ -321,7 +321,7 @@ export default function TasksTab() {
                       </div>
                     </div>
                   </div>
-                </WebOSListItemEnhanced>
+                </LoomOSListItemEnhanced>
               ))}
             </div>
           )}
@@ -407,7 +407,7 @@ export default function TasksTab() {
           </>
         ) : (
           // View Mode
-          <WebOSDetailPane
+          <LoomOSDetailPane
             title={selectedTask?.title}
             subtitle={selectedTask?.category}
             actions={
@@ -501,7 +501,7 @@ export default function TasksTab() {
                 </div>
               </ScrollArea>
             )}
-          </WebOSDetailPane>
+          </LoomOSDetailPane>
         )}
       </div>
     </div>

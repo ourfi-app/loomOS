@@ -1,9 +1,9 @@
 
 /**
- * Physics-based Animation Utilities for WebOS
+ * Physics-based Animation Utilities for LoomOS
  * 
  * Provides spring physics and easing functions for natural, fluid animations
- * following WebOS design principles
+ * following LoomOS design principles
  */
 
 import { Spring, Transition } from 'framer-motion';
@@ -89,7 +89,7 @@ export const EASING = {
   easeOut: [0, 0, 0.58, 1],
   easeInOut: [0.42, 0, 0.58, 1],
   
-  // Custom easings for WebOS feel
+  // Custom easings for LoomOS feel
   webOS: [0.4, 0.0, 0.2, 1],
   webOSEmphasized: [0.4, 0.0, 0.6, 1],
   webOSDecelerated: [0.0, 0.0, 0.2, 1],
