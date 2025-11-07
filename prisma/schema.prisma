@@ -234,8 +234,8 @@ model Organization {
   commentLikes            CommentLike[]            @relation("OrganizationCommentLikes")
   appReviews              AppReview[]
 
-  @@index([slug])
-  @@index([subdomain])
+  // Note: slug and subdomain already have @unique which creates indices
+  // No need for separate @@index directives on these columns
   @@index([type])
   @@index([subscriptionStatus])
   @@map("organizations")
@@ -870,7 +870,7 @@ model MarketplaceApp {
 
   @@index([category])
   @@index([status])
-  @@index([slug])
+  // Note: slug already has @unique which creates an index
   @@index([isFeatured])
   @@index([trending])
   @@map("marketplace_apps")
