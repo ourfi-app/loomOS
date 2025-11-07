@@ -31,6 +31,9 @@ export async function GET(request: NextRequest) {
             image: true,
             firstName: true,
             lastName: true,
+            role: true,
+            badge: true,
+            status: true,
           },
         },
         likes: {
@@ -83,7 +86,7 @@ export async function POST(request: NextRequest) {
 
     const userId = (session.user as any).id;
     const body = await request.json();
-    const { content, imageUrl } = body;
+    const { content, imageUrl, category } = body;
 
     if (!content || content.trim() === '') {
       return handleApiError(
@@ -99,6 +102,7 @@ export async function POST(request: NextRequest) {
         authorId: userId,
         content: content.trim(),
         imageUrl: imageUrl || null,
+        category: category || 'GENERAL',
       },
       include: {
         author: {
@@ -109,6 +113,9 @@ export async function POST(request: NextRequest) {
             image: true,
             firstName: true,
             lastName: true,
+            role: true,
+            badge: true,
+            status: true,
           },
         },
         _count: {
