@@ -115,6 +115,7 @@ model User {
   postComments         PostComment[]            @relation("UserPostComments")
   commentLikes         CommentLike[]            @relation("UserCommentLikes")
   appReviews           AppReview[]              @relation("UserAppReviews")
+  developerProfile     Developer?               @relation("DeveloperProfile")
 
   @@index([organizationId])
   @@map("users")
@@ -1515,4 +1516,136 @@ model CommentLike {
   @@index([commentId])
   @@index([userId])
   @@map("comment_likes")
+}
+
+// ============================================================
+// DEVELOPER PORTAL MODELS
+// ============================================================
+
+enum DeveloperTier {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+enum DeveloperStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  BANNED
+}
+
+enum SubmissionStatus {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  APPROVED
+  REJECTED
+  CHANGES_REQUESTED
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model Developer {
+  id                   String          @id @default(cuid())
+  userId               String          @unique
+  displayName          String
+  companyName          String?
+  bio                  String          @db.Text
+  website              String?
+  supportEmail         String
+  avatar               String?
+  logo                 String?
+  verified             Boolean         @default(false)
+  verificationDate     DateTime?
+  tier                 DeveloperTier   @default(FREE)
+  totalApps            Int             @default(0)
+  publishedApps        Int             @default(0)
+  totalDownloads       Int             @default(0)
+  averageRating        Decimal         @default(0) @db.Decimal(2, 1)
+  totalRevenue         Decimal         @default(0) @db.Decimal(12, 2)
+  stripeAccountId      String?
+  paymentMethodSetup   Boolean         @default(false)
+  status               DeveloperStatus @default(PENDING)
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+
+  user        User            @relation("DeveloperProfile", fields: [userId], references: [id], onDelete: Cascade)
+  submissions AppSubmission[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([verified])
+  @@map("developers")
+}
+
+model AppSubmission {
+  id                String           @id @default(cuid())
+  appId             String
+  developerId       String
+  version           String
+  releaseNotes      String           @db.Text
+  packageUrl        String
+  packageSize       BigInt
+  status            SubmissionStatus @default(SUBMITTED)
+  submittedAt       DateTime         @default(now())
+  reviewStartedAt   DateTime?
+  reviewedAt        DateTime?
+  reviewerId        String?
+  reviewNotes       String?          @db.Text
+  rejectionReason   String?
+  rejectionDetails  String?          @db.Text
+
+  developer Developer @relation(fields: [developerId], references: [id], onDelete: Cascade)
+
+  @@index([appId])
+  @@index([developerId])
+  @@index([status])
+  @@index([submittedAt])
+  @@map("app_submissions")
+}
+
+model DeveloperAnalytics {
+  id                 String   @id @default(cuid())
+  appId              String
+  date               DateTime @db.Date
+  downloads          Int      @default(0)
+  installations      Int      @default(0)
+  uninstalls         Int      @default(0)
+  activeUsers        Int      @default(0)
+  launches           Int      @default(0)
+  avgSessionDuration Float    @default(0)
+  crashRate          Float    @default(0)
+  revenue            Decimal  @default(0) @db.Decimal(12, 2)
+  refunds            Decimal  @default(0) @db.Decimal(12, 2)
+  newReviews         Int      @default(0)
+  averageRating      Decimal  @default(0) @db.Decimal(2, 1)
+
+  @@unique([appId, date])
+  @@index([appId])
+  @@index([date])
+  @@map("developer_analytics")
+}
+
+model PayoutRequest {
+  id              String        @id @default(cuid())
+  developerId     String
+  amount          Decimal       @db.Decimal(12, 2)
+  currency        String        @default("USD")
+  status          PayoutStatus  @default(PENDING)
+  requestedAt     DateTime      @default(now())
+  processedAt     DateTime?
+  stripePayoutId  String?
+  failureReason   String?       @db.Text
+
+  @@index([developerId])
+  @@index([status])
+  @@index([requestedAt])
+  @@map("payout_requests")
 }
