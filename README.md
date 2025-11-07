@@ -1,35 +1,74 @@
-# Community Manager
+# loomOS
+
+A modern, open-source operating system framework inspired by webOS, designed to liberate users from the ecosystem lock-in of Apple and Google.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue)](https://www.typescriptlang.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-A modern, full-featured condo association management platform built with Next.js 14, featuring a beautiful webOS-inspired desktop interface.
+---
+
+## What is loomOS?
+
+loomOS is a beautiful, activity-centric operating system that brings the best design principles of webOS to modern web technologies. It features a card-based multitasking interface, smooth physics-based animations, and a comprehensive app framework that works across devices - from IoT displays to desktop computers.
+
+**Philosophy**: Content over chrome. Activity-centric computing. Fluid interactions. Data integration.
+
+### 🎉 What's New
+
+**Developer Portal Now Available!** Create, submit, and monetize apps on loomOS. Get started at `/dashboard/developer`.
+
+---
+
+## ✨ Key Features
+
+### 🎨 Desktop Environment
+- **Card-based multitasking** with live app previews
+- **Just Type** universal search across apps and data
+- **App Grid launcher** with categorized organization
+- **Dock** for quick access to favorite apps
+- **Window management** (minimize, maximize, snap, fullscreen)
+- **Dark mode** with system-aware theme switching
+
+### 🏗️ App Framework
+- **React/Next.js based** with TypeScript support
+- **Service abstraction layer** for storage, email, payments, AI, maps
+- **Multi-tenancy** built-in for SaaS applications
+- **App Marketplace** for discovering and installing apps
+- **Developer Portal** for publishing and monetizing apps
+- **App Designer** for creating custom applications
+
+### 🎯 Core Apps (Included)
+- **Dashboard** - Customizable widget-based overview
+- **Messages** - Threaded conversations with real-time updates
+- **Calendar** - Event management with external sync
+- **Documents** - Secure file storage and sharing
+- **Directory** - Contact and user management
+- **Tasks** - Kanban boards and project tracking
 
 ---
 
 ## 🚀 Quick Start
 
-Get running in 5 minutes:
+Get loomOS running in 5 minutes:
 
 ```bash
-# 1. Clone and navigate
-git clone https://github.com/ourfi-app/community-manager.git
-cd community-manager
+# Clone the repository
+git clone https://github.com/yourorg/loomos.git
+cd loomos
 
-# 2. Install dependencies
+# Install dependencies
 yarn install
 
-# 3. Set up environment
+# Configure your environment
 cp .env.example .env
-# Edit .env with your DATABASE_URL
+# Edit .env with your database URL and service credentials
 
-# 4. Set up database
+# Set up the database
 yarn prisma migrate deploy
 yarn prisma db seed
 
-# 5. Start development server
+# Start the development server
 yarn dev
 ```
 
@@ -37,239 +76,204 @@ Visit [http://localhost:3000](http://localhost:3000) and login with:
 - **Email**: `admin@example.com`
 - **Password**: `admin123`
 
-⚠️ **IMPORTANT**: Change the default password immediately after first login!
-
----
-
-## ✨ Key Features
-
-### 🎨 Modern Desktop Interface
-- webOS-inspired design with smooth card-based multitasking
-- Advanced window management (minimize, maximize, snap)
-- Fully responsive from mobile to desktop
-- Dark mode with system-aware theme switching
-
-### 📱 Core Applications
-- **Dashboard**: Real-time overview with customizable widgets
-- **Messages**: Threaded conversations with real-time updates
-- **Calendar**: Event management with Google Calendar sync
-- **Documents**: Secure document storage with AWS S3
-- **Directory**: Resident and household management
-- **Tasks**: Project tracking with Kanban boards
-- **Payments**: Stripe-powered payment processing
-- **Budgeting**: Financial planning and reporting
-
-### 🛠️ Admin Tools
-- Super Admin Dashboard with system analytics
-- Role-based access control (Admin, Board Member, Resident)
-- App Designer for custom applications
-- Marketplace for community apps
-- Comprehensive audit logs
-
-### 🔐 Security & Performance
-- NextAuth.js authentication with multiple providers
-- Role-based access control with granular permissions
-- React Server Components for optimized rendering
-- PWA support with offline functionality
-- Real-time updates via WebSocket connections
+⚠️ **Change the default password immediately after first login!**
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Frontend | Backend | Infrastructure |
-|----------|---------|----------------|
-| Next.js 14 | PostgreSQL | Vercel |
-| TypeScript 5.2 | Prisma ORM | AWS S3 |
-| Tailwind CSS | NextAuth.js | SendGrid |
-| Radix UI | Stripe | Twilio |
-| Framer Motion | API Routes | GitHub Actions |
+**Frontend**: Next.js 14, TypeScript, Tailwind CSS, Framer Motion, Radix UI  
+**Backend**: PostgreSQL, Prisma ORM, NextAuth.js  
+**Services**: Configurable abstraction layer for storage, email, payments, AI, mapping
+
+### Service Abstraction Layer
+
+loomOS features a pluggable service architecture. Swap providers without changing code:
+
+- **Storage**: MinIO, AWS S3
+- **Email**: Resend, SendGrid  
+- **Payments**: Stripe
+- **AI**: Anthropic Claude, OpenAI
+- **Maps**: MapLibre GL JS
 
 ---
 
-## 📦 Installation
+## 📋 Requirements
 
-### Prerequisites
-- **Node.js**: 18.0 or higher
-- **Yarn**: 1.22 or higher
-- **PostgreSQL**: 14 or higher
+- **Node.js** 18 or higher
+- **PostgreSQL** 14 or higher
+- **Yarn** 1.22 or higher
 
-### Required Services
-Create accounts for:
-- [AWS](https://aws.amazon.com/) (S3 file storage)
-- [Stripe](https://stripe.com/) (Payment processing)
-- [SendGrid](https://sendgrid.com/) (Email delivery)
-
-### Step-by-Step Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ourfi-app/community-manager.git
-   cd community-manager
-   ```
-
-2. **Install dependencies**
-   ```bash
-   yarn install
-   ```
-
-3. **Set up PostgreSQL**
-   ```bash
-   psql -U postgres
-   CREATE DATABASE community_manager;
-   \q
-   ```
-
-4. **Configure environment**
-   ```bash
-   cp .env.example .env
-   ```
-
-   Edit `.env` with your credentials:
-   ```env
-   DATABASE_URL="postgresql://postgres:password@localhost:5432/community_manager"
-   NEXTAUTH_SECRET="$(openssl rand -base64 32)"
-   NEXTAUTH_URL="http://localhost:3000"
-   AWS_BUCKET_NAME="your-bucket"
-   AWS_REGION="us-east-1"
-   AWS_ACCESS_KEY_ID="your-key"
-   AWS_SECRET_ACCESS_KEY="your-secret"
-   STRIPE_SECRET_KEY="sk_test_..."
-   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-   SENDGRID_API_KEY="SG..."
-   SENDGRID_FROM_EMAIL="noreply@yourdomain.com"
-   ```
-
-5. **Run migrations and seed**
-   ```bash
-   yarn prisma generate
-   yarn prisma migrate deploy
-   yarn prisma db seed
-   ```
-
-6. **Start development**
-   ```bash
-   yarn dev
-   ```
-
-📖 **For detailed setup instructions, see [docs/setup/](docs/setup/)**
-
----
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push to GitHub
-2. Import project to [Vercel](https://vercel.com)
-3. Configure environment variables
-4. Deploy!
-
-### Docker
-```bash
-docker-compose up -d
-docker-compose exec app yarn prisma migrate deploy
-```
-
-📖 **For detailed deployment guides, see [docs/setup/DEPLOYMENT.md](docs/setup/DEPLOYMENT.md)**
+### Optional Services (configure as needed)
+- Storage provider (MinIO/S3)
+- Email provider (Resend/SendGrid)
+- Payment processor (Stripe)
+- AI provider (Claude/OpenAI)
 
 ---
 
 ## 📚 Documentation
 
-- **[Complete Documentation](docs/INDEX.md)** - Full documentation index
-- **[User Guide](docs/USER_GUIDE_COMPREHENSIVE.md)** - End-user documentation
-- **[API Documentation](docs/API_SETUP_GUIDE.md)** - API reference
-- **[Development Guide](docs/APP_DEVELOPMENT_SPEC.md)** - Building custom apps
-- **[FAQ](docs/FAQ_COMPREHENSIVE.md)** - Frequently asked questions
+- **[Design Principles](docs/DESIGN_PRINCIPLES.md)** - webOS-inspired UX philosophy
+- **[App Development Guide](docs/APP_DEVELOPMENT_SPEC.md)** - Building apps for loomOS
+- **[Developer Portal Guide](docs/DEVELOPER_PORTAL.md)** - Publishing to marketplace
+- **[Service Abstraction](docs/SERVICE_ABSTRACTION.md)** - Integrating external services
+- **[API Documentation](docs/API_SETUP_GUIDE.md)** - Platform APIs
+- **[Deployment Guide](docs/setup/DEPLOYMENT.md)** - Production deployment
+
+---
+
+## 🎯 Platform Features
+
+### For Users
+- Beautiful, card-based interface inspired by webOS
+- Consistent experience across all applications
+- Activity-centric workflow (not app-centric)
+- Multi-tenant support for organizations
+
+### For Developers
+- Modern React/TypeScript app framework
+- Service abstraction for vendor independence
+- Built-in authentication and authorization
+- App marketplace for distribution
+- Comprehensive component library
+
+---
+
+## 🛠️ Developer Portal
+
+Build and monetize apps on loomOS! Our newly launched Developer Portal provides everything you need to create, publish, and manage applications.
+
+### Features
+- **App Submission & Review** - Submit apps for marketplace approval
+- **Version Management** - Publish updates with release notes
+- **Analytics Dashboard** - Track downloads, installs, active users, and crash rates
+- **Revenue Tracking** - Monitor earnings with Stripe integration
+- **Developer Tiers**:
+  - **Free**: Up to 3 apps
+  - **Pro**: Up to 25 apps with priority review
+  - **Enterprise**: Unlimited apps with dedicated support
+
+### Getting Started
+1. Register as a developer at `/dashboard/developer`
+2. Create your app with our intuitive submission form
+3. Submit for review and get approved
+4. Publish to the marketplace and start earning
+
+### Pricing Options
+- Free apps
+- One-time paid apps
+- Subscription-based apps
+- Freemium (free with in-app purchases)
+
+---
+
+## 🚢 Deployment
+
+### Vercel (Recommended for Web)
+```bash
+git push origin main
+# Import to Vercel and configure environment variables
+```
+
+### Render (Recommended for Full-Stack)
+1. **Create PostgreSQL Database**
+   - Go to [Render Dashboard](https://dashboard.render.com/)
+   - New → PostgreSQL
+   - Copy the Internal Database URL
+
+2. **Create Web Service**
+   - New → Web Service
+   - Connect your repository
+   - Configure:
+     - **Build Command**: `yarn install && npx prisma generate && npx prisma migrate deploy && yarn build`
+     - **Start Command**: `yarn start`
+   - Add environment variables:
+     ```
+     DATABASE_URL=<your-postgres-internal-url>
+     NEXTAUTH_SECRET=<generate-with-openssl-rand-base64-32>
+     NEXTAUTH_URL=https://your-app.onrender.com
+     ```
+
+3. **Deploy**
+   - Click "Create Web Service"
+   - Render will automatically deploy on every push to main
+
+### Docker
+```bash
+docker-compose up -d
+```
+
+### Self-Hosted
+See [docs/setup/DEPLOYMENT.md](docs/setup/DEPLOYMENT.md) for detailed instructions.
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
 
-### Development Workflow
 ```bash
-# Create feature branch
+# Create a feature branch
 git checkout -b feature/amazing-feature
 
-# Make changes and test
+# Make your changes
 yarn type-check
 yarn lint
 yarn dev
 
-# Commit using conventional commits
+# Commit and push
 git commit -m "feat: add amazing feature"
-
-# Push and create PR
 git push origin feature/amazing-feature
 ```
 
-See [STYLE_GUIDE.md](STYLE_GUIDE.md) for coding standards.
+---
+
+## 🗺️ Roadmap
+
+- ✅ React/Web (PWA) - Current
+- 🚧 webOS Open Source Edition
+- 📋 Linux Desktop
+- 📋 Windows Desktop  
+- 📋 macOS Desktop
+- 📋 iOS & Android Apps
 
 ---
 
-## 🐛 Troubleshooting
+## 💡 Why loomOS?
 
-Common issues and solutions:
+**Vendor Independence**: Your choice of storage, email, payment, and AI providers. No lock-in.
 
-**Database connection errors:**
-```bash
-# Check if PostgreSQL is running
-sudo systemctl status postgresql
+**Beautiful Design**: webOS-inspired interface that feels modern and delightful.
 
-# Verify DATABASE_URL
-echo $DATABASE_URL
-```
+**Cross-Platform**: One codebase, multiple platforms. From web to native desktop and mobile.
 
-**Port already in use:**
-```bash
-# Kill process on port 3000
-lsof -ti:3000 | xargs kill -9
-```
+**Open Source**: MIT licensed. Own your platform, control your destiny.
 
-**Build errors:**
-```bash
-# Clear cache and reinstall
-rm -rf .next node_modules
-yarn install
-```
-
-📖 **For more help, see [docs/FAQ_COMPREHENSIVE.md](docs/FAQ_COMPREHENSIVE.md)**
+**Activity-Centric**: Focus on what you're doing, not which app you're using.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
 ## 🙏 Acknowledgments
 
-Built with:
-- [Next.js](https://nextjs.org/) - React framework
-- [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Prisma](https://www.prisma.io/) - Database ORM
-- [Framer Motion](https://www.framer.com/motion/) - Animations
+Inspired by the original **Palm/HP webOS** design system. Built with modern web technologies to bring those principles to today's platforms.
+
+Special thanks to the webOS community and the open-source projects that make loomOS possible.
 
 ---
 
-## 📞 Support
+## 📞 Contact
 
-- **[GitHub Discussions](https://github.com/ourfi-app/community-manager/discussions)** - Ask questions
-- **[GitHub Issues](https://github.com/ourfi-app/community-manager/issues)** - Report bugs
-- **Email**: support@communitymanager.app
+- **GitHub**: [Issues](https://github.com/yourorg/loomos/issues) & [Discussions](https://github.com/yourorg/loomos/discussions)
+- **Website**: Coming soon
 
 ---
 
-<div align="center">
+**Built to liberate, not to lock in.**
 
-**Built with ❤️ by the [OurFi Team](https://ourfi.app)**
-
-[Website](https://communitymanager.app) • [Documentation](docs/INDEX.md) • [Twitter](https://twitter.com/communitymanagerapp)
-
-© 2024 OurFi. All rights reserved.
-
-</div>
