@@ -16,12 +16,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import {
-  WebOSNavigationPane,
-  WebOSListPane,
-  WebOSDetailPane,
-  WebOSActionButton,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSNavigationPane,
+  LoomOSListPane,
+  LoomOSDetailPane,
+  LoomOSActionButton,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
 } from '@/components/webos';
 import { useCalendarEvents, type CalendarEvent } from '@/hooks/use-api';
 
@@ -191,9 +191,9 @@ export default function CalendarTab() {
 
         <ScrollArea className="flex-1">
           {isLoading ? (
-            <WebOSLoadingState message="Loading events..." />
+            <LoomOSLoadingState message="Loading events..." />
           ) : selectedDateEvents.length === 0 ? (
-            <WebOSEmptyState
+            <LoomOSEmptyState
               icon={<CalendarIcon className="w-12 h-12" />}
               title="No events"
               description="No events scheduled for this day"
@@ -233,7 +233,7 @@ export default function CalendarTab() {
       </div>
 
       {/* Event Details */}
-      <WebOSDetailPane
+      <LoomOSDetailPane
         title={selectedEvent?.title}
         subtitle={selectedEvent?.location}
         isEmpty={!selectedEvent}
@@ -287,7 +287,7 @@ export default function CalendarTab() {
             </div>
           </ScrollArea>
         )}
-      </WebOSDetailPane>
+      </LoomOSDetailPane>
     </div>
   );
 }

@@ -13,7 +13,7 @@ import ProfileTab from '@/components/my-household/profile-tab';
 import HouseholdTab from '@/components/my-household/household-tab';
 import PaymentsTab from '@/components/my-household/payments-tab';
 import {
-  WebOSNavigationPane
+  LoomOSNavigationPane
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
@@ -50,7 +50,7 @@ export default function MyHouseholdPage() {
 
   return (
     <div className="h-full flex overflow-hidden">
-        <WebOSNavigationPane
+        <LoomOSNavigationPane
           title="My Household"
           items={navItems}
         />

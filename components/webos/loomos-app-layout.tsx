@@ -1,12 +1,12 @@
 'use client';
 
 import React, { ReactNode, useState, useEffect } from 'react';
-import { WebOSStatusBar } from './webos-status-bar';
-import { WebOSAppHeader } from './webos-app-header';
+import { LoomOSStatusBar } from './loomos-status-bar';
+import { LoomOSAppHeader } from './loomos-app-header';
 import { GestureArea } from './gesture-area';
 import { useIsDesktop } from '@/hooks/use-responsive';
 
-interface WebOSAppLayoutProps {
+interface LoomOSAppLayoutProps {
   appName: string;
   appIcon?: ReactNode;
   headerActions?: ReactNode;
@@ -16,7 +16,7 @@ interface WebOSAppLayoutProps {
   children: ReactNode;
 }
 
-export function WebOSAppLayout({
+export function LoomOSAppLayout({
   appName,
   appIcon,
   headerActions,
@@ -24,7 +24,7 @@ export function WebOSAppLayout({
   showStatusBar = true,
   showGestureArea = true,
   children
-}: WebOSAppLayoutProps) {
+}: LoomOSAppLayoutProps) {
   // On desktop, apps are opened in windows with their own chrome
   // So we hide the internal status bar and app header to avoid double chrome
   const isDesktopBreakpoint = useIsDesktop();
@@ -49,14 +49,14 @@ export function WebOSAppLayout({
     );
   }
   
-  // On mobile/tablet, render full WebOS layout with status bar and header
+  // On mobile/tablet, render full LoomOS layout with status bar and header
   return (
     <div className="h-full flex flex-col bg-gray-200 relative">
       {/* Status Bar */}
-      {showStatusBar && <WebOSStatusBar appName={appName} />}
+      {showStatusBar && <LoomOSStatusBar appName={appName} />}
       
       {/* App Header */}
-      <WebOSAppHeader 
+      <LoomOSAppHeader 
         appName={appName} 
         appIcon={appIcon}
         actions={headerActions} 
@@ -74,7 +74,7 @@ export function WebOSAppLayout({
         </div>
       )}
       
-      {/* WebOS Gesture Area */}
+      {/* LoomOS Gesture Area */}
       {showGestureArea && <GestureArea />}
     </div>
   );

@@ -1,0 +1,180 @@
+
+/* WebOS Design Tokens - Based on Official WebOS Design References */
+
+:root {
+  /* ========================================
+     COLOR SYSTEM
+     ======================================== */
+  
+  /* Light Backgrounds */
+  --loomos-bg-primary: #E8E8E8;           /* Main app background */
+  --loomos-bg-secondary: #F5F5F5;         /* Panel backgrounds */
+  --loomos-bg-tertiary: #FFFFFF;          /* Card backgrounds */
+  --loomos-bg-elevated: #FAFAFA;          /* Elevated surfaces */
+  
+  /* Dark Backgrounds (for contrast) */
+  --loomos-bg-dark-primary: #403930;      /* Taupe/brown (selected items) */
+  --loomos-bg-dark-secondary: #080907;    /* Black (headers) */
+  --loomos-bg-dark-tertiary: #D0CEC7;     /* Timberwood (dividers) */
+  --loomos-bg-dark-quaternary: #F0F0F0;   /* Anti-flash white */
+  
+  /* Text Colors */
+  --loomos-text-primary: #1E1E1E;         /* Primary text */
+  --loomos-text-secondary: #666666;       /* Secondary text */
+  --loomos-text-tertiary: #999999;        /* Tertiary text */
+  --loomos-text-disabled: #CCCCCC;        /* Disabled text */
+  --loomos-text-inverse: #FFFFFF;         /* Text on dark backgrounds */
+  
+  /* Border & Divider Colors */
+  --loomos-border-light: #E0E0E0;         /* Light borders */
+  --loomos-border-medium: #CCCCCC;        /* Medium borders */
+  --loomos-border-dark: #999999;          /* Dark borders */
+  --loomos-divider: #DEDEDE;              /* List dividers */
+  
+  /* Status & Accent Colors */
+  --loomos-accent-primary: #0066CC;       /* Primary actions */
+  --loomos-accent-selected: #403930;      /* Selected state */
+  --loomos-accent-active: #333333;        /* Active state */
+  --loomos-accent-hover: #F0F0F0;         /* Hover state */
+  
+  /* Status Indicators */
+  --loomos-status-unread: #0066CC;        /* Unread messages */
+  --loomos-status-important: #CC0000;     /* Important/urgent */
+  --loomos-status-success: #00AA00;       /* Success */
+  --loomos-status-warning: #FFAA00;       /* Warning */
+  --loomos-status-archived: #999999;      /* Archived items */
+  
+  /* ========================================
+     SPACING SYSTEM
+     ======================================== */
+  
+  --loomos-spacing-xs: 4px;
+  --loomos-spacing-sm: 8px;
+  --loomos-spacing-md: 12px;
+  --loomos-spacing-lg: 16px;
+  --loomos-spacing-xl: 24px;
+  --loomos-spacing-2xl: 32px;
+  --loomos-spacing-3xl: 48px;
+  
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+  
+  --loomos-radius-none: 0;
+  --loomos-radius-sm: 4px;               /* Buttons, inputs */
+  --loomos-radius-md: 8px;               /* Cards, dialogs */
+  --loomos-radius-lg: 12px;              /* Panels */
+  --loomos-radius-full: 9999px;          /* Pills, badges */
+  
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+  
+  --loomos-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --loomos-font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  
+  /* Font Sizes */
+  --loomos-text-xs: 11px;
+  --loomos-text-sm: 13px;
+  --loomos-text-base: 14px;
+  --loomos-text-lg: 16px;
+  --loomos-text-xl: 18px;
+  --loomos-text-2xl: 24px;
+  --loomos-text-3xl: 30px;
+  
+  /* Font Weights */
+  --loomos-font-normal: 400;
+  --loomos-font-medium: 500;
+  --loomos-font-semibold: 600;
+  --loomos-font-bold: 700;
+  
+  /* Line Heights */
+  --loomos-leading-none: 1;
+  --loomos-leading-tight: 1.25;
+  --loomos-leading-snug: 1.375;
+  --loomos-leading-normal: 1.5;
+  --loomos-leading-relaxed: 1.625;
+  --loomos-leading-loose: 2;
+  
+  /* ========================================
+     SHADOWS
+     ======================================== */
+  
+  --loomos-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --loomos-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --loomos-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --loomos-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --loomos-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* ========================================
+     Z-INDEX LAYERS
+     ======================================== */
+  
+  --loomos-z-base: 0;
+  --loomos-z-dropdown: 1000;
+  --loomos-z-sticky: 1020;
+  --loomos-z-fixed: 1030;
+  --loomos-z-modal-backdrop: 1040;
+  --loomos-z-modal: 1050;
+  --loomos-z-popover: 1060;
+  --loomos-z-tooltip: 1070;
+  
+  /* ========================================
+     TRANSITIONS
+     ======================================== */
+  
+  --loomos-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --loomos-transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --loomos-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --loomos-transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ========================================
+     LAYOUT DIMENSIONS
+     ======================================== */
+  
+  /* Pane Widths (Multi-pane layouts) */
+  --loomos-pane-narrow: 240px;           /* Navigation pane */
+  --loomos-pane-medium: 360px;           /* List pane */
+  --loomos-pane-wide: 100%;              /* Detail pane (flexible) */
+  
+  /* Header & Footer Heights */
+  --loomos-header-height: 56px;
+  --loomos-footer-height: 56px;
+  --loomos-toolbar-height: 48px;
+  
+  /* List Item Heights */
+  --loomos-list-item-sm: 44px;
+  --loomos-list-item-md: 56px;
+  --loomos-list-item-lg: 72px;
+  --loomos-list-item-xl: 88px;
+  
+  /* ========================================
+     BREAKPOINTS (for reference in JS)
+     ======================================== */
+  
+  --loomos-breakpoint-sm: 640px;
+  --loomos-breakpoint-md: 768px;
+  --loomos-breakpoint-lg: 1024px;
+  --loomos-breakpoint-xl: 1280px;
+  --loomos-breakpoint-2xl: 1536px;
+}
+
+/* Dark mode overrides (if needed) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --loomos-bg-primary: #1E1E1E;
+    --loomos-bg-secondary: #2A2A2A;
+    --loomos-bg-tertiary: #333333;
+    --loomos-bg-elevated: #3A3A3A;
+    
+    --loomos-text-primary: #FFFFFF;
+    --loomos-text-secondary: #CCCCCC;
+    --loomos-text-tertiary: #999999;
+    --loomos-text-disabled: #666666;
+    
+    --loomos-border-light: #3A3A3A;
+    --loomos-border-medium: #4A4A4A;
+    --loomos-border-dark: #5A5A5A;
+    --loomos-divider: #3A3A3A;
+  }
+}

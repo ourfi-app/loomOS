@@ -13,8 +13,8 @@
 @import '../styles/design-tokens.css';
 
 /* Import WebOS Design Tokens and Component Styles */
-@import '../styles/webos-tokens.css';
-@import '../styles/webos-components.css';
+@import '../styles/loomos-tokens.css';
+@import '../styles/loomos-components.css';
 
 /* Elegant Shimmer Animation for App Overlays and Dock Items */
 @keyframes shimmer {
@@ -348,7 +348,7 @@
   }
 
   /* Status bar entrance on page load */
-  .webos-status-bar-refined {
+  .loomos-status-bar-refined {
     animation: slide-in-from-top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -470,16 +470,16 @@
     animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 
-  .webos-minimize-left {
+  .loomos-minimize-left {
     animation: slide-out-left 0.3s ease-in-out forwards;
   }
 
-  .webos-minimize-left-draggable {
+  .loomos-minimize-left-draggable {
     animation: slide-out-left-draggable 0.3s ease-in-out forwards;
   }
 
   /* WebOS Container */
-  .webos-container {
+  .loomos-container {
     @apply relative;
     height: 100vh;
     overflow: hidden;
@@ -487,18 +487,18 @@
     background: linear-gradient(to bottom right, hsl(30, 12%, 91%), hsl(30, 10%, 85%));
   }
   
-  .webos-touchscreen {
+  .loomos-touchscreen {
     height: calc(100vh - 3rem); /* Subtract only status bar height - dock floats over */
     overflow: hidden;
   }
   
-  .dark .webos-container {
+  .dark .loomos-container {
     /* Dark mode: webOS Sandstone aesthetic */
     background: linear-gradient(to bottom right, hsl(0, 0%, 18%), hsl(0, 0%, 14%));
   }
 
   /* WebOS Multitasking Container */
-  .webos-multitasking-container {
+  .loomos-multitasking-container {
     @apply fixed z-10;
     /* Account for status bar (h-7 = 1.75rem = 28px) */
     top: 1.75rem;
@@ -508,7 +508,7 @@
   }
 
   /* WebOS Cards Stage */
-  .webos-cards-stage {
+  .loomos-cards-stage {
     @apply fixed;
     /* Account for status bar at top and dock at bottom */
     top: 1.75rem;
@@ -519,7 +519,7 @@
     transform-style: preserve-3d;
   }
 
-  .webos-cards-stage-multitasking {
+  .loomos-cards-stage-multitasking {
     @apply bg-black/20 backdrop-blur-md;
     /* Cover full viewport for multitasking overlay */
     top: 0;
@@ -527,7 +527,7 @@
   }
 
   /* WebOS App Card - Consistent Styling */
-  .webos-app-card {
+  .loomos-app-card {
     @apply fixed;
     @apply w-[90%] max-w-5xl;
     @apply rounded-3xl overflow-hidden;
@@ -549,7 +549,7 @@
   }
   
   /* Draggable card variant - positioned absolutely, no centering */
-  .webos-app-card-draggable {
+  .loomos-app-card-draggable {
     @apply transition-none;
     user-select: none;
     /* Remove centering transform for desktop mode */
@@ -562,7 +562,7 @@
   }
   
   /* Card being dragged or resized */
-  .webos-app-card-dragging {
+  .loomos-app-card-dragging {
     box-shadow: 
       0 30px 60px rgba(0, 0, 0, 0.25),
       0 15px 30px rgba(0, 0, 0, 0.15),
@@ -571,7 +571,7 @@
     cursor: grabbing;
   }
   
-  .dark .webos-app-card {
+  .dark .loomos-app-card {
     background: rgba(56, 56, 56, 0.98);
     border: 1px solid rgba(76, 76, 76, 0.6);
     box-shadow: 
@@ -580,57 +580,57 @@
       0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   }
 
-  .webos-app-card-active {
+  .loomos-app-card-active {
     @apply ring-2 ring-primary/50;
     z-index: 100 !important;
   }
   
   /* Resize Handles - Enhanced visibility and interaction */
-  .webos-resize-handle {
+  .loomos-resize-handle {
     @apply absolute;
     background: transparent;
     z-index: 10;
     transition: all 0.2s ease;
   }
   
-  .webos-resize-handle:hover {
+  .loomos-resize-handle:hover {
     background: rgba(59, 130, 246, 0.15);
   }
   
-  .webos-resize-handle:active {
+  .loomos-resize-handle:active {
     background: rgba(59, 130, 246, 0.25);
   }
   
   /* Top edge */
-  .webos-resize-n {
+  .loomos-resize-n {
     @apply top-0 left-0 right-0;
     height: 8px;
     cursor: n-resize;
   }
   
   /* Bottom edge */
-  .webos-resize-s {
+  .loomos-resize-s {
     @apply bottom-0 left-0 right-0;
     height: 8px;
     cursor: s-resize;
   }
   
   /* Left edge */
-  .webos-resize-w {
+  .loomos-resize-w {
     @apply top-0 bottom-0 left-0;
     width: 8px;
     cursor: w-resize;
   }
   
   /* Right edge */
-  .webos-resize-e {
+  .loomos-resize-e {
     @apply top-0 bottom-0 right-0;
     width: 8px;
     cursor: e-resize;
   }
   
   /* Top-left corner */
-  .webos-resize-nw {
+  .loomos-resize-nw {
     @apply top-0 left-0;
     width: 16px;
     height: 16px;
@@ -638,7 +638,7 @@
   }
   
   /* Top-right corner */
-  .webos-resize-ne {
+  .loomos-resize-ne {
     @apply top-0 right-0;
     width: 16px;
     height: 16px;
@@ -646,7 +646,7 @@
   }
   
   /* Bottom-left corner */
-  .webos-resize-sw {
+  .loomos-resize-sw {
     @apply bottom-0 left-0;
     width: 16px;
     height: 16px;
@@ -654,7 +654,7 @@
   }
   
   /* Bottom-right corner */
-  .webos-resize-se {
+  .loomos-resize-se {
     @apply bottom-0 right-0;
     width: 16px;
     height: 16px;
@@ -662,7 +662,7 @@
   }
 
   /* WebOS App Card Header */
-  .webos-app-card-header {
+  .loomos-app-card-header {
     @apply h-12 px-4 flex items-center justify-between;
     @apply text-white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -671,83 +671,83 @@
     z-index: 10;
   }
 
-  .webos-app-card-icon {
+  .loomos-app-card-icon {
     @apply w-6 h-6 flex items-center justify-center;
   }
 
-  .webos-app-card-title {
+  .loomos-app-card-title {
     @apply text-sm font-semibold;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
-  .webos-app-card-control {
+  .loomos-app-card-control {
     @apply w-7 h-7 flex items-center justify-center rounded-lg;
     @apply hover:bg-white/20 active:bg-white/30 transition-all cursor-pointer;
     transform-origin: center;
   }
 
-  .webos-app-card-control:active {
+  .loomos-app-card-control:active {
     transform: scale(0.95);
   }
 
-  .webos-app-card-close {
+  .loomos-app-card-close {
     @apply hover:bg-red-500/20 active:bg-red-500/30;
   }
 
   /* WebOS App Card Body */
-  .webos-app-card-body {
+  .loomos-app-card-body {
     @apply relative;
     height: calc(100% - 3rem);
     background: rgba(255, 255, 255, 0.95);
   }
 
-  .dark .webos-app-card-body {
+  .dark .loomos-app-card-body {
     background: rgba(40, 40, 40, 0.95);
   }
 
-  .webos-app-card-content {
+  .loomos-app-card-content {
     @apply h-full overflow-auto;
     overscroll-behavior: contain;
   }
   
   /* Enhanced scrollbars for card content */
-  .webos-app-card-content::-webkit-scrollbar {
+  .loomos-app-card-content::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 
-  .webos-app-card-content::-webkit-scrollbar-track {
+  .loomos-app-card-content::-webkit-scrollbar-track {
     background: transparent;
   }
 
-  .webos-app-card-content::-webkit-scrollbar-thumb {
+  .loomos-app-card-content::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
   }
 
-  .webos-app-card-content::-webkit-scrollbar-thumb:hover {
+  .loomos-app-card-content::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.3);
   }
 
-  .dark .webos-app-card-content::-webkit-scrollbar-thumb {
+  .dark .loomos-app-card-content::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
   }
 
-  .dark .webos-app-card-content::-webkit-scrollbar-thumb:hover {
+  .dark .loomos-app-card-content::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
   }
 
   /* WebOS App Card Preview */
-  .webos-app-card-preview {
+  .loomos-app-card-preview {
     @apply absolute inset-0 flex items-center justify-center;
   }
 
-  .webos-app-card-preview-overlay {
+  .loomos-app-card-preview-overlay {
     @apply w-full h-full flex items-center justify-center opacity-90;
   }
 
   /* WebOS Multitasking Indicator */
-  .webos-multitasking-indicator {
+  .loomos-multitasking-indicator {
     @apply fixed bottom-24 left-1/2 -translate-x-1/2;
     @apply px-6 py-3 rounded-2xl shadow-xl text-center z-50;
     /* Warm webOS surface for indicator */
@@ -756,22 +756,22 @@
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
-  .dark .webos-multitasking-indicator {
+  .dark .loomos-multitasking-indicator {
     background: rgba(56, 56, 56, 0.98);
     border: 1px solid rgba(76, 76, 76, 0.6);
   }
 
-  .webos-multitasking-dot {
+  .loomos-multitasking-dot {
     @apply w-2 h-2 rounded-full bg-muted;
     @apply transition-all duration-150;
   }
 
-  .webos-multitasking-dot-active {
+  .loomos-multitasking-dot-active {
     @apply w-6 bg-primary;
   }
 
   /* WebOS Cards */
-  .webos-card {
+  .loomos-card {
     @apply rounded-3xl shadow-2xl transition-all duration-300;
     /* Warm off-white webOS pebble surface */
     background: rgba(247, 246, 244, 0.95);
@@ -779,25 +779,25 @@
     border: 1px solid rgba(207, 204, 199, 0.4);
   }
   
-  .dark .webos-card {
+  .dark .loomos-card {
     background: rgba(56, 56, 56, 0.95);
     border: 1px solid rgba(76, 76, 76, 0.4);
   }
 
   /* WebOS Pebble (Dock Icons) */
-  .webos-pebble {
+  .loomos-pebble {
     @apply rounded-2xl shadow-lg backdrop-blur-sm;
     background: rgba(247, 246, 244, 0.9);
     border: 1px solid rgba(207, 204, 199, 0.3);
   }
   
-  .dark .webos-pebble {
+  .dark .loomos-pebble {
     background: rgba(56, 56, 56, 0.9);
     border: 1px solid rgba(76, 76, 76, 0.3);
   }
 
   /* Status Bar - webOS authentic styling */
-  .webos-status-bar {
+  .loomos-status-bar {
     @apply fixed top-0 left-0 right-0 h-14 px-6 flex items-center justify-between z-30;
     /* Warm translucent surface */
     background: rgba(247, 246, 244, 0.8);
@@ -805,13 +805,13 @@
     border-bottom: 1px solid rgba(207, 204, 199, 0.4);
   }
   
-  .dark .webos-status-bar {
+  .dark .loomos-status-bar {
     background: rgba(46, 46, 46, 0.8);
     border-bottom: 1px solid rgba(76, 76, 76, 0.4);
   }
 
   /* Refined Status Bar - Transparent with subtle depth */
-  .webos-status-bar-refined {
+  .loomos-status-bar-refined {
     @apply fixed top-0 left-0 right-0 h-16 px-8 flex items-center justify-between z-30;
     background: transparent;
     border-bottom: none;
@@ -819,7 +819,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .webos-status-bar-refined::before {
+  .loomos-status-bar-refined::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -829,30 +829,30 @@
     pointer-events: none;
   }
 
-  .webos-status-bar-refined:hover::before {
+  .loomos-status-bar-refined:hover::before {
     opacity: 0;
   }
 
-  .dark .webos-status-bar-refined {
+  .dark .loomos-status-bar-refined {
     background: transparent;
     border-bottom: none;
     box-shadow: none;
   }
 
-  .dark .webos-status-bar-refined::before {
+  .dark .loomos-status-bar-refined::before {
     background: transparent;
   }
 
   /* App Dock - webOS authentic styling - Phase 1 Enhanced */
-  .webos-app-dock {
+  .loomos-app-dock {
     @apply pointer-events-none;
   }
 
-  .webos-app-dock-container {
+  .loomos-app-dock-container {
     @apply px-6 pb-6 flex justify-center pointer-events-none;
   }
 
-  .webos-app-dock-content {
+  .loomos-app-dock-content {
     @apply flex items-center gap-3 px-5 py-3;
     @apply rounded-3xl shadow-2xl pointer-events-auto;
     /* Enhanced glass effect - WebOS authentic */
@@ -862,16 +862,16 @@
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
   }
   
-  .dark .webos-app-dock-content {
+  .dark .loomos-app-dock-content {
     background: rgba(0, 0, 0, 0.8);
     border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  .webos-app-dock-item {
+  .loomos-app-dock-item {
     @apply relative w-16 h-16 cursor-pointer transition-all duration-300 ease-out;
   }
 
-  .webos-app-dock-item-active {
+  .loomos-app-dock-item-active {
     @apply scale-110;
   }
   
@@ -885,19 +885,19 @@
     }
   }
   
-  .webos-dock-active-glow {
+  .loomos-dock-active-glow {
     animation: breathe 4s ease-in-out infinite;
   }
   
   /* Running app indicator line */
-  .webos-dock-running-indicator {
+  .loomos-dock-running-indicator {
     @apply absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-primary;
     width: 50%;
     box-shadow: 0 0 8px rgba(241, 136, 37, 0.6);
   }
   
   /* Minimized app badge */
-  .webos-dock-minimized-badge {
+  .loomos-dock-minimized-badge {
     @apply absolute -top-1 -right-1 w-4 h-4 rounded-full;
     background: linear-gradient(135deg, #f59e0b, #d97706);
     border: 2px solid rgba(0, 0, 0, 0.7);
@@ -905,7 +905,7 @@
   }
 
   /* Phase 2: Live Preview Card */
-  .webos-dock-preview {
+  .loomos-dock-preview {
     @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-4;
     @apply bg-background/95 backdrop-blur-xl border border-border/50 rounded-2xl;
     @apply shadow-2xl overflow-hidden;
@@ -918,29 +918,29 @@
     z-index: 1000;
   }
   
-  .webos-dock-preview.show {
+  .loomos-dock-preview.show {
     opacity: 1;
     transform: translateY(0) translateX(-50%) scale(1);
     pointer-events: auto;
   }
   
-  .webos-dock-preview-header {
+  .loomos-dock-preview-header {
     @apply flex items-center gap-2 p-3 border-b border-border/30 bg-muted/30;
   }
   
-  .webos-dock-preview-content {
+  .loomos-dock-preview-content {
     @apply p-4 text-sm text-muted-foreground;
     max-height: 180px;
     overflow: hidden;
   }
   
-  .webos-dock-preview-snapshot {
+  .loomos-dock-preview-snapshot {
     @apply w-full h-full bg-gradient-to-br from-muted to-muted/50;
     @apply flex items-center justify-center text-muted-foreground/30;
   }
   
   /* Phase 2: Quick Actions Menu */
-  .webos-dock-quick-actions {
+  .loomos-dock-quick-actions {
     @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2;
     @apply bg-background/95 backdrop-blur-xl border border-border/50 rounded-xl;
     @apply shadow-2xl overflow-hidden p-1;
@@ -951,20 +951,20 @@
     z-index: 1000;
   }
   
-  .webos-dock-quick-actions.show {
+  .loomos-dock-quick-actions.show {
     opacity: 1;
     transform: translateY(0) translateX(-50%) scale(1);
     pointer-events: auto;
   }
   
-  .webos-dock-quick-action {
+  .loomos-dock-quick-action {
     @apply flex items-center gap-2 px-3 py-2 text-sm rounded-lg;
     @apply transition-all duration-200;
     @apply hover:bg-muted/50 active:scale-95;
     white-space: nowrap;
   }
   
-  .webos-dock-quick-action-icon {
+  .loomos-dock-quick-action-icon {
     @apply w-4 h-4 text-muted-foreground;
   }
 
@@ -973,7 +973,7 @@
      ENHANCED DOCK FLYOUT MENUS - Phase 1
      ========================================== */
 
-  .webos-dock-popover-content {
+  .loomos-dock-popover-content {
     @apply rounded-3xl overflow-hidden;
     /* Premium glassmorphism with softer appearance */
     background: linear-gradient(
@@ -994,7 +994,7 @@
     max-width: 320px;
   }
   
-  .dark .webos-dock-popover-content {
+  .dark .loomos-dock-popover-content {
     background: linear-gradient(
       to bottom right,
       rgba(48, 48, 48, 0.95),
@@ -1018,11 +1018,11 @@
     }
   }
 
-  .webos-dock-popover-inner {
+  .loomos-dock-popover-inner {
     @apply p-4;
   }
 
-  .webos-dock-popover-header {
+  .loomos-dock-popover-header {
     @apply flex items-center gap-2.5 px-3 py-2 mb-2;
     @apply text-sm font-semibold;
     color: rgba(0, 0, 0, 0.7);
@@ -1035,7 +1035,7 @@
     letter-spacing: 0.01em;
   }
 
-  .dark .webos-dock-popover-header {
+  .dark .loomos-dock-popover-header {
     color: rgba(255, 255, 255, 0.8);
     background: linear-gradient(
       to right,
@@ -1044,16 +1044,16 @@
     );
   }
 
-  .webos-dock-popover-header svg {
+  .loomos-dock-popover-header svg {
     @apply w-4 h-4;
     opacity: 0.7;
   }
 
-  .webos-dock-popover-grid {
+  .loomos-dock-popover-grid {
     @apply space-y-1.5;
   }
 
-  .webos-dock-app-card {
+  .loomos-dock-app-card {
     @apply relative flex items-center gap-3.5 p-3 rounded-2xl;
     @apply border border-transparent cursor-pointer;
     @apply transition-all duration-200 ease-out;
@@ -1063,12 +1063,12 @@
     animation: dock-app-card-enter 0.25s ease-out forwards;
   }
   
-  .webos-dock-app-card:nth-child(1) { animation-delay: 0.03s; }
-  .webos-dock-app-card:nth-child(2) { animation-delay: 0.06s; }
-  .webos-dock-app-card:nth-child(3) { animation-delay: 0.09s; }
-  .webos-dock-app-card:nth-child(4) { animation-delay: 0.12s; }
-  .webos-dock-app-card:nth-child(5) { animation-delay: 0.15s; }
-  .webos-dock-app-card:nth-child(6) { animation-delay: 0.18s; }
+  .loomos-dock-app-card:nth-child(1) { animation-delay: 0.03s; }
+  .loomos-dock-app-card:nth-child(2) { animation-delay: 0.06s; }
+  .loomos-dock-app-card:nth-child(3) { animation-delay: 0.09s; }
+  .loomos-dock-app-card:nth-child(4) { animation-delay: 0.12s; }
+  .loomos-dock-app-card:nth-child(5) { animation-delay: 0.15s; }
+  .loomos-dock-app-card:nth-child(6) { animation-delay: 0.18s; }
 
   @keyframes dock-app-card-enter {
     from {
@@ -1081,7 +1081,7 @@
     }
   }
   
-  .webos-dock-app-card:hover {
+  .loomos-dock-app-card:hover {
     background: rgba(255, 255, 255, 0.85);
     border-color: rgba(37, 99, 235, 0.15);
     transform: translateX(3px) scale(1.01);
@@ -1090,11 +1090,11 @@
       0 2px 6px rgba(37, 99, 235, 0.08);
   }
 
-  .dark .webos-dock-app-card {
+  .dark .loomos-dock-app-card {
     background: rgba(255, 255, 255, 0.03);
   }
 
-  .dark .webos-dock-app-card:hover {
+  .dark .loomos-dock-app-card:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(96, 165, 250, 0.2);
     box-shadow: 
@@ -1102,12 +1102,12 @@
       0 2px 6px rgba(96, 165, 250, 0.15);
   }
 
-  .webos-dock-app-card:active {
+  .loomos-dock-app-card:active {
     transform: translateX(2px) scale(0.99);
     transition-duration: 0.1s;
   }
 
-  .webos-dock-app-card-active {
+  .loomos-dock-app-card-active {
     background: linear-gradient(
       to right,
       rgba(37, 99, 235, 0.08),
@@ -1119,7 +1119,7 @@
       inset 0 1px 2px rgba(37, 99, 235, 0.1);
   }
 
-  .dark .webos-dock-app-card-active {
+  .dark .loomos-dock-app-card-active {
     background: linear-gradient(
       to right,
       rgba(96, 165, 250, 0.12),
@@ -1128,11 +1128,11 @@
     border-color: rgba(96, 165, 250, 0.3) !important;
   }
 
-  .webos-dock-app-card-content {
+  .loomos-dock-app-card-content {
     @apply flex items-center gap-3.5 flex-1 min-w-0 z-10 relative;
   }
 
-  .webos-dock-app-icon {
+  .loomos-dock-app-icon {
     @apply w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0;
     @apply transition-all duration-200;
     box-shadow: 
@@ -1141,7 +1141,7 @@
       inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
 
-  .webos-dock-app-card:hover .webos-dock-app-icon {
+  .loomos-dock-app-card:hover .loomos-dock-app-icon {
     transform: scale(1.05);
     box-shadow: 
       0 4px 12px rgba(0, 0, 0, 0.12),
@@ -1149,30 +1149,30 @@
       inset 0 1px 1px rgba(255, 255, 255, 0.25);
   }
 
-  .webos-dock-app-info {
+  .loomos-dock-app-info {
     @apply flex flex-col gap-0.5 flex-1 min-w-0;
   }
 
-  .webos-dock-app-title {
+  .loomos-dock-app-title {
     @apply text-sm font-semibold block truncate;
     @apply transition-colors duration-150;
     color: rgba(0, 0, 0, 0.85);
     letter-spacing: -0.01em;
   }
 
-  .dark .webos-dock-app-title {
+  .dark .loomos-dock-app-title {
     color: rgba(255, 255, 255, 0.9);
   }
 
-  .webos-dock-app-card:hover .webos-dock-app-title {
+  .loomos-dock-app-card:hover .loomos-dock-app-title {
     color: rgba(37, 99, 235, 0.9);
   }
 
-  .dark .webos-dock-app-card:hover .webos-dock-app-title {
+  .dark .loomos-dock-app-card:hover .loomos-dock-app-title {
     color: rgba(96, 165, 250, 0.95);
   }
 
-  .webos-dock-app-badge {
+  .loomos-dock-app-badge {
     @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
     @apply transition-all duration-150;
     background: rgba(37, 99, 235, 0.1);
@@ -1180,37 +1180,37 @@
     border: 1px solid rgba(37, 99, 235, 0.15);
   }
 
-  .dark .webos-dock-app-badge {
+  .dark .loomos-dock-app-badge {
     background: rgba(96, 165, 250, 0.15);
     color: rgba(96, 165, 250, 0.95);
     border-color: rgba(96, 165, 250, 0.2);
   }
 
-  .webos-dock-app-preview {
+  .loomos-dock-app-preview {
     @apply absolute inset-0 opacity-0 transition-opacity duration-200 pointer-events-none;
     @apply rounded-2xl overflow-hidden;
   }
 
-  .webos-dock-app-card:hover .webos-dock-app-preview {
+  .loomos-dock-app-card:hover .loomos-dock-app-preview {
     opacity: 0.04;
   }
 
-  .webos-dock-app-preview-content {
+  .loomos-dock-app-preview-content {
     @apply w-full h-full bg-gradient-to-br;
   }
 
   /* Multitasking View */
-  .webos-multitasking-overlay {
+  .loomos-multitasking-overlay {
     @apply fixed inset-0 z-50 bg-black/20 backdrop-blur-md;
   }
 
-  .webos-multitasking-grid {
+  .loomos-multitasking-grid {
     @apply fixed inset-0 z-50 p-8 overflow-auto;
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
     @apply content-start;
   }
 
-  .webos-multitasking-card {
+  .loomos-multitasking-card {
     @apply relative h-64 rounded-2xl overflow-hidden cursor-pointer;
     @apply shadow-xl transition-all duration-300 group;
     background: rgba(255, 255, 255, 0.95);
@@ -1218,18 +1218,18 @@
     border: 1px solid rgba(226, 232, 240, 0.8);
   }
   
-  .webos-multitasking-card:hover {
+  .loomos-multitasking-card:hover {
     transform: scale(1.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 
   /* Universal Search */
-  .webos-universal-search {
+  .loomos-universal-search {
     @apply fixed inset-0 z-50 bg-black/40 backdrop-blur-md;
     @apply flex flex-col items-center pt-32 px-4;
   }
 
-  .webos-search-bar {
+  .loomos-search-bar {
     @apply w-full max-w-2xl px-6 py-4 flex items-center gap-4;
     @apply rounded-3xl shadow-2xl mb-6;
     /* Warm webOS surface for search */
@@ -1238,39 +1238,39 @@
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
-  .dark .webos-search-bar {
+  .dark .loomos-search-bar {
     background: rgba(56, 56, 56, 0.98);
     border: 1px solid rgba(76, 76, 76, 0.6);
   }
 
-  .webos-search-input {
+  .loomos-search-input {
     @apply flex-1 bg-transparent border-none outline-none text-lg;
     @apply placeholder:text-muted-foreground;
   }
 
   /* WebOS Email/Messages App Styles */
-  .webos-status-select {
+  .loomos-status-select {
     @apply bg-transparent border-none outline-none cursor-pointer;
     @apply text-white font-bold text-xs;
   }
 
-  .webos-header {
+  .loomos-header {
     @apply px-5 py-4 border-b flex-shrink-0;
     background: linear-gradient(180deg, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 88%) 100%);
     border-bottom: 1px solid hsl(0, 0%, 73%);
   }
 
-  .dark .webos-header {
+  .dark .loomos-header {
     background: linear-gradient(180deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 18%) 100%);
     border-bottom: 1px solid hsl(0, 0%, 16%);
   }
 
-  .webos-header-title {
+  .loomos-header-title {
     @apply text-4xl font-light tracking-wide;
     color: hsl(0, 0%, 38%);
   }
 
-  .dark .webos-header-title {
+  .dark .loomos-header-title {
     color: hsl(0, 0%, 70%);
   }
 
@@ -1280,79 +1280,79 @@
      ======================================== */
   
   /* Multi-Pane Container - Horizontal Flex Layout */
-  .webos-multi-pane-layout {
+  .loomos-multi-pane-layout {
     @apply flex flex-row h-full w-full overflow-hidden;
   }
   
   /* Base Pane Styles */
-  .webos-pane {
+  .loomos-pane {
     @apply flex flex-col flex-shrink-0 h-full overflow-hidden;
-    border-right: 1px solid var(--webos-divider);
-    background-color: var(--webos-bg-secondary);
+    border-right: 1px solid var(--loomos-divider);
+    background-color: var(--loomos-bg-secondary);
   }
   
   /* Navigation Pane (Left - Narrowest) */
-  .webos-pane-navigation {
-    width: var(--webos-pane-narrow);
+  .loomos-pane-navigation {
+    width: var(--loomos-pane-narrow);
     background: linear-gradient(180deg, hsl(0, 0%, 87%) 0%, hsl(0, 0%, 81%) 100%);
   }
   
-  .dark .webos-pane-navigation {
+  .dark .loomos-pane-navigation {
     background: linear-gradient(180deg, hsl(0, 0%, 25%) 0%, hsl(0, 0%, 20%) 100%);
   }
   
   /* List Pane (Middle) */
-  .webos-pane-list {
-    width: var(--webos-pane-medium);
-    background-color: var(--webos-bg-tertiary);
+  .loomos-pane-list {
+    width: var(--loomos-pane-medium);
+    background-color: var(--loomos-bg-tertiary);
   }
   
-  .dark .webos-pane-list {
+  .dark .loomos-pane-list {
     @apply bg-zinc-900;
   }
   
   /* Detail Pane (Right - Flexible Width) */
-  .webos-pane-detail {
+  .loomos-pane-detail {
     @apply flex-1 min-w-0;
-    background-color: var(--webos-bg-tertiary);
+    background-color: var(--loomos-bg-tertiary);
     border-right: none;
   }
   
-  .dark .webos-pane-detail {
+  .dark .loomos-pane-detail {
     @apply bg-zinc-900;
   }
 
   /* Legacy aliases for backward compatibility */
-  .webos-pane-sidebar {
+  .loomos-pane-sidebar {
     @apply w-60 flex-shrink-0 flex flex-col border-r;
     background: linear-gradient(180deg, hsl(0, 0%, 87%) 0%, hsl(0, 0%, 81%) 100%);
     border-right: 1px solid hsl(0, 0%, 60%);
   }
 
-  .dark .webos-pane-sidebar {
+  .dark .loomos-pane-sidebar {
     background: linear-gradient(180deg, hsl(0, 0%, 25%) 0%, hsl(0, 0%, 20%) 100%);
     border-right: 1px solid hsl(0, 0%, 16%);
   }
   
   /* Responsive Behavior for Panes */
   @media (max-width: 1024px) {
-    .webos-pane-navigation,
-    .webos-pane-list {
+    .loomos-pane-navigation,
+    .loomos-pane-list {
       position: absolute;
       left: -100%;
       top: 0;
       bottom: 0;
       z-index: 10;
-      transition: left var(--webos-transition-base);
+      transition: left var(--loomos-transition-base);
     }
     
-    .webos-pane-navigation.visible,
-    .webos-pane-list.visible {
+    .loomos-pane-navigation.visible,
+    .loomos-pane-list.visible {
       left: 0;
-      box-shadow: var(--webos-shadow-xl);
+      box-shadow: var(--loomos-shadow-xl);
     }
     
-    .webos-pane-detail {
+    .loomos-pane-detail {
       width: 100%;
     }
   }
@@ -1362,165 +1362,165 @@
      ======================================== */
   
   /* Pane Header Styles */
-  .webos-header {
+  .loomos-header {
     @apply px-4 py-3 flex items-center justify-between flex-shrink-0;
     background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
     border-bottom: 1px solid hsl(0, 0%, 16%);
-    min-height: var(--webos-header-height);
+    min-height: var(--loomos-header-height);
   }
   
-  .dark .webos-header {
+  .dark .loomos-header {
     background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
   }
   
-  .webos-header-title {
+  .loomos-header-title {
     @apply text-xs font-bold tracking-wider uppercase text-white;
   }
   
-  .webos-header-actions {
+  .loomos-header-actions {
     @apply flex items-center gap-2;
   }
   
   /* Pane Footer Styles */
-  .webos-footer {
+  .loomos-footer {
     @apply flex items-center justify-center gap-2 px-3 py-2 flex-shrink-0;
     background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
     border-top: 1px solid hsl(0, 0%, 16%);
-    min-height: var(--webos-footer-height);
+    min-height: var(--loomos-footer-height);
   }
   
-  .dark .webos-footer {
+  .dark .loomos-footer {
     background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
   }
 
   /* Legacy Pane Header Styles */
-  .webos-pane-header {
+  .loomos-pane-header {
     @apply px-3 py-2 text-xs font-bold tracking-wide;
     background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
     color: white;
   }
 
-  .dark .webos-pane-header {
+  .dark .loomos-pane-header {
     background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
   }
 
-  .webos-pane-header-light {
+  .loomos-pane-header-light {
     @apply px-3.5 py-3 border-b;
     background: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 94%) 100%);
   }
 
-  .dark .webos-pane-header-light {
+  .dark .loomos-pane-header-light {
     background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 16%) 100%);
   }
 
-  .webos-toolbar {
+  .loomos-toolbar {
     @apply px-2.5 py-2.5 flex items-center justify-center gap-2.5 border-t flex-shrink-0;
     background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
     border-top: 1px solid hsl(0, 0%, 16%);
     height: 48px;
   }
 
-  .dark .webos-toolbar {
+  .dark .loomos-toolbar {
     background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
   }
 
-  .webos-toolbar-button {
+  .loomos-toolbar-button {
     @apply bg-transparent border-none p-1.5 flex items-center transition-colors;
     color: hsl(0, 0%, 60%);
     cursor: pointer;
   }
 
-  .webos-toolbar-button:hover {
+  .loomos-toolbar-button:hover {
     color: hsl(25, 85%, 55%);
   }
 
-  .webos-toolbar-button-light {
+  .loomos-toolbar-button-light {
     @apply bg-transparent border-none p-1.5 flex items-center transition-colors;
     color: white;
     cursor: pointer;
   }
 
-  .webos-toolbar-button-light:hover {
+  .loomos-toolbar-button-light:hover {
     color: hsl(25, 85%, 55%);
   }
 
-  .webos-list-header {
+  .loomos-list-header {
     @apply px-3.5 py-1.5 text-xs font-bold sticky top-0 z-10;
     background: linear-gradient(180deg, hsl(0, 0%, 95%) 0%, hsl(0, 0%, 91%) 100%);
     color: hsl(0, 0%, 48%);
   }
 
-  .dark .webos-list-header {
+  .dark .loomos-list-header {
     background: linear-gradient(180deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 18%) 100%);
     color: hsl(0, 0%, 60%);
   }
 
   /* WebOS Color Utilities */
-  .webos-text {
+  .loomos-text {
     color: hsl(0, 0%, 13%);
   }
 
-  .dark .webos-text {
+  .dark .loomos-text {
     color: hsl(30, 10%, 88%);
   }
 
-  .webos-badge {
+  .loomos-badge {
     color: hsl(0, 0%, 48%);
   }
 
-  .dark .webos-badge {
+  .dark .loomos-badge {
     color: hsl(0, 0%, 60%);
   }
 
-  .webos-orange {
+  .loomos-orange {
     color: hsl(25, 85%, 55%);
   }
 
-  .webos-active {
+  .loomos-active {
     background-color: hsl(0, 0%, 16%);
   }
 
-  .webos-hover:hover {
+  .loomos-hover:hover {
     background-color: hsl(0, 0%, 80%);
   }
 
-  .dark .webos-hover:hover {
+  .dark .loomos-hover:hover {
     background-color: hsl(0, 0%, 28%);
   }
 
-  .webos-divider {
+  .loomos-divider {
     border-color: hsl(0, 0%, 73%);
   }
 
-  .dark .webos-divider {
+  .dark .loomos-divider {
     border-color: hsl(0, 0%, 30%);
   }
 
-  .webos-list-divider {
+  .loomos-list-divider {
     border-color: hsl(0, 0%, 93%);
   }
 
-  .dark .webos-list-divider {
+  .dark .loomos-list-divider {
     border-color: hsl(0, 0%, 25%);
   }
 
-  .webos-list-hover {
+  .loomos-list-hover {
     background-color: hsl(0, 0%, 97%);
   }
 
-  .dark .webos-list-hover {
+  .dark .loomos-list-hover {
     background-color: hsl(0, 0%, 22%);
   }
 
-  .webos-avatar {
+  .loomos-avatar {
     background-color: hsl(0, 0%, 81%);
   }
 
-  .dark .webos-avatar {
+  .dark .loomos-avatar {
     background-color: hsl(0, 0%, 35%);
   }
 
-  .webos-search-results {
+  .loomos-search-results {
     @apply w-full max-w-2xl rounded-3xl shadow-2xl;
     @apply overflow-hidden max-h-[60vh] overflow-y-auto;
     /* Warm webOS surface for search results */
@@ -1529,49 +1529,49 @@
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
-  .dark .webos-search-results {
+  .dark .loomos-search-results {
     background: rgba(56, 56, 56, 0.98);
     border: 1px solid rgba(76, 76, 76, 0.6);
   }
 
-  .webos-search-category {
+  .loomos-search-category {
     @apply p-4 border-b border-border/50 last:border-b-0;
   }
 
-  .webos-search-category-title {
+  .loomos-search-category-title {
     @apply text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-2;
   }
 
-  .webos-search-result {
+  .loomos-search-result {
     @apply flex items-center gap-3 p-3 rounded-xl cursor-pointer;
     @apply hover:bg-primary/5 transition-colors duration-150;
   }
 
   /* Gradient backgrounds */
   .bg-gradient-webos {
-    @apply bg-gradient-to-br from-webos-grey-light to-zinc-200;
+    @apply bg-gradient-to-br from-loomos-grey-light to-zinc-200;
   }
 
   .bg-gradient-orange {
-    @apply bg-gradient-to-br from-webos-orange to-webos-orange-dark;
+    @apply bg-gradient-to-br from-loomos-orange to-loomos-orange-dark;
   }
 
   .bg-gradient-charcoal {
-    @apply bg-gradient-to-br from-webos-grey to-webos-grey-dark;
+    @apply bg-gradient-to-br from-loomos-grey to-loomos-grey-dark;
   }
 
   /* AI Assistant Styles */
-  .webos-assistant-bubble {
+  .loomos-assistant-bubble {
     @apply w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl;
     @apply transition-all duration-300 hover:scale-110 cursor-pointer;
     background: linear-gradient(135deg, #F18825, #F5A34E);
   }
 
-  .webos-assistant-container {
+  .loomos-assistant-container {
     @apply animate-scale-in;
   }
 
-  .webos-assistant-panel {
+  .loomos-assistant-panel {
     @apply rounded-3xl shadow-2xl overflow-hidden flex flex-col;
     @apply transition-all duration-300;
     /* Warm webOS surface for assistant */
@@ -1580,84 +1580,84 @@
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
-  .dark .webos-assistant-panel {
+  .dark .loomos-assistant-panel {
     background: rgba(56, 56, 56, 0.98);
     border: 1px solid rgba(76, 76, 76, 0.6);
   }
 
-  .webos-assistant-panel-compact {
+  .loomos-assistant-panel-compact {
     @apply w-[380px] h-[500px];
   }
 
-  .webos-assistant-panel-expanded {
+  .loomos-assistant-panel-expanded {
     @apply w-[420px] h-[600px];
   }
 
-  .webos-assistant-header {
+  .loomos-assistant-header {
     @apply px-4 py-3 flex items-center justify-between;
     background: linear-gradient(to right, #F18825, #F5A34E);
   }
 
-  .webos-assistant-welcome {
+  .loomos-assistant-welcome {
     @apply p-4 rounded-2xl;
     background: linear-gradient(135deg, rgba(241, 136, 37, 0.08), rgba(245, 163, 78, 0.08));
     border: 1px solid rgba(241, 136, 37, 0.2);
   }
 
-  .webos-assistant-suggestion {
+  .loomos-assistant-suggestion {
     @apply flex items-center gap-3 p-3 rounded-xl;
     @apply bg-white hover:bg-muted/50 border border-border/50;
     @apply transition-all duration-150 cursor-pointer;
     @apply hover:shadow-md hover:border-primary/30;
   }
 
-  .webos-assistant-tip {
+  .loomos-assistant-tip {
     @apply flex items-start gap-2 p-3 rounded-xl;
     @apply bg-yellow-50 border border-yellow-200/50;
   }
 
-  .webos-assistant-input-area {
+  .loomos-assistant-input-area {
     @apply p-4 bg-muted/30 border-t border-border/50;
   }
 
   /* Custom Scrollbar */
-  .webos-scrollbar {
+  .loomos-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
 
-  .webos-scrollbar::-webkit-scrollbar {
+  .loomos-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
 
-  .webos-scrollbar::-webkit-scrollbar-track {
+  .loomos-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
 
-  .webos-scrollbar::-webkit-scrollbar-thumb {
+  .loomos-scrollbar::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
   }
 
-  .webos-scrollbar::-webkit-scrollbar-thumb:hover {
+  .loomos-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
   /* WebOS Text Styles */
-  .webos-text-title {
+  .loomos-text-title {
     @apply text-foreground font-bold tracking-tight;
   }
 
-  .webos-text-subtitle {
+  .loomos-text-subtitle {
     @apply text-muted-foreground;
   }
 
   /* WebOS Shadows */
-  .webos-shadow {
+  .loomos-shadow {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   }
 
-  .webos-shadow-lg {
+  .loomos-shadow-lg {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   }
 }
@@ -1890,12 +1890,12 @@
 }
 
 /* Improve readability in high contrast mode */
-.high-contrast .webos-status-bar-refined {
+.high-contrast .loomos-status-bar-refined {
   background: hsl(var(--background)) !important;
   border-bottom: 2px solid hsl(var(--border)) !important;
 }
 
-.high-contrast .webos-dock {
+.high-contrast .loomos-dock {
   background: hsl(var(--background)) !important;
   border-top: 2px solid hsl(var(--border)) !important;
 }
@@ -2262,8 +2262,8 @@ body {
 @media print {
   .no-print,
   nav,
-  .webos-dock,
-  .webos-status-bar-refined {
+  .loomos-dock,
+  .loomos-status-bar-refined {
     display: none !important;
   }
 
@@ -2394,62 +2394,62 @@ html {
   }
 }
 
-.webos-card-zoom-in {
+.loomos-card-zoom-in {
   animation: card-zoom-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.webos-card-dismiss {
+.loomos-card-dismiss {
   animation: card-zoom-out 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
 }
 
-.webos-card-maximized {
+.loomos-card-maximized {
   /* Maximized windows are above regular windows (50-89) but below status bar (100) */
   z-index: 90 !important;
   border-radius: 0 !important;
 }
 
-.webos-app-card-draggable[style*="border-radius: 0"] {
+.loomos-app-card-draggable[style*="border-radius: 0"] {
   border-radius: 0 !important;
 }
 
-.webos-app-card-draggable[style*="border-radius: 0"] .webos-app-card-header {
+.loomos-app-card-draggable[style*="border-radius: 0"] .loomos-app-card-header {
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
 
 /* Card Header Refinements */
-.webos-card-header-refined {
+.loomos-card-header-refined {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
 
 /* Card Content Area */
-.webos-card-content {
+.loomos-card-content {
   @apply flex-1 overflow-y-auto;
   overscroll-behavior: contain;
 }
 
 /* Better Scrollbars for Card Content */
-.webos-card-content::-webkit-scrollbar {
+.loomos-card-content::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-.webos-card-content::-webkit-scrollbar-track {
+.loomos-card-content::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.webos-card-content::-webkit-scrollbar-thumb {
+.loomos-card-content::-webkit-scrollbar-thumb {
   background: hsl(var(--muted-foreground) / 0.3);
   border-radius: 4px;
 }
 
-.webos-card-content::-webkit-scrollbar-thumb:hover {
+.loomos-card-content::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.5);
 }
 
 /* Smooth Touch Scrolling */
-.webos-card-content {
+.loomos-card-content {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
@@ -2473,16 +2473,16 @@ html, body {
 }
 
 /* Refined Interactive States */
-.webos-card button:focus-visible,
-.webos-card a:focus-visible {
+.loomos-card button:focus-visible,
+.loomos-card a:focus-visible {
   outline: 2px solid hsl(var(--primary));
   outline-offset: 2px;
   border-radius: 6px;
 }
 
 /* Touch Feedback for Interactive Elements */
-.webos-card button:active,
-.webos-card [role="button"]:active {
+.loomos-card button:active,
+.loomos-card [role="button"]:active {
   transform: scale(0.98);
   transition: transform 0.1s ease;
 }
@@ -2583,51 +2583,51 @@ html, body {
 }
 
 /* Enhanced Form Styles within Cards */
-.webos-card form .form-section {
+.loomos-card form .form-section {
   @apply space-y-4 mb-6 last:mb-0;
 }
 
-.webos-card form .form-section-header {
+.loomos-card form .form-section-header {
   @apply text-sm font-semibold text-muted-foreground mb-3 pb-2 border-b;
 }
 
 /* Better Focus Indicators for Forms */
-.webos-card input:focus,
-.webos-card select:focus,
-.webos-card textarea:focus {
+.loomos-card input:focus,
+.loomos-card select:focus,
+.loomos-card textarea:focus {
   @apply ring-2 ring-primary/20 border-primary;
 }
 
 /* Disabled State Improvements */
-.webos-card button:disabled,
-.webos-card input:disabled,
-.webos-card select:disabled,
-.webos-card textarea:disabled {
+.loomos-card button:disabled,
+.loomos-card input:disabled,
+.loomos-card select:disabled,
+.loomos-card textarea:disabled {
   @apply opacity-50 cursor-not-allowed;
 }
 
 /* High Contrast Mode Support */
 @media (prefers-contrast: high) {
-  .webos-card {
+  .loomos-card {
     border-width: 2px;
   }
   
-  .webos-card button {
+  .loomos-card button {
     border-width: 2px;
   }
 }
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  .webos-card-zoom-in,
-  .webos-card-dismiss,
+  .loomos-card-zoom-in,
+  .loomos-card-dismiss,
   .fade-in,
   .slide-up {
     animation: none;
   }
   
-  .webos-card,
-  .webos-card * {
+  .loomos-card,
+  .loomos-card * {
     transition: none !important;
   }
 }

@@ -1,8 +1,8 @@
 
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import '@/styles/webos-tokens.css';
-import '@/styles/webos-components.css';
+import '@/styles/loomos-tokens.css';
+import '@/styles/loomos-components.css';
 import { Providers } from '@/components/providers';
 import { PWAInstallPrompt } from '@/components/webos/pwa-install-prompt';
 import { PWAUpdateNotification } from '@/components/webos/pwa-update-notification';

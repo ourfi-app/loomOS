@@ -13,7 +13,7 @@ export interface BreadcrumbItem {
   icon?: React.ReactNode;
 }
 
-export interface WebOSBreadcrumbProps {
+export interface LoomOSBreadcrumbProps {
   items: BreadcrumbItem[];
   className?: string;
   showHome?: boolean;
@@ -21,13 +21,13 @@ export interface WebOSBreadcrumbProps {
 }
 
 /**
- * WebOS Breadcrumb Enhanced
+ * LoomOS Breadcrumb Enhanced
  * 
  * Breadcrumb navigation with animations and responsive behavior.
  * Reference: hierarchical-and-sideways-nav.png, task-flow-navigation.png
  * 
  * @example
- * <WebOSBreadcrumb 
+ * <LoomOSBreadcrumb 
  *   items={[
  *     { label: 'Home', href: '/dashboard' },
  *     { label: 'Messages', href: '/messages' },
@@ -36,12 +36,12 @@ export interface WebOSBreadcrumbProps {
  *   showHome
  * />
  */
-export function WebOSBreadcrumb({
+export function LoomOSBreadcrumb({
   items,
   className,
   showHome = false,
   maxItems = 4
-}: WebOSBreadcrumbProps) {
+}: LoomOSBreadcrumbProps) {
   // Truncate items if too many
   const displayItems = items.length > maxItems
     ? [
@@ -131,9 +131,9 @@ export function WebOSBreadcrumb({
 }
 
 /**
- * WebOS Breadcrumb Item Component (for manual composition)
+ * LoomOS Breadcrumb Item Component (for manual composition)
  */
-export interface WebOSBreadcrumbItemProps {
+export interface LoomOSBreadcrumbItemProps {
   children: React.ReactNode;
   href?: string;
   icon?: React.ReactNode;
@@ -141,13 +141,13 @@ export interface WebOSBreadcrumbItemProps {
   className?: string;
 }
 
-export function WebOSBreadcrumbItem({
+export function LoomOSBreadcrumbItem({
   children,
   href,
   icon,
   current,
   className
-}: WebOSBreadcrumbItemProps) {
+}: LoomOSBreadcrumbItemProps) {
   const content = (
     <>
       {icon}
@@ -191,5 +191,5 @@ export function WebOSBreadcrumbItem({
   );
 }
 
-WebOSBreadcrumb.displayName = 'WebOSBreadcrumb';
-WebOSBreadcrumbItem.displayName = 'WebOSBreadcrumbItem';
+LoomOSBreadcrumb.displayName = 'LoomOSBreadcrumb';
+LoomOSBreadcrumbItem.displayName = 'LoomOSBreadcrumbItem';

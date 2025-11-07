@@ -26,10 +26,10 @@ import { ErrorBoundary } from '@/components/common';
 import { CardSkeleton } from '@/components/common/skeleton-screens';
 import { toastSuccess, toastError, toastValidationError } from '@/lib/toast-helpers';
 import {
-  WebOSAppHeader,
-  WebOSSectionHeader,
-  WebOSActionButton,
-  WebOSLoadingState
+  LoomOSAppHeader,
+  LoomOSSectionHeader,
+  LoomOSActionButton,
+  LoomOSLoadingState
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 import { useProfile, useProfileMutations } from '@/hooks/use-api';
@@ -205,7 +205,7 @@ export default function ProfilePage() {
 
   // Loading state
   if (isLoading) {
-    return <WebOSLoadingState message="Loading profile..." />;
+    return <LoomOSLoadingState message="Loading profile..." />;
   }
 
   // Error state
@@ -238,7 +238,7 @@ export default function ProfilePage() {
           <div className="max-w-4xl mx-auto p-6 space-y-6">
           {/* Profile Overview Section */}
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-            <WebOSSectionHeader title="Profile Overview" />
+            <LoomOSSectionHeader title="Profile Overview" />
             
             <div className="p-6">
               <div className="flex items-start gap-6">
@@ -311,7 +311,7 @@ export default function ProfilePage() {
 
           {/* Edit Profile Form */}
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-            <WebOSSectionHeader title="Edit Profile" />
+            <LoomOSSectionHeader title="Edit Profile" />
             
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
               {message && (

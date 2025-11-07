@@ -50,27 +50,27 @@ export * from './toggle';
 export * from './tooltip';
 export * from './use-toast';
 
-// WebOS Components
+// LoomOS Components
 export {
-  WebOSDialog,
-  WebOSDialogTrigger,
-  WebOSDialogContent,
-  WebOSDialogHeader,
-  WebOSDialogTitle,
-  WebOSDialogDescription,
-  WebOSDialogBody,
-  WebOSDialogFooter,
-  WebOSDialogPrimaryAction,
-  WebOSDialogSecondaryAction,
-  WebOSDialogClose,
+  LoomOSDialog,
+  LoomOSDialogTrigger,
+  LoomOSDialogContent,
+  LoomOSDialogHeader,
+  LoomOSDialogTitle,
+  LoomOSDialogDescription,
+  LoomOSDialogBody,
+  LoomOSDialogFooter,
+  LoomOSDialogPrimaryAction,
+  LoomOSDialogSecondaryAction,
+  LoomOSDialogClose,
   ConfirmationDialog,
   TextEntryDialog,
   FormPopupDialog,
-  FormField as WebOSFormField,
-} from './webos-dialog';
-export { WebOSDatePicker } from './webos-date-picker';
+  FormField as LoomOSFormField,
+} from './loomos-dialog';
+export { LoomOSDatePicker } from './loomos-date-picker';
 export { FilePicker, AttachmentButton } from './file-picker';
 export { AudioPlayer, VideoPlayer } from './media-player';
 export { ShareDialog, ShareButton } from './share-dialog';
 export { SegmentedControl } from './segmented-control';
-export { WebOSButton } from './webos-button';
+export { LoomOSButton } from './loomos-button';

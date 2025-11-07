@@ -27,15 +27,15 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
-  WebOSMultiPaneLayout,
-  WebOSPane,
-  WebOSPaneHeader,
-  WebOSPaneContent,
-  WebOSPaneFooter,
+  LoomOSMultiPaneLayout,
+  LoomOSPane,
+  LoomOSPaneHeader,
+  LoomOSPaneContent,
+  LoomOSPaneFooter,
 } from '@/components/webos/multi-pane-layout';
-import { WebOSListItem, WebOSListItemContent } from '@/components/webos/webos-list-item';
-import { WebOSEmptyState } from '@/components/webos/webos-empty-state';
-import { WebOSSearchBar } from '@/components/webos/webos-search-bar';
+import { LoomOSListItem, LoomOSListItemContent } from '@/components/webos/loomos-list-item';
+import { LoomOSEmptyState } from '@/components/webos/loomos-empty-state';
+import { LoomOSSearchBar } from '@/components/webos/loomos-search-bar';
 import { ErrorBoundary } from '@/components/common';
 import { APP_COLORS } from '@/lib/app-design-system';
 import { cn } from '@/lib/utils';
@@ -362,12 +362,12 @@ export default function EmailApp() {
   return (
     <ErrorBoundary>
       <div className="h-full flex flex-col bg-[var(--webos-bg-primary)]">
-          <WebOSMultiPaneLayout className="flex-1">
+          <LoomOSMultiPaneLayout className="flex-1">
           {/* Pane 1: Navigation (Folders & Accounts) */}
-          <WebOSPane type="navigation" className="w-[240px]">
-            <WebOSPaneHeader title="FOLDERS" />
+          <LoomOSPane type="navigation" className="w-[240px]">
+            <LoomOSPaneHeader title="FOLDERS" />
             
-            <WebOSPaneContent>
+            <LoomOSPaneContent>
               {/* Favorites Section */}
               <div className="py-2">
                 {favorites.map((fav) => (
@@ -467,9 +467,9 @@ export default function EmailApp() {
                   </div>
                 ))}
               </div>
-            </WebOSPaneContent>
+            </LoomOSPaneContent>
 
-            <WebOSPaneFooter>
+            <LoomOSPaneFooter>
               <div className="flex items-center justify-center gap-2 py-2">
                 <Button
                   variant="ghost"
@@ -480,12 +480,12 @@ export default function EmailApp() {
                   <MoreVertical size={18} />
                 </Button>
               </div>
-            </WebOSPaneFooter>
-          </WebOSPane>
+            </LoomOSPaneFooter>
+          </LoomOSPane>
 
           {/* Pane 2: Email List */}
-          <WebOSPane type="list" className="w-[320px]">
-            <WebOSPaneHeader
+          <LoomOSPane type="list" className="w-[320px]">
+            <LoomOSPaneHeader
               title={favorites.find((f) => f.id === selectedFolder)?.label || 'Inbox'}
               actions={
                 <div className="flex items-center gap-2">
@@ -497,16 +497,16 @@ export default function EmailApp() {
             />
 
             <div className="px-4 py-3 border-b border-[var(--webos-divider)]">
-              <WebOSSearchBar
+              <LoomOSSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}
                 placeholder="Search emails..."
               />
             </div>
 
-            <WebOSPaneContent>
+            <LoomOSPaneContent>
               {filteredEmails.length === 0 ? (
-                <WebOSEmptyState
+                <LoomOSEmptyState
                   icon={<Mail size={48} />}
                   title="No emails"
                   description="No emails found in this folder"
@@ -522,7 +522,7 @@ export default function EmailApp() {
 
                       {/* Email Items */}
                       {groupEmails.map((email) => (
-                        <WebOSListItem
+                        <LoomOSListItem
                           key={email.id}
                           selected={selectedEmail?.id === email.id}
                           unread={email.unread}
@@ -530,7 +530,7 @@ export default function EmailApp() {
                           onSwipeLeft={() => handleDeleteEmail(email.id)}
                           onSwipeRight={() => handleArchiveEmail(email.id)}
                         >
-                          <WebOSListItemContent
+                          <LoomOSListItemContent
                             title={
                               <div className="flex items-center justify-between gap-2 w-full">
                                 <span className={cn(email.unread && 'font-bold')}>{email.from}</span>
@@ -566,15 +566,15 @@ export default function EmailApp() {
                               </span>
                             }
                           />
-                        </WebOSListItem>
+                        </LoomOSListItem>
                       ))}
                     </div>
                   ))}
                 </>
               )}
-            </WebOSPaneContent>
+            </LoomOSPaneContent>
 
-            <WebOSPaneFooter>
+            <LoomOSPaneFooter>
               <div className="flex items-center justify-center gap-3 py-2">
                 <Button
                   variant="ghost"
@@ -593,11 +593,11 @@ export default function EmailApp() {
                   <RefreshCw size={18} />
                 </Button>
               </div>
-            </WebOSPaneFooter>
-          </WebOSPane>
+            </LoomOSPaneFooter>
+          </LoomOSPane>
 
           {/* Pane 3: Email Detail */}
-          <WebOSPane type="detail">
+          <LoomOSPane type="detail">
             {selectedEmail ? (
               <>
                 {/* Email Header */}
@@ -665,16 +665,16 @@ export default function EmailApp() {
                 </div>
 
                 {/* Email Body */}
-                <WebOSPaneContent>
+                <LoomOSPaneContent>
                   <div className="px-6 py-6">
                     <div className="text-[15px] leading-relaxed text-gray-800 whitespace-pre-wrap">
                       {selectedEmail.body || selectedEmail.preview}
                     </div>
                   </div>
-                </WebOSPaneContent>
+                </LoomOSPaneContent>
 
                 {/* Action Footer */}
-                <WebOSPaneFooter>
+                <LoomOSPaneFooter>
                   <div className="flex items-center gap-3 py-3 px-5">
                     <Button
                       variant="default"
@@ -710,19 +710,19 @@ export default function EmailApp() {
                       <Trash2 size={18} />
                     </Button>
                   </div>
-                </WebOSPaneFooter>
+                </LoomOSPaneFooter>
               </>
             ) : (
               <div className="flex-1 flex items-center justify-center">
-                <WebOSEmptyState
+                <LoomOSEmptyState
                   icon={<Mail size={48} />}
                   title="Nothing selected"
                   description="Select an email to view its contents"
                 />
               </div>
             )}
-          </WebOSPane>
-          </WebOSMultiPaneLayout>
+          </LoomOSPane>
+          </LoomOSMultiPaneLayout>
       </div>
     </ErrorBoundary>
   );

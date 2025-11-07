@@ -2,9 +2,9 @@
 'use client';
 
 /**
- * WebOS Date Picker Component
- * Based on WebOS design patterns for date selection
- * Features a custom visual calendar matching WebOS style
+ * loomOS Date Picker Component
+ * Based on loomOS design patterns for date selection
+ * Features a custom visual calendar matching loomOS style
  */
 
 import * as React from 'react';
@@ -15,19 +15,19 @@ import { DayPicker } from 'react-day-picker';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
-export type WebOSDatePickerProps = {
+export type LoomOSDatePickerProps = {
   date?: Date;
   onDateChange?: (date: Date | undefined) => void;
   disabled?: boolean;
   placeholder?: string;
 };
 
-export function WebOSDatePicker({
+export function LoomOSDatePicker({
   date,
   onDateChange,
   disabled,
   placeholder = 'No due date',
-}: WebOSDatePickerProps) {
+}: LoomOSDatePickerProps) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handleSelect = (selectedDate: Date | undefined) => {
@@ -60,7 +60,7 @@ export function WebOSDatePicker({
             'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95'
           )}
         >
-          {/* Custom WebOS Calendar */}
+          {/* Custom loomOS Calendar */}
           <div className="p-3">
             <DayPicker
               mode="single"

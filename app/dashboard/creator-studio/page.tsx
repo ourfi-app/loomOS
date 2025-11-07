@@ -12,7 +12,7 @@ import {
   Shield
 } from 'lucide-react';
 import {
-  WebOSNavigationPane,
+  LoomOSNavigationPane,
   DesktopAppWrapper
 } from '@/components/webos';
 import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
@@ -95,7 +95,7 @@ export default function CreatorStudioPage() {
       gradient={appDef?.gradient || 'from-violet-500 via-purple-500 to-fuchsia-500'}
     >
       <div className="h-full flex overflow-hidden">
-        <WebOSNavigationPane
+        <LoomOSNavigationPane
           title="Creator Tools"
           items={navItems}
         />

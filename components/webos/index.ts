@@ -15,22 +15,22 @@ export * from './card-view';
 export * from './card-stack-manager';
 
 // Pane components
-export * from './webos-pane-container';
-export * from './webos-navigation-pane';
-export * from './webos-list-pane';
-export * from './webos-detail-pane';
-export * from './webos-nav-list-item';
-export * from './webos-list-item';
-export * from './webos-list-item-enhanced';
-export * from './webos-list-divider';
-export * from './webos-empty-state';
-export * from './webos-loading-state';
+export * from './loomos-pane-container';
+export * from './loomos-navigation-pane';
+export * from './loomos-list-pane';
+export * from './loomos-detail-pane';
+export * from './loomos-nav-list-item';
+export * from './loomos-list-item';
+export * from './loomos-list-item-enhanced';
+export * from './loomos-list-divider';
+export * from './loomos-empty-state';
+export * from './loomos-loading-state';
 
 // UI components
-export * from './webos-app-header';
-export * from './webos-section-header';
-export * from './webos-action-button';
-export * from './webos-group-box';
+export * from './loomos-app-header';
+export * from './loomos-section-header';
+export * from './loomos-action-button';
+export * from './loomos-group-box';
 
 // Mobile components
 export * from './mobile-bottom-sheet';

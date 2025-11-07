@@ -2,7 +2,7 @@
 
 import React, { ReactNode } from 'react';
 
-interface WebOSActionButtonProps {
+interface LoomOSActionButtonProps {
   children: ReactNode;
   onClick?: () => void;
   icon?: ReactNode;
@@ -12,7 +12,7 @@ interface WebOSActionButtonProps {
   className?: string;
 }
 
-export function WebOSActionButton({
+export function LoomOSActionButton({
   children,
   onClick,
   icon,
@@ -20,7 +20,7 @@ export function WebOSActionButton({
   size = 'md',
   disabled = false,
   className = ''
-}: WebOSActionButtonProps) {
+}: LoomOSActionButtonProps) {
   const baseClasses = 'rounded-lg font-semibold transition-all shadow-sm flex items-center justify-center gap-2';
   
   const variantClasses = {

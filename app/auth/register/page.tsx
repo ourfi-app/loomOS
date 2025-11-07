@@ -201,7 +201,7 @@ export default function RegisterPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#2196F3] focus:ring-[#2196F3] text-[#2D2D2D]"
+                className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
@@ -218,7 +218,7 @@ export default function RegisterPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#2196F3] focus:ring-[#2196F3] text-[#2D2D2D]"
+                className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
@@ -236,7 +236,7 @@ export default function RegisterPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#2196F3] focus:ring-[#2196F3] text-[#2D2D2D]"
+                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
                   disabled={isLoading || isGoogleLoading}
                 />
               </div>
@@ -253,7 +253,7 @@ export default function RegisterPage() {
                   value={formData.unitNumber}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#2196F3] focus:ring-[#2196F3] text-[#2D2D2D]"
+                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
                   disabled={isLoading || isGoogleLoading}
                 />
               </div>
@@ -272,7 +272,7 @@ export default function RegisterPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#2196F3] focus:ring-[#2196F3] text-[#2D2D2D] pr-10"
+                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D] pr-10"
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
@@ -300,7 +300,7 @@ export default function RegisterPage() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#2196F3] focus:ring-[#2196F3] text-[#2D2D2D] pr-10"
+                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D] pr-10"
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
@@ -331,7 +331,7 @@ export default function RegisterPage() {
             Already have an account?{' '}
             <Link 
               href="/auth/login" 
-              className="text-[#2196F3] hover:text-[#1976D2] font-medium"
+              className="text-[#F18825] hover:text-[#1976D2] font-medium"
             >
               Sign in
             </Link>

@@ -3,19 +3,19 @@
 import React from 'react';
 import { Search, X } from 'lucide-react';
 
-interface WebOSSearchInputProps {
+interface LoomOSSearchInputProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
 }
 
-export function WebOSSearchInput({
+export function LoomOSSearchInput({
   value,
   onChange,
   placeholder = 'Search...',
   className = ''
-}: WebOSSearchInputProps) {
+}: LoomOSSearchInputProps) {
   return (
     <div className={`relative ${className}`}>
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />

@@ -18,7 +18,7 @@
 
   /* Signature Colors */
   --loomos-accent: #F18825;           /* loomOS signature orange - liberation & warmth */
-  --loomos-primary: #2196F3;          /* Trust blue - reliability & openness */
+  --loomos-primary: #F18825;          /* Trust blue - reliability & openness */
   --loomos-success: #4CAF50;          /* Growth green - freedom & progress */
   --loomos-warning: #FF9800;          /* Attention orange */
   --loomos-error: #F44336;            /* Alert red */
@@ -46,7 +46,7 @@
   --loomos-border-dark: #999999;
 
   /* Status Colors */
-  --loomos-status-unread: #2196F3;
+  --loomos-status-unread: #F18825;
   --loomos-status-important: #F44336;
   --loomos-status-archived: #999999;
 

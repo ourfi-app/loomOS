@@ -4,7 +4,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface WebOSGroupBoxProps {
+export interface LoomOSGroupBoxProps {
   title?: string;
   description?: string;
   children: React.ReactNode;
@@ -15,25 +15,25 @@ export interface WebOSGroupBoxProps {
 }
 
 /**
- * WebOS Group Box
+ * LoomOS Group Box
  * 
  * Container for related form fields or list items with optional title and description.
  * Reference: list-items-group-boxes.png, forms-setting-values-3.png
  * 
  * @example
- * <WebOSGroupBox title="Email Address">
- *   <WebOSTextField placeholder="user@example.com" />
- * </WebOSGroupBox>
+ * <LoomOSGroupBox title="Email Address">
+ *   <LoomOSTextField placeholder="user@example.com" />
+ * </LoomOSGroupBox>
  * 
- * <WebOSGroupBox 
+ * <LoomOSGroupBox 
  *   title="Network Settings"
  *   description="Configure your connection"
  *   variant="dark"
  * >
  *   {children}
- * </WebOSGroupBox>
+ * </LoomOSGroupBox>
  */
-export function WebOSGroupBox({
+export function LoomOSGroupBox({
   title,
   description,
   children,
@@ -41,7 +41,7 @@ export function WebOSGroupBox({
   className,
   titleClassName,
   descriptionClassName
-}: WebOSGroupBoxProps) {
+}: LoomOSGroupBoxProps) {
   return (
     <div
       className={cn(
@@ -89,4 +89,4 @@ export function WebOSGroupBox({
   );
 }
 
-WebOSGroupBox.displayName = 'WebOSGroupBox';
+LoomOSGroupBox.displayName = 'LoomOSGroupBox';

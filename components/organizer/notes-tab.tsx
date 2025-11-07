@@ -23,11 +23,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import {
-  WebOSListItemEnhanced,
-  WebOSNavigationPane,
-  WebOSDetailPane,
-  WebOSEmptyState,
-  WebOSLoadingState,
+  LoomOSListItemEnhanced,
+  LoomOSNavigationPane,
+  LoomOSDetailPane,
+  LoomOSEmptyState,
+  LoomOSLoadingState,
 } from '@/components/webos';
 import { useNotes, useNoteMutations } from '@/hooks/use-api';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
@@ -161,7 +161,7 @@ export default function NotesTab() {
   return (
     <div className="h-full flex">
       {/* Categories Navigation */}
-      <WebOSNavigationPane title="CATEGORIES" items={navItems} />
+      <LoomOSNavigationPane title="CATEGORIES" items={navItems} />
 
       {/* Notes List */}
       <div className="w-80 flex-shrink-0 border-r border-border flex flex-col">
@@ -187,9 +187,9 @@ export default function NotesTab() {
 
         <ScrollArea className="flex-1">
           {isLoading ? (
-            <WebOSLoadingState message="Loading notes..." />
+            <LoomOSLoadingState message="Loading notes..." />
           ) : notes.length === 0 ? (
-            <WebOSEmptyState
+            <LoomOSEmptyState
               icon={<FileText className="w-12 h-12" />}
               title="No notes"
               description="Create your first note to get started"
@@ -203,7 +203,7 @@ export default function NotesTab() {
           ) : (
             <div>
               {notes.map((note: any, index: number) => (
-                <WebOSListItemEnhanced
+                <LoomOSListItemEnhanced
                   key={note.id}
                   selected={selectedNote?.id === note.id}
                   onClick={() => {
@@ -235,7 +235,7 @@ export default function NotesTab() {
                       </div>
                     </div>
                   </div>
-                </WebOSListItemEnhanced>
+                </LoomOSListItemEnhanced>
               ))}
             </div>
           )}
@@ -281,7 +281,7 @@ export default function NotesTab() {
           </>
         ) : (
           // View Mode
-          <WebOSDetailPane
+          <LoomOSDetailPane
             title={selectedNote?.title}
             subtitle={selectedNote ? new Date(selectedNote.updatedAt).toLocaleString() : undefined}
             actions={
@@ -339,7 +339,7 @@ export default function NotesTab() {
                 </div>
               </ScrollArea>
             )}
-          </WebOSDetailPane>
+          </LoomOSDetailPane>
         )}
       </div>
     </div>

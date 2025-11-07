@@ -2,8 +2,8 @@
 'use client';
 
 /**
- * WebOS Media Player Components
- * Based on WebOS design patterns for audio/video playback
+ * LoomOS Media Player Components
+ * Based on LoomOS design patterns for audio/video playback
  */
 
 import * as React from 'react';
