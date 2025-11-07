@@ -3,7 +3,9 @@
  * Provides safe access to the email service and common email templates
  */
 
-import { ServiceRegistry, loadServiceConfig, EmailService } from '@loomos/core';
+import { ServiceRegistry } from '@/packages/core/src/services/ServiceRegistry';
+import { loadServiceConfig } from '@/packages/core/src/services/config/loadServiceConfig';
+import type { EmailService } from '@/packages/core/src/services/email/EmailService';
 
 /**
  * Get email service with lazy initialization
