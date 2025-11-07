@@ -1,0 +1,311 @@
+/**
+ * loomOS Semantic Design Tokens
+ *
+ * These tokens map core tokens to CONTEXTUAL MEANINGS.
+ * Apps can override these to customize their appearance while maintaining compatibility.
+ *
+ * Default Theme: loomOS Orange
+ * Apps can create theme files that override these semantic mappings.
+ *
+ * Version: 1.0
+ * Last Updated: November 7, 2025
+ */
+
+/* Import core tokens first */
+@import './core.css';
+
+:root {
+  /* ========================================
+     SEMANTIC COLORS - Customizable by Apps
+     ======================================== */
+
+  /* Primary Brand (defaults to loomOS Orange) */
+  --semantic-primary: var(--loomos-orange);
+  --semantic-primary-light: var(--loomos-orange-light);
+  --semantic-primary-dark: var(--loomos-orange-dark);
+  --semantic-primary-subtle: var(--loomos-orange-subtle);
+
+  /* Secondary/Accent (defaults to Trust Blue) */
+  --semantic-accent: var(--trust-blue);
+  --semantic-accent-light: var(--trust-blue-light);
+  --semantic-accent-dark: var(--trust-blue-dark);
+  --semantic-accent-subtle: var(--trust-blue-subtle);
+
+  /* Tertiary (defaults to Growth Green) */
+  --semantic-tertiary: var(--growth-green);
+  --semantic-tertiary-light: var(--growth-green-light);
+  --semantic-tertiary-dark: var(--growth-green-dark);
+  --semantic-tertiary-subtle: var(--growth-green-subtle);
+
+  /* ========================================
+     SURFACE COLORS
+     ======================================== */
+
+  /* Backgrounds */
+  --semantic-bg-base: var(--warm-gray-50);           /* Main app background */
+  --semantic-bg-subtle: var(--warm-gray-100);        /* Subtle background areas */
+  --semantic-bg-muted: var(--warm-gray-200);         /* Muted background areas */
+
+  /* Surfaces */
+  --semantic-surface-base: #FFFFFF;                   /* Base surface (cards) */
+  --semantic-surface-elevated: #FFFFFF;               /* Elevated surfaces */
+  --semantic-surface-overlay: rgba(255, 255, 255, 0.95); /* Overlays, modals */
+  --semantic-surface-sunken: var(--warm-gray-100);   /* Sunken/inset surfaces */
+
+  /* Interactive Surfaces */
+  --semantic-surface-hover: var(--warm-gray-100);    /* Hover state background */
+  --semantic-surface-active: var(--warm-gray-200);   /* Active/pressed state */
+  --semantic-surface-selected: var(--loomos-orange-subtle); /* Selected state */
+
+  /* ========================================
+     TEXT COLORS
+     ======================================== */
+
+  --semantic-text-primary: var(--warm-gray-900);     /* Primary text */
+  --semantic-text-secondary: var(--warm-gray-700);   /* Secondary text */
+  --semantic-text-tertiary: var(--warm-gray-500);    /* Tertiary/hint text */
+  --semantic-text-disabled: var(--warm-gray-400);    /* Disabled text */
+  --semantic-text-inverse: #FFFFFF;                  /* Text on dark backgrounds */
+  --semantic-text-link: var(--semantic-primary);     /* Links */
+  --semantic-text-link-hover: var(--semantic-primary-dark); /* Link hover */
+
+  /* ========================================
+     BORDER COLORS
+     ======================================== */
+
+  --semantic-border-light: var(--warm-gray-200);     /* Subtle borders */
+  --semantic-border-medium: var(--warm-gray-300);    /* Default borders */
+  --semantic-border-strong: var(--warm-gray-400);    /* Strong borders */
+  --semantic-border-focus: var(--semantic-primary);  /* Focus ring */
+
+  /* ========================================
+     STATUS/FEEDBACK COLORS
+     ======================================== */
+
+  /* Success */
+  --semantic-success: var(--success-green);
+  --semantic-success-light: var(--success-green-light);
+  --semantic-success-dark: var(--success-green-dark);
+  --semantic-success-bg: var(--success-green-subtle);
+  --semantic-success-border: var(--success-green);
+  --semantic-success-text: var(--success-green-dark);
+
+  /* Error */
+  --semantic-error: var(--error-red);
+  --semantic-error-light: var(--error-red-light);
+  --semantic-error-dark: var(--error-red-dark);
+  --semantic-error-bg: var(--error-red-subtle);
+  --semantic-error-border: var(--error-red);
+  --semantic-error-text: var(--error-red-dark);
+
+  /* Warning */
+  --semantic-warning: var(--warning-orange);
+  --semantic-warning-light: var(--warning-orange-light);
+  --semantic-warning-dark: var(--warning-orange-dark);
+  --semantic-warning-bg: var(--warning-orange-subtle);
+  --semantic-warning-border: var(--warning-orange);
+  --semantic-warning-text: var(--warning-orange-dark);
+
+  /* Info */
+  --semantic-info: var(--info-blue);
+  --semantic-info-light: var(--info-blue-light);
+  --semantic-info-dark: var(--info-blue-dark);
+  --semantic-info-bg: var(--info-blue-subtle);
+  --semantic-info-border: var(--info-blue);
+  --semantic-info-text: var(--info-blue-dark);
+
+  /* ========================================
+     COMPONENT-SPECIFIC SEMANTICS
+     ======================================== */
+
+  /* Buttons */
+  --semantic-btn-primary-bg: var(--semantic-primary);
+  --semantic-btn-primary-text: #FFFFFF;
+  --semantic-btn-primary-hover: var(--semantic-primary-dark);
+  --semantic-btn-primary-active: var(--semantic-primary-dark);
+
+  --semantic-btn-secondary-bg: var(--semantic-accent);
+  --semantic-btn-secondary-text: #FFFFFF;
+  --semantic-btn-secondary-hover: var(--semantic-accent-dark);
+  --semantic-btn-secondary-active: var(--semantic-accent-dark);
+
+  --semantic-btn-ghost-bg: transparent;
+  --semantic-btn-ghost-text: var(--semantic-primary);
+  --semantic-btn-ghost-hover: var(--semantic-primary-subtle);
+  --semantic-btn-ghost-active: var(--semantic-primary-subtle);
+
+  /* Inputs */
+  --semantic-input-bg: var(--semantic-surface-base);
+  --semantic-input-border: var(--semantic-border-medium);
+  --semantic-input-border-hover: var(--semantic-border-strong);
+  --semantic-input-border-focus: var(--semantic-primary);
+  --semantic-input-text: var(--semantic-text-primary);
+  --semantic-input-placeholder: var(--semantic-text-tertiary);
+
+  /* Cards */
+  --semantic-card-bg: var(--semantic-surface-base);
+  --semantic-card-border: var(--semantic-border-light);
+  --semantic-card-shadow: var(--shadow-card);
+  --semantic-card-shadow-hover: var(--shadow-card-hover);
+  --semantic-card-shadow-active: var(--shadow-card-active);
+
+  /* Navigation */
+  --semantic-nav-bg: var(--semantic-surface-base);
+  --semantic-nav-border: var(--semantic-border-light);
+  --semantic-nav-item-hover: var(--semantic-surface-hover);
+  --semantic-nav-item-active: var(--semantic-primary-subtle);
+  --semantic-nav-item-text: var(--semantic-text-secondary);
+  --semantic-nav-item-text-active: var(--semantic-primary);
+
+  /* Dock */
+  --semantic-dock-bg: rgba(255, 255, 255, 0.8);
+  --semantic-dock-border: var(--semantic-border-light);
+  --semantic-dock-shadow: var(--shadow-dock);
+  --semantic-dock-backdrop-blur: 20px;
+
+  /* Headers */
+  --semantic-header-bg: var(--semantic-surface-base);
+  --semantic-header-border: var(--semantic-border-light);
+  --semantic-header-text: var(--semantic-text-primary);
+
+  /* Tooltips */
+  --semantic-tooltip-bg: var(--warm-gray-900);
+  --semantic-tooltip-text: #FFFFFF;
+
+  /* Overlays */
+  --semantic-overlay-bg: rgba(0, 0, 0, 0.5);
+  --semantic-modal-backdrop: rgba(0, 0, 0, 0.4);
+
+  /* ========================================
+     INTERACTIVE STATES
+     ======================================== */
+
+  --semantic-hover-opacity: 0.9;
+  --semantic-active-opacity: 0.8;
+  --semantic-disabled-opacity: 0.5;
+
+  --semantic-focus-ring-width: 2px;
+  --semantic-focus-ring-offset: 2px;
+  --semantic-focus-ring-color: var(--semantic-primary);
+  --semantic-focus-ring: 0 0 0 var(--semantic-focus-ring-width) var(--semantic-focus-ring-color);
+  --semantic-focus-ring-offset-shadow: 0 0 0 var(--semantic-focus-ring-offset) var(--semantic-surface-base);
+}
+
+/* ========================================
+   DARK MODE - Semantic Overrides
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Backgrounds */
+    --semantic-bg-base: var(--warm-gray-900);
+    --semantic-bg-subtle: var(--warm-gray-800);
+    --semantic-bg-muted: var(--warm-gray-700);
+
+    /* Surfaces */
+    --semantic-surface-base: var(--warm-gray-800);
+    --semantic-surface-elevated: var(--warm-gray-700);
+    --semantic-surface-overlay: rgba(41, 37, 36, 0.95);
+    --semantic-surface-sunken: var(--warm-gray-900);
+
+    /* Interactive Surfaces */
+    --semantic-surface-hover: var(--warm-gray-700);
+    --semantic-surface-active: var(--warm-gray-600);
+    --semantic-surface-selected: rgba(241, 136, 37, 0.2);
+
+    /* Text */
+    --semantic-text-primary: var(--warm-gray-50);
+    --semantic-text-secondary: var(--warm-gray-300);
+    --semantic-text-tertiary: var(--warm-gray-500);
+    --semantic-text-disabled: var(--warm-gray-600);
+    --semantic-text-inverse: var(--warm-gray-900);
+
+    /* Borders */
+    --semantic-border-light: var(--warm-gray-700);
+    --semantic-border-medium: var(--warm-gray-600);
+    --semantic-border-strong: var(--warm-gray-500);
+
+    /* Component Overrides */
+    --semantic-input-bg: var(--warm-gray-800);
+    --semantic-card-bg: var(--warm-gray-800);
+    --semantic-nav-bg: var(--warm-gray-800);
+    --semantic-header-bg: var(--warm-gray-800);
+
+    /* Dock in dark mode */
+    --semantic-dock-bg: rgba(41, 37, 36, 0.8);
+
+    /* Overlays */
+    --semantic-overlay-bg: rgba(0, 0, 0, 0.7);
+    --semantic-modal-backdrop: rgba(0, 0, 0, 0.6);
+
+    /* Tooltips */
+    --semantic-tooltip-bg: var(--warm-gray-700);
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES - Using Semantic Tokens
+   ======================================== */
+
+/* Text utilities */
+.text-primary { color: var(--semantic-text-primary); }
+.text-secondary { color: var(--semantic-text-secondary); }
+.text-tertiary { color: var(--semantic-text-tertiary); }
+.text-disabled { color: var(--semantic-text-disabled); }
+.text-inverse { color: var(--semantic-text-inverse); }
+.text-brand { color: var(--semantic-primary); }
+.text-accent { color: var(--semantic-accent); }
+
+/* Background utilities */
+.bg-base { background-color: var(--semantic-bg-base); }
+.bg-subtle { background-color: var(--semantic-bg-subtle); }
+.bg-surface { background-color: var(--semantic-surface-base); }
+.bg-elevated { background-color: var(--semantic-surface-elevated); }
+.bg-primary { background-color: var(--semantic-primary); }
+.bg-accent { background-color: var(--semantic-accent); }
+
+/* Border utilities */
+.border-light { border-color: var(--semantic-border-light); }
+.border-medium { border-color: var(--semantic-border-medium); }
+.border-strong { border-color: var(--semantic-border-strong); }
+.border-primary { border-color: var(--semantic-primary); }
+
+/* Status utilities */
+.text-success { color: var(--semantic-success-text); }
+.text-error { color: var(--semantic-error-text); }
+.text-warning { color: var(--semantic-warning-text); }
+.text-info { color: var(--semantic-info-text); }
+
+.bg-success { background-color: var(--semantic-success-bg); }
+.bg-error { background-color: var(--semantic-error-bg); }
+.bg-warning { background-color: var(--semantic-warning-bg); }
+.bg-info { background-color: var(--semantic-info-bg); }
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus visible styles */
+.focus-visible:focus-visible {
+  outline: var(--semantic-focus-ring);
+  outline-offset: var(--semantic-focus-ring-offset);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --semantic-border-light: var(--semantic-border-strong);
+    --semantic-text-secondary: var(--semantic-text-primary);
+  }
+}

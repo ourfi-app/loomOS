@@ -1,0 +1,546 @@
+/**
+ * loomOS Motion Design Tokens
+ *
+ * Physics-based animation system for natural, tangible interactions.
+ * The loomOS standard: Spring physics (300 stiffness, 25 damping, 1 mass).
+ *
+ * Version: 1.0
+ * Last Updated: November 7, 2025
+ */
+
+:root {
+  /* ========================================
+     SPRING PHYSICS - The loomOS Standard
+     ======================================== */
+
+  /* Primary Spring (300/25/1) - Use for most animations */
+  --spring-stiffness: 300;     /* How "tight" the spring is */
+  --spring-damping: 25;        /* Resistance/bounce amount */
+  --spring-mass: 1;            /* Element weight */
+
+  /* Alternative Springs */
+  --spring-tight-stiffness: 400;   /* Tighter, faster spring */
+  --spring-tight-damping: 20;
+  --spring-tight-mass: 1;
+
+  --spring-loose-stiffness: 200;   /* Looser, slower spring */
+  --spring-loose-damping: 30;
+  --spring-loose-mass: 1;
+
+  --spring-bouncy-stiffness: 300;  /* More bounce */
+  --spring-bouncy-damping: 15;
+  --spring-bouncy-mass: 1;
+
+  --spring-heavy-stiffness: 300;   /* Heavier feel */
+  --spring-heavy-damping: 25;
+  --spring-heavy-mass: 2;
+
+  /* ========================================
+     DURATION SCALE
+     ======================================== */
+
+  --duration-instant: 100ms;   /* Immediate feedback (hover states) */
+  --duration-fast: 150ms;      /* Quick transitions (dropdowns) */
+  --duration-normal: 200ms;    /* Standard animations (most UI) */
+  --duration-moderate: 250ms;  /* Noticeable animations */
+  --duration-slow: 300ms;      /* Emphasized transitions */
+  --duration-slower: 500ms;    /* Major state changes */
+  --duration-slowest: 700ms;   /* Dramatic effects */
+
+  /* ========================================
+     EASING FUNCTIONS (Cubic Bezier)
+     ======================================== */
+
+  /* Standard Material Design Easings */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);      /* Balanced ease in/out */
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);      /* Ease out (enter screen) */
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);      /* Ease in (exit screen) */
+  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);         /* Sharp transition */
+
+  /* Spring-like Easing */
+  --ease-spring: cubic-bezier(0.42, 0, 0.58, 1);      /* Spring simulation */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce effect */
+
+  /* Ease In/Out Variants */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);              /* Ease in only */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);             /* Ease out only */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);        /* Ease in and out */
+
+  /* Linear */
+  --ease-linear: cubic-bezier(0, 0, 1, 1);            /* No easing */
+
+  /* ========================================
+     GESTURE THRESHOLDS
+     ======================================== */
+
+  /* Swipe/Flick Detection */
+  --gesture-velocity-threshold: 750;    /* px/s for swipe actions (card dismiss) */
+  --gesture-distance-threshold: 100;    /* px distance for swipe recognition */
+  --gesture-flick-velocity: 300;        /* px/s for quick flicks */
+
+  /* Drag Thresholds */
+  --gesture-drag-start: 5;              /* px before drag starts */
+  --gesture-drag-elastic: 0.2;          /* Elastic/bounce factor */
+
+  /* Long Press */
+  --gesture-long-press-duration: 500;   /* ms to trigger long press */
+
+  /* Tap Feedback */
+  --gesture-tap-duration: 100;          /* ms for tap feedback */
+
+  /* ========================================
+     TRANSITION PRESETS
+     ======================================== */
+
+  /* All transitions */
+  --transition-all-fast: all var(--duration-fast) var(--ease-standard);
+  --transition-all-normal: all var(--duration-normal) var(--ease-standard);
+  --transition-all-slow: all var(--duration-slow) var(--ease-standard);
+
+  /* Specific property transitions */
+  --transition-opacity: opacity var(--duration-normal) var(--ease-standard);
+  --transition-transform: transform var(--duration-normal) var(--ease-spring);
+  --transition-colors: color var(--duration-fast) var(--ease-standard),
+                       background-color var(--duration-fast) var(--ease-standard),
+                       border-color var(--duration-fast) var(--ease-standard);
+  --transition-shadow: box-shadow var(--duration-normal) var(--ease-standard);
+  --transition-size: width var(--duration-normal) var(--ease-standard),
+                     height var(--duration-normal) var(--ease-standard);
+
+  /* ========================================
+     ANIMATION DELAYS (for staggering)
+     ======================================== */
+
+  --stagger-xs: 25ms;     /* Minimal stagger */
+  --stagger-sm: 50ms;     /* Small stagger (list items) */
+  --stagger-md: 75ms;     /* Medium stagger */
+  --stagger-lg: 100ms;    /* Large stagger */
+  --stagger-xl: 150ms;    /* Extra large stagger */
+
+  /* ========================================
+     BACKDROP BLUR
+     ======================================== */
+
+  --blur-none: 0;
+  --blur-sm: 4px;
+  --blur-base: 8px;
+  --blur-md: 12px;
+  --blur-lg: 16px;
+  --blur-xl: 20px;       /* Dock, modals */
+  --blur-2xl: 24px;
+  --blur-3xl: 32px;
+
+  /* ========================================
+     SCALE TRANSFORMS
+     ======================================== */
+
+  --scale-0: 0;
+  --scale-25: 0.25;       /* Minimized cards */
+  --scale-50: 0.5;
+  --scale-75: 0.75;
+  --scale-90: 0.9;        /* Tap feedback */
+  --scale-95: 0.95;       /* Button active */
+  --scale-100: 1;         /* Default */
+  --scale-102: 1.02;      /* Subtle hover */
+  --scale-105: 1.05;      /* Card hover */
+  --scale-110: 1.1;       /* Button hover */
+  --scale-115: 1.15;      /* Dock icon hover */
+  --scale-125: 1.25;
+  --scale-150: 1.5;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+/* Fade In/Out */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Slide In/Out */
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-up {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slide-out-down {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+/* Scale In/Out */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Card Animations */
+@keyframes card-minimize {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.25);
+    opacity: 0.9;
+  }
+}
+
+@keyframes card-maximize {
+  from {
+    transform: scale(0.25);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bounce */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulse */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Shake */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* ========================================
+   ANIMATION UTILITY CLASSES
+   ======================================== */
+
+/* Fade animations */
+.animate-fade-in {
+  animation: fade-in var(--duration-normal) var(--ease-standard);
+}
+
+.animate-fade-out {
+  animation: fade-out var(--duration-normal) var(--ease-standard);
+}
+
+/* Slide animations */
+.animate-slide-in-up {
+  animation: slide-in-up var(--duration-normal) var(--ease-spring);
+}
+
+.animate-slide-in-down {
+  animation: slide-in-down var(--duration-normal) var(--ease-spring);
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left var(--duration-normal) var(--ease-spring);
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right var(--duration-normal) var(--ease-spring);
+}
+
+/* Scale animations */
+.animate-scale-in {
+  animation: scale-in var(--duration-fast) var(--ease-spring);
+}
+
+.animate-scale-out {
+  animation: scale-out var(--duration-fast) var(--ease-spring);
+}
+
+/* Utility animations */
+.animate-bounce {
+  animation: bounce 1s var(--ease-bounce) infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s var(--ease-linear) infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s var(--ease-standard);
+}
+
+/* ========================================
+   TRANSITION UTILITY CLASSES
+   ======================================== */
+
+.transition-all {
+  transition: var(--transition-all-normal);
+}
+
+.transition-all-fast {
+  transition: var(--transition-all-fast);
+}
+
+.transition-all-slow {
+  transition: var(--transition-all-slow);
+}
+
+.transition-opacity {
+  transition: var(--transition-opacity);
+}
+
+.transition-transform {
+  transition: var(--transition-transform);
+}
+
+.transition-colors {
+  transition: var(--transition-colors);
+}
+
+.transition-shadow {
+  transition: var(--transition-shadow);
+}
+
+.transition-size {
+  transition: var(--transition-size);
+}
+
+.transition-none {
+  transition: none !important;
+}
+
+/* ========================================
+   HOVER/ACTIVE STATE UTILITIES
+   ======================================== */
+
+/* Scale on hover */
+.hover-scale-102:hover {
+  transform: scale(var(--scale-102));
+}
+
+.hover-scale-105:hover {
+  transform: scale(var(--scale-105));
+}
+
+.hover-scale-110:hover {
+  transform: scale(var(--scale-110));
+}
+
+.hover-scale-115:hover {
+  transform: scale(var(--scale-115));
+}
+
+/* Scale on active */
+.active-scale-95:active {
+  transform: scale(var(--scale-95));
+}
+
+.active-scale-90:active {
+  transform: scale(var(--scale-90));
+}
+
+/* Lift on hover (transform + shadow) */
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-lift-lg:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ========================================
+   SPECIAL EFFECTS
+   ======================================== */
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(var(--blur-xl));
+  -webkit-backdrop-filter: blur(var(--blur-xl));
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(var(--blur-xl));
+  -webkit-backdrop-filter: blur(var(--blur-xl));
+}
+
+/* Smooth scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Hardware acceleration */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* ========================================
+   REDUCED MOTION SUPPORT
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .gpu-accelerated {
+    will-change: auto;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Optimize animations for performance */
+@supports (will-change: transform) {
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .will-change-auto {
+    will-change: auto;
+  }
+}
+
+/* Containment for better performance */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* ========================================
+   FRAMER MOTION HELPERS (for JS consumption)
+   ======================================== */
+
+/*
+  Use these values in your Framer Motion configs:
+
+  // Spring animation (loomOS standard)
+  transition: {
+    type: 'spring',
+    stiffness: 300,  // var(--spring-stiffness)
+    damping: 25,     // var(--spring-damping)
+    mass: 1          // var(--spring-mass)
+  }
+
+  // Easing animation
+  transition: {
+    duration: 0.2,   // var(--duration-normal) / 1000
+    ease: [0.4, 0, 0.2, 1]  // var(--ease-standard)
+  }
+
+  // Gesture config
+  drag: true,
+  dragElastic: 0.2,          // var(--gesture-drag-elastic)
+  dragConstraints: { ... }
+*/
