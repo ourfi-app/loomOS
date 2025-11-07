@@ -114,6 +114,7 @@ model User {
   postLikes            PostLike[]               @relation("UserPostLikes")
   postComments         PostComment[]            @relation("UserPostComments")
   commentLikes         CommentLike[]            @relation("UserCommentLikes")
+  appReviews           AppReview[]              @relation("UserAppReviews")
 
   @@index([organizationId])
   @@map("users")
@@ -230,6 +231,7 @@ model Organization {
   postLikes               PostLike[]               @relation("OrganizationPostLikes")
   postComments            PostComment[]            @relation("OrganizationPostComments")
   commentLikes            CommentLike[]            @relation("OrganizationCommentLikes")
+  appReviews              AppReview[]
 
   @@index([slug])
   @@index([subdomain])
@@ -749,53 +751,184 @@ enum AppCategory {
   ENTERTAINMENT
   UTILITIES
   LIFESTYLE
+  FINANCE
+  EDUCATION
+  BUSINESS
+  HEALTH
+  SOCIAL
+  DEVELOPER_TOOLS
+  INDUSTRY_SPECIFIC
 }
 
 enum AppStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  PUBLISHED
+  REJECTED
+  SUSPENDED
+  ARCHIVED
+  // Legacy statuses for backward compatibility
   AVAILABLE
   BETA
   COMING_SOON
   DEPRECATED
 }
 
+enum AppInstallationType {
+  WEB_APP
+  NATIVE_WEBOS
+  HYBRID
+}
+
+enum AppPricingModel {
+  FREE
+  PAID
+  SUBSCRIPTION
+  FREEMIUM
+}
+
 model MarketplaceApp {
-  id               String      @id @default(cuid())
+  id               String              @id @default(cuid())
   organizationId   String?
   name             String
-  slug             String      @unique
+  slug             String              @unique
+  tagline          String? // Short description (< 100 chars)
   shortDescription String
-  longDescription  String      @db.Text
+  longDescription  String              @db.Text
+
+  // Categorization
   category         AppCategory
-  status           AppStatus   @default(AVAILABLE)
-  version          String      @default("1.0.0")
-  developer        String      @default("Montrecott")
+  tags             String[]            @default([])
+
+  // Status & Versioning
+  status           AppStatus           @default(PUBLISHED)
+  currentVersion   String              @default("1.0.0")
+  version          String              @default("1.0.0") // Deprecated, use currentVersion
+  minimumLoomOSVersion String?
+
+  // Developer Info
+  developer        String              @default("Montrecott")
+  developerId      String?
+  developerName    String?
+  developerWebsite String?
+
+  // Assets
   iconName         String // lucide icon name
   color            String // gradient color classes
   path             String // route path
-  screenshots      Json? // array of screenshot URLs
-  features         Json? // array of feature strings
-  permissions      Json? // array of required permissions
+  screenshots      Json?               @default("[]") // array of screenshot URLs with captions
+  video            String? // URL to demo video
+
+  // Pricing
+  pricingModel     AppPricingModel     @default(FREE)
+  price            Decimal?            @db.Decimal(10, 2)
+  currency         String?             @default("USD")
+  subscriptionPriceId String?
+  trialDays        Int?
+  freeTier         Boolean             @default(true)
+
+  // Features & Permissions
+  features         Json?               @default("[]") // array of feature strings
+  permissions      Json?               @default("[]") // array of required permissions
   minRole          UserRole? // minimum role required (null = all users)
-  isSystem         Boolean     @default(false) // system apps can't be uninstalled
-  installCount     Int         @default(0)
-  rating           Decimal?    @db.Decimal(2, 1) // 0.0 to 5.0
-  ratingCount      Int         @default(0)
+
+  // Installation
+  installationType AppInstallationType @default(WEB_APP)
+  packageUrl       String?
+  packageSize      BigInt?
+
+  // Stats & Metrics
+  isSystem         Boolean             @default(false) // system apps can't be uninstalled
+  installCount     Int                 @default(0)
+  downloads        Int                 @default(0)
+  rating           Decimal?            @db.Decimal(2, 1) // 0.0 to 5.0
+  ratingCount      Int                 @default(0)
+  reviewCount      Int                 @default(0)
   size             String? // display size like "2.4 MB"
+
+  // Marketplace Features
+  isFeatured       Boolean             @default(false) // featured in marketplace
+  trending         Boolean             @default(false)
+
+  // Dates
   releaseDate      DateTime?
+  publishedAt      DateTime?
   lastUpdated      DateTime?
-  isFeatured       Boolean     @default(false) // featured in marketplace
-  updateNotes      String?     @db.Text // release notes for updates
-  createdAt        DateTime    @default(now())
-  updatedAt        DateTime    @updatedAt
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+
+  // Release Notes
+  updateNotes      String?             @db.Text // release notes for updates
 
   organization  Organization?      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   installations UserInstalledApp[]
   updateHistory AppUpdateHistory[]
+  versions      AppVersion[]
+  reviews       AppReview[]
 
   @@index([category])
   @@index([status])
   @@index([slug])
+  @@index([isFeatured])
+  @@index([trending])
   @@map("marketplace_apps")
+}
+
+model AppVersion {
+  id                   String    @id @default(cuid())
+  appId                String
+  version              String
+  releaseNotes         String    @db.Text
+  packageUrl           String?
+  packageSize          BigInt?
+  minimumLoomOSVersion String?
+  status               String    @default("published") // draft, published, deprecated
+  downloads            Int       @default(0)
+  isCurrentVersion     Boolean   @default(false)
+  createdAt            DateTime  @default(now())
+  publishedAt          DateTime?
+
+  app MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
+
+  @@unique([appId, version])
+  @@index([appId])
+  @@index([status])
+  @@map("app_versions")
+}
+
+model AppReview {
+  id                   String    @id @default(cuid())
+  appId                String
+  userId               String
+  organizationId       String?
+  rating               Int // 1-5
+  title                String
+  content              String    @db.Text
+  version              String // App version reviewed
+  helpful              Int       @default(0) // Helpfulness votes
+
+  // Developer Response
+  developerResponse     String?   @db.Text
+  developerResponseDate DateTime?
+
+  // Metadata
+  isVerifiedPurchase   Boolean   @default(false)
+  isEdited             Boolean   @default(false)
+
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  app          MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
+  user         User           @relation("UserAppReviews", fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization?  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([appId, userId])
+  @@index([appId])
+  @@index([userId])
+  @@index([rating])
+  @@index([createdAt])
+  @@map("app_reviews")
 }
 
 model UserInstalledApp {
@@ -809,6 +942,9 @@ model UserInstalledApp {
   sortOrder        Int       @default(0)
   installedVersion String? // track which version user has installed
   lastUpdatedAt    DateTime? // when the app was last updated
+  launchCount      Int       @default(0)
+  autoUpdate       Boolean   @default(true)
+  customSettings   Json? // User-specific app settings
 
   organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
