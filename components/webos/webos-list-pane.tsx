@@ -1,0 +1,137 @@
+'use client';
+
+import React, { ReactNode } from 'react';
+import { WebOSSearchInput } from './webos-search-input';
+import { VirtualList } from '@/components/common';
+
+export interface ListItem {
+  id: string;
+  title: string;
+  subtitle?: string;
+  timestamp?: string;
+  selected?: boolean;
+  unread?: boolean;
+  badge?: ReactNode;
+  icon?: ReactNode;
+  onClick?: () => void;
+  onContextMenu?: (e: React.MouseEvent) => void;
+}
+
+interface WebOSListPaneProps {
+  title?: string;
+  searchPlaceholder?: string;
+  searchValue?: string;
+  onSearchChange?: (value: string) => void;
+  items: ListItem[];
+  emptyMessage?: string;
+  loading?: boolean;
+  className?: string;
+  enableVirtualScrolling?: boolean;
+  estimatedItemHeight?: number;
+}
+
+export function WebOSListPane({
+  title,
+  searchPlaceholder = 'Search...',
+  searchValue = '',
+  onSearchChange,
+  items,
+  emptyMessage = 'No items found',
+  loading = false,
+  className = '',
+  enableVirtualScrolling = true, // Enable by default for performance
+  estimatedItemHeight = 80
+}: WebOSListPaneProps) {
+  const renderListItem = (item: ListItem) => (
+    <div 
+      key={item.id}
+      className={`p-4 border-b border-gray-200 cursor-pointer transition-colors ${
+        item.selected 
+          ? 'bg-orange-50 border-l-4 border-l-orange-500' 
+          : 'hover:bg-gray-50'
+      }`}
+      onClick={item.onClick}
+      onContextMenu={item.onContextMenu}
+    >
+      <div className="flex items-start justify-between">
+        <div className="flex items-start gap-2 flex-1 min-w-0">
+          {item.icon && (
+            <div className="flex-shrink-0 mt-0.5">
+              {item.icon}
+            </div>
+          )}
+          <div className="flex-1 min-w-0">
+            <p className={`text-sm truncate ${
+              item.unread ? 'font-semibold text-gray-900' : 'font-medium text-gray-700'
+            }`}>
+              {item.title}
+            </p>
+            {item.subtitle && (
+              <p className="text-sm text-gray-600 truncate mt-1">
+                {item.subtitle}
+              </p>
+            )}
+            {item.timestamp && (
+              <p className="text-xs text-gray-500 mt-1">
+                {item.timestamp}
+              </p>
+            )}
+          </div>
+        </div>
+        {item.badge && (
+          <div className="ml-2 flex-shrink-0">
+            {item.badge}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={`flex-1 bg-white flex flex-col border-r border-gray-300 min-w-[300px] ${className}`}>
+      {/* Search Bar */}
+      {onSearchChange && (
+        <div className="p-3 border-b border-gray-300 bg-gray-50">
+          <WebOSSearchInput
+            value={searchValue}
+            onChange={onSearchChange}
+            placeholder={searchPlaceholder}
+          />
+        </div>
+      )}
+      
+      {/* Title (optional) */}
+      {title && (
+        <div className="px-4 py-2 border-b border-gray-200 bg-gray-50">
+          <h2 className="text-sm font-semibold text-gray-700">{title}</h2>
+        </div>
+      )}
+      
+      {/* List Items */}
+      <div className="flex-1 overflow-hidden">
+        {loading ? (
+          <div className="flex items-center justify-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
+          </div>
+        ) : items.length === 0 ? (
+          <div className="flex items-center justify-center py-8 text-gray-400">
+            <p className="text-sm">{emptyMessage}</p>
+          </div>
+        ) : enableVirtualScrolling && items.length > 20 ? (
+          // Use virtual scrolling for large lists (>20 items)
+          <VirtualList
+            items={items}
+            renderItem={renderListItem}
+            estimatedItemHeight={estimatedItemHeight}
+            className="h-full"
+          />
+        ) : (
+          // Use traditional rendering for small lists
+          <div className="overflow-y-auto h-full">
+            {items.map(renderListItem)}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,1382 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SUPER_ADMIN // Platform-level admin across all organizations
+  ADMIN // Organization-level admin
+  BOARD_MEMBER
+  RESIDENT
+}
+
+enum OrganizationType {
+  CONDO_ASSOCIATION
+  HOA
+  COOPERATIVE
+  NONPROFIT
+  COMMUNITY_GROUP
+  CLUB
+  CUSTOM
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum NotificationType {
+  EMAIL
+  SMS
+  BOTH
+}
+
+enum FilePermission {
+  PUBLIC
+  RESIDENTS_ONLY
+  BOARD_ONLY
+  ADMIN_ONLY
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                  String    @id @default(cuid())
+  organizationId      String? // NULL for SUPER_ADMIN users
+  name                String?
+  email               String    @unique
+  emailVerified       DateTime?
+  image               String?
+  password            String?
+  firstName           String?
+  lastName            String?
+  unitNumber          String?
+  phone               String?
+  role                UserRole  @default(RESIDENT)
+  isActive            Boolean   @default(true)
+  onboardingCompleted Boolean   @default(false)
+  onboardingStep      Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  organization         Organization?            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  accounts             Account[]
+  sessions             Session[]
+  payments             Payment[]
+  uploadedFiles        File[]                   @relation("FileUploader")
+  notifications        UserNotification[]
+  sentAnnouncements    Announcement[]
+  committeeMemberships CommitteeMember[]
+  updateRequests       DirectoryUpdateRequest[] @relation("UserUpdateRequests")
+  requestedUpdates     DirectoryUpdateRequest[] @relation("RequestedByUser")
+  reviewedRequests     DirectoryUpdateRequest[] @relation("ReviewedByUser")
+  sentMessages         Message[]                @relation("SentMessages")
+  receivedMessages     MessageRecipient[]       @relation("ReceivedMessages")
+  messageFolders       MessageFolder[]          @relation("UserMessageFolders")
+  createdTasks         Task[]                   @relation("TaskCreator")
+  assignedTasks        Task[]                   @relation("TaskAssignee")
+  installations        UserInstalledApp[]
+  appUpdateHistory     AppUpdateHistory[]
+  customRoles          UserCustomRole[]
+  communityPosts       CommunityPost[]          @relation("UserPosts")
+  postLikes            PostLike[]               @relation("UserPostLikes")
+  postComments         PostComment[]            @relation("UserPostComments")
+  commentLikes         CommentLike[]            @relation("UserCommentLikes")
+
+  @@index([organizationId])
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================================
+// MULTI-TENANT ORGANIZATION MODELS
+// ============================================================
+
+model Organization {
+  id           String           @id @default(cuid())
+  name         String
+  slug         String           @unique // URL-friendly identifier
+  type         OrganizationType @default(CUSTOM)
+  subdomain    String?          @unique // e.g., "montrecott" for montrecott.yoursaas.com
+  customDomain String?          @unique // e.g., "montrecott.com"
+
+  // Contact & Location
+  streetAddress String?
+  city          String?
+  state         String?
+  zipCode       String?
+  country       String? @default("USA")
+  phone         String?
+  email         String?
+  website       String?
+
+  // Branding & Appearance
+  logo           String? // cloud storage path
+  primaryColor   String? // hex color
+  secondaryColor String? // hex color
+  colorPalette   String? @default("default")
+
+  // Configuration
+  settings    Json? // Flexible settings object
+  features    Json? // Enabled features/modules
+  terminology Json? // Custom labels (e.g., "residents" vs "members")
+
+  // Industry-specific
+  industryType    String? // residential, commercial, mixed_use, etc.
+  totalUnits      Int?
+  yearEstablished Int?
+
+  // Subscription & Status
+  planType           String?   @default("trial") // trial, basic, professional, enterprise
+  subscriptionStatus String?   @default("active") // active, suspended, cancelled
+  trialEndsAt        DateTime?
+  subscriptionEndsAt DateTime?
+  maxUsers           Int?      @default(100)
+  maxStorage         Int?      @default(10) // GB
+
+  // Platform Management
+  isActive         Boolean @default(true)
+  isSuspended      Boolean @default(false)
+  suspensionReason String? @db.Text
+
+  // Onboarding
+  onboardingCompleted   Boolean   @default(false)
+  onboardingStep        Int       @default(0)
+  onboardingCompletedAt DateTime?
+
+  // Metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String? // Super admin who created it
+
+  // Relations
+  users                   User[]
+  payments                Payment[]
+  files                   File[]
+  notifications           Notification[]
+  announcements           Announcement[]
+  documents               Document[]
+  committees              Committee[]
+  pets                    Pet[]
+  children                Child[]
+  additionalResidents     AdditionalResident[]
+  propertyUnits           PropertyUnit[]
+  messageFolders          MessageFolder[]
+  messages                Message[]
+  marketplaceApps         MarketplaceApp[]
+  notes                   Note[]
+  calendarEvents          CalendarEvent[]
+  tasks                   Task[]
+  chartOfAccounts         ChartOfAccounts[]
+  transactions            Transaction[]
+  annualBudgets           AnnualBudget[]
+  vendors                 Vendor[]
+  invoices                Invoice[]
+  propertyListings        PropertyListing[]
+  residentInquiries       ResidentInquiry[]
+  propertyAmenities       PropertyAmenity[]
+  directoryUpdateRequests DirectoryUpdateRequest[]
+  chatSessions            ChatSession[]
+  duesSettings            DuesSettings[]           @relation("DuesSettings")
+  associationSettings     AssociationSettings[]    @relation("AssociationSettings")
+  committeeMembers        CommitteeMember[]
+  userInstalledApps       UserInstalledApp[]
+  appUpdateHistory        AppUpdateHistory[]
+  messageRecipients       MessageRecipient[]
+  userNotifications       UserNotification[]
+  customRoles             CustomRole[]
+  rolePermissions         RolePermission[]
+  userCustomRoles         UserCustomRole[]
+  communityPosts          CommunityPost[]          @relation("OrganizationPosts")
+  postLikes               PostLike[]               @relation("OrganizationPostLikes")
+  postComments            PostComment[]            @relation("OrganizationPostComments")
+  commentLikes            CommentLike[]            @relation("OrganizationCommentLikes")
+
+  @@index([slug])
+  @@index([subdomain])
+  @@index([type])
+  @@index([subscriptionStatus])
+  @@map("organizations")
+}
+
+model Payment {
+  id              String        @id @default(cuid())
+  organizationId  String
+  userId          String
+  amount          Decimal       @db.Decimal(10, 2)
+  dueDate         DateTime
+  paidDate        DateTime?
+  status          PaymentStatus @default(PENDING)
+  stripePaymentId String?       @unique
+  description     String?
+  type            String        @default("monthly_dues") // monthly_dues, special_assessment, etc.
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("payments")
+}
+
+model File {
+  id               String         @id @default(cuid())
+  organizationId   String
+  filename         String
+  originalName     String
+  mimeType         String
+  size             BigInt
+  cloudStoragePath String
+  folder           String
+  permission       FilePermission @default(RESIDENTS_ONLY)
+  uploadedById     String
+  description      String?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  uploadedBy   User         @relation("FileUploader", fields: [uploadedById], references: [id])
+
+  @@map("files")
+}
+
+model Notification {
+  id             String           @id @default(cuid())
+  organizationId String
+  title          String
+  message        String           @db.Text
+  type           NotificationType @default(EMAIL)
+  isUrgent       Boolean          @default(false)
+  scheduledAt    DateTime?
+  sentAt         DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  organization Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  recipients   UserNotification[]
+
+  @@map("notifications")
+}
+
+model UserNotification {
+  id             String    @id @default(cuid())
+  organizationId String
+  userId         String
+  notificationId String
+  isRead         Boolean   @default(false)
+  readAt         DateTime?
+  createdAt      DateTime  @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notification Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId, notificationId])
+  @@index([organizationId])
+  @@index([userId])
+  @@index([notificationId])
+  @@map("user_notifications")
+}
+
+model Announcement {
+  id             String    @id @default(cuid())
+  organizationId String
+  title          String
+  content        String    @db.Text
+  priority       String    @default("normal") // urgent, normal, low
+  targetRole     UserRole?
+  authorId       String
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  author       User         @relation(fields: [authorId], references: [id])
+
+  @@map("announcements")
+}
+
+model DuesSettings {
+  id             String   @id @default(cuid())
+  organizationId String
+  monthlyAmount  Decimal  @db.Decimal(10, 2)
+  dueDay         Int      @default(1) // Day of month when dues are due
+  lateFee        Decimal  @default(0) @db.Decimal(10, 2)
+  gracePeriod    Int      @default(5) // Days before late fee applies
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation("DuesSettings", fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("dues_settings")
+}
+
+model AssociationSettings {
+  id             String @id @default(cuid())
+  organizationId String
+
+  // Basic Information
+  associationName String?
+  streetAddress   String?
+  city            String?
+  state           String?
+  zipCode         String?
+  country         String? @default("USA")
+  yearEstablished Int?
+  propertyType    String? // condo, townhouse, co-op, etc.
+  totalUnits      Int?
+
+  // Contact Information
+  officePhone       String?
+  officeEmail       String?
+  emergencyPhone    String?
+  managementCompany String?
+  websiteUrl        String?
+
+  // Financial Settings
+  defaultMonthlyDues     Decimal? @db.Decimal(10, 2)
+  dueDay                 Int?     @default(1)
+  lateFeeAmount          Decimal? @db.Decimal(10, 2)
+  lateFeeGracePeriod     Int?     @default(5)
+  acceptedPaymentMethods Json? // ["credit_card", "ach", "check"]
+
+  // Unit Configuration
+  unitPrefix    String? // e.g., "Unit", "Apt", etc.
+  buildings     Json? // Array of building names if multi-building
+  floors        Int?
+  parkingSpaces Int?
+  storageUnits  Int?
+
+  // Policies & Rules
+  petPolicy       String? @db.Text
+  parkingPolicy   String? @db.Text
+  rentalPolicy    String? @db.Text
+  quietHoursStart String?
+  quietHoursEnd   String?
+
+  // Amenities
+  amenities Json? // Array of amenity objects
+
+  // Communication Preferences
+  notificationChannels  Json? // ["email", "sms", "push"]
+  emergencyAlertEnabled Boolean @default(true)
+
+  // Theme & Appearance
+  colorPalette String? @default("default")
+
+  // Onboarding Status
+  onboardingCompleted   Boolean   @default(false)
+  onboardingCompletedAt DateTime?
+  onboardingStep        Int       @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation("AssociationSettings", fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("association_settings")
+}
+
+model ChatSession {
+  id             String   @id @default(cuid())
+  organizationId String?
+  userId         String?
+  sessionToken   String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  messages     ChatMessage[]
+
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  sessionId String
+  role      String // user, assistant, system
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+
+  session ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+}
+
+model Document {
+  id               String    @id @default(cuid())
+  organizationId   String
+  filename         String
+  originalName     String
+  cloudStoragePath String
+  category         String // rules, construction, sales, leasing, bylaws, minutes, etc.
+  description      String?
+  uploadedAt       DateTime  @default(now())
+  processedAt      DateTime?
+  status           String    @default("pending") // pending, processing, completed, failed
+
+  organization Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  chunks       DocumentChunk[]
+
+  @@map("documents")
+}
+
+model DocumentChunk {
+  id         String   @id @default(cuid())
+  documentId String
+  content    String   @db.Text
+  chunkIndex Int
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@map("document_chunks")
+}
+
+model Committee {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String   @unique
+  description    String?  @db.Text
+  type           String // board, architectural, welcoming, water, social
+  email          String?
+  isActive       Boolean  @default(true)
+  displayOrder   Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  members      CommitteeMember[]
+
+  @@map("committees")
+}
+
+model CommitteeMember {
+  id             String   @id @default(cuid())
+  organizationId String
+  committeeId    String
+  userId         String
+  position       String? // Chair, Co-Chair, Member, Secretary, Treasurer, etc.
+  bio            String?  @db.Text
+  displayOrder   Int      @default(0)
+  joinedAt       DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  committee    Committee    @relation(fields: [committeeId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, committeeId, userId])
+  @@index([organizationId])
+  @@index([committeeId])
+  @@index([userId])
+  @@map("committee_members")
+}
+
+enum UpdateRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model DirectoryUpdateRequest {
+  id             String              @id @default(cuid())
+  organizationId String
+  userId         String
+  requestedBy    String
+  updateType     String // profile, contact, committee
+  currentData    Json? // Current data for reference
+  requestedData  Json // Requested changes
+  reason         String?             @db.Text
+  status         UpdateRequestStatus @default(PENDING)
+  reviewedById   String?
+  reviewedAt     DateTime?
+  reviewNotes    String?             @db.Text
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation("UserUpdateRequests", fields: [userId], references: [id], onDelete: Cascade)
+  requester    User         @relation("RequestedByUser", fields: [requestedBy], references: [id], onDelete: Cascade)
+  reviewedBy   User?        @relation("ReviewedByUser", fields: [reviewedById], references: [id])
+
+  @@index([userId])
+  @@index([requestedBy])
+  @@index([status])
+  @@map("directory_update_requests")
+}
+
+model Pet {
+  id             String   @id @default(cuid())
+  organizationId String
+  unitNumber     String
+  name           String
+  type           String // dog, cat, bird, fish, other
+  breed          String?
+  color          String?
+  weight         String?
+  age            String?
+  description    String?  @db.Text
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([unitNumber])
+  @@map("pets")
+}
+
+model Child {
+  id             String   @id @default(cuid())
+  organizationId String
+  unitNumber     String
+  name           String
+  age            Int?
+  birthYear      Int?
+  grade          String?
+  school         String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([unitNumber])
+  @@map("children")
+}
+
+model AdditionalResident {
+  id                 String   @id @default(cuid())
+  organizationId     String
+  unitNumber         String
+  name               String
+  relationship       String // roommate, family, caregiver, tenant, other
+  email              String?
+  phone              String?
+  isEmergencyContact Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([unitNumber])
+  @@map("additional_residents")
+}
+
+model PropertyUnit {
+  id              String   @id @default(cuid())
+  organizationId  String
+  unitNumber      String   @unique
+  building        String?
+  floor           Int?
+  streetAddress   String?
+  city            String?
+  state           String?
+  zipCode         String?
+  latitude        Float?
+  longitude       Float?
+  squareFootage   Int?
+  bedrooms        Int?
+  bathrooms       Decimal? @db.Decimal(3, 1)
+  parkingSpaces   Int?     @default(0)
+  storageUnit     String?
+  balconySize     String?
+  yearBuilt       Int?
+  notes           String?  @db.Text
+  isActive        Boolean  @default(true)
+  occupancyStatus String?  @default("occupied") // occupied, vacant, rented, for_sale
+  monthlyDues     Decimal? @db.Decimal(10, 2)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([building])
+  @@index([occupancyStatus])
+  @@map("property_units")
+}
+
+enum MessageStatus {
+  DRAFT
+  SENT
+  ARCHIVED
+}
+
+enum MessagePriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model MessageFolder {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  userId         String
+  isSystem       Boolean  @default(false)
+  icon           String?
+  displayOrder   Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization      Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user              User               @relation("UserMessageFolders", fields: [userId], references: [id], onDelete: Cascade)
+  messageRecipients MessageRecipient[]
+
+  @@index([userId])
+  @@map("message_folders")
+}
+
+model Message {
+  id             String          @id @default(cuid())
+  organizationId String
+  subject        String
+  body           String          @db.Text
+  senderId       String
+  status         MessageStatus   @default(SENT)
+  priority       MessagePriority @default(NORMAL)
+  hasAttachments Boolean         @default(false)
+  sentAt         DateTime?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  organization Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  sender       User                @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  recipients   MessageRecipient[]
+  attachments  MessageAttachment[]
+
+  @@index([organizationId])
+  @@index([senderId])
+  @@index([status])
+  @@map("messages")
+}
+
+model MessageRecipient {
+  id             String    @id @default(cuid())
+  organizationId String
+  messageId      String
+  userId         String
+  type           String    @default("TO") // TO, CC, BCC
+  isRead         Boolean   @default(false)
+  readAt         DateTime?
+  isStarred      Boolean   @default(false)
+  folderId       String?
+  createdAt      DateTime  @default(now())
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  message      Message        @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  user         User           @relation("ReceivedMessages", fields: [userId], references: [id], onDelete: Cascade)
+  folder       MessageFolder? @relation(fields: [folderId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, messageId, userId])
+  @@index([organizationId])
+  @@index([messageId])
+  @@index([userId])
+  @@map("message_recipients")
+}
+
+model MessageAttachment {
+  id               String   @id @default(cuid())
+  messageId        String
+  filename         String
+  originalName     String
+  mimeType         String
+  size             BigInt
+  cloudStoragePath String
+  createdAt        DateTime @default(now())
+
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([messageId])
+  @@map("message_attachments")
+}
+
+// Marketplace App Models
+enum AppCategory {
+  COMMUNICATION
+  PRODUCTIVITY
+  COMMUNITY
+  ENTERTAINMENT
+  UTILITIES
+  LIFESTYLE
+}
+
+enum AppStatus {
+  AVAILABLE
+  BETA
+  COMING_SOON
+  DEPRECATED
+}
+
+model MarketplaceApp {
+  id               String      @id @default(cuid())
+  organizationId   String?
+  name             String
+  slug             String      @unique
+  shortDescription String
+  longDescription  String      @db.Text
+  category         AppCategory
+  status           AppStatus   @default(AVAILABLE)
+  version          String      @default("1.0.0")
+  developer        String      @default("Montrecott")
+  iconName         String // lucide icon name
+  color            String // gradient color classes
+  path             String // route path
+  screenshots      Json? // array of screenshot URLs
+  features         Json? // array of feature strings
+  permissions      Json? // array of required permissions
+  minRole          UserRole? // minimum role required (null = all users)
+  isSystem         Boolean     @default(false) // system apps can't be uninstalled
+  installCount     Int         @default(0)
+  rating           Decimal?    @db.Decimal(2, 1) // 0.0 to 5.0
+  ratingCount      Int         @default(0)
+  size             String? // display size like "2.4 MB"
+  releaseDate      DateTime?
+  lastUpdated      DateTime?
+  isFeatured       Boolean     @default(false) // featured in marketplace
+  updateNotes      String?     @db.Text // release notes for updates
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  organization  Organization?      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  installations UserInstalledApp[]
+  updateHistory AppUpdateHistory[]
+
+  @@index([category])
+  @@index([status])
+  @@index([slug])
+  @@map("marketplace_apps")
+}
+
+model UserInstalledApp {
+  id               String    @id @default(cuid())
+  organizationId   String
+  userId           String
+  appId            String
+  installedAt      DateTime  @default(now())
+  lastUsedAt       DateTime?
+  isPinned         Boolean   @default(false)
+  sortOrder        Int       @default(0)
+  installedVersion String? // track which version user has installed
+  lastUpdatedAt    DateTime? // when the app was last updated
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  app          MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId, appId])
+  @@index([organizationId])
+  @@index([userId])
+  @@index([appId])
+  @@map("user_installed_apps")
+}
+
+// App Update History
+model AppUpdateHistory {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  appId          String
+  fromVersion    String
+  toVersion      String
+  updatedAt      DateTime @default(now())
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  app          MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([appId])
+  @@map("app_update_history")
+}
+
+// Notes App Models
+model Note {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  title          String
+  content        String   @db.Text
+  category       String   @default("general") // general, personal, work, ideas, etc.
+  color          String? // hex color for note card
+  isFavorite     Boolean  @default(false)
+  isArchived     Boolean  @default(false)
+  isPinned       Boolean  @default(false)
+  tags           String[] // array of tag strings
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([category])
+  @@map("notes")
+}
+
+// Calendar App Models
+enum EventType {
+  MEETING
+  EVENT
+  REMINDER
+  TASK
+  BIRTHDAY
+  HOLIDAY
+}
+
+enum EventRecurrence {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model CalendarEvent {
+  id             String          @id @default(cuid())
+  organizationId String
+  userId         String
+  title          String
+  description    String?         @db.Text
+  location       String?
+  startDate      DateTime
+  endDate        DateTime
+  startTime      String // Format: "HH:MM AM/PM"
+  endTime        String // Format: "HH:MM AM/PM"
+  isAllDay       Boolean         @default(false)
+  type           EventType       @default(EVENT)
+  color          String          @default("from-blue-500 to-blue-600") // gradient color
+  attendees      Json? // array of attendee objects
+  attendeeCount  Int? // number of attendees
+  isRecurring    Boolean         @default(false)
+  recurrence     EventRecurrence @default(NONE)
+  recurrenceEnd  DateTime?
+  reminders      Json? // array of reminder times
+  isCancelled    Boolean         @default(false)
+  isPrivate      Boolean         @default(false)
+  isFavorite     Boolean         @default(false)
+  category       String          @default("personal") // personal, work, community, family, etc.
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([startDate])
+  @@index([type])
+  @@index([category])
+  @@map("calendar_events")
+}
+
+// Task Management Models
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model Task {
+  id                String       @id @default(cuid())
+  organizationId    String
+  title             String
+  description       String?      @db.Text
+  status            TaskStatus   @default(TODO)
+  priority          TaskPriority @default(MEDIUM)
+  dueDate           DateTime?
+  completedAt       DateTime?
+  userId            String
+  assignedTo        String?
+  category          String       @default("general")
+  tags              String[]
+  isRecurring       Boolean      @default(false)
+  recurrencePattern String?
+  reminderDate      DateTime?
+  isFavorite        Boolean      @default(false)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation("TaskCreator", fields: [userId], references: [id], onDelete: Cascade)
+  assignedToUser User?        @relation("TaskAssignee", fields: [assignedTo], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([assignedTo])
+  @@index([status])
+  @@index([dueDate])
+  @@map("tasks")
+}
+
+// Accounting & Financial Management Models
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+  ADJUSTMENT
+}
+
+enum AccountType {
+  ASSET // Cash, Bank Accounts, Accounts Receivable
+  LIABILITY // Accounts Payable, Loans
+  EQUITY // Owner's Equity, Retained Earnings
+  REVENUE // Income from dues, fees, amenities
+  EXPENSE // Operating expenses, maintenance, utilities
+}
+
+enum BudgetStatus {
+  DRAFT
+  APPROVED
+  ACTIVE
+  CLOSED
+}
+
+model ChartOfAccounts {
+  id              String      @id @default(cuid())
+  organizationId  String
+  accountNumber   String      @unique
+  accountName     String
+  accountType     AccountType
+  parentAccountId String?
+  description     String?     @db.Text
+  isActive        Boolean     @default(true)
+  balance         Decimal     @default(0) @db.Decimal(12, 2)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  organization     Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  parentAccount    ChartOfAccounts?  @relation("AccountHierarchy", fields: [parentAccountId], references: [id])
+  subAccounts      ChartOfAccounts[] @relation("AccountHierarchy")
+  transactions     Transaction[]     @relation("AccountTransactions")
+  budgetCategories BudgetCategory[]
+
+  @@index([accountType])
+  @@index([parentAccountId])
+  @@map("chart_of_accounts")
+}
+
+model Transaction {
+  id              String          @id @default(cuid())
+  organizationId  String
+  transactionDate DateTime
+  accountId       String
+  type            TransactionType
+  amount          Decimal         @db.Decimal(12, 2)
+  description     String
+  memo            String?         @db.Text
+  referenceNumber String?
+  checkNumber     String?
+  payee           String?
+  category        String?
+  isReconciled    Boolean         @default(false)
+  reconciledDate  DateTime?
+  attachments     Json? // Array of file URLs/paths
+  tags            String[]
+  fiscalYear      Int
+  fiscalMonth     Int
+  createdById     String
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  organization Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  account      ChartOfAccounts @relation("AccountTransactions", fields: [accountId], references: [id])
+
+  @@index([transactionDate])
+  @@index([accountId])
+  @@index([type])
+  @@index([fiscalYear, fiscalMonth])
+  @@map("transactions")
+}
+
+model AnnualBudget {
+  id             String       @id @default(cuid())
+  organizationId String
+  fiscalYear     Int          @unique
+  startDate      DateTime
+  endDate        DateTime
+  totalRevenue   Decimal      @default(0) @db.Decimal(12, 2)
+  totalExpenses  Decimal      @default(0) @db.Decimal(12, 2)
+  netIncome      Decimal      @default(0) @db.Decimal(12, 2)
+  status         BudgetStatus @default(DRAFT)
+  notes          String?      @db.Text
+  approvedBy     String?
+  approvedDate   DateTime?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  categories   BudgetCategory[]
+
+  @@index([fiscalYear])
+  @@index([status])
+  @@map("annual_budgets")
+}
+
+model BudgetCategory {
+  id             String   @id @default(cuid())
+  budgetId       String
+  accountId      String
+  categoryName   String
+  budgetedAmount Decimal  @db.Decimal(12, 2)
+  actualAmount   Decimal  @default(0) @db.Decimal(12, 2)
+  variance       Decimal  @default(0) @db.Decimal(12, 2)
+  percentUsed    Decimal  @default(0) @db.Decimal(5, 2)
+  notes          String?  @db.Text
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  budget  AnnualBudget    @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  account ChartOfAccounts @relation(fields: [accountId], references: [id])
+
+  @@index([budgetId])
+  @@index([accountId])
+  @@map("budget_categories")
+}
+
+model Vendor {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  contactName    String?
+  email          String?
+  phone          String?
+  address        String?
+  city           String?
+  state          String?
+  zipCode        String?
+  website        String?
+  taxId          String?
+  accountNumber  String?
+  paymentTerms   String? // Net 30, Net 60, etc.
+  notes          String?  @db.Text
+  isActive       Boolean  @default(true)
+  totalPaid      Decimal  @default(0) @db.Decimal(12, 2)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([name])
+  @@map("vendors")
+}
+
+model Invoice {
+  id             String    @id @default(cuid())
+  organizationId String
+  invoiceNumber  String    @unique
+  vendorName     String
+  invoiceDate    DateTime
+  dueDate        DateTime
+  amount         Decimal   @db.Decimal(12, 2)
+  paidAmount     Decimal   @default(0) @db.Decimal(12, 2)
+  balance        Decimal   @db.Decimal(12, 2)
+  status         String    @default("unpaid") // unpaid, partial, paid, overdue
+  description    String?   @db.Text
+  category       String?
+  paymentDate    DateTime?
+  checkNumber    String?
+  notes          String?   @db.Text
+  attachmentPath String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([dueDate])
+  @@index([vendorName])
+  @@map("invoices")
+}
+
+// Resident Portal Models
+model PropertyListing {
+  id             String    @id @default(cuid())
+  organizationId String
+  unitNumber     String    @unique
+  listingType    String // sale, rent
+  status         String    @default("available") // available, pending, sold, rented
+  price          Decimal   @db.Decimal(12, 2)
+  bedrooms       Int
+  bathrooms      Decimal   @db.Decimal(3, 1)
+  squareFootage  Int
+  floor          Int?
+  building       String?
+  description    String    @db.Text
+  features       Json? // Array of feature strings
+  images         Json? // Array of image URLs
+  virtualTourUrl String?
+  isActive       Boolean   @default(true)
+  publishedDate  DateTime?
+  contactEmail   String?
+  contactPhone   String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([listingType])
+  @@index([status])
+  @@index([isActive])
+  @@map("property_listings")
+}
+
+model ResidentInquiry {
+  id                   String   @id @default(cuid())
+  organizationId       String
+  firstName            String
+  lastName             String
+  email                String
+  phone                String?
+  inquiryType          String // tour, listing, general, rental, purchase
+  unitOfInterest       String?
+  message              String   @db.Text
+  preferredContactTime String?
+  status               String   @default("new") // new, contacted, scheduled, converted, closed
+  notes                String?  @db.Text
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([email])
+  @@map("resident_inquiries")
+}
+
+model PropertyAmenity {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?  @db.Text
+  category       String // fitness, recreation, services, parking, security
+  icon           String?
+  imagePath      String?
+  isAvailable    Boolean  @default(true)
+  displayOrder   Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([category])
+  @@map("property_amenities")
+}
+
+// Permissions & Role Management
+model Permission {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  category    String // "User Management", "Document Management", etc.
+  resource    String // "users", "documents", etc.
+  action      String // "view", "create", "edit", "delete", etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  rolePermissions RolePermission[]
+
+  @@index([category])
+  @@index([resource])
+  @@map("permissions")
+}
+
+model CustomRole {
+  id             String   @id @default(cuid())
+  organizationId String? // NULL for system-wide roles
+  name           String
+  description    String?
+  isSystem       Boolean  @default(false) // System roles cannot be deleted
+  basedOn        String? // e.g., "ADMIN", "RESIDENT" - which UserRole this extends
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization    Organization?    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  rolePermissions RolePermission[]
+  userRoles       UserCustomRole[]
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+  @@map("custom_roles")
+}
+
+model RolePermission {
+  id             String   @id @default(cuid())
+  organizationId String? // NULL for system-wide role permissions
+  roleId         String
+  permissionId   String
+  createdAt      DateTime @default(now())
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  role         CustomRole    @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission    @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, roleId, permissionId])
+  @@index([organizationId])
+  @@index([roleId])
+  @@index([permissionId])
+  @@map("role_permissions")
+}
+
+model UserCustomRole {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  customRoleId   String
+  assignedAt     DateTime @default(now())
+  assignedBy     String?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  customRole   CustomRole   @relation(fields: [customRoleId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId, customRoleId])
+  @@index([organizationId])
+  @@index([userId])
+  @@index([customRoleId])
+  @@map("user_custom_roles")
+}
+
+// Community Posts Models
+model CommunityPost {
+  id             String   @id @default(cuid())
+  organizationId String
+  authorId       String
+  content        String   @db.Text
+  imageUrl       String?
+  isPinned       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization  @relation("OrganizationPosts", fields: [organizationId], references: [id], onDelete: Cascade)
+  author       User          @relation("UserPosts", fields: [authorId], references: [id], onDelete: Cascade)
+  likes        PostLike[]
+  comments     PostComment[]
+
+  @@index([organizationId])
+  @@index([authorId])
+  @@index([createdAt])
+  @@map("community_posts")
+}
+
+model PostLike {
+  id             String   @id @default(cuid())
+  organizationId String
+  postId         String
+  userId         String
+  createdAt      DateTime @default(now())
+
+  organization Organization  @relation("OrganizationPostLikes", fields: [organizationId], references: [id], onDelete: Cascade)
+  post         CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user         User          @relation("UserPostLikes", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, postId, userId])
+  @@index([organizationId])
+  @@index([postId])
+  @@index([userId])
+  @@map("post_likes")
+}
+
+model PostComment {
+  id             String   @id @default(cuid())
+  organizationId String
+  postId         String
+  authorId       String
+  content        String   @db.Text
+  parentId       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization  @relation("OrganizationPostComments", fields: [organizationId], references: [id], onDelete: Cascade)
+  post         CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author       User          @relation("UserPostComments", fields: [authorId], references: [id], onDelete: Cascade)
+  parent       PostComment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies      PostComment[] @relation("CommentReplies")
+  likes        CommentLike[]
+
+  @@index([organizationId])
+  @@index([postId])
+  @@index([authorId])
+  @@index([parentId])
+  @@map("post_comments")
+}
+
+model CommentLike {
+  id             String   @id @default(cuid())
+  organizationId String
+  commentId      String
+  userId         String
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation("OrganizationCommentLikes", fields: [organizationId], references: [id], onDelete: Cascade)
+  comment      PostComment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user         User         @relation("UserCommentLikes", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, commentId, userId])
+  @@index([organizationId])
+  @@index([commentId])
+  @@index([userId])
+  @@map("comment_likes")
+}

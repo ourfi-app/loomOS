@@ -1,0 +1,108 @@
+# Dependencies
+**/node_modules
+**/.pnp
+.pnp.js
+
+# Build outputs
+.next
+.cache
+.build
+dist
+target
+out
+.deploy
+*.tsbuildinfo
+
+# Yarn
+**/.yarn/
+!**/.yarn/patches
+!**/.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/sdks
+!**/.yarn/versions
+!**/.yarn/cache
+**/.yarn/build-state.yml
+**/.yarn/install-state.gz
+
+# Logs
+.logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing
+coverage
+*.lcov
+.nyc_output
+
+# IDEs and editors
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS files
+*.nfs*
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*-old.*
+*-backup.*
+*.original
+*.orig
+
+# Large files and backups
+public/montrecott-watercolor-original.png
+*.psd
+*.ai
+*.sketch
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Prisma
+prisma/migrations/**/migration.sql.bak
+
+# Secrets
+*.key
+*.pem
+*.cert
+credentials.json
+secrets.json
+
+# Editor directories
+.vscode/
+.idea/
+
+# Vercel
+.vercel
+
+# Turbo
+.turbo

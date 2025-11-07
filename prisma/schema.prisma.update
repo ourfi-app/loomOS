@@ -1,0 +1,28 @@
+
+// Add these fields to MarketplaceApp model (after lastUpdated field):
+  isFeatured       Boolean     @default(false) // featured in marketplace
+  updateNotes      String?     @db.Text // release notes for updates
+
+// Add these fields to UserInstalledApp model (after sortOrder field):
+  installedVersion String? // track which version user has installed
+  lastUpdatedAt    DateTime? // when the app was last updated
+
+// Add this new model after UserInstalledApp:
+model AppUpdateHistory {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  appId          String
+  fromVersion    String
+  toVersion      String
+  updatedAt      DateTime @default(now())
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  app          MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([appId])
+  @@map("app_update_history")
+}

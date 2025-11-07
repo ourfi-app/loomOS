@@ -1,0 +1,2778 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Design Tokens (Modern Semantic System) */
+@import '../styles/design-tokens.css';
+
+/* Import WebOS Design Tokens and Component Styles */
+@import '../styles/webos-tokens.css';
+@import '../styles/webos-components.css';
+
+/* Elegant Shimmer Animation for App Overlays and Dock Items */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@layer base {
+  :root {
+    /* Modern Community Management Color Palette - Light Mode */
+    /* Professional trust (blue) + community warmth (orange) */
+
+    /* Neutral Base Colors - Warm Gray System */
+    --background: 30 8% 94%;          /* #F0EFED - Warm White */
+    --foreground: 210 15% 20%;        /* #2C3440 - Navy Gray */
+    --card: 30 12% 97%;               /* #F8F7F6 - Card Surface */
+    --card-foreground: 210 15% 20%;   /* #2C3440 - Navy Gray */
+    --popover: 0 0% 100%;             /* #FFFFFF - Pure White */
+    --popover-foreground: 210 15% 20%; /* #2C3440 - Navy Gray */
+
+    /* Primary Brand Colors */
+    --primary: 207 90% 54%;           /* #2B8ED9 - Trust Blue */
+    --primary-foreground: 0 0% 100%;  /* Pure White */
+    --primary-dark: 207 90% 45%;      /* #1474B8 - Deeper Blue */
+
+    /* Secondary & Accent */
+    --secondary: 210 10% 45%;         /* #686E77 - Medium Gray */
+    --secondary-foreground: 0 0% 100%; /* Pure White */
+
+    --accent: 25 90% 55%;             /* #F28925 - Community Orange */
+    --accent-foreground: 0 0% 100%;   /* Pure White */
+    --accent-warm: 35 85% 60%;        /* #F0A348 - Warm Accent */
+
+    /* Surface Variations */
+    --muted: 30 6% 90%;               /* #E5E4E2 - Muted Surface */
+    --muted-foreground: 210 10% 45%;  /* #686E77 - Medium Gray */
+
+    /* Semantic Colors */
+    --destructive: 0 72% 51%;         /* #DC3545 - Alert Red */
+    --destructive-foreground: 0 0% 100%; /* Pure White */
+
+    --success: 142 55% 45%;           /* #34A853 - Forest Green */
+    --success-foreground: 0 0% 100%;  /* Pure White */
+
+    --warning: 38 92% 50%;            /* #F59E0B - Amber */
+    --warning-foreground: 0 0% 100%;  /* Pure White */
+
+    --info: 199 89% 48%;              /* #0EA5E9 - Info Blue */
+    --info-foreground: 0 0% 100%;     /* Pure White */
+
+    /* Borders & Inputs */
+    --border: 30 8% 85%;              /* #D8D6D3 - Subtle Border */
+    --input: 30 8% 85%;               /* #D8D6D3 - Input Border */
+    --ring: 207 90% 54%;              /* #2B8ED9 - Blue Focus Ring */
+    --radius: 0.75rem;
+
+    /* Feature/Section Colors for Charts & Gradients */
+    --chart-1: 207 90% 54%;           /* Trust Blue - Primary */
+    --chart-2: 142 55% 45%;           /* Green - Finance */
+    --chart-3: 25 90% 55%;            /* Orange - Community */
+    --chart-4: 260 60% 55%;           /* Purple - Admin */
+    --chart-5: 199 89% 48%;           /* Light Blue - Documents */
+
+    /* Feature Colors */
+    --finance: 142 55% 45%;           /* Green */
+    --admin: 260 60% 55%;             /* Purple */
+    --documents: 199 89% 48%;         /* Light Blue */
+    --community: 25 90% 55%;          /* Orange */
+    --messaging: 280 60% 60%;         /* Magenta */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-focus: 0 0 0 3px rgba(43, 142, 217, 0.15);
+  }
+
+  .dark {
+    /* Modern Community Management - Dark Mode */
+
+    /* Neutral Base Colors */
+    --background: 220 15% 12%;        /* #1A1E25 - Dark Navy */
+    --foreground: 30 8% 92%;          /* #EAEAE8 - Off White */
+    --card: 220 13% 16%;              /* #252931 - Card Surface */
+    --card-foreground: 30 8% 92%;     /* #EAEAE8 - Off White */
+    --popover: 220 12% 20%;           /* #2F3542 - Elevated Surface */
+    --popover-foreground: 30 8% 92%;  /* #EAEAE8 - Off White */
+
+    /* Primary Brand Colors */
+    --primary: 207 90% 60%;           /* #3D9FE8 - Lighter Trust Blue */
+    --primary-foreground: 0 0% 100%;  /* Pure White */
+    --primary-dark: 207 90% 50%;      /* #1A85D9 - Blue for Dark */
+
+    /* Secondary & Accent */
+    --secondary: 220 10% 35%;         /* #535861 - Medium Dark Gray */
+    --secondary-foreground: 30 8% 92%; /* Off White */
+
+    --accent: 25 90% 60%;             /* #F49B3D - Brighter Orange */
+    --accent-foreground: 0 0% 100%;   /* Pure White */
+    --accent-warm: 35 85% 65%;        /* #F3B366 - Warm Accent */
+
+    /* Surface Variations */
+    --muted: 220 10% 25%;             /* #3A3F4A - Muted Surface */
+    --muted-foreground: 30 5% 70%;    /* #B0AEA9 - Medium Gray */
+
+    /* Semantic Colors */
+    --destructive: 0 72% 60%;         /* #EB4D5C - Lighter Red */
+    --destructive-foreground: 0 0% 100%; /* Pure White */
+
+    --success: 142 55% 50%;           /* #3BB75D - Lighter Green */
+    --success-foreground: 0 0% 100%;  /* Pure White */
+
+    --warning: 38 92% 55%;            /* #F7A720 - Lighter Amber */
+    --warning-foreground: 0 0% 100%;  /* Pure White */
+
+    --info: 199 89% 55%;              /* #1FB4F5 - Lighter Info Blue */
+    --info-foreground: 0 0% 100%;     /* Pure White */
+
+    /* Borders & Inputs */
+    --border: 220 10% 25%;            /* #3A3F4A - Dark Border */
+    --input: 220 10% 25%;             /* #3A3F4A - Input Border */
+    --ring: 207 90% 60%;              /* #3D9FE8 - Blue Focus Ring */
+
+    /* Feature/Section Colors - Adjusted for Dark Mode */
+    --chart-1: 207 90% 60%;           /* Trust Blue */
+    --chart-2: 142 55% 50%;           /* Green */
+    --chart-3: 25 90% 60%;            /* Orange */
+    --chart-4: 260 60% 60%;           /* Purple */
+    --chart-5: 199 89% 55%;           /* Light Blue */
+
+    /* Feature Colors */
+    --finance: 142 55% 50%;           /* Green */
+    --admin: 260 60% 60%;             /* Purple */
+    --documents: 199 89% 55%;         /* Light Blue */
+    --community: 25 90% 60%;          /* Orange */
+    --messaging: 280 60% 65%;         /* Magenta */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Typography - Cambo for headings, Titillium Web for body */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  
+  h1 {
+    @apply text-4xl font-normal tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl font-normal tracking-tight;
+  }
+  
+  h3 {
+    @apply text-2xl font-normal tracking-tight;
+  }
+  
+  h4 {
+    @apply text-xl font-normal;
+  }
+  
+  h5 {
+    @apply text-lg font-normal;
+  }
+  
+  h6 {
+    @apply text-base font-normal;
+  }
+
+  /* Enhanced Keyboard Navigation Focus Styles - WCAG 2.1 AA Compliant */
+  /* Improved focus indicators for better keyboard accessibility */
+
+  /* Remove default outline and replace with custom focus-visible styles */
+  *:focus {
+    outline: none;
+  }
+
+  /* Enhanced focus-visible styles for interactive elements */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+
+  /* Button focus styles */
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+  }
+
+  /* Link focus styles */
+  a:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    text-decoration: underline;
+  }
+
+  /* Input focus styles */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 0;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+  }
+
+  /* Checkbox and radio focus styles */
+  input[type="checkbox"]:focus-visible,
+  input[type="radio"]:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.2);
+  }
+
+  /* Screen reader only utility (for visually hidden but accessible content) */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Screen reader only but focusable */
+  .sr-only-focusable:focus,
+  .sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+/* WebOS Styles */
+@layer components {
+  /* Animations */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(241, 136, 37, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(241, 136, 37, 0.6);
+    }
+  }
+
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes bounce-subtle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-in-from-top {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Popover smooth entrance */
+  [data-radix-popper-content-wrapper] {
+    animation: scale-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Status bar entrance on page load */
+  .webos-status-bar-refined {
+    animation: slide-in-from-top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slide-down {
+    from { 
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(var(--primary), 0.5);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes ping-slow {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    75%, 100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-out-left {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-150%, -50%) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-out-left-draggable {
+    0% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.3) translateY(calc(100vh - 100%));
+    }
+  }
+
+  /* Standardized Animation Timing (aligned with Tailwind):
+   * Micro: 150ms (duration-150) - Hover, focus, small changes
+   * UI: 200ms (duration-200) - Dropdowns, tooltips, small components
+   * Transition: 300ms (duration-300) - Cards, panels, larger components
+   * Modal: 500ms (duration-500) - Modals and overlays
+   * Page: 700ms (duration-700) - Page loads and heavy transitions
+   */
+
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out; /* UI transition */
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out; /* Modal transition */
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.5s ease-out; /* Modal transition */
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out; /* Transition */
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out; /* Transition */
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-ping-slow {
+    animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .webos-minimize-left {
+    animation: slide-out-left 0.3s ease-in-out forwards;
+  }
+
+  .webos-minimize-left-draggable {
+    animation: slide-out-left-draggable 0.3s ease-in-out forwards;
+  }
+
+  /* WebOS Container */
+  .webos-container {
+    @apply relative;
+    height: 100vh;
+    overflow: hidden;
+    /* Authentic webOS warm taupe gradient - subtle and sophisticated */
+    background: linear-gradient(to bottom right, hsl(30, 12%, 91%), hsl(30, 10%, 85%));
+  }
+  
+  .webos-touchscreen {
+    height: calc(100vh - 3rem); /* Subtract only status bar height - dock floats over */
+    overflow: hidden;
+  }
+  
+  .dark .webos-container {
+    /* Dark mode: webOS Sandstone aesthetic */
+    background: linear-gradient(to bottom right, hsl(0, 0%, 18%), hsl(0, 0%, 14%));
+  }
+
+  /* WebOS Multitasking Container */
+  .webos-multitasking-container {
+    @apply fixed z-10;
+    /* Account for status bar (h-7 = 1.75rem = 28px) */
+    top: 1.75rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /* WebOS Cards Stage */
+  .webos-cards-stage {
+    @apply fixed;
+    /* Account for status bar at top and dock at bottom */
+    top: 1.75rem;
+    left: 0;
+    right: 0;
+    bottom: 6rem;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .webos-cards-stage-multitasking {
+    @apply bg-black/20 backdrop-blur-md;
+    /* Cover full viewport for multitasking overlay */
+    top: 0;
+    bottom: 0;
+  }
+
+  /* WebOS App Card - Consistent Styling */
+  .webos-app-card {
+    @apply fixed;
+    @apply w-[90%] max-w-5xl;
+    @apply rounded-3xl overflow-hidden;
+    @apply transition-all duration-300 ease-out;
+    /* Warm webOS pebble surface for app cards - enhanced shadows */
+    background: rgba(247, 246, 244, 0.98);
+    border: 1px solid rgba(207, 204, 199, 0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.15),
+      0 10px 20px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    /* For mobile/multitasking mode - centered */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100vh - 1.75rem - 6rem);
+    max-height: 85vh;
+  }
+  
+  /* Draggable card variant - positioned absolutely, no centering */
+  .webos-app-card-draggable {
+    @apply transition-none;
+    user-select: none;
+    /* Remove centering transform for desktop mode */
+    left: var(--window-x, 0) !important;
+    top: var(--window-y, 0) !important;
+    width: var(--window-width, 900px) !important;
+    height: var(--window-height, 600px) !important;
+    transform: none !important;
+    max-width: none !important;
+  }
+  
+  /* Card being dragged or resized */
+  .webos-app-card-dragging {
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.25),
+      0 15px 30px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    transition: none !important;
+    cursor: grabbing;
+  }
+  
+  .dark .webos-app-card {
+    background: rgba(56, 56, 56, 0.98);
+    border: 1px solid rgba(76, 76, 76, 0.6);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 10px 20px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  }
+
+  .webos-app-card-active {
+    @apply ring-2 ring-primary/50;
+    z-index: 100 !important;
+  }
+  
+  /* Resize Handles - Enhanced visibility and interaction */
+  .webos-resize-handle {
+    @apply absolute;
+    background: transparent;
+    z-index: 10;
+    transition: all 0.2s ease;
+  }
+  
+  .webos-resize-handle:hover {
+    background: rgba(59, 130, 246, 0.15);
+  }
+  
+  .webos-resize-handle:active {
+    background: rgba(59, 130, 246, 0.25);
+  }
+  
+  /* Top edge */
+  .webos-resize-n {
+    @apply top-0 left-0 right-0;
+    height: 8px;
+    cursor: n-resize;
+  }
+  
+  /* Bottom edge */
+  .webos-resize-s {
+    @apply bottom-0 left-0 right-0;
+    height: 8px;
+    cursor: s-resize;
+  }
+  
+  /* Left edge */
+  .webos-resize-w {
+    @apply top-0 bottom-0 left-0;
+    width: 8px;
+    cursor: w-resize;
+  }
+  
+  /* Right edge */
+  .webos-resize-e {
+    @apply top-0 bottom-0 right-0;
+    width: 8px;
+    cursor: e-resize;
+  }
+  
+  /* Top-left corner */
+  .webos-resize-nw {
+    @apply top-0 left-0;
+    width: 16px;
+    height: 16px;
+    cursor: nw-resize;
+  }
+  
+  /* Top-right corner */
+  .webos-resize-ne {
+    @apply top-0 right-0;
+    width: 16px;
+    height: 16px;
+    cursor: ne-resize;
+  }
+  
+  /* Bottom-left corner */
+  .webos-resize-sw {
+    @apply bottom-0 left-0;
+    width: 16px;
+    height: 16px;
+    cursor: sw-resize;
+  }
+  
+  /* Bottom-right corner */
+  .webos-resize-se {
+    @apply bottom-0 right-0;
+    width: 16px;
+    height: 16px;
+    cursor: se-resize;
+  }
+
+  /* WebOS App Card Header */
+  .webos-app-card-header {
+    @apply h-12 px-4 flex items-center justify-between;
+    @apply text-white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
+  }
+
+  .webos-app-card-icon {
+    @apply w-6 h-6 flex items-center justify-center;
+  }
+
+  .webos-app-card-title {
+    @apply text-sm font-semibold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .webos-app-card-control {
+    @apply w-7 h-7 flex items-center justify-center rounded-lg;
+    @apply hover:bg-white/20 active:bg-white/30 transition-all cursor-pointer;
+    transform-origin: center;
+  }
+
+  .webos-app-card-control:active {
+    transform: scale(0.95);
+  }
+
+  .webos-app-card-close {
+    @apply hover:bg-red-500/20 active:bg-red-500/30;
+  }
+
+  /* WebOS App Card Body */
+  .webos-app-card-body {
+    @apply relative;
+    height: calc(100% - 3rem);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .dark .webos-app-card-body {
+    background: rgba(40, 40, 40, 0.95);
+  }
+
+  .webos-app-card-content {
+    @apply h-full overflow-auto;
+    overscroll-behavior: contain;
+  }
+  
+  /* Enhanced scrollbars for card content */
+  .webos-app-card-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .webos-app-card-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .webos-app-card-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  .webos-app-card-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .dark .webos-app-card-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .webos-app-card-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* WebOS App Card Preview */
+  .webos-app-card-preview {
+    @apply absolute inset-0 flex items-center justify-center;
+  }
+
+  .webos-app-card-preview-overlay {
+    @apply w-full h-full flex items-center justify-center opacity-90;
+  }
+
+  /* WebOS Multitasking Indicator */
+  .webos-multitasking-indicator {
+    @apply fixed bottom-24 left-1/2 -translate-x-1/2;
+    @apply px-6 py-3 rounded-2xl shadow-xl text-center z-50;
+    /* Warm webOS surface for indicator */
+    background: rgba(247, 246, 244, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(207, 204, 199, 0.6);
+  }
+  
+  .dark .webos-multitasking-indicator {
+    background: rgba(56, 56, 56, 0.98);
+    border: 1px solid rgba(76, 76, 76, 0.6);
+  }
+
+  .webos-multitasking-dot {
+    @apply w-2 h-2 rounded-full bg-muted;
+    @apply transition-all duration-150;
+  }
+
+  .webos-multitasking-dot-active {
+    @apply w-6 bg-primary;
+  }
+
+  /* WebOS Cards */
+  .webos-card {
+    @apply rounded-3xl shadow-2xl transition-all duration-300;
+    /* Warm off-white webOS pebble surface */
+    background: rgba(247, 246, 244, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(207, 204, 199, 0.4);
+  }
+  
+  .dark .webos-card {
+    background: rgba(56, 56, 56, 0.95);
+    border: 1px solid rgba(76, 76, 76, 0.4);
+  }
+
+  /* WebOS Pebble (Dock Icons) */
+  .webos-pebble {
+    @apply rounded-2xl shadow-lg backdrop-blur-sm;
+    background: rgba(247, 246, 244, 0.9);
+    border: 1px solid rgba(207, 204, 199, 0.3);
+  }
+  
+  .dark .webos-pebble {
+    background: rgba(56, 56, 56, 0.9);
+    border: 1px solid rgba(76, 76, 76, 0.3);
+  }
+
+  /* Status Bar - webOS authentic styling */
+  .webos-status-bar {
+    @apply fixed top-0 left-0 right-0 h-14 px-6 flex items-center justify-between z-30;
+    /* Warm translucent surface */
+    background: rgba(247, 246, 244, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(207, 204, 199, 0.4);
+  }
+  
+  .dark .webos-status-bar {
+    background: rgba(46, 46, 46, 0.8);
+    border-bottom: 1px solid rgba(76, 76, 76, 0.4);
+  }
+
+  /* Refined Status Bar - Transparent with subtle depth */
+  .webos-status-bar-refined {
+    @apply fixed top-0 left-0 right-0 h-16 px-8 flex items-center justify-between z-30;
+    background: transparent;
+    border-bottom: none;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .webos-status-bar-refined::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .webos-status-bar-refined:hover::before {
+    opacity: 0;
+  }
+
+  .dark .webos-status-bar-refined {
+    background: transparent;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .dark .webos-status-bar-refined::before {
+    background: transparent;
+  }
+
+  /* App Dock - webOS authentic styling - Phase 1 Enhanced */
+  .webos-app-dock {
+    @apply pointer-events-none;
+  }
+
+  .webos-app-dock-container {
+    @apply px-6 pb-6 flex justify-center pointer-events-none;
+  }
+
+  .webos-app-dock-content {
+    @apply flex items-center gap-3 px-5 py-3;
+    @apply rounded-3xl shadow-2xl pointer-events-auto;
+    /* Enhanced glass effect - WebOS authentic */
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dark .webos-app-dock-content {
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .webos-app-dock-item {
+    @apply relative w-16 h-16 cursor-pointer transition-all duration-300 ease-out;
+  }
+
+  .webos-app-dock-item-active {
+    @apply scale-110;
+  }
+  
+  /* Breathing glow animation for active apps - DRAMATICALLY SOFTENED */
+  @keyframes breathe {
+    0%, 100% {
+      box-shadow: 0 0 12px rgba(241, 136, 37, 0.15);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(241, 136, 37, 0.25);
+    }
+  }
+  
+  .webos-dock-active-glow {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  /* Running app indicator line */
+  .webos-dock-running-indicator {
+    @apply absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-primary;
+    width: 50%;
+    box-shadow: 0 0 8px rgba(241, 136, 37, 0.6);
+  }
+  
+  /* Minimized app badge */
+  .webos-dock-minimized-badge {
+    @apply absolute -top-1 -right-1 w-4 h-4 rounded-full;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Phase 2: Live Preview Card */
+  .webos-dock-preview {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-4;
+    @apply bg-background/95 backdrop-blur-xl border border-border/50 rounded-2xl;
+    @apply shadow-2xl overflow-hidden;
+    width: 320px;
+    max-height: 240px;
+    opacity: 0;
+    transform: translateY(10px) translateX(-50%) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+  
+  .webos-dock-preview.show {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%) scale(1);
+    pointer-events: auto;
+  }
+  
+  .webos-dock-preview-header {
+    @apply flex items-center gap-2 p-3 border-b border-border/30 bg-muted/30;
+  }
+  
+  .webos-dock-preview-content {
+    @apply p-4 text-sm text-muted-foreground;
+    max-height: 180px;
+    overflow: hidden;
+  }
+  
+  .webos-dock-preview-snapshot {
+    @apply w-full h-full bg-gradient-to-br from-muted to-muted/50;
+    @apply flex items-center justify-center text-muted-foreground/30;
+  }
+  
+  /* Phase 2: Quick Actions Menu */
+  .webos-dock-quick-actions {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2;
+    @apply bg-background/95 backdrop-blur-xl border border-border/50 rounded-xl;
+    @apply shadow-2xl overflow-hidden p-1;
+    opacity: 0;
+    transform: translateY(10px) translateX(-50%) scale(0.95);
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+  
+  .webos-dock-quick-actions.show {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%) scale(1);
+    pointer-events: auto;
+  }
+  
+  .webos-dock-quick-action {
+    @apply flex items-center gap-2 px-3 py-2 text-sm rounded-lg;
+    @apply transition-all duration-200;
+    @apply hover:bg-muted/50 active:scale-95;
+    white-space: nowrap;
+  }
+  
+  .webos-dock-quick-action-icon {
+    @apply w-4 h-4 text-muted-foreground;
+  }
+
+  /* Dock Popover */
+  /* ==========================================
+     ENHANCED DOCK FLYOUT MENUS - Phase 1
+     ========================================== */
+
+  .webos-dock-popover-content {
+    @apply rounded-3xl overflow-hidden;
+    /* Premium glassmorphism with softer appearance */
+    background: linear-gradient(
+      to bottom right, 
+      rgba(255, 255, 255, 0.95),
+      rgba(247, 246, 244, 0.92)
+    );
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.08),
+      0 8px 16px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    /* Smooth fluid animation */
+    animation: dock-popover-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: bottom center;
+    min-width: 280px;
+    max-width: 320px;
+  }
+  
+  .dark .webos-dock-popover-content {
+    background: linear-gradient(
+      to bottom right,
+      rgba(48, 48, 48, 0.95),
+      rgba(38, 38, 38, 0.92)
+    );
+    border: 1.5px solid rgba(76, 76, 76, 0.7);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  @keyframes dock-popover-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .webos-dock-popover-inner {
+    @apply p-4;
+  }
+
+  .webos-dock-popover-header {
+    @apply flex items-center gap-2.5 px-3 py-2 mb-2;
+    @apply text-sm font-semibold;
+    color: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.03),
+      rgba(0, 0, 0, 0.01)
+    );
+    border-radius: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .dark .webos-dock-popover-header {
+    color: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02)
+    );
+  }
+
+  .webos-dock-popover-header svg {
+    @apply w-4 h-4;
+    opacity: 0.7;
+  }
+
+  .webos-dock-popover-grid {
+    @apply space-y-1.5;
+  }
+
+  .webos-dock-app-card {
+    @apply relative flex items-center gap-3.5 p-3 rounded-2xl;
+    @apply border border-transparent cursor-pointer;
+    @apply transition-all duration-200 ease-out;
+    background: rgba(0, 0, 0, 0.02);
+    /* Staggered animation */
+    opacity: 0;
+    animation: dock-app-card-enter 0.25s ease-out forwards;
+  }
+  
+  .webos-dock-app-card:nth-child(1) { animation-delay: 0.03s; }
+  .webos-dock-app-card:nth-child(2) { animation-delay: 0.06s; }
+  .webos-dock-app-card:nth-child(3) { animation-delay: 0.09s; }
+  .webos-dock-app-card:nth-child(4) { animation-delay: 0.12s; }
+  .webos-dock-app-card:nth-child(5) { animation-delay: 0.15s; }
+  .webos-dock-app-card:nth-child(6) { animation-delay: 0.18s; }
+
+  @keyframes dock-app-card-enter {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .webos-dock-app-card:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(37, 99, 235, 0.15);
+    transform: translateX(3px) scale(1.01);
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(37, 99, 235, 0.08);
+  }
+
+  .dark .webos-dock-app-card {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .dark .webos-dock-app-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(96, 165, 250, 0.2);
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.3),
+      0 2px 6px rgba(96, 165, 250, 0.15);
+  }
+
+  .webos-dock-app-card:active {
+    transform: translateX(2px) scale(0.99);
+    transition-duration: 0.1s;
+  }
+
+  .webos-dock-app-card-active {
+    background: linear-gradient(
+      to right,
+      rgba(37, 99, 235, 0.08),
+      rgba(37, 99, 235, 0.04)
+    ) !important;
+    border-color: rgba(37, 99, 235, 0.25) !important;
+    box-shadow: 
+      0 4px 12px rgba(37, 99, 235, 0.08),
+      inset 0 1px 2px rgba(37, 99, 235, 0.1);
+  }
+
+  .dark .webos-dock-app-card-active {
+    background: linear-gradient(
+      to right,
+      rgba(96, 165, 250, 0.12),
+      rgba(96, 165, 250, 0.06)
+    ) !important;
+    border-color: rgba(96, 165, 250, 0.3) !important;
+  }
+
+  .webos-dock-app-card-content {
+    @apply flex items-center gap-3.5 flex-1 min-w-0 z-10 relative;
+  }
+
+  .webos-dock-app-icon {
+    @apply w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0;
+    @apply transition-all duration-200;
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      0 1px 2px rgba(0, 0, 0, 0.06),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .webos-dock-app-card:hover .webos-dock-app-icon {
+    transform: scale(1.05);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  }
+
+  .webos-dock-app-info {
+    @apply flex flex-col gap-0.5 flex-1 min-w-0;
+  }
+
+  .webos-dock-app-title {
+    @apply text-sm font-semibold block truncate;
+    @apply transition-colors duration-150;
+    color: rgba(0, 0, 0, 0.85);
+    letter-spacing: -0.01em;
+  }
+
+  .dark .webos-dock-app-title {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .webos-dock-app-card:hover .webos-dock-app-title {
+    color: rgba(37, 99, 235, 0.9);
+  }
+
+  .dark .webos-dock-app-card:hover .webos-dock-app-title {
+    color: rgba(96, 165, 250, 0.95);
+  }
+
+  .webos-dock-app-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
+    @apply transition-all duration-150;
+    background: rgba(37, 99, 235, 0.1);
+    color: rgba(37, 99, 235, 0.9);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+  }
+
+  .dark .webos-dock-app-badge {
+    background: rgba(96, 165, 250, 0.15);
+    color: rgba(96, 165, 250, 0.95);
+    border-color: rgba(96, 165, 250, 0.2);
+  }
+
+  .webos-dock-app-preview {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-200 pointer-events-none;
+    @apply rounded-2xl overflow-hidden;
+  }
+
+  .webos-dock-app-card:hover .webos-dock-app-preview {
+    opacity: 0.04;
+  }
+
+  .webos-dock-app-preview-content {
+    @apply w-full h-full bg-gradient-to-br;
+  }
+
+  /* Multitasking View */
+  .webos-multitasking-overlay {
+    @apply fixed inset-0 z-50 bg-black/20 backdrop-blur-md;
+  }
+
+  .webos-multitasking-grid {
+    @apply fixed inset-0 z-50 p-8 overflow-auto;
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+    @apply content-start;
+  }
+
+  .webos-multitasking-card {
+    @apply relative h-64 rounded-2xl overflow-hidden cursor-pointer;
+    @apply shadow-xl transition-all duration-300 group;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+  
+  .webos-multitasking-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Universal Search */
+  .webos-universal-search {
+    @apply fixed inset-0 z-50 bg-black/40 backdrop-blur-md;
+    @apply flex flex-col items-center pt-32 px-4;
+  }
+
+  .webos-search-bar {
+    @apply w-full max-w-2xl px-6 py-4 flex items-center gap-4;
+    @apply rounded-3xl shadow-2xl mb-6;
+    /* Warm webOS surface for search */
+    background: rgba(247, 246, 244, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(207, 204, 199, 0.6);
+  }
+  
+  .dark .webos-search-bar {
+    background: rgba(56, 56, 56, 0.98);
+    border: 1px solid rgba(76, 76, 76, 0.6);
+  }
+
+  .webos-search-input {
+    @apply flex-1 bg-transparent border-none outline-none text-lg;
+    @apply placeholder:text-muted-foreground;
+  }
+
+  /* WebOS Email/Messages App Styles */
+  .webos-status-select {
+    @apply bg-transparent border-none outline-none cursor-pointer;
+    @apply text-white font-bold text-xs;
+  }
+
+  .webos-header {
+    @apply px-5 py-4 border-b flex-shrink-0;
+    background: linear-gradient(180deg, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 88%) 100%);
+    border-bottom: 1px solid hsl(0, 0%, 73%);
+  }
+
+  .dark .webos-header {
+    background: linear-gradient(180deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 18%) 100%);
+    border-bottom: 1px solid hsl(0, 0%, 16%);
+  }
+
+  .webos-header-title {
+    @apply text-4xl font-light tracking-wide;
+    color: hsl(0, 0%, 38%);
+  }
+
+  .dark .webos-header-title {
+    color: hsl(0, 0%, 70%);
+  }
+
+  /* ========================================
+     WEBOS MULTI-PANE LAYOUT SYSTEM
+     Horizontal panes that slide in from right to left
+     ======================================== */
+  
+  /* Multi-Pane Container - Horizontal Flex Layout */
+  .webos-multi-pane-layout {
+    @apply flex flex-row h-full w-full overflow-hidden;
+  }
+  
+  /* Base Pane Styles */
+  .webos-pane {
+    @apply flex flex-col flex-shrink-0 h-full overflow-hidden;
+    border-right: 1px solid var(--webos-divider);
+    background-color: var(--webos-bg-secondary);
+  }
+  
+  /* Navigation Pane (Left - Narrowest) */
+  .webos-pane-navigation {
+    width: var(--webos-pane-narrow);
+    background: linear-gradient(180deg, hsl(0, 0%, 87%) 0%, hsl(0, 0%, 81%) 100%);
+  }
+  
+  .dark .webos-pane-navigation {
+    background: linear-gradient(180deg, hsl(0, 0%, 25%) 0%, hsl(0, 0%, 20%) 100%);
+  }
+  
+  /* List Pane (Middle) */
+  .webos-pane-list {
+    width: var(--webos-pane-medium);
+    background-color: var(--webos-bg-tertiary);
+  }
+  
+  .dark .webos-pane-list {
+    @apply bg-zinc-900;
+  }
+  
+  /* Detail Pane (Right - Flexible Width) */
+  .webos-pane-detail {
+    @apply flex-1 min-w-0;
+    background-color: var(--webos-bg-tertiary);
+    border-right: none;
+  }
+  
+  .dark .webos-pane-detail {
+    @apply bg-zinc-900;
+  }
+
+  /* Legacy aliases for backward compatibility */
+  .webos-pane-sidebar {
+    @apply w-60 flex-shrink-0 flex flex-col border-r;
+    background: linear-gradient(180deg, hsl(0, 0%, 87%) 0%, hsl(0, 0%, 81%) 100%);
+    border-right: 1px solid hsl(0, 0%, 60%);
+  }
+
+  .dark .webos-pane-sidebar {
+    background: linear-gradient(180deg, hsl(0, 0%, 25%) 0%, hsl(0, 0%, 20%) 100%);
+    border-right: 1px solid hsl(0, 0%, 16%);
+  }
+  
+  /* Responsive Behavior for Panes */
+  @media (max-width: 1024px) {
+    .webos-pane-navigation,
+    .webos-pane-list {
+      position: absolute;
+      left: -100%;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      transition: left var(--webos-transition-base);
+    }
+    
+    .webos-pane-navigation.visible,
+    .webos-pane-list.visible {
+      left: 0;
+      box-shadow: var(--webos-shadow-xl);
+    }
+    
+    .webos-pane-detail {
+      width: 100%;
+    }
+  }
+
+  /* ========================================
+     WEBOS PANE HEADERS & FOOTERS
+     ======================================== */
+  
+  /* Pane Header Styles */
+  .webos-header {
+    @apply px-4 py-3 flex items-center justify-between flex-shrink-0;
+    background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
+    border-bottom: 1px solid hsl(0, 0%, 16%);
+    min-height: var(--webos-header-height);
+  }
+  
+  .dark .webos-header {
+    background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
+  }
+  
+  .webos-header-title {
+    @apply text-xs font-bold tracking-wider uppercase text-white;
+  }
+  
+  .webos-header-actions {
+    @apply flex items-center gap-2;
+  }
+  
+  /* Pane Footer Styles */
+  .webos-footer {
+    @apply flex items-center justify-center gap-2 px-3 py-2 flex-shrink-0;
+    background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
+    border-top: 1px solid hsl(0, 0%, 16%);
+    min-height: var(--webos-footer-height);
+  }
+  
+  .dark .webos-footer {
+    background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
+  }
+
+  /* Legacy Pane Header Styles */
+  .webos-pane-header {
+    @apply px-3 py-2 text-xs font-bold tracking-wide;
+    background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
+    color: white;
+  }
+
+  .dark .webos-pane-header {
+    background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
+  }
+
+  .webos-pane-header-light {
+    @apply px-3.5 py-3 border-b;
+    background: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 94%) 100%);
+  }
+
+  .dark .webos-pane-header-light {
+    background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 16%) 100%);
+  }
+
+  .webos-toolbar {
+    @apply px-2.5 py-2.5 flex items-center justify-center gap-2.5 border-t flex-shrink-0;
+    background: linear-gradient(180deg, hsl(0, 0%, 36%) 0%, hsl(0, 0%, 24%) 100%);
+    border-top: 1px solid hsl(0, 0%, 16%);
+    height: 48px;
+  }
+
+  .dark .webos-toolbar {
+    background: linear-gradient(180deg, hsl(0, 0%, 20%) 0%, hsl(0, 0%, 12%) 100%);
+  }
+
+  .webos-toolbar-button {
+    @apply bg-transparent border-none p-1.5 flex items-center transition-colors;
+    color: hsl(0, 0%, 60%);
+    cursor: pointer;
+  }
+
+  .webos-toolbar-button:hover {
+    color: hsl(25, 85%, 55%);
+  }
+
+  .webos-toolbar-button-light {
+    @apply bg-transparent border-none p-1.5 flex items-center transition-colors;
+    color: white;
+    cursor: pointer;
+  }
+
+  .webos-toolbar-button-light:hover {
+    color: hsl(25, 85%, 55%);
+  }
+
+  .webos-list-header {
+    @apply px-3.5 py-1.5 text-xs font-bold sticky top-0 z-10;
+    background: linear-gradient(180deg, hsl(0, 0%, 95%) 0%, hsl(0, 0%, 91%) 100%);
+    color: hsl(0, 0%, 48%);
+  }
+
+  .dark .webos-list-header {
+    background: linear-gradient(180deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 18%) 100%);
+    color: hsl(0, 0%, 60%);
+  }
+
+  /* WebOS Color Utilities */
+  .webos-text {
+    color: hsl(0, 0%, 13%);
+  }
+
+  .dark .webos-text {
+    color: hsl(30, 10%, 88%);
+  }
+
+  .webos-badge {
+    color: hsl(0, 0%, 48%);
+  }
+
+  .dark .webos-badge {
+    color: hsl(0, 0%, 60%);
+  }
+
+  .webos-orange {
+    color: hsl(25, 85%, 55%);
+  }
+
+  .webos-active {
+    background-color: hsl(0, 0%, 16%);
+  }
+
+  .webos-hover:hover {
+    background-color: hsl(0, 0%, 80%);
+  }
+
+  .dark .webos-hover:hover {
+    background-color: hsl(0, 0%, 28%);
+  }
+
+  .webos-divider {
+    border-color: hsl(0, 0%, 73%);
+  }
+
+  .dark .webos-divider {
+    border-color: hsl(0, 0%, 30%);
+  }
+
+  .webos-list-divider {
+    border-color: hsl(0, 0%, 93%);
+  }
+
+  .dark .webos-list-divider {
+    border-color: hsl(0, 0%, 25%);
+  }
+
+  .webos-list-hover {
+    background-color: hsl(0, 0%, 97%);
+  }
+
+  .dark .webos-list-hover {
+    background-color: hsl(0, 0%, 22%);
+  }
+
+  .webos-avatar {
+    background-color: hsl(0, 0%, 81%);
+  }
+
+  .dark .webos-avatar {
+    background-color: hsl(0, 0%, 35%);
+  }
+
+  .webos-search-results {
+    @apply w-full max-w-2xl rounded-3xl shadow-2xl;
+    @apply overflow-hidden max-h-[60vh] overflow-y-auto;
+    /* Warm webOS surface for search results */
+    background: rgba(247, 246, 244, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(207, 204, 199, 0.6);
+  }
+  
+  .dark .webos-search-results {
+    background: rgba(56, 56, 56, 0.98);
+    border: 1px solid rgba(76, 76, 76, 0.6);
+  }
+
+  .webos-search-category {
+    @apply p-4 border-b border-border/50 last:border-b-0;
+  }
+
+  .webos-search-category-title {
+    @apply text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-2;
+  }
+
+  .webos-search-result {
+    @apply flex items-center gap-3 p-3 rounded-xl cursor-pointer;
+    @apply hover:bg-primary/5 transition-colors duration-150;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-webos {
+    @apply bg-gradient-to-br from-webos-grey-light to-zinc-200;
+  }
+
+  .bg-gradient-orange {
+    @apply bg-gradient-to-br from-webos-orange to-webos-orange-dark;
+  }
+
+  .bg-gradient-charcoal {
+    @apply bg-gradient-to-br from-webos-grey to-webos-grey-dark;
+  }
+
+  /* AI Assistant Styles */
+  .webos-assistant-bubble {
+    @apply w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl;
+    @apply transition-all duration-300 hover:scale-110 cursor-pointer;
+    background: linear-gradient(135deg, #F18825, #F5A34E);
+  }
+
+  .webos-assistant-container {
+    @apply animate-scale-in;
+  }
+
+  .webos-assistant-panel {
+    @apply rounded-3xl shadow-2xl overflow-hidden flex flex-col;
+    @apply transition-all duration-300;
+    /* Warm webOS surface for assistant */
+    background: rgba(247, 246, 244, 0.98);
+    backdrop-filter: blur(32px);
+    border: 1px solid rgba(207, 204, 199, 0.6);
+  }
+  
+  .dark .webos-assistant-panel {
+    background: rgba(56, 56, 56, 0.98);
+    border: 1px solid rgba(76, 76, 76, 0.6);
+  }
+
+  .webos-assistant-panel-compact {
+    @apply w-[380px] h-[500px];
+  }
+
+  .webos-assistant-panel-expanded {
+    @apply w-[420px] h-[600px];
+  }
+
+  .webos-assistant-header {
+    @apply px-4 py-3 flex items-center justify-between;
+    background: linear-gradient(to right, #F18825, #F5A34E);
+  }
+
+  .webos-assistant-welcome {
+    @apply p-4 rounded-2xl;
+    background: linear-gradient(135deg, rgba(241, 136, 37, 0.08), rgba(245, 163, 78, 0.08));
+    border: 1px solid rgba(241, 136, 37, 0.2);
+  }
+
+  .webos-assistant-suggestion {
+    @apply flex items-center gap-3 p-3 rounded-xl;
+    @apply bg-white hover:bg-muted/50 border border-border/50;
+    @apply transition-all duration-150 cursor-pointer;
+    @apply hover:shadow-md hover:border-primary/30;
+  }
+
+  .webos-assistant-tip {
+    @apply flex items-start gap-2 p-3 rounded-xl;
+    @apply bg-yellow-50 border border-yellow-200/50;
+  }
+
+  .webos-assistant-input-area {
+    @apply p-4 bg-muted/30 border-t border-border/50;
+  }
+
+  /* Custom Scrollbar */
+  .webos-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+
+  .webos-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .webos-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .webos-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  .webos-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  /* WebOS Text Styles */
+  .webos-text-title {
+    @apply text-foreground font-bold tracking-tight;
+  }
+
+  .webos-text-subtitle {
+    @apply text-muted-foreground;
+  }
+
+  /* WebOS Shadows */
+  .webos-shadow {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .webos-shadow-lg {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gentle blinking cursor animation */
+  .gentle-cursor {
+    caret-color: hsl(var(--primary));
+    animation: gentle-blink 1.2s ease-in-out infinite;
+  }
+  
+  @keyframes gentle-blink {
+    0%, 49% {
+      caret-color: hsl(var(--primary));
+    }
+    50%, 100% {
+      caret-color: transparent;
+    }
+  }
+}
+
+/* React Grid Layout Overrides */
+.react-grid-layout {
+  position: relative;
+  transition: height 200ms ease;
+}
+
+.react-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top, width, height;
+}
+
+.react-grid-item img {
+  pointer-events: none;
+  user-select: none;
+}
+
+.react-grid-item > .react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.react-grid-item > .react-resizable-handle::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid hsl(var(--primary) / 0.5);
+  border-bottom: 2px solid hsl(var(--primary) / 0.5);
+  transition: all 0.2s ease;
+}
+
+.react-grid-item > .react-resizable-handle:hover::after {
+  border-right-color: hsl(var(--primary));
+  border-bottom-color: hsl(var(--primary));
+}
+
+.react-grid-item.react-grid-placeholder {
+  background: hsl(var(--primary) / 0.15);
+  opacity: 0.5;
+  transition-duration: 100ms;
+  z-index: 2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  border-radius: 0.75rem;
+  border: 2px dashed hsl(var(--primary) / 0.4);
+}
+
+.react-grid-item.react-draggable-dragging {
+  transition: none;
+  z-index: 100;
+  will-change: transform;
+  opacity: 0.9;
+}
+
+.react-grid-item.resizing {
+  z-index: 100;
+  will-change: width, height;
+}
+
+/* Disable pointer events on widget content during drag/resize */
+.react-grid-item.react-draggable-dragging *,
+.react-grid-item.resizing * {
+  pointer-events: none !important;
+}
+
+/* Override default grid layout margins for WebOS style */
+.react-grid-layout {
+  background: transparent;
+}
+
+/* Smooth transitions for grid items */
+.react-grid-item.cssTransforms {
+  transition-property: transform, width, height;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced resize handle visibility in edit mode */
+.react-grid-item > .react-resizable-handle-se {
+  cursor: se-resize;
+  bottom: 0;
+  right: 0;
+}
+
+/* Fix for widget overflow during resize */
+.react-grid-item {
+  overflow: hidden;
+}
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* High Contrast Mode */
+.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 38 92% 70%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 90%;
+  --accent: 38 92% 70%;
+  --accent-foreground: 0 0% 0%;
+  --border: 0 0% 40%;
+  --input: 0 0% 40%;
+  --ring: 38 92% 70%;
+}
+
+.high-contrast * {
+  border-color: hsl(var(--border)) !important;
+}
+
+.high-contrast button,
+.high-contrast a {
+  font-weight: 600 !important;
+}
+
+/* Reduce Motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Underline Links */
+.underline-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.underline-links a:hover {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* Enhanced Focus Indicators */
+.focus-indicators *:focus,
+.focus-indicators *:focus-visible {
+  outline: 3px solid hsl(var(--primary)) !important;
+  outline-offset: 2px !important;
+  border-radius: 4px;
+}
+
+.focus-indicators button:focus-visible,
+.focus-indicators a:focus-visible,
+.focus-indicators input:focus-visible,
+.focus-indicators select:focus-visible,
+.focus-indicators textarea:focus-visible {
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.3) !important;
+}
+
+/* Text Size Classes */
+.text-normal {
+  font-size: 100%;
+}
+
+.text-large {
+  font-size: 112.5%;
+}
+
+.text-xlarge {
+  font-size: 125%;
+}
+
+/* Ensure proper contrast for disabled elements */
+.high-contrast button:disabled,
+.high-contrast input:disabled,
+.high-contrast select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Skip to content link for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Improve readability in high contrast mode */
+.high-contrast .webos-status-bar-refined {
+  background: hsl(var(--background)) !important;
+  border-bottom: 2px solid hsl(var(--border)) !important;
+}
+
+.high-contrast .webos-dock {
+  background: hsl(var(--background)) !important;
+  border-top: 2px solid hsl(var(--border)) !important;
+}
+
+/* ============================================
+   EXTENDED ACCESSIBILITY FEATURES (WCAG 2.2)
+   ============================================ */
+
+/* Text Size - Extended */
+.text-xxlarge {
+  font-size: 137.5%;
+}
+
+/* Line Height - WCAG 1.4.12 Text Spacing */
+.line-height-normal p,
+.line-height-normal li,
+.line-height-normal div {
+  line-height: 1.5;
+}
+
+.line-height-relaxed p,
+.line-height-relaxed li,
+.line-height-relaxed div {
+  line-height: 1.7;
+}
+
+.line-height-loose p,
+.line-height-loose li,
+.line-height-loose div {
+  line-height: 2;
+}
+
+/* Letter Spacing - WCAG 1.4.12 Text Spacing */
+.letter-spacing-wide {
+  letter-spacing: 0.05em;
+}
+
+.letter-spacing-wider {
+  letter-spacing: 0.1em;
+}
+
+/* Word Spacing - WCAG 1.4.12 Text Spacing */
+.word-spacing-wide {
+  word-spacing: 0.16em;
+}
+
+.word-spacing-wider {
+  word-spacing: 0.24em;
+}
+
+/* Paragraph Spacing - WCAG 1.4.12 Text Spacing */
+:root {
+  --paragraph-spacing: 1.5em;
+}
+
+p + p {
+  margin-top: var(--paragraph-spacing);
+}
+
+/* Text Alignment */
+.text-align-left * {
+  text-align: left !important;
+}
+
+.text-align-justified * {
+  text-align: justify !important;
+  hyphens: auto;
+}
+
+/* Dyslexia Font - OpenDyslexic via Google Fonts fallback to Comic Sans */
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+  font-weight: 500 !important;
+}
+
+/* Color Blind Modes - WCAG 1.4.1 Use of Color */
+/* Deuteranopia (Red-Green) - Most common */
+.cb-deuteranopia {
+  filter: grayscale(50%) sepia(20%) hue-rotate(20deg);
+}
+
+/* Protanopia (Red-Green) */
+.cb-protanopia {
+  filter: grayscale(50%) sepia(25%) hue-rotate(10deg);
+}
+
+/* Tritanopia (Blue-Yellow) */
+.cb-tritanopia {
+  filter: grayscale(30%) sepia(20%) hue-rotate(180deg);
+}
+
+/* Monochrome/Achromatopsia */
+.cb-monochrome {
+  filter: grayscale(100%);
+}
+
+/* Saturation Control */
+:root {
+  --saturation: 100%;
+}
+
+body {
+  filter: saturate(var(--saturation));
+}
+
+/* Skip Links - WCAG 2.4.1 Bypass Blocks */
+.show-skip-links .skip-to-content {
+  display: block;
+}
+
+.skip-to-content:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Keyboard Navigation Indicators - WCAG 2.4.7 Focus Visible */
+.keyboard-navigation *:focus-visible {
+  outline: 3px solid hsl(var(--primary)) !important;
+  outline-offset: 3px !important;
+}
+
+.keyboard-navigation button:focus-visible,
+.keyboard-navigation a:focus-visible {
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.25) !important;
+}
+
+/* Reading Guide - Line or Box */
+.reading-guide-line * {
+  position: relative;
+}
+
+.reading-guide-line p:hover::before,
+.reading-guide-line div:hover::before,
+.reading-guide-line li:hover::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: 0;
+  bottom: 0;
+  background: hsl(var(--primary) / 0.1);
+  border-left: 3px solid hsl(var(--primary));
+  pointer-events: none;
+  z-index: 10;
+}
+
+.reading-guide-box * {
+  position: relative;
+}
+
+.reading-guide-box p:hover::before,
+.reading-guide-box div:hover::before,
+.reading-guide-box li:hover::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  right: -15px;
+  top: -5px;
+  bottom: -5px;
+  background: hsl(var(--primary) / 0.08);
+  border: 2px solid hsl(var(--primary));
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Reading Mask - Dimming everything except focused content */
+.reading-mask {
+  position: relative;
+}
+
+.reading-mask::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: multiply;
+}
+
+.reading-mask *:hover,
+.reading-mask *:focus-within {
+  position: relative;
+  z-index: 10;
+  background: hsl(var(--background));
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* Highlight Hover - Makes interactive elements glow on hover */
+.highlight-hover button:hover,
+.highlight-hover a:hover,
+.highlight-hover input:hover,
+.highlight-hover select:hover {
+  background: hsl(var(--primary) / 0.15) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.25) !important;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* Cursor Size - WCAG 2.5.8 Target Size (Minimum) */
+.cursor-large {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M2 2 L2 28 L10 20 L14 28 L18 26 L14 18 L22 18 Z" fill="black" stroke="white" stroke-width="1"/></svg>') 2 2, auto;
+}
+
+.cursor-xlarge {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M4 4 L4 40 L14 28 L20 40 L26 37 L20 25 L32 25 Z" fill="black" stroke="white" stroke-width="2"/></svg>') 4 4, auto;
+}
+
+/* Large Click Targets - WCAG 2.5.5 Target Size (Enhanced) */
+.large-click-targets button,
+.large-click-targets a,
+.large-click-targets input[type="checkbox"],
+.large-click-targets input[type="radio"] {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 12px 16px;
+}
+
+.large-click-targets input[type="checkbox"],
+.large-click-targets input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  transform: scale(1.5);
+}
+
+/* Ensure proper target size for touch */
+@media (pointer: coarse) {
+  button,
+  a,
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Screen Reader Only Content - WCAG 4.1.3 Status Messages */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ARIA Live Regions for Screen Reader Announcements */
+.aria-live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Focus Trap for Modals - WCAG 2.4.3 Focus Order */
+.focus-trap:focus {
+  outline: none;
+}
+
+/* Reduced Transparency for High Contrast - WCAG 1.4.3 Contrast */
+.high-contrast .backdrop-blur-xl,
+.high-contrast .backdrop-blur-lg,
+.high-contrast .backdrop-blur-md {
+  backdrop-filter: none !important;
+  background: hsl(var(--background)) !important;
+}
+
+.high-contrast .bg-opacity-90,
+.high-contrast .bg-opacity-80,
+.high-contrast .bg-opacity-70 {
+  opacity: 1 !important;
+}
+
+/* Ensure proper contrast for shadows in high contrast */
+.high-contrast * {
+  --tw-shadow-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Better contrast for borders */
+.high-contrast * {
+  border-width: 2px !important;
+}
+
+/* Disabled State Accessibility */
+[disabled],
+[aria-disabled="true"] {
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+.high-contrast [disabled],
+.high-contrast [aria-disabled="true"] {
+  opacity: 0.5 !important;
+  filter: grayscale(100%);
+}
+
+/* Error State Accessibility - WCAG 3.3.1 Error Identification */
+[aria-invalid="true"],
+.error-input {
+  border-color: hsl(var(--destructive)) !important;
+  border-width: 2px !important;
+}
+
+[aria-invalid="true"]:focus,
+.error-input:focus {
+  outline-color: hsl(var(--destructive)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--destructive) / 0.3) !important;
+}
+
+/* Required Field Indicator - WCAG 3.3.2 Labels or Instructions */
+[aria-required="true"]::after,
+.required-field::after {
+  content: ' *';
+  color: hsl(var(--destructive));
+  font-weight: bold;
+}
+
+/* Loading State Accessibility */
+[aria-busy="true"] {
+  cursor: wait !important;
+  pointer-events: none !important;
+  opacity: 0.7 !important;
+}
+
+/* Tooltip Accessibility - WCAG 1.4.13 Content on Hover or Focus */
+[role="tooltip"] {
+  position: absolute;
+  z-index: 9999;
+  padding: 8px 12px;
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  font-size: 0.875rem;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+/* Ensure tooltips are dismissible */
+[role="tooltip"]:hover {
+  display: none;
+}
+
+/* Print Styles - Accessibility */
+@media print {
+  .no-print,
+  nav,
+  .webos-dock,
+  .webos-status-bar-refined {
+    display: none !important;
+  }
+
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  a {
+    text-decoration: underline !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* Prefers Reduced Motion - System Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Prefers Contrast - System Preference */
+@media (prefers-contrast: more) {
+  * {
+    border-width: 2px !important;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    font-weight: 600 !important;
+  }
+}
+
+/* Dark Mode High Contrast */
+.dark.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+  --border: 0 0% 50%;
+}
+
+/* Focus Management for Tab Navigation */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Better Text Selection */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+::-moz-selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Smooth Scroll (Respects prefers-reduced-motion) */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* WCAG AAA Compliance Indicator */
+.wcag-aaa-compliant::before {
+  content: 'WCAG AAA';
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0.7;
+}
+
+/* ============================================
+   REFINED CARD ANIMATIONS & INTERACTIONS
+   ============================================ */
+
+/* Card Entry/Exit Animations */
+@keyframes card-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes card-zoom-out {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+  }
+}
+
+.webos-card-zoom-in {
+  animation: card-zoom-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.webos-card-dismiss {
+  animation: card-zoom-out 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+.webos-card-maximized {
+  /* Maximized windows are above regular windows (50-89) but below status bar (100) */
+  z-index: 90 !important;
+  border-radius: 0 !important;
+}
+
+.webos-app-card-draggable[style*="border-radius: 0"] {
+  border-radius: 0 !important;
+}
+
+.webos-app-card-draggable[style*="border-radius: 0"] .webos-app-card-header {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+/* Card Header Refinements */
+.webos-card-header-refined {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Card Content Area */
+.webos-card-content {
+  @apply flex-1 overflow-y-auto;
+  overscroll-behavior: contain;
+}
+
+/* Better Scrollbars for Card Content */
+.webos-card-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.webos-card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.webos-card-content::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+.webos-card-content::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Smooth Touch Scrolling */
+.webos-card-content {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevent Overscroll Bounce on iOS */
+html, body {
+  overscroll-behavior-y: none;
+}
+
+/* Card Content Padding Helpers */
+.card-content-padding {
+  @apply p-6;
+}
+
+.card-content-padding-sm {
+  @apply p-4;
+}
+
+.card-content-padding-lg {
+  @apply p-8;
+}
+
+/* Refined Interactive States */
+.webos-card button:focus-visible,
+.webos-card a:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Touch Feedback for Interactive Elements */
+.webos-card button:active,
+.webos-card [role="button"]:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* Smooth Height Transitions for Expandable Content */
+.smooth-height-transition {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Loading Skeleton Pulse Animation */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade In Animation for Content */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.3s ease;
+}
+
+/* Slide Up Animation for Modals */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slide-up 0.3s ease;
+}
+
+/* Status Badge Styles */
+.status-badge {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-badge-success {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+}
+
+.status-badge-warning {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+}
+
+.status-badge-error {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.status-badge-info {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+}
+
+.status-badge-neutral {
+  @apply bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-400;
+}
+
+/* Grid Layouts for Cards */
+.card-grid {
+  @apply grid gap-4;
+}
+
+.card-grid-1 {
+  @apply grid-cols-1;
+}
+
+.card-grid-2 {
+  @apply grid-cols-1 md:grid-cols-2;
+}
+
+.card-grid-3 {
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.card-grid-4 {
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+}
+
+/* Enhanced Form Styles within Cards */
+.webos-card form .form-section {
+  @apply space-y-4 mb-6 last:mb-0;
+}
+
+.webos-card form .form-section-header {
+  @apply text-sm font-semibold text-muted-foreground mb-3 pb-2 border-b;
+}
+
+/* Better Focus Indicators for Forms */
+.webos-card input:focus,
+.webos-card select:focus,
+.webos-card textarea:focus {
+  @apply ring-2 ring-primary/20 border-primary;
+}
+
+/* Disabled State Improvements */
+.webos-card button:disabled,
+.webos-card input:disabled,
+.webos-card select:disabled,
+.webos-card textarea:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .webos-card {
+    border-width: 2px;
+  }
+  
+  .webos-card button {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .webos-card-zoom-in,
+  .webos-card-dismiss,
+  .fade-in,
+  .slide-up {
+    animation: none;
+  }
+  
+  .webos-card,
+  .webos-card * {
+    transition: none !important;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY STYLES
+   ============================================================================ */
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Indicators */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Disable focus indicators when accessibility setting is off */
+.no-focus-highlight :focus-visible {
+  outline: none;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --gray-50: #ffffff;
+  --gray-100: #e0e0e0;
+  --gray-200: #c0c0c0;
+  --gray-300: #a0a0a0;
+  --gray-400: #808080;
+  --gray-500: #606060;
+  --gray-600: #404040;
+  --gray-700: #303030;
+  --gray-800: #202020;
+  --gray-900: #000000;
+}
+
+.high-contrast button,
+.high-contrast a {
+  border: 2px solid currentColor;
+}
+
+/* Compact Mode */
+.compact-mode {
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.375rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.625rem;
+  --spacing-xl: 0.75rem;
+}
+
+.compact-mode .p-4 {
+  padding: 0.5rem;
+}
+
+.compact-mode .p-6 {
+  padding: 0.75rem;
+}
+
+.compact-mode .gap-4 {
+  gap: 0.5rem;
+}
+
+.compact-mode .gap-6 {
+  gap: 0.75rem;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard Navigation Indicators */
+body:not(.using-mouse) *:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Skip to Main Content Link */
+.skip-to-main {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-to-main:focus {
+  top: 0;
+}
+
+/* Touch Target Minimum Size */
+@media (pointer: coarse) {
+  button,
+  a,
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Font Size Adjustments */
+[data-font-size="large"] {
+  font-size: 18px;
+}
+
+[data-font-size="x-large"] {
+  font-size: 20px;
+}
+
+[data-font-size="large"] .text-sm {
+  font-size: 1rem;
+}
+
+[data-font-size="large"] .text-base {
+  font-size: 1.125rem;
+}
+
+[data-font-size="large"] .text-lg {
+  font-size: 1.25rem;
+}
+
+[data-font-size="x-large"] .text-sm {
+  font-size: 1.125rem;
+}
+
+[data-font-size="x-large"] .text-base {
+  font-size: 1.25rem;
+}
+
+[data-font-size="x-large"] .text-lg {
+  font-size: 1.375rem;
+}

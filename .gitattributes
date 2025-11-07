@@ -1,0 +1,88 @@
+# Git Attributes Configuration
+# Helps ensure consistent handling of files across different platforms
+
+# Auto detect text files and normalize line endings to LF
+* text=auto eol=lf
+
+# Source code
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Configuration files
+*.config.js text eol=lf
+*.config.ts text eol=lf
+.env* text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+LICENSE text eol=lf
+README text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Prisma schema
+*.prisma text eol=lf
+
+# SQL files
+*.sql text eol=lf
+
+# Binary files - mark as binary to prevent line ending conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.mp4 binary
+*.mov binary
+*.mp3 binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.otf binary
+
+# Archives
+*.7z binary
+*.jar binary
+*.rar binary
+*.tar.gz binary
+*.tgz binary
+
+# Git LFS - Large File Storage (for future use)
+# Uncomment these lines if you decide to use Git LFS for large assets
+# *.psd filter=lfs diff=lfs merge=lfs -text
+# *.ai filter=lfs diff=lfs merge=lfs -text
+# Large images (>1MB) should use LFS
+# *.png filter=lfs diff=lfs merge=lfs -text
+# *.jpg filter=lfs diff=lfs merge=lfs -text
+
+# Lockfiles - always binary, never merge
+package-lock.json binary
+yarn.lock binary
+pnpm-lock.yaml binary
+
+# Linguist overrides for GitHub language statistics
+# (Optional: Adjust these based on your preferences)
+*.prisma linguist-language=Prisma
+nextjs_space/public/* linguist-vendored
+nextjs_space/.next/* linguist-generated

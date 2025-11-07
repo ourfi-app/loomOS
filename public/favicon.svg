@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8d5e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7eb8d1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <!-- House outline -->
+  <path d="M50 115 L128 50 L206 115 L206 206 L50 206 Z" fill="none" stroke="#1e5c6e" stroke-width="10" stroke-linejoin="miter"/>
+  <!-- People icons -->
+  <circle cx="128" cy="108" r="15" fill="#e07856"/>
+  <ellipse cx="128" cy="133" rx="20" ry="15" fill="#e07856"/>
+  <circle cx="90" cy="128" r="13" fill="#e07856"/>
+  <ellipse cx="90" cy="149" rx="18" ry="13" fill="#e07856"/>
+  <circle cx="166" cy="128" r="13" fill="#e07856"/>
+  <ellipse cx="166" cy="149" rx="18" ry="13" fill="#e07856"/>
+</svg>

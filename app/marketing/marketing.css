@@ -1,0 +1,487 @@
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cambo&family=Titillium+Web:wght@400;600;700&display=swap');
+
+/* HSL Color & Style Variables (From STYLE_GUIDE.pdf) */
+:root {
+  --primary: 207 90% 54%;
+  --primary-dark: 207 90% 45%;
+  --primary-foreground: 0 0% 100%;
+
+  --accent: 25 90% 55%;
+  --accent-foreground: 0 0% 100%;
+  --accent-warm: 35 85% 60%;
+
+  /* Light Mode Neutrals */
+  --background: 30 8% 94%;
+  --foreground: 210 15% 20%;
+  --card: 30 12% 97%;
+  --card-foreground: 210 15% 20%;
+  --muted: 30 6% 90%;
+  --muted-foreground: 210 10% 40%;
+  --border: 30 8% 85%;
+
+  /* Semantic Colors */
+  --success: 142 55% 45%;
+  --warning: 38 92% 50%;
+  --destructive: 0 72% 51%;
+  --info: 199 89% 48%;
+
+  /* Feature Area Colors (from Design System) */
+  --finance: 142 55% 45%;         /* Green - Financial matters */
+  --admin: 260 60% 55%;            /* Purple - Admin functions */
+  --documents: 199 89% 48%;        /* Light Blue - Documents */
+  --community: 25 90% 55%;         /* Orange - Community features */
+  --messaging: 280 60% 60%;        /* Magenta - Communication */
+
+  /* Radii from Style Guide */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* Base typography */
+body {
+  font-family: 'Titillium Web', -apple-system, system-ui, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cambo', Georgia, serif;
+  color: hsl(var(--foreground));
+}
+
+/* Update headings inside content to use new fonts */
+.page-content h1, .page-content h2, .page-content h3 {
+  color: hsl(var(--primary));
+}
+
+.page-content h3 {
+  color: hsl(var(--foreground));
+}
+
+/* Long-form content container with subtle background */
+.page-content {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 4rem 1rem 6rem;
+  background: linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+  .page-content {
+    padding: 6rem 3rem;
+    margin-top: 2rem;
+  }
+}
+
+.page-content h1, .page-content h2, .page-content h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+.page-content h1 {
+  font-size: 2.25rem;
+  font-weight: 400;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 640px) {
+  .page-content h1 {
+    font-size: 3rem;
+  }
+}
+
+.page-content h2 {
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: hsl(var(--primary));
+}
+
+@media (min-width: 640px) {
+  .page-content h2 {
+    font-size: 2.25rem;
+  }
+}
+
+.page-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+@media (min-width: 640px) {
+  .page-content h3 {
+    font-size: 1.875rem;
+  }
+}
+
+.page-content p, .page-content li {
+  font-size: 1.125rem;
+  color: hsl(var(--foreground));
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .page-content p, .page-content li {
+    font-size: 1.25rem;
+  }
+}
+
+.page-content ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-content li {
+  padding-left: 0.5rem;
+}
+
+.page-content ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Hero styling with gradient background */
+.hero-section {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--background)) 50%, hsl(var(--primary) / 0.05) 100%);
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle at top right, hsl(var(--accent) / 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* WebOS 'Flow' Card Styling - Enhanced */
+.flow-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--background)) 100%);
+  border-radius: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.flow-card {
+  flex-shrink: 0;
+  width: 20rem;
+  height: 28rem;
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%);
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  cursor: pointer;
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
+  border-radius: 1rem;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flow-card:hover::before {
+  opacity: 1;
+}
+
+.flow-card:hover {
+  transform: translateY(-0.75rem);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.flow-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  font-family: 'Cambo', Georgia, serif;
+}
+
+.flow-card p {
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+}
+
+/* Primary/Secondary Buttons with Gradients (per Style Guide) */
+.btn {
+  font-family: 'Titillium Web', -apple-system, system-ui, sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.125rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 10px 15px -3px rgba(43, 142, 217, 0.25), 0 4px 6px -4px rgba(43, 142, 217, 0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, hsl(var(--primary-dark)) 0%, hsl(207 90% 40%) 100%);
+  box-shadow: 0 20px 25px -5px rgba(43, 142, 217, 0.3), 0 8px 10px -6px rgba(43, 142, 217, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-warm)) 100%);
+  color: hsl(var(--accent-foreground));
+  box-shadow: 0 10px 15px -3px rgba(242, 137, 37, 0.25), 0 4px 6px -4px rgba(242, 137, 37, 0.15);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, hsl(var(--accent-warm)) 0%, hsl(35 90% 65%) 100%);
+  box-shadow: 0 20px 25px -5px rgba(242, 137, 37, 0.3), 0 8px 10px -6px rgba(242, 137, 37, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: hsl(var(--card));
+  color: hsl(var(--primary));
+  border: 2px solid hsl(var(--primary));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.btn-outline:hover {
+  background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--card)) 100%);
+  border-color: hsl(var(--primary-dark));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: hsl(var(--card));
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  z-index: 50;
+  min-width: 250px;
+  border: 1px solid hsl(var(--border));
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: hsl(var(--muted));
+}
+
+/* Testimonial Cards with gradient accents */
+.testimonial-card {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.5) 100%);
+  border-left: 6px solid transparent;
+  border-image: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%) 1;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
+  border-radius: 0.75rem;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card blockquote {
+  font-size: 1.25rem;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .testimonial-card blockquote {
+    font-size: 1.5rem;
+  }
+}
+
+.testimonial-card cite {
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+}
+
+/* Feature Card Styles with Feature-Specific Colors */
+.feature-card {
+  background: hsl(var(--card));
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--feature-color-start), var(--feature-color-end));
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--feature-color-start), var(--feature-color-end));
+  box-shadow: 0 8px 16px -4px var(--feature-shadow);
+}
+
+/* Feature-specific color variations */
+.feature-finance {
+  --feature-color-start: hsl(var(--finance));
+  --feature-color-end: hsl(var(--success));
+  --feature-shadow: rgba(52, 168, 83, 0.3);
+}
+
+.feature-admin {
+  --feature-color-start: hsl(var(--admin));
+  --feature-color-end: hsl(280 60% 60%);
+  --feature-shadow: rgba(147, 51, 234, 0.3);
+}
+
+.feature-documents {
+  --feature-color-start: hsl(var(--documents));
+  --feature-color-end: hsl(var(--info));
+  --feature-shadow: rgba(14, 165, 233, 0.3);
+}
+
+.feature-community {
+  --feature-color-start: hsl(var(--community));
+  --feature-color-end: hsl(var(--accent-warm));
+  --feature-shadow: rgba(242, 137, 37, 0.3);
+}
+
+/* Before/After Comparison Cards */
+.comparison-card {
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comparison-card-before {
+  background: linear-gradient(135deg, hsl(var(--destructive) / 0.08) 0%, hsl(var(--destructive) / 0.05) 100%);
+  border-left: 4px solid hsl(var(--destructive));
+  box-shadow: 0 4px 6px -1px rgba(220, 53, 69, 0.1);
+}
+
+.comparison-card-before:hover {
+  box-shadow: 0 10px 15px -3px rgba(220, 53, 69, 0.15);
+  transform: translateX(4px);
+}
+
+.comparison-card-after {
+  background: linear-gradient(135deg, hsl(var(--success) / 0.08) 0%, hsl(var(--success) / 0.05) 100%);
+  border-left: 4px solid hsl(var(--success));
+  box-shadow: 0 4px 6px -1px rgba(52, 168, 83, 0.1);
+}
+
+.comparison-card-after:hover {
+  box-shadow: 0 10px 15px -3px rgba(52, 168, 83, 0.15);
+  transform: translateX(4px);
+}
+
+.comparison-card h3 {
+  font-family: 'Cambo', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.comparison-card p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: hsl(var(--foreground));
+}

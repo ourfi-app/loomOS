@@ -1,0 +1,318 @@
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cambo&family=Titillium+Web:wght@400;600;700&display=swap');
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* HSL Color & Style Variables (From STYLE_GUIDE.pdf) */
+:root {
+  --primary: 207 90% 54%;
+  --primary-dark: 207 90% 45%;
+  --primary-foreground: 0 0% 100%;
+  
+  --accent: 25 90% 55%;
+  --accent-foreground: 0 0% 100%;
+  --accent-warm: 35 85% 60%;
+  
+  /* Light Mode Neutrals */
+  --background: 30 8% 94%;
+  --foreground: 210 15% 20%;
+  --card: 30 12% 97%;
+  --card-foreground: 210 15% 20%;
+  --muted: 30 6% 90%;
+  --muted-foreground: 210 10% 40%;
+  --border: 30 8% 85%;
+  
+  /* Semantic Colors */
+  --success: 142 55% 45%;
+  --warning: 38 92% 50%;
+  --destructive: 0 72% 51%;
+  --info: 199 89% 48%;
+
+  /* Radii from Style Guide */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* Base typography */
+body {
+  font-family: 'Titillium Web', -apple-system, system-ui, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cambo', Georgia, serif;
+  color: hsl(var(--foreground));
+}
+
+/* Update headings inside content to use new fonts */
+.page-content h1, .page-content h2, .page-content h3 {
+  color: hsl(var(--primary));
+}
+
+.page-content h3 {
+  color: hsl(var(--foreground));
+}
+
+/* Page navigation classes */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Long-form content container */
+.page-content {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 4rem 1rem 6rem;
+}
+
+@media (min-width: 640px) {
+  .page-content {
+    padding: 6rem 1rem;
+  }
+}
+
+.page-content h1, .page-content h2, .page-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.page-content h1 {
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .page-content h1 {
+    font-size: 3rem;
+  }
+}
+
+.page-content h2 {
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .page-content h2 {
+    font-size: 2.25rem;
+  }
+}
+
+.page-content h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .page-content h3 {
+    font-size: 1.875rem;
+  }
+}
+
+.page-content p, .page-content li {
+  font-size: 1.125rem;
+  color: hsl(var(--foreground));
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .page-content p, .page-content li {
+    font-size: 1.25rem;
+  }
+}
+
+.page-content ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-content ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Hero styling */
+.hero-section {
+  background: hsl(var(--card));
+}
+
+/* WebOS 'Flow' Card Styling */
+.flow-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: hsl(var(--muted));
+  border-radius: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+}
+
+.flow-card {
+  flex-shrink: 0;
+  width: 20rem;
+  height: 28rem;
+  background: hsl(var(--card));
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0);
+  cursor: pointer;
+  border: 1px solid hsl(var(--border));
+}
+
+.flow-card:hover {
+  transform: translateY(-0.5rem);
+}
+
+.flow-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
+.flow-card p {
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Primary/Secondary Buttons */
+.btn {
+  font-family: 'Titillium Web', -apple-system, system-ui, sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s;
+  font-size: 1.125rem;
+}
+
+.btn-primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: hsl(var(--primary-dark));
+}
+
+.btn-secondary {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--accent-warm));
+}
+
+.btn-outline {
+  background: hsl(var(--card));
+  color: hsl(var(--primary));
+  border: 2px solid hsl(var(--primary));
+}
+
+.btn-outline:hover {
+  background: hsl(var(--muted));
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: hsl(var(--card));
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  z-index: 50;
+  min-width: 250px;
+  border: 1px solid hsl(var(--border));
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: hsl(var(--muted));
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  background: hsl(var(--card));
+  border-left: 8px solid hsl(var(--primary));
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card blockquote {
+  font-size: 1.25rem;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .testimonial-card blockquote {
+    font-size: 1.5rem;
+  }
+}
+
+.testimonial-card cite {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  font-style: normal;
+}
+
+/* Article ToC */
+.toc-link {
+  display: block;
+  padding: 0.5rem 0;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.2s;
+}
+
+.toc-link:hover {
+  color: hsl(var(--primary));
+}
+
+.toc-link.active {
+  color: hsl(var(--primary));
+  font-weight: 600;
+  border-left: 4px solid hsl(var(--primary));
+  padding-left: 1rem;
+}
