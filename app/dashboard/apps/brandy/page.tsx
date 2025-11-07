@@ -28,6 +28,12 @@ import {
   X,
   ArrowLeft,
   Check,
+  Globe,
+  Monitor,
+  Tablet,
+  Smartphone,
+  FileCode,
+  Wand2,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -65,6 +71,17 @@ interface LogoProject {
   fontFamily: string;
   iconType?: 'circle' | 'square' | 'star' | 'custom';
   backgroundColor: string;
+  logoDataUrl?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface WebPage {
+  id: string;
+  projectId: string;
+  name: string;
+  template: string;
+  html: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -98,7 +115,7 @@ export default function BrandyApp() {
   const [isSaving, setIsSaving] = useState(false);
   const [activeTab, setActiveTab] = useState('design');
   const [showGrid, setShowGrid] = useState(true);
-  
+
   // Design state
   const [businessName, setBusinessName] = useState('');
   const [tagline, setTagline] = useState('');
@@ -109,6 +126,15 @@ export default function BrandyApp() {
   const [fontSize, setFontSize] = useState(48);
   const [fontFamily, setFontFamily] = useState('Titillium Web');
   const [iconType, setIconType] = useState<'circle' | 'square' | 'star' | 'custom' | 'none'>('circle');
+
+  // Web Builder state
+  const [mode, setMode] = useState<'logo' | 'web'>('logo');
+  const [webPages, setWebPages] = useState<WebPage[]>([]);
+  const [currentWebPage, setCurrentWebPage] = useState<WebPage | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<'landing' | 'about' | 'contact' | 'portfolio' | 'blank'>('landing');
+  const [customInstructions, setCustomInstructions] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [previewDevice, setPreviewDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
 
   // Load projects on mount
   useEffect(() => {
@@ -150,6 +176,14 @@ export default function BrandyApp() {
 
     try {
       setIsSaving(true);
+
+      // Save logo as data URL
+      const canvas = canvasRef.current;
+      let logoDataUrl: string | undefined;
+      if (canvas) {
+        logoDataUrl = canvas.toDataURL('image/png');
+      }
+
       const project: LogoProject = {
         id: currentProject?.id || `project-${Date.now()}`,
         name: `${businessName} Logo`,
@@ -164,6 +198,7 @@ export default function BrandyApp() {
         fontFamily,
         iconType: iconType !== 'none' ? iconType : undefined,
         backgroundColor,
+        logoDataUrl,
         createdAt: currentProject?.createdAt || new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
@@ -191,6 +226,12 @@ export default function BrandyApp() {
     } catch (error) {
       console.error('Save error:', error);
       // Fallback to localStorage
+      const canvas = canvasRef.current;
+      let logoDataUrl: string | undefined;
+      if (canvas) {
+        logoDataUrl = canvas.toDataURL('image/png');
+      }
+
       const project: LogoProject = {
         id: currentProject?.id || `project-${Date.now()}`,
         name: `${businessName} Logo`,
@@ -205,6 +246,7 @@ export default function BrandyApp() {
         fontFamily,
         iconType: iconType !== 'none' ? iconType : undefined,
         backgroundColor,
+        logoDataUrl,
         createdAt: currentProject?.createdAt || new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
@@ -400,35 +442,200 @@ export default function BrandyApp() {
     ctx.closePath();
   };
 
+  // Web Builder Functions
+  const loadWebPages = async () => {
+    if (!currentProject?.id) return;
+
+    try {
+      const response = await fetch(`/api/brandy/web-pages?projectId=${currentProject.id}`);
+      if (response.ok) {
+        const data = await response.json();
+        setWebPages(data);
+      }
+    } catch (error) {
+      console.error('Failed to load web pages:', error);
+    }
+  };
+
+  const generateWebPage = async () => {
+    if (!currentProject) {
+      toastError('Please save your logo project first');
+      return;
+    }
+
+    if (!businessName.trim()) {
+      toastError('Please enter a business name');
+      return;
+    }
+
+    try {
+      setIsGenerating(true);
+
+      const response = await fetch('/api/brandy/generate-web', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          template: selectedTemplate,
+          businessName,
+          tagline,
+          brandColors: {
+            primary: primaryColor,
+            secondary: secondaryColor,
+            accent: accentColor,
+          },
+          logoDataUrl: currentProject.logoDataUrl,
+          customInstructions,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate web page');
+      }
+
+      const { html } = await response.json();
+
+      const newPage: WebPage = {
+        id: `webpage-${Date.now()}`,
+        projectId: currentProject.id,
+        name: `${selectedTemplate.charAt(0).toUpperCase() + selectedTemplate.slice(1)} Page`,
+        template: selectedTemplate,
+        html,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      // Save the web page
+      const saveResponse = await fetch('/api/brandy/web-pages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newPage),
+      });
+
+      if (saveResponse.ok) {
+        const savedPage = await saveResponse.json();
+        setWebPages(prev => [...prev, savedPage]);
+        setCurrentWebPage(savedPage);
+        toastCRUD.created('Web page');
+      }
+    } catch (error) {
+      console.error('Error generating web page:', error);
+      toastError('Failed to generate web page');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const exportWebPage = () => {
+    if (!currentWebPage) return;
+
+    const blob = new Blob([currentWebPage.html], { type: 'text/html' });
+    const link = document.createElement('a');
+    link.download = `${businessName.toLowerCase().replace(/\s+/g, '-')}-${currentWebPage.template}.html`;
+    link.href = URL.createObjectURL(blob);
+    link.click();
+    toastCRUD.created('HTML export');
+  };
+
+  const deleteWebPage = async (pageId: string) => {
+    try {
+      const response = await fetch(`/api/brandy/web-pages?id=${pageId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setWebPages(prev => prev.filter(p => p.id !== pageId));
+        if (currentWebPage?.id === pageId) {
+          setCurrentWebPage(null);
+        }
+        toastCRUD.deleted('Web page');
+      }
+    } catch (error) {
+      console.error('Error deleting web page:', error);
+    }
+  };
+
+  const switchToWebBuilder = () => {
+    if (!currentProject) {
+      toastError('Please create and save a logo first');
+      return;
+    }
+    setMode('web');
+    loadWebPages();
+  };
+
+  // Load web pages when switching to web mode
+  useEffect(() => {
+    if (mode === 'web' && currentProject) {
+      loadWebPages();
+    }
+  }, [mode, currentProject]);
+
   return (
     <ErrorBoundary>
       <DesktopAppWrapper
-        title="Brandy: Logo Designer"
-        icon={<Palette className="w-5 h-5" />}
+        title={mode === 'logo' ? 'Brandy: Logo Designer' : 'Brandy: Web Builder'}
+        icon={mode === 'logo' ? <Palette className="w-5 h-5" /> : <Globe className="w-5 h-5" />}
         gradient={APP_COLORS.brandy?.light || 'from-teal-600 via-teal-700 to-orange-600'}
         toolbar={
           <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={newProject}
-            >
-              <Plus className="w-4 h-4 mr-2" />
-              New
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={saveProject}
-              disabled={isSaving || !businessName}
-            >
-              <Save className="w-4 h-4 mr-2" />
-              {isSaving ? 'Saving...' : 'Save'}
-            </Button>
+            <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1">
+              <Button
+                variant={mode === 'logo' ? 'secondary' : 'ghost'}
+                size="sm"
+                onClick={() => setMode('logo')}
+              >
+                <Palette className="w-4 h-4 mr-2" />
+                Logo Designer
+              </Button>
+              <Button
+                variant={mode === 'web' ? 'secondary' : 'ghost'}
+                size="sm"
+                onClick={switchToWebBuilder}
+                disabled={!currentProject}
+              >
+                <Globe className="w-4 h-4 mr-2" />
+                Web Builder
+              </Button>
+            </div>
+            <Separator orientation="vertical" className="h-6" />
+            {mode === 'logo' ? (
+              <>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={newProject}
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  New
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={saveProject}
+                  disabled={isSaving || !businessName}
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  {isSaving ? 'Saving...' : 'Save'}
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={exportWebPage}
+                  disabled={!currentWebPage}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Export HTML
+                </Button>
+              </>
+            )}
           </div>
         }
       >
         <div className="flex h-full">
+          {mode === 'logo' && (
+            <>
           {/* Sidebar - Projects & Tools */}
           <div className="w-80 border-r border-border bg-muted/30">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
@@ -782,6 +989,254 @@ export default function BrandyApp() {
               </div>
             </div>
           </div>
+            </>
+          )}
+
+          {mode === 'web' && (
+            <>
+              {/* Web Builder Sidebar */}
+              <div className="w-80 border-r border-border bg-muted/30">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
+                  <TabsList className="grid w-full grid-cols-2 m-2">
+                    <TabsTrigger value="generate">
+                      <Wand2 className="w-4 h-4 mr-2" />
+                      Generate
+                    </TabsTrigger>
+                    <TabsTrigger value="pages">
+                      <FileCode className="w-4 h-4 mr-2" />
+                      Pages
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="generate" className="flex-1 m-0 p-4 space-y-4 overflow-auto">
+                    {/* Brand Info Display */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-sm flex items-center gap-2">
+                          <Palette className="w-4 h-4" />
+                          Brand Identity
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <div>
+                          <p className="text-sm font-medium">{businessName}</p>
+                          {tagline && (
+                            <p className="text-xs text-muted-foreground">{tagline}</p>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div
+                            className="w-8 h-8 rounded border"
+                            style={{ backgroundColor: primaryColor }}
+                            title="Primary"
+                          />
+                          <div
+                            className="w-8 h-8 rounded border"
+                            style={{ backgroundColor: secondaryColor }}
+                            title="Secondary"
+                          />
+                          <div
+                            className="w-8 h-8 rounded border"
+                            style={{ backgroundColor: accentColor }}
+                            title="Accent"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Template Selection */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-sm flex items-center gap-2">
+                          <Globe className="w-4 h-4" />
+                          Template
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <Select value={selectedTemplate} onValueChange={(v) => setSelectedTemplate(v as any)}>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="landing">Landing Page</SelectItem>
+                            <SelectItem value="about">About Page</SelectItem>
+                            <SelectItem value="contact">Contact Page</SelectItem>
+                            <SelectItem value="portfolio">Portfolio</SelectItem>
+                            <SelectItem value="blank">Blank Canvas</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </CardContent>
+                    </Card>
+
+                    {/* Custom Instructions */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-sm flex items-center gap-2">
+                          <Wand2 className="w-4 h-4" />
+                          AI Instructions (Optional)
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <Textarea
+                          placeholder="e.g., Make it minimalist, add a hero video section, focus on sustainability..."
+                          value={customInstructions}
+                          onChange={(e) => setCustomInstructions(e.target.value)}
+                          rows={4}
+                          className="resize-none"
+                        />
+                      </CardContent>
+                    </Card>
+
+                    {/* Generate Button */}
+                    <Button
+                      onClick={generateWebPage}
+                      disabled={isGenerating || !currentProject}
+                      className="w-full"
+                      size="lg"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <Sparkles className="w-4 h-4 mr-2 animate-spin" />
+                          Generating...
+                        </>
+                      ) : (
+                        <>
+                          <Wand2 className="w-4 h-4 mr-2" />
+                          Generate with AI
+                        </>
+                      )}
+                    </Button>
+                  </TabsContent>
+
+                  <TabsContent value="pages" className="flex-1 m-0 p-4 overflow-auto">
+                    <div className="space-y-2">
+                      {webPages.length === 0 ? (
+                        <WebOSEmptyState
+                          icon={<FileCode className="w-12 h-12" />}
+                          title="No Web Pages"
+                          description="Generate your first web page"
+                          action={
+                            <Button onClick={() => setActiveTab('generate')} size="sm">
+                              <Wand2 className="w-4 h-4 mr-2" />
+                              Generate Page
+                            </Button>
+                          }
+                        />
+                      ) : (
+                        webPages.map((page) => (
+                          <Card
+                            key={page.id}
+                            className={cn(
+                              "cursor-pointer transition-colors hover:bg-muted/50",
+                              currentWebPage?.id === page.id && "ring-2 ring-primary"
+                            )}
+                            onClick={() => setCurrentWebPage(page)}
+                          >
+                            <CardContent className="p-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex-1">
+                                  <h4 className="font-medium text-sm">{page.name}</h4>
+                                  <p className="text-xs text-muted-foreground mt-1">
+                                    {page.template} template
+                                  </p>
+                                </div>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (confirm(`Delete page "${page.name}"?`)) {
+                                      deleteWebPage(page.id);
+                                    }
+                                  }}
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </Button>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))
+                      )}
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </div>
+
+              {/* Web Preview Area */}
+              <div className="flex-1 flex flex-col">
+                {/* Preview Toolbar */}
+                <div className="border-b border-border p-2 flex items-center justify-between bg-muted/20">
+                  <div className="flex items-center gap-2">
+                    <Button
+                      variant={previewDevice === 'desktop' ? 'secondary' : 'ghost'}
+                      size="sm"
+                      onClick={() => setPreviewDevice('desktop')}
+                    >
+                      <Monitor className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      variant={previewDevice === 'tablet' ? 'secondary' : 'ghost'}
+                      size="sm"
+                      onClick={() => setPreviewDevice('tablet')}
+                    >
+                      <Tablet className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      variant={previewDevice === 'mobile' ? 'secondary' : 'ghost'}
+                      size="sm"
+                      onClick={() => setPreviewDevice('mobile')}
+                    >
+                      <Smartphone className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {currentWebPage && (
+                      <Badge variant="secondary" className="text-xs">
+                        {currentWebPage.name}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+
+                {/* Preview */}
+                <div className="flex-1 flex items-center justify-center p-8 bg-muted/5">
+                  {currentWebPage ? (
+                    <div
+                      className={cn(
+                        "bg-white rounded-lg shadow-2xl overflow-hidden transition-all",
+                        previewDevice === 'desktop' && "w-full h-full",
+                        previewDevice === 'tablet' && "w-[768px] h-[90%]",
+                        previewDevice === 'mobile' && "w-[375px] h-[90%]"
+                      )}
+                    >
+                      <iframe
+                        srcDoc={currentWebPage.html}
+                        className="w-full h-full border-0"
+                        title="Web Preview"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <Globe className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
+                      <p className="text-lg font-medium text-muted-foreground">
+                        Generate a web page to see preview
+                      </p>
+                      <Button
+                        onClick={() => setActiveTab('generate')}
+                        variant="outline"
+                        size="sm"
+                        className="mt-4"
+                      >
+                        <Wand2 className="w-4 h-4 mr-2" />
+                        Start Generating
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </DesktopAppWrapper>
     </ErrorBoundary>
