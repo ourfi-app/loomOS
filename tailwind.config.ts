@@ -111,6 +111,12 @@ const config: Config = {
         documents: 'hsl(var(--documents))',
         community: 'hsl(var(--community))',
         messaging: 'hsl(var(--messaging))',
+        // loomOS Brand Colors
+        loomos: {
+          orange: '#F18825',
+          'orange-light': '#FF9A3C',
+          'orange-dark': '#D4751F',
+        },
       },
       keyframes: {
         'accordion-down': {
