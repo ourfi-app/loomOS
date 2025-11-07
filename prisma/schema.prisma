@@ -315,7 +315,7 @@ model UserNotification {
   notification Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, userId, notificationId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([userId])
   @@index([notificationId])
   @@map("user_notifications")
@@ -516,7 +516,7 @@ model CommitteeMember {
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, committeeId, userId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([committeeId])
   @@index([userId])
   @@map("committee_members")
@@ -722,7 +722,7 @@ model MessageRecipient {
   folder       MessageFolder? @relation(fields: [folderId], references: [id], onDelete: SetNull)
 
   @@unique([organizationId, messageId, userId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([messageId])
   @@index([userId])
   @@map("message_recipients")
@@ -893,7 +893,7 @@ model AppVersion {
   app MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
 
   @@unique([appId, version])
-  @@index([appId])
+  // Note: appId is covered by composite unique index above
   @@index([status])
   @@map("app_versions")
 }
@@ -925,7 +925,7 @@ model AppReview {
   organization Organization?  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@unique([appId, userId])
-  @@index([appId])
+  // Note: appId is covered by composite unique index above
   @@index([userId])
   @@index([rating])
   @@index([createdAt])
@@ -952,7 +952,7 @@ model UserInstalledApp {
   app          MarketplaceApp @relation(fields: [appId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, userId, appId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([userId])
   @@index([appId])
   @@map("user_installed_apps")
@@ -1202,7 +1202,7 @@ model AnnualBudget {
   organization Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   categories   BudgetCategory[]
 
-  @@index([fiscalYear])
+  // Note: fiscalYear already has @unique which creates an index
   @@index([status])
   @@map("annual_budgets")
 }
@@ -1395,7 +1395,7 @@ model CustomRole {
   userRoles       UserCustomRole[]
 
   @@unique([organizationId, name])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@map("custom_roles")
 }
 
@@ -1411,7 +1411,7 @@ model RolePermission {
   permission   Permission    @relation(fields: [permissionId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, roleId, permissionId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([roleId])
   @@index([permissionId])
   @@map("role_permissions")
@@ -1430,7 +1430,7 @@ model UserCustomRole {
   customRole   CustomRole   @relation(fields: [customRoleId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, userId, customRoleId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([userId])
   @@index([customRoleId])
   @@map("user_custom_roles")
@@ -1470,7 +1470,7 @@ model PostLike {
   user         User          @relation("UserPostLikes", fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, postId, userId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([postId])
   @@index([userId])
   @@map("post_likes")
@@ -1512,7 +1512,7 @@ model CommentLike {
   user         User         @relation("UserCommentLikes", fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, commentId, userId])
-  @@index([organizationId])
+  // Note: organizationId is covered by composite unique index above
   @@index([commentId])
   @@index([userId])
   @@map("comment_likes")
@@ -1579,7 +1579,7 @@ model Developer {
   user        User            @relation("DeveloperProfile", fields: [userId], references: [id], onDelete: Cascade)
   submissions AppSubmission[]
 
-  @@index([userId])
+  // Note: userId already has @unique which creates an index
   @@index([status])
   @@index([verified])
   @@map("developers")
@@ -1628,7 +1628,7 @@ model DeveloperAnalytics {
   averageRating      Decimal  @default(0) @db.Decimal(2, 1)
 
   @@unique([appId, date])
-  @@index([appId])
+  // Note: appId is covered by composite unique index above
   @@index([date])
   @@map("developer_analytics")
 }
