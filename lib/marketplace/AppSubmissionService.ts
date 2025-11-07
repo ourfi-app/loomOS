@@ -406,8 +406,47 @@ export class AppSubmissionService {
    * Notify review team about new submission
    */
   private async notifyReviewTeam(submission: AppSubmission): Promise<void> {
-    // TODO: Implement email notification
-    console.log('Review team notified about submission:', submission.id);
+    const { getEmailService, generateAppSubmissionEmail } = await import('@/lib/email-helper');
+
+    const reviewUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/admin/marketplace/submissions/${submission.id}`;
+
+    try {
+      // Get the app and developer info
+      const app = await prisma.marketplaceApp.findUnique({
+        where: { id: submission.appId },
+      });
+
+      if (!app) {
+        console.error('App not found for submission:', submission.id);
+        return;
+      }
+
+      const developer = await this.developerService.getDeveloper(submission.developerId);
+      const developerName = developer?.displayName || 'Unknown Developer';
+
+      const emailService = getEmailService();
+
+      // Get review team email from env or use a default admin email
+      const reviewTeamEmail = process.env.MARKETPLACE_REVIEW_EMAIL || process.env.ADMIN_EMAIL || 'admin@example.com';
+
+      await emailService.send({
+        to: reviewTeamEmail,
+        subject: `New App Submission: ${app.name} v${submission.version}`,
+        html: generateAppSubmissionEmail(
+          app.name,
+          developerName,
+          submission.version,
+          submission.id,
+          reviewUrl
+        ),
+        text: `New App Submission\n\nApp Name: ${app.name}\nDeveloper: ${developerName}\nVersion: ${submission.version}\nSubmission ID: ${submission.id}\n\nReview at: ${reviewUrl}`,
+      });
+
+      console.log('Review team notified about submission:', submission.id);
+    } catch (error) {
+      console.error('Failed to send review team notification:', error);
+      // Don't throw - submission should still succeed even if email fails
+    }
   }
 
   /**
