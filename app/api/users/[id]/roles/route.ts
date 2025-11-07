@@ -6,10 +6,10 @@ import { prisma } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
-// GET /api/users/[userId]/roles - Get user's custom roles
+// GET /api/users/[id]/roles - Get user's custom roles
 export async function GET(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -27,7 +27,7 @@ export async function GET(
     }
 
     const targetUser = await prisma.user.findUnique({
-      where: { id: params.userId },
+      where: { id: params.id },
       select: { id: true, organizationId: true },
     });
 
@@ -41,7 +41,7 @@ export async function GET(
     }
 
     const userRoles = await prisma.userCustomRole.findMany({
-      where: { userId: params.userId },
+      where: { userId: params.id },
       include: {
         customRole: {
           include: {
@@ -65,10 +65,10 @@ export async function GET(
   }
 }
 
-// POST /api/users/[userId]/roles - Assign role to user
+// POST /api/users/[id]/roles - Assign role to user
 export async function POST(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -101,7 +101,7 @@ export async function POST(
     }
 
     const targetUser = await prisma.user.findUnique({
-      where: { id: params.userId },
+      where: { id: params.id },
       select: { id: true, organizationId: true },
     });
 
@@ -130,7 +130,7 @@ export async function POST(
     // Check if user already has this role
     const existingAssignment = await prisma.userCustomRole.findFirst({
       where: {
-        userId: params.userId,
+        userId: params.id,
         customRoleId,
       },
     });
@@ -145,7 +145,7 @@ export async function POST(
     // Assign the role
     const userRole = await prisma.userCustomRole.create({
       data: {
-        userId: params.userId,
+        userId: params.id,
         customRoleId,
         organizationId: targetUser.organizationId,
         assignedBy: currentUser.id,
@@ -173,10 +173,10 @@ export async function POST(
   }
 }
 
-// DELETE /api/users/[userId]/roles - Remove role from user
+// DELETE /api/users/[id]/roles - Remove role from user
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -209,7 +209,7 @@ export async function DELETE(
     }
 
     const targetUser = await prisma.user.findUnique({
-      where: { id: params.userId },
+      where: { id: params.id },
       select: { id: true, organizationId: true },
     });
 
@@ -224,7 +224,7 @@ export async function DELETE(
 
     await prisma.userCustomRole.deleteMany({
       where: {
-        userId: params.userId,
+        userId: params.id,
         customRoleId,
       },
     });
