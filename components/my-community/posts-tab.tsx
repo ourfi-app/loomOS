@@ -74,9 +74,29 @@ export function PostsTab() {
   };
 
   const handleCommentAdded = (postId: string) => {
-    setPosts(posts.map(post => 
-      post.id === postId 
+    setPosts(posts.map(post =>
+      post.id === postId
         ? { ...post, commentsCount: post.commentsCount + 1 }
+        : post
+    ));
+  };
+
+  const handlePostDeleted = (postId: string) => {
+    setPosts(posts.filter(post => post.id !== postId));
+  };
+
+  const handlePostPinned = (postId: string, isPinned: boolean) => {
+    setPosts(posts.map(post =>
+      post.id === postId
+        ? { ...post, isPinned }
+        : post
+    ));
+  };
+
+  const handlePostUpdated = (updatedPost: Post) => {
+    setPosts(posts.map(post =>
+      post.id === updatedPost.id
+        ? updatedPost
         : post
     ));
   };
@@ -105,6 +125,9 @@ export function PostsTab() {
               post={post}
               onLiked={handlePostLiked}
               onCommentAdded={handleCommentAdded}
+              onDeleted={handlePostDeleted}
+              onPinned={handlePostPinned}
+              onUpdated={handlePostUpdated}
             />
           ))}
         </div>
