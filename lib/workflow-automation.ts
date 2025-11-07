@@ -155,26 +155,58 @@ class WorkflowEngine {
   private async sendNotification(config: any, data: any) {
     console.log('Sending notification:', config, data);
     // TODO: Implement notification sending
+    // This would integrate with a notification system/service
   }
 
   private async sendEmail(config: any, data: any) {
-    console.log('Sending email:', config, data);
-    // TODO: Implement email sending
+    try {
+      const { getEmailService } = await import('./email-helper');
+      const emailService = getEmailService();
+
+      // Replace template variables in subject and body
+      const subject = this.replaceVariables(config.subject || 'Workflow Notification', data);
+      const body = this.replaceVariables(config.message || config.body || '', data);
+
+      await emailService.send({
+        to: config.to || config.recipient,
+        subject,
+        html: `<div style="font-family: sans-serif; line-height: 1.6;">${body.replace(/\n/g, '<br>')}</div>`,
+        text: body,
+      });
+
+      console.log('Workflow email sent:', config, data);
+    } catch (error) {
+      console.error('Failed to send workflow email:', error);
+      throw error;
+    }
   }
 
   private async createTask(config: any, data: any) {
     console.log('Creating task:', config, data);
     // TODO: Implement task creation
+    // This would integrate with the task management system
   }
 
   private async createNote(config: any, data: any) {
     console.log('Creating note:', config, data);
     // TODO: Implement note creation
+    // This would integrate with the notes system
   }
 
   private async sendMessage(config: any, data: any) {
     console.log('Sending message:', config, data);
     // TODO: Implement message sending
+    // This would integrate with the messaging system
+  }
+
+  /**
+   * Replace template variables like {{variable.path}} with actual values
+   */
+  private replaceVariables(template: string, data: any): string {
+    return template.replace(/\{\{([^}]+)\}\}/g, (match, path) => {
+      const value = this.getValueByPath(data, path.trim());
+      return value !== undefined ? String(value) : match;
+    });
   }
 
   private async callWebhook(config: any, data: any) {

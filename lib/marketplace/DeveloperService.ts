@@ -291,14 +291,26 @@ export class DeveloperService {
    * Send verification email
    */
   private async sendVerificationEmail(developer: Developer): Promise<void> {
-    // TODO: Implement email sending
-    // For now, just log
-    console.log(
-      `Verification email would be sent to ${developer.supportEmail}`
-    );
-    console.log(
-      `Verification link: ${process.env.NEXT_PUBLIC_APP_URL}/developer/verify/${developer.id}`
-    );
+    const { getEmailService, generateVerificationEmail } = await import('@/lib/email-helper');
+
+    const verificationUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/developer/verify/${developer.id}`;
+
+    try {
+      const emailService = getEmailService();
+
+      await emailService.send({
+        to: developer.supportEmail,
+        subject: 'Verify Your loomOS Developer Account',
+        html: generateVerificationEmail(developer.displayName, verificationUrl),
+        text: `Hi ${developer.displayName},\n\nThank you for registering as a developer on loomOS! Please verify your email address by visiting:\n\n${verificationUrl}\n\nIf you didn't create a developer account, you can safely ignore this email.`,
+      });
+
+      console.log(`Verification email sent to ${developer.supportEmail}`);
+    } catch (error) {
+      console.error('Failed to send verification email:', error);
+      // Don't throw - we don't want to fail registration if email fails
+      console.log(`Verification link (email failed): ${verificationUrl}`);
+    }
   }
 
   /**

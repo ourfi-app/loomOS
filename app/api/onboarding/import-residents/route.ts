@@ -90,7 +90,25 @@ export async function POST(req: NextRequest) {
             },
           });
 
-          // TODO: Send invitation email with temp password
+          // Send invitation email with temp password
+          try {
+            const { getEmailService, generateResidentInvitationEmail } = await import('@/lib/email-helper');
+            const emailService = getEmailService();
+
+            const loginUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login`;
+
+            await emailService.send({
+              to: email,
+              subject: 'Welcome to Your Community Portal',
+              html: generateResidentInvitationEmail(firstName, email, tempPassword, loginUrl),
+              text: `Hi ${firstName},\n\nWelcome to your community portal! An account has been created for you.\n\nEmail: ${email}\nTemporary Password: ${tempPassword}\n\nPlease log in at: ${loginUrl}\n\nIMPORTANT: Please change your password after your first login for security.\n\nIf you have any questions, please contact your building management.`,
+            });
+
+            console.log(`Invitation email sent to ${email}`);
+          } catch (emailError) {
+            console.error('Failed to send invitation email:', emailError);
+            // Don't fail the import if email fails
+          }
         }
 
         imported++;

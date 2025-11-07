@@ -9,6 +9,9 @@ import { DesktopWidgetManager } from './desktop-widget-manager';
 import { DesktopTasksWidget } from './widgets/desktop-tasks-widget';
 import { DesktopNotesWidget } from './widgets/desktop-notes-widget';
 import { DesktopNotificationsWidget } from './widgets/desktop-notifications-widget';
+import { DesktopEmailWidget } from './widgets/desktop-email-widget';
+import { DesktopStatsWidget } from './widgets/desktop-stats-widget';
+import { DesktopActivityWidget } from './widgets/desktop-activity-widget';
 
 export function DesktopWidgets() {
   const { widgets } = useDesktopWidgets();
@@ -22,32 +25,11 @@ export function DesktopWidgets() {
       case 'notifications':
         return <DesktopNotificationsWidget widget={widget} />;
       case 'email':
-        // TODO: Implement DesktopEmailWidget
-        return (
-          <div className="h-full flex items-center justify-center p-8 text-center">
-            <div style={{ color: 'var(--text-secondary)' }}>
-              <p className="text-sm">Email widget coming soon</p>
-            </div>
-          </div>
-        );
+        return <DesktopEmailWidget widget={widget} />;
       case 'stats':
-        // TODO: Implement DesktopStatsWidget
-        return (
-          <div className="h-full flex items-center justify-center p-8 text-center">
-            <div style={{ color: 'var(--text-secondary)' }}>
-              <p className="text-sm">Stats widget coming soon</p>
-            </div>
-          </div>
-        );
+        return <DesktopStatsWidget widget={widget} />;
       case 'activity':
-        // TODO: Implement DesktopActivityWidget
-        return (
-          <div className="h-full flex items-center justify-center p-8 text-center">
-            <div style={{ color: 'var(--text-secondary)' }}>
-              <p className="text-sm">Activity widget coming soon</p>
-            </div>
-          </div>
-        );
+        return <DesktopActivityWidget widget={widget} />;
       default:
         return (
           <div className="h-full flex items-center justify-center p-8 text-center">
