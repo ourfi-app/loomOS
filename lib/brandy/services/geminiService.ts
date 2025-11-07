@@ -620,3 +620,50 @@ Return as JSON: { "suggestions": ["suggestion1", "suggestion2", ...] }
     return [];
   }
 }
+
+// ============================================================================
+// SINGLE IMAGE GENERATION (for Claude Helper)
+// ============================================================================
+
+/**
+ * Generate a single logo image from a prompt
+ * Used by Claude Helper Service to generate logos with refined prompts
+ */
+export async function generateSingleLogoImage(
+  prompt: string,
+  brandName: string
+): Promise<string> {
+  try {
+    const apiCall = async () => {
+      const imageModel = genAI.getGenerativeModel({ model: 'imagen-3.0-generate-001' });
+
+      const fullPrompt = `${prompt}. Professional logo design for "${brandName}", clean, vector style, white background, high quality.`;
+
+      const imageResult = await imageModel.generateContent({
+        contents: [{
+          role: 'user',
+          parts: [{
+            text: fullPrompt,
+          }],
+        }],
+        generationConfig: {
+          responseModalities: ['image'],
+        },
+      });
+
+      // Extract image data
+      const imageData = imageResult.response.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+
+      if (!imageData) {
+        throw new Error('No image data in response');
+      }
+
+      return `data:${imageData.mimeType};base64,${imageData.data}`;
+    };
+
+    return await withRetry(apiCall, 2);
+
+  } catch (error) {
+    throw handleApiError(error);
+  }
+}
