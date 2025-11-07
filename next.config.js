@@ -46,6 +46,17 @@ const nextConfig = {
         ...config.resolve.alias,
         'plotly.js': 'plotly.js-basic-dist',
       };
+
+      // Exclude server-only packages from client bundle
+      // SendGrid and other email services use Node.js modules like 'fs'
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+        dns: false,
+        child_process: false,
+      };
     }
 
     return config;
