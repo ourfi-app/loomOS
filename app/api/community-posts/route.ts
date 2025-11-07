@@ -31,6 +31,9 @@ export async function GET(request: NextRequest) {
             image: true,
             firstName: true,
             lastName: true,
+            role: true,
+            badge: true,
+            status: true,
           },
         },
         likes: {
@@ -109,6 +112,9 @@ export async function POST(request: NextRequest) {
             image: true,
             firstName: true,
             lastName: true,
+            role: true,
+            badge: true,
+            status: true,
           },
         },
         _count: {

@@ -25,6 +25,8 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { CommentSection } from './comment-section';
+import { MemberBadge } from '@/components/community/member-badge';
+import { MemberStatus } from '@/components/community/member-status';
 import { useToast } from '@/hooks/use-toast';
 import { Heart, MessageCircle, Pin, MoreVertical, Edit2, Trash2, X, Check } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
@@ -43,6 +45,9 @@ interface Post {
     image?: string;
     firstName?: string;
     lastName?: string;
+    role?: string;
+    badge?: string | null;
+    status?: string | null;
   };
   isLikedByUser: boolean;
   likesCount: number;
@@ -265,12 +270,20 @@ export function PostCard({ post, onLiked, onCommentAdded, onDeleted, onPinned, o
         <CardHeader>
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <Avatar className="h-10 w-10">
-                <AvatarImage src={post.author.image} alt={authorName} />
-                <AvatarFallback>{authorInitials}</AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="font-semibold">{authorName}</p>
+              <div className="relative">
+                <Avatar className="h-10 w-10">
+                  <AvatarImage src={post.author.image} alt={authorName} />
+                  <AvatarFallback>{authorInitials}</AvatarFallback>
+                </Avatar>
+                <div className="absolute -bottom-0.5 -right-0.5">
+                  <MemberStatus status={post.author.status as any} size="sm" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold">{authorName}</p>
+                  <MemberBadge badge={post.author.badge as any} role={post.author.role} />
+                </div>
                 <p className="text-sm text-muted-foreground">{timeAgo}</p>
               </div>
             </div>

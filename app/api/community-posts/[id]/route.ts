@@ -150,6 +150,9 @@ export async function PATCH(
             image: true,
             firstName: true,
             lastName: true,
+            role: true,
+            badge: true,
+            status: true,
           },
         },
         _count: {

@@ -10,13 +10,15 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RequestDirectoryUpdateDialog } from '@/components/request-directory-update-dialog';
+import { MemberBadge } from '@/components/community/member-badge';
+import { MemberStatus } from '@/components/community/member-status';
 import { useDirectoryData } from '@/hooks/use-api';
 import { toastError } from '@/lib/toast-helpers';
-import { 
-  Users, 
-  Search, 
-  Mail, 
-  Phone, 
+import {
+  Users,
+  Search,
+  Mail,
+  Phone,
   Home,
   Shield,
   Hammer,
@@ -35,6 +37,9 @@ interface User {
   unitNumber: string | null;
   phone: string | null;
   image: string | null;
+  role?: string;
+  badge?: string | null;
+  status?: string | null;
 }
 
 interface CommitteeMember {
@@ -169,16 +174,24 @@ export function DirectoryTab() {
                         <Card key={member.id} className="border-gray-200">
                           <CardContent className="pt-6">
                             <div className="flex items-start gap-3">
-                              <Avatar className="h-12 w-12">
-                                <AvatarImage src={member.user.image || undefined} />
-                                <AvatarFallback className="bg-blue-100 text-blue-600">
-                                  {getInitials(member.user)}
-                                </AvatarFallback>
-                              </Avatar>
+                              <div className="relative">
+                                <Avatar className="h-12 w-12">
+                                  <AvatarImage src={member.user.image || undefined} />
+                                  <AvatarFallback className="bg-blue-100 text-blue-600">
+                                    {getInitials(member.user)}
+                                  </AvatarFallback>
+                                </Avatar>
+                                <div className="absolute -bottom-0.5 -right-0.5">
+                                  <MemberStatus status={member.user.status as any} size="sm" />
+                                </div>
+                              </div>
                               <div className="flex-1 min-w-0">
-                                <h4 className="font-semibold text-sm truncate">
-                                  {member.user.name || `${member.user.firstName} ${member.user.lastName}`}
-                                </h4>
+                                <div className="flex items-center gap-2 mb-1">
+                                  <h4 className="font-semibold text-sm truncate">
+                                    {member.user.name || `${member.user.firstName} ${member.user.lastName}`}
+                                  </h4>
+                                  <MemberBadge badge={member.user.badge as any} role={member.user.role} />
+                                </div>
                                 {member.position && (
                                   <Badge variant="secondary" className="text-xs mt-1">
                                     {member.position}
@@ -269,16 +282,24 @@ export function DirectoryTab() {
                     <Card key={resident.id} className="border-gray-200">
                       <CardContent className="pt-6">
                         <div className="flex items-start gap-3">
-                          <Avatar className="h-12 w-12">
-                            <AvatarImage src={resident.image || undefined} />
-                            <AvatarFallback className="bg-gray-100 text-gray-600">
-                              {getInitials(resident)}
-                            </AvatarFallback>
-                          </Avatar>
+                          <div className="relative">
+                            <Avatar className="h-12 w-12">
+                              <AvatarImage src={resident.image || undefined} />
+                              <AvatarFallback className="bg-gray-100 text-gray-600">
+                                {getInitials(resident)}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="absolute -bottom-0.5 -right-0.5">
+                              <MemberStatus status={resident.status as any} size="sm" />
+                            </div>
+                          </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-semibold text-sm truncate">
-                              {resident.name || `${resident.firstName} ${resident.lastName}`}
-                            </h4>
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="font-semibold text-sm truncate">
+                                {resident.name || `${resident.firstName} ${resident.lastName}`}
+                              </h4>
+                              <MemberBadge badge={resident.badge as any} role={resident.role} />
+                            </div>
                             {resident.unitNumber && (
                               <div className="flex items-center gap-1 mt-1 text-xs text-gray-600">
                                 <Home className="h-3 w-3" />

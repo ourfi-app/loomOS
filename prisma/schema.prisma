@@ -45,6 +45,19 @@ enum FilePermission {
   ADMIN_ONLY
 }
 
+enum MemberBadge {
+  NEW_MEMBER
+  VERIFIED
+  MODERATOR
+}
+
+enum MemberStatus {
+  ONLINE
+  AWAY
+  BUSY
+  OFFLINE
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -84,12 +97,15 @@ model User {
   lastName            String?
   unitNumber          String?
   phone               String?
-  role                UserRole  @default(RESIDENT)
-  isActive            Boolean   @default(true)
-  onboardingCompleted Boolean   @default(false)
-  onboardingStep      Int       @default(0)
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
+  role                UserRole      @default(RESIDENT)
+  isActive            Boolean       @default(true)
+  onboardingCompleted Boolean       @default(false)
+  onboardingStep      Int           @default(0)
+  badge               MemberBadge?
+  status              MemberStatus  @default(OFFLINE)
+  lastSeenAt          DateTime?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
 
   organization         Organization?            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   accounts             Account[]
