@@ -19,7 +19,8 @@
     "db:setup": "bash scripts/setup-database.sh",
     "db:seed": "tsx scripts/seed.ts",
     "db:seed:marketplace": "tsx scripts/seed-marketplace.ts",
-    "db:reset": "npx prisma migrate reset && npm run db:setup"
+    "db:reset": "npx prisma migrate reset && npm run db:setup",
+    "create-super-admin": "tsx scripts/create-super-admin.ts"
   },
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
