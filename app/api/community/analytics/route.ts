@@ -1,12 +1,12 @@
 import { NextRequest } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/lib/db';
 import {
   validateAuth,
   createSuccessResponse,
   handleApiError,
   logApiRequest,
-  getCurrentOrganizationId,
-} from '@/lib/api-helpers';
+} from '@/lib/api-utils';
+import { getCurrentOrganizationId } from '@/lib/tenant-context';
 
 export async function GET(request: NextRequest) {
   try {
