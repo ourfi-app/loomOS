@@ -33,9 +33,10 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import { ErrorBoundary, VirtualList } from '@/components/common';
+import { ErrorBoundary, VirtualList, DeprecationNotice } from '@/components/common';
 import { TaskListSkeleton } from '@/components/common/skeleton-screens';
 import { toastSuccess, toastError, toastValidationError, toastCRUD } from '@/lib/toast-helpers';
+import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
 import {
   LoomOSNavigationPane,
   LoomOSListPane,
@@ -418,6 +419,14 @@ export default function TasksApp() {
 
   return (
     <ErrorBoundary>
+      {/* Deprecation Notice */}
+      <DeprecationNotice
+        app={APP_REGISTRY['tasksApp']}
+        prominent
+        permanent
+        className="border-b border-gray-200"
+      />
+
       {/* Tasks Content */}
         <div className="h-full flex flex-col overflow-hidden">
       <LoomOSAppHeader
