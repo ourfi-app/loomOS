@@ -4,9 +4,77 @@ import { NextResponse } from "next/server";
 import type { NextRequest, NextFetchEvent } from "next/server";
 
 export default withAuth(
-  function middleware(req) {
+  async function middleware(req) {
     const token = req.nextauth.token;
     const { pathname } = req.nextUrl;
+
+    // ============================================================
+    // MULTI-TENANCY: Extract tenant from hostname
+    // ============================================================
+    const hostname = req.headers.get('host') || '';
+    const host = hostname.split(':')[0];
+
+    // Skip tenant resolution for certain paths
+    const skipTenantPaths = [
+      '/auth/',
+      '/api/auth/',
+      '/sw.js',
+      '/_next/',
+      '/favicon.ico',
+      '/marketing',
+    ];
+
+    const shouldSkipTenant = skipTenantPaths.some(path => pathname.startsWith(path)) ||
+                            pathname === '/';
+
+    if (!shouldSkipTenant) {
+      // Extract subdomain from hostname
+      const appDomain = process.env.NEXT_PUBLIC_APP_DOMAIN || 'loomos.com';
+      let tenantSubdomain: string | null = null;
+      let isCustomDomain = false;
+
+      // Development mode
+      if (host === 'localhost' || host === '127.0.0.1') {
+        // In development, tenant comes from session or URL param
+        tenantSubdomain = null;
+      }
+      // Main domain or www
+      else if (host === appDomain || host === `www.${appDomain}`) {
+        tenantSubdomain = null;
+      }
+      // Subdomain routing (e.g., montrecott.loomos.com)
+      else if (host.endsWith(appDomain)) {
+        tenantSubdomain = host.replace(`.${appDomain}`, '');
+        if (tenantSubdomain === 'www') {
+          tenantSubdomain = null;
+        }
+      }
+      // Custom domain (e.g., montrecott.com)
+      else {
+        isCustomDomain = true;
+        // Will be resolved by custom domain lookup in API
+      }
+
+      // Add tenant context to request headers for downstream use
+      const requestHeaders = new Headers(req.headers);
+      if (tenantSubdomain) {
+        requestHeaders.set('x-tenant-subdomain', tenantSubdomain);
+      }
+      if (isCustomDomain) {
+        requestHeaders.set('x-tenant-custom-domain', host);
+      }
+
+      // Create response with updated headers
+      const response = NextResponse.next({
+        request: {
+          headers: requestHeaders,
+        },
+      });
+
+      // Continue with auth and role checks below...
+      req.headers.set('x-tenant-subdomain', tenantSubdomain || '');
+      req.headers.set('x-tenant-custom-domain', isCustomDomain ? host : '');
+    }
 
     // Handle service worker in development to prevent 404s
     if (process.env.NODE_ENV === 'development' && pathname === '/sw.js') {

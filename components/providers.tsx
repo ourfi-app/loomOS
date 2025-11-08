@@ -7,22 +7,25 @@ import { Toaster } from './ui/toaster';
 import { NotificationBanner } from './webos/notification-banner';
 import { UniversalSearch } from './webos/universal-search';
 import { AccessibilityInitializer } from './accessibility-initializer';
+import { TenantProviderWrapper } from './tenant-provider-wrapper';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <AccessibilityInitializer />
-        {children}
-        <Toaster />
-        <NotificationBanner />
-        <UniversalSearch />
-      </ThemeProvider>
+      <TenantProviderWrapper>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AccessibilityInitializer />
+          {children}
+          <Toaster />
+          <NotificationBanner />
+          <UniversalSearch />
+        </ThemeProvider>
+      </TenantProviderWrapper>
     </SessionProvider>
   );
 }
