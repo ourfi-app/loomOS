@@ -323,11 +323,24 @@ export default function AppsLauncherPage() {
                         {app.icon}
                       </div>
                     </div>
-                    {app.isNew && (
-                      <Badge className="bg-gradient-to-r from-pink-500 to-purple-500 text-white">
-                        New
-                      </Badge>
-                    )}
+                    <div className="flex gap-2">
+                      {app.isNew && (
+                        <Badge className="bg-gradient-to-r from-pink-500 to-purple-500 text-white">
+                          New
+                        </Badge>
+                      )}
+                      {/* Show deprecation badge from registry */}
+                      {(() => {
+                        const registryApp = Object.values(require('@/lib/enhanced-app-registry').APP_REGISTRY).find(
+                          (a: any) => a.path === app.path
+                        );
+                        return registryApp?.isDeprecated ? (
+                          <Badge variant="outline" className="border-amber-500 text-amber-700 bg-amber-50">
+                            Deprecated
+                          </Badge>
+                        ) : null;
+                      })()}
+                    </div>
                   </div>
 
                   {/* Content */}
@@ -406,6 +419,17 @@ export default function AppsLauncherPage() {
                         New
                       </Badge>
                     )}
+                    {/* Show deprecation badge from registry */}
+                    {(() => {
+                      const registryApp = Object.values(require('@/lib/enhanced-app-registry').APP_REGISTRY).find(
+                        (a: any) => a.path === selectedApp.path
+                      );
+                      return registryApp?.isDeprecated ? (
+                        <Badge variant="outline" className="border-amber-500 text-amber-700 bg-amber-50">
+                          Deprecated
+                        </Badge>
+                      ) : null;
+                    })()}
                   </div>
                   <p className="text-gray-600 mb-3">{selectedApp.description}</p>
                   {selectedApp.rating && (

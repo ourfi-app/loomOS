@@ -29,9 +29,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { ErrorBoundary } from '@/components/common';
+import { ErrorBoundary, DeprecationNotice } from '@/components/common';
 import { CardSkeleton } from '@/components/common/skeleton-screens';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
+import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
 import { useNotes, useNoteMutations } from '@/hooks/use-api';
 import { useDeepLinkSelection } from '@/hooks/use-deep-link';
 import {
@@ -339,7 +340,16 @@ export default function NotesApp() {
 
   return (
     <ErrorBoundary>
-      <div className="h-full flex overflow-hidden">
+      <div className="h-full flex flex-col overflow-hidden">
+        {/* Deprecation Notice */}
+        <DeprecationNotice
+          app={APP_REGISTRY['notesApp']}
+          prominent
+          permanent
+          className="border-b border-gray-200"
+        />
+
+        <div className="flex-1 flex overflow-hidden">
             {/* Navigation Pane - Categories */}
             <LoomOSNavigationPane
               title="CATEGORIES"
@@ -524,6 +534,7 @@ export default function NotesApp() {
               </ScrollArea>
             ) : null}
           </LoomOSDetailPane>
+        </div>
       </div>
     </ErrorBoundary>
   );

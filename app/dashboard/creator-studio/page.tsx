@@ -1,3 +1,31 @@
+/**
+ * Creator Studio - Super Admin Development Hub
+ *
+ * IMPORTANT: This is NOT a consolidation pattern like Organizer or Inbox.
+ * This is a **quick access dashboard** for super admins to access platform
+ * development tools. The individual apps are NOT deprecated.
+ *
+ * PATTERN:
+ * - Creator Studio provides overview tabs that LINK TO full apps
+ * - The full apps remain active and fully functional
+ * - Super admins use Creator Studio for quick access and overview
+ * - Super admins use the full apps for deep work
+ *
+ * TABS AND THEIR FULL APPS:
+ * - Branding tab → Links to /dashboard/apps/brandy (Brandy Logo Designer)
+ * - Designer tab → Links to /dashboard/apps/designer (App Designer)
+ * - Marketplace tab → Links to /dashboard/marketplace (App Marketplace)
+ * - Enhancements tab → Links to /dashboard/apps/enhancements (System Enhancements)
+ *
+ * WHY BOTH EXIST:
+ * - Quick overview without leaving Creator Studio
+ * - Full apps provide complete features for actual development work
+ * - Similar to how VS Code has a sidebar for quick access but full editors for work
+ *
+ * Access: SUPER_ADMIN only
+ * Release: Phase 1 (2025-11-03)
+ */
+
 'use client';
 
 import { useState } from 'react';

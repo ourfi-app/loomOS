@@ -16,7 +16,7 @@ export interface AppDefinition {
   canPinToDock?: boolean;
   hasWidget?: boolean;
   widgetSize?: 'small' | 'medium' | 'large';
-  
+
   // Enhanced metadata
   longDescription?: string;
   tags?: string[];
@@ -33,8 +33,62 @@ export interface AppDefinition {
   isBeta?: boolean;
   averageRating?: number;
   totalRatings?: number;
+
+  // Deprecation metadata
+  isDeprecated?: boolean;
+  deprecatedBy?: string; // ID of the app that replaces this one
+  deprecationMessage?: string;
+  deprecationDate?: string;
+  redirectToNew?: boolean; // If true, auto-redirect to the new app
 }
 
+/**
+ * LoomOS Application Registry
+ *
+ * CONSOLIDATION STRATEGY (Phase 1 - Started 2025-11-03)
+ * ====================================================
+ *
+ * The platform is consolidating individual productivity apps into unified hubs
+ * to provide a better user experience and reduce context switching.
+ *
+ * CONSOLIDATION PATTERNS:
+ *
+ * 1. ORGANIZER HUB - Consolidates productivity apps
+ *    - Replaces: calendarApp, notesApp, tasksApp
+ *    - Route: /dashboard/organizer
+ *    - Status: Individual apps DEPRECATED (redirect enabled)
+ *
+ * 2. INBOX HUB - Consolidates communication apps
+ *    - Replaces: messages (for regular users), AI assistant, email
+ *    - Route: /dashboard/inbox
+ *    - Status: Individual apps DEPRECATED (redirect enabled)
+ *    - Note: Admin Messages app (/dashboard/messages) remains for admin broadcasts
+ *
+ * 3. CREATOR STUDIO - Super Admin development hub (NOT a replacement pattern)
+ *    - Purpose: Quick access dashboard for platform development tools
+ *    - Contains tabs that LINK TO full apps (not replace them):
+ *      * Branding tab → Links to /dashboard/apps/brandy
+ *      * Designer tab → Links to /dashboard/apps/designer
+ *      * Marketplace tab → Links to /dashboard/marketplace
+ *      * Enhancements tab → Links to /dashboard/apps/enhancements
+ *    - Status: Hub AND individual apps both active (NOT deprecated)
+ *    - Reason: Super admins need both quick overview (hub) and full features (apps)
+ *
+ * DEPRECATION LIFECYCLE:
+ *
+ * Phase 1 (Current): Soft deprecation
+ *   - Individual apps show deprecation warnings
+ *   - Users are encouraged to use consolidated apps
+ *   - No forced redirects yet
+ *
+ * Phase 2 (Future): Hard deprecation
+ *   - Automatic redirects from individual apps to consolidated versions
+ *   - Deep linking support (e.g., /apps/calendar?event=123 → /organizer?tab=calendar&event=123)
+ *
+ * Phase 3 (Future): Complete removal
+ *   - Individual app routes removed
+ *   - Only consolidated apps remain
+ */
 export const APP_REGISTRY: Record<string, AppDefinition> = {
   // Essentials (Most used core features)
   home: {
@@ -849,6 +903,12 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     isNew: true,
     averageRating: 5.0,
     totalRatings: 1,
+    // Deprecation info
+    isDeprecated: true,
+    deprecatedBy: 'inbox',
+    deprecationMessage: 'This standalone Email app has been consolidated into the Inbox hub for a unified communications experience.',
+    deprecationDate: '2025-11-03',
+    redirectToNew: false, // Phase 1: Warning only
   },
 
   calendarApp: {
@@ -886,6 +946,12 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     isNew: true,
     averageRating: 5.0,
     totalRatings: 1,
+    // Deprecation info
+    isDeprecated: true,
+    deprecatedBy: 'organizer',
+    deprecationMessage: 'This standalone Calendar app has been consolidated into the Organizer hub. Access Calendar from the Organizer app for a unified productivity experience.',
+    deprecationDate: '2025-11-03',
+    redirectToNew: false, // Phase 1: Warning only
   },
 
   help: {
@@ -957,6 +1023,12 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     isNew: true,
     averageRating: 4.8,
     totalRatings: 23,
+    // Deprecation info
+    isDeprecated: true,
+    deprecatedBy: 'organizer',
+    deprecationMessage: 'This standalone Tasks app has been consolidated into the Organizer hub. Access Tasks from the Organizer app for a unified productivity experience.',
+    deprecationDate: '2025-11-03',
+    redirectToNew: false, // Phase 1: Warning only
   },
 
   notesApp: {
@@ -994,6 +1066,12 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     isNew: true,
     averageRating: 4.7,
     totalRatings: 18,
+    // Deprecation info
+    isDeprecated: true,
+    deprecatedBy: 'organizer',
+    deprecationMessage: 'This standalone Notes app has been consolidated into the Organizer hub. Access Notes from the Organizer app for a unified productivity experience.',
+    deprecationDate: '2025-11-03',
+    redirectToNew: false, // Phase 1: Warning only
   },
 
   brandy: {

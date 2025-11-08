@@ -1,3 +1,26 @@
+/**
+ * Inbox - Consolidated Communications Hub
+ *
+ * This is a consolidated app that combines communication apps:
+ * - Messages (for regular users viewing community communications)
+ * - AI Assistant / Chat (formerly /dashboard/chat)
+ * - Email (planned future integration)
+ *
+ * CONSOLIDATION STRATEGY:
+ * Individual communication apps for end users are DEPRECATED and show warnings
+ * directing users here. This provides a unified inbox experience.
+ *
+ * NOTE: The admin Messages app (/dashboard/messages) remains separate as it's
+ * for admins to SEND broadcasts, not receive communications.
+ *
+ * Deep linking support:
+ * - /dashboard/inbox?tab=messages
+ * - /dashboard/inbox?tab=chat
+ * - /dashboard/inbox?tab=email
+ *
+ * Release: Phase 1 (2025-11-03)
+ */
+
 'use client';
 
 import { useState } from 'react';

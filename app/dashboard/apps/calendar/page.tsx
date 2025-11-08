@@ -47,12 +47,13 @@ import {
   type KeyboardShortcut,
   type ContextMenuItem
 } from '@/lib/desktop-interactions';
-import { ContextMenuPortal, KeyboardShortcutsDialog, ErrorBoundary } from '@/components/common';
+import { ContextMenuPortal, KeyboardShortcutsDialog, ErrorBoundary, DeprecationNotice } from '@/components/common';
 import { ListItemSkeleton } from '@/components/common/skeleton-screens';
 import { toastSuccess, toastError, toastInfo, toastCRUD } from '@/lib/toast-helpers';
 import { cn } from '@/lib/utils';
 import { useCalendarEvents, useCalendarMutations, type CalendarEvent as APICalendarEvent } from '@/hooks/use-api';
 import { useDeepLinkSelection } from '@/hooks/use-deep-link';
+import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
 
 // Calendar display type (for UI)
 interface CalendarEvent {
@@ -620,6 +621,14 @@ export default function CalendarApp() {
         icon={<CalendarIcon className="w-5 h-5" />}
         gradient={APP_COLORS.calendar.light}
       >
+        {/* Deprecation Notice */}
+        <DeprecationNotice
+          app={APP_REGISTRY['calendarApp']}
+          prominent
+          permanent
+          className="border-b border-gray-200"
+        />
+
         {/* Calendar Content */}
         <div className="h-full flex overflow-hidden bg-white">
       {/* Pane 1: Mini Calendar + Calendars */}

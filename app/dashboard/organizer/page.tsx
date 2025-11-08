@@ -1,3 +1,24 @@
+/**
+ * Organizer - Consolidated Productivity Hub
+ *
+ * This is a consolidated app that combines three individual productivity apps:
+ * - Calendar (formerly /dashboard/apps/calendar)
+ * - Notes (formerly /dashboard/apps/notes)
+ * - Tasks (formerly /dashboard/apps/tasks)
+ *
+ * CONSOLIDATION STRATEGY:
+ * The individual apps are now DEPRECATED and show warnings directing users here.
+ * This provides a unified experience with tab-based navigation, reducing context
+ * switching and improving productivity.
+ *
+ * Deep linking support:
+ * - /dashboard/organizer?tab=calendar
+ * - /dashboard/organizer?tab=notes
+ * - /dashboard/organizer?tab=tasks
+ *
+ * Release: Phase 1 (2025-11-03)
+ */
+
 'use client';
 
 import { useState } from 'react';
