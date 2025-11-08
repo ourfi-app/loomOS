@@ -459,16 +459,21 @@ export function AppDock() {
         )}
         data-tutorial="quick-launch-dock"
       >
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 400, damping: 25, delay: 0.1 }}
           className={cn(
             'dock flex items-center gap-2 sm:gap-3 px-4 py-3 sm:px-5 sm:py-3.5',
-            'bg-background/80 backdrop-blur-xl',
-            'border border-border/50 rounded-2xl shadow-2xl',
+            'rounded-2xl shadow-2xl',
             'pointer-events-auto'
           )}
+          style={{
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(15px)',
+            WebkitBackdropFilter: 'blur(15px)',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
+          }}
           onMouseEnter={() => {
             setIsDockHovered(true);
             // Cancel any pending auto-hide when hovering dock
