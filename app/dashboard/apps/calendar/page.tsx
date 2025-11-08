@@ -47,7 +47,7 @@ import {
   type KeyboardShortcut,
   type ContextMenuItem
 } from '@/lib/desktop-interactions';
-import { ContextMenuPortal, KeyboardShortcutsDialog, ErrorBoundary, DeprecationNotice } from '@/components/common';
+import { ContextMenuPortal, KeyboardShortcutsDialog, ErrorBoundary, DeprecationNotice, DeprecatedRouteHandler } from '@/components/common';
 import { ListItemSkeleton } from '@/components/common/skeleton-screens';
 import { toastSuccess, toastError, toastInfo, toastCRUD } from '@/lib/toast-helpers';
 import { cn } from '@/lib/utils';
@@ -616,12 +616,18 @@ export default function CalendarApp() {
 
   return (
     <ErrorBoundary>
+      {/* Phase 2: Auto-redirect to Organizer */}
+      <DeprecatedRouteHandler
+        app={APP_REGISTRY['calendarApp']}
+        defaultTab="calendar"
+      />
+
       <DesktopAppWrapper
         title="Calendar"
         icon={<CalendarIcon className="w-5 h-5" />}
         gradient={APP_COLORS.calendar.light}
       >
-        {/* Deprecation Notice */}
+        {/* Deprecation Notice (shown only if redirect fails or is disabled) */}
         <DeprecationNotice
           app={APP_REGISTRY['calendarApp']}
           prominent

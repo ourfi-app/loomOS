@@ -45,8 +45,8 @@ export interface AppDefinition {
 /**
  * LoomOS Application Registry
  *
- * CONSOLIDATION STRATEGY (Phase 1 - Started 2025-11-03)
- * ====================================================
+ * CONSOLIDATION STRATEGY (Phase 2 - Active as of 2025-11-08)
+ * ==========================================================
  *
  * The platform is consolidating individual productivity apps into unified hubs
  * to provide a better user experience and reduce context switching.
@@ -56,12 +56,12 @@ export interface AppDefinition {
  * 1. ORGANIZER HUB - Consolidates productivity apps
  *    - Replaces: calendarApp, notesApp, tasksApp
  *    - Route: /dashboard/organizer
- *    - Status: Individual apps DEPRECATED (redirect enabled)
+ *    - Status: Individual apps AUTO-REDIRECT to Organizer (Phase 2 active)
  *
  * 2. INBOX HUB - Consolidates communication apps
  *    - Replaces: messages (for regular users), AI assistant, email
  *    - Route: /dashboard/inbox
- *    - Status: Individual apps DEPRECATED (redirect enabled)
+ *    - Status: Individual apps AUTO-REDIRECT to Inbox (Phase 2 active)
  *    - Note: Admin Messages app (/dashboard/messages) remains for admin broadcasts
  *
  * 3. CREATOR STUDIO - Super Admin development hub (NOT a replacement pattern)
@@ -76,18 +76,19 @@ export interface AppDefinition {
  *
  * DEPRECATION LIFECYCLE:
  *
- * Phase 1 (Current): Soft deprecation
- *   - Individual apps show deprecation warnings
- *   - Users are encouraged to use consolidated apps
- *   - No forced redirects yet
+ * Phase 1 (Completed: 2025-11-03): Soft deprecation
+ *   - Individual apps showed deprecation warnings
+ *   - Users were encouraged to use consolidated apps
+ *   - No forced redirects
  *
- * Phase 2 (Future): Hard deprecation
+ * Phase 2 (CURRENT - Active as of 2025-11-08): Hard deprecation
  *   - Automatic redirects from individual apps to consolidated versions
- *   - Deep linking support (e.g., /apps/calendar?event=123 → /organizer?tab=calendar&event=123)
+ *   - Deep linking support (e.g., /apps/calendar → /organizer?tab=calendar)
+ *   - Redirect message shown briefly before automatic navigation
  *
  * Phase 3 (Future): Complete removal
- *   - Individual app routes removed
- *   - Only consolidated apps remain
+ *   - Individual app routes will be removed entirely
+ *   - Only consolidated apps will remain
  */
 export const APP_REGISTRY: Record<string, AppDefinition> = {
   // Essentials (Most used core features)
@@ -908,7 +909,7 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     deprecatedBy: 'inbox',
     deprecationMessage: 'This standalone Email app has been consolidated into the Inbox hub for a unified communications experience.',
     deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
+    redirectToNew: true, // Phase 2: Auto-redirect enabled
   },
 
   calendarApp: {
@@ -951,7 +952,7 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     deprecatedBy: 'organizer',
     deprecationMessage: 'This standalone Calendar app has been consolidated into the Organizer hub. Access Calendar from the Organizer app for a unified productivity experience.',
     deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
+    redirectToNew: true, // Phase 2: Auto-redirect enabled
   },
 
   help: {
@@ -1028,7 +1029,7 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     deprecatedBy: 'organizer',
     deprecationMessage: 'This standalone Tasks app has been consolidated into the Organizer hub. Access Tasks from the Organizer app for a unified productivity experience.',
     deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
+    redirectToNew: true, // Phase 2: Auto-redirect enabled
   },
 
   notesApp: {
@@ -1071,7 +1072,7 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     deprecatedBy: 'organizer',
     deprecationMessage: 'This standalone Notes app has been consolidated into the Organizer hub. Access Notes from the Organizer app for a unified productivity experience.',
     deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
+    redirectToNew: true, // Phase 2: Auto-redirect enabled
   },
 
   brandy: {

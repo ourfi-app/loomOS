@@ -4,7 +4,9 @@
 
 LoomOS is consolidating individual productivity and communication apps into unified hub applications to reduce context switching, improve user experience, and simplify navigation.
 
-**Status:** Phase 1 - Soft Deprecation (Started: 2025-11-03)
+**Status:** Phase 2 - Hard Deprecation (Active as of: 2025-11-08)
+
+⚠️ **AUTOMATIC REDIRECTS ENABLED** - Individual deprecated apps now automatically redirect to their consolidated hubs.
 
 ---
 
@@ -81,14 +83,14 @@ LoomOS is consolidating individual productivity and communication apps into unif
 
 ## Deprecation Lifecycle
 
-### Phase 1: Soft Deprecation (Current - 2025-11-03)
+### Phase 1: Soft Deprecation (Completed - 2025-11-03)
 
-**Status:** ✅ Active
+**Status:** ✅ Completed
 
 **Implementation:**
-- Individual apps show deprecation warnings at the top
-- Apps remain fully functional
-- Users are encouraged (not forced) to use consolidated apps
+- Individual apps showed deprecation warnings at the top
+- Apps remained fully functional
+- Users were encouraged (not forced) to use consolidated apps
 - Deprecation badges shown in Apps Launcher
 - No automatic redirects
 
@@ -110,41 +112,53 @@ LoomOS is consolidating individual productivity and communication apps into unif
 
 ---
 
-### Phase 2: Hard Deprecation (Future)
+### Phase 2: Hard Deprecation (CURRENT - Active as of 2025-11-08)
 
-**Status:** 🔮 Planned
+**Status:** ✅ Active
 
 **Implementation:**
-- Enable automatic redirects by setting `redirectToNew: true` in registry
-- Individual apps redirect to consolidated versions
-- Deep linking preserved: `/apps/calendar?event=123` → `/organizer?tab=calendar&event=123`
-- Short grace period for users to adjust
+- ✅ Automatic redirects enabled by setting `redirectToNew: true` in registry
+- ✅ Individual apps automatically redirect to consolidated versions
+- ✅ Deep linking preserved: `/apps/calendar` → `/organizer?tab=calendar`
+- ⏳ Monitoring user experience and feedback
 
-**To Enable Phase 2:**
-1. Update app registry entries:
-   ```typescript
-   calendarApp: {
-     // ... existing fields ...
-     redirectToNew: true, // Changed from false
-   }
-   ```
-2. Individual app pages will automatically redirect via `DeprecatedRouteHandler`
+**Code Changes:**
+- ✅ Updated app registry entries: Set `redirectToNew: true` for deprecated apps
+- ✅ Added `DeprecatedRouteHandler` component to deprecated app pages
+- ✅ Updated registry documentation to reflect Phase 2 active
+- ✅ Apps now show loading state during redirect
 
-**Example Implementation:**
+**Redirect Behavior:**
+When users navigate to a deprecated app (e.g., `/dashboard/apps/calendar`):
+1. Page loads
+2. `DeprecatedRouteHandler` component checks `redirectToNew` flag
+3. If `true`, shows brief "Redirecting..." message
+4. Automatically redirects to consolidated app with appropriate tab
+5. Example: `/apps/calendar` → `/organizer?tab=calendar`
+
+**Implementation Example:**
 ```typescript
 // app/dashboard/apps/calendar/page.tsx
-export default function CalendarPage() {
-  return (
-    <>
-      <DeprecatedRouteHandler
-        app={APP_REGISTRY['calendarApp']}
-        defaultTab="calendar"
-      />
-      {/* Existing calendar UI - only shows if redirectToNew is false */}
-    </>
-  );
-}
+return (
+  <ErrorBoundary>
+    {/* Phase 2: Auto-redirect to Organizer */}
+    <DeprecatedRouteHandler
+      app={APP_REGISTRY['calendarApp']}
+      defaultTab="calendar"
+    />
+    {/* Deprecation Notice (shown only if redirect fails) */}
+    <DeprecationNotice app={APP_REGISTRY['calendarApp']} />
+    {/* Calendar content (fallback if redirect disabled) */}
+  </ErrorBoundary>
+);
 ```
+
+**Files Modified:**
+- `lib/enhanced-app-registry.ts` - Set `redirectToNew: true` for all deprecated apps
+- `app/dashboard/apps/calendar/page.tsx` - Added `DeprecatedRouteHandler`
+- `app/dashboard/apps/notes/page.tsx` - Added `DeprecatedRouteHandler`
+- `app/dashboard/apps/tasks/page.tsx` - Added `DeprecatedRouteHandler`
+- `docs/CONSOLIDATION.md` - Updated to reflect Phase 2 active
 
 ---
 
@@ -320,5 +334,5 @@ For questions about the consolidation strategy, see:
 ---
 
 **Last Updated:** 2025-11-08
-**Current Phase:** Phase 1 - Soft Deprecation
-**Next Phase:** TBD (based on user feedback and adoption metrics)
+**Current Phase:** Phase 2 - Hard Deprecation (Automatic Redirects Active)
+**Next Phase:** Phase 3 - Complete Removal (TBD based on user feedback and adoption metrics)

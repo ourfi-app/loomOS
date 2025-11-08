@@ -29,7 +29,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { ErrorBoundary, DeprecationNotice } from '@/components/common';
+import { ErrorBoundary, DeprecationNotice, DeprecatedRouteHandler } from '@/components/common';
 import { CardSkeleton } from '@/components/common/skeleton-screens';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
 import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
@@ -340,8 +340,14 @@ export default function NotesApp() {
 
   return (
     <ErrorBoundary>
+      {/* Phase 2: Auto-redirect to Organizer */}
+      <DeprecatedRouteHandler
+        app={APP_REGISTRY['notesApp']}
+        defaultTab="notes"
+      />
+
       <div className="h-full flex flex-col overflow-hidden">
-        {/* Deprecation Notice */}
+        {/* Deprecation Notice (shown only if redirect fails or is disabled) */}
         <DeprecationNotice
           app={APP_REGISTRY['notesApp']}
           prominent
