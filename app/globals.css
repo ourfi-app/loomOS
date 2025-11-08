@@ -2782,3 +2782,177 @@ body:not(.using-mouse) *:focus {
 [data-font-size="x-large"] .text-lg {
   font-size: 1.375rem;
 }
+}
+
+/* ========================================
+   3D Desktop Card Styling
+   Inspired by modern webOS card-based UI
+   ======================================== */
+
+/* 3D Card Switcher Area */
+.card-3d-switcher-area {
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+
+.card-3d-switcher-area::-webkit-scrollbar {
+  height: 8px;
+}
+
+.card-3d-switcher-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.card-3d-switcher-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 3D Card Container */
+.card-3d-container {
+  transform-style: preserve-3d;
+  transition: all 0.4s ease-out;
+}
+
+/* 3D Card Inner */
+.card-3d-inner {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Card Stack Styles (for future stacking implementation) */
+.card-stack .card-3d-inner:nth-child(3) {
+  transform: rotateY(-12deg) scale(0.9);
+  z-index: 3;
+}
+
+.card-stack .card-3d-inner:nth-child(2) {
+  transform: rotateY(-12deg) scale(0.9) translateX(-25px) translateZ(-25px);
+  opacity: 0.9;
+  z-index: 2;
+}
+
+.card-stack .card-3d-inner:nth-child(1) {
+  transform: rotateY(-12deg) scale(0.9) translateX(-50px) translateZ(-50px);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Hover effects for stacks */
+.card-stack:hover .card-3d-inner:nth-child(3) {
+  transform: rotateY(-8deg) scale(0.95) translateX(40px);
+  z-index: 3;
+}
+
+.card-stack:hover .card-3d-inner:nth-child(2) {
+  transform: rotateY(-8deg) scale(0.95) translateX(0px) translateZ(-25px);
+  z-index: 2;
+}
+
+.card-stack:hover .card-3d-inner:nth-child(1) {
+  transform: rotateY(-8deg) scale(0.95) translateX(-40px) translateZ(-50px);
+  z-index: 1;
+}
+
+/* Loading overlay for cards */
+.card-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Spinner for loading states */
+.card-spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glass morphism utility class */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Enhanced dock glass effect */
+.dock {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ========================================
+   Loom System Styling
+   Activity-focused pinning with AI
+   ======================================== */
+
+/* Loom Icon */
+.loom-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+  transition: all 0.3s ease;
+}
+
+.loom-icon:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: scale(1.2) translateY(-8px);
+}
+
+/* Pinned card state */
+.card-3d-container.pinned {
+  opacity: 0.3;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+/* Dragging state */
+.card-3d-container.dragging {
+  opacity: 0.5;
+  cursor: grabbing !important;
+}
+
+/* Dock drag-over state */
+.dock.drag-over {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px 10px rgba(0, 120, 255, 0.3);
+  border-color: rgba(0, 120, 255, 0.5) !important;
+}
+
+/* Loom context menu animations */
+.loom-context-menu {
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
