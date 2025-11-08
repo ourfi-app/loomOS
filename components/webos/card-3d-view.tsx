@@ -7,25 +7,40 @@ import { X, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { getAppById } from '@/lib/enhanced-app-registry';
+import { useLoomStore } from '@/lib/loom-store';
 
 /**
  * Card3DView Component
  *
  * Main desktop view with 3D perspective cards
- * Cards are displayed with a 3D rotateY transform and can be stacked
+ * Cards are displayed with a 3D rotateY transform and can be dragged to create looms
  */
 
 interface Card3DProps {
   card: any;
   index: number;
   isActive: boolean;
+  isPinned: boolean;
   onClick: () => void;
   onClose: (e: React.MouseEvent) => void;
+  onDragStart: (e: React.DragEvent) => void;
+  onDragEnd: (e: React.DragEvent) => void;
 }
 
-function Card3D({ card, index, isActive, onClick, onClose }: Card3DProps) {
+function Card3D({ card, index, isActive, isPinned, onClick, onClose, onDragStart, onDragEnd }: Card3DProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const app = getAppById(card.icon);
+
+  const handleDragStart = (e: React.DragEvent) => {
+    setIsDragging(true);
+    onDragStart(e);
+  };
+
+  const handleDragEnd = (e: React.DragEvent) => {
+    setIsDragging(false);
+    onDragEnd(e);
+  };
 
   return (
     <motion.div
@@ -33,14 +48,23 @@ function Card3D({ card, index, isActive, onClick, onClose }: Card3DProps) {
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: 20 }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
-      className="card-3d-container flex-shrink-0"
+      className={cn(
+        'card-3d-container flex-shrink-0',
+        isPinned && 'pinned',
+        isDragging && 'dragging'
+      )}
       style={{
         width: '320px',
         height: '520px',
         position: 'relative',
-        cursor: 'pointer',
+        cursor: isPinned ? 'default' : 'grab',
         transformStyle: 'preserve-3d',
+        opacity: isPinned ? 0.3 : isDragging ? 0.5 : 1,
+        pointerEvents: isPinned ? 'none' : 'auto',
       }}
+      draggable={!isPinned}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
@@ -135,6 +159,8 @@ function Card3D({ card, index, isActive, onClick, onClose }: Card3DProps) {
 export function Card3DView() {
   const router = useRouter();
   const { cards, closeCard, activeCardId, setActiveCard } = useCardManager();
+  const { isCardPinned } = useLoomStore();
+  const [draggedCardId, setDraggedCardId] = useState<string | null>(null);
 
   const handleCardClick = (cardId: string, path: string) => {
     setActiveCard(cardId);
@@ -149,6 +175,28 @@ export function Card3DView() {
     if (cards.length === 1) {
       router.push('/dashboard');
     }
+  };
+
+  const handleDragStart = (e: React.DragEvent, card: any) => {
+    // Don't allow dragging pinned cards
+    if (isCardPinned(card.id)) {
+      e.preventDefault();
+      return;
+    }
+
+    setDraggedCardId(card.id);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', card.id);
+
+    // Scrape context from the card
+    const app = getAppById(card.icon);
+    const context = `[CARD: ${card.title}]\nApp: ${app?.title || card.title}\nPath: ${card.path}\nDescription: ${app?.description || 'No description available'}`;
+    e.dataTransfer.setData('application/loom-context', context);
+    e.dataTransfer.setData('application/loom-title', card.title);
+  };
+
+  const handleDragEnd = (e: React.DragEvent) => {
+    setDraggedCardId(null);
   };
 
   if (cards.length === 0) {
@@ -166,16 +214,22 @@ export function Card3DView() {
         scrollbarWidth: 'thin',
       }}
     >
-      {cards.map((card, index) => (
-        <Card3D
-          key={card.id}
-          card={card}
-          index={index}
-          isActive={card.id === activeCardId}
-          onClick={() => handleCardClick(card.id, card.path)}
-          onClose={(e) => handleCardClose(e, card.id)}
-        />
-      ))}
+      {cards.map((card, index) => {
+        const isPinned = isCardPinned(card.id);
+        return (
+          <Card3D
+            key={card.id}
+            card={card}
+            index={index}
+            isActive={card.id === activeCardId}
+            isPinned={isPinned}
+            onClick={() => handleCardClick(card.id, card.path)}
+            onClose={(e) => handleCardClose(e, card.id)}
+            onDragStart={(e) => handleDragStart(e, card)}
+            onDragEnd={handleDragEnd}
+          />
+        );
+      })}
     </div>
   );
 }

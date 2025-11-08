@@ -23,6 +23,9 @@ import {
   ContextMenuTrigger,
 } from '@/components/ui/context-menu';
 import { toast } from 'sonner';
+import { useLoomStore } from '@/lib/loom-store';
+import { LoomIcon } from './loom-icon';
+import { LoomContextMenu, LoomAIModal } from './loom-context-menu';
 
 /**
  * LoomOS-style Quick Launch Dock
@@ -183,10 +186,14 @@ export function AppDock() {
   const { toggleAssistant } = useAssistant();
   const { dockAppIds, trackAppUsage, removeFromDock, addToDock } = useAppPreferences();
   const { openSearch } = useUniversalSearch();
+  const { looms, createLoom, unpinLoom, restoreLoom, getLoom } = useLoomStore();
   const [isGridOpen, setIsGridOpen] = useState(false);
   const [hoveredAppId, setHoveredAppId] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [isDockHovered, setIsDockHovered] = useState(false);
+  const [isDragOver, setIsDragOver] = useState(false);
+  const [loomContextMenu, setLoomContextMenu] = useState<{ loomId: string; position: { x: number; y: number } } | null>(null);
+  const [aiModal, setAiModal] = useState<{ title: string; content: string; isLoading: boolean } | null>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef<number>(0);
   const touchStartTime = useRef<number>(0);
@@ -387,6 +394,100 @@ export function AppDock() {
     trackAppUsage('app-grid');
   }, [trackAppUsage]);
 
+  // Loom drag-and-drop handlers
+  const handleDockDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setIsDragOver(true);
+  }, []);
+
+  const handleDockDragLeave = useCallback(() => {
+    setIsDragOver(false);
+  }, []);
+
+  const handleDockDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+
+    const cardId = e.dataTransfer.getData('text/plain');
+    const context = e.dataTransfer.getData('application/loom-context');
+    const title = e.dataTransfer.getData('application/loom-title');
+
+    if (cardId && context && title) {
+      // Check if this card is already in a loom
+      if (looms.some(loom => loom.cardIds.includes(cardId))) {
+        toast.info('This card is already pinned as a loom');
+        return;
+      }
+
+      // Create the loom
+      const loomId = createLoom([cardId], context, title);
+
+      toast.success('Loom created!', {
+        description: `"${title}" has been pinned to the dock`,
+      });
+    }
+  }, [looms, createLoom]);
+
+  // Loom AI action handlers
+  const handleAnalyzeLoom = useCallback(async (loomId: string) => {
+    const loom = getLoom(loomId);
+    if (!loom) return;
+
+    setAiModal({ title: '✨ Analyzing Loom...', content: '', isLoading: true });
+
+    // Simulate AI analysis (replace with actual AI call)
+    setTimeout(() => {
+      const analysis = `# Loom Analysis: ${loom.title}\n\n## Summary\nThis loom contains activity related to ${loom.title}.\n\n## Key Points\n- Created: ${new Date(loom.createdAt).toLocaleString()}\n- Cards: ${loom.cardIds.length}\n\n## Context\n${loom.context}`;
+
+      setAiModal({ title: `✨ Analysis: ${loom.title}`, content: analysis, isLoading: false });
+    }, 1500);
+  }, [getLoom]);
+
+  const handleCreateTaskList = useCallback(async (loomId: string) => {
+    const loom = getLoom(loomId);
+    if (!loom) return;
+
+    setAiModal({ title: '📝 Creating Task List...', content: '', isLoading: true });
+
+    // Simulate AI task generation (replace with actual AI call)
+    setTimeout(() => {
+      const taskList = `# Task List: ${loom.title}\n\n- Review context from all cards\n- Identify action items\n- Prioritize tasks\n- Set deadlines\n- Assign responsibilities`;
+
+      setAiModal({ title: `📝 Task List: ${loom.title}`, content: taskList, isLoading: false });
+    }, 1500);
+  }, [getLoom]);
+
+  const handleDraftEmail = useCallback(async (loomId: string) => {
+    const loom = getLoom(loomId);
+    if (!loom) return;
+
+    setAiModal({ title: '✉️ Drafting Summary Email...', content: '', isLoading: true });
+
+    // Simulate AI email generation (replace with actual AI call)
+    setTimeout(() => {
+      const email = `Subject: Update on ${loom.title}\n\nHi Team,\n\nI wanted to provide a quick update on ${loom.title}.\n\n[Summary based on context]\n\nBest regards`;
+
+      setAiModal({ title: `✉️ Email: ${loom.title}`, content: email, isLoading: false });
+    }, 1500);
+  }, [getLoom]);
+
+  const handleRestoreLoom = useCallback((loomId: string) => {
+    restoreLoom(loomId);
+    unpinLoom(loomId);
+    toast.success('Loom restored', {
+      description: 'The loom has been unpinned and restored',
+    });
+  }, [restoreLoom, unpinLoom]);
+
+  const handleUnpinLoom = useCallback((loomId: string) => {
+    const loom = getLoom(loomId);
+    unpinLoom(loomId);
+    toast.info('Loom unpinned', {
+      description: `"${loom?.title}" has been removed from the dock`,
+    });
+  }, [getLoom, unpinLoom]);
+
   // Keyboard shortcut for app grid (Cmd/Ctrl+Space)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -461,19 +562,25 @@ export function AppDock() {
       >
         <motion.div
           initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
+          animate={{ scale: isDragOver ? 1.05 : 1 }}
           transition={{ type: 'spring', stiffness: 400, damping: 25, delay: 0.1 }}
           className={cn(
             'dock flex items-center gap-2 sm:gap-3 px-4 py-3 sm:px-5 sm:py-3.5',
             'rounded-2xl shadow-2xl',
-            'pointer-events-auto'
+            'pointer-events-auto',
+            'transition-all duration-300',
+            isDragOver && 'drag-over'
           )}
           style={{
             background: 'rgba(255, 255, 255, 0.7)',
             backdropFilter: 'blur(15px)',
             WebkitBackdropFilter: 'blur(15px)',
-            border: '1px solid rgba(0, 0, 0, 0.08)',
+            border: isDragOver ? '2px solid rgba(0, 120, 255, 0.5)' : '1px solid rgba(0, 0, 0, 0.08)',
+            boxShadow: isDragOver ? '0 0 30px 10px rgba(0, 120, 255, 0.3)' : undefined,
           }}
+          onDragOver={handleDockDragOver}
+          onDragLeave={handleDockDragLeave}
+          onDrop={handleDockDrop}
           onMouseEnter={() => {
             setIsDockHovered(true);
             // Cancel any pending auto-hide when hovering dock
@@ -525,7 +632,26 @@ export function AppDock() {
             );
           })}
 
+          {/* Loom Icons - Pinned activities */}
+          {looms.filter(loom => loom.isPinned).map((loom) => (
+            <LoomIcon
+              key={loom.id}
+              loom={loom}
+              onClick={() => handleRestoreLoom(loom.id)}
+              onContextMenu={(e) => {
+                e.preventDefault();
+                setLoomContextMenu({
+                  loomId: loom.id,
+                  position: { x: e.clientX, y: e.clientY },
+                });
+              }}
+            />
+          ))}
+
           {/* Separator before app grid launcher */}
+          {looms.filter(loom => loom.isPinned).length > 0 && (
+            <div className="h-10 w-px bg-border/50 mx-1" />
+          )}
           <div className="h-10 w-px bg-border/50 mx-1" />
 
           {/* App Grid Launcher (Fixed 5th position - cannot be changed) - webOS Wave style */}
@@ -585,14 +711,40 @@ export function AppDock() {
       </motion.div>
       
       {/* App Grid Launcher - Rendered at root level */}
-      <AppGridLauncher 
-        isOpen={isGridOpen} 
+      <AppGridLauncher
+        isOpen={isGridOpen}
         onClose={() => setIsGridOpen(false)}
         onAppLaunch={(app) => {
           handleAppLaunch(app);
           setIsGridOpen(false);
         }}
       />
+
+      {/* Loom Context Menu */}
+      {loomContextMenu && (
+        <LoomContextMenu
+          loom={getLoom(loomContextMenu.loomId) || null}
+          position={loomContextMenu.position}
+          isOpen={!!loomContextMenu}
+          onClose={() => setLoomContextMenu(null)}
+          onRestore={() => handleRestoreLoom(loomContextMenu.loomId)}
+          onUnpin={() => handleUnpinLoom(loomContextMenu.loomId)}
+          onAnalyze={() => handleAnalyzeLoom(loomContextMenu.loomId)}
+          onCreateTaskList={() => handleCreateTaskList(loomContextMenu.loomId)}
+          onDraftEmail={() => handleDraftEmail(loomContextMenu.loomId)}
+        />
+      )}
+
+      {/* Loom AI Modal */}
+      {aiModal && (
+        <LoomAIModal
+          title={aiModal.title}
+          content={aiModal.content}
+          isOpen={!!aiModal}
+          isLoading={aiModal.isLoading}
+          onClose={() => setAiModal(null)}
+        />
+      )}
     </>
   );
 }
