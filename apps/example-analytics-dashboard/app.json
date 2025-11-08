@@ -1,0 +1,89 @@
+{
+  "manifest": {
+    "version": "1.0",
+    "createdAt": "2025-01-08",
+    "author": "loomOS Team"
+  },
+  "app": {
+    "name": "Analytics Dashboard",
+    "slug": "analytics-dashboard",
+    "tagline": "Real-time business intelligence and data visualization",
+    "description": "A powerful analytics platform that transforms your data into actionable insights. Create custom dashboards, visualize trends, and make data-driven decisions with ease.",
+    "longDescription": "Analytics Dashboard is a comprehensive business intelligence solution that helps organizations make sense of their data. With powerful visualization tools, real-time updates, and customizable dashboards, you can monitor key metrics, identify trends, and share insights across your team.\n\nKey Features:\n- Interactive charts and graphs\n- Real-time data updates\n- Custom dashboard builder\n- Data source integrations\n- Scheduled reports and alerts\n- Team collaboration and sharing\n- Export and presentation modes\n- Mobile-optimized views\n- Advanced filtering and drill-down\n- AI-powered insights and anomaly detection",
+    "iconName": "bar-chart",
+    "color": "#3b82f6",
+    "path": "/analytics-dashboard",
+    "category": "ANALYTICS",
+    "tags": [
+      "analytics",
+      "dashboard",
+      "visualization",
+      "business-intelligence",
+      "reporting",
+      "data"
+    ],
+    "features": [
+      "Interactive charts and visualizations",
+      "Real-time data updates",
+      "Drag-and-drop dashboard builder",
+      "Multiple data source integrations",
+      "Scheduled reports and alerts",
+      "Team sharing and collaboration",
+      "Export to PDF, Excel, and images",
+      "Mobile-responsive dashboards",
+      "Advanced filtering and segmentation",
+      "AI-powered insights",
+      "Anomaly detection",
+      "Custom KPI tracking"
+    ],
+    "permissions": [
+      "read:analytics",
+      "write:dashboards",
+      "manage:data-sources",
+      "share:reports",
+      "export:data"
+    ],
+    "minRole": "MEMBER",
+    "isActive": true,
+    "version": "1.2.0",
+    "status": "DRAFT",
+    "pricingModel": "PAID",
+    "price": 29.99,
+    "currency": "USD",
+    "screenshots": [
+      "/screenshots/analytics-dashboard-overview.png",
+      "/screenshots/analytics-charts.png",
+      "/screenshots/analytics-builder.png",
+      "/screenshots/analytics-mobile.png"
+    ],
+    "videoUrl": "https://example.com/videos/analytics-demo.mp4",
+    "websiteUrl": "https://example.com/analytics-dashboard",
+    "supportUrl": "https://example.com/support/analytics",
+    "privacyUrl": "https://example.com/privacy",
+    "termsUrl": "https://example.com/terms",
+    "compatibility": [
+      "web",
+      "mobile",
+      "tablet"
+    ],
+    "requiredIntegrations": [
+      "database-connector",
+      "api-gateway"
+    ],
+    "searchKeywords": [
+      "analytics",
+      "dashboard",
+      "charts",
+      "graphs",
+      "visualization",
+      "business intelligence",
+      "bi",
+      "reporting",
+      "metrics",
+      "kpi",
+      "data analysis"
+    ],
+    "importVersion": "1.0",
+    "importSource": "example-apps"
+  }
+}

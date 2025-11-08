@@ -1,0 +1,74 @@
+{
+  "manifest": {
+    "version": "1.0",
+    "createdAt": "2025-01-08",
+    "author": "loomOS Team"
+  },
+  "app": {
+    "name": "Task Manager Pro",
+    "slug": "task-manager-pro",
+    "tagline": "Advanced task management and collaboration tool",
+    "description": "A comprehensive task management application that helps teams organize, prioritize, and track their work efficiently. Features include kanban boards, sprint planning, time tracking, and real-time collaboration.",
+    "longDescription": "Task Manager Pro is a powerful project management tool designed for modern teams. It combines the simplicity of todo lists with advanced features like sprint planning, time tracking, and analytics. Whether you're managing a small team or coordinating across departments, Task Manager Pro helps you stay organized and productive.\n\nKey Features:\n- Kanban boards with drag-and-drop\n- Sprint planning and backlog management\n- Time tracking and estimates\n- Team collaboration and assignments\n- Custom workflows and automations\n- Real-time updates and notifications\n- Advanced filtering and search\n- Detailed analytics and reports",
+    "iconName": "check-square",
+    "color": "#10b981",
+    "path": "/task-manager-pro",
+    "category": "PRODUCTIVITY",
+    "tags": [
+      "tasks",
+      "project-management",
+      "collaboration",
+      "kanban",
+      "agile",
+      "productivity"
+    ],
+    "features": [
+      "Kanban boards with drag-and-drop interface",
+      "Sprint planning and backlog management",
+      "Time tracking and estimates",
+      "Team assignments and collaboration",
+      "Custom workflows and automations",
+      "Real-time notifications",
+      "Advanced filtering and search",
+      "Analytics and reporting",
+      "Mobile responsive design"
+    ],
+    "permissions": [
+      "read:tasks",
+      "write:tasks",
+      "delete:tasks",
+      "manage:projects",
+      "view:team"
+    ],
+    "minRole": "MEMBER",
+    "isActive": true,
+    "version": "1.0.0",
+    "status": "DRAFT",
+    "pricingModel": "FREEMIUM",
+    "price": 0,
+    "currency": "USD",
+    "screenshots": [
+      "/screenshots/task-manager-kanban.png",
+      "/screenshots/task-manager-sprint.png",
+      "/screenshots/task-manager-analytics.png"
+    ],
+    "websiteUrl": "https://example.com/task-manager-pro",
+    "supportUrl": "https://example.com/support",
+    "compatibility": [
+      "web",
+      "mobile"
+    ],
+    "searchKeywords": [
+      "tasks",
+      "todo",
+      "kanban",
+      "agile",
+      "scrum",
+      "project management",
+      "productivity",
+      "collaboration"
+    ],
+    "importVersion": "1.0",
+    "importSource": "example-apps"
+  }
+}

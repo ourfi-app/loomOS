@@ -1,0 +1,22 @@
+# Apps Directory - Git Ignore Rules
+#
+# This allows developers to create custom apps locally without committing them.
+# Example apps are explicitly included via exceptions below.
+
+# Ignore all app directories by default
+*
+
+# But keep these files
+!.gitignore
+!README.md
+
+# Keep example apps
+!example-task-manager/
+!example-task-manager/**
+
+!example-analytics-dashboard/
+!example-analytics-dashboard/**
+
+# Add your custom apps here by uncommenting and modifying:
+# !my-custom-app/
+# !my-custom-app/**
