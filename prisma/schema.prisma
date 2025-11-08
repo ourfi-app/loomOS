@@ -165,6 +165,13 @@ model Organization {
   subdomain    String?          @unique // e.g., "montrecott" for montrecott.yoursaas.com
   customDomain String?          @unique // e.g., "montrecott.com"
 
+  // Domain Verification
+  domainVerificationToken String?
+  domainVerified          Boolean   @default(false)
+  domainVerifiedAt        DateTime?
+  sslCertificateStatus    String?   @default("pending") // pending, active, expired, failed
+  sslCertificateExpiry    DateTime?
+
   // Contact & Location
   streetAddress String?
   city          String?

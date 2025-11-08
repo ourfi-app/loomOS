@@ -1,49 +1,62 @@
+/**
+ * Domains List API
+ * Get all organizations with their domain configuration
+ */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { NextResponse } from 'next/server';
+import { withSuperAdminAuth } from '@/lib/api/with-tenant-auth';
 import { prisma } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
-export async function GET(request: NextRequest) {
+
+/**
+ * GET /api/super-admin/domains
+ * Get all organizations with domain configuration
+ */
+export const GET = withSuperAdminAuth(async () => {
   try {
-    const session = await getServerSession(authOptions);
-
-    if (!session || session.user.role !== 'SUPER_ADMIN') {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 403 });
-    }
-
     const organizations = await prisma.organization.findMany({
       where: {
         OR: [
           { subdomain: { not: null } },
-          { customDomain: { not: null } }
-        ]
+          { customDomain: { not: null } },
+        ],
       },
       select: {
         id: true,
         name: true,
+        slug: true,
         subdomain: true,
         customDomain: true,
-        createdAt: true
-      }
+        domainVerified: true,
+        domainVerifiedAt: true,
+        domainVerificationToken: true,
+        sslCertificateStatus: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
-    const domains = organizations.map(org => ({
+    const domains = organizations.map((org) => ({
       organizationId: org.id,
       organizationName: org.name,
       subdomain: org.subdomain,
       customDomain: org.customDomain,
-      verified: true, // You can add actual verification logic
-      createdAt: org.createdAt.toISOString()
+      verified: org.domainVerified || false,
+      verifiedAt: org.domainVerifiedAt,
+      verificationToken: org.domainVerificationToken,
+      sslStatus: org.sslCertificateStatus,
+      createdAt: org.createdAt.toISOString(),
     }));
 
     return NextResponse.json(domains);
-  } catch (error) {
-    console.error('Error fetching domains:', error);
+  } catch (error: any) {
+    console.error('List domains error:', error);
     return NextResponse.json(
-      { message: 'Internal server error' },
+      { error: error.message || 'Failed to fetch domains' },
       { status: 500 }
     );
   }
-}
+});
