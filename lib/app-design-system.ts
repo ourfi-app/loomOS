@@ -83,6 +83,7 @@ import {
   ArrowLeft,
   Rocket,
   HelpCircle,
+  Code,
   LucideIcon
 } from 'lucide-react';
 
@@ -144,6 +145,9 @@ export const APP_ICONS = {
   // Resident Portal
   residentPortal: Globe,
   
+  // Developer & Platform Tools
+  developer: Code,
+
   // Utility Icons (for UI elements)
   search: Search,
   filter: Filter,
@@ -365,6 +369,12 @@ export const APP_COLORS = {
     main: '#06B6D4',
     contrast: '#ffffff',
     category: 'community'
+  },
+  developer: {
+    light: 'from-violet-500 via-purple-500 to-fuchsia-500',
+    main: '#8B5CF6',
+    contrast: '#ffffff',
+    category: 'developer'
   },
 } as const;
 
