@@ -9,7 +9,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
+import { authOptions } from '@/lib/auth';
 import { AppImportService } from '@/lib/marketplace/AppImportService';
 import { AppImportDefinition, AppImportOptions } from '@/lib/marketplace/app-import-types';
 import { PrismaClient } from '@prisma/client';
