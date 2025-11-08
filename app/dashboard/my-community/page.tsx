@@ -2,15 +2,16 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, Users, MessageSquare } from 'lucide-react';
+import { FileText, Users, MessageSquare, BarChart3 } from 'lucide-react';
 import { DocumentsTab } from '@/components/my-community/documents-tab';
 import { DirectoryTab } from '@/components/my-community/directory-tab';
 import { PostsTab } from '@/components/my-community/posts-tab';
+import { AnalyticsTab } from '@/components/my-community/analytics-tab';
 import { LoomOSNavigationPane } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
 export default function MyCommunityPage() {
-  const [activeSection, setActiveSection] = useState<'posts' | 'documents' | 'directory'>('posts');
+  const [activeSection, setActiveSection] = useState<'posts' | 'documents' | 'directory' | 'analytics'>('posts');
 
   const navItems = [
     {
@@ -34,6 +35,13 @@ export default function MyCommunityPage() {
       active: activeSection === 'directory',
       onClick: () => setActiveSection('directory')
     },
+    {
+      id: 'analytics',
+      label: 'Analytics',
+      icon: <BarChart3 className="h-5 w-5" />,
+      active: activeSection === 'analytics',
+      onClick: () => setActiveSection('analytics')
+    },
   ];
 
   return (
@@ -47,6 +55,7 @@ export default function MyCommunityPage() {
         {activeSection === 'posts' && <PostsTab />}
         {activeSection === 'documents' && <DocumentsTab />}
         {activeSection === 'directory' && <DirectoryTab />}
+        {activeSection === 'analytics' && <AnalyticsTab />}
       </div>
     </div>
   );

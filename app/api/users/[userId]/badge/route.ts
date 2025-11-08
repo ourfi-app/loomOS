@@ -9,16 +9,16 @@ export const dynamic = 'force-dynamic';
 // PATCH - Update user's member badge (Admin only)
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { userId: string } }
 ) {
   try {
     // Authentication
     const session = await validateAuth(request);
     const organizationId = await getCurrentOrganizationId();
-    logApiRequest('PATCH', `/api/users/${params.id}/badge`, { userId: session?.user?.id });
+    logApiRequest('PATCH', `/api/users/${params.userId}/badge`, { userId: session?.user?.id });
 
     const userId = (session.user as any).id;
-    const targetUserId = params.id;
+    const targetUserId = params.userId;
 
     // Get admin user to check permissions
     const adminUser = await prisma.user.findUnique({
