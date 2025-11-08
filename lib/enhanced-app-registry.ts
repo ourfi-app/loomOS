@@ -45,23 +45,23 @@ export interface AppDefinition {
 /**
  * LoomOS Application Registry
  *
- * CONSOLIDATION STRATEGY (Phase 1 - Started 2025-11-03)
+ * CONSOLIDATION STRATEGY (Phase 3 - Completed 2025-11-08)
  * ====================================================
  *
- * The platform is consolidating individual productivity apps into unified hubs
+ * The platform has consolidated individual productivity apps into unified hubs
  * to provide a better user experience and reduce context switching.
  *
  * CONSOLIDATION PATTERNS:
  *
  * 1. ORGANIZER HUB - Consolidates productivity apps
- *    - Replaces: calendarApp, notesApp, tasksApp
+ *    - Replaced: calendarApp, notesApp, tasksApp (REMOVED)
  *    - Route: /dashboard/organizer
- *    - Status: Individual apps DEPRECATED (redirect enabled)
+ *    - Status: Individual apps REMOVED
  *
  * 2. INBOX HUB - Consolidates communication apps
- *    - Replaces: messages (for regular users), AI assistant, email
+ *    - Replaced: emailApp (REMOVED)
  *    - Route: /dashboard/inbox
- *    - Status: Individual apps DEPRECATED (redirect enabled)
+ *    - Status: Individual apps REMOVED
  *    - Note: Admin Messages app (/dashboard/messages) remains for admin broadcasts
  *
  * 3. CREATOR STUDIO - Super Admin development hub (NOT a replacement pattern)
@@ -74,18 +74,16 @@ export interface AppDefinition {
  *    - Status: Hub AND individual apps both active (NOT deprecated)
  *    - Reason: Super admins need both quick overview (hub) and full features (apps)
  *
- * DEPRECATION LIFECYCLE:
+ * DEPRECATION LIFECYCLE (COMPLETED):
  *
- * Phase 1 (Current): Soft deprecation
- *   - Individual apps show deprecation warnings
- *   - Users are encouraged to use consolidated apps
- *   - No forced redirects yet
+ * Phase 1: Soft deprecation ✅
+ *   - Individual apps showed deprecation warnings
+ *   - Users were encouraged to use consolidated apps
  *
- * Phase 2 (Future): Hard deprecation
- *   - Automatic redirects from individual apps to consolidated versions
- *   - Deep linking support (e.g., /apps/calendar?event=123 → /organizer?tab=calendar&event=123)
+ * Phase 2: Hard deprecation (SKIPPED)
+ *   - Skipped directly to Phase 3
  *
- * Phase 3 (Future): Complete removal
+ * Phase 3: Complete removal ✅ (Current)
  *   - Individual app routes removed
  *   - Only consolidated apps remain
  */
@@ -869,91 +867,6 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     totalRatings: 1,
   },
 
-  emailApp: {
-    id: 'email-app',
-    title: 'Email',
-    icon: APP_ICONS.messages,
-    iconKey: 'messages',
-    colorKey: 'messages',
-    path: '/dashboard/apps/email',
-    gradient: APP_COLORS.messages.light,
-    category: 'productivity',
-    description: 'LoomOS-style email client',
-    keywords: ['email', 'mail', 'messages', 'communication', 'inbox'],
-    canPinToDock: true,
-    hasWidget: false,
-    longDescription: 'Full-featured email client with LoomOS design. Three-pane layout with account folders, message list, and detail view. Includes search, multiple account support, and attachment handling.',
-    tags: ['communication', 'email', 'webos', 'template'],
-    version: '1.0.0',
-    developer: 'Montrecott Team',
-    releaseDate: '2024-10-22',
-    lastUpdated: '2024-10-22',
-    features: [
-      'Three-pane LoomOS layout',
-      'Multiple account support',
-      'Folder navigation',
-      'Message search',
-      'Read/unread status',
-      'Attachment support',
-      'Reply and forward',
-      'Responsive design'
-    ],
-    permissions: ['Access email', 'Send messages'],
-    feedbackEnabled: true,
-    isNew: true,
-    averageRating: 5.0,
-    totalRatings: 1,
-    // Deprecation info
-    isDeprecated: true,
-    deprecatedBy: 'inbox',
-    deprecationMessage: 'This standalone Email app has been consolidated into the Inbox hub for a unified communications experience.',
-    deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
-  },
-
-  calendarApp: {
-    id: 'calendar-app',
-    title: 'Calendar',
-    icon: APP_ICONS.calendar,
-    iconKey: 'calendar',
-    colorKey: 'calendar',
-    path: '/dashboard/apps/calendar',
-    gradient: APP_COLORS.calendar.light,
-    category: 'productivity',
-    description: 'LoomOS-style calendar and events',
-    keywords: ['calendar', 'events', 'schedule', 'meetings', 'appointments'],
-    canPinToDock: true,
-    hasWidget: true,
-    widgetSize: 'medium',
-    longDescription: 'Comprehensive calendar application with LoomOS design. Features mini calendar navigation, timeline view, and detailed event display. Manage meetings, appointments, and reminders.',
-    tags: ['productivity', 'calendar', 'webos', 'template'],
-    version: '1.0.0',
-    developer: 'Montrecott Team',
-    releaseDate: '2024-10-22',
-    lastUpdated: '2024-10-22',
-    features: [
-      'Mini calendar navigation',
-      'Day/Week/Month/Year views',
-      'Timeline event list',
-      'Event detail panel',
-      'Color-coded categories',
-      'Location and attendees',
-      'Reminders and notifications',
-      'Responsive design'
-    ],
-    permissions: ['View calendar', 'Manage events'],
-    feedbackEnabled: true,
-    isNew: true,
-    averageRating: 5.0,
-    totalRatings: 1,
-    // Deprecation info
-    isDeprecated: true,
-    deprecatedBy: 'organizer',
-    deprecationMessage: 'This standalone Calendar app has been consolidated into the Organizer hub. Access Calendar from the Organizer app for a unified productivity experience.',
-    deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
-  },
-
   help: {
     id: 'help',
     title: 'Help & Support',
@@ -986,92 +899,6 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
     feedbackEnabled: true,
     averageRating: 4.9,
     totalRatings: 67,
-  },
-
-  tasksApp: {
-    id: 'tasks-app',
-    title: 'Tasks',
-    icon: APP_ICONS.tasks,
-    iconKey: 'tasks',
-    colorKey: 'tasks',
-    path: '/dashboard/apps/tasks',
-    gradient: APP_COLORS.tasks.light,
-    category: 'productivity',
-    description: 'LoomOS-style task management',
-    keywords: ['tasks', 'todos', 'checklist', 'reminders', 'productivity'],
-    canPinToDock: true,
-    hasWidget: true,
-    widgetSize: 'medium',
-    longDescription: 'Comprehensive task management with LoomOS design. Create, organize, and track tasks with priority levels, due dates, and project grouping. Features include task lists, calendar integration, and progress tracking.',
-    tags: ['productivity', 'tasks', 'webos', 'organization'],
-    version: '1.0.0',
-    developer: 'Montrecott Team',
-    releaseDate: '2024-10-22',
-    lastUpdated: '2024-10-22',
-    features: [
-      'Task creation and editing',
-      'Priority levels',
-      'Due date tracking',
-      'Project grouping',
-      'Progress indicators',
-      'Calendar integration',
-      'Search and filter',
-      'Responsive design'
-    ],
-    permissions: ['Manage tasks', 'View calendar'],
-    feedbackEnabled: true,
-    isNew: true,
-    averageRating: 4.8,
-    totalRatings: 23,
-    // Deprecation info
-    isDeprecated: true,
-    deprecatedBy: 'organizer',
-    deprecationMessage: 'This standalone Tasks app has been consolidated into the Organizer hub. Access Tasks from the Organizer app for a unified productivity experience.',
-    deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
-  },
-
-  notesApp: {
-    id: 'notes-app',
-    title: 'Notes',
-    icon: APP_ICONS.notes,
-    iconKey: 'notes',
-    colorKey: 'notes',
-    path: '/dashboard/apps/notes',
-    gradient: APP_COLORS.notes.light,
-    category: 'productivity',
-    description: 'LoomOS-style note taking',
-    keywords: ['notes', 'memos', 'writing', 'documents', 'text'],
-    canPinToDock: true,
-    hasWidget: true,
-    widgetSize: 'small',
-    longDescription: 'Simple yet powerful note-taking application with LoomOS design. Create, edit, and organize notes with rich text formatting. Features include folders, tags, search, and quick access to recent notes.',
-    tags: ['productivity', 'notes', 'webos', 'writing'],
-    version: '1.0.0',
-    developer: 'Montrecott Team',
-    releaseDate: '2024-10-22',
-    lastUpdated: '2024-10-22',
-    features: [
-      'Rich text editing',
-      'Folder organization',
-      'Tag system',
-      'Note search',
-      'Recent notes',
-      'Quick capture',
-      'Export options',
-      'Responsive design'
-    ],
-    permissions: ['Create notes', 'Manage content'],
-    feedbackEnabled: true,
-    isNew: true,
-    averageRating: 4.7,
-    totalRatings: 18,
-    // Deprecation info
-    isDeprecated: true,
-    deprecatedBy: 'organizer',
-    deprecationMessage: 'This standalone Notes app has been consolidated into the Organizer hub. Access Notes from the Organizer app for a unified productivity experience.',
-    deprecationDate: '2025-11-03',
-    redirectToNew: false, // Phase 1: Warning only
   },
 
   brandy: {
