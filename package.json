@@ -19,7 +19,8 @@
     "db:setup": "bash scripts/setup-database.sh",
     "db:seed": "tsx scripts/seed.ts",
     "db:seed:marketplace": "tsx scripts/seed-marketplace.ts",
-    "db:reset": "npx prisma migrate reset && npm run db:setup"
+    "db:reset": "npx prisma migrate reset && npm run db:setup",
+    "create-super-admin": "tsx scripts/create-super-admin.ts"
   },
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
@@ -133,6 +134,7 @@
     "next-auth": "4.24.11",
     "next-themes": "0.3.0",
     "openai": "^4.77.3",
+    "pg": "^8.16.3",
     "plotly.js-basic-dist": "2.35.3",
     "react": "18.2.0",
     "react-chartjs-2": "5.3.0",
