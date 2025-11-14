@@ -28,7 +28,7 @@ export function LoomOSNavListItem({
         'w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors',
         selected
           ? 'bg-orange-50 text-orange-700 font-medium dark:bg-orange-900/20 dark:text-orange-400'
-          : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800',
+          : 'text-[var(--semantic-text-secondary)] hover:bg-[var(--semantic-surface-hover)] dark:text-gray-300 dark:hover:bg-gray-800',
         className
       )}
     >

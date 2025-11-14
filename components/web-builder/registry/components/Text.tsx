@@ -83,20 +83,20 @@ function TextSettings() {
     <div className="space-y-4">
       {/* Text Content */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Content
         </label>
         <textarea
           value={text}
           onChange={(e) => setProp((props: TextProps) => (props.text = e.target.value))}
-          className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-sm min-h-[100px]"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm min-h-[100px]"
           placeholder="Enter text..."
         />
       </div>
 
       {/* Font Size */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Font Size
         </label>
         <input
@@ -107,20 +107,20 @@ function TextSettings() {
           onChange={(e) => setProp((props: TextProps) => (props.fontSize = parseInt(e.target.value)))}
           className="w-full"
         />
-        <div className="text-xs text-gray-500 mt-1">
+        <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">
           {fontSize}px
         </div>
       </div>
 
       {/* Font Weight */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Font Weight
         </label>
         <select
           value={fontWeight}
           onChange={(e) => setProp((props: TextProps) => (props.fontWeight = e.target.value as TextProps['fontWeight']))}
-          className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-sm"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm"
         >
           <option value="normal">Normal</option>
           <option value="medium">Medium</option>
@@ -131,7 +131,7 @@ function TextSettings() {
 
       {/* Color */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Color
         </label>
         <input
@@ -144,7 +144,7 @@ function TextSettings() {
 
       {/* Text Align */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Alignment
         </label>
         <div className="flex gap-2">
@@ -156,7 +156,7 @@ function TextSettings() {
                 'flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                 textAlign === align
                   ? 'bg-loomos-orange text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-[var(--semantic-surface-hover)] dark:bg-gray-800 text-[var(--semantic-text-secondary)] dark:text-gray-300 hover:bg-[var(--semantic-bg-muted)] dark:hover:bg-gray-700'
               )}
             >
               {align.charAt(0).toUpperCase() + align.slice(1)}

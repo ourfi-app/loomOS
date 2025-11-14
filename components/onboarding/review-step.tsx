@@ -128,7 +128,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
           <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-3">
             Review Your Setup
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-[var(--semantic-text-secondary)] text-lg">
             Quick review of your configuration. You can update anything later from the dashboard.
           </p>
         </div>
@@ -137,7 +137,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-            <h3 className="text-sm font-semibold text-gray-900 px-3 py-1.5 bg-blue-100 rounded-full">
+            <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] px-3 py-1.5 bg-blue-100 rounded-full">
               Core Setup
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
@@ -180,8 +180,8 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                       )}
                     </motion.div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center gap-2">
-                        <Icon className="h-5 w-5 text-gray-700" />
+                      <h4 className="font-semibold text-[var(--semantic-text-primary)] mb-3 text-lg flex items-center gap-2">
+                        <Icon className="h-5 w-5 text-[var(--semantic-text-secondary)]" />
                         {section.title}
                       </h4>
                       <div className="space-y-2">
@@ -190,8 +190,8 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                             key={idx}
                             className="flex justify-between gap-4 p-2 rounded-lg bg-white/50 backdrop-blur-sm"
                           >
-                            <span className="text-gray-600 truncate font-medium">{item.label}:</span>
-                            <span className="font-semibold text-gray-900 truncate">
+                            <span className="text-[var(--semantic-text-secondary)] truncate font-medium">{item.label}:</span>
+                            <span className="font-semibold text-[var(--semantic-text-primary)] truncate">
                               {item.value || 'Not provided'}
                             </span>
                           </div>
@@ -209,9 +209,9 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-200 to-transparent" />
-            <h3 className="text-sm font-semibold text-gray-900 px-3 py-1.5 bg-purple-100 rounded-full">
+            <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] px-3 py-1.5 bg-purple-100 rounded-full">
               Optional Configuration
-              <span className="text-xs text-gray-500 font-normal ml-2">(Can be added later)</span>
+              <span className="text-xs text-[var(--semantic-text-tertiary)] font-normal ml-2">(Can be added later)</span>
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-200 to-transparent" />
           </div>
@@ -227,7 +227,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                   className={`relative overflow-hidden border-2 rounded-xl p-4 transition-all duration-300 ${
                     section.isComplete
                       ? 'bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30 border-blue-200 shadow-sm hover:shadow-md'
-                      : 'bg-gradient-to-br from-gray-50 via-slate-50/50 to-gray-50/30 border-gray-200'
+                      : 'bg-gradient-to-br from-gray-50 via-slate-50/50 to-gray-50/30 border-[var(--semantic-border-light)]'
                   }`}
                 >
                   <div className={`absolute inset-0 opacity-5 ${
@@ -237,11 +237,11 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                   <div className="relative">
                     <div className="flex items-center gap-2 mb-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                        section.isComplete ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md' : 'bg-gray-200 text-gray-500'
+                        section.isComplete ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md' : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-tertiary)]'
                       }`}>
                         <Icon className="h-4 w-4" />
                       </div>
-                      <h4 className="font-semibold text-sm text-gray-900 flex-1">
+                      <h4 className="font-semibold text-sm text-[var(--semantic-text-primary)] flex-1">
                         {section.title}
                       </h4>
                       {section.isComplete && (
@@ -254,11 +254,11 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                         </motion.div>
                       )}
                     </div>
-                    <div className="text-sm text-gray-600 space-y-1">
+                    <div className="text-sm text-[var(--semantic-text-secondary)] space-y-1">
                       {section.items.map((item, idx) => (
                         <div key={idx} className="flex justify-between gap-2">
-                          <span className="text-gray-500">{item.label}:</span>
-                          <span className="font-medium text-gray-900">{item.value || 'Not set'}</span>
+                          <span className="text-[var(--semantic-text-tertiary)]">{item.label}:</span>
+                          <span className="font-medium text-[var(--semantic-text-primary)]">{item.value || 'Not set'}</span>
                         </div>
                       ))}
                     </div>
@@ -280,7 +280,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
           <div className="relative">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="h-5 w-5 text-purple-600" />
-              <h3 className="font-semibold text-gray-900">What happens next?</h3>
+              <h3 className="font-semibold text-[var(--semantic-text-primary)]">What happens next?</h3>
             </div>
             <ul className="space-y-3">
               {[
@@ -299,7 +299,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                   <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md">
                     <Check className="h-3.5 w-3.5 text-white" />
                   </div>
-                  <span className="text-sm text-gray-700 leading-relaxed">{text}</span>
+                  <span className="text-sm text-[var(--semantic-text-secondary)] leading-relaxed">{text}</span>
                 </motion.li>
               ))}
             </ul>
@@ -307,7 +307,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
         </motion.div>
 
         {/* Action Button */}
-        <div className="flex justify-end pt-6 border-t border-gray-200">
+        <div className="flex justify-end pt-6 border-t border-[var(--semantic-border-light)]">
           <Button
             size="lg"
             onClick={onNext}

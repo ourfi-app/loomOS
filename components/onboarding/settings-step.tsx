@@ -62,7 +62,7 @@ export default function SettingsStep({
                   Optional
                 </span>
               </div>
-              <p className="text-gray-600 text-lg">
+              <p className="text-[var(--semantic-text-secondary)] text-lg">
                 Set up your association's financial policies and payment preferences.
               </p>
             </div>
@@ -71,21 +71,21 @@ export default function SettingsStep({
 
         <div className="space-y-6">
           {/* Financial Settings */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl border-2 border-gray-200 p-6 shadow-md">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl border-2 border-[var(--semantic-border-light)] p-6 shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center">
                 <Building2 className="h-5 w-5 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">Financial Settings</h3>
+              <h3 className="text-xl font-bold text-[var(--semantic-text-primary)]">Financial Settings</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
               <div>
-                <Label htmlFor="monthlyDues" className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
+                <Label htmlFor="monthlyDues" className="flex items-center gap-2 text-sm font-semibold text-[var(--semantic-text-primary)] mb-2">
                   Default Monthly Dues
                   <Tooltip>
                     <TooltipTrigger type="button">
-                      <HelpCircle className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                      <HelpCircle className="h-4 w-4 text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p className="max-w-xs">Standard monthly maintenance fee. You can customize this per unit later.</p>
@@ -93,7 +93,7 @@ export default function SettingsStep({
                   </Tooltip>
                 </Label>
                 <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--semantic-text-tertiary)]" />
                   <Input
                     id="monthlyDues"
                     type="number"
@@ -103,16 +103,16 @@ export default function SettingsStep({
                       setFormData({ ...formData, defaultMonthlyDues: e.target.value })
                     }
                     placeholder="350.00"
-                    className="pl-10 h-11 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="pl-10 h-11 border-[var(--semantic-border-medium)] focus:border-orange-500 focus:ring-orange-500"
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-[var(--semantic-text-tertiary)] mt-2">
                   Can be customized per unit later
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="dueDay" className="text-sm font-semibold text-gray-900 mb-2 block">
+                <Label htmlFor="dueDay" className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
                   Payment Due Day
                 </Label>
                 <Input
@@ -125,19 +125,19 @@ export default function SettingsStep({
                     setFormData({ ...formData, dueDay: e.target.value })
                   }
                   placeholder="1"
-                  className="h-11 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                  className="h-11 border-[var(--semantic-border-medium)] focus:border-orange-500 focus:ring-orange-500"
                 />
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-[var(--semantic-text-tertiary)] mt-2">
                   Day of month (1-31)
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="lateFee" className="text-sm font-semibold text-gray-900 mb-2 block">
+                <Label htmlFor="lateFee" className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
                   Late Fee Amount
                 </Label>
                 <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--semantic-text-tertiary)]" />
                   <Input
                     id="lateFee"
                     type="number"
@@ -147,17 +147,17 @@ export default function SettingsStep({
                       setFormData({ ...formData, lateFeeAmount: e.target.value })
                     }
                     placeholder="50.00"
-                    className="pl-10 h-11 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="pl-10 h-11 border-[var(--semantic-border-medium)] focus:border-orange-500 focus:ring-orange-500"
                   />
                 </div>
               </div>
 
               <div>
-                <Label htmlFor="gracePeriod" className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
+                <Label htmlFor="gracePeriod" className="flex items-center gap-2 text-sm font-semibold text-[var(--semantic-text-primary)] mb-2">
                   Late Fee Grace Period
                   <Tooltip>
                     <TooltipTrigger type="button">
-                      <HelpCircle className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                      <HelpCircle className="h-4 w-4 text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p className="max-w-xs">Number of days after the due date before late fees are assessed</p>
@@ -173,9 +173,9 @@ export default function SettingsStep({
                     setFormData({ ...formData, lateFeeGracePeriod: e.target.value })
                   }
                   placeholder="5"
-                  className="h-11 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                  className="h-11 border-[var(--semantic-border-medium)] focus:border-orange-500 focus:ring-orange-500"
                 />
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-[var(--semantic-text-tertiary)] mt-2">
                   Days after due date
                 </p>
               </div>
@@ -183,18 +183,18 @@ export default function SettingsStep({
           </div>
 
           {/* Payment Methods */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl border-2 border-gray-200 p-6 shadow-md">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl border-2 border-[var(--semantic-border-light)] p-6 shadow-md">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                 <CreditCard className="h-5 w-5 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">
+              <h3 className="text-xl font-bold text-[var(--semantic-text-primary)]">
                 Accepted Payment Methods
               </h3>
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-300 cursor-pointer">
                 <Checkbox
                   id="creditCard"
                   checked={formData.acceptCreditCard}
@@ -204,16 +204,16 @@ export default function SettingsStep({
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="creditCard" className="font-semibold text-gray-900 cursor-pointer text-base">
+                  <Label htmlFor="creditCard" className="font-semibold text-[var(--semantic-text-primary)] cursor-pointer text-base">
                     Credit/Debit Cards
                   </Label>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-[var(--semantic-text-secondary)] mt-1">
                     Visa, Mastercard, American Express, Discover
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-gray-200 hover:border-green-300 hover:bg-green-50/50 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-green-300 hover:bg-green-50/50 transition-all duration-300 cursor-pointer">
                 <Checkbox
                   id="ach"
                   checked={formData.acceptACH}
@@ -223,16 +223,16 @@ export default function SettingsStep({
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="ach" className="font-semibold text-gray-900 cursor-pointer text-base">
+                  <Label htmlFor="ach" className="font-semibold text-[var(--semantic-text-primary)] cursor-pointer text-base">
                     ACH/Bank Transfer
                   </Label>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-[var(--semantic-text-secondary)] mt-1">
                     Direct bank account transfers
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-gray-200 hover:border-purple-300 hover:bg-purple-50/50 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-purple-300 hover:bg-purple-50/50 transition-all duration-300 cursor-pointer">
                 <Checkbox
                   id="check"
                   checked={formData.acceptCheck}
@@ -242,10 +242,10 @@ export default function SettingsStep({
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="check" className="font-semibold text-gray-900 cursor-pointer text-base">
+                  <Label htmlFor="check" className="font-semibold text-[var(--semantic-text-primary)] cursor-pointer text-base">
                     Check/Money Order
                   </Label>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-[var(--semantic-text-secondary)] mt-1">
                     Traditional paper checks
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function SettingsStep({
         </div>
 
         {/* Enhanced Action Button */}
-        <div className="flex justify-end pt-6 border-t-2 border-gray-100 mt-8">
+        <div className="flex justify-end pt-6 border-t-2 border-[var(--semantic-border-light)] mt-8">
           <Button 
             size="lg" 
             onClick={handleContinue} 

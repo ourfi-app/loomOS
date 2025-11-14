@@ -7,7 +7,7 @@ import { WebBuilderShell } from '@/components/web-builder/WebBuilderShell';
 
 export default function WebBuilderPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-950 p-4">
+    <div className="flex items-center justify-center min-h-screen bg-[var(--semantic-surface-hover)] dark:bg-gray-950 p-4">
       <WindowFrame
         title="Web Builder"
         icon={Code}

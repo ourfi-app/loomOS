@@ -118,7 +118,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-[var(--semantic-text-secondary)] mb-8 max-w-2xl mx-auto leading-relaxed"
         >
           Congratulations! Your association portal is now fully configured and ready to use.
         </motion.p>
@@ -185,7 +185,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md flex-shrink-0">
                         <Icon className="h-5 w-5 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-gray-800">{feature.label}</span>
+                      <span className="text-sm font-medium text-[var(--semantic-text-primary)]">{feature.label}</span>
                     </motion.div>
                   );
                 })}
@@ -216,7 +216,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="text-sm text-gray-500"
+          className="text-sm text-[var(--semantic-text-tertiary)]"
         >
           Need help? Check out our help center or contact support anytime.
         </motion.p>

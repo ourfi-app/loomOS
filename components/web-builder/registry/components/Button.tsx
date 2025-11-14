@@ -25,7 +25,7 @@ export const Button = ({
 
   const variantStyles = {
     primary: 'bg-loomos-orange text-white hover:bg-loomos-orange-dark',
-    secondary: 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600',
+    secondary: 'bg-[var(--semantic-bg-muted)] dark:bg-gray-700 text-[var(--semantic-text-primary)] dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600',
     outline: 'border-2 border-loomos-orange text-loomos-orange hover:bg-loomos-orange hover:text-white',
   };
 
@@ -84,21 +84,21 @@ function ButtonSettings() {
     <div className="space-y-4">
       {/* Button Text */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Button Text
         </label>
         <input
           type="text"
           value={text}
           onChange={(e) => setProp((props: ButtonProps) => (props.text = e.target.value))}
-          className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-sm"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm"
           placeholder="Button text..."
         />
       </div>
 
       {/* Variant */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Style
         </label>
         <div className="grid grid-cols-3 gap-2">
@@ -110,7 +110,7 @@ function ButtonSettings() {
                 'px-3 py-2 rounded-lg text-xs font-medium transition-colors capitalize',
                 variant === v
                   ? 'bg-loomos-orange text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-[var(--semantic-surface-hover)] dark:bg-gray-800 text-[var(--semantic-text-secondary)] dark:text-gray-300 hover:bg-[var(--semantic-bg-muted)] dark:hover:bg-gray-700'
               )}
             >
               {v}
@@ -121,7 +121,7 @@ function ButtonSettings() {
 
       {/* Size */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Size
         </label>
         <div className="grid grid-cols-3 gap-2">
@@ -133,7 +133,7 @@ function ButtonSettings() {
                 'px-3 py-2 rounded-lg text-xs font-medium transition-colors uppercase',
                 size === s
                   ? 'bg-loomos-orange text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-[var(--semantic-surface-hover)] dark:bg-gray-800 text-[var(--semantic-text-secondary)] dark:text-gray-300 hover:bg-[var(--semantic-bg-muted)] dark:hover:bg-gray-700'
               )}
             >
               {s}
@@ -144,14 +144,14 @@ function ButtonSettings() {
 
       {/* Link URL */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Link URL (optional)
         </label>
         <input
           type="text"
           value={href}
           onChange={(e) => setProp((props: ButtonProps) => (props.href = e.target.value))}
-          className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-sm"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm"
           placeholder="https://..."
         />
       </div>

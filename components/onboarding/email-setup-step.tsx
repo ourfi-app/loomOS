@@ -110,7 +110,7 @@ export default function EmailSetupStep({
                 Optional
               </span>
             </div>
-            <p className="text-gray-600 text-lg">
+            <p className="text-[var(--semantic-text-secondary)] text-lg">
               Connect your email service to send announcements and notifications.
             </p>
           </div>
@@ -160,9 +160,9 @@ export default function EmailSetupStep({
         </div>
 
         {/* Form Section */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 p-6 shadow-md space-y-5">
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-[var(--semantic-border-light)] p-6 shadow-md space-y-5">
           <div>
-            <Label htmlFor="apiKey" className="text-sm font-semibold text-gray-900 mb-2 block">
+            <Label htmlFor="apiKey" className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
               SendGrid API Key
             </Label>
             <Input
@@ -174,12 +174,12 @@ export default function EmailSetupStep({
                 setTestResult(null);
               }}
               placeholder="SG.xxxxxxxxxxxxxxxxxxxxxxxx"
-              className="font-mono h-11 border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+              className="font-mono h-11 border-[var(--semantic-border-medium)] focus:border-purple-500 focus:ring-purple-500"
             />
           </div>
 
           <div>
-            <Label htmlFor="fromEmail" className="text-sm font-semibold text-gray-900 mb-2 block">
+            <Label htmlFor="fromEmail" className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
               From Email Address
             </Label>
             <Input
@@ -191,15 +191,15 @@ export default function EmailSetupStep({
                 setTestResult(null);
               }}
               placeholder="noreply@montrecott.com"
-              className="h-11 border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+              className="h-11 border-[var(--semantic-border-medium)] focus:border-purple-500 focus:ring-purple-500"
             />
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-[var(--semantic-text-tertiary)] mt-2">
               This email must be verified in your SendGrid account
             </p>
           </div>
 
           <div>
-            <Label htmlFor="fromName" className="text-sm font-semibold text-gray-900 mb-2 block">
+            <Label htmlFor="fromName" className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
               From Name
             </Label>
             <Input
@@ -207,7 +207,7 @@ export default function EmailSetupStep({
               value={fromName}
               onChange={(e) => setFromName(e.target.value)}
               placeholder="Montrecott Association"
-              className="h-11 border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+              className="h-11 border-[var(--semantic-border-medium)] focus:border-purple-500 focus:ring-purple-500"
             />
           </div>
 
@@ -264,7 +264,7 @@ export default function EmailSetupStep({
       </div>
 
       {/* Enhanced Action Button */}
-      <div className="flex justify-end pt-6 border-t-2 border-gray-100 mt-8">
+      <div className="flex justify-end pt-6 border-t-2 border-[var(--semantic-border-light)] mt-8">
         <Button 
           size="lg" 
           onClick={handleContinue} 

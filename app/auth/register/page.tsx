@@ -114,19 +114,19 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E8E8E8] flex items-center justify-center p-6">
+    <div className="min-h-screen webos-gradient-bg flex items-center justify-center p-6">
       <div className="w-full max-w-md space-y-6">
         {/* Back to Home */}
         <Link 
           href="/" 
-          className="inline-flex items-center gap-2 text-sm text-[#6B6B6B] hover:text-[#2D2D2D] transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to home
         </Link>
 
         {/* Logo and Title Card */}
-        <div className="bg-white rounded-xl p-8 shadow-sm border border-[#D0D0D0] text-center">
+        <div className="bg-white rounded-xl p-8 shadow-sm border border-[var(--semantic-border-medium)] text-center">
           <div className="mx-auto mb-6 w-80 h-auto">
             <Image
               src="/logo-community-manager.png"
@@ -137,16 +137,16 @@ export default function RegisterPage() {
               priority
             />
           </div>
-          <h1 className="text-3xl font-bold text-[#2D2D2D]">Create an account</h1>
-          <p className="text-[#6B6B6B] mt-2">Join your community today</p>
+          <h1 className="text-3xl font-bold text-[var(--semantic-text-primary)]">Create an account</h1>
+          <p className="text-[var(--semantic-text-secondary)] mt-2">Join your community today</p>
         </div>
 
         {/* Registration Form Card */}
-        <div className="bg-white rounded-xl p-8 shadow-sm border border-[#D0D0D0]">
+        <div className="bg-white rounded-xl p-8 shadow-sm border border-[var(--semantic-border-medium)]">
           {error && (
-            <Alert className="bg-[#FEE2E2] border-[#FCA5A5] rounded-lg mb-5">
-              <AlertCircle className="h-4 w-4 text-[#DC2626]" />
-              <AlertDescription className="text-[#DC2626] text-sm">{error}</AlertDescription>
+            <Alert className="bg-[var(--semantic-error-bg)] border-[var(--semantic-error-border)] rounded-lg mb-5">
+              <AlertCircle className="h-4 w-4 text-[var(--semantic-error)]" />
+              <AlertDescription className="text-[var(--semantic-error)] text-sm">{error}</AlertDescription>
             </Alert>
           )}
 
@@ -154,7 +154,7 @@ export default function RegisterPage() {
           <Button
             type="button"
             variant="outline"
-            className="w-full h-11 rounded-lg border-[#D0D0D0] bg-[#F8F8F8] hover:bg-white text-[#2D2D2D] font-medium"
+            className="w-full h-11 rounded-lg border-[var(--semantic-border-medium)] bg-[var(--semantic-surface-hover)] hover:bg-white text-[var(--semantic-text-primary)] font-medium"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading || isLoading}
           >
@@ -181,7 +181,7 @@ export default function RegisterPage() {
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#D0D0D0]"></div>
+              <div className="w-full border-t border-[var(--semantic-border-medium)]"></div>
             </div>
             <div className="relative flex justify-center text-xs">
               <span className="bg-white px-2 text-[#A0A0A0]">OR</span>
@@ -190,7 +190,7 @@ export default function RegisterPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-sm font-medium text-[#2D2D2D]">
+              <Label htmlFor="name" className="text-sm font-medium text-[var(--semantic-text-primary)]">
                 Full Name
               </Label>
               <Input
@@ -201,13 +201,13 @@ export default function RegisterPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
+                className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-[#2D2D2D]">
+              <Label htmlFor="email" className="text-sm font-medium text-[var(--semantic-text-primary)]">
                 Email
               </Label>
               <Input
@@ -218,14 +218,14 @@ export default function RegisterPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
+                className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-sm font-medium text-[#2D2D2D]">
+                <Label htmlFor="phone" className="text-sm font-medium text-[var(--semantic-text-primary)]">
                   Phone Number
                 </Label>
                 <Input
@@ -236,13 +236,13 @@ export default function RegisterPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
                   disabled={isLoading || isGoogleLoading}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="unitNumber" className="text-sm font-medium text-[#2D2D2D]">
+                <Label htmlFor="unitNumber" className="text-sm font-medium text-[var(--semantic-text-primary)]">
                   Unit Number
                 </Label>
                 <Input
@@ -253,14 +253,14 @@ export default function RegisterPage() {
                   value={formData.unitNumber}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D]"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
                   disabled={isLoading || isGoogleLoading}
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-[#2D2D2D]">
+              <Label htmlFor="password" className="text-sm font-medium text-[var(--semantic-text-primary)]">
                 Password
               </Label>
               <div className="relative">
@@ -272,13 +272,13 @@ export default function RegisterPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D] pr-10"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)] pr-10"
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A0A0A0] hover:text-[#6B6B6B] transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A0A0A0] hover:text-[var(--semantic-text-secondary)] transition-colors"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                   disabled={isLoading || isGoogleLoading}
                 >
@@ -288,7 +288,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-sm font-medium text-[#2D2D2D]">
+              <Label htmlFor="confirmPassword" className="text-sm font-medium text-[var(--semantic-text-primary)]">
                 Confirm Password
               </Label>
               <div className="relative">
@@ -300,13 +300,13 @@ export default function RegisterPage() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[#F8F8F8] border-[#D0D0D0] focus:border-[#F18825] focus:ring-[#F18825] text-[#2D2D2D] pr-10"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)] pr-10"
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A0A0A0] hover:text-[#6B6B6B] transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A0A0A0] hover:text-[var(--semantic-text-secondary)] transition-colors"
                   aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
                   disabled={isLoading || isGoogleLoading}
                 >
@@ -326,8 +326,8 @@ export default function RegisterPage() {
         </div>
 
         {/* Login Link Card */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-[#D0D0D0] text-center">
-          <p className="text-sm text-[#6B6B6B]">
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-[var(--semantic-border-medium)] text-center">
+          <p className="text-sm text-[var(--semantic-text-secondary)]">
             Already have an account?{' '}
             <Link 
               href="/auth/login" 

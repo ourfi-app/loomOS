@@ -45,10 +45,10 @@ export function LoomOSListPane({
   const renderListItem = (item: ListItem) => (
     <div 
       key={item.id}
-      className={`p-4 border-b border-gray-200 cursor-pointer transition-colors ${
+      className={`p-4 border-b border-[var(--semantic-border-light)] cursor-pointer transition-colors ${
         item.selected 
           ? 'bg-orange-50 border-l-4 border-l-orange-500' 
-          : 'hover:bg-gray-50'
+          : 'hover:bg-[var(--semantic-bg-subtle)]'
       }`}
       onClick={item.onClick}
       onContextMenu={item.onContextMenu}
@@ -62,17 +62,17 @@ export function LoomOSListPane({
           )}
           <div className="flex-1 min-w-0">
             <p className={`text-sm truncate ${
-              item.unread ? 'font-semibold text-gray-900' : 'font-medium text-gray-700'
+              item.unread ? 'font-semibold text-[var(--semantic-text-primary)]' : 'font-medium text-[var(--semantic-text-secondary)]'
             }`}>
               {item.title}
             </p>
             {item.subtitle && (
-              <p className="text-sm text-gray-600 truncate mt-1">
+              <p className="text-sm text-[var(--semantic-text-secondary)] truncate mt-1">
                 {item.subtitle}
               </p>
             )}
             {item.timestamp && (
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-[var(--semantic-text-tertiary)] mt-1">
                 {item.timestamp}
               </p>
             )}
@@ -88,10 +88,10 @@ export function LoomOSListPane({
   );
 
   return (
-    <div className={`flex-1 bg-white flex flex-col border-r border-gray-300 min-w-[300px] ${className}`}>
+    <div className={`flex-1 bg-white flex flex-col border-r border-[var(--semantic-border-medium)] min-w-[300px] ${className}`}>
       {/* Search Bar */}
       {onSearchChange && (
-        <div className="p-3 border-b border-gray-300 bg-gray-50">
+        <div className="p-3 border-b border-[var(--semantic-border-medium)] bg-[var(--semantic-bg-subtle)]">
           <LoomOSSearchInput
             value={searchValue}
             onChange={onSearchChange}
@@ -102,8 +102,8 @@ export function LoomOSListPane({
       
       {/* Title (optional) */}
       {title && (
-        <div className="px-4 py-2 border-b border-gray-200 bg-gray-50">
-          <h2 className="text-sm font-semibold text-gray-700">{title}</h2>
+        <div className="px-4 py-2 border-b border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)]">
+          <h2 className="text-sm font-semibold text-[var(--semantic-text-secondary)]">{title}</h2>
         </div>
       )}
       
@@ -114,7 +114,7 @@ export function LoomOSListPane({
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
           </div>
         ) : items.length === 0 ? (
-          <div className="flex items-center justify-center py-8 text-gray-400">
+          <div className="flex items-center justify-center py-8 text-[var(--semantic-text-tertiary)]">
             <p className="text-sm">{emptyMessage}</p>
           </div>
         ) : enableVirtualScrolling && items.length > 20 ? (

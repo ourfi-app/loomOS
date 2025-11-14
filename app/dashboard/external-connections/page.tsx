@@ -125,11 +125,11 @@ export default function ExternalConnectionsPage() {
       case 'connected':
         return <CheckCircle2 className="h-5 w-5 text-green-500" />;
       case 'disconnected':
-        return <XCircle className="h-5 w-5 text-gray-500" />;
+        return <XCircle className="h-5 w-5 text-[var(--semantic-text-tertiary)]" />;
       case 'error':
         return <AlertTriangle className="h-5 w-5 text-red-500" />;
       default:
-        return <Activity className="h-5 w-5 text-gray-500" />;
+        return <Activity className="h-5 w-5 text-[var(--semantic-text-tertiary)]" />;
     }
   };
 
@@ -138,7 +138,7 @@ export default function ExternalConnectionsPage() {
       case 'connected':
         return <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">Connected</Badge>;
       case 'disconnected':
-        return <Badge variant="outline" className="bg-gray-500/10 text-gray-500 border-gray-500/20">Disconnected</Badge>;
+        return <Badge variant="outline" className="bg-gray-500/10 text-[var(--semantic-text-tertiary)] border-gray-500/20">Disconnected</Badge>;
       case 'error':
         return <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">Error</Badge>;
       default:

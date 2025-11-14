@@ -594,7 +594,7 @@ export default function MessagesPage() {
       {/* Keyboard shortcuts button */}
       <button
         onClick={() => setShowKeyboardHelp(true)}
-        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        className="p-2 hover:bg-[var(--semantic-surface-hover)] rounded-lg transition-colors"
         aria-label="Keyboard shortcuts (Press ?)"
       >
         <Keyboard className="w-4 h-4" />
@@ -603,7 +603,7 @@ export default function MessagesPage() {
       <button
         onClick={handleRefresh}
         disabled={isLoading}
-        className="p-2 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
+        className="p-2 hover:bg-[var(--semantic-surface-hover)] rounded-lg transition-colors disabled:opacity-50"
         aria-label="Refresh"
       >
         <RefreshCw className={cn("w-4 h-4", isLoading && "animate-spin")} />
@@ -624,7 +624,7 @@ export default function MessagesPage() {
     <>
       <button
         onClick={(e) => { e.stopPropagation(); toggleStar(selectedMessage.id); }}
-        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        className="p-2 hover:bg-[var(--semantic-surface-hover)] rounded-lg transition-colors"
         aria-label={selectedMessage.recipients[0]?.isStarred ? 'Unstar' : 'Star'}
       >
         <Star className={cn(
@@ -634,14 +634,14 @@ export default function MessagesPage() {
       </button>
       <button
         onClick={() => handleCompose('reply', selectedMessage)}
-        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        className="p-2 hover:bg-[var(--semantic-surface-hover)] rounded-lg transition-colors"
         aria-label="Reply"
       >
         <Reply className="w-4 h-4" />
       </button>
       <button
         onClick={() => handleCompose('forward', selectedMessage)}
-        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        className="p-2 hover:bg-[var(--semantic-surface-hover)] rounded-lg transition-colors"
         aria-label="Forward"
       >
         <Forward className="w-4 h-4" />
@@ -764,15 +764,15 @@ export default function MessagesPage() {
           />
 
         {/* Message List Pane */}
-        <div className="w-[420px] flex-shrink-0 border-r border-gray-200 flex flex-col bg-white overflow-hidden">
+        <div className="w-[420px] flex-shrink-0 border-r border-[var(--semantic-border-light)] flex flex-col bg-white overflow-hidden">
           {/* Header */}
-          <div className="border-b border-gray-200 bg-gray-50">
+          <div className="border-b border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)]">
             <div className="h-16 px-6 flex items-center justify-between">
               <div>
-                <h2 className="font-semibold text-lg text-gray-900">
+                <h2 className="font-semibold text-lg text-[var(--semantic-text-primary)]">
                   {currentFolder?.name || 'Messages'}
                 </h2>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[var(--semantic-text-tertiary)]">
                   {filteredMessages.length} {filteredMessages.length === 1 ? 'message' : 'messages'}
                 </p>
               </div>
@@ -794,9 +794,9 @@ export default function MessagesPage() {
                       className="p-1.5 hover:bg-white/50 rounded-lg transition-colors"
                       title="Clear selection"
                     >
-                      <X className="w-4 h-4 text-gray-600" />
+                      <X className="w-4 h-4 text-[var(--semantic-text-secondary)]" />
                     </button>
-                    <span className="text-sm font-semibold text-gray-900">
+                    <span className="text-sm font-semibold text-[var(--semantic-text-primary)]">
                       {selectedIds.size} selected
                     </span>
                   </div>
@@ -845,30 +845,30 @@ export default function MessagesPage() {
           </div>
 
           {/* Search Bar */}
-          <div className="px-6 py-4 border-b border-gray-200 bg-white">
+          <div className="px-6 py-4 border-b border-[var(--semantic-border-light)] bg-white">
             <div className="flex items-center gap-3">
               {/* Select all checkbox */}
               <button
                 onClick={selectAll}
-                className="p-1.5 hover:bg-gray-100 rounded transition-colors"
+                className="p-1.5 hover:bg-[var(--semantic-surface-hover)] rounded transition-colors"
                 title={selectedIds.size === filteredMessages.length && filteredMessages.length > 0 ? "Deselect all (Cmd/Ctrl+A)" : "Select all (Cmd/Ctrl+A)"}
               >
                 {selectedIds.size === filteredMessages.length && filteredMessages.length > 0 ? (
                   <CheckSquare className="w-4 h-4 text-blue-600" />
                 ) : (
-                  <Square className="w-4 h-4 text-gray-400" />
+                  <Square className="w-4 h-4 text-[var(--semantic-text-tertiary)]" />
                 )}
               </button>
               
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[var(--semantic-text-tertiary)]" />
                 <Input
                   ref={searchInputRef}
                   type="text"
                   placeholder="Search messages... (Press / or Cmd+F)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 bg-gray-50 border-gray-200"
+                  className="pl-10 bg-[var(--semantic-bg-subtle)] border-[var(--semantic-border-light)]"
                 />
               </div>
             </div>
@@ -884,10 +884,10 @@ export default function MessagesPage() {
               <div className="flex items-center justify-center h-64">
                 <div className="text-center">
                   <Mail className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)] mb-2">
                     No messages
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-[var(--semantic-text-tertiary)]">
                     {searchQuery ? 'No messages match your search' : 'Your inbox is empty'}
                   </p>
                 </div>
@@ -944,13 +944,13 @@ export default function MessagesPage() {
                                 <div className="flex items-center gap-2 min-w-0">
                                   <span className={cn(
                                     'font-semibold text-sm truncate',
-                                    isUnread ? 'text-gray-900' : 'text-gray-700'
+                                    isUnread ? 'text-[var(--semantic-text-primary)]' : 'text-[var(--semantic-text-secondary)]'
                                   )}>
                                     {message.sender.name}
                                   </span>
                                 </div>
                                 <div className="flex items-center gap-2 flex-shrink-0">
-                                  <span className="text-xs text-gray-500">
+                                  <span className="text-xs text-[var(--semantic-text-tertiary)]">
                                     {getMessageDate(message.sentAt || message.createdAt)}
                                   </span>
                                   <button
@@ -958,14 +958,14 @@ export default function MessagesPage() {
                                       e.stopPropagation();
                                       toggleStar(message.id, e);
                                     }}
-                                    className="p-1 hover:bg-gray-100 rounded transition-colors"
+                                    className="p-1 hover:bg-[var(--semantic-surface-hover)] rounded transition-colors"
                                   >
                                     <Star 
                                       className={cn(
                                         'w-4 h-4',
                                         isStarred 
                                           ? 'fill-yellow-400 text-yellow-400' 
-                                          : 'text-gray-400 hover:text-yellow-400'
+                                          : 'text-[var(--semantic-text-tertiary)] hover:text-yellow-400'
                                       )} 
                                     />
                                   </button>
@@ -974,12 +974,12 @@ export default function MessagesPage() {
                               
                               <div className={cn(
                                 'text-sm mb-1 truncate',
-                                isUnread ? 'font-semibold text-gray-900' : 'font-medium text-gray-700'
+                                isUnread ? 'font-semibold text-[var(--semantic-text-primary)]' : 'font-medium text-[var(--semantic-text-secondary)]'
                               )}>
                                 {message.subject}
                               </div>
                               
-                              <div className="text-xs text-gray-500 line-clamp-2">
+                              <div className="text-xs text-[var(--semantic-text-tertiary)] line-clamp-2">
                                 {message.body}
                               </div>
                               
@@ -1006,18 +1006,18 @@ export default function MessagesPage() {
                         <ContextMenuItem onClick={() => handleCompose('reply', message)}>
                           <Reply className="w-4 h-4 mr-2" />
                           Reply
-                          <span className="ml-auto text-xs text-gray-500">R</span>
+                          <span className="ml-auto text-xs text-[var(--semantic-text-tertiary)]">R</span>
                         </ContextMenuItem>
                         <ContextMenuItem onClick={() => handleCompose('forward', message)}>
                           <Forward className="w-4 h-4 mr-2" />
                           Forward
-                          <span className="ml-auto text-xs text-gray-500">F</span>
+                          <span className="ml-auto text-xs text-[var(--semantic-text-tertiary)]">F</span>
                         </ContextMenuItem>
                         <ContextMenuSeparator />
                         <ContextMenuItem onClick={(e) => { e.stopPropagation(); toggleStar(message.id); }}>
                           <Star className={cn("w-4 h-4 mr-2", isStarred && "fill-yellow-400 text-yellow-400")} />
                           {isStarred ? 'Unstar' : 'Star'}
-                          <span className="ml-auto text-xs text-gray-500">S</span>
+                          <span className="ml-auto text-xs text-[var(--semantic-text-tertiary)]">S</span>
                         </ContextMenuItem>
                         <ContextMenuItem onClick={() => markAsRead(message.id)}>
                           <Check className="w-4 h-4 mr-2" />
@@ -1030,7 +1030,7 @@ export default function MessagesPage() {
                         >
                           <Trash2 className="w-4 h-4 mr-2" />
                           Delete
-                          <span className="ml-auto text-xs text-gray-500">Del</span>
+                          <span className="ml-auto text-xs text-[var(--semantic-text-tertiary)]">Del</span>
                         </ContextMenuItem>
                       </ContextMenuContent>
                     </ContextMenu>
@@ -1054,27 +1054,27 @@ export default function MessagesPage() {
           {selectedMessage && (
             <div className="flex flex-col">
               {/* Sender Info */}
-              <div className="flex items-start gap-4 mb-6 pb-6 border-b border-gray-200">
+              <div className="flex items-start gap-4 mb-6 pb-6 border-b border-[var(--semantic-border-light)]">
                 <Avatar className="w-14 h-14 ring-4 ring-white shadow-lg">
                   <AvatarFallback className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white text-lg font-semibold">
                     {selectedMessage.sender.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
-                  <div className="font-semibold text-lg text-gray-900">
+                  <div className="font-semibold text-lg text-[var(--semantic-text-primary)]">
                     {selectedMessage.sender.name}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-[var(--semantic-text-tertiary)]">
                     {selectedMessage.sender.email}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
+                  <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">
                     {format(parseISO(selectedMessage.sentAt || selectedMessage.createdAt), 'EEEE, MMMM d, yyyy \'at\' h:mm a')}
                   </div>
                   
                   {/* Recipients */}
                   {selectedMessage.recipients.length > 0 && (
                     <div className="flex items-center gap-2 mt-3">
-                      <span className="text-xs text-gray-500">To:</span>
+                      <span className="text-xs text-[var(--semantic-text-tertiary)]">To:</span>
                       <div className="flex flex-wrap gap-1">
                         {selectedMessage.recipients.slice(0, 3).map((recipient, idx) => (
                           <Badge key={idx} variant="secondary" className="text-xs">
@@ -1105,7 +1105,7 @@ export default function MessagesPage() {
               {/* Message Body */}
               <div className="prose prose-sm max-w-none">
                 {selectedMessage.body.split('\n').map((paragraph, idx) => (
-                  <p key={idx} className="text-gray-700 leading-relaxed">
+                  <p key={idx} className="text-[var(--semantic-text-secondary)] leading-relaxed">
                     {paragraph || '\u00A0'}
                   </p>
                 ))}
@@ -1113,19 +1113,19 @@ export default function MessagesPage() {
 
               {/* Attachments Placeholder */}
               {selectedMessage.hasAttachments && (
-                <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                <div className="mt-8 p-4 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
+                  <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                     <Paperclip className="w-4 h-4" />
                     <span className="font-medium">Attachments</span>
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-xs text-[var(--semantic-text-tertiary)] mt-2">
                     Attachment support coming soon
                   </p>
                 </div>
               )}
 
               {/* Quick Actions Footer */}
-              <div className="mt-8 pt-6 border-t border-gray-200 flex items-center justify-center gap-3">
+              <div className="mt-8 pt-6 border-t border-[var(--semantic-border-light)] flex items-center justify-center gap-3">
                 <Button
                   onClick={() => handleCompose('reply', selectedMessage)}
                   className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
@@ -1164,7 +1164,7 @@ export default function MessagesPage() {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                <div className="flex items-center justify-between p-6 border-b border-[var(--semantic-border-light)]">
                   <h2 className="text-xl font-semibold">
                     {composerMode === 'new' && 'New Message'}
                     {composerMode === 'reply' && 'Reply'}
@@ -1172,7 +1172,7 @@ export default function MessagesPage() {
                   </h2>
                   <button
                     onClick={handleCancelCompose}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -1182,7 +1182,7 @@ export default function MessagesPage() {
                 <div className="flex-1 overflow-y-auto p-6">
                   <div className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700">To</label>
+                      <label className="text-sm font-medium text-[var(--semantic-text-secondary)]">To</label>
                       <Input
                         type="text"
                         placeholder="Recipient email(s), separated by commas"
@@ -1193,7 +1193,7 @@ export default function MessagesPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Subject</label>
+                      <label className="text-sm font-medium text-[var(--semantic-text-secondary)]">Subject</label>
                       <Input
                         type="text"
                         placeholder="Message subject"
@@ -1204,7 +1204,7 @@ export default function MessagesPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Priority</label>
+                      <label className="text-sm font-medium text-[var(--semantic-text-secondary)]">Priority</label>
                       <Select value={composePriority} onValueChange={(value: any) => setComposePriority(value)}>
                         <SelectTrigger className="mt-1">
                           <SelectValue placeholder="Select priority" />
@@ -1218,7 +1218,7 @@ export default function MessagesPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Message</label>
+                      <label className="text-sm font-medium text-[var(--semantic-text-secondary)]">Message</label>
                       <Textarea
                         placeholder="Type your message..."
                         value={composeBody}
@@ -1230,7 +1230,7 @@ export default function MessagesPage() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+                <div className="flex items-center justify-between p-6 border-t border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)]">
                   <Button
                     variant="outline"
                     onClick={handleCancelCompose}
@@ -1273,19 +1273,19 @@ export default function MessagesPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>New message</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">C</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">C</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Search</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">/</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">/</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Refresh</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">Cmd/Ctrl+R</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">Cmd/Ctrl+R</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Select all</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">Cmd/Ctrl+A</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">Cmd/Ctrl+A</kbd>
                     </div>
                   </div>
                 </div>
@@ -1295,11 +1295,11 @@ export default function MessagesPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Previous/Next message</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">↑/↓</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">↑/↓</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Open message</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">Enter</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">Enter</kbd>
                     </div>
                   </div>
                 </div>
@@ -1309,19 +1309,19 @@ export default function MessagesPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Reply</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">R</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">R</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Forward</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">F</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">F</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Star/Unstar</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">S</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">S</kbd>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Delete</span>
-                      <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-xs">Del</kbd>
+                      <kbd className="px-2 py-1 bg-[var(--semantic-surface-hover)] border border-[var(--semantic-border-medium)] rounded text-xs">Del</kbd>
                     </div>
                   </div>
                 </div>

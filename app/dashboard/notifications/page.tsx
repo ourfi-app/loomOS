@@ -225,7 +225,7 @@ export default function NotificationsPage() {
               <div className="flex items-start gap-4">
                 <div className={cn(
                   'w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0',
-                  selectedNotification.notification.isUrgent ? 'bg-red-100' : 'bg-gray-100'
+                  selectedNotification.notification.isUrgent ? 'bg-red-100' : 'bg-[var(--semantic-surface-hover)]'
                 )}>
                   {getIcon(selectedNotification.notification.isUrgent)}
                 </div>
@@ -237,13 +237,13 @@ export default function NotificationsPage() {
               </div>
 
               {/* Message content */}
-              <div className="text-base leading-relaxed text-gray-700">
+              <div className="text-base leading-relaxed text-[var(--semantic-text-secondary)]">
                 {selectedNotification.notification.message}
               </div>
 
               {/* Metadata card */}
-              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="text-sm text-gray-600 space-y-2">
+              <div className="p-4 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
+                <div className="text-sm text-[var(--semantic-text-secondary)] space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold">Type:</span>
                     <Badge className="bg-gray-500 text-white text-xs">
@@ -267,7 +267,7 @@ export default function NotificationsPage() {
                       'text-xs',
                       selectedNotification.notification.isUrgent
                         ? 'bg-red-100 text-red-700'
-                        : 'bg-gray-100 text-gray-700'
+                        : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                     )}>
                       {selectedNotification.notification.isUrgent ? 'Urgent' : 'Normal'}
                     </Badge>

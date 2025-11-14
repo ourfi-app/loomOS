@@ -206,25 +206,25 @@ export default function DirectoryRequestsPage() {
     const changes = fields.filter(field => current[field.key] !== requested[field.key]);
 
     if (changes.length === 0) {
-      return <p className="text-sm text-gray-500">No changes detected</p>;
+      return <p className="text-sm text-[var(--semantic-text-tertiary)]">No changes detected</p>;
     }
 
     return (
       <div className="space-y-3">
         {changes.map(field => (
-          <div key={field.key} className="bg-gray-50 p-3 rounded-lg">
-            <p className="text-sm font-medium text-gray-700 mb-2">{field.label}</p>
+          <div key={field.key} className="bg-[var(--semantic-bg-subtle)] p-3 rounded-lg">
+            <p className="text-sm font-medium text-[var(--semantic-text-secondary)] mb-2">{field.label}</p>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <p className="text-xs text-gray-500 mb-1">Current</p>
-                <p className="text-gray-900 line-through">
-                  {current[field.key] || <span className="text-gray-400 italic">Not set</span>}
+                <p className="text-xs text-[var(--semantic-text-tertiary)] mb-1">Current</p>
+                <p className="text-[var(--semantic-text-primary)] line-through">
+                  {current[field.key] || <span className="text-[var(--semantic-text-tertiary)] italic">Not set</span>}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-gray-500 mb-1">Requested</p>
+                <p className="text-xs text-[var(--semantic-text-tertiary)] mb-1">Requested</p>
                 <p className="text-green-600 font-medium">
-                  {requested[field.key] || <span className="text-gray-400 italic">Not set</span>}
+                  {requested[field.key] || <span className="text-[var(--semantic-text-tertiary)] italic">Not set</span>}
                 </p>
               </div>
             </div>
@@ -282,10 +282,10 @@ export default function DirectoryRequestsPage() {
       gradient={APP_COLORS.admin.light}
     >
       {/* Fixed Header */}
-      <div className="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-6">
+      <div className="h-16 border-b border-[var(--semantic-border-light)] bg-white flex items-center justify-between px-6">
         <div>
-          <h1 className="text-xl font-semibold text-gray-900">Directory Update Requests</h1>
-          <p className="text-sm text-gray-500">
+          <h1 className="text-xl font-semibold text-[var(--semantic-text-primary)]">Directory Update Requests</h1>
+          <p className="text-sm text-[var(--semantic-text-tertiary)]">
             Review and manage resident directory update requests
           </p>
         </div>
@@ -294,9 +294,9 @@ export default function DirectoryRequestsPage() {
       {/* 3-Pane Layout */}
       <LoomOSPaneContainer>
         {/* Navigation Pane */}
-        <div className="w-60 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col overflow-hidden">
-          <div className="p-4 border-b border-gray-200">
-            <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+        <div className="w-60 flex-shrink-0 border-r border-[var(--semantic-border-light)] bg-white flex flex-col overflow-hidden">
+          <div className="p-4 border-b border-[var(--semantic-border-light)]">
+            <h2 className="text-xs font-semibold text-[var(--semantic-text-tertiary)] uppercase tracking-wider">
               FILTERS
             </h2>
           </div>
@@ -335,11 +335,11 @@ export default function DirectoryRequestsPage() {
         </div>
 
         {/* List Pane */}
-        <div className="w-96 flex-shrink-0 border-r border-gray-200 flex flex-col bg-white">
+        <div className="w-96 flex-shrink-0 border-r border-[var(--semantic-border-light)] flex flex-col bg-white">
           {/* Search Bar */}
-          <div className="p-4 border-b border-gray-200">
+          <div className="p-4 border-b border-[var(--semantic-border-light)]">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[var(--semantic-text-tertiary)]" />
               <Input
                 type="text"
                 placeholder="Search requests..."
@@ -367,7 +367,7 @@ export default function DirectoryRequestsPage() {
                   >
                     <div className="p-4">
                       <div className="flex items-start justify-between gap-2 mb-2">
-                        <h3 className="font-medium text-sm text-gray-900 line-clamp-1">
+                        <h3 className="font-medium text-sm text-[var(--semantic-text-primary)] line-clamp-1">
                           {getUserDisplayName(request.user)}
                         </h3>
                         <Badge
@@ -380,7 +380,7 @@ export default function DirectoryRequestsPage() {
                           {request.status}
                         </Badge>
                       </div>
-                      <div className="space-y-1 text-xs text-gray-500">
+                      <div className="space-y-1 text-xs text-[var(--semantic-text-tertiary)]">
                         <div className="flex items-center gap-1">
                           <User className="w-3 h-3" />
                           <span className="line-clamp-1">
@@ -421,7 +421,7 @@ export default function DirectoryRequestsPage() {
                   >
                     {selectedRequest.status}
                   </Badge>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-[var(--semantic-text-tertiary)]">
                     Submitted {format(new Date(selectedRequest.createdAt), 'MMM dd, yyyy HH:mm')}
                   </span>
                 </div>
@@ -431,13 +431,13 @@ export default function DirectoryRequestsPage() {
               <LoomOSGroupBox title="Requester">
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-gray-400" />
-                    <span className="text-gray-900">{getUserDisplayName(selectedRequest.requester)}</span>
+                    <User className="w-4 h-4 text-[var(--semantic-text-tertiary)]" />
+                    <span className="text-[var(--semantic-text-primary)]">{getUserDisplayName(selectedRequest.requester)}</span>
                   </div>
                   {selectedRequest.user.unitNumber && (
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-500">Unit:</span>
-                      <span className="text-gray-900">{selectedRequest.user.unitNumber}</span>
+                      <span className="text-[var(--semantic-text-tertiary)]">Unit:</span>
+                      <span className="text-[var(--semantic-text-primary)]">{selectedRequest.user.unitNumber}</span>
                     </div>
                   )}
                 </div>
@@ -446,7 +446,7 @@ export default function DirectoryRequestsPage() {
               {/* Reason */}
               {selectedRequest.reason && (
                 <LoomOSGroupBox title="Reason">
-                  <p className="text-sm text-gray-700">{selectedRequest.reason}</p>
+                  <p className="text-sm text-[var(--semantic-text-secondary)]">{selectedRequest.reason}</p>
                 </LoomOSGroupBox>
               )}
 
@@ -459,13 +459,13 @@ export default function DirectoryRequestsPage() {
               {selectedRequest.status !== 'PENDING' && selectedRequest.reviewedBy && (
                 <LoomOSGroupBox title="Review">
                   <div className="space-y-2 text-sm">
-                    <p className="text-gray-700">
+                    <p className="text-[var(--semantic-text-secondary)]">
                       Reviewed by <strong>{getUserDisplayName(selectedRequest.reviewedBy)}</strong> on{' '}
                       {format(new Date(selectedRequest.reviewedAt!), 'MMM dd, yyyy HH:mm')}
                     </p>
                     {selectedRequest.reviewNotes && (
-                      <div className="bg-gray-50 p-3 rounded-lg mt-2">
-                        <p className="text-gray-600">{selectedRequest.reviewNotes}</p>
+                      <div className="bg-[var(--semantic-bg-subtle)] p-3 rounded-lg mt-2">
+                        <p className="text-[var(--semantic-text-secondary)]">{selectedRequest.reviewNotes}</p>
                       </div>
                     )}
                   </div>
@@ -513,8 +513,8 @@ export default function DirectoryRequestsPage() {
           </DialogHeader>
           {selectedRequest && (
             <div className="space-y-4 py-4">
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <p className="text-sm font-medium text-gray-700">
+              <div className="bg-[var(--semantic-bg-subtle)] p-3 rounded-lg">
+                <p className="text-sm font-medium text-[var(--semantic-text-secondary)]">
                   Request for: {getUserDisplayName(selectedRequest.user)}
                 </p>
               </div>

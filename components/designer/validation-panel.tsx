@@ -286,7 +286,7 @@ function SuggestionCard({ suggestion }: { suggestion: ValidationSuggestion }) {
       case 'high': return 'bg-red-100 text-red-900';
       case 'medium': return 'bg-yellow-100 text-yellow-900';
       case 'low': return 'bg-green-100 text-green-900';
-      default: return 'bg-gray-100 text-gray-900';
+      default: return 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-primary)]';
     }
   };
 
@@ -295,7 +295,7 @@ function SuggestionCard({ suggestion }: { suggestion: ValidationSuggestion }) {
       case 'high': return 'bg-red-100 text-red-900';
       case 'medium': return 'bg-yellow-100 text-yellow-900';
       case 'low': return 'bg-green-100 text-green-900';
-      default: return 'bg-gray-100 text-gray-900';
+      default: return 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-primary)]';
     }
   };
 

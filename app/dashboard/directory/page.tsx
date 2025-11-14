@@ -267,8 +267,8 @@ export default function DirectoryPage() {
       <div className="flex h-full w-full overflow-hidden bg-white">
           {/* Pane 1: Navigation */}
           {showPane1 && (
-          <div className="w-60 bg-gray-50 border-r border-gray-200 flex flex-col flex-shrink-0 overflow-y-auto">
-            <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-100 border-b border-gray-200">
+          <div className="w-60 bg-[var(--semantic-bg-subtle)] border-r border-[var(--semantic-border-light)] flex flex-col flex-shrink-0 overflow-y-auto">
+            <div className="px-3 py-2 text-xs font-semibold text-[var(--semantic-text-tertiary)] uppercase tracking-wider bg-[var(--semantic-surface-hover)] border-b border-[var(--semantic-border-light)]">
               DIRECTORY
             </div>
             
@@ -527,8 +527,8 @@ export default function DirectoryPage() {
 
         {/* Pane 2: List */}
         {showPane2 && (
-          <div className="flex-1 bg-white flex flex-col border-r border-gray-200 min-w-[320px] overflow-hidden">
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
+          <div className="flex-1 bg-white flex flex-col border-r border-[var(--semantic-border-light)] min-w-[320px] overflow-hidden">
+            <div className="px-4 py-3 bg-[var(--semantic-bg-subtle)] border-b border-[var(--semantic-border-light)]">
               <div className="flex items-center justify-between mb-2.5">
                 <div className="flex items-center gap-2.5">
                   <div className="w-5 h-5 border-2 border-webos-text rounded flex items-center justify-center">
@@ -763,7 +763,7 @@ export default function DirectoryPage() {
         <div className="flex-1 bg-white flex flex-col min-w-0">
           {viewMode === 'committees' && selectedCommittee ? (
             <>
-              <div className={cn("px-4 py-3 bg-gradient-to-br border-b border-gray-200", APP_COLORS.directory.light)}>
+              <div className={cn("px-4 py-3 bg-gradient-to-br border-b border-[var(--semantic-border-light)]", APP_COLORS.directory.light)}>
                 <div className="flex items-start gap-3.5 mb-3.5">
                   <div className="w-13 h-13 bg-white/20 backdrop-blur-sm rounded flex items-center justify-center flex-shrink-0">
                     {(() => {
@@ -886,7 +886,7 @@ export default function DirectoryPage() {
             </>
           ) : viewMode === 'residents' && selectedResident ? (
             <>
-              <div className={cn("px-4 py-3 bg-gradient-to-br border-b border-gray-200", APP_COLORS.directory.light)}>
+              <div className={cn("px-4 py-3 bg-gradient-to-br border-b border-[var(--semantic-border-light)]", APP_COLORS.directory.light)}>
                 <div className="flex items-start gap-3.5">
                   <div className="relative flex-shrink-0">
                     <Avatar className="w-13 h-13 bg-white/20 backdrop-blur-sm border-2 border-white/30">

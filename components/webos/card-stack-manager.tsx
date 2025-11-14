@@ -151,21 +151,21 @@ export function CardStackManager({
             >
               <div className={cn(
                 'rounded-xl shadow-2xl overflow-hidden bg-white border-2 h-full flex flex-col',
-                isFocused ? 'border-orange-500' : 'border-gray-300',
+                isFocused ? 'border-orange-500' : 'border-[var(--semantic-border-medium)]',
                 isMaximized && 'rounded-none'
               )}>
                 {/* Card Header */}
                 <div
-                  className="bg-gradient-to-r from-gray-100 to-gray-200 px-4 py-2 flex items-center justify-between border-b border-gray-300 cursor-move"
+                  className="bg-gradient-to-r from-gray-100 to-gray-200 px-4 py-2 flex items-center justify-between border-b border-[var(--semantic-border-medium)] cursor-move"
                   onPointerDown={() => handleCardFocus(card.id)}
                 >
                   <div className="flex items-center gap-2 flex-1 min-w-0">
                     {card.icon && (
-                      <div className="text-gray-600 flex-shrink-0">
+                      <div className="text-[var(--semantic-text-secondary)] flex-shrink-0">
                         {card.icon}
                       </div>
                     )}
-                    <h3 className="text-sm font-semibold text-gray-800 truncate">
+                    <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] truncate">
                       {card.title}
                     </h3>
                   </div>
@@ -180,7 +180,7 @@ export function CardStackManager({
                       }}
                       className="p-1.5 rounded hover:bg-gray-300 transition-colors"
                     >
-                      <Minus size={14} className="text-gray-600" />
+                      <Minus size={14} className="text-[var(--semantic-text-secondary)]" />
                     </motion.button>
                     
                     <motion.button
@@ -193,9 +193,9 @@ export function CardStackManager({
                       className="p-1.5 rounded hover:bg-gray-300 transition-colors"
                     >
                       {isMaximized ? (
-                        <Minimize2 size={14} className="text-gray-600" />
+                        <Minimize2 size={14} className="text-[var(--semantic-text-secondary)]" />
                       ) : (
-                        <Maximize2 size={14} className="text-gray-600" />
+                        <Maximize2 size={14} className="text-[var(--semantic-text-secondary)]" />
                       )}
                     </motion.button>
                     
@@ -208,7 +208,7 @@ export function CardStackManager({
                       }}
                       className="p-1.5 rounded hover:bg-red-100 transition-colors"
                     >
-                      <X size={14} className="text-gray-600 hover:text-red-600" />
+                      <X size={14} className="text-[var(--semantic-text-secondary)] hover:text-red-600" />
                     </motion.button>
                   </div>
                 </div>

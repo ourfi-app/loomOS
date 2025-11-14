@@ -51,7 +51,7 @@ export function LoomOSAppLayout({
   
   // On mobile/tablet, render full LoomOS layout with status bar and header
   return (
-    <div className="h-full flex flex-col bg-gray-200 relative">
+    <div className="h-full flex flex-col bg-[var(--semantic-bg-muted)] relative">
       {/* Status Bar */}
       {showStatusBar && <LoomOSStatusBar appName={appName} />}
       
@@ -69,7 +69,7 @@ export function LoomOSAppLayout({
       
       {/* Bottom Toolbar (optional) */}
       {bottomToolbar && (
-        <div className="bg-gradient-to-b from-gray-200 to-gray-300 border-t border-gray-400 px-4 py-3 flex items-center justify-center gap-3 mb-14 sm:mb-16 md:mb-[72px]">
+        <div className="bg-gradient-to-b from-gray-200 to-gray-300 border-t border-[var(--semantic-border-strong)] px-4 py-3 flex items-center justify-center gap-3 mb-14 sm:mb-16 md:mb-[72px]">
           {bottomToolbar}
         </div>
       )}

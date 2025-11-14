@@ -81,10 +81,10 @@ export function LoomOSAppTemplate({
   };
 
   return (
-    <div className={cn('loomos-app-container h-full flex flex-col bg-gray-100', className)}>
+    <div className={cn('loomos-app-container h-full flex flex-col bg-[var(--semantic-surface-hover)]', className)}>
       {/* App Header */}
       <div
-        className="loomos-app-header flex items-center gap-3 px-4 py-3 border-b border-gray-200"
+        className="loomos-app-header flex items-center gap-3 px-4 py-3 border-b border-[var(--semantic-border-light)]"
         style={{ backgroundColor: color }}
       >
         {/* Navigation Toggle */}
@@ -141,7 +141,7 @@ export function LoomOSAppTemplate({
         <AnimatePresence>
           {navigation && isNavigationVisible && (
             <motion.div
-              className="loomos-pane loomos-navigation-pane bg-white border-r border-gray-200 overflow-y-auto"
+              className="loomos-pane loomos-navigation-pane bg-white border-r border-[var(--semantic-border-light)] overflow-y-auto"
               style={{
                 minWidth: layouts.threePaneLayout.navigation.minWidth,
                 maxWidth: layouts.threePaneLayout.navigation.maxWidth,
@@ -159,7 +159,7 @@ export function LoomOSAppTemplate({
 
         {/* Content Pane */}
         <div
-          className="loomos-pane loomos-content-pane bg-gray-50 overflow-y-auto flex-1"
+          className="loomos-pane loomos-content-pane bg-[var(--semantic-bg-subtle)] overflow-y-auto flex-1"
           style={{
             minWidth: layouts.threePaneLayout.list.minWidth,
           }}
@@ -171,7 +171,7 @@ export function LoomOSAppTemplate({
         <AnimatePresence>
           {details && isDetailsVisible && (
             <motion.div
-              className="loomos-pane loomos-detail-pane bg-white border-l border-gray-200 overflow-y-auto"
+              className="loomos-pane loomos-detail-pane bg-white border-l border-[var(--semantic-border-light)] overflow-y-auto"
               style={{
                 minWidth: layouts.threePaneLayout.detail.minWidth,
                 flex: layouts.threePaneLayout.detail.flex,
@@ -216,7 +216,7 @@ export function LoomOSNavigationItem({
         'w-full flex items-center gap-3 px-4 py-3 text-left transition-colors',
         isActive
           ? 'bg-blue-50 text-blue-600 font-medium'
-          : 'text-gray-700 hover:bg-gray-50'
+          : 'text-[var(--semantic-text-secondary)] hover:bg-[var(--semantic-bg-subtle)]'
       )}
       onClick={onClick}
       whileTap={{ scale: 0.98 }}
@@ -262,7 +262,7 @@ export function LoomOSContentList({
   if (childArray.length === 0) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-center text-gray-500">
+        <div className="text-center text-[var(--semantic-text-tertiary)]">
           <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>
@@ -307,29 +307,29 @@ export function LoomOSContentListItem({
         'w-full flex items-center gap-3 px-4 py-3 text-left transition-colors',
         isSelected
           ? 'bg-blue-50 border-l-4 border-blue-500'
-          : 'hover:bg-gray-50 border-l-4 border-transparent'
+          : 'hover:bg-[var(--semantic-bg-subtle)] border-l-4 border-transparent'
       )}
       onClick={onClick}
       whileTap={{ scale: 0.99 }}
     >
       {/* Icon */}
       {icon && (
-        <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg flex-shrink-0">
+        <div className="w-10 h-10 flex items-center justify-center bg-[var(--semantic-surface-hover)] rounded-lg flex-shrink-0">
           {icon}
         </div>
       )}
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <div className="font-medium text-gray-900 truncate">{title}</div>
+        <div className="font-medium text-[var(--semantic-text-primary)] truncate">{title}</div>
         {subtitle && (
-          <div className="text-sm text-gray-500 truncate">{subtitle}</div>
+          <div className="text-sm text-[var(--semantic-text-tertiary)] truncate">{subtitle}</div>
         )}
       </div>
 
       {/* Metadata */}
       {metadata && (
-        <div className="text-xs text-gray-400 flex-shrink-0">
+        <div className="text-xs text-[var(--semantic-text-tertiary)] flex-shrink-0">
           {metadata}
         </div>
       )}
@@ -359,9 +359,9 @@ export function LoomOSDetailPane({
     <div className={cn('loomos-detail-pane-content h-full flex flex-col', className)}>
       {/* Detail Header */}
       {(title || actions) && (
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--semantic-border-light)]">
           {title && (
-            <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+            <h2 className="text-lg font-semibold text-[var(--semantic-text-primary)]">{title}</h2>
           )}
           {actions && (
             <div className="flex items-center gap-2">
@@ -394,7 +394,7 @@ export function LoomOSSection({ title, children, className }: SectionProps) {
   return (
     <div className={cn('loomos-section mb-6 last:mb-0', className)}>
       {title && (
-        <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
+        <h3 className="text-sm font-semibold text-[var(--semantic-text-secondary)] uppercase tracking-wide mb-3">
           {title}
         </h3>
       )}

@@ -30,10 +30,10 @@ export function PropertiesPanel() {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
         <div className="flex items-center gap-2">
-          <Settings2 className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+          <Settings2 className="w-4 h-4 text-[var(--semantic-text-secondary)] dark:text-[var(--semantic-text-tertiary)]" />
+          <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] dark:text-gray-100">
             Properties
           </h3>
         </div>
@@ -42,7 +42,7 @@ export function PropertiesPanel() {
             actions.selectNode(undefined);
             setSelectedNode(null);
           }}
-          className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-gray-700 transition-colors"
           aria-label="Close properties panel"
         >
           <X className="w-4 h-4" />
@@ -55,10 +55,10 @@ export function PropertiesPanel() {
           <div>
             {/* Component Name */}
             <div className="mb-4">
-              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
                 Component
               </label>
-              <div className="px-3 py-2 bg-gray-50 dark:bg-gray-900 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100">
+              <div className="px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 rounded-lg text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100">
                 {selected.name}
               </div>
             </div>
@@ -68,7 +68,7 @@ export function PropertiesPanel() {
 
             {/* Delete Button */}
             {selected.isDeletable && (
-              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <div className="mt-6 pt-6 border-t border-[var(--semantic-border-light)] dark:border-gray-700">
                 <button
                   onClick={() => {
                     actions.delete(selected.id);
@@ -86,7 +86,7 @@ export function PropertiesPanel() {
             )}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 dark:text-gray-400">
+          <div className="flex flex-col items-center justify-center h-full text-center text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)]">
             <Settings2 className="w-12 h-12 mb-4 opacity-50" />
             <p className="text-sm">No component selected</p>
             <p className="text-xs mt-1">Click on a component to edit its properties</p>

@@ -189,13 +189,13 @@ export default function AssociationConfigPage() {
       gradient={APP_COLORS.admin.light}
     >
       {/* Fixed Header */}
-      <div className="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-6">
+      <div className="h-16 border-b border-[var(--semantic-border-light)] bg-white flex items-center justify-between px-6">
         <div>
-          <h1 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+          <h1 className="text-xl font-semibold text-[var(--semantic-text-primary)] flex items-center gap-2">
             <Building2 className="h-5 w-5" />
             Association Configuration
           </h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-[var(--semantic-text-tertiary)]">
             Configure your condominium or homeowners association settings
           </p>
         </div>
@@ -208,9 +208,9 @@ export default function AssociationConfigPage() {
       {/* 2-Pane Layout */}
       <LoomOSPaneContainer>
         {/* Navigation Pane */}
-        <div className="w-60 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col overflow-hidden">
-          <div className="p-4 border-b border-gray-200">
-            <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+        <div className="w-60 flex-shrink-0 border-r border-[var(--semantic-border-light)] bg-white flex flex-col overflow-hidden">
+          <div className="p-4 border-b border-[var(--semantic-border-light)]">
+            <h2 className="text-xs font-semibold text-[var(--semantic-text-tertiary)] uppercase tracking-wider">
               SETTINGS
             </h2>
           </div>
@@ -245,7 +245,7 @@ export default function AssociationConfigPage() {
         </div>
 
         {/* Detail Pane - Settings Form */}
-        <div className="flex-1 overflow-y-auto bg-gray-50">
+        <div className="flex-1 overflow-y-auto bg-[var(--semantic-bg-subtle)]">
           <div className="max-w-4xl mx-auto p-6 space-y-6">
             {/* Basic Info */}
             {selectedCategory === 'basic' && (
@@ -465,7 +465,7 @@ export default function AssociationConfigPage() {
                     <div className="space-y-2">
                       <Label htmlFor="defaultMonthlyDues">Default Monthly Dues</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--semantic-text-tertiary)]">$</span>
                         <Input
                           id="defaultMonthlyDues"
                           type="number"
@@ -477,7 +477,7 @@ export default function AssociationConfigPage() {
                           placeholder="0.00"
                         />
                       </div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-[var(--semantic-text-tertiary)]">
                         Standard monthly dues for all units
                       </p>
                     </div>
@@ -493,7 +493,7 @@ export default function AssociationConfigPage() {
                         onChange={(e) => updateField('dueDay', parseInt(e.target.value) || undefined)}
                         placeholder="1"
                       />
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-[var(--semantic-text-tertiary)]">
                         Day of the month when dues are due (1-28)
                       </p>
                     </div>
@@ -501,7 +501,7 @@ export default function AssociationConfigPage() {
                     <div className="space-y-2">
                       <Label htmlFor="lateFeeAmount">Late Fee Amount</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--semantic-text-tertiary)]">$</span>
                         <Input
                           id="lateFeeAmount"
                           type="number"
@@ -513,7 +513,7 @@ export default function AssociationConfigPage() {
                           placeholder="0.00"
                         />
                       </div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-[var(--semantic-text-tertiary)]">
                         Fee charged after grace period expires
                       </p>
                     </div>
@@ -528,7 +528,7 @@ export default function AssociationConfigPage() {
                         onChange={(e) => updateField('lateFeeGracePeriod', parseInt(e.target.value) || undefined)}
                         placeholder="5"
                       />
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-[var(--semantic-text-tertiary)]">
                         Days before late fee is applied
                       </p>
                     </div>
@@ -540,8 +540,8 @@ export default function AssociationConfigPage() {
                     <div className="flex items-start gap-2">
                       <Info className="h-5 w-5 text-blue-600 mt-0.5" />
                       <div className="flex-1">
-                        <h4 className="font-medium text-gray-900 mb-2">Financial Summary</h4>
-                        <div className="space-y-1 text-sm text-gray-700">
+                        <h4 className="font-medium text-[var(--semantic-text-primary)] mb-2">Financial Summary</h4>
+                        <div className="space-y-1 text-sm text-[var(--semantic-text-secondary)]">
                           {settings.defaultMonthlyDues && (
                             <p>
                               • Default monthly dues: <strong>${settings.defaultMonthlyDues.toFixed(2)}</strong>
@@ -577,7 +577,7 @@ export default function AssociationConfigPage() {
                       onChange={(e) => updateField('unitPrefix', e.target.value)}
                       placeholder="Unit"
                     />
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[var(--semantic-text-tertiary)]">
                       e.g., "Unit 101", "Apt 101", "#101"
                     </p>
                   </div>

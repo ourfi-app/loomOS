@@ -203,7 +203,7 @@ export default function AssociationInfoStep({
           <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
             Association Information
           </h2>
-          <p className="text-gray-600 text-base">
+          <p className="text-[var(--semantic-text-secondary)] text-base">
             Tell us the essentials about your community. You can always update this later.
           </p>
         </div>
@@ -211,7 +211,7 @@ export default function AssociationInfoStep({
         <form onSubmit={handleSubmit} className="space-y-8">
         {/* Basic Information */}
         <div className="space-y-5 bg-gradient-to-br from-white to-blue-50/30 p-6 rounded-xl border-2 border-blue-100 shadow-md">
-          <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-[var(--semantic-text-primary)] flex items-center gap-2">
             Basic Information
             <span className="text-xs px-2 py-1 bg-red-100 text-red-700 rounded-full font-semibold border border-red-200">Required</span>
           </h3>
@@ -225,7 +225,7 @@ export default function AssociationInfoStep({
                 )}
                 <Tooltip>
                   <TooltipTrigger type="button">
-                    <HelpCircle className="h-3.5 w-3.5 text-gray-400 hover:text-gray-600" />
+                    <HelpCircle className="h-3.5 w-3.5 text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]" />
                   </TooltipTrigger>
                   <TooltipContent>
                     <p className="max-w-xs">The official legal name of your condo/HOA association</p>
@@ -359,7 +359,7 @@ export default function AssociationInfoStep({
                   )}
                   <Tooltip>
                     <TooltipTrigger type="button">
-                      <HelpCircle className="h-3.5 w-3.5 text-gray-400 hover:text-gray-600" />
+                      <HelpCircle className="h-3.5 w-3.5 text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p className="max-w-xs">Total number of residential units in your community</p>
@@ -389,7 +389,7 @@ export default function AssociationInfoStep({
 
         {/* Contact Information - Now only email is required */}
         <div className="space-y-5 bg-gradient-to-br from-white to-green-50/20 p-6 rounded-xl border-2 border-green-100 shadow-md">
-          <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-[var(--semantic-text-primary)] flex items-center gap-2">
             Contact Information
             <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full font-semibold border border-green-200">Email Required</span>
           </h3>
@@ -403,7 +403,7 @@ export default function AssociationInfoStep({
                 )}
                 <Tooltip>
                   <TooltipTrigger type="button">
-                    <HelpCircle className="h-3.5 w-3.5 text-gray-400 hover:text-gray-600" />
+                    <HelpCircle className="h-3.5 w-3.5 text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]" />
                   </TooltipTrigger>
                   <TooltipContent>
                     <p className="max-w-xs">Main email address for association communications and resident inquiries</p>

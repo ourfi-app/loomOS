@@ -201,7 +201,7 @@ export default function SettingsPage() {
       />
 
       {/* Pane 2: Setting Forms */}
-      <div className="flex-1 overflow-y-auto bg-gray-50 p-6">
+      <div className="flex-1 overflow-y-auto bg-[var(--semantic-bg-subtle)] p-6">
         <div className="max-w-4xl">
           
           {/* Appearance Settings */}

@@ -369,7 +369,7 @@ export default function AppDesigner() {
         <div>
           <p className="font-semibold">Changes applied successfully!</p>
           <p className="text-xs mt-1">Created: {result.files.join(', ')}</p>
-          <p className="text-xs text-gray-500 mt-1">Restart dev server to see changes</p>
+          <p className="text-xs text-[var(--semantic-text-tertiary)] mt-1">Restart dev server to see changes</p>
         </div>,
         { duration: 5000 }
       );
@@ -498,13 +498,13 @@ export default function AppDesigner() {
         {!currentApp ? (
           <>
             {/* Navigation Sidebar */}
-            <div className="w-60 bg-gradient-to-b from-gray-200 to-gray-300 border-r border-gray-400 flex-shrink-0">
+            <div className="w-60 bg-gradient-to-b from-gray-200 to-gray-300 border-r border-[var(--semantic-border-strong)] flex-shrink-0">
               <div className="p-4 space-y-2">
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeView === 'templates'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveView('templates')}
                 >
@@ -516,8 +516,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeView === 'my-apps'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveView('my-apps')}
                 >
@@ -532,8 +532,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeView === 'components'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveView('components')}
                 >
@@ -545,8 +545,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeView === 'import'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveView('import')}
                 >
@@ -561,9 +561,9 @@ export default function AppDesigner() {
             {/* Content Area */}
             <div className="flex-1 flex flex-col overflow-hidden">
               {/* Search Bar */}
-              <div className="p-4 border-b border-gray-200 bg-white">
+              <div className="p-4 border-b border-[var(--semantic-border-light)] bg-white">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--semantic-text-tertiary)]" size={18} />
                   <Input
                     className="pl-10"
                     placeholder={
@@ -647,7 +647,7 @@ export default function AppDesigner() {
                   {activeView === 'my-apps' && (
                     <div className="space-y-4">
                       {savedApps.length === 0 ? (
-                        <div className="text-center py-16 text-gray-400">
+                        <div className="text-center py-16 text-[var(--semantic-text-tertiary)]">
                           <FolderOpen size={64} className="mx-auto mb-6 opacity-50" />
                           <p className="text-xl font-medium mb-2">No saved apps yet</p>
                           <p className="text-sm mb-6">Create your first app from a template</p>
@@ -673,8 +673,8 @@ export default function AppDesigner() {
                                       <IconComponent size={24} style={{ color: template?.color || '#6b7280' }} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                      <h3 className="text-lg font-semibold text-gray-900 truncate">{app.name}</h3>
-                                      <p className="text-sm text-gray-500 truncate">{app.description}</p>
+                                      <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)] truncate">{app.name}</h3>
+                                      <p className="text-sm text-[var(--semantic-text-tertiary)] truncate">{app.description}</p>
                                       <div className="flex gap-2 mt-2">
                                         <Badge variant="outline" className="text-xs">
                                           {app.customizations.paneLayout}
@@ -707,8 +707,8 @@ export default function AppDesigner() {
                   {activeView === 'components' && (
                     <div className="h-full flex flex-col">
                       <div className="p-4 border-b">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Component Builder</h2>
-                        <p className="text-gray-600">
+                        <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)] mb-2">Component Builder</h2>
+                        <p className="text-[var(--semantic-text-secondary)]">
                           Drag and drop components to build a custom view, then get the code.
                         </p>
                       </div>
@@ -746,8 +746,8 @@ export default function AppDesigner() {
                   {activeView === 'import' && (
                     <div className="space-y-4">
                       <div className="mb-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Import Existing App</h2>
-                        <p className="text-gray-600">
+                        <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)] mb-2">Import Existing App</h2>
+                        <p className="text-[var(--semantic-text-secondary)]">
                           Load and modify any existing app in the system
                         </p>
                       </div>
@@ -829,7 +829,7 @@ export default function AppDesigner() {
                       </div>
                       
                       {availableApps.length === 0 && (
-                        <div className="text-center py-16 text-gray-400">
+                        <div className="text-center py-16 text-[var(--semantic-text-tertiary)]">
                           <Upload size={64} className="mx-auto mb-6 opacity-50" />
                           <p className="text-xl font-medium mb-2">Loading apps...</p>
                         </div>
@@ -844,13 +844,13 @@ export default function AppDesigner() {
           // App Designer View
           <>
             {/* Left Sidebar - Sections */}
-            <div className="w-60 bg-gradient-to-b from-gray-200 to-gray-300 border-r border-gray-400 flex-shrink-0">
+            <div className="w-60 bg-gradient-to-b from-gray-200 to-gray-300 border-r border-[var(--semantic-border-strong)] flex-shrink-0">
               <div className="p-4 space-y-2">
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeSection === 'design'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveSection('design')}
                 >
@@ -862,8 +862,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeSection === 'preview'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveSection('preview')}
                 >
@@ -875,8 +875,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeSection === 'code'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveSection('code')}
                 >
@@ -888,8 +888,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeSection === 'export'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveSection('export')}
                 >
@@ -901,8 +901,8 @@ export default function AppDesigner() {
                 <button
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
                     activeSection === 'testing'
-                      ? 'bg-white shadow-sm text-gray-900'
-                      : 'text-gray-700 hover:bg-white/50'
+                      ? 'bg-white shadow-sm text-[var(--semantic-text-primary)]'
+                      : 'text-[var(--semantic-text-secondary)] hover:bg-white/50'
                   }`}
                   onClick={() => setActiveSection('testing')}
                 >
@@ -1006,8 +1006,8 @@ export default function AppDesigner() {
                         {/* Pane Style Selectors */}
                         <div className="space-y-4">
                           <div>
-                            <h4 className="text-sm font-medium text-gray-900 mb-3">Pane Styles</h4>
-                            <p className="text-xs text-gray-500 mb-4">
+                            <h4 className="text-sm font-medium text-[var(--semantic-text-primary)] mb-3">Pane Styles</h4>
+                            <p className="text-xs text-[var(--semantic-text-tertiary)] mb-4">
                               Customize the style of each pane in your layout
                             </p>
                           </div>
@@ -1037,7 +1037,7 @@ export default function AppDesigner() {
                                     ))}
                                   </SelectContent>
                                 </Select>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-[var(--semantic-text-tertiary)]">
                                   {PANE_STYLES[currentApp.designPatterns.pane1Style as keyof typeof PANE_STYLES]?.description || 'Select a style'}
                                 </p>
                               </div>
@@ -1067,7 +1067,7 @@ export default function AppDesigner() {
                                     ))}
                                   </SelectContent>
                                 </Select>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-[var(--semantic-text-tertiary)]">
                                   {PANE_STYLES[currentApp.designPatterns.pane2Style as keyof typeof PANE_STYLES]?.description || 'Select a style'}
                                 </p>
                               </div>
@@ -1097,7 +1097,7 @@ export default function AppDesigner() {
                                     ))}
                                   </SelectContent>
                                 </Select>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-[var(--semantic-text-tertiary)]">
                                   {PANE_STYLES[currentApp.designPatterns.pane3Style as keyof typeof PANE_STYLES]?.description || 'Select a style'}
                                 </p>
                               </div>
@@ -1119,7 +1119,7 @@ export default function AppDesigner() {
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label>Status Bar</Label>
-                              <p className="text-xs text-gray-500">System information bar at top</p>
+                              <p className="text-xs text-[var(--semantic-text-tertiary)]">System information bar at top</p>
                             </div>
                             <Switch
                               checked={currentApp.designPatterns.hasStatusBar}
@@ -1137,7 +1137,7 @@ export default function AppDesigner() {
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label>App Header</Label>
-                              <p className="text-xs text-gray-500">Title and subtitle area</p>
+                              <p className="text-xs text-[var(--semantic-text-tertiary)]">Title and subtitle area</p>
                             </div>
                             <Switch
                               checked={currentApp.designPatterns.hasHeader}
@@ -1155,7 +1155,7 @@ export default function AppDesigner() {
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label>Toolbar</Label>
-                              <p className="text-xs text-gray-500">Action buttons at bottom</p>
+                              <p className="text-xs text-[var(--semantic-text-tertiary)]">Action buttons at bottom</p>
                             </div>
                             <Switch
                               checked={currentApp.designPatterns.hasToolbar}
@@ -1173,7 +1173,7 @@ export default function AppDesigner() {
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label>Gesture Area</Label>
-                              <p className="text-xs text-gray-500">LoomOS navigation gestures</p>
+                              <p className="text-xs text-[var(--semantic-text-tertiary)]">LoomOS navigation gestures</p>
                             </div>
                             <Switch
                               checked={currentApp.designPatterns.hasGestureArea}
@@ -1311,7 +1311,7 @@ export default function AppDesigner() {
                         <div className="flex items-center justify-between">
                           <div>
                             <Label>Live Preview</Label>
-                            <p className="text-xs text-gray-500">See changes in real-time</p>
+                            <p className="text-xs text-[var(--semantic-text-tertiary)]">See changes in real-time</p>
                           </div>
                           <Switch
                             checked={livePreview}
@@ -1320,8 +1320,8 @@ export default function AppDesigner() {
                         </div>
                         
                         {livePreview && (
-                          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <p className="text-xs text-gray-500 mb-3">Color Preview</p>
+                          <div className="p-4 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
+                            <p className="text-xs text-[var(--semantic-text-tertiary)] mb-3">Color Preview</p>
                             <div className="grid grid-cols-4 gap-2">
                               <div 
                                 className="h-16 rounded-lg flex items-center justify-center text-white text-xs font-semibold"
@@ -1362,7 +1362,7 @@ export default function AppDesigner() {
                 {activeSection === 'preview' && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-bold text-gray-900">Live Preview</h2>
+                      <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)]">Live Preview</h2>
                       <div className="flex gap-2">
                         <Button
                           variant={previewDevice === 'smartphone' ? 'default' : 'outline'}
@@ -1417,10 +1417,10 @@ export default function AppDesigner() {
                                   : '#FFFFFF'
                               }}
                             >
-                              <h1 className="text-2xl font-light text-gray-700">
+                              <h1 className="text-2xl font-light text-[var(--semantic-text-secondary)]">
                                 {currentApp.name.toUpperCase()}
                               </h1>
-                              <p className="text-sm text-gray-500 mt-0.5">{currentApp.description}</p>
+                              <p className="text-sm text-[var(--semantic-text-tertiary)] mt-0.5">{currentApp.description}</p>
                             </div>
                           )}
 
@@ -1433,36 +1433,36 @@ export default function AppDesigner() {
                                     {[1, 2, 3, 4].map((i) => (
                                       <div key={i} className="h-9 bg-white rounded shadow-sm flex items-center px-3">
                                         <div className="w-4 h-4 rounded bg-gray-300 mr-2"></div>
-                                        <div className="h-2 bg-gray-200 rounded flex-1"></div>
+                                        <div className="h-2 bg-[var(--semantic-bg-muted)] rounded flex-1"></div>
                                       </div>
                                     ))}
                                   </div>
                                 </div>
                                 <div className="w-96 bg-white border-r p-4 flex-shrink-0 overflow-y-auto">
                                   <div className="mb-3">
-                                    <div className="h-10 bg-gray-100 rounded flex items-center px-3">
+                                    <div className="h-10 bg-[var(--semantic-surface-hover)] rounded flex items-center px-3">
                                       <div className="w-4 h-4 rounded bg-gray-300 mr-2"></div>
-                                      <div className="h-2 bg-gray-200 rounded w-32"></div>
+                                      <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-32"></div>
                                     </div>
                                   </div>
                                   <div className="space-y-3">
                                     {[1, 2, 3, 4, 5].map((i) => (
-                                      <div key={i} className="h-20 bg-gray-50 rounded-lg p-3 border border-gray-200">
+                                      <div key={i} className="h-20 bg-[var(--semantic-bg-subtle)] rounded-lg p-3 border border-[var(--semantic-border-light)]">
                                         <div className="h-3 bg-gray-300 rounded w-3/4 mb-2"></div>
-                                        <div className="h-2 bg-gray-200 rounded w-1/2"></div>
+                                        <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-1/2"></div>
                                       </div>
                                     ))}
                                   </div>
                                 </div>
-                                <div className="flex-1 bg-gray-50 p-6 overflow-y-auto">
+                                <div className="flex-1 bg-[var(--semantic-bg-subtle)] p-6 overflow-y-auto">
                                   <div className="h-full bg-white rounded-lg shadow-sm p-6">
                                     <div className="space-y-4">
-                                      <div className="h-8 bg-gray-200 rounded w-2/3"></div>
-                                      <div className="h-4 bg-gray-100 rounded w-1/2"></div>
-                                      <div className="h-40 bg-gray-50 rounded border-2 border-dashed border-gray-200"></div>
+                                      <div className="h-8 bg-[var(--semantic-bg-muted)] rounded w-2/3"></div>
+                                      <div className="h-4 bg-[var(--semantic-surface-hover)] rounded w-1/2"></div>
+                                      <div className="h-40 bg-[var(--semantic-bg-subtle)] rounded border-2 border-dashed border-[var(--semantic-border-light)]"></div>
                                       <div className="grid grid-cols-2 gap-4">
-                                        <div className="h-24 bg-gray-100 rounded"></div>
-                                        <div className="h-24 bg-gray-100 rounded"></div>
+                                        <div className="h-24 bg-[var(--semantic-surface-hover)] rounded"></div>
+                                        <div className="h-24 bg-[var(--semantic-surface-hover)] rounded"></div>
                                       </div>
                                     </div>
                                   </div>
@@ -1475,19 +1475,19 @@ export default function AppDesigner() {
                                 <div className="w-96 bg-white border-r p-4 flex-shrink-0 overflow-y-auto">
                                   <div className="space-y-3">
                                     {[1, 2, 3, 4, 5].map((i) => (
-                                      <div key={i} className="h-20 bg-gray-50 rounded-lg p-3 border border-gray-200">
+                                      <div key={i} className="h-20 bg-[var(--semantic-bg-subtle)] rounded-lg p-3 border border-[var(--semantic-border-light)]">
                                         <div className="h-3 bg-gray-300 rounded w-3/4 mb-2"></div>
-                                        <div className="h-2 bg-gray-200 rounded w-1/2"></div>
+                                        <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-1/2"></div>
                                       </div>
                                     ))}
                                   </div>
                                 </div>
-                                <div className="flex-1 bg-gray-50 p-6 overflow-y-auto">
+                                <div className="flex-1 bg-[var(--semantic-bg-subtle)] p-6 overflow-y-auto">
                                   <div className="h-full bg-white rounded-lg shadow-sm p-6">
                                     <div className="space-y-4">
-                                      <div className="h-8 bg-gray-200 rounded w-2/3"></div>
-                                      <div className="h-4 bg-gray-100 rounded w-1/2"></div>
-                                      <div className="h-40 bg-gray-50 rounded"></div>
+                                      <div className="h-8 bg-[var(--semantic-bg-muted)] rounded w-2/3"></div>
+                                      <div className="h-4 bg-[var(--semantic-surface-hover)] rounded w-1/2"></div>
+                                      <div className="h-40 bg-[var(--semantic-bg-subtle)] rounded"></div>
                                     </div>
                                   </div>
                                 </div>
@@ -1498,9 +1498,9 @@ export default function AppDesigner() {
                               <div className="flex-1 bg-white p-4 overflow-y-auto">
                                 <div className="space-y-3">
                                   {[1, 2, 3, 4, 5, 6].map((i) => (
-                                    <div key={i} className="h-24 bg-gray-50 rounded-lg p-3 border border-gray-200">
+                                    <div key={i} className="h-24 bg-[var(--semantic-bg-subtle)] rounded-lg p-3 border border-[var(--semantic-border-light)]">
                                       <div className="h-3 bg-gray-300 rounded w-3/4 mb-2"></div>
-                                      <div className="h-2 bg-gray-200 rounded w-1/2"></div>
+                                      <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-1/2"></div>
                                     </div>
                                   ))}
                                 </div>
@@ -1536,7 +1536,7 @@ export default function AppDesigner() {
                 {activeSection === 'code' && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-bold text-gray-900">Generated Code</h2>
+                      <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)]">Generated Code</h2>
                       <div className="flex gap-2">
                         <Button size="sm" variant="outline" onClick={copyToClipboard}>
                           <Copy size={16} className="mr-2" />
@@ -1562,7 +1562,7 @@ export default function AppDesigner() {
                 {/* Export Section */}
                 {activeSection === 'export' && (
                   <div className="space-y-6 max-w-3xl">
-                    <h2 className="text-2xl font-bold text-gray-900">Export Your App</h2>
+                    <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)]">Export Your App</h2>
                     
                     <Card>
                       <CardHeader>
@@ -1581,7 +1581,7 @@ export default function AppDesigner() {
                             <FileCode size={32} />
                             <div className="text-center">
                               <div className="font-semibold text-base">Download TSX</div>
-                              <div className="text-xs text-gray-500 mt-1">React component file</div>
+                              <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">React component file</div>
                             </div>
                           </Button>
 
@@ -1593,7 +1593,7 @@ export default function AppDesigner() {
                             <Copy size={32} />
                             <div className="text-center">
                               <div className="font-semibold text-base">Copy Code</div>
-                              <div className="text-xs text-gray-500 mt-1">To clipboard</div>
+                              <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">To clipboard</div>
                             </div>
                           </Button>
 
@@ -1605,7 +1605,7 @@ export default function AppDesigner() {
                             <Save size={32} />
                             <div className="text-center">
                               <div className="font-semibold text-base">Save Design</div>
-                              <div className="text-xs text-gray-500 mt-1">To my apps</div>
+                              <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">To my apps</div>
                             </div>
                           </Button>
 
@@ -1617,7 +1617,7 @@ export default function AppDesigner() {
                             <Eye size={32} />
                             <div className="text-center">
                               <div className="font-semibold text-base">Preview</div>
-                              <div className="text-xs text-gray-500 mt-1">Test the design</div>
+                              <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">Test the design</div>
                             </div>
                           </Button>
                         </div>
@@ -1634,29 +1634,29 @@ export default function AppDesigner() {
                       <CardContent className="space-y-4">
                         <div className="space-y-4">
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">1. Install Dependencies</h4>
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">1. Install Dependencies</h4>
                             <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs">
                               yarn add lucide-react
                             </div>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">2. Copy Component File</h4>
-                            <p className="text-sm text-gray-600">
-                              Download the TSX file and place it in your <code className="bg-gray-100 px-1.5 py-0.5 rounded">app/</code> directory
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">2. Copy Component File</h4>
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
+                              Download the TSX file and place it in your <code className="bg-[var(--semantic-surface-hover)] px-1.5 py-0.5 rounded">app/</code> directory
                             </p>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">3. Customize Further</h4>
-                            <p className="text-sm text-gray-600">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">3. Customize Further</h4>
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               The generated code is a starting point. You can customize colors, add features, and integrate with your data
                             </p>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">4. Add to Navigation</h4>
-                            <p className="text-sm text-gray-600">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">4. Add to Navigation</h4>
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               Register your new app in the app registry to make it available in the launcher
                             </p>
                           </div>
@@ -1670,7 +1670,7 @@ export default function AppDesigner() {
                 {activeSection === 'testing' && (
                   <div className="space-y-6 max-w-6xl">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                      <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)] mb-2">
                         Testing & Validation
                       </h2>
                       <p className="text-muted-foreground">
@@ -1722,46 +1722,46 @@ export default function AppDesigner() {
                       <CardContent className="space-y-4">
                         <div className="space-y-4">
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">
                               1. Validate Before Export
                             </h4>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               Always run code validation before exporting to catch potential issues early
                             </p>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">
                               2. Fix Critical Errors
                             </h4>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               Address all critical errors and security issues before deploying your app
                             </p>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">
                               3. Review Warnings
                             </h4>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               Consider addressing warnings to improve code quality and maintainability
                             </p>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">
                               4. Run Full Test Suite
                             </h4>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               Execute the complete test suite to verify accessibility, performance, and functionality
                             </p>
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-2">
+                            <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">
                               5. Download Test Reports
                             </h4>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--semantic-text-secondary)]">
                               Save test reports for documentation and future reference
                             </p>
                           </div>

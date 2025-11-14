@@ -251,7 +251,7 @@ export function UniversalSearch() {
               className={cn(
                 "px-3 py-1.5 rounded-md text-sm font-medium transition-all",
                 mode === 'search' 
-                  ? "bg-white text-gray-900" 
+                  ? "bg-white text-[var(--semantic-text-primary)]" 
                   : "text-white/70 hover:text-white"
               )}
             >
@@ -262,7 +262,7 @@ export function UniversalSearch() {
               className={cn(
                 "px-3 py-1.5 rounded-md text-sm font-medium transition-all flex items-center gap-1.5",
                 mode === 'ai' 
-                  ? "bg-white text-gray-900" 
+                  ? "bg-white text-[var(--semantic-text-primary)]" 
                   : "text-white/70 hover:text-white"
               )}
             >

@@ -129,7 +129,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
   return (
     <div className="h-full flex gap-4">
       {/* Component Library */}
-      <div className="w-72 bg-white border border-gray-200 rounded-lg p-4">
+      <div className="w-72 bg-white border border-[var(--semantic-border-light)] rounded-lg p-4">
         <h3 className="text-lg font-semibold mb-4">Component Libraries</h3>
 
         <Tabs defaultValue="shadcn">
@@ -144,8 +144,8 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
 
           {Object.entries(COMPONENT_LIBRARIES).map(([libId, library]) => (
             <TabsContent key={libId} value={libId} className="space-y-2">
-              <div className="mb-3 p-2 bg-gray-50 rounded-lg border border-gray-200">
-                <p className="text-xs text-gray-600">{library.description}</p>
+              <div className="mb-3 p-2 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
+                <p className="text-xs text-[var(--semantic-text-secondary)]">{library.description}</p>
                 {library.website && (
                   <a
                     href={library.website}
@@ -178,7 +178,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-medium text-sm">{component.name}</h4>
-                            <p className="text-xs text-gray-500 truncate">
+                            <p className="text-xs text-[var(--semantic-text-tertiary)] truncate">
                               {component.description}
                             </p>
                           </div>
@@ -196,7 +196,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
       {/* Canvas */}
       <div className="flex-1 flex flex-col">
         {/* Canvas Toolbar */}
-        <div className="bg-white border border-gray-200 rounded-lg p-3 mb-4 flex items-center justify-between">
+        <div className="bg-white border border-[var(--semantic-border-light)] rounded-lg p-3 mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Button size="sm" variant="outline" onClick={() => setCanvas(prev => ({ ...prev, zoom: Math.min(prev.zoom + 0.1, 2) }))}>
               <ZoomIn size={16} />
@@ -227,7 +227,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
         </div>
 
         {/* Canvas Area */}
-        <div className="flex-1 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 overflow-auto">
+        <div className="flex-1 bg-[var(--semantic-bg-subtle)] rounded-lg border-2 border-dashed border-[var(--semantic-border-medium)] overflow-auto">
           <div
             ref={canvasRef}
             className="relative min-h-full min-w-full p-8"
@@ -258,7 +258,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                 <div
                   key={component.id}
                   className={`absolute bg-white rounded-lg border-2 p-4 cursor-move transition-all ${
-                    isSelected ? 'border-blue-500 shadow-lg' : 'border-gray-200 hover:border-gray-400'
+                    isSelected ? 'border-blue-500 shadow-lg' : 'border-[var(--semantic-border-light)] hover:border-[var(--semantic-border-strong)]'
                   }`}
                   style={{
                     left: component.x,
@@ -269,10 +269,10 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                   onClick={() => setCanvas(prev => ({ ...prev, selectedId: component.id }))}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <IconComponent size={16} className="text-gray-600" />
-                    <span className="text-sm font-medium text-gray-900">{definition.name}</span>
+                    <IconComponent size={16} className="text-[var(--semantic-text-secondary)]" />
+                    <span className="text-sm font-medium text-[var(--semantic-text-primary)]">{definition.name}</span>
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-[var(--semantic-text-tertiary)]">
                     {definition.preview}
                   </div>
                 </div>
@@ -282,7 +282,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
             {/* Empty state */}
             {canvas.components.length === 0 && !isDragging && (
               <div className="flex items-center justify-center h-full">
-                <div className="text-center text-gray-400">
+                <div className="text-center text-[var(--semantic-text-tertiary)]">
                   <Box size={48} className="mx-auto mb-4 opacity-50" />
                   <p className="text-lg font-medium mb-2">Drag components here</p>
                   <p className="text-sm">Start building your app by dragging components from the library</p>
@@ -294,17 +294,17 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
       </div>
 
       {/* Properties Panel */}
-      <div className="w-80 bg-white border border-gray-200 rounded-lg p-4">
+      <div className="w-80 bg-white border border-[var(--semantic-border-light)] rounded-lg p-4">
         <h3 className="text-lg font-semibold mb-4">Properties</h3>
 
         {selectedComponent && selectedDefinition ? (
           <div className="space-y-4">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                {React.createElement(selectedDefinition.icon, { size: 20, className: 'text-gray-600' })}
+                {React.createElement(selectedDefinition.icon, { size: 20, className: 'text-[var(--semantic-text-secondary)]' })}
                 <span className="font-medium">{selectedDefinition.name}</span>
               </div>
-              <p className="text-sm text-gray-500 mb-4">{selectedDefinition.description}</p>
+              <p className="text-sm text-[var(--semantic-text-tertiary)] mb-4">{selectedDefinition.description}</p>
             </div>
 
             <Separator />
@@ -340,7 +340,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                           checked={selectedComponent.props[prop.name] || false}
                           onCheckedChange={(checked) => updateComponentProp(prop.name, checked)}
                         />
-                        <Label htmlFor={prop.name} className="text-sm text-gray-500">
+                        <Label htmlFor={prop.name} className="text-sm text-[var(--semantic-text-tertiary)]">
                           {prop.description}
                         </Label>
                       </div>
@@ -420,7 +420,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center h-64 text-gray-400">
+          <div className="flex items-center justify-center h-64 text-[var(--semantic-text-tertiary)]">
             <div className="text-center">
               <Settings size={48} className="mx-auto mb-4 opacity-50" />
               <p className="text-sm">Select a component to edit properties</p>

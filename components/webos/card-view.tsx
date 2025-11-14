@@ -115,12 +115,12 @@ export function CardView({ cards, appComponents }: CardViewProps) {
         </div>
 
         {/* App Content */}
-        <div className="flex-1 overflow-auto bg-gray-50">
+        <div className="flex-1 overflow-auto bg-[var(--semantic-bg-subtle)]">
           {AppComponent ? <AppComponent /> : (
-            <div className="h-full flex items-center justify-center text-gray-400">
+            <div className="h-full flex items-center justify-center text-[var(--semantic-text-tertiary)]">
               <div className="text-center">
                 {Icon && <Icon className="w-20 h-20 mx-auto mb-4 opacity-30" />}
-                <p className="text-lg font-medium text-gray-500">Content not available</p>
+                <p className="text-lg font-medium text-[var(--semantic-text-tertiary)]">Content not available</p>
               </div>
             </div>
           )}
@@ -136,7 +136,7 @@ export function CardView({ cards, appComponents }: CardViewProps) {
         {/* Just Type Search Bar */}
         <div className="webos-just-type-bar">
           <div className="webos-just-type-input-wrapper">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--semantic-text-tertiary)] pointer-events-none" />
             <input
               type="text"
               placeholder="Just Type..."
@@ -148,9 +148,9 @@ export function CardView({ cards, appComponents }: CardViewProps) {
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center rounded-full hover:bg-[var(--semantic-bg-muted)] transition-colors"
               >
-                <X className="w-4 h-4 text-gray-500" />
+                <X className="w-4 h-4 text-[var(--semantic-text-tertiary)]" />
               </button>
             )}
           </div>
@@ -172,7 +172,7 @@ export function CardView({ cards, appComponents }: CardViewProps) {
                   className={`webos-card-item ${index === centerIndex ? 'center' : ''}`}
                   onClick={() => setActiveCard(card.id)}
                 >
-                  <div className="h-full flex flex-col bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                  <div className="h-full flex flex-col bg-white rounded-2xl overflow-hidden shadow-2xl border border-[var(--semantic-border-light)]">
                     {/* Card Header */}
                     <div className={`px-4 py-3 flex items-center justify-between bg-gradient-to-br ${card.color} text-white border-b border-white/10`}>
                       <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -196,17 +196,17 @@ export function CardView({ cards, appComponents }: CardViewProps) {
                     </div>
 
                     {/* Card Content Preview */}
-                    <div className="flex-1 overflow-hidden relative bg-gray-50">
-                      <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <div className="flex-1 overflow-hidden relative bg-[var(--semantic-bg-subtle)]">
+                      <div className="absolute inset-0 flex items-center justify-center text-[var(--semantic-text-tertiary)]">
                         <div className="text-center">
                           {Icon && <Icon className="w-16 h-16 mx-auto mb-2 opacity-30" />}
-                          <p className="text-sm font-medium text-gray-500">Tap to open</p>
+                          <p className="text-sm font-medium text-[var(--semantic-text-tertiary)]">Tap to open</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Card Status */}
-                    <div className="px-4 py-2 bg-gray-100 border-t border-gray-200 flex items-center justify-between text-xs text-gray-600">
+                    <div className="px-4 py-2 bg-[var(--semantic-surface-hover)] border-t border-[var(--semantic-border-light)] flex items-center justify-between text-xs text-[var(--semantic-text-secondary)]">
                       <span>{card.minimized ? 'Minimized' : 'Running'}</span>
                       {!card.minimized && (
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />

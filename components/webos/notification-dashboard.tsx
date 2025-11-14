@@ -115,7 +115,7 @@ export function NotificationDashboard() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="fixed top-8 right-4 w-96 max-h-[600px] bg-[#F5F5F5] rounded-lg shadow-2xl overflow-hidden z-[1060] border border-[#E0E0E0]"
+      className="fixed top-8 right-4 w-96 max-h-[600px] bg-[var(--semantic-surface-hover)] rounded-lg shadow-2xl overflow-hidden z-[1060] border border-[var(--semantic-border-light)]"
     >
       {/* Header */}
       <div className="bg-[#080907] text-white px-4 py-3 flex items-center justify-between">
@@ -144,8 +144,8 @@ export function NotificationDashboard() {
       <div className="overflow-y-auto max-h-[540px] scrollbar-hide">
         {Object.keys(groupedNotifications).length === 0 ? (
           <div className="py-12 px-4 text-center">
-            <BellOff className="w-12 h-12 text-[#999999] mx-auto mb-3" />
-            <p className="text-[#666666] text-sm">No notifications</p>
+            <BellOff className="w-12 h-12 text-[var(--semantic-text-tertiary)] mx-auto mb-3" />
+            <p className="text-[var(--semantic-text-secondary)] text-sm">No notifications</p>
           </div>
         ) : (
           <div className="divide-y divide-[#E0E0E0]">
@@ -164,16 +164,16 @@ export function NotificationDashboard() {
                     <div className="flex items-center gap-3">
                       <div className={cn(
                         "w-10 h-10 rounded-lg flex items-center justify-center",
-                        hasUnread(items) ? "bg-[#0066CC]/10" : "bg-[#F5F5F5]"
+                        hasUnread(items) ? "bg-[#0066CC]/10" : "bg-[var(--semantic-surface-hover)]"
                       )}>
                         <Icon className={cn(
                           "w-5 h-5",
-                          hasUnread(items) ? "text-[#0066CC]" : "text-[#666666]"
+                          hasUnread(items) ? "text-[#0066CC]" : "text-[var(--semantic-text-secondary)]"
                         )} />
                       </div>
                       <div className="text-left">
-                        <h4 className="text-sm font-semibold text-[#1E1E1E]">{key}</h4>
-                        <p className="text-xs text-[#666666]">
+                        <h4 className="text-sm font-semibold text-[var(--semantic-text-primary)]">{key}</h4>
+                        <p className="text-xs text-[var(--semantic-text-secondary)]">
                           {items.length} {items.length === 1 ? 'notification' : 'notifications'}
                         </p>
                       </div>
@@ -189,7 +189,7 @@ export function NotificationDashboard() {
                         transition={{ duration: 0.2 }}
                       >
                         <svg
-                          className="w-4 h-4 text-[#666666]"
+                          className="w-4 h-4 text-[var(--semantic-text-secondary)]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -258,17 +258,17 @@ export function NotificationDashboard() {
                               <div className="flex items-start gap-3">
                                 <div className="flex-1">
                                   <div className="flex items-start justify-between gap-2 mb-1">
-                                    <h5 className="text-sm font-semibold text-[#1E1E1E]">
+                                    <h5 className="text-sm font-semibold text-[var(--semantic-text-primary)]">
                                       {notification.title}
                                     </h5>
                                     {!notification.read && (
                                       <div className="w-2 h-2 rounded-full bg-[#0066CC] flex-shrink-0 mt-1" />
                                     )}
                                   </div>
-                                  <p className="text-xs text-[#666666] mb-2">
+                                  <p className="text-xs text-[var(--semantic-text-secondary)] mb-2">
                                     {notification.message}
                                   </p>
-                                  <p className="text-xs text-[#999999]">
+                                  <p className="text-xs text-[var(--semantic-text-tertiary)]">
                                     {formatDistanceToNow(new Date(notification.timestamp || Date.now()), {
                                       addSuffix: true,
                                     })}
@@ -299,7 +299,7 @@ export function NotificationDashboard() {
                                     e.stopPropagation();
                                     dismissNotification(notification.id);
                                   }}
-                                  className="w-6 h-6 flex items-center justify-center rounded hover:bg-[#E0E0E0] transition-colors text-[#666666] flex-shrink-0"
+                                  className="w-6 h-6 flex items-center justify-center rounded hover:bg-[#E0E0E0] transition-colors text-[var(--semantic-text-secondary)] flex-shrink-0"
                                 >
                                   <X className="w-3 h-3" />
                                 </button>

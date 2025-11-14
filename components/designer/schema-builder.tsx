@@ -164,7 +164,7 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
   return (
     <div className="h-full flex gap-4">
       {/* Models List */}
-      <div className="w-64 bg-white border border-gray-200 rounded-lg p-4">
+      <div className="w-64 bg-white border border-[var(--semantic-border-light)] rounded-lg p-4">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Models</h3>
           <Button size="sm" onClick={addModel}>
@@ -183,10 +183,10 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
                 onClick={() => setSelectedModelIndex(idx)}
               >
                 <div className="flex items-center gap-2">
-                  <Database size={16} className="text-gray-600" />
+                  <Database size={16} className="text-[var(--semantic-text-secondary)]" />
                   <span className="font-medium text-sm">{model.name}</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-[var(--semantic-text-tertiary)] mt-1">
                   {model.fields.length} fields
                 </p>
               </Card>
@@ -312,13 +312,13 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
               </TabsContent>
 
               <TabsContent value="indexes" className="py-4">
-                <div className="text-center text-gray-500 py-8">
+                <div className="text-center text-[var(--semantic-text-tertiary)] py-8">
                   <p>Index configuration coming soon</p>
                 </div>
               </TabsContent>
 
               <TabsContent value="relations" className="py-4">
-                <div className="text-center text-gray-500 py-8">
+                <div className="text-center text-[var(--semantic-text-tertiary)] py-8">
                   <p>Relations configuration coming soon</p>
                 </div>
               </TabsContent>
@@ -328,7 +328,7 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
       </div>
 
       {/* Actions Panel */}
-      <div className="w-80 bg-white border border-gray-200 rounded-lg p-4">
+      <div className="w-80 bg-white border border-[var(--semantic-border-light)] rounded-lg p-4">
         <h3 className="text-lg font-semibold mb-4">Generate Code</h3>
 
         {!validation.valid && (
@@ -404,17 +404,17 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
           <h4 className="text-sm font-semibold mb-3">Schema Summary</h4>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Models:</span>
+              <span className="text-[var(--semantic-text-secondary)]">Models:</span>
               <Badge variant="secondary">{schema.models.length}</Badge>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Total Fields:</span>
+              <span className="text-[var(--semantic-text-secondary)]">Total Fields:</span>
               <Badge variant="secondary">
                 {schema.models.reduce((sum, m) => sum + m.fields.length, 0)}
               </Badge>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Enums:</span>
+              <span className="text-[var(--semantic-text-secondary)]">Enums:</span>
               <Badge variant="secondary">{schema.enums?.length || 0}</Badge>
             </div>
           </div>

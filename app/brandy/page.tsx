@@ -268,7 +268,7 @@ function BrandyApp() {
       >
         <div className="flex flex-col h-full bg-white dark:bg-gray-900">
           {/* Mode Tabs */}
-          <div className="flex border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+          <div className="flex border-b border-[var(--semantic-border-light)] dark:border-gray-700 bg-[var(--semantic-bg-subtle)] dark:bg-gray-800">
             <ModeTab
               icon={Sparkles}
               label="Logo Studio"
@@ -371,7 +371,7 @@ function ModeTab({ icon: Icon, label, active, onClick, disabled }: ModeTabProps)
       disabled={disabled}
       className={`
         relative flex items-center gap-2 px-6 py-3 font-semibold transition-colors min-h-[44px]
-        ${active ? 'text-[#F18825]' : 'text-gray-600 hover:text-gray-900'}
+        ${active ? 'text-[#F18825]' : 'text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)]'}
         ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
       `}
     >
@@ -398,9 +398,9 @@ function LoadingOverlay({ message, progress }: { message: string; progress: numb
     >
       <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full mx-4">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-[#F18825] mb-4" />
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[var(--semantic-border-light)] border-t-[#F18825] mb-4" />
           <p className="font-semibold text-lg mb-2">{message}</p>
-          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+          <div className="w-full bg-[var(--semantic-bg-muted)] rounded-full h-2 mb-2">
             <motion.div
               className="bg-[#F18825] h-2 rounded-full"
               initial={{ width: 0 }}
@@ -408,7 +408,7 @@ function LoadingOverlay({ message, progress }: { message: string; progress: numb
               transition={{ duration: 0.3 }}
             />
           </div>
-          <p className="text-sm text-gray-500">{Math.round(progress)}%</p>
+          <p className="text-sm text-[var(--semantic-text-tertiary)]">{Math.round(progress)}%</p>
         </div>
       </div>
     </motion.div>
@@ -453,7 +453,7 @@ function LogoMode(props: any) {
       <div className="text-center max-w-2xl">
         <Sparkles className="w-16 h-16 mx-auto mb-4 text-[#F18825]" />
         <h2 className="text-2xl font-bold mb-4">Logo Studio</h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-[var(--semantic-text-secondary)] mb-8">
           Generate professional logos with AI, create brand identities, and prepare for web design.
         </p>
         {props.isComplete && !props.isGenerating && props.savedLogos.length === 0 && (
@@ -470,7 +470,7 @@ function LogoMode(props: any) {
             {props.savedLogos.map((logo: SavedLogo) => (
               <div key={logo.id} className="mb-2 p-4 border rounded-lg">
                 <p className="font-medium">{logo.brief.brandName}</p>
-                <p className="text-sm text-gray-500">{logo.concepts.length} concepts</p>
+                <p className="text-sm text-[var(--semantic-text-tertiary)]">{logo.concepts.length} concepts</p>
               </div>
             ))}
           </div>
@@ -491,7 +491,7 @@ function WebMode(props: any) {
       <div className="text-center max-w-2xl">
         <Globe className="w-16 h-16 mx-auto mb-4 text-[#2B8ED9]" />
         <h2 className="text-2xl font-bold mb-4">Web Builder</h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-[var(--semantic-text-secondary)] mb-8">
           Generate complete websites that match your brand identity.
         </p>
         {props.projects.length > 0 && (
@@ -501,7 +501,7 @@ function WebMode(props: any) {
               <div key={project.id} className="mb-2 p-4 border rounded-lg flex justify-between items-center">
                 <div>
                   <p className="font-medium">{project.name}</p>
-                  <p className="text-sm text-gray-500">{project.pages.length} pages</p>
+                  <p className="text-sm text-[var(--semantic-text-tertiary)]">{project.pages.length} pages</p>
                 </div>
                 <button
                   onClick={() => props.onExport(project.id)}
@@ -528,9 +528,9 @@ function GuidelinesMode({ activeLogo }: { activeLogo?: SavedLogo }) {
       className="flex items-center justify-center h-full p-8"
     >
       <div className="text-center max-w-2xl">
-        <FileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+        <FileText className="w-16 h-16 mx-auto mb-4 text-[var(--semantic-text-tertiary)]" />
         <h2 className="text-2xl font-bold mb-4">Brand Guidelines</h2>
-        <p className="text-gray-600">
+        <p className="text-[var(--semantic-text-secondary)]">
           Coming soon: Generate complete brand guideline documents with logo usage, colors, typography, and more.
         </p>
       </div>

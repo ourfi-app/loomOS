@@ -29,18 +29,18 @@ export function LoomOSAppHeader({
     ? `bg-gradient-to-r ${gradient}`
     : gradient 
       ? 'bg-gradient-to-b from-gray-100 to-gray-200'
-      : 'bg-gray-50';
+      : 'bg-[var(--semantic-bg-subtle)]';
   
   // Determine text color based on colored header
-  const textColor = coloredHeader ? 'text-white' : 'text-gray-600';
-  const subtitleColor = coloredHeader ? 'text-white/90' : 'text-gray-500';
-  const iconColor = coloredHeader ? 'text-white' : 'text-gray-600';
+  const textColor = coloredHeader ? 'text-white' : 'text-[var(--semantic-text-secondary)]';
+  const subtitleColor = coloredHeader ? 'text-white/90' : 'text-[var(--semantic-text-tertiary)]';
+  const iconColor = coloredHeader ? 'text-white' : 'text-[var(--semantic-text-secondary)]';
   
   return (
     <div className={cn(
       'border-b px-5 py-4 flex items-center justify-between flex-shrink-0',
       bgClasses,
-      coloredHeader ? 'border-white/20' : 'border-gray-400'
+      coloredHeader ? 'border-white/20' : 'border-[var(--semantic-border-strong)]'
     )}>
       <div className="flex items-center gap-3 flex-1 min-w-0">
         {appIcon && <div className={cn(iconColor, 'flex-shrink-0')}>{appIcon}</div>}

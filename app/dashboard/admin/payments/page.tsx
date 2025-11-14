@@ -203,7 +203,7 @@ export default function PaymentManagementPage() {
       case 'OVERDUE':
         return <AlertTriangle className="h-4 w-4 text-red-600" />;
       case 'CANCELLED':
-        return <XCircle className="h-4 w-4 text-gray-600" />;
+        return <XCircle className="h-4 w-4 text-[var(--semantic-text-secondary)]" />;
       default:
         return null;
     }
@@ -271,9 +271,9 @@ export default function PaymentManagementPage() {
       />
 
       {/* Pane 2: Payment List */}
-      <div className="w-[420px] flex-shrink-0 border-r border-gray-200 flex flex-col bg-white">
+      <div className="w-[420px] flex-shrink-0 border-r border-[var(--semantic-border-light)] flex flex-col bg-white">
         {/* Header */}
-        <div className="h-16 px-6 flex items-center justify-between border-b border-gray-200">
+        <div className="h-16 px-6 flex items-center justify-between border-b border-[var(--semantic-border-light)]">
           <div>
             <h2 className="text-lg font-semibold">Payments</h2>
             <p className="text-xs text-muted-foreground">{filteredPayments.length} payments</p>
@@ -281,7 +281,7 @@ export default function PaymentManagementPage() {
         </div>
 
         {/* Search */}
-        <div className="px-6 py-4 border-b border-gray-200">
+        <div className="px-6 py-4 border-b border-[var(--semantic-border-light)]">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -329,7 +329,7 @@ export default function PaymentManagementPage() {
             ))
           ) : (
             <LoomOSEmptyState
-              icon={<DollarSign size={64} className="text-gray-400" />}
+              icon={<DollarSign size={64} className="text-[var(--semantic-text-tertiary)]" />}
               title="No payments found"
               description="Try adjusting your search or filter"
             />
@@ -354,7 +354,7 @@ export default function PaymentManagementPage() {
               selectedPayment.status === 'PAID' ? 'bg-green-50 border-green-200' :
               selectedPayment.status === 'PENDING' ? 'bg-orange-50 border-orange-200' :
               selectedPayment.status === 'OVERDUE' ? 'bg-red-50 border-red-200' :
-              'bg-gray-50 border-gray-200'
+              'bg-[var(--semantic-bg-subtle)] border-[var(--semantic-border-light)]'
             }`}>
               <div className="flex items-center gap-3">
                 {getStatusIcon(selectedPayment.status)}
