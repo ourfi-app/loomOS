@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './styles/loomos/animations.css';
 
 /* ========================================
    loomOS Design System v1.0
