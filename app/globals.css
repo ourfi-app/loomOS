@@ -1,3 +1,4 @@
+@import './styles/loomos/animations.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,11 +17,7 @@
 @import '../styles/loomos-tokens.css';
 @import '../styles/loomos-components.css';
 
-/* Elegant Shimmer Animation for App Overlays and Dock Items */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
+
   100% {
     background-position: 200% 0;
   }
@@ -276,66 +273,43 @@
 
 /* WebOS Styles */
 @layer components {
-  /* Animations */
-  @keyframes fade-in {
-    from { opacity: 0; }
+  
     to { opacity: 1; }
   }
 
-  @keyframes slide-up {
-    from { 
-      opacity: 0;
-      transform: translateY(20px);
-    }
+  
     to { 
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 8px rgba(241, 136, 37, 0.3);
-    }
+  
     50% {
       box-shadow: 0 0 16px rgba(241, 136, 37, 0.6);
     }
   }
 
-  @keyframes shimmer-slide {
-    0% {
-      transform: translateX(-100%);
-    }
+  
     100% {
       transform: translateX(100%);
     }
   }
 
-  @keyframes bounce-subtle {
-    0%, 100% {
-      transform: translateY(0);
-    }
+  
     50% {
       transform: translateY(-2px);
     }
   }
 
-  @keyframes scale-in {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-    }
+  
     100% {
       opacity: 1;
       transform: scale(1);
     }
   }
 
-  @keyframes slide-in-from-top {
-    0% {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
+  
     100% {
       opacity: 1;
       transform: translateY(0);
@@ -352,82 +326,53 @@
     animation: slide-in-from-top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  @keyframes slide-down {
-    from { 
-      opacity: 0;
-      transform: translateY(-20px);
-    }
+  
     to { 
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
-    }
+  
     to {
       transform: translateX(0);
     }
   }
 
-  @keyframes scale-in {
-    from { 
-      opacity: 0;
-      transform: scale(0.95);
-    }
+  
     to { 
       opacity: 1;
       transform: scale(1);
     }
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(var(--primary), 0.3);
-    }
+  
     50% {
       box-shadow: 0 0 40px rgba(var(--primary), 0.5);
     }
   }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
+  
     50% {
       transform: translateY(-8px);
     }
   }
 
-  @keyframes ping-slow {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  
     75%, 100% {
       transform: scale(1.3);
       opacity: 0;
     }
   }
 
-  @keyframes slide-out-left {
-    0% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
+  
     100% {
       transform: translate(-150%, -50%) scale(0.8);
       opacity: 0;
     }
   }
 
-  @keyframes slide-out-left-draggable {
-    0% {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
+  
     100% {
       opacity: 0;
       transform: scale(0.3) translateY(calc(100vh - 100%));
@@ -875,11 +820,7 @@
     @apply scale-110;
   }
   
-  /* Breathing glow animation for active apps - DRAMATICALLY SOFTENED */
-  @keyframes breathe {
-    0%, 100% {
-      box-shadow: 0 0 12px rgba(241, 136, 37, 0.15);
-    }
+  
     50% {
       box-shadow: 0 0 16px rgba(241, 136, 37, 0.25);
     }
@@ -1007,11 +948,7 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  @keyframes dock-popover-enter {
-    from {
-      opacity: 0;
-      transform: translateY(8px) scale(0.96);
-    }
+  
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -1070,11 +1007,7 @@
   .loomos-dock-app-card:nth-child(5) { animation-delay: 0.15s; }
   .loomos-dock-app-card:nth-child(6) { animation-delay: 0.18s; }
 
-  @keyframes dock-app-card-enter {
-    from {
-      opacity: 0;
-      transform: translateX(-8px);
-    }
+  
     to {
       opacity: 1;
       transform: translateX(0);
@@ -1674,10 +1607,7 @@
     animation: gentle-blink 1.2s ease-in-out infinite;
   }
   
-  @keyframes gentle-blink {
-    0%, 49% {
-      caret-color: hsl(var(--primary));
-    }
+  
     50%, 100% {
       caret-color: transparent;
     }
@@ -2371,23 +2301,14 @@ html {
    REFINED CARD ANIMATIONS & INTERACTIONS
    ============================================ */
 
-/* Card Entry/Exit Animations */
-@keyframes card-zoom-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.85) translateY(30px);
-  }
+
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
 }
 
-@keyframes card-zoom-out {
-  0% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+
   100% {
     opacity: 0;
     transform: scale(0.85) translateY(30px);
@@ -2492,11 +2413,7 @@ html, body {
   transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
-/* Loading Skeleton Pulse Animation */
-@keyframes skeleton-pulse {
-  0%, 100% {
-    opacity: 1;
-  }
+
   50% {
     opacity: 0.5;
   }
@@ -2506,11 +2423,7 @@ html, body {
   animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Fade In Animation for Content */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
+
   to {
     opacity: 1;
   }
@@ -2520,12 +2433,7 @@ html, body {
   animation: fade-in 0.3s ease;
 }
 
-/* Slide Up Animation for Modals */
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2879,10 +2787,7 @@ body:not(.using-mouse) *:focus {
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+
 }
 
 /* Glass morphism utility class */
@@ -2945,11 +2850,7 @@ body:not(.using-mouse) *:focus {
   animation: slideIn 0.2s ease-out;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+
   to {
     opacity: 1;
     transform: translateY(0);
