@@ -105,17 +105,26 @@ function AppButton({ app, isActive, isInDock, isFavorite, onClick, onAddToDock, 
           </div>
 
           {/* App Name */}
-          <span className="text-xs sm:text-sm text-white/90 group-hover:text-white text-center leading-tight line-clamp-2 font-medium max-w-full">
+          <span 
+            className="text-xs sm:text-sm text-center leading-tight line-clamp-2 font-medium max-w-full"
+            style={{ color: 'var(--webos-text-primary)' }}
+          >
             {app.title}
           </span>
         </motion.button>
       </ContextMenuTrigger>
 
       {/* Context Menu */}
-      <ContextMenuContent className="w-56">
-        <div className="px-2 py-1.5 border-b border-white/10 mb-1">
-          <p className="text-sm font-medium text-white/90">{app.title}</p>
-          <p className="text-xs text-white/50 mt-0.5 line-clamp-1">{app.description}</p>
+      <ContextMenuContent className="w-56" style={{ 
+        backgroundColor: 'var(--webos-surface)',
+        borderColor: 'var(--webos-border-light)'
+      }}>
+        <div 
+          className="px-2 py-1.5 border-b mb-1"
+          style={{ borderColor: 'var(--webos-border-light)' }}
+        >
+          <p className="text-sm font-medium" style={{ color: 'var(--webos-text-primary)' }}>{app.title}</p>
+          <p className="text-xs mt-0.5 line-clamp-1" style={{ color: 'var(--webos-text-tertiary)' }}>{app.description}</p>
         </div>
 
         <ContextMenuItem onClick={onClick}>
@@ -324,7 +333,8 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 bg-gradient-to-br from-black/70 via-black/60 to-black/70 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6 md:p-8"
+          style={{ backgroundColor: 'var(--webos-bg-primary)' }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
           onClick={onClose}
         >
           <motion.div
@@ -332,28 +342,47 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="relative w-full max-w-7xl bg-[#1a1a1a]/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/5 p-4 sm:p-6 flex flex-col max-h-[85vh]"
+            style={{ 
+              backgroundColor: 'var(--webos-surface)',
+              boxShadow: 'var(--webos-shadow-elevated)',
+              borderColor: 'var(--webos-border-light)'
+            }}
+            className="relative w-full max-w-7xl rounded-2xl border p-4 sm:p-6 flex flex-col max-h-[85vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="mb-4 flex items-center gap-3 flex-shrink-0">
               {/* Title */}
-              <h2 className="text-xl sm:text-2xl font-display text-white/90">Apps</h2>
+              <h2 
+                className="text-xl sm:text-2xl font-light"
+                style={{ color: 'var(--webos-text-primary)' }}
+              >
+                App Store
+              </h2>
 
               {/* Search Bar */}
               <div className="relative flex-1">
-                <MdSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30 pointer-events-none" />
+                <MdSearch 
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none" 
+                  style={{ color: 'var(--webos-icon-default)' }}
+                />
                 <input
                   type="text"
                   placeholder="Search apps..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-10 sm:h-11 pl-10 pr-10 rounded-lg bg-white/5 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:outline-none focus:border-white/20 focus:bg-white/8 transition-all"
+                  style={{
+                    backgroundColor: 'var(--webos-surface)',
+                    borderColor: 'var(--webos-border-light)',
+                    color: 'var(--webos-text-primary)',
+                  }}
+                  className="w-full h-10 sm:h-11 pl-10 pr-10 rounded-full border focus:outline-none transition-all placeholder:text-[var(--webos-text-tertiary)]"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded hover:bg-white/10 text-white/40 hover:text-white transition-colors"
+                    style={{ color: 'var(--webos-icon-default)' }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full hover:bg-[var(--webos-surface-hover)] transition-colors"
                   >
                     <MdClear className="w-5 h-5" />
                   </button>
@@ -363,7 +392,11 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="p-2 sm:p-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-colors flex-shrink-0"
+                style={{ 
+                  backgroundColor: 'var(--webos-surface-hover)',
+                  color: 'var(--webos-icon-default)'
+                }}
+                className="p-2 sm:p-2.5 rounded-full hover:bg-[var(--webos-surface-active)] transition-colors flex-shrink-0"
                 title="Close"
               >
                 <MdClose className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -382,11 +415,14 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setActiveTab(tab.id)}
+                      style={{
+                        backgroundColor: isActive ? 'var(--webos-surface-active)' : 'var(--webos-surface-hover)',
+                        color: isActive ? 'var(--webos-text-primary)' : 'var(--webos-text-secondary)',
+                        borderColor: isActive ? 'var(--webos-border-medium)' : 'transparent'
+                      }}
                       className={cn(
-                        'relative flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all flex-1 sm:flex-initial',
-                        isActive
-                          ? 'bg-white/10 text-white shadow-md'
-                          : 'bg-white/5 text-white/60 hover:bg-white/8 hover:text-white/80'
+                        'relative flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all flex-1 sm:flex-initial border',
+                        isActive && 'shadow-sm'
                       )}
                     >
                       <Icon className="w-4 h-4" />
@@ -394,7 +430,8 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                       {isActive && (
                         <motion.div
                           layoutId="activeTab"
-                          className="absolute inset-0 bg-white/10 rounded-lg"
+                          style={{ backgroundColor: 'var(--webos-surface-active)' }}
+                          className="absolute inset-0 rounded-lg"
                           style={{ zIndex: -1 }}
                           transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                         />
@@ -411,21 +448,22 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex flex-col items-center justify-center h-full text-center py-12 text-white/40"
+                  style={{ color: 'var(--webos-text-tertiary)' }}
+                  className="flex flex-col items-center justify-center h-full text-center py-12"
                 >
                   {activeTab === 'favorites' && !searchQuery ? (
                     <>
                       <Star className="w-14 h-14 mb-4 opacity-20" />
-                      <p className="text-lg font-medium mb-2">No favorites yet</p>
-                      <p className="text-sm text-white/30 max-w-xs">
+                      <p className="text-lg font-medium mb-2" style={{ color: 'var(--webos-text-secondary)' }}>No favorites yet</p>
+                      <p className="text-sm max-w-xs">
                         Star your favorite apps to quick access them here
                       </p>
                     </>
                   ) : activeTab === 'recent' && !searchQuery ? (
                     <>
                       <Clock className="w-14 h-14 mb-4 opacity-20" />
-                      <p className="text-lg font-medium mb-2">No recent apps</p>
-                      <p className="text-sm text-white/30 max-w-xs">
+                      <p className="text-lg font-medium mb-2" style={{ color: 'var(--webos-text-secondary)' }}>No recent apps</p>
+                      <p className="text-sm max-w-xs">
                         Apps you open will appear here
                       </p>
                     </>
@@ -436,7 +474,11 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                       {searchQuery && (
                         <button
                           onClick={() => setSearchQuery('')}
-                          className="mt-4 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-sm transition-colors"
+                          style={{
+                            backgroundColor: 'var(--webos-surface-hover)',
+                            color: 'var(--webos-text-secondary)'
+                          }}
+                          className="mt-4 px-4 py-2 rounded-lg hover:bg-[var(--webos-surface-active)] text-sm transition-colors"
                         >
                           Clear Search
                         </button>
@@ -490,11 +532,19 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       >
                         <div className="flex items-center gap-3 mb-3 px-1">
-                          <h3 className="text-xs sm:text-sm font-semibold text-white/70 uppercase tracking-wider">
+                          <h3 
+                            className="text-xs sm:text-sm font-semibold uppercase tracking-wider"
+                            style={{ color: 'var(--webos-text-secondary)' }}
+                          >
                             {categoryNames[category]}
                           </h3>
-                          <div className="flex-1 h-px bg-white/5" />
-                          <span className="text-xs sm:text-sm text-white/40 font-medium">{apps.length}</span>
+                          <div className="flex-1 h-px" style={{ backgroundColor: 'var(--webos-border-light)' }} />
+                          <span 
+                            className="text-xs sm:text-sm font-medium"
+                            style={{ color: 'var(--webos-text-tertiary)' }}
+                          >
+                            {apps.length}
+                          </span>
                         </div>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-9 gap-4 px-1">
                           {apps.map((app, index) => (
