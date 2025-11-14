@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import '@/styles/loomos-tokens.css';
 import '@/styles/loomos-components.css';
+import '@/styles/webos-theme.css';
 import { Providers } from '@/components/providers';
 import { PWAInstallPrompt } from '@/components/webos/pwa-install-prompt';
 import { PWAUpdateNotification } from '@/components/webos/pwa-update-notification';
@@ -57,7 +58,7 @@ export default function RootLayout({
           rel="stylesheet" 
         />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased webos-theme" data-theme="webos">
         <Providers>
           <SkipToContent />
           <PerformanceInitializer />

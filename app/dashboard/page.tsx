@@ -14,9 +14,9 @@ export default function DashboardPage() {
 
   return (
     <div
-      className="relative h-full w-full overflow-hidden"
+      className="relative h-full w-full overflow-hidden webos-gradient-bg"
       style={{
-        background: 'linear-gradient(to top, #f0f2f5, #ffffff)',
+        background: 'var(--semantic-bg-base)',
       }}
     >
       {/* 3D Card Switcher View */}
@@ -24,67 +24,23 @@ export default function DashboardPage() {
 
       {/* Main Desktop View - Welcome screen when no apps open */}
       {cards.length === 0 && (
-        <div className="h-full w-full flex items-center justify-center">
-          <div
-            className="text-center space-y-4 max-w-2xl px-6"
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(15px)',
-              WebkitBackdropFilter: 'blur(15px)',
-              borderRadius: '1.5rem',
-              padding: '2rem',
-              border: '1px solid rgba(0, 0, 0, 0.08)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <h1
-              style={{
-                fontSize: '2.25rem',
-                fontWeight: '400',
-                color: 'var(--text-primary)',
-                letterSpacing: '0.5px'
-              }}
-            >
-              Welcome back, {session?.user?.name || 'User'}!
-            </h1>
-            <p
-              style={{
-                fontSize: '1.125rem',
-                fontWeight: '300',
-                color: 'var(--text-secondary)'
-              }}
-            >
-              Open an app from the dock to get started
-            </p>
-            <p
-              style={{
-                fontSize: '0.875rem',
-                fontWeight: '300',
-                color: 'var(--text-tertiary)'
-              }}
-            >
-              Press <kbd
-                style={{
-                  padding: '0.25rem 0.5rem',
-                  fontSize: '0.75rem',
-                  fontWeight: '500',
-                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
-                  borderRadius: '0.375rem',
-                  color: 'var(--text-primary)'
-                }}
-              >Cmd+K</kbd> or <kbd
-                style={{
-                  padding: '0.25rem 0.5rem',
-                  fontSize: '0.75rem',
-                  fontWeight: '500',
-                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
-                  borderRadius: '0.375rem',
-                  color: 'var(--text-primary)'
-                }}
-              >Ctrl+K</kbd> for universal search
-            </p>
+        <div className="h-full w-full flex items-center justify-center p-8">
+          <div className="webos-card text-center space-y-6 max-w-2xl w-full">
+            <div className="webos-card-body">
+              <h1 className="webos-heading-1 mb-4">
+                Welcome back, {session?.user?.name || 'User'}!
+              </h1>
+              <p className="webos-body text-secondary mb-6">
+                Open an app from the dock to get started
+              </p>
+              <div className="webos-caption">
+                Press{' '}
+                <kbd className="webos-kbd">Cmd+K</kbd>
+                {' '}or{' '}
+                <kbd className="webos-kbd">Ctrl+K</kbd>
+                {' '}for universal search
+              </div>
+            </div>
           </div>
         </div>
       )}
