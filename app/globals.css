@@ -18,11 +18,6 @@
 @import '../styles/loomos-components.css';
 
 
-  100% {
-    background-position: 200% 0;
-  }
-}
-
 .animate-shimmer {
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
@@ -274,47 +269,18 @@
 /* WebOS Styles */
 @layer components {
   
-    to { opacity: 1; }
-  }
 
   
-    to { 
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   
-    50% {
-      box-shadow: 0 0 16px rgba(241, 136, 37, 0.6);
-    }
-  }
 
   
-    100% {
-      transform: translateX(100%);
-    }
-  }
 
   
-    50% {
-      transform: translateY(-2px);
-    }
-  }
 
   
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
   
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   /* Popover smooth entrance */
   [data-radix-popper-content-wrapper] {
@@ -327,57 +293,20 @@
   }
 
   
-    to { 
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   
-    to {
-      transform: translateX(0);
-    }
-  }
 
   
-    to { 
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
   
-    50% {
-      box-shadow: 0 0 40px rgba(var(--primary), 0.5);
-    }
-  }
 
   
-    50% {
-      transform: translateY(-8px);
-    }
-  }
 
   
-    75%, 100% {
-      transform: scale(1.3);
-      opacity: 0;
-    }
-  }
 
   
-    100% {
-      transform: translate(-150%, -50%) scale(0.8);
-      opacity: 0;
-    }
-  }
 
   
-    100% {
-      opacity: 0;
-      transform: scale(0.3) translateY(calc(100vh - 100%));
-    }
-  }
 
   /* Standardized Animation Timing (aligned with Tailwind):
    * Micro: 150ms (duration-150) - Hover, focus, small changes
@@ -821,10 +750,6 @@
   }
   
   
-    50% {
-      box-shadow: 0 0 16px rgba(241, 136, 37, 0.25);
-    }
-  }
   
   .loomos-dock-active-glow {
     animation: breathe 4s ease-in-out infinite;
@@ -949,11 +874,6 @@
   }
 
   
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
 
   .loomos-dock-popover-inner {
     @apply p-4;
@@ -1008,11 +928,6 @@
   .loomos-dock-app-card:nth-child(6) { animation-delay: 0.18s; }
 
   
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
   
   .loomos-dock-app-card:hover {
     background: rgba(255, 255, 255, 0.85);
@@ -1608,10 +1523,6 @@
   }
   
   
-    50%, 100% {
-      caret-color: transparent;
-    }
-  }
 }
 
 /* React Grid Layout Overrides */
@@ -2302,18 +2213,8 @@ html {
    ============================================ */
 
 
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
 
 
-  100% {
-    opacity: 0;
-    transform: scale(0.85) translateY(30px);
-  }
-}
 
 .loomos-card-zoom-in {
   animation: card-zoom-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -2414,31 +2315,18 @@ html, body {
 }
 
 
-  50% {
-    opacity: 0.5;
-  }
-}
 
 .skeleton {
   animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 
-  to {
-    opacity: 1;
-  }
-}
 
 .fade-in {
   animation: fade-in 0.3s ease;
 }
 
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .slide-up {
   animation: slide-up 0.3s ease;
@@ -2788,7 +2676,6 @@ body:not(.using-mouse) *:focus {
 }
 
 
-}
 
 /* Glass morphism utility class */
 .glass-morphism {
@@ -2851,8 +2738,3 @@ body:not(.using-mouse) *:focus {
 }
 
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
