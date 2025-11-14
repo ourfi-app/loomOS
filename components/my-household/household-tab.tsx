@@ -281,8 +281,8 @@ export default function HouseholdTab() {
             <CardContent>
               {pets.length === 0 ? (
                 <div className="text-center py-12">
-                  <PawPrint className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-4">No pets added yet</p>
+                  <PawPrint className="h-12 w-12 text-[var(--semantic-text-tertiary)] mx-auto mb-4" />
+                  <p className="text-[var(--semantic-text-secondary)] mb-4">No pets added yet</p>
                   <Button onClick={() => setPetDialogOpen(true)} variant="outline">
                     <Plus className="h-4 w-4 mr-2" />
                     Add Your First Pet
@@ -317,7 +317,7 @@ export default function HouseholdTab() {
                             </Button>
                           </div>
                         </div>
-                        <div className="space-y-2 text-sm text-gray-600">
+                        <div className="space-y-2 text-sm text-[var(--semantic-text-secondary)]">
                           {pet.breed && <p><strong>Breed:</strong> {pet.breed}</p>}
                           {pet.color && <p><strong>Color:</strong> {pet.color}</p>}
                           {pet.age && <p><strong>Age:</strong> {pet.age}</p>}
@@ -355,8 +355,8 @@ export default function HouseholdTab() {
             <CardContent>
               {children.length === 0 ? (
                 <div className="text-center py-12">
-                  <Baby className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-4">No children added yet</p>
+                  <Baby className="h-12 w-12 text-[var(--semantic-text-tertiary)] mx-auto mb-4" />
+                  <p className="text-[var(--semantic-text-secondary)] mb-4">No children added yet</p>
                   <Button onClick={() => setChildDialogOpen(true)} variant="outline">
                     <Plus className="h-4 w-4 mr-2" />
                     Add Child
@@ -371,7 +371,7 @@ export default function HouseholdTab() {
                           <div>
                             <h3 className="font-semibold text-lg">{child.name}</h3>
                             {child.age && (
-                              <p className="text-sm text-gray-600 mt-1">{child.age} years old</p>
+                              <p className="text-sm text-[var(--semantic-text-secondary)] mt-1">{child.age} years old</p>
                             )}
                           </div>
                           <div className="flex gap-2">
@@ -391,7 +391,7 @@ export default function HouseholdTab() {
                             </Button>
                           </div>
                         </div>
-                        <div className="space-y-2 text-sm text-gray-600">
+                        <div className="space-y-2 text-sm text-[var(--semantic-text-secondary)]">
                           {child.birthYear && <p><strong>Birth Year:</strong> {child.birthYear}</p>}
                           {child.grade && <p><strong>Grade:</strong> {child.grade}</p>}
                           {child.school && <p><strong>School:</strong> {child.school}</p>}
@@ -425,8 +425,8 @@ export default function HouseholdTab() {
             <CardContent>
               {residents.length === 0 ? (
                 <div className="text-center py-12">
-                  <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-4">No additional residents added yet</p>
+                  <Users className="h-12 w-12 text-[var(--semantic-text-tertiary)] mx-auto mb-4" />
+                  <p className="text-[var(--semantic-text-secondary)] mb-4">No additional residents added yet</p>
                   <Button onClick={() => setResidentDialogOpen(true)} variant="outline">
                     <Plus className="h-4 w-4 mr-2" />
                     Add Resident
@@ -466,7 +466,7 @@ export default function HouseholdTab() {
                             </Button>
                           </div>
                         </div>
-                        <div className="space-y-2 text-sm text-gray-600">
+                        <div className="space-y-2 text-sm text-[var(--semantic-text-secondary)]">
                           {resident.email && (
                             <div className="flex items-center gap-2">
                               <Mail className="h-4 w-4" />

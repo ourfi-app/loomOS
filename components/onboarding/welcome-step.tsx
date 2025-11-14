@@ -71,7 +71,7 @@ export default function WelcomeStep({ onNext, isFirst }: WelcomeStepProps) {
         </motion.h2>
         
         <motion.p 
-          className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg text-[var(--semantic-text-secondary)] max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -92,17 +92,17 @@ export default function WelcomeStep({ onNext, isFirst }: WelcomeStepProps) {
               whileHover={{ y: -4, scale: 1.02 }}
               className="group"
             >
-              <div className={`flex gap-4 p-5 rounded-xl border-2 border-transparent bg-gradient-to-br ${feature.bgColor} hover:border-gray-200 transition-all shadow-md hover:shadow-xl`}>
+              <div className={`flex gap-4 p-5 rounded-xl border-2 border-transparent bg-gradient-to-br ${feature.bgColor} hover:border-[var(--semantic-border-light)] transition-all shadow-md hover:shadow-xl`}>
                 <div className="flex-shrink-0">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1.5 text-base">
+                  <h3 className="font-bold text-[var(--semantic-text-primary)] mb-1.5 text-base">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                  <p className="text-sm text-[var(--semantic-text-secondary)] leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             </motion.div>
@@ -184,7 +184,7 @@ export default function WelcomeStep({ onNext, isFirst }: WelcomeStepProps) {
           Get Started
           <ArrowRight className="h-5 w-5 ml-2" />
         </Button>
-        <p className="text-sm text-gray-500 mt-4 flex items-center justify-center gap-2">
+        <p className="text-sm text-[var(--semantic-text-tertiary)] mt-4 flex items-center justify-center gap-2">
           <Clock className="h-4 w-4" />
           Streamlined setup takes just 5-10 minutes. Optional steps can be completed anytime.
         </p>

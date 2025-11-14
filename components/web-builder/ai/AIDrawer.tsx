@@ -20,8 +20,8 @@ function AIQuickAction({ icon: Icon, title, description, onClick }: AIQuickActio
     <button
       onClick={onClick}
       className={cn(
-        'w-full p-3 rounded-lg border border-gray-200 dark:border-gray-700',
-        'bg-white dark:bg-gray-800 hover:border-loomos-orange hover:bg-gray-50 dark:hover:bg-gray-700',
+        'w-full p-3 rounded-lg border border-[var(--semantic-border-light)] dark:border-gray-700',
+        'bg-white dark:bg-gray-800 hover:border-loomos-orange hover:bg-[var(--semantic-bg-subtle)] dark:hover:bg-gray-700',
         'transition-all text-left group min-h-[44px]'
       )}
     >
@@ -30,10 +30,10 @@ function AIQuickAction({ icon: Icon, title, description, onClick }: AIQuickActio
           <Icon className="w-4 h-4 text-loomos-orange" />
         </div>
         <div className="flex-1">
-          <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+          <h4 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100">
             {title}
           </h4>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+          <p className="text-xs text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] mt-0.5">
             {description}
           </p>
         </div>
@@ -98,18 +98,18 @@ export function AIDrawer() {
             className="fixed right-0 top-0 bottom-0 w-96 bg-white dark:bg-gray-800 shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between p-4 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-lg bg-loomos-orange/10">
                   <Sparkles className="w-5 h-5 text-loomos-orange" />
                 </div>
-                <h2 className="font-semibold text-gray-900 dark:text-gray-100">
+                <h2 className="font-semibold text-[var(--semantic-text-primary)] dark:text-gray-100">
                   AI Assistant
                 </h2>
               </div>
               <button
                 onClick={toggleAIDrawer}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-gray-700 rounded-lg transition-colors"
                 aria-label="Close AI Assistant"
               >
                 <X className="w-4 h-4" />
@@ -117,8 +117,8 @@ export function AIDrawer() {
             </div>
 
             {/* Quick Actions */}
-            <div className="p-4 space-y-2 border-b border-gray-200 dark:border-gray-700">
-              <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+            <div className="p-4 space-y-2 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+              <h3 className="text-xs font-semibold text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-3">
                 Quick Actions
               </h3>
               <AIQuickAction
@@ -144,7 +144,7 @@ export function AIDrawer() {
             {/* Conversation */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 dark:text-gray-400">
+                <div className="flex flex-col items-center justify-center h-full text-center text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)]">
                   <Sparkles className="w-12 h-12 mb-4 opacity-50" />
                   <p className="text-sm font-medium">AI Assistant Ready</p>
                   <p className="text-xs mt-1">
@@ -170,7 +170,7 @@ export function AIDrawer() {
                         'px-4 py-2 rounded-lg text-sm max-w-[80%]',
                         message.role === 'user'
                           ? 'bg-loomos-orange text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
+                          : 'bg-[var(--semantic-surface-hover)] dark:bg-gray-700 text-[var(--semantic-text-primary)] dark:text-gray-100'
                       )}
                     >
                       {message.content}
@@ -183,7 +183,7 @@ export function AIDrawer() {
                   <div className="w-8 h-8 rounded-lg bg-loomos-orange/10 flex items-center justify-center flex-shrink-0">
                     <Sparkles className="w-4 h-4 text-loomos-orange animate-pulse" />
                   </div>
-                  <div className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700">
+                  <div className="px-4 py-2 rounded-lg bg-[var(--semantic-surface-hover)] dark:bg-gray-700">
                     <div className="flex gap-1">
                       <div className="w-2 h-2 rounded-full bg-gray-400 animate-pulse" />
                       <div className="w-2 h-2 rounded-full bg-gray-400 animate-pulse delay-75" />
@@ -195,7 +195,7 @@ export function AIDrawer() {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="p-4 border-t border-[var(--semantic-border-light)] dark:border-gray-700">
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <input
                   type="text"
@@ -203,10 +203,10 @@ export function AIDrawer() {
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder="Describe what you want to build..."
                   className={cn(
-                    'flex-1 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700',
-                    'bg-gray-50 dark:bg-gray-900 text-sm',
+                    'flex-1 px-4 py-2 rounded-lg border border-[var(--semantic-border-light)] dark:border-gray-700',
+                    'bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 text-sm',
                     'focus:outline-none focus:ring-2 focus:ring-loomos-orange focus:border-transparent',
-                    'placeholder:text-gray-400'
+                    'placeholder:text-[var(--semantic-text-tertiary)]'
                   )}
                   disabled={isLoading}
                 />

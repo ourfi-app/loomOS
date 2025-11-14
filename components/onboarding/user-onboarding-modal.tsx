@@ -53,7 +53,7 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     icon: Shield,
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           As a board member, you have access to powerful tools to manage the Montrecott community effectively.
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -87,29 +87,29 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     icon: Shield,
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           The Admin Panel (shield icon 🛡️) gives you access to management tools.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Users className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">User Management</h4>
-              <p className="text-sm text-gray-600">Add, edit, or remove residents and manage roles</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">User Management</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Add, edit, or remove residents and manage roles</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Bell className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Announcements</h4>
-              <p className="text-sm text-gray-600">Post important updates to all residents</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Announcements</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Post important updates to all residents</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <FileText className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Directory Requests</h4>
-              <p className="text-sm text-gray-600">Review and approve profile change requests</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Directory Requests</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Review and approve profile change requests</p>
             </div>
           </div>
         </div>
@@ -123,29 +123,29 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     icon: Sparkles,
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Here are the most important features you'll use regularly:
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <MessageSquare className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Messages</h4>
-              <p className="text-sm text-gray-600">Communicate with residents privately</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Messages</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Communicate with residents privately</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <FileText className="h-5 w-5 text-orange-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Documents</h4>
-              <p className="text-sm text-gray-600">Upload and manage community documents</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Documents</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Upload and manage community documents</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <CreditCard className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Payments</h4>
-              <p className="text-sm text-gray-600">Track dues and view payment history</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Payments</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Track dues and view payment history</p>
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     position: 'top',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Your main navigation is at the bottom of the screen. Click any icon to open an app or view its menu.
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -193,22 +193,22 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     position: 'bottom',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Use the "Just type..." search bar to quickly find apps, documents, residents, or get help from the AI assistant.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Search className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Quick Launch</h4>
-              <p className="text-sm text-gray-600">Type app names to open them instantly</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Quick Launch</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Type app names to open them instantly</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <MessageSquare className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">AI Assistant</h4>
-              <p className="text-sm text-gray-600">Ask questions in natural language</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">AI Assistant</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Ask questions in natural language</p>
             </div>
           </div>
         </div>
@@ -224,29 +224,29 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     position: 'center',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           On desktop, you can work with multiple apps at once with powerful window management.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Layout className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Multiple Windows</h4>
-              <p className="text-sm text-gray-600">Open several apps side by side</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multiple Windows</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Open several apps side by side</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Settings className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Window Snapping</h4>
-              <p className="text-sm text-gray-600">Drag windows to screen edges to snap them</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Window Snapping</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Drag windows to screen edges to snap them</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Sparkles className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Multitasking View</h4>
-              <p className="text-sm text-gray-600">Press F3 or click dock to see all open windows</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multitasking View</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Press F3 or click dock to see all open windows</p>
             </div>
           </div>
         </div>
@@ -262,29 +262,29 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     position: 'center',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Use intuitive gestures to navigate quickly on mobile devices.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <ArrowLeft className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Swipe Navigation</h4>
-              <p className="text-sm text-gray-600">Swipe left/right to go back and forward</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Swipe Navigation</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe left/right to go back and forward</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <ArrowRight className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Pull to Refresh</h4>
-              <p className="text-sm text-gray-600">Pull down on lists to refresh content</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Pull to Refresh</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Pull down on lists to refresh content</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Bell className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Notification Drawer</h4>
-              <p className="text-sm text-gray-600">Swipe down from the top for notifications</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Notification Drawer</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe down from the top for notifications</p>
             </div>
           </div>
         </div>
@@ -302,7 +302,7 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-2">
           <CheckCircle2 className="h-8 w-8 text-green-600" />
         </div>
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           You're now ready to start managing the Montrecott community!
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -336,7 +336,7 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     icon: Home,
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Welcome to the Montrecott community management portal! This is your one-stop platform for everything related to your home and community.
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -381,29 +381,29 @@ const RESIDENT_STEPS: OnboardingStep[] = [
             </div>
           </div>
         </div>
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Now you can add additional household details to make your profile complete:
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Users className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Additional Residents</h4>
-              <p className="text-sm text-gray-600">Add family members or roommates living in your unit</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Additional Residents</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Add family members or roommates living in your unit</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Users className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Children</h4>
-              <p className="text-sm text-gray-600">Register children in your household</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Children</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Register children in your household</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Home className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Pets</h4>
-              <p className="text-sm text-gray-600">Register your pets (required by HOA)</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Pets</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Register your pets (required by HOA)</p>
             </div>
           </div>
         </div>
@@ -422,29 +422,29 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     icon: Sparkles,
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Here's what you have access to:
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Building2 className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">My Community</h4>
-              <p className="text-sm text-gray-600">View resident directory and community documents</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">My Community</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">View resident directory and community documents</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <CreditCard className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Payments</h4>
-              <p className="text-sm text-gray-600">View dues and payment history</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Payments</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">View dues and payment history</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <FileText className="h-5 w-5 text-orange-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Documents</h4>
-              <p className="text-sm text-gray-600">Access bylaws, rules, and forms</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Documents</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Access bylaws, rules, and forms</p>
             </div>
           </div>
         </div>
@@ -458,7 +458,7 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     icon: MessageSquare,
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Have questions? Our AI Assistant is here to help!
         </p>
         <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
@@ -479,7 +479,7 @@ const RESIDENT_STEPS: OnboardingStep[] = [
             <li>• General community questions</li>
           </ul>
         </div>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-[var(--semantic-text-secondary)]">
           Access the AI Assistant anytime from the app dock or by using the "Just type..." search bar.
         </p>
       </div>
@@ -494,7 +494,7 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     position: 'top',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Your main navigation is at the bottom of the screen. Click any icon to open an app or access quick actions.
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -526,22 +526,22 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     position: 'bottom',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Use the "Just type..." search bar to quickly find apps, documents, or get help.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Search className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Quick Launch</h4>
-              <p className="text-sm text-gray-600">Type to find and open apps instantly</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Quick Launch</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Type to find and open apps instantly</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <MessageSquare className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Ask Questions</h4>
-              <p className="text-sm text-gray-600">Get help from the AI assistant</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Ask Questions</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Get help from the AI assistant</p>
             </div>
           </div>
         </div>
@@ -557,29 +557,29 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     position: 'center',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           On desktop, you can use multiple apps at once with advanced window management.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Layout className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Multiple Windows</h4>
-              <p className="text-sm text-gray-600">Open and arrange apps side by side</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multiple Windows</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Open and arrange apps side by side</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Settings className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Window Snapping</h4>
-              <p className="text-sm text-gray-600">Drag to screen edges to snap windows</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Window Snapping</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Drag to screen edges to snap windows</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Sparkles className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Multitasking View</h4>
-              <p className="text-sm text-gray-600">Press F3 to see all open windows</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multitasking View</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Press F3 to see all open windows</p>
             </div>
           </div>
         </div>
@@ -595,29 +595,29 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     position: 'center',
     content: (
       <div className="space-y-4">
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           Use these intuitive gestures to navigate on mobile.
         </p>
         <div className="grid gap-3">
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <ArrowLeft className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Swipe Navigation</h4>
-              <p className="text-sm text-gray-600">Swipe left/right to go back and forward</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Swipe Navigation</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe left/right to go back and forward</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <ArrowRight className="h-5 w-5 text-purple-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Pull to Refresh</h4>
-              <p className="text-sm text-gray-600">Pull down on lists to update content</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Pull to Refresh</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Pull down on lists to update content</p>
             </div>
           </div>
-          <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
             <Bell className="h-5 w-5 text-green-600 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-gray-900">Notification Drawer</h4>
-              <p className="text-sm text-gray-600">Swipe down from top for notifications</p>
+              <h4 className="font-semibold text-[var(--semantic-text-primary)]">Notification Drawer</h4>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe down from top for notifications</p>
             </div>
           </div>
         </div>
@@ -635,7 +635,7 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-2">
           <CheckCircle2 className="h-8 w-8 text-green-600" />
         </div>
-        <p className="text-gray-700">
+        <p className="text-[var(--semantic-text-secondary)]">
           You're all set to start exploring your Montrecott community portal!
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -800,8 +800,8 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
                   <StepIcon className="h-5 w-5 text-blue-600" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">{step.title}</h2>
-                  <p className="text-sm text-gray-600">{step.description}</p>
+                  <h2 className="text-xl font-bold text-[var(--semantic-text-primary)]">{step.title}</h2>
+                  <p className="text-sm text-[var(--semantic-text-secondary)]">{step.description}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -814,7 +814,7 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
                     size="sm"
                     onClick={handleSkip}
                     disabled={saving}
-                    className="text-gray-600 hover:text-gray-900 text-xs"
+                    className="text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)] text-xs"
                   >
                     Skip Tour
                   </Button>
@@ -822,7 +822,7 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
               </div>
             </div>
             <Progress value={progress} className="h-2" />
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-[var(--semantic-text-tertiary)] mt-2">
               Step {currentStep + 1} of {steps.length}
             </p>
           </div>
@@ -843,7 +843,7 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
           </div>
 
           {/* Footer */}
-          <div className="px-6 py-4 border-t bg-gray-50 flex items-center justify-between">
+          <div className="px-6 py-4 border-t bg-[var(--semantic-bg-subtle)] flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
@@ -858,7 +858,7 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
                   variant="ghost"
                   onClick={handleSkip}
                   disabled={saving}
-                  className="text-gray-600 hover:text-gray-900"
+                  className="text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)]"
                 >
                   Skip Tour
                 </Button>

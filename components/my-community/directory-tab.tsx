@@ -151,7 +151,7 @@ export function DirectoryTab() {
                           </CardDescription>
                         )}
                         {committee.email && (
-                          <div className="flex items-center gap-2 mt-2 text-sm text-gray-600">
+                          <div className="flex items-center gap-2 mt-2 text-sm text-[var(--semantic-text-secondary)]">
                             <Mail className="h-4 w-4" />
                             <a 
                               href={`mailto:${committee.email}`}
@@ -167,11 +167,11 @@ export function DirectoryTab() {
                 </CardHeader>
                 <CardContent>
                   {committee.members.length === 0 ? (
-                    <p className="text-gray-500 text-sm">No members assigned yet.</p>
+                    <p className="text-[var(--semantic-text-tertiary)] text-sm">No members assigned yet.</p>
                   ) : (
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                       {committee.members.map((member: any) => (
-                        <Card key={member.id} className="border-gray-200">
+                        <Card key={member.id} className="border-[var(--semantic-border-light)]">
                           <CardContent className="pt-6">
                             <div className="flex items-start gap-3">
                               <div className="relative">
@@ -198,12 +198,12 @@ export function DirectoryTab() {
                                   </Badge>
                                 )}
                                 {member.user.unitNumber && (
-                                  <div className="flex items-center gap-1 mt-2 text-xs text-gray-600">
+                                  <div className="flex items-center gap-1 mt-2 text-xs text-[var(--semantic-text-secondary)]">
                                     <Home className="h-3 w-3" />
                                     <span>Unit {member.user.unitNumber}</span>
                                   </div>
                                 )}
-                                <div className="flex items-center gap-1 mt-1 text-xs text-gray-600">
+                                <div className="flex items-center gap-1 mt-1 text-xs text-[var(--semantic-text-secondary)]">
                                   <Mail className="h-3 w-3" />
                                   <a 
                                     href={`mailto:${member.user.email}`}
@@ -213,7 +213,7 @@ export function DirectoryTab() {
                                   </a>
                                 </div>
                                 {member.user.phone && (
-                                  <div className="flex items-center gap-1 mt-1 text-xs text-gray-600">
+                                  <div className="flex items-center gap-1 mt-1 text-xs text-[var(--semantic-text-secondary)]">
                                     <Phone className="h-3 w-3" />
                                     <a 
                                       href={`tel:${member.user.phone}`}
@@ -224,7 +224,7 @@ export function DirectoryTab() {
                                   </div>
                                 )}
                                 {member.bio && (
-                                  <p className="text-xs text-gray-600 mt-2 line-clamp-2">
+                                  <p className="text-xs text-[var(--semantic-text-secondary)] mt-2 line-clamp-2">
                                     {member.bio}
                                   </p>
                                 )}
@@ -243,8 +243,8 @@ export function DirectoryTab() {
           {committees.length === 0 && (
             <Card>
               <CardContent className="py-12 text-center">
-                <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">No committees have been set up yet.</p>
+                <Users className="h-12 w-12 text-[var(--semantic-text-tertiary)] mx-auto mb-4" />
+                <p className="text-[var(--semantic-text-secondary)]">No committees have been set up yet.</p>
               </CardContent>
             </Card>
           )}
@@ -260,7 +260,7 @@ export function DirectoryTab() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[var(--semantic-text-tertiary)]" />
                 <Input
                   placeholder="Search by name, email, or unit number..."
                   value={searchTerm}
@@ -271,21 +271,21 @@ export function DirectoryTab() {
 
               {filteredResidents.length === 0 ? (
                 <div className="py-12 text-center">
-                  <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600">
+                  <Users className="h-12 w-12 text-[var(--semantic-text-tertiary)] mx-auto mb-4" />
+                  <p className="text-[var(--semantic-text-secondary)]">
                     {searchTerm ? 'No residents found matching your search.' : 'No residents found.'}
                   </p>
                 </div>
               ) : (
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {filteredResidents.map((resident) => (
-                    <Card key={resident.id} className="border-gray-200">
+                    <Card key={resident.id} className="border-[var(--semantic-border-light)]">
                       <CardContent className="pt-6">
                         <div className="flex items-start gap-3">
                           <div className="relative">
                             <Avatar className="h-12 w-12">
                               <AvatarImage src={resident.image || undefined} />
-                              <AvatarFallback className="bg-gray-100 text-gray-600">
+                              <AvatarFallback className="bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]">
                                 {getInitials(resident)}
                               </AvatarFallback>
                             </Avatar>
@@ -301,12 +301,12 @@ export function DirectoryTab() {
                               <MemberBadge badge={resident.badge as any} role={resident.role} />
                             </div>
                             {resident.unitNumber && (
-                              <div className="flex items-center gap-1 mt-1 text-xs text-gray-600">
+                              <div className="flex items-center gap-1 mt-1 text-xs text-[var(--semantic-text-secondary)]">
                                 <Home className="h-3 w-3" />
                                 <span>Unit {resident.unitNumber}</span>
                               </div>
                             )}
-                            <div className="flex items-center gap-1 mt-1 text-xs text-gray-600">
+                            <div className="flex items-center gap-1 mt-1 text-xs text-[var(--semantic-text-secondary)]">
                               <Mail className="h-3 w-3" />
                               <a 
                                 href={`mailto:${resident.email}`}
@@ -316,7 +316,7 @@ export function DirectoryTab() {
                               </a>
                             </div>
                             {resident.phone && (
-                              <div className="flex items-center gap-1 mt-1 text-xs text-gray-600">
+                              <div className="flex items-center gap-1 mt-1 text-xs text-[var(--semantic-text-secondary)]">
                                 <Phone className="h-3 w-3" />
                                 <a 
                                   href={`tel:${resident.phone}`}

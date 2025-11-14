@@ -121,7 +121,7 @@ export default function OfficersStep({
                 Optional
               </span>
             </div>
-            <p className="text-gray-600 text-lg">
+            <p className="text-[var(--semantic-text-secondary)] text-lg">
               Add board members now or skip and add them later from the Admin panel.
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function OfficersStep({
           return (
             <div 
               key={officer.id} 
-              className="group border-2 rounded-xl p-5 bg-white/80 backdrop-blur-sm border-gray-200 hover:border-indigo-300 hover:shadow-md transition-all duration-300"
+              className="group border-2 rounded-xl p-5 bg-white/80 backdrop-blur-sm border-[var(--semantic-border-light)] hover:border-indigo-300 hover:shadow-md transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -143,7 +143,7 @@ export default function OfficersStep({
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-[var(--semantic-text-primary)]">
                       Officer {index + 1}
                     </h3>
                     {isValid && (
@@ -166,7 +166,7 @@ export default function OfficersStep({
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor={`firstName-${officer.id}`} className="text-sm font-semibold text-gray-900 mb-2 block">
+                  <Label htmlFor={`firstName-${officer.id}`} className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
                     First Name
                   </Label>
                   <Input
@@ -176,12 +176,12 @@ export default function OfficersStep({
                       updateOfficer(officer.id, 'firstName', e.target.value)
                     }
                     placeholder="John"
-                    className="h-10 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="h-10 border-[var(--semantic-border-medium)] focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor={`lastName-${officer.id}`} className="text-sm font-semibold text-gray-900 mb-2 block">
+                  <Label htmlFor={`lastName-${officer.id}`} className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
                     Last Name
                   </Label>
                   <Input
@@ -191,12 +191,12 @@ export default function OfficersStep({
                       updateOfficer(officer.id, 'lastName', e.target.value)
                     }
                     placeholder="Doe"
-                    className="h-10 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="h-10 border-[var(--semantic-border-medium)] focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor={`email-${officer.id}`} className="text-sm font-semibold text-gray-900 mb-2 block">
+                  <Label htmlFor={`email-${officer.id}`} className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
                     Email
                   </Label>
                   <Input
@@ -207,12 +207,12 @@ export default function OfficersStep({
                       updateOfficer(officer.id, 'email', e.target.value)
                     }
                     placeholder="john@example.com"
-                    className="h-10 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="h-10 border-[var(--semantic-border-medium)] focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor={`position-${officer.id}`} className="text-sm font-semibold text-gray-900 mb-2 block">
+                  <Label htmlFor={`position-${officer.id}`} className="text-sm font-semibold text-[var(--semantic-text-primary)] mb-2 block">
                     Position
                   </Label>
                   <Select
@@ -221,7 +221,7 @@ export default function OfficersStep({
                       updateOfficer(officer.id, 'position', value)
                     }
                   >
-                    <SelectTrigger className="h-10 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                    <SelectTrigger className="h-10 border-[var(--semantic-border-medium)] focus:border-indigo-500 focus:ring-indigo-500">
                       <SelectValue placeholder="Select position" />
                     </SelectTrigger>
                     <SelectContent>
@@ -241,7 +241,7 @@ export default function OfficersStep({
         <Button 
           variant="outline" 
           onClick={addOfficer} 
-          className="w-full h-12 border-2 border-dashed border-gray-300 hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 transition-all duration-300 group"
+          className="w-full h-12 border-2 border-dashed border-[var(--semantic-border-medium)] hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 transition-all duration-300 group"
         >
           <Plus className="h-5 w-5 mr-2 group-hover:rotate-90 transition-transform duration-300" />
           <span className="font-semibold">Add Another Officer</span>
@@ -266,7 +266,7 @@ export default function OfficersStep({
       </div>
 
       {/* Enhanced Action Button */}
-      <div className="flex justify-end pt-6 border-t-2 border-gray-100">
+      <div className="flex justify-end pt-6 border-t-2 border-[var(--semantic-border-light)]">
         <Button 
           size="lg" 
           onClick={handleContinue} 

@@ -142,7 +142,7 @@ export default function NewAppPage() {
           ← Back to Dashboard
         </Link>
         <h1 className="text-3xl font-bold">Create New App</h1>
-        <p className="text-gray-600 mt-2">
+        <p className="text-[var(--semantic-text-secondary)] mt-2">
           Fill in the details to create your app listing
         </p>
       </div>
@@ -161,7 +161,7 @@ export default function NewAppPage() {
                 type="text"
                 name="name"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="My Awesome App"
               />
             </div>
@@ -175,7 +175,7 @@ export default function NewAppPage() {
                 name="tagline"
                 required
                 maxLength={60}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="Brief description (60 characters)"
               />
             </div>
@@ -189,7 +189,7 @@ export default function NewAppPage() {
                 required
                 maxLength={200}
                 rows={3}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="Short description (200 characters)"
               />
             </div>
@@ -202,7 +202,7 @@ export default function NewAppPage() {
                 name="description"
                 required
                 rows={8}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="Detailed description of your app, its features, and benefits"
               />
             </div>
@@ -214,7 +214,7 @@ export default function NewAppPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value as AppCategory)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat.value} value={cat.value}>
@@ -232,13 +232,13 @@ export default function NewAppPage() {
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                  className="flex-1 px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                   placeholder="Add tags (press Enter)"
                 />
                 <button
                   type="button"
                   onClick={handleAddTag}
-                  className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+                  className="px-4 py-2 bg-[var(--semantic-bg-muted)] rounded-lg hover:bg-gray-300"
                 >
                   Add
                 </button>
@@ -269,7 +269,7 @@ export default function NewAppPage() {
               <textarea
                 name="features"
                 rows={5}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="Feature 1&#10;Feature 2&#10;Feature 3"
               />
             </div>
@@ -289,10 +289,10 @@ export default function NewAppPage() {
                 type="url"
                 name="icon"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="https://example.com/icon.png"
               />
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-[var(--semantic-text-secondary)] mt-1">
                 Square image, minimum 512x512px
               </p>
             </div>
@@ -304,19 +304,19 @@ export default function NewAppPage() {
               <input
                 type="url"
                 name="screenshot1"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 mb-2"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500 mb-2"
                 placeholder="Screenshot 1 URL"
               />
               <input
                 type="url"
                 name="screenshot2"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 mb-2"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500 mb-2"
                 placeholder="Screenshot 2 URL"
               />
               <input
                 type="url"
                 name="screenshot3"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="Screenshot 3 URL"
               />
             </div>
@@ -328,7 +328,7 @@ export default function NewAppPage() {
               <input
                 type="url"
                 name="video"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                 placeholder="https://youtube.com/watch?v=..."
               />
             </div>
@@ -347,7 +347,7 @@ export default function NewAppPage() {
               <select
                 value={pricingModel}
                 onChange={(e) => setPricingModel(e.target.value as AppPricingModel)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               >
                 <option value={AppPricingModel.FREE}>Free</option>
                 <option value={AppPricingModel.PAID}>Paid (One-time)</option>
@@ -367,7 +367,7 @@ export default function NewAppPage() {
                   step="0.01"
                   value={price}
                   onChange={(e) => setPrice(parseFloat(e.target.value))}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
                   placeholder="9.99"
                 />
               </div>
@@ -378,7 +378,7 @@ export default function NewAppPage() {
         {/* Permissions */}
         <section className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-6">Permissions</h2>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-[var(--semantic-text-secondary)] mb-4">
             Select the permissions your app requires
           </p>
 
@@ -411,7 +411,7 @@ export default function NewAppPage() {
           </button>
           <Link
             href="/dashboard/developer"
-            className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50"
+            className="px-6 py-3 border border-[var(--semantic-border-medium)] rounded-lg hover:bg-[var(--semantic-bg-subtle)]"
           >
             Cancel
           </Link>

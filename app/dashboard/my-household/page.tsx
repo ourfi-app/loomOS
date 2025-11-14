@@ -57,9 +57,9 @@ export default function MyHouseholdPage() {
         
         <div className="flex-1 flex flex-col overflow-hidden">
           {userUnitNumber && (
-            <div className="flex items-center gap-2 px-6 py-3 bg-gray-50 border-b border-gray-200">
-              <Home className="h-4 w-4 text-gray-600" />
-              <span className="font-medium text-sm text-gray-700">Unit {userUnitNumber}</span>
+            <div className="flex items-center gap-2 px-6 py-3 bg-[var(--semantic-bg-subtle)] border-b border-[var(--semantic-border-light)]">
+              <Home className="h-4 w-4 text-[var(--semantic-text-secondary)]" />
+              <span className="font-medium text-sm text-[var(--semantic-text-secondary)]">Unit {userUnitNumber}</span>
             </div>
           )}
           <div className="flex-1 bg-white overflow-y-auto p-6">

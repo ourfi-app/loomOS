@@ -107,7 +107,7 @@ export default function ResidentsStep({
                 Optional
               </span>
             </div>
-            <p className="text-gray-600 text-lg">
+            <p className="text-[var(--semantic-text-secondary)] text-lg">
               Import your residents from a CSV file or add them individually later.
             </p>
           </div>
@@ -124,11 +124,11 @@ export default function ResidentsStep({
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-6 h-6 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center font-bold">1</div>
-                <h3 className="font-bold text-gray-900 text-lg">
+                <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">
                   Download Template
                 </h3>
               </div>
-              <p className="text-sm text-gray-700 mb-4">
+              <p className="text-sm text-[var(--semantic-text-secondary)] mb-4">
                 Download our CSV template and fill it out with your resident information.
               </p>
               <Button 
@@ -145,7 +145,7 @@ export default function ResidentsStep({
         </div>
 
         {/* Upload File */}
-        <div className="group border-2 rounded-xl p-6 bg-white/80 backdrop-blur-sm border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+        <div className="group border-2 rounded-xl p-6 bg-white/80 backdrop-blur-sm border-[var(--semantic-border-light)] hover:border-green-300 hover:shadow-lg transition-all duration-300">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
               <Upload className="h-6 w-6" />
@@ -153,11 +153,11 @@ export default function ResidentsStep({
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">2</div>
-                <h3 className="font-bold text-gray-900 text-lg">
+                <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">
                   Upload CSV File
                 </h3>
               </div>
-              <p className="text-sm text-gray-700 mb-4">
+              <p className="text-sm text-[var(--semantic-text-secondary)] mb-4">
                 Upload your completed CSV file to import all residents at once.
               </p>
 
@@ -195,7 +195,7 @@ export default function ResidentsStep({
               </Button>
 
               {uploadedFile && (
-                <div className="mt-3 text-sm text-gray-700 flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
+                <div className="mt-3 text-sm text-[var(--semantic-text-secondary)] flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
                   <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
                   <span><span className="font-semibold">File uploaded:</span> {uploadedFile.name}</span>
                 </div>
@@ -215,22 +215,22 @@ export default function ResidentsStep({
             </div>
             <div className="grid grid-cols-3 gap-4">
               <div className="text-center p-4 bg-white/80 rounded-lg">
-                <div className="text-3xl font-bold text-gray-900 mb-1">
+                <div className="text-3xl font-bold text-[var(--semantic-text-primary)] mb-1">
                   {importStatus.total}
                 </div>
-                <div className="text-sm text-gray-600 font-medium">Total Records</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] font-medium">Total Records</div>
               </div>
               <div className="text-center p-4 bg-white/80 rounded-lg">
                 <div className="text-3xl font-bold text-green-600 mb-1">
                   {importStatus.success}
                 </div>
-                <div className="text-sm text-gray-600 font-medium">Imported</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] font-medium">Imported</div>
               </div>
               <div className="text-center p-4 bg-white/80 rounded-lg">
                 <div className="text-3xl font-bold text-red-600 mb-1">
                   {importStatus.failed}
                 </div>
-                <div className="text-sm text-gray-600 font-medium">Failed</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] font-medium">Failed</div>
               </div>
             </div>
           </div>
@@ -283,7 +283,7 @@ export default function ResidentsStep({
       </div>
 
       {/* Enhanced Action Button */}
-      <div className="flex justify-end pt-6 border-t-2 border-gray-100">
+      <div className="flex justify-end pt-6 border-t-2 border-[var(--semantic-border-light)]">
         <Button 
           size="lg" 
           onClick={handleContinue} 

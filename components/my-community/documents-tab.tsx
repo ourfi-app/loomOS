@@ -80,7 +80,7 @@ export function DocumentsTab() {
       case 'ADMIN_ONLY':
         return <Lock className="h-4 w-4 text-red-500" />;
       default:
-        return <FileText className="h-4 w-4 text-gray-500" />;
+        return <FileText className="h-4 w-4 text-[var(--semantic-text-tertiary)]" />;
     }
   };
 

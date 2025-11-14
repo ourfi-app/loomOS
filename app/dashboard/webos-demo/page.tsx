@@ -26,17 +26,17 @@ export default function WebOSDemoPage() {
       content: (
         <div className="space-y-4">
           <div className="flex items-start gap-3">
-            <Mail className="w-5 h-5 text-gray-600 mt-1" />
+            <Mail className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">John Doe</p>
-              <p className="text-xs text-gray-600">Meeting tomorrow at 3pm</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Meeting tomorrow at 3pm</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Mail className="w-5 h-5 text-gray-600 mt-1" />
+            <Mail className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Jane Smith</p>
-              <p className="text-xs text-gray-600">Project update</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Project update</p>
             </div>
           </div>
         </div>
@@ -49,17 +49,17 @@ export default function WebOSDemoPage() {
       content: (
         <div className="space-y-4">
           <div className="flex items-start gap-3">
-            <FileText className="w-5 h-5 text-gray-600 mt-1" />
+            <FileText className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Budget 2024.pdf</p>
-              <p className="text-xs text-gray-600">Modified 2 days ago</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Modified 2 days ago</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <FileText className="w-5 h-5 text-gray-600 mt-1" />
+            <FileText className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Meeting Notes.docx</p>
-              <p className="text-xs text-gray-600">Modified yesterday</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Modified yesterday</p>
             </div>
           </div>
         </div>
@@ -72,17 +72,17 @@ export default function WebOSDemoPage() {
       content: (
         <div className="space-y-4">
           <div className="flex items-start gap-3">
-            <Calendar className="w-5 h-5 text-gray-600 mt-1" />
+            <Calendar className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Team Meeting</p>
-              <p className="text-xs text-gray-600">Today at 2:00 PM</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Today at 2:00 PM</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Calendar className="w-5 h-5 text-gray-600 mt-1" />
+            <Calendar className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Project Review</p>
-              <p className="text-xs text-gray-600">Tomorrow at 10:00 AM</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Tomorrow at 10:00 AM</p>
             </div>
           </div>
         </div>
@@ -95,17 +95,17 @@ export default function WebOSDemoPage() {
       content: (
         <div className="space-y-4">
           <div className="flex items-start gap-3">
-            <Users className="w-5 h-5 text-gray-600 mt-1" />
+            <Users className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">John Doe</p>
-              <p className="text-xs text-gray-600">john@example.com</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">john@example.com</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Users className="w-5 h-5 text-gray-600 mt-1" />
+            <Users className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Jane Smith</p>
-              <p className="text-xs text-gray-600">jane@example.com</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">jane@example.com</p>
             </div>
           </div>
         </div>
@@ -118,17 +118,17 @@ export default function WebOSDemoPage() {
       content: (
         <div className="space-y-4">
           <div className="flex items-start gap-3">
-            <MessageSquare className="w-5 h-5 text-gray-600 mt-1" />
+            <MessageSquare className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Sarah Wilson</p>
-              <p className="text-xs text-gray-600">Thanks for the update!</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">Thanks for the update!</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <MessageSquare className="w-5 h-5 text-gray-600 mt-1" />
+            <MessageSquare className="w-5 h-5 text-[var(--semantic-text-secondary)] mt-1" />
             <div>
               <p className="text-sm font-medium">Mike Johnson</p>
-              <p className="text-xs text-gray-600">See you tomorrow</p>
+              <p className="text-xs text-[var(--semantic-text-secondary)]">See you tomorrow</p>
             </div>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function WebOSDemoPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <WebOSCard title="Settings">
             <div className="flex items-center gap-3">
-              <Settings className="w-6 h-6 text-gray-600" />
+              <Settings className="w-6 h-6 text-[var(--semantic-text-secondary)]" />
               <div>
                 <p className="text-sm">Configure your preferences</p>
               </div>
@@ -166,9 +166,9 @@ export default function WebOSDemoPage() {
 
           <WebOSCard title="Recent Activity">
             <div className="space-y-3">
-              <p className="text-sm text-gray-600">3 new messages</p>
-              <p className="text-sm text-gray-600">2 calendar events</p>
-              <p className="text-sm text-gray-600">1 document shared</p>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">3 new messages</p>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">2 calendar events</p>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">1 document shared</p>
             </div>
           </WebOSCard>
 

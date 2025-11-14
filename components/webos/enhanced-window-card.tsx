@@ -130,7 +130,7 @@ export function EnhancedWindowCard({
         ref={windowRef}
         className={cn(
           'fixed bg-white rounded-xl shadow-2xl overflow-hidden',
-          'border border-gray-200',
+          'border border-[var(--semantic-border-light)]',
           'flex flex-col',
           isDragging && 'cursor-grabbing',
           className
@@ -153,7 +153,7 @@ export function EnhancedWindowCard({
           className={cn(
             'flex items-center justify-between px-4 py-3',
             'bg-gradient-to-b from-gray-50 to-white',
-            'border-b border-gray-200',
+            'border-b border-[var(--semantic-border-light)]',
             'select-none cursor-grab active:cursor-grabbing'
           )}
           onMouseDown={handleDragStart}
@@ -161,7 +161,7 @@ export function EnhancedWindowCard({
         >
           <div className="flex items-center gap-2 flex-1 min-w-0">
             {icon && <div className="flex-shrink-0">{icon}</div>}
-            <h3 className="font-semibold text-gray-900 truncate">{title}</h3>
+            <h3 className="font-semibold text-[var(--semantic-text-primary)] truncate">{title}</h3>
           </div>
 
           {/* Window Controls */}
@@ -169,26 +169,26 @@ export function EnhancedWindowCard({
             <button
               onClick={() => restoreWindow(id)}
               className={cn(
-                'p-1.5 rounded-lg hover:bg-gray-200',
+                'p-1.5 rounded-lg hover:bg-[var(--semantic-bg-muted)]',
                 'transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300'
               )}
               title="Minimize"
             >
-              <Minus className="w-4 h-4 text-gray-600" />
+              <Minus className="w-4 h-4 text-[var(--semantic-text-secondary)]" />
             </button>
 
             <button
               onClick={handleMaximizeToggle}
               className={cn(
-                'p-1.5 rounded-lg hover:bg-gray-200',
+                'p-1.5 rounded-lg hover:bg-[var(--semantic-bg-muted)]',
                 'transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300'
               )}
               title={windowState.isMaximized || windowState.isSnapped ? 'Restore' : 'Maximize'}
             >
               {windowState.isMaximized || windowState.isSnapped ? (
-                <Minimize2 className="w-4 h-4 text-gray-600" />
+                <Minimize2 className="w-4 h-4 text-[var(--semantic-text-secondary)]" />
               ) : (
-                <Maximize2 className="w-4 h-4 text-gray-600" />
+                <Maximize2 className="w-4 h-4 text-[var(--semantic-text-secondary)]" />
               )}
             </button>
 

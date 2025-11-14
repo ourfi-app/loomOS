@@ -166,7 +166,7 @@ export function DesktopActivityWidget({ widget }: DesktopActivityWidgetProps) {
       message: 'text-purple-500 bg-purple-500/10',
       document: 'text-orange-500 bg-orange-500/10',
       event: 'text-pink-500 bg-pink-500/10',
-      system: 'text-gray-500 bg-gray-500/10',
+      system: 'text-[var(--semantic-text-tertiary)] bg-gray-500/10',
     };
     return colors[type] || 'text-muted-foreground bg-muted/50';
   };

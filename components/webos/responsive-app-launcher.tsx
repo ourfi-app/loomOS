@@ -162,7 +162,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
               </h1>
               <p className={cn(
                 RESPONSIVE_TYPOGRAPHY.body.mobile,
-                'text-gray-600 mt-1',
+                'text-[var(--semantic-text-secondary)] mt-1',
                 RESPONSIVE_VISIBILITY.hideMobile // Hide on mobile to save space
               )}>
                 {filteredApps.length} apps available • {breakpoint} breakpoint
@@ -190,7 +190,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
           <div className="relative">
             <SearchIcon className={cn(
               'absolute left-3 sm:left-4 top-1/2 -translate-y-1/2',
-              'text-gray-400',
+              'text-[var(--semantic-text-tertiary)]',
               'w-5 h-5 sm:w-6 sm:h-6'
             )} />
             <input
@@ -236,7 +236,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   sortMode === 'alphabetical'
                     ? 'bg-blue-500 text-white'
-                    : 'bg-white/60 text-gray-700 hover:bg-white'
+                    : 'bg-white/60 text-[var(--semantic-text-secondary)] hover:bg-white'
                 )}
               >
                 A-Z
@@ -247,7 +247,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   sortMode === 'recent'
                     ? 'bg-blue-500 text-white'
-                    : 'bg-white/60 text-gray-700 hover:bg-white'
+                    : 'bg-white/60 text-[var(--semantic-text-secondary)] hover:bg-white'
                 )}
               >
                 Recent
@@ -258,7 +258,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   sortMode === 'frequent'
                     ? 'bg-blue-500 text-white'
-                    : 'bg-white/60 text-gray-700 hover:bg-white'
+                    : 'bg-white/60 text-[var(--semantic-text-secondary)] hover:bg-white'
                 )}
               >
                 Frequent
@@ -365,13 +365,13 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
               )} />
               <h3 className={cn(
                 RESPONSIVE_TYPOGRAPHY.h3.mobile,
-                'text-gray-500 mb-2'
+                'text-[var(--semantic-text-tertiary)] mb-2'
               )}>
                 No apps found
               </h3>
               <p className={cn(
                 RESPONSIVE_TYPOGRAPHY.body.mobile,
-                'text-gray-400'
+                'text-[var(--semantic-text-tertiary)]'
               )}>
                 Try adjusting your search or filters
               </p>

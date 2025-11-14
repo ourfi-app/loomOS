@@ -208,7 +208,7 @@ export default function TasksTab() {
       case 'LOW':
         return 'text-blue-600';
       default:
-        return 'text-gray-600';
+        return 'text-[var(--semantic-text-secondary)]';
     }
   };
 

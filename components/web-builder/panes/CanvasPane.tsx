@@ -83,7 +83,7 @@ export function CanvasPane() {
 
         {/* Properties Panel */}
         {selectedNode && (
-          <div className="w-80 border-l border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+          <div className="w-80 border-l border-[var(--semantic-border-light)] dark:border-gray-700 bg-white dark:bg-gray-800">
             <PropertiesPanel />
           </div>
         )}

@@ -303,7 +303,7 @@ export default function OnboardingClient() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Enhanced Header with Gradient */}
-      <div className="bg-gradient-to-b from-white to-gray-50 border-b border-gray-200 shadow-lg sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
+      <div className="bg-gradient-to-b from-white to-gray-50 border-b border-[var(--semantic-border-light)] shadow-lg sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
         <div className="container mx-auto px-4 py-5">
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-4">
@@ -319,9 +319,9 @@ export default function OnboardingClient() {
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   Association Setup Wizard
                 </h1>
-                <p className="text-sm text-gray-600 mt-0.5 flex items-center gap-2">
+                <p className="text-sm text-[var(--semantic-text-secondary)] mt-0.5 flex items-center gap-2">
                   <span className="font-medium">Step {currentStep + 1} of {ONBOARDING_STEPS.length}:</span>
-                  <span className="text-gray-800">{currentStepInfo.title}</span>
+                  <span className="text-[var(--semantic-text-primary)]">{currentStepInfo.title}</span>
                   {!currentStepInfo.required && (
                     <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full font-medium border border-amber-200">
                       Optional
@@ -352,7 +352,7 @@ export default function OnboardingClient() {
                   size="sm"
                   onClick={handleSaveAndExit}
                   disabled={saving}
-                  className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-sm"
+                  className="border-[var(--semantic-border-medium)] hover:border-[var(--semantic-border-strong)] hover:bg-[var(--semantic-bg-subtle)] shadow-sm"
                 >
                   {saving ? (
                     <>
@@ -371,7 +371,7 @@ export default function OnboardingClient() {
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push('/dashboard')}
-                className="hover:bg-gray-100"
+                className="hover:bg-[var(--semantic-surface-hover)]"
               >
                 Exit Setup
               </Button>
@@ -380,7 +380,7 @@ export default function OnboardingClient() {
 
           {/* Enhanced Progress Bar */}
           <div className="relative">
-            <div className="h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+            <div className="h-3 bg-[var(--semantic-bg-muted)] rounded-full overflow-hidden shadow-inner">
               <motion.div
                 className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full relative"
                 initial={{ width: 0 }}
@@ -397,7 +397,7 @@ export default function OnboardingClient() {
             </div>
             {/* Progress percentage */}
             <motion.div
-              className="absolute -top-7 text-xs font-bold text-gray-700 bg-white px-2 py-0.5 rounded shadow-sm border border-gray-200"
+              className="absolute -top-7 text-xs font-bold text-[var(--semantic-text-secondary)] bg-white px-2 py-0.5 rounded shadow-sm border border-[var(--semantic-border-light)]"
               initial={{ left: 0 }}
               animate={{ left: `${Math.min(progress, 95)}%` }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -449,7 +449,7 @@ export default function OnboardingClient() {
                       ? 'bg-gradient-to-br from-blue-500 to-indigo-600 border-blue-400 text-white shadow-blue-300'
                       : isCompleted
                       ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-400 text-green-600 shadow-green-200'
-                      : 'bg-white border-gray-300 text-gray-400 shadow-gray-200'
+                      : 'bg-white border-[var(--semantic-border-medium)] text-[var(--semantic-text-tertiary)] shadow-gray-200'
                   } ${isAccessible ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'}`}
                   whileHover={isAccessible ? { scale: 1.08, y: -2 } : {}}
                   whileTap={isAccessible ? { scale: 0.95 } : {}}
@@ -479,7 +479,7 @@ export default function OnboardingClient() {
                     <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
                       isCurrent
                         ? 'bg-white text-blue-600 shadow-md'
-                        : 'bg-gray-200 text-gray-600'
+                        : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-secondary)]'
                     }`}>
                       {index + 1}
                     </div>
@@ -498,14 +498,14 @@ export default function OnboardingClient() {
                       isCurrent
                         ? 'text-blue-600'
                         : isCompleted
-                        ? 'text-gray-900'
-                        : 'text-gray-400'
+                        ? 'text-[var(--semantic-text-primary)]'
+                        : 'text-[var(--semantic-text-tertiary)]'
                     }`}
                   >
                     {step.title}
                   </p>
                   <p className={`text-[10px] ${
-                    isCurrent ? 'text-blue-500' : 'text-gray-400'
+                    isCurrent ? 'text-blue-500' : 'text-[var(--semantic-text-tertiary)]'
                   }`}>
                     {step.description}
                   </p>
@@ -536,7 +536,7 @@ export default function OnboardingClient() {
                     })()}
                   </motion.div>
                   <div>
-                    <p className="font-semibold text-gray-900 flex items-center gap-2">
+                    <p className="font-semibold text-[var(--semantic-text-primary)] flex items-center gap-2">
                       {currentStepInfo.title}
                       {!currentStepInfo.required && (
                         <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full font-medium border border-amber-200">
@@ -544,7 +544,7 @@ export default function OnboardingClient() {
                         </span>
                       )}
                     </p>
-                    <p className="text-xs text-gray-600 mt-0.5">
+                    <p className="text-xs text-[var(--semantic-text-secondary)] mt-0.5">
                       {currentStepInfo.description}
                     </p>
                   </div>
@@ -553,7 +553,7 @@ export default function OnboardingClient() {
                   <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     {currentStep + 1}/{ONBOARDING_STEPS.length}
                   </span>
-                  <span className="text-[10px] text-gray-500">
+                  <span className="text-[10px] text-[var(--semantic-text-tertiary)]">
                     {Math.round(progress)}% complete
                   </span>
                 </div>
@@ -647,7 +647,7 @@ export default function OnboardingClient() {
               onClick={handleBack}
               disabled={saving}
               size="lg"
-              className="border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-md hover:shadow-lg transition-all"
+              className="border-2 border-[var(--semantic-border-medium)] hover:border-[var(--semantic-border-strong)] hover:bg-[var(--semantic-bg-subtle)] shadow-md hover:shadow-lg transition-all"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back
@@ -658,7 +658,7 @@ export default function OnboardingClient() {
                 onClick={handleSkip}
                 disabled={saving}
                 size="lg"
-                className="text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                className="text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)] hover:bg-[var(--semantic-surface-hover)]"
               >
                 Skip for now
                 <ArrowRight className="h-4 w-4 ml-2" />

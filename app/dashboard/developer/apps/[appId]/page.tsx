@@ -89,7 +89,7 @@ export default function AppManagementPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <p className="text-gray-600 mb-4">App not found</p>
+          <p className="text-[var(--semantic-text-secondary)] mb-4">App not found</p>
           <Link
             href="/dashboard/developer"
             className="text-orange-600 hover:underline"
@@ -120,14 +120,14 @@ export default function AppManagementPage() {
           />
           <div className="flex-1">
             <h1 className="text-3xl font-bold">{app.name}</h1>
-            <p className="text-gray-600">{app.tagline}</p>
+            <p className="text-[var(--semantic-text-secondary)]">{app.tagline}</p>
             <div className="flex gap-4 mt-2">
               <span
                 className={`px-3 py-1 rounded-full text-sm ${
                   app.status === 'PUBLISHED'
                     ? 'bg-green-100 text-green-700'
                     : app.status === 'DRAFT'
-                    ? 'bg-gray-100 text-gray-700'
+                    ? 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                     : app.status === 'PENDING_REVIEW'
                     ? 'bg-blue-100 text-blue-700'
                     : 'bg-yellow-100 text-yellow-700'
@@ -135,13 +135,13 @@ export default function AppManagementPage() {
               >
                 {app.status}
               </span>
-              <span className="text-sm text-gray-600">v{app.currentVersion}</span>
+              <span className="text-sm text-[var(--semantic-text-secondary)]">v{app.currentVersion}</span>
             </div>
           </div>
           <div className="flex gap-3">
             <Link
               href={`/dashboard/developer/apps/${app.id}/edit`}
-              className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+              className="px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg hover:bg-[var(--semantic-bg-subtle)]"
             >
               Edit Details
             </Link>
@@ -170,7 +170,7 @@ export default function AppManagementPage() {
               className={`pb-3 px-1 ${
                 activeTab === tab.id
                   ? 'border-b-2 border-orange-500 text-orange-600 font-semibold'
-                  : 'text-gray-600 hover:text-gray-900'
+                  : 'text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)]'
               }`}
             >
               {tab.label}
@@ -186,25 +186,25 @@ export default function AppManagementPage() {
           {analytics && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="bg-white p-6 rounded-lg shadow">
-                <div className="text-sm text-gray-600 mb-1">Downloads</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Downloads</div>
                 <div className="text-2xl font-bold">
                   {analytics.downloads.toLocaleString()}
                 </div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow">
-                <div className="text-sm text-gray-600 mb-1">Installations</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Installations</div>
                 <div className="text-2xl font-bold">
                   {analytics.installations.toLocaleString()}
                 </div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow">
-                <div className="text-sm text-gray-600 mb-1">Active Users</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Active Users</div>
                 <div className="text-2xl font-bold">
                   {analytics.activeUsers.toLocaleString()}
                 </div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow">
-                <div className="text-sm text-gray-600 mb-1">Avg Rating</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Avg Rating</div>
                 <div className="text-2xl font-bold">
                   ⭐ {analytics.averageRating.toFixed(1)}
                 </div>
@@ -217,35 +217,35 @@ export default function AppManagementPage() {
             <h2 className="text-xl font-semibold mb-4">App Details</h2>
             <div className="space-y-4">
               <div>
-                <div className="text-sm text-gray-600">Description</div>
+                <div className="text-sm text-[var(--semantic-text-secondary)]">Description</div>
                 <p className="mt-1">{app.description}</p>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <div className="text-sm text-gray-600">Category</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Category</div>
                   <div className="mt-1">{app.category}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Pricing</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Pricing</div>
                   <div className="mt-1 capitalize">{app.pricing.model}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Installation Type</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Installation Type</div>
                   <div className="mt-1">{app.installationType}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Min loomOS Version</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Min loomOS Version</div>
                   <div className="mt-1">{app.minimumLoomOSVersion}</div>
                 </div>
               </div>
               {app.tags && app.tags.length > 0 && (
                 <div>
-                  <div className="text-sm text-gray-600 mb-2">Tags</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)] mb-2">Tags</div>
                   <div className="flex flex-wrap gap-2">
                     {app.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                        className="bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] px-3 py-1 rounded-full text-sm"
                       >
                         {tag}
                       </span>
@@ -300,60 +300,60 @@ export default function AppManagementPage() {
             <div className="space-y-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                  <div className="text-sm text-gray-600">Total Downloads</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Total Downloads</div>
                   <div className="text-2xl font-bold mt-1">
                     {analytics.downloads.toLocaleString()}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Installations</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Installations</div>
                   <div className="text-2xl font-bold mt-1">
                     {analytics.installations.toLocaleString()}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Uninstalls</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Uninstalls</div>
                   <div className="text-2xl font-bold mt-1">
                     {analytics.uninstalls.toLocaleString()}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Net Installs</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Net Installs</div>
                   <div className="text-2xl font-bold mt-1">
                     {(analytics.installations - analytics.uninstalls).toLocaleString()}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Active Users</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Active Users</div>
                   <div className="text-2xl font-bold mt-1">
                     {analytics.activeUsers.toLocaleString()}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Total Launches</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Total Launches</div>
                   <div className="text-2xl font-bold mt-1">
                     {analytics.launches.toLocaleString()}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Crash Rate</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Crash Rate</div>
                   <div className="text-2xl font-bold mt-1">
                     {(analytics.crashRate * 100).toFixed(2)}%
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600">Revenue</div>
+                  <div className="text-sm text-[var(--semantic-text-secondary)]">Revenue</div>
                   <div className="text-2xl font-bold mt-1">
                     ${analytics.revenue.toFixed(2)}
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-[var(--semantic-text-secondary)]">
                 Data shown for the last 30 days
               </p>
             </div>
           ) : (
-            <p className="text-gray-600">No analytics data available yet.</p>
+            <p className="text-[var(--semantic-text-secondary)]">No analytics data available yet.</p>
           )}
         </div>
       )}
@@ -371,7 +371,7 @@ export default function AppManagementPage() {
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <h3 className="font-semibold">Version {version.version}</h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-[var(--semantic-text-secondary)]">
                         {new Date(version.createdAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -379,21 +379,21 @@ export default function AppManagementPage() {
                       className={`px-3 py-1 rounded-full text-sm ${
                         version.status === 'published'
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-gray-100 text-gray-700'
+                          : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                       }`}
                     >
                       {version.status}
                     </span>
                   </div>
                   <p className="text-sm">{version.releaseNotes}</p>
-                  <div className="text-sm text-gray-600 mt-2">
+                  <div className="text-sm text-[var(--semantic-text-secondary)] mt-2">
                     {version.downloads.toLocaleString()} downloads
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-600">No versions yet.</p>
+            <p className="text-[var(--semantic-text-secondary)]">No versions yet.</p>
           )}
         </div>
       )}
@@ -411,11 +411,11 @@ export default function AppManagementPage() {
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <div className="font-semibold">{review.userName || 'Anonymous'}</div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-[var(--semantic-text-secondary)]">
                         {'⭐'.repeat(review.rating)} {review.rating}/5
                       </div>
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-[var(--semantic-text-secondary)]">
                       {new Date(review.createdAt).toLocaleDateString()}
                     </div>
                   </div>
@@ -427,7 +427,7 @@ export default function AppManagementPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-600">No reviews yet.</p>
+            <p className="text-[var(--semantic-text-secondary)]">No reviews yet.</p>
           )}
         </div>
       )}

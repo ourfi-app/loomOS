@@ -84,14 +84,14 @@ export function KeyboardShortcuts() {
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-4 flex items-center justify-between border-b border-gray-300">
+        <div className="bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-4 flex items-center justify-between border-b border-[var(--semantic-border-medium)]">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center">
               <Command className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">Keyboard Shortcuts</h2>
-              <p className="text-sm text-gray-600">Navigate faster with your keyboard</p>
+              <h2 className="text-lg font-semibold text-[var(--semantic-text-primary)]">Keyboard Shortcuts</h2>
+              <p className="text-sm text-[var(--semantic-text-secondary)]">Navigate faster with your keyboard</p>
             </div>
           </div>
           <button
@@ -99,7 +99,7 @@ export function KeyboardShortcuts() {
             className="w-8 h-8 rounded-full hover:bg-gray-300 flex items-center justify-center transition-colors"
             aria-label="Close keyboard shortcuts"
           >
-            <X className="w-5 h-5 text-gray-700" />
+            <X className="w-5 h-5 text-[var(--semantic-text-secondary)]" />
           </button>
         </div>
         
@@ -109,31 +109,31 @@ export function KeyboardShortcuts() {
             {shortcuts.map((shortcut, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-between p-3 rounded-lg bg-[var(--semantic-bg-subtle)] hover:bg-[var(--semantic-surface-hover)] transition-colors"
               >
-                <span className="text-sm text-gray-700">{shortcut.description}</span>
+                <span className="text-sm text-[var(--semantic-text-secondary)]">{shortcut.description}</span>
                 <div className="flex items-center gap-1">
                   {shortcut.ctrl && (
-                    <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow-sm">
+                    <kbd className="px-2 py-1 text-xs font-semibold text-[var(--semantic-text-primary)] bg-white border border-[var(--semantic-border-medium)] rounded shadow-sm">
                       Ctrl
                     </kbd>
                   )}
                   {shortcut.shift && (
-                    <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow-sm">
+                    <kbd className="px-2 py-1 text-xs font-semibold text-[var(--semantic-text-primary)] bg-white border border-[var(--semantic-border-medium)] rounded shadow-sm">
                       Shift
                     </kbd>
                   )}
                   {shortcut.alt && (
-                    <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow-sm">
+                    <kbd className="px-2 py-1 text-xs font-semibold text-[var(--semantic-text-primary)] bg-white border border-[var(--semantic-border-medium)] rounded shadow-sm">
                       Alt
                     </kbd>
                   )}
                   {shortcut.meta && (
-                    <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow-sm">
+                    <kbd className="px-2 py-1 text-xs font-semibold text-[var(--semantic-text-primary)] bg-white border border-[var(--semantic-border-medium)] rounded shadow-sm">
                       ⌘
                     </kbd>
                   )}
-                  <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow-sm">
+                  <kbd className="px-2 py-1 text-xs font-semibold text-[var(--semantic-text-primary)] bg-white border border-[var(--semantic-border-medium)] rounded shadow-sm">
                     {shortcut.key.toUpperCase()}
                   </kbd>
                 </div>

@@ -54,7 +54,7 @@ export default function StorageSetupStep({
           <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-3">
             Document Storage
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-[var(--semantic-text-secondary)] text-lg">
             Choose where your association's documents will be stored securely.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function StorageSetupStep({
             className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 relative overflow-hidden ${
               storageType === 'builtin'
                 ? 'border-blue-500 bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30 shadow-lg shadow-blue-500/20'
-                : 'border-gray-200 hover:border-gray-300 bg-white hover:shadow-md'
+                : 'border-[var(--semantic-border-light)] hover:border-[var(--semantic-border-medium)] bg-white hover:shadow-md'
             }`}
           >
             {/* Animated Background */}
@@ -85,14 +85,14 @@ export default function StorageSetupStep({
                 className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg ${
                   storageType === 'builtin' 
                     ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white' 
-                    : 'bg-gray-100 text-gray-600'
+                    : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                 }`}
               >
                 <Cloud className="h-6 w-6" />
               </motion.div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-bold text-gray-900 text-lg">Built-in Cloud Storage</h3>
+                  <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">Built-in Cloud Storage</h3>
                   {storageType === 'builtin' && (
                     <motion.div
                       initial={{ scale: 0 }}
@@ -106,7 +106,7 @@ export default function StorageSetupStep({
                     Recommended
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                <p className="text-sm text-[var(--semantic-text-secondary)] mb-4 leading-relaxed">
                   Secure, built-in cloud storage with automatic backups and enterprise-grade security.
                 </p>
                 <div className="grid grid-cols-2 gap-3">
@@ -128,7 +128,7 @@ export default function StorageSetupStep({
                         <div className="w-6 h-6 rounded-md bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
                           <Icon className="h-3.5 w-3.5 text-white" />
                         </div>
-                        <span className="text-xs text-gray-700 font-medium">{item.text}</span>
+                        <span className="text-xs text-[var(--semantic-text-secondary)] font-medium">{item.text}</span>
                       </motion.div>
                     );
                   })}
@@ -147,18 +147,18 @@ export default function StorageSetupStep({
             className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 relative overflow-hidden opacity-60 cursor-not-allowed ${
               storageType === 'google-drive'
                 ? 'border-blue-500 bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30'
-                : 'border-gray-200 bg-gray-50'
+                : 'border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)]'
             }`}
           >
             <div className="relative flex items-start gap-4">
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                storageType === 'google-drive' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
+                storageType === 'google-drive' ? 'bg-blue-600 text-white' : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-tertiary)]'
               }`}>
                 <HardDrive className="h-6 w-6" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-bold text-gray-900 text-lg">Google Drive Integration</h3>
+                  <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">Google Drive Integration</h3>
                   {storageType === 'google-drive' && (
                     <Check className="h-5 w-5 text-blue-600" />
                   )}
@@ -166,7 +166,7 @@ export default function StorageSetupStep({
                     Coming Soon
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-[var(--semantic-text-secondary)] mb-2">
                   Connect your existing Google Drive account for document storage.
                 </p>
                 <p className="text-sm text-amber-700 font-medium">
@@ -190,8 +190,8 @@ export default function StorageSetupStep({
               <Shield className="h-5 w-5 text-white" />
             </div>
             <div>
-              <p className="font-semibold text-gray-900 mb-1">Secure & Reliable</p>
-              <p className="text-sm text-gray-700 leading-relaxed">
+              <p className="font-semibold text-[var(--semantic-text-primary)] mb-1">Secure & Reliable</p>
+              <p className="text-sm text-[var(--semantic-text-secondary)] leading-relaxed">
                 All files are encrypted in transit and at rest. Your documents are backed up daily and can be recovered at any time.
               </p>
             </div>
@@ -199,7 +199,7 @@ export default function StorageSetupStep({
         </motion.div>
 
         {/* Action Button */}
-        <div className="flex justify-end pt-6 border-t border-gray-200">
+        <div className="flex justify-end pt-6 border-t border-[var(--semantic-border-light)]">
           <Button 
             size="lg" 
             onClick={handleContinue} 

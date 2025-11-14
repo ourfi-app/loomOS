@@ -114,7 +114,7 @@ export default function DeveloperDashboard() {
     return (
       <div className="max-w-2xl mx-auto p-8">
         <h1 className="text-3xl font-bold mb-2">Become a loomOS Developer</h1>
-        <p className="text-gray-600 mb-8">
+        <p className="text-[var(--semantic-text-secondary)] mb-8">
           Create and publish apps for the loomOS marketplace
         </p>
 
@@ -127,7 +127,7 @@ export default function DeveloperDashboard() {
               type="text"
               name="displayName"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               placeholder="Your name or company name"
             />
           </div>
@@ -139,7 +139,7 @@ export default function DeveloperDashboard() {
             <input
               type="text"
               name="companyName"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               placeholder="Your company name"
             />
           </div>
@@ -152,7 +152,7 @@ export default function DeveloperDashboard() {
               name="bio"
               required
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               placeholder="Tell us about yourself and what you plan to build"
             />
           </div>
@@ -164,7 +164,7 @@ export default function DeveloperDashboard() {
             <input
               type="url"
               name="website"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               placeholder="https://yourwebsite.com"
             />
           </div>
@@ -177,7 +177,7 @@ export default function DeveloperDashboard() {
               type="email"
               name="supportEmail"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border border-[var(--semantic-border-medium)] rounded-lg focus:ring-2 focus:ring-orange-500"
               placeholder="support@yourcompany.com"
             />
           </div>
@@ -201,7 +201,7 @@ export default function DeveloperDashboard() {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Developer Portal</h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-[var(--semantic-text-secondary)] mt-1">
             Welcome back, {developer.displayName}!
           </p>
         </div>
@@ -217,7 +217,7 @@ export default function DeveloperDashboard() {
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white p-6 rounded-lg shadow">
-            <div className="text-sm text-gray-600 mb-1">Total Apps</div>
+            <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Total Apps</div>
             <div className="text-3xl font-bold">{stats.totalApps}</div>
             <div className="text-sm text-green-600 mt-2">
               {stats.publishedApps} published
@@ -225,31 +225,31 @@ export default function DeveloperDashboard() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <div className="text-sm text-gray-600 mb-1">Total Downloads</div>
+            <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Total Downloads</div>
             <div className="text-3xl font-bold">
               {stats.totalDownloads.toLocaleString()}
             </div>
-            <div className="text-sm text-gray-600 mt-2">
+            <div className="text-sm text-[var(--semantic-text-secondary)] mt-2">
               +{stats.recentDownloads.toLocaleString()} this month
             </div>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <div className="text-sm text-gray-600 mb-1">Total Revenue</div>
+            <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Total Revenue</div>
             <div className="text-3xl font-bold">
               ${stats.totalRevenue.toFixed(2)}
             </div>
-            <div className="text-sm text-gray-600 mt-2">
+            <div className="text-sm text-[var(--semantic-text-secondary)] mt-2">
               +${stats.recentRevenue.toFixed(2)} this month
             </div>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <div className="text-sm text-gray-600 mb-1">Average Rating</div>
+            <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Average Rating</div>
             <div className="text-3xl font-bold">
               {stats.averageRating.toFixed(1)}
             </div>
-            <div className="text-sm text-gray-600 mt-2">⭐ out of 5</div>
+            <div className="text-sm text-[var(--semantic-text-secondary)] mt-2">⭐ out of 5</div>
           </div>
         </div>
       )}
@@ -262,7 +262,7 @@ export default function DeveloperDashboard() {
 
         {apps.length === 0 ? (
           <div className="p-12 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-[var(--semantic-text-secondary)] mb-4">
               You haven't created any apps yet
             </p>
             <Link
@@ -278,7 +278,7 @@ export default function DeveloperDashboard() {
               <Link
                 key={app.id}
                 href={`/dashboard/developer/apps/${app.id}`}
-                className="block p-6 hover:bg-gray-50 transition-colors"
+                className="block p-6 hover:bg-[var(--semantic-bg-subtle)] transition-colors"
               >
                 <div className="flex items-center gap-4">
                   <img
@@ -288,8 +288,8 @@ export default function DeveloperDashboard() {
                   />
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg">{app.name}</h3>
-                    <p className="text-gray-600 text-sm">{app.tagline}</p>
-                    <div className="flex gap-3 mt-2 text-sm text-gray-600">
+                    <p className="text-[var(--semantic-text-secondary)] text-sm">{app.tagline}</p>
+                    <div className="flex gap-3 mt-2 text-sm text-[var(--semantic-text-secondary)]">
                       <span>v{app.currentVersion}</span>
                       <span>•</span>
                       <span>{app.downloads.toLocaleString()} downloads</span>
@@ -303,7 +303,7 @@ export default function DeveloperDashboard() {
                         app.status === 'PUBLISHED'
                           ? 'bg-green-100 text-green-700'
                           : app.status === 'DRAFT'
-                          ? 'bg-gray-100 text-gray-700'
+                          ? 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                           : app.status === 'PENDING_REVIEW'
                           ? 'bg-blue-100 text-blue-700'
                           : 'bg-yellow-100 text-yellow-700'

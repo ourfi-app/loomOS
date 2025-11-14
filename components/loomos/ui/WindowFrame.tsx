@@ -52,10 +52,10 @@ export function WindowFrame({
       }}
     >
       {/* Title Bar */}
-      <div className="flex items-center justify-between px-4 h-12 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between px-4 h-12 bg-[var(--semantic-bg-subtle)] dark:bg-gray-800 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
         <div className="flex items-center gap-2">
-          {Icon && <Icon className="w-4 h-4 text-gray-600 dark:text-gray-400" />}
-          <h1 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+          {Icon && <Icon className="w-4 h-4 text-[var(--semantic-text-secondary)] dark:text-[var(--semantic-text-tertiary)]" />}
+          <h1 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100">
             {title}
           </h1>
         </div>
@@ -79,7 +79,7 @@ export function WindowFrame({
 
       {/* Toolbar (Optional) */}
       {toolbar && (
-        <div className="border-b border-gray-200 dark:border-gray-700">
+        <div className="border-b border-[var(--semantic-border-light)] dark:border-gray-700">
           {toolbar}
         </div>
       )}

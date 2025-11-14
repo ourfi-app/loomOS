@@ -58,7 +58,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E8E8E8] flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen webos-gradient-bg flex items-center justify-center p-6 relative overflow-hidden" style={{ background: 'var(--semantic-bg-base)' }}>
       {/* Subtle animated background gradient */}
       <div className="absolute inset-0 opacity-30">
         <div
@@ -93,7 +93,8 @@ export default function LoginPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#6B6B6B] hover:text-loomos-orange transition-colors"
+            className="inline-flex items-center gap-2 text-sm hover:text-loomos-orange transition-colors"
+            style={{ color: 'var(--semantic-text-secondary)' }}
           >
             <ArrowLeft className="w-4 h-4" />
             Back to home
@@ -110,12 +111,14 @@ export default function LoginPage() {
             stiffness: 300,
             damping: 25,
           }}
-          className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-[#E0E0E0] text-center"
+          className="webos-glass rounded-2xl p-8 shadow-lg text-center"
+          style={{ background: 'var(--semantic-surface-base)', borderColor: 'var(--semantic-border-light)' }}
         >
           {/* loomOS Logo */}
           <div className="mb-6">
             <motion.h1
-              className="text-5xl font-light text-[#1E1E1E] tracking-tight"
+              className="text-5xl font-light tracking-tight"
+              style={{ color: 'var(--semantic-text-primary)' }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -123,7 +126,8 @@ export default function LoginPage() {
               loom<span className="font-normal text-loomos-orange">OS</span>
             </motion.h1>
             <motion.p
-              className="text-sm text-[#666] mt-2 font-medium tracking-wide"
+              className="text-sm mt-2 font-medium tracking-wide"
+              style={{ color: 'var(--semantic-text-secondary)' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -151,8 +155,8 @@ export default function LoginPage() {
             transition={{ delay: 0.6 }}
             className="mt-8"
           >
-            <h2 className="text-2xl font-semibold text-[#1E1E1E]">Welcome Back</h2>
-            <p className="text-[#666] mt-2">Sign in to your liberation platform</p>
+            <h2 className="text-2xl font-semibold" style={{ color: 'var(--semantic-text-primary)' }}>Welcome Back</h2>
+            <p className="mt-2" style={{ color: 'var(--semantic-text-secondary)' }}>Sign in to your liberation platform</p>
           </motion.div>
         </motion.div>
 
@@ -161,7 +165,8 @@ export default function LoginPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-[#E0E0E0]"
+          className="webos-glass rounded-2xl p-8 shadow-lg"
+          style={{ background: 'var(--semantic-surface-base)', borderColor: 'var(--semantic-border-light)' }}
         >
           {error && (
             <motion.div
@@ -169,9 +174,9 @@ export default function LoginPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >
-              <Alert className="bg-[#FEE2E2] border-[#FCA5A5] rounded-lg mb-5">
-                <AlertCircle className="h-4 w-4 text-[#DC2626]" />
-                <AlertDescription className="text-[#DC2626] text-sm">{error}</AlertDescription>
+              <Alert className="rounded-lg mb-5" style={{ backgroundColor: 'var(--semantic-error-bg)', borderColor: 'var(--semantic-error-border)' }}>
+                <AlertCircle className="h-4 w-4" style={{ color: 'var(--semantic-error)' }} />
+                <AlertDescription className="text-sm" style={{ color: 'var(--semantic-error-text)' }}>{error}</AlertDescription>
               </Alert>
             </motion.div>
           )}
@@ -185,7 +190,7 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full h-12 rounded-xl border-[#E0E0E0] bg-white hover:bg-[#FAFAFA] text-[#1E1E1E] font-medium shadow-sm"
+              className="webos-button w-full h-12 rounded-xl font-medium shadow-sm"
               onClick={handleGoogleSignIn}
               disabled={isGoogleLoading || isLoading}
             >
@@ -213,16 +218,16 @@ export default function LoginPage() {
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#E0E0E0]"></div>
+              <div className="w-full border-t" style={{ borderColor: 'var(--semantic-border-light)' }}></div>
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="bg-white px-3 text-[#999] font-medium">OR CONTINUE WITH EMAIL</span>
+              <span className="px-3 font-medium" style={{ background: 'var(--semantic-surface-base)', color: 'var(--semantic-text-tertiary)' }}>OR CONTINUE WITH EMAIL</span>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-xs font-semibold text-[#666] uppercase tracking-wider">
+              <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--semantic-text-secondary)' }}>
                 Email Address
               </Label>
               <Input
@@ -232,14 +237,19 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-12 rounded-xl bg-[#FAFAFA] border-[#E0E0E0] focus:border-loomos-orange focus:ring-loomos-orange/20 text-[#1E1E1E] transition-all duration-200"
+                className="h-12 rounded-xl transition-all duration-200"
+                style={{ 
+                  background: 'var(--semantic-surface-hover)', 
+                  borderColor: 'var(--semantic-border-light)',
+                  color: 'var(--semantic-text-primary)'
+                }}
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="text-xs font-semibold text-[#666] uppercase tracking-wider">
+                <Label htmlFor="password" className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--semantic-text-secondary)' }}>
                   Password
                 </Label>
                 <Link
@@ -257,13 +267,19 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="h-12 rounded-xl bg-[#FAFAFA] border-[#E0E0E0] focus:border-loomos-orange focus:ring-loomos-orange/20 text-[#1E1E1E] pr-12 transition-all duration-200"
+                  className="h-12 rounded-xl pr-12 transition-all duration-200"
+                  style={{ 
+                    background: 'var(--semantic-surface-hover)', 
+                    borderColor: 'var(--semantic-border-light)',
+                    color: 'var(--semantic-text-primary)'
+                  }}
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#999] hover:text-loomos-orange transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 hover:text-loomos-orange transition-colors"
+                  style={{ color: 'var(--semantic-text-tertiary)' }}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                   disabled={isLoading || isGoogleLoading}
                 >
@@ -303,9 +319,10 @@ export default function LoginPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-[#E0E0E0] text-center"
+          className="webos-glass rounded-2xl p-6 shadow-md text-center"
+          style={{ background: 'var(--semantic-surface-base)', borderColor: 'var(--semantic-border-light)' }}
         >
-          <p className="text-sm text-[#666]">
+          <p className="text-sm" style={{ color: 'var(--semantic-text-secondary)' }}>
             Don&apos;t have an account?{' '}
             <Link
               href="/auth/register"
@@ -314,7 +331,7 @@ export default function LoginPage() {
               Join the Liberation
             </Link>
           </p>
-          <p className="text-xs text-[#999] mt-3 leading-relaxed">
+          <p className="text-xs mt-3 leading-relaxed" style={{ color: 'var(--semantic-text-tertiary)' }}>
             By signing in, you&apos;re joining the movement to<br />
             <strong className="text-loomos-orange">liberate technology from corporate control</strong>
           </p>
@@ -329,7 +346,8 @@ export default function LoginPage() {
         >
           <Link
             href="/auth/super-admin-login"
-            className="inline-flex items-center gap-2 text-xs text-[#999] hover:text-loomos-orange transition-colors"
+            className="inline-flex items-center gap-2 text-xs hover:text-loomos-orange transition-colors"
+            style={{ color: 'var(--semantic-text-tertiary)' }}
           >
             <Lock className="w-3 h-3" />
             Super Admin Access

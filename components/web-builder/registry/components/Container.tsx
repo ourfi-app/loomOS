@@ -94,7 +94,7 @@ function ContainerSettings() {
     <div className="space-y-4">
       {/* Padding */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Padding
         </label>
         <input
@@ -105,14 +105,14 @@ function ContainerSettings() {
           onChange={(e) => setProp((props: ContainerProps) => (props.padding = parseInt(e.target.value)))}
           className="w-full"
         />
-        <div className="text-xs text-gray-500 mt-1">
+        <div className="text-xs text-[var(--semantic-text-tertiary)] mt-1">
           {padding * 4}px
         </div>
       </div>
 
       {/* Background */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Background
         </label>
         <input
@@ -125,13 +125,13 @@ function ContainerSettings() {
 
       {/* Flex Direction */}
       <div>
-        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
           Direction
         </label>
         <select
           value={flexDirection}
           onChange={(e) => setProp((props: ContainerProps) => (props.flexDirection = e.target.value as 'row' | 'column'))}
-          className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-sm"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm"
         >
           <option value="column">Column</option>
           <option value="row">Row</option>

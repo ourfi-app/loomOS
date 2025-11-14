@@ -238,7 +238,7 @@ export function ActivityTimeline({ limit = 20, showFilters = true, userId }: Act
       case 'directory':
         return 'text-cyan-600 bg-cyan-100 dark:bg-cyan-900/20';
       default:
-        return 'text-gray-600 bg-gray-100 dark:bg-gray-900/20';
+        return 'text-[var(--semantic-text-secondary)] bg-[var(--semantic-surface-hover)] dark:bg-gray-900/20';
     }
   };
 

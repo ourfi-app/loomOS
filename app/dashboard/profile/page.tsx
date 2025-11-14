@@ -234,18 +234,18 @@ export default function ProfilePage() {
 
   return (
     <ErrorBoundary>
-      <div className="flex-1 overflow-y-auto bg-gray-50">
+      <div className="flex-1 overflow-y-auto bg-[var(--semantic-bg-subtle)]">
           <div className="max-w-4xl mx-auto p-6 space-y-6">
           {/* Profile Overview Section */}
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-lg border border-[var(--semantic-border-light)] overflow-hidden">
             <LoomOSSectionHeader title="Profile Overview" />
             
             <div className="p-6">
               <div className="flex items-start gap-6">
                 <div className="relative">
-                  <Avatar className="h-24 w-24 border-2 border-gray-200">
+                  <Avatar className="h-24 w-24 border-2 border-[var(--semantic-border-light)]">
                     <AvatarImage src={profile.image || undefined} />
-                    <AvatarFallback className="bg-gray-100 text-gray-700 text-2xl font-semibold">
+                    <AvatarFallback className="bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] text-2xl font-semibold">
                       {getInitials()}
                     </AvatarFallback>
                   </Avatar>
@@ -270,7 +270,7 @@ export default function ProfilePage() {
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900">{profile.name}</h3>
+                  <h3 className="text-xl font-semibold text-[var(--semantic-text-primary)]">{profile.name}</h3>
                   <div className="flex items-center gap-2 mt-2">
                     <Badge className="capitalize bg-orange-500 text-white">
                       {profile.role.toLowerCase().replace('_', ' ')}
@@ -278,23 +278,23 @@ export default function ProfilePage() {
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                       <Mail className="h-4 w-4 flex-shrink-0" />
                       <span className="truncate">{profile.email}</span>
                     </div>
                     {profile.phone && (
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                         <Phone className="h-4 w-4 flex-shrink-0" />
                         <span>{profile.phone}</span>
                       </div>
                     )}
                     {profile.unitNumber && (
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                         <Home className="h-4 w-4 flex-shrink-0" />
                         <span>Unit {profile.unitNumber}</span>
                       </div>
                     )}
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                       <Shield className="h-4 w-4 flex-shrink-0" />
                       <span>
                         Member since {new Date(profile.createdAt).toLocaleDateString('en-US', {
@@ -310,7 +310,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Edit Profile Form */}
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-lg border border-[var(--semantic-border-light)] overflow-hidden">
             <LoomOSSectionHeader title="Edit Profile" />
             
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
@@ -327,7 +327,7 @@ export default function ProfilePage() {
 
               {/* Personal Information */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Personal Information</h4>
+                <h4 className="text-sm font-semibold text-[var(--semantic-text-secondary)] uppercase tracking-wide">Personal Information</h4>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -341,7 +341,7 @@ export default function ProfilePage() {
                       onChange={(e) => setFirstName(e.target.value)}
                       required
                       placeholder="John"
-                      className="border-gray-300"
+                      className="border-[var(--semantic-border-medium)]"
                     />
                   </div>
                   <div className="space-y-2">
@@ -355,7 +355,7 @@ export default function ProfilePage() {
                       onChange={(e) => setLastName(e.target.value)}
                       required
                       placeholder="Doe"
-                      className="border-gray-300"
+                      className="border-[var(--semantic-border-medium)]"
                     />
                   </div>
                 </div>
@@ -371,7 +371,7 @@ export default function ProfilePage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="john@example.com"
-                    className="border-gray-300"
+                    className="border-[var(--semantic-border-medium)]"
                   />
                 </div>
 
@@ -383,7 +383,7 @@ export default function ProfilePage() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 (555) 123-4567"
-                    className="border-gray-300"
+                    className="border-[var(--semantic-border-medium)]"
                   />
                 </div>
 
@@ -393,9 +393,9 @@ export default function ProfilePage() {
                     <Input
                       value={profile.unitNumber}
                       disabled
-                      className="bg-gray-50 border-gray-300"
+                      className="bg-[var(--semantic-bg-subtle)] border-[var(--semantic-border-medium)]"
                     />
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[var(--semantic-text-tertiary)]">
                       Contact an administrator to change your unit number
                     </p>
                   </div>
@@ -403,12 +403,12 @@ export default function ProfilePage() {
               </div>
 
               {/* Security Settings */}
-              <div className="border-t border-gray-200 pt-6 space-y-4">
+              <div className="border-t border-[var(--semantic-border-light)] pt-6 space-y-4">
                 <div className="flex items-center gap-2">
-                  <Lock className="h-5 w-5 text-gray-600" />
-                  <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Change Password</h4>
+                  <Lock className="h-5 w-5 text-[var(--semantic-text-secondary)]" />
+                  <h4 className="text-sm font-semibold text-[var(--semantic-text-secondary)] uppercase tracking-wide">Change Password</h4>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-[var(--semantic-text-secondary)]">
                   Leave blank if you don't want to change your password
                 </p>
 
@@ -420,7 +420,7 @@ export default function ProfilePage() {
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                     placeholder="Enter current password"
-                    className="border-gray-300"
+                    className="border-[var(--semantic-border-medium)]"
                   />
                 </div>
 
@@ -434,7 +434,7 @@ export default function ProfilePage() {
                       onChange={(e) => setNewPassword(e.target.value)}
                       placeholder="Enter new password"
                       minLength={6}
-                      className="border-gray-300"
+                      className="border-[var(--semantic-border-medium)]"
                     />
                   </div>
                   <div className="space-y-2">
@@ -446,19 +446,19 @@ export default function ProfilePage() {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Confirm new password"
                       minLength={6}
-                      className="border-gray-300"
+                      className="border-[var(--semantic-border-medium)]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Form Actions */}
-              <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
+              <div className="flex justify-end gap-3 pt-4 border-t border-[var(--semantic-border-light)]">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handleReset}
-                  className="border-gray-300"
+                  className="border-[var(--semantic-border-medium)]"
                 >
                   Reset
                 </Button>

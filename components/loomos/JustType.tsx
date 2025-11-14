@@ -162,7 +162,7 @@ export function JustType({
         animate="animate"
       >
         {/* Search Icon */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--semantic-text-tertiary)]">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               strokeLinecap="round"
@@ -185,9 +185,9 @@ export function JustType({
           className={cn(
             'loomos-search-input w-full',
             'pl-12 pr-4 py-3',
-            'bg-white border-2 border-gray-200',
+            'bg-white border-2 border-[var(--semantic-border-light)]',
             'rounded-2xl',
-            'text-base text-gray-900 placeholder-gray-400',
+            'text-base text-[var(--semantic-text-primary)] placeholder-gray-400',
             'focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20',
             'transition-all duration-200',
             'shadow-lg'
@@ -197,7 +197,7 @@ export function JustType({
         {/* Clear Button */}
         {query && (
           <motion.button
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-text-secondary)]"
             onClick={() => {
               setQuery('');
               setResults([]);
@@ -221,7 +221,7 @@ export function JustType({
           <motion.div
             className={cn(
               'loomos-search-results absolute top-full mt-2 left-0 right-0',
-              'bg-white rounded-2xl shadow-2xl border border-gray-200',
+              'bg-white rounded-2xl shadow-2xl border border-[var(--semantic-border-light)]',
               'overflow-hidden',
               'max-h-96 overflow-y-auto'
             )}
@@ -249,19 +249,19 @@ export function JustType({
           <motion.div
             className={cn(
               'loomos-recent-searches absolute top-full mt-2 left-0 right-0',
-              'bg-white rounded-2xl shadow-xl border border-gray-200',
+              'bg-white rounded-2xl shadow-xl border border-[var(--semantic-border-light)]',
               'p-4'
             )}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
           >
-            <div className="text-xs font-semibold text-gray-500 mb-2">Recent Searches</div>
+            <div className="text-xs font-semibold text-[var(--semantic-text-tertiary)] mb-2">Recent Searches</div>
             <div className="space-y-1">
               {recentSearches.map((recent, index) => (
                 <button
                   key={index}
-                  className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-100 text-sm text-gray-700"
+                  className="w-full text-left px-3 py-2 rounded-lg hover:bg-[var(--semantic-surface-hover)] text-sm text-[var(--semantic-text-secondary)]"
                   onClick={() => handleQueryChange(recent)}
                 >
                   {recent}
@@ -309,8 +309,8 @@ function SearchResultItem({ result, isSelected, onClick }: SearchResultItemProps
     <motion.button
       className={cn(
         'loomos-search-result w-full px-4 py-3 flex items-center gap-3',
-        'hover:bg-gray-50 transition-colors',
-        'border-b border-gray-100 last:border-b-0',
+        'hover:bg-[var(--semantic-bg-subtle)] transition-colors',
+        'border-b border-[var(--semantic-border-light)] last:border-b-0',
         isSelected && 'bg-blue-50'
       )}
       onClick={onClick}
@@ -327,14 +327,14 @@ function SearchResultItem({ result, isSelected, onClick }: SearchResultItemProps
 
       {/* Content */}
       <div className="flex-1 min-w-0 text-left">
-        <div className="font-medium text-gray-900 truncate">{result.title}</div>
+        <div className="font-medium text-[var(--semantic-text-primary)] truncate">{result.title}</div>
         {result.subtitle && (
-          <div className="text-sm text-gray-500 truncate">{result.subtitle}</div>
+          <div className="text-sm text-[var(--semantic-text-tertiary)] truncate">{result.subtitle}</div>
         )}
       </div>
 
       {/* Type Badge */}
-      <div className="text-xs font-medium text-gray-400 uppercase tracking-wide flex-shrink-0">
+      <div className="text-xs font-medium text-[var(--semantic-text-tertiary)] uppercase tracking-wide flex-shrink-0">
         {typeLabels[result.type]}
       </div>
     </motion.button>

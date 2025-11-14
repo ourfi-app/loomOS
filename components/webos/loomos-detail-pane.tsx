@@ -29,15 +29,15 @@ export function LoomOSDetailPane({
 }: LoomOSDetailPaneProps) {
   if (isEmpty) {
     return (
-      <div className={`${width} bg-white flex items-center justify-center text-gray-400 ${className}`}>
+      <div className={`${width} bg-white flex items-center justify-center text-[var(--semantic-text-tertiary)] ${className}`}>
         <div className="text-center">
           {emptyIcon && (
             <div className="mx-auto mb-4 opacity-50 text-gray-300">
               {emptyIcon}
             </div>
           )}
-          <p className="text-lg font-medium text-gray-400">{emptyMessage}</p>
-          <p className="text-sm mt-2 text-gray-500">
+          <p className="text-lg font-medium text-[var(--semantic-text-tertiary)]">{emptyMessage}</p>
+          <p className="text-sm mt-2 text-[var(--semantic-text-tertiary)]">
             {emptySubMessage}
           </p>
         </div>
@@ -49,16 +49,16 @@ export function LoomOSDetailPane({
     <div className={`${width} bg-white flex flex-col ${className}`}>
       {/* Detail Header */}
       {(title || actions) && (
-        <div className="px-6 py-4 border-b border-gray-200 bg-gray-50 flex-shrink-0">
+        <div className="px-6 py-4 border-b border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)] flex-shrink-0">
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0">
               {title && (
-                <h2 className="text-xl font-bold text-gray-900 truncate">
+                <h2 className="text-xl font-bold text-[var(--semantic-text-primary)] truncate">
                   {title}
                 </h2>
               )}
               {subtitle && (
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-[var(--semantic-text-secondary)] mt-1">
                   {subtitle}
                 </p>
               )}

@@ -50,13 +50,13 @@ export function DesktopContextMenu({ x, y, items, onClose }: DesktopContextMenuP
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.15 }}
-        className="fixed z-[9999] min-w-[200px] rounded-lg border border-gray-200 bg-white shadow-xl"
+        className="fixed z-[9999] min-w-[200px] rounded-lg border border-[var(--semantic-border-light)] bg-white shadow-xl"
         style={{ left: x, top: y }}
       >
         <div className="py-1">
           {items.map((item, index) => {
             if (item.separator) {
-              return <div key={`sep-${index}`} className="my-1 border-t border-gray-200" />;
+              return <div key={`sep-${index}`} className="my-1 border-t border-[var(--semantic-border-light)]" />;
             }
 
             return (
@@ -72,20 +72,20 @@ export function DesktopContextMenu({ x, y, items, onClose }: DesktopContextMenuP
                 disabled={item.disabled}
                 className={cn(
                   'flex w-full items-center gap-3 px-4 py-2 text-sm transition-colors',
-                  'hover:bg-gray-100 active:bg-gray-200',
-                  'focus:outline-none focus:bg-gray-100',
+                  'hover:bg-[var(--semantic-surface-hover)] active:bg-[var(--semantic-bg-muted)]',
+                  'focus:outline-none focus:bg-[var(--semantic-surface-hover)]',
                   item.disabled && 'cursor-not-allowed opacity-50',
                   item.danger && 'text-red-600 hover:bg-red-50 active:bg-red-100'
                 )}
               >
                 {item.icon && (
-                  <span className="flex-shrink-0 text-gray-500">
+                  <span className="flex-shrink-0 text-[var(--semantic-text-tertiary)]">
                     {item.icon}
                   </span>
                 )}
                 <span className="flex-1 text-left">{item.label}</span>
                 {item.shortcut && (
-                  <span className="text-xs text-gray-400">{item.shortcut}</span>
+                  <span className="text-xs text-[var(--semantic-text-tertiary)]">{item.shortcut}</span>
                 )}
               </button>
             );

@@ -601,7 +601,7 @@ const DeveloperSection = () => {
               </ul>
               <a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer">
                 <motion.button
-                  className="bg-white text-loomos-orange px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
+                  className="bg-white text-loomos-orange px-8 py-4 rounded-xl font-semibold hover:bg-[var(--semantic-surface-hover)] transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   transition={loomOSSpring}
@@ -616,7 +616,7 @@ const DeveloperSection = () => {
               <div className="ml-4 text-blue-300">{`{ Card, Button }`}</div>
               <div className="text-purple-300">from</div>
               <div className="ml-4 text-green-300">&apos;@loomos/ui&apos;</div>
-              <div className="mt-4 text-gray-400">// Beautiful by default</div>
+              <div className="mt-4 text-[var(--semantic-text-tertiary)]">// Beautiful by default</div>
               <div className="text-yellow-300">export default</div>
               <div className="ml-4 text-blue-300">MyApp</div>
             </div>
@@ -669,7 +669,7 @@ const CTA = () => {
         >
           <Link href="/auth/register">
             <motion.button
-              className="bg-white text-loomos-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl"
+              className="bg-white text-loomos-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-[var(--semantic-surface-hover)] transition-colors shadow-xl"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={loomOSSpring}
@@ -728,17 +728,17 @@ const Footer = () => {
               </div>
               <span className="font-display text-2xl font-bold">loomOS</span>
             </div>
-            <p className="text-gray-400 mb-4">
+            <p className="text-[var(--semantic-text-tertiary)] mb-4">
               Built to liberate, not to lock in.
             </p>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-[var(--semantic-text-tertiary)]">
               © 2025 loomOS Contributors
             </div>
           </div>
 
           <div>
             <h4 className="font-bold mb-4">Product</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-[var(--semantic-text-tertiary)]">
               <li><a href="#features" className="hover:text-loomos-orange transition-colors">Features</a></li>
               <li><a href="#" className="hover:text-loomos-orange transition-colors">Pricing</a></li>
               <li><a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer" className="hover:text-loomos-orange transition-colors">Roadmap</a></li>
@@ -748,7 +748,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-bold mb-4">Developers</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-[var(--semantic-text-tertiary)]">
               <li><a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer" className="hover:text-loomos-orange transition-colors">Documentation</a></li>
               <li><a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer" className="hover:text-loomos-orange transition-colors">API Reference</a></li>
               <li><a href="#design" className="hover:text-loomos-orange transition-colors">Component Library</a></li>
@@ -758,7 +758,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-bold mb-4">Community</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-[var(--semantic-text-tertiary)]">
               <li><a href="#" className="hover:text-loomos-orange transition-colors">Discord</a></li>
               <li><a href="#" className="hover:text-loomos-orange transition-colors">Twitter</a></li>
               <li><a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer" className="hover:text-loomos-orange transition-colors">Blog</a></li>
@@ -767,7 +767,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-white/10 pt-8 text-center text-[var(--semantic-text-tertiary)] text-sm">
           <p>Inspired by Palm/HP webOS. Built with ❤️ by the open source community.</p>
           <p className="mt-2">MIT Licensed • Privacy First • Self-Hostable</p>
         </div>
@@ -866,9 +866,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {error && (
-              <Alert className="bg-[#FEE2E2] border-[#FCA5A5] rounded-lg mb-5">
-                <AlertCircle className="h-4 w-4 text-[#DC2626]" />
-                <AlertDescription className="text-[#DC2626] text-sm">{error}</AlertDescription>
+              <Alert className="bg-[var(--semantic-error-bg)] border-[var(--semantic-error-border)] rounded-lg mb-5">
+                <AlertCircle className="h-4 w-4 text-[var(--semantic-error)]" />
+                <AlertDescription className="text-[var(--semantic-error)] text-sm">{error}</AlertDescription>
               </Alert>
             )}
 
@@ -882,7 +882,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#FAFAFA] border-2 border-[#D8D6D3] rounded-xl text-[#2C3440] transition-all focus:border-loomos-orange"
+                    className="w-full px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[#D8D6D3] rounded-xl text-[#2C3440] transition-all focus:border-loomos-orange"
                     placeholder="John Doe"
                     required={isSignup}
                   />
@@ -897,7 +897,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#FAFAFA] border-2 border-[#D8D6D3] rounded-xl text-[#2C3440] transition-all focus:border-loomos-orange"
+                  className="w-full px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[#D8D6D3] rounded-xl text-[#2C3440] transition-all focus:border-loomos-orange"
                   placeholder="you@example.com"
                   required
                 />
@@ -912,7 +912,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#FAFAFA] border-2 border-[#D8D6D3] rounded-xl text-[#2C3440] pr-12 transition-all focus:border-loomos-orange"
+                    className="w-full px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[#D8D6D3] rounded-xl text-[#2C3440] pr-12 transition-all focus:border-loomos-orange"
                     placeholder="••••••••"
                     required
                   />
@@ -972,7 +972,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 <motion.button
                   onClick={handleGoogleSignIn}
                   disabled={isGoogleLoading || isLoading}
-                  className="flex items-center justify-center space-x-2 px-4 py-3 bg-[#FAFAFA] border-2 border-[#D8D6D3] rounded-xl hover:border-loomos-orange transition-all"
+                  className="flex items-center justify-center space-x-2 px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[#D8D6D3] rounded-xl hover:border-loomos-orange transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={loomOSSpring}
@@ -987,7 +987,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 </motion.button>
                 <a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer">
                   <motion.button
-                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-[#FAFAFA] border-2 border-[#D8D6D3] rounded-xl hover:border-loomos-orange transition-all w-full"
+                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[#D8D6D3] rounded-xl hover:border-loomos-orange transition-all w-full"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     transition={loomOSSpring}

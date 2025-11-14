@@ -65,7 +65,7 @@ export function LoomOSDock({
         'loomos-dock',
         'fixed z-50',
         'bg-white/80 backdrop-blur-xl',
-        'border border-gray-200',
+        'border border-[var(--semantic-border-light)]',
         'shadow-2xl',
         // Position
         position === 'bottom' && 'bottom-2 left-1/2 -translate-x-1/2',

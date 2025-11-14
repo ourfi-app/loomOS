@@ -260,14 +260,14 @@ export default function AppsLauncherPage() {
   return (
     <div className="h-full w-full flex flex-col bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Header */}
-      <div className="flex-shrink-0 px-8 py-6 border-b border-gray-200 bg-white/80 backdrop-blur-sm">
+      <div className="flex-shrink-0 px-8 py-6 border-b border-[var(--semantic-border-light)] bg-white/80 backdrop-blur-sm">
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-lg">
             <Sparkles className="h-8 w-8 text-white" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Productivity Apps</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-3xl font-bold text-[var(--semantic-text-primary)]">Productivity Apps</h1>
+            <p className="text-[var(--semantic-text-secondary)] mt-1">
               Professional tools to enhance your workflow
             </p>
           </div>
@@ -275,13 +275,13 @@ export default function AppsLauncherPage() {
 
         {/* Search Bar */}
         <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--semantic-text-tertiary)]" />
           <Input
             type="text"
             placeholder="Search apps..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-white border-gray-300"
+            className="pl-10 bg-white border-[var(--semantic-border-medium)]"
           />
         </div>
       </div>
@@ -290,11 +290,11 @@ export default function AppsLauncherPage() {
       <div className="flex-1 overflow-y-auto p-8">
         {filteredApps.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
-            <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-              <Search className="h-12 w-12 text-gray-400" />
+            <div className="w-24 h-24 rounded-full bg-[var(--semantic-surface-hover)] flex items-center justify-center mb-4">
+              <Search className="h-12 w-12 text-[var(--semantic-text-tertiary)]" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No apps found</h3>
-            <p className="text-gray-600 max-w-sm">
+            <h3 className="text-xl font-semibold text-[var(--semantic-text-primary)] mb-2">No apps found</h3>
+            <p className="text-[var(--semantic-text-secondary)] max-w-sm">
               Try adjusting your search terms or browse all available apps
             </p>
           </div>
@@ -303,7 +303,7 @@ export default function AppsLauncherPage() {
             {filteredApps.map((app) => (
               <Card
                 key={app.id}
-                className="group relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-gray-200"
+                className="group relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-[var(--semantic-border-light)]"
                 onClick={() => handleAppClick(app)}
               >
                 {/* Gradient Background */}
@@ -345,10 +345,10 @@ export default function AppsLauncherPage() {
 
                   {/* Content */}
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700">
+                    <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)] group-hover:text-[var(--semantic-text-secondary)]">
                       {app.title}
                     </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2">
+                    <p className="text-sm text-[var(--semantic-text-secondary)] line-clamp-2">
                       {app.description}
                     </p>
 
@@ -357,12 +357,12 @@ export default function AppsLauncherPage() {
                       <div className="flex items-center gap-2 pt-2">
                         <div className="flex items-center">
                           <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          <span className="ml-1 text-sm font-medium text-gray-700">
+                          <span className="ml-1 text-sm font-medium text-[var(--semantic-text-secondary)]">
                             {app.rating}
                           </span>
                         </div>
-                        <span className="text-xs text-gray-400">•</span>
-                        <span className="text-xs text-gray-500">{app.category}</span>
+                        <span className="text-xs text-[var(--semantic-text-tertiary)]">•</span>
+                        <span className="text-xs text-[var(--semantic-text-tertiary)]">{app.category}</span>
                       </div>
                     )}
                   </div>
@@ -411,7 +411,7 @@ export default function AppsLauncherPage() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <h2 className="text-2xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-bold text-[var(--semantic-text-primary)]">
                       {selectedApp.title}
                     </h2>
                     {selectedApp.isNew && (
@@ -431,17 +431,17 @@ export default function AppsLauncherPage() {
                       ) : null;
                     })()}
                   </div>
-                  <p className="text-gray-600 mb-3">{selectedApp.description}</p>
+                  <p className="text-[var(--semantic-text-secondary)] mb-3">{selectedApp.description}</p>
                   {selectedApp.rating && (
                     <div className="flex items-center gap-2">
                       <div className="flex items-center">
                         <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                        <span className="ml-1 font-semibold text-gray-900">
+                        <span className="ml-1 font-semibold text-[var(--semantic-text-primary)]">
                           {selectedApp.rating}
                         </span>
                       </div>
-                      <span className="text-gray-400">•</span>
-                      <span className="text-sm text-gray-600">{selectedApp.category}</span>
+                      <span className="text-[var(--semantic-text-tertiary)]">•</span>
+                      <span className="text-sm text-[var(--semantic-text-secondary)]">{selectedApp.category}</span>
                     </div>
                   )}
                 </div>
@@ -449,15 +449,15 @@ export default function AppsLauncherPage() {
 
               {/* Description */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">About</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)] mb-2">About</h3>
+                <p className="text-[var(--semantic-text-secondary)] leading-relaxed">
                   {selectedApp.longDescription}
                 </p>
               </div>
 
               {/* Features */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Features</h3>
+                <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)] mb-3">Features</h3>
                 <ul className="space-y-2">
                   {selectedApp.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
@@ -477,7 +477,7 @@ export default function AppsLauncherPage() {
                           />
                         </svg>
                       </div>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-[var(--semantic-text-secondary)]">{feature}</span>
                     </li>
                   ))}
                 </ul>

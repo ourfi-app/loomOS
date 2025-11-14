@@ -64,16 +64,16 @@ export function KeyboardShortcutsDialog({
         <div className="space-y-6 mt-4">
           {Object.entries(groupedShortcuts).map(([category, categoryShortcuts]) => (
             <div key={category}>
-              <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
+              <h3 className="text-sm font-semibold text-[var(--semantic-text-secondary)] mb-3 uppercase tracking-wide">
                 {category}
               </h3>
               <div className="space-y-2">
                 {categoryShortcuts.map((shortcut, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[var(--semantic-bg-subtle)] transition-colors"
                   >
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm text-[var(--semantic-text-secondary)]">
                       {shortcut.description}
                     </span>
                     <div className="flex items-center gap-1">
@@ -86,7 +86,7 @@ export function KeyboardShortcutsDialog({
                             {key}
                           </Badge>
                           {keyIndex < formatShortcut(shortcut).length - 1 && (
-                            <span className="text-gray-400 text-xs">+</span>
+                            <span className="text-[var(--semantic-text-tertiary)] text-xs">+</span>
                           )}
                         </React.Fragment>
                       ))}
@@ -98,8 +98,8 @@ export function KeyboardShortcutsDialog({
           ))}
         </div>
 
-        <div className="mt-6 pt-4 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center">
+        <div className="mt-6 pt-4 border-t border-[var(--semantic-border-light)]">
+          <p className="text-xs text-[var(--semantic-text-tertiary)] text-center">
             Press <Badge variant="outline" className="mx-1">Esc</Badge> to close this dialog
           </p>
         </div>

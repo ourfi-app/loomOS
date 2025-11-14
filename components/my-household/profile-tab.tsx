@@ -267,18 +267,18 @@ export default function ProfileTab() {
                 </Badge>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
+                <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                   <Mail className="h-4 w-4" />
                   <span>{profile.email}</span>
                 </div>
                 {profile.phone && (
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                     <Phone className="h-4 w-4" />
                     <span>{profile.phone}</span>
                   </div>
                 )}
                 {profile.unitNumber && (
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
                     <Home className="h-4 w-4" />
                     <span>Unit {profile.unitNumber}</span>
                   </div>
@@ -368,9 +368,9 @@ export default function ProfileTab() {
                 <Input
                   value={profile.unitNumber}
                   disabled
-                  className="bg-gray-50"
+                  className="bg-[var(--semantic-bg-subtle)]"
                 />
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[var(--semantic-text-tertiary)]">
                   Contact an administrator to change your unit number
                 </p>
               </div>
@@ -380,10 +380,10 @@ export default function ProfileTab() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Lock className="h-5 w-5 text-gray-600" />
+                <Lock className="h-5 w-5 text-[var(--semantic-text-secondary)]" />
                 <h3 className="text-lg font-semibold">Change Password</h3>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-[var(--semantic-text-secondary)]">
                 Leave blank if you don't want to change your password
               </p>
 
@@ -468,7 +468,7 @@ export default function ProfileTab() {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">Account Role</p>
+              <p className="text-sm font-medium text-[var(--semantic-text-secondary)]">Account Role</p>
               <div className="flex items-center gap-2 mt-1">
                 <Shield className="h-4 w-4 text-blue-600" />
                 <p className="text-sm capitalize">
@@ -477,7 +477,7 @@ export default function ProfileTab() {
               </div>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-600">Member Since</p>
+              <p className="text-sm font-medium text-[var(--semantic-text-secondary)]">Member Since</p>
               <p className="text-sm mt-1">
                 {new Date(profile.createdAt).toLocaleDateString('en-US', {
                   year: 'numeric',

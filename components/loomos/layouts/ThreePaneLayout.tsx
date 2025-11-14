@@ -38,7 +38,7 @@ export function ThreePaneLayout({
   const canCollapseCenter = collapsible.includes('center');
 
   return (
-    <div className={cn('flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900', className)}>
+    <div className={cn('flex h-full overflow-hidden bg-[var(--semantic-bg-subtle)] dark:bg-gray-900', className)}>
       {/* Left Pane */}
       <motion.div
         initial={false}
@@ -46,7 +46,7 @@ export function ThreePaneLayout({
           width: leftCollapsed ? 48 : leftWidth,
         }}
         transition={{ type: 'spring', ...loomOSSpring }}
-        className="relative flex-shrink-0 border-r border-gray-200 dark:border-gray-700"
+        className="relative flex-shrink-0 border-r border-[var(--semantic-border-light)] dark:border-gray-700"
       >
         <div className="h-full overflow-hidden">
           {leftCollapsed ? (
@@ -62,7 +62,7 @@ export function ThreePaneLayout({
           <button
             onClick={() => setLeftCollapsed(!leftCollapsed)}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10
-                     w-6 h-6 rounded-full bg-white dark:bg-gray-800 border border-gray-200
+                     w-6 h-6 rounded-full bg-white dark:bg-gray-800 border border-[var(--semantic-border-light)]
                      dark:border-gray-700 shadow-md hover:shadow-lg transition-shadow
                      flex items-center justify-center"
             aria-label={leftCollapsed ? 'Expand left pane' : 'Collapse left pane'}
@@ -83,7 +83,7 @@ export function ThreePaneLayout({
           width: centerCollapsed ? 48 : centerWidth,
         }}
         transition={{ type: 'spring', ...loomOSSpring }}
-        className="relative flex-shrink-0 border-r border-gray-200 dark:border-gray-700"
+        className="relative flex-shrink-0 border-r border-[var(--semantic-border-light)] dark:border-gray-700"
       >
         <div className="h-full overflow-hidden">
           {centerCollapsed ? (
@@ -99,7 +99,7 @@ export function ThreePaneLayout({
           <button
             onClick={() => setCenterCollapsed(!centerCollapsed)}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10
-                     w-6 h-6 rounded-full bg-white dark:bg-gray-800 border border-gray-200
+                     w-6 h-6 rounded-full bg-white dark:bg-gray-800 border border-[var(--semantic-border-light)]
                      dark:border-gray-700 shadow-md hover:shadow-lg transition-shadow
                      flex items-center justify-center"
             aria-label={centerCollapsed ? 'Expand center pane' : 'Collapse center pane'}

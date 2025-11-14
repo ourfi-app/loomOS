@@ -34,9 +34,9 @@ function NavButton({ section, active, onClick }: NavButtonProps) {
       onClick={onClick}
       className={cn(
         'w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors min-h-[44px]',
-        'hover:bg-gray-100 dark:hover:bg-gray-800',
+        'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-gray-800',
         active && 'bg-loomos-orange/10 text-loomos-orange border-r-2 border-loomos-orange',
-        !active && 'text-gray-700 dark:text-gray-300'
+        !active && 'text-[var(--semantic-text-secondary)] dark:text-gray-300'
       )}
       aria-current={active ? 'page' : undefined}
     >
@@ -60,18 +60,18 @@ export function NavigationPane() {
   };
 
   return (
-    <nav className="flex flex-col h-full bg-gray-50 dark:bg-gray-900">
+    <nav className="flex flex-col h-full bg-[var(--semantic-bg-subtle)] dark:bg-gray-900">
       {/* Logo/Brand */}
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-4 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-loomos-orange flex items-center justify-center">
             <FileCode className="w-4 h-4 text-white" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <h2 className="text-sm font-semibold text-[var(--semantic-text-primary)] dark:text-gray-100">
               Web Builder
             </h2>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)]">
               loomOS
             </p>
           </div>
@@ -92,12 +92,12 @@ export function NavigationPane() {
 
       {/* Project Info at Bottom */}
       {project && (
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-t border-[var(--semantic-border-light)] dark:border-gray-700">
           <div className="text-sm">
-            <div className="font-medium text-gray-900 dark:text-gray-100 truncate">
+            <div className="font-medium text-[var(--semantic-text-primary)] dark:text-gray-100 truncate">
               {project.name}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">
+            <div className="text-xs text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)]">
               Last saved: {new Date(project.updatedAt).toLocaleTimeString()}
             </div>
           </div>
