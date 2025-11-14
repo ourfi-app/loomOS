@@ -1,0 +1,484 @@
+/* loomOS Animations
+ * All keyframe animations used throughout the OS
+ * 
+ * Performance Notes:
+ * - Most animations use transform/opacity for GPU acceleration
+ * - Box-shadow animations (pulse-glow, breathe) are CPU-intensive
+ * - All animations respect prefers-reduced-motion
+ */
+
+@layer components {
+  /* ============================================
+     ENTRANCE ANIMATIONS
+     ============================================ */
+
+  /**
+   * Fade In
+   * Used for: Modals, popovers, overlays
+   * Duration: 0.2s
+   * Performance: Excellent (opacity only)
+   */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /**
+   * Slide Up
+   * Used for: Bottom sheets, notifications
+   * Duration: 0.5s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes slide-up {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /**
+   * Slide Down
+   * Used for: Dropdowns, top notifications
+   * Duration: 0.5s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes slide-down {
+    from { 
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /**
+   * Slide In Right
+   * Used for: Side panels, drawers
+   * Duration: 0.3s
+   * Performance: Excellent (transform only)
+   */
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  /**
+   * Slide In From Top
+   * Used for: Status bar, alerts
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes slide-in-from-top {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /**
+   * Scale In
+   * Used for: Buttons, cards, focus states
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes scale-in {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /**
+   * Card Zoom In
+   * Used for: App cards entering view
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes card-zoom-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.85) translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  /**
+   * Slide In (Generic)
+   * Used for: Various components
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /**
+   * Dock Popover Enter
+   * Used for: Dock app preview popovers
+   * Duration: 0.2s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes dock-popover-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /**
+   * Dock App Card Enter
+   * Used for: Dock app cards sliding in
+   * Duration: 0.2s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes dock-app-card-enter {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* ============================================
+     EXIT ANIMATIONS
+     ============================================ */
+
+  /**
+   * Slide Out Left
+   * Used for: Minimizing windows to dock
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes slide-out-left {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-150%, -50%) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  /**
+   * Slide Out Left (Draggable)
+   * Used for: Draggable cards minimizing
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes slide-out-left-draggable {
+    0% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.3) translateY(calc(100vh - 100%));
+    }
+  }
+
+  /**
+   * Card Zoom Out
+   * Used for: App cards exiting view
+   * Duration: 0.3s
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes card-zoom-out {
+    0% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.85) translateY(30px);
+    }
+  }
+
+  /* ============================================
+     LOADING & CONTINUOUS ANIMATIONS
+     ============================================ */
+
+  /**
+   * Shimmer
+   * Used for: Loading states, skeleton screens
+   * Duration: 2s infinite
+   * Performance: Good (background-position)
+   */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /**
+   * Shimmer Slide
+   * Used for: Loading overlays
+   * Duration: 1.5s infinite
+   * Performance: Excellent (transform)
+   */
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /**
+   * Skeleton Pulse
+   * Used for: Loading skeleton screens
+   * Duration: 2s infinite
+   * Performance: Excellent (opacity only)
+   */
+  @keyframes skeleton-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /**
+   * Spin
+   * Used for: Loading spinners
+   * Duration: 1s infinite
+   * Performance: Excellent (transform)
+   */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /**
+   * Float
+   * Used for: Floating elements, tooltips
+   * Duration: 3s infinite
+   * Performance: Excellent (transform)
+   */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /**
+   * Ping Slow
+   * Used for: Notification indicators
+   * Duration: 2s infinite
+   * Performance: Excellent (transform + opacity)
+   */
+  @keyframes ping-slow {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    75%, 100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  /* ============================================
+     INTERACTIVE ANIMATIONS
+     ============================================ */
+
+  /**
+   * Bounce Subtle
+   * Used for: Button clicks, micro-interactions
+   * Duration: 0.4s
+   * Performance: Excellent (transform)
+   */
+  @keyframes bounce-subtle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  /**
+   * Pulse Glow
+   * Used for: Active states, focus indicators
+   * Duration: 2s infinite
+   * Performance: Moderate (box-shadow is CPU-intensive)
+   * Note: Consider replacing with transform/opacity for better performance
+   */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(241, 136, 37, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(241, 136, 37, 0.6);
+    }
+  }
+
+  /**
+   * Breathe
+   * Used for: Dock active indicators
+   * Duration: 4s infinite
+   * Performance: Moderate (box-shadow is CPU-intensive)
+   * Note: Consider replacing with transform/opacity for better performance
+   */
+  @keyframes breathe {
+    0%, 100% {
+      box-shadow: 0 0 12px rgba(241, 136, 37, 0.15);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(241, 136, 37, 0.25);
+    }
+  }
+
+  /**
+   * Gentle Blink
+   * Used for: Text cursor, caret
+   * Duration: 1s infinite
+   * Performance: Excellent (caret-color)
+   */
+  @keyframes gentle-blink {
+    0%, 49% {
+      caret-color: hsl(var(--primary));
+    }
+    50%, 100% {
+      caret-color: transparent;
+    }
+  }
+
+  /* ============================================
+     ANIMATION UTILITY CLASSES
+     ============================================ */
+
+  /* Entrance Animations */
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.5s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  .animate-card-zoom-in {
+    animation: card-zoom-in 0.3s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  /* Exit Animations */
+  .animate-card-zoom-out {
+    animation: card-zoom-out 0.3s ease-out;
+  }
+
+  /* Loading Animations */
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .skeleton {
+    animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  /* Continuous Animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-ping-slow {
+    animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  /* Component-Specific Animations */
+  .loomos-minimize-left {
+    animation: slide-out-left 0.3s ease-in-out forwards;
+  }
+
+  .loomos-minimize-left-draggable {
+    animation: slide-out-left-draggable 0.3s ease-in-out forwards;
+  }
+
+  .loomos-dock-active-glow {
+    animation: breathe 4s ease-in-out infinite;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/**
+ * Respect user motion preferences
+ * Disables animations for users who prefer reduced motion
+ * This is critical for accessibility and user comfort
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
