@@ -47,6 +47,18 @@
   --neutral-800: #424242;
   --neutral-900: #212121;             /* Darkest */
 
+  /* webOS Neutral Palette - Clean Gray Scale */
+  --webos-gray-50: #fafafa;           /* Lightest gray */
+  --webos-gray-100: #f5f5f5;
+  --webos-gray-200: #eeeeee;
+  --webos-gray-300: #e8e8e8;          /* Main background */
+  --webos-gray-400: #e0e0e0;
+  --webos-gray-500: #cccccc;
+  --webos-gray-600: #999999;
+  --webos-gray-700: #666666;
+  --webos-gray-800: #333333;
+  --webos-gray-900: #000000;          /* Pure black */
+
   /* Warm Gray Variants (with slight orange tint) */
   --warm-gray-50: #FAFAF9;
   --warm-gray-100: #F5F5F4;

@@ -309,3 +309,80 @@
     --semantic-text-secondary: var(--semantic-text-primary);
   }
 }
+
+/* ========================================
+   WEBOS THEME OVERRIDES
+   Apply webOS-specific semantic mappings
+   ======================================== */
+
+[data-theme="webos"],
+.webos-theme {
+  /* webOS Background Colors */
+  --semantic-bg-base: var(--webos-gray-300);        /* #e8e8e8 - Main background */
+  --semantic-bg-subtle: var(--webos-gray-200);      /* #eeeeee - Subtle areas */
+  --semantic-bg-muted: var(--webos-gray-400);       /* #e0e0e0 - Muted areas */
+
+  /* webOS Surfaces */
+  --semantic-surface-base: #FFFFFF;                  /* Pure white cards */
+  --semantic-surface-elevated: #FFFFFF;              /* Elevated surfaces */
+  --semantic-surface-overlay: rgba(255, 255, 255, 0.95);
+  --semantic-surface-sunken: var(--webos-gray-100); /* #f5f5f5 */
+
+  /* webOS Interactive Surfaces */
+  --semantic-surface-hover: var(--webos-gray-50);   /* #fafafa */
+  --semantic-surface-active: var(--webos-gray-100); /* #f5f5f5 */
+  --semantic-surface-selected: rgba(74, 144, 226, 0.1); /* Blue tint */
+
+  /* webOS Text Colors */
+  --semantic-text-primary: var(--webos-gray-900);   /* #000000 - Pure black */
+  --semantic-text-secondary: var(--webos-gray-700); /* #666666 */
+  --semantic-text-tertiary: var(--webos-gray-600);  /* #999999 */
+  --semantic-text-disabled: var(--webos-gray-500);  /* #cccccc */
+  --semantic-text-inverse: #FFFFFF;
+
+  /* webOS Borders */
+  --semantic-border-light: var(--webos-gray-400);   /* #e0e0e0 */
+  --semantic-border-medium: var(--webos-gray-500);  /* #cccccc */
+  --semantic-border-strong: var(--webos-gray-600);  /* #999999 */
+  --semantic-border-focus: #4a90e2;                 /* webOS blue accent */
+
+  /* webOS Accents - Minimal color usage */
+  --semantic-primary: #4a90e2;                      /* Blue for links/selections */
+  --semantic-primary-light: #6ba3e8;
+  --semantic-primary-dark: #3a7bc8;
+  --semantic-primary-subtle: rgba(74, 144, 226, 0.1);
+
+  --semantic-accent: #4a90e2;
+  --semantic-accent-light: #6ba3e8;
+  --semantic-accent-dark: #3a7bc8;
+  --semantic-accent-subtle: rgba(74, 144, 226, 0.08);
+
+  /* webOS Status Colors */
+  --semantic-success: #5cb85c;
+  --semantic-success-bg: rgba(92, 184, 92, 0.1);
+  --semantic-error: #d9534f;
+  --semantic-error-bg: rgba(217, 83, 79, 0.1);
+  --semantic-warning: #f0ad4e;
+  --semantic-warning-bg: rgba(240, 173, 78, 0.1);
+  --semantic-info: #4a90e2;
+  --semantic-info-bg: rgba(74, 144, 226, 0.1);
+
+  /* webOS Components */
+  --semantic-btn-primary-bg: #4a90e2;
+  --semantic-btn-primary-hover: #3a7bc8;
+  
+  --semantic-card-bg: #FFFFFF;
+  --semantic-card-border: var(--webos-gray-400);
+  
+  --semantic-nav-bg: rgba(255, 255, 255, 0.95);
+  --semantic-nav-border: var(--webos-gray-400);
+  
+  --semantic-dock-bg: rgba(255, 255, 255, 0.95);
+  --semantic-dock-border: var(--webos-gray-400);
+  
+  /* webOS Input */
+  --semantic-input-bg: #FFFFFF;
+  --semantic-input-border: var(--webos-gray-400);
+  --semantic-input-border-hover: var(--webos-gray-600);
+  --semantic-input-border-focus: #4a90e2;
+}

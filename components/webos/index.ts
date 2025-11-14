@@ -50,6 +50,8 @@ export * from './universal-search';
 export * from './intelligent-search';
 export * from './app-grid-launcher';
 export * from './quick-app-switcher';
+export * from './webos-just-type-search';
+export * from './webos-card-carousel';
 
 // Assistance
 export * from './ai-assistant';
