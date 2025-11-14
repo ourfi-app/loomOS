@@ -120,6 +120,7 @@ loomOS features a pluggable service architecture. Swap providers without changin
 - **[Service Abstraction](docs/SERVICE_ABSTRACTION.md)** - Integrating external services
 - **[API Documentation](docs/API_SETUP_GUIDE.md)** - Platform APIs
 - **[Deployment Guide](docs/setup/DEPLOYMENT.md)** - Production deployment
+- **[Bundle Analysis Guide](BUNDLE_ANALYSIS.md)** - Optimize bundle size and performance
 
 ---
 
