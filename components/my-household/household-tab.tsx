@@ -229,7 +229,7 @@ export default function HouseholdTab() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
       </div>
     );
   }
@@ -313,7 +313,7 @@ export default function HouseholdTab() {
                               variant="ghost"
                               onClick={() => handleDeletePet(pet.id)}
                             >
-                              <Trash2 className="h-4 w-4 text-red-600" />
+                              <Trash2 className="h-4 w-4 text-[var(--semantic-error)]" />
                             </Button>
                           </div>
                         </div>
@@ -387,7 +387,7 @@ export default function HouseholdTab() {
                               variant="ghost"
                               onClick={() => handleDeleteChild(child.id)}
                             >
-                              <Trash2 className="h-4 w-4 text-red-600" />
+                              <Trash2 className="h-4 w-4 text-[var(--semantic-error)]" />
                             </Button>
                           </div>
                         </div>
@@ -462,7 +462,7 @@ export default function HouseholdTab() {
                               variant="ghost"
                               onClick={() => handleDeleteResident(resident.id)}
                             >
-                              <Trash2 className="h-4 w-4 text-red-600" />
+                              <Trash2 className="h-4 w-4 text-[var(--semantic-error)]" />
                             </Button>
                           </div>
                         </div>

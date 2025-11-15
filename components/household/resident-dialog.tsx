@@ -111,7 +111,7 @@ export default function ResidentDialog({ open, onClose, unitNumber, editingResid
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">
-              Name <span className="text-red-500">*</span>
+              Name <span className="text-[var(--semantic-error)]">*</span>
             </Label>
             <Input
               id="name"
@@ -124,7 +124,7 @@ export default function ResidentDialog({ open, onClose, unitNumber, editingResid
 
           <div className="space-y-2">
             <Label htmlFor="relationship">
-              Relationship <span className="text-red-500">*</span>
+              Relationship <span className="text-[var(--semantic-error)]">*</span>
             </Label>
             <Select
               value={formData.relationship || 'roommate'}

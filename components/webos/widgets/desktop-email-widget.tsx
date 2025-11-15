@@ -253,7 +253,7 @@ export function DesktopEmailWidget({ widget }: DesktopEmailWidgetProps) {
                       className={cn(
                         'h-4 w-4',
                         email.isStarred
-                          ? 'fill-yellow-400 text-yellow-400'
+                          ? 'fill-yellow-400 text-[var(--semantic-warning)]'
                           : 'text-muted-foreground opacity-0 group-hover:opacity-100'
                       )}
                     />

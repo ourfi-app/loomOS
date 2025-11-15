@@ -109,9 +109,9 @@ export function DesktopTasksWidget({ widget }: DesktopTasksWidgetProps) {
   };
 
   const priorityColors = {
-    high: 'text-red-500 border-red-200',
-    medium: 'text-yellow-500 border-yellow-200',
-    low: 'text-green-500 border-green-200',
+    high: 'text-[var(--semantic-error)] border-[var(--semantic-error-border)]',
+    medium: 'text-[var(--semantic-warning)] border-[var(--semantic-warning-bg)]',
+    low: 'text-[var(--semantic-success)] border-[var(--semantic-success-bg)]',
   };
 
   if (loading) {
@@ -167,9 +167,9 @@ export function DesktopTasksWidget({ widget }: DesktopTasksWidgetProps) {
 
       {/* High Priority Alert */}
       {highPriorityCount > 0 && (
-        <div className="mx-4 mt-3 p-2.5 bg-red-50 dark:bg-red-950/20 rounded-lg flex items-center gap-2 border border-red-200 dark:border-red-900">
-          <AlertCircle className="h-3.5 w-3.5 text-red-500 flex-shrink-0" />
-          <span className="text-xs text-red-700 dark:text-red-400">
+        <div className="mx-4 mt-3 p-2.5 bg-[var(--semantic-error-bg)] dark:bg-red-950/20 rounded-lg flex items-center gap-2 border border-[var(--semantic-error-border)] dark:border-red-900">
+          <AlertCircle className="h-3.5 w-3.5 text-[var(--semantic-error)] flex-shrink-0" />
+          <span className="text-xs text-[var(--semantic-error-dark)] dark:text-[var(--semantic-error)]">
             {highPriorityCount} high priority {highPriorityCount === 1 ? 'task' : 'tasks'}
           </span>
         </div>
@@ -194,7 +194,7 @@ export function DesktopTasksWidget({ widget }: DesktopTasksWidgetProps) {
                 )}
               >
                 {task.completed ? (
-                  <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-[var(--semantic-success)] flex-shrink-0 mt-0.5" />
                 ) : (
                   <Circle className={cn('h-5 w-5 flex-shrink-0 mt-0.5', priorityColors[task.priority])} />
                 )}

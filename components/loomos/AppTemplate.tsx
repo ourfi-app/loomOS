@@ -215,7 +215,7 @@ export function LoomOSNavigationItem({
       className={cn(
         'w-full flex items-center gap-3 px-4 py-3 text-left transition-colors',
         isActive
-          ? 'bg-blue-50 text-blue-600 font-medium'
+          ? 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary)] font-medium'
           : 'text-[var(--semantic-text-secondary)] hover:bg-[var(--semantic-bg-subtle)]'
       )}
       onClick={onClick}
@@ -233,7 +233,7 @@ export function LoomOSNavigationItem({
 
       {/* Badge */}
       {badge !== undefined && badge > 0 && (
-        <span className="px-2 py-0.5 bg-blue-500 text-white text-xs font-semibold rounded-full min-w-[20px] text-center">
+        <span className="px-2 py-0.5 bg-[var(--semantic-primary)] text-white text-xs font-semibold rounded-full min-w-[20px] text-center">
           {badge > 99 ? '99+' : badge}
         </span>
       )}
@@ -263,7 +263,7 @@ export function LoomOSContentList({
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center text-[var(--semantic-text-tertiary)]">
-          <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-16 h-16 mx-auto mb-4 text-[var(--semantic-text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>
           <p className="text-sm">{emptyMessage}</p>
@@ -306,7 +306,7 @@ export function LoomOSContentListItem({
       className={cn(
         'w-full flex items-center gap-3 px-4 py-3 text-left transition-colors',
         isSelected
-          ? 'bg-blue-50 border-l-4 border-blue-500'
+          ? 'bg-[var(--semantic-primary-subtle)] border-l-4 border-[var(--semantic-primary)]'
           : 'hover:bg-[var(--semantic-bg-subtle)] border-l-4 border-transparent'
       )}
       onClick={onClick}

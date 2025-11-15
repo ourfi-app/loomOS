@@ -195,7 +195,7 @@ export default function UsersManagement() {
 
   const getStatusBadge = (isActive: boolean) => {
     return isActive ? (
-      <Badge variant="default" className="bg-green-500">Active</Badge>
+      <Badge variant="default" className="bg-[var(--semantic-success)]">Active</Badge>
     ) : (
       <Badge variant="secondary">Inactive</Badge>
     );
@@ -327,7 +327,7 @@ export default function UsersManagement() {
                             </DropdownMenuItem>
                             <DropdownMenuItem 
                               onClick={() => handleDelete(user)}
-                              className="text-red-600"
+                              className="text-[var(--semantic-error)]"
                             >
                               <Trash2 className="h-4 w-4 mr-2" />
                               Delete

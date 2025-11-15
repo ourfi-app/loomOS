@@ -128,7 +128,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border-2 border-blue-200 rounded-2xl p-8 mb-8 shadow-xl"
+          className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border-2 border-[var(--semantic-primary-light)] rounded-2xl p-8 mb-8 shadow-xl"
         >
           {/* Animated Background Pattern */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-400/5 via-purple-400/5 to-pink-400/5" />
@@ -158,7 +158,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
                   ease: 'easeInOut' 
                 }}
               >
-                <Sparkles className="h-6 w-6 text-purple-600" />
+                <Sparkles className="h-6 w-6 text-[var(--semantic-accent)]" />
               </motion.div>
               <h3 className="text-xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
                 Your portal includes:
@@ -180,7 +180,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
                         stiffness: 200,
                         damping: 20
                       }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
+                      className="flex items-center gap-3 p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-[var(--semantic-primary-light)] shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
                     >
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md flex-shrink-0">
                         <Icon className="h-5 w-5 text-white" />

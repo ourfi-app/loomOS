@@ -97,7 +97,7 @@ export default function AdminDashboardPage() {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading admin dashboard...</p>
         </div>
       </div>
@@ -191,7 +191,7 @@ export default function AdminDashboardPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-2">
-            <Shield className="h-8 w-8 text-blue-600" />
+            <Shield className="h-8 w-8 text-[var(--semantic-primary)]" />
             Admin Dashboard
           </h1>
           <p className="text-muted-foreground mt-1">
@@ -214,7 +214,7 @@ export default function AdminDashboardPage() {
           <CardContent>
             <div className="text-2xl font-bold">{stats.totalUsers}</div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-green-600 font-medium">{stats.activeUsers} active</span>
+              <span className="text-[var(--semantic-success)] font-medium">{stats.activeUsers} active</span>
             </p>
           </CardContent>
         </Card>
@@ -229,13 +229,13 @@ export default function AdminDashboardPage() {
             <div className="flex items-center gap-1 text-xs">
               {stats.collectionRate >= 80 ? (
                 <>
-                  <TrendingUp className="h-3 w-3 text-green-600" />
-                  <span className="text-green-600">{stats.collectionRate.toFixed(0)}% collected</span>
+                  <TrendingUp className="h-3 w-3 text-[var(--semantic-success)]" />
+                  <span className="text-[var(--semantic-success)]">{stats.collectionRate.toFixed(0)}% collected</span>
                 </>
               ) : (
                 <>
-                  <TrendingDown className="h-3 w-3 text-orange-600" />
-                  <span className="text-orange-600">{stats.collectionRate.toFixed(0)}% collected</span>
+                  <TrendingDown className="h-3 w-3 text-[var(--semantic-primary)]" />
+                  <span className="text-[var(--semantic-primary)]">{stats.collectionRate.toFixed(0)}% collected</span>
                 </>
               )}
             </div>
@@ -258,10 +258,10 @@ export default function AdminDashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Overdue</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-red-500" />
+            <AlertTriangle className="h-4 w-4 text-[var(--semantic-error)]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-600">{stats.overduePayments}</div>
+            <div className="text-2xl font-bold text-[var(--semantic-error)]">{stats.overduePayments}</div>
             <p className="text-xs text-muted-foreground">Require immediate attention</p>
           </CardContent>
         </Card>
@@ -354,10 +354,10 @@ export default function AdminDashboardPage() {
               {stats.recentActivity.map((activity: any, index: number) => (
                 <div key={index} className="flex items-start gap-3 pb-3 border-b last:border-0">
                   <div className="mt-1">
-                    {activity.type === 'payment' && <DollarSign className="h-4 w-4 text-green-600" />}
-                    {activity.type === 'user' && <Users className="h-4 w-4 text-blue-600" />}
-                    {activity.type === 'document' && <FileText className="h-4 w-4 text-purple-600" />}
-                    {activity.type === 'request' && <Bell className="h-4 w-4 text-orange-600" />}
+                    {activity.type === 'payment' && <DollarSign className="h-4 w-4 text-[var(--semantic-success)]" />}
+                    {activity.type === 'user' && <Users className="h-4 w-4 text-[var(--semantic-primary)]" />}
+                    {activity.type === 'document' && <FileText className="h-4 w-4 text-[var(--semantic-accent)]" />}
+                    {activity.type === 'request' && <Bell className="h-4 w-4 text-[var(--semantic-primary)]" />}
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-medium">{activity.description}</p>
@@ -378,9 +378,9 @@ export default function AdminDashboardPage() {
 
       {/* Alerts & Warnings */}
       {(stats.overduePayments > 0 || stats.pendingRequests > 0) && (
-        <Card className="border-orange-200 bg-orange-50">
+        <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-orange-700">
+            <CardTitle className="flex items-center gap-2 text-[var(--semantic-primary-dark)]">
               <AlertTriangle className="h-5 w-5" />
               Attention Required
             </CardTitle>

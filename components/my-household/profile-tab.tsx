@@ -209,7 +209,7 @@ export default function ProfileTab() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
       </div>
     );
   }
@@ -236,13 +236,13 @@ export default function ProfileTab() {
             <div className="relative">
               <Avatar className="h-24 w-24">
                 <AvatarImage src={profile.image || undefined} />
-                <AvatarFallback className="bg-blue-100 text-blue-600 text-2xl">
+                <AvatarFallback className="bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary)] text-2xl">
                   {getInitials()}
                 </AvatarFallback>
               </Avatar>
               <label
                 htmlFor="avatar-upload"
-                className="absolute bottom-0 right-0 p-2 bg-blue-600 text-white rounded-full cursor-pointer hover:bg-blue-700 transition-colors shadow-lg"
+                className="absolute bottom-0 right-0 p-2 bg-[var(--semantic-primary)] text-white rounded-full cursor-pointer hover:bg-[var(--semantic-primary-dark)] transition-colors shadow-lg"
               >
                 {uploadingAvatar ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -311,7 +311,7 @@ export default function ProfileTab() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="firstName">
-                  First Name <span className="text-red-500">*</span>
+                  First Name <span className="text-[var(--semantic-error)]">*</span>
                 </Label>
                 <Input
                   id="firstName"
@@ -324,7 +324,7 @@ export default function ProfileTab() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="lastName">
-                  Last Name <span className="text-red-500">*</span>
+                  Last Name <span className="text-[var(--semantic-error)]">*</span>
                 </Label>
                 <Input
                   id="lastName"
@@ -339,7 +339,7 @@ export default function ProfileTab() {
 
             <div className="space-y-2">
               <Label htmlFor="email">
-                Email <span className="text-red-500">*</span>
+                Email <span className="text-[var(--semantic-error)]">*</span>
               </Label>
               <Input
                 id="email"
@@ -470,7 +470,7 @@ export default function ProfileTab() {
             <div>
               <p className="text-sm font-medium text-[var(--semantic-text-secondary)]">Account Role</p>
               <div className="flex items-center gap-2 mt-1">
-                <Shield className="h-4 w-4 text-blue-600" />
+                <Shield className="h-4 w-4 text-[var(--semantic-primary)]" />
                 <p className="text-sm capitalize">
                   {profile.role.toLowerCase().replace('_', ' ')}
                 </p>

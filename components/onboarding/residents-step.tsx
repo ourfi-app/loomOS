@@ -90,7 +90,7 @@ export default function ResidentsStep({
     <Card className="p-6 md:p-8 bg-gradient-to-br from-white via-green-50/30 to-emerald-50/20 border-0 shadow-xl backdrop-blur-sm">
       {/* Enhanced Header */}
       <div className="mb-8 relative">
-        <div className="absolute -top-2 -left-2 w-24 h-24 bg-green-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -left-2 w-24 h-24 bg-[var(--semantic-success)]/10 rounded-full blur-3xl"></div>
         <div className="absolute -top-2 -right-2 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
         
         <div className="relative">
@@ -116,14 +116,14 @@ export default function ResidentsStep({
 
       <div className="space-y-6 mb-6">
         {/* Download Template */}
-        <div className="group border-2 rounded-xl p-6 bg-gradient-to-br from-blue-50 to-indigo-50/50 border-blue-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+        <div className="group border-2 rounded-xl p-6 bg-gradient-to-br from-blue-50 to-indigo-50/50 border-[var(--semantic-primary-light)] hover:border-[var(--semantic-primary-light)] hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
               <FileSpreadsheet className="h-6 w-6" />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center font-bold">1</div>
+                <div className="w-6 h-6 rounded-full bg-[var(--semantic-primary)] text-white text-xs flex items-center justify-center font-bold">1</div>
                 <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">
                   Download Template
                 </h3>
@@ -135,7 +135,7 @@ export default function ResidentsStep({
                 variant="outline" 
                 size="sm" 
                 onClick={downloadTemplate}
-                className="bg-white hover:bg-blue-50 hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
+                className="bg-white hover:bg-[var(--semantic-primary-subtle)] hover:border-[var(--semantic-primary)] hover:text-[var(--semantic-primary)] transition-all duration-300"
               >
                 <Download className="h-4 w-4 mr-2" />
                 Download CSV Template
@@ -145,14 +145,14 @@ export default function ResidentsStep({
         </div>
 
         {/* Upload File */}
-        <div className="group border-2 rounded-xl p-6 bg-white/80 backdrop-blur-sm border-[var(--semantic-border-light)] hover:border-green-300 hover:shadow-lg transition-all duration-300">
+        <div className="group border-2 rounded-xl p-6 bg-white/80 backdrop-blur-sm border-[var(--semantic-border-light)] hover:border-[var(--semantic-success-border)] hover:shadow-lg transition-all duration-300">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
               <Upload className="h-6 w-6" />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">2</div>
+                <div className="w-6 h-6 rounded-full bg-[var(--semantic-success)] text-white text-xs flex items-center justify-center font-bold">2</div>
                 <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">
                   Upload CSV File
                 </h3>
@@ -179,7 +179,7 @@ export default function ResidentsStep({
                 size="sm"
                 onClick={() => document.getElementById('resident-file')?.click()}
                 disabled={uploading}
-                className="bg-white hover:bg-green-50 hover:border-green-500 hover:text-green-600 transition-all duration-300"
+                className="bg-white hover:bg-[var(--semantic-success-bg)] hover:border-[var(--semantic-success)] hover:text-[var(--semantic-success)] transition-all duration-300"
               >
                 {uploading ? (
                   <>
@@ -195,8 +195,8 @@ export default function ResidentsStep({
               </Button>
 
               {uploadedFile && (
-                <div className="mt-3 text-sm text-[var(--semantic-text-secondary)] flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
-                  <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                <div className="mt-3 text-sm text-[var(--semantic-text-secondary)] flex items-center gap-2 p-3 bg-[var(--semantic-success-bg)] rounded-lg border border-[var(--semantic-success-bg)]">
+                  <CheckCircle className="h-4 w-4 text-[var(--semantic-success)] flex-shrink-0" />
                   <span><span className="font-semibold">File uploaded:</span> {uploadedFile.name}</span>
                 </div>
               )}
@@ -206,9 +206,9 @@ export default function ResidentsStep({
 
         {/* Import Status */}
         {importStatus && (
-          <div className="border-2 border-green-300 rounded-xl p-6 bg-gradient-to-br from-green-50 to-emerald-50/50 shadow-lg backdrop-blur-sm">
+          <div className="border-2 border-[var(--semantic-success-border)] rounded-xl p-6 bg-gradient-to-br from-green-50 to-emerald-50/50 shadow-lg backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-[var(--semantic-success)] flex items-center justify-center">
                 <CheckCircle className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-bold text-green-900 text-lg">Import Complete</h3>
@@ -221,13 +221,13 @@ export default function ResidentsStep({
                 <div className="text-sm text-[var(--semantic-text-secondary)] font-medium">Total Records</div>
               </div>
               <div className="text-center p-4 bg-white/80 rounded-lg">
-                <div className="text-3xl font-bold text-green-600 mb-1">
+                <div className="text-3xl font-bold text-[var(--semantic-success)] mb-1">
                   {importStatus.success}
                 </div>
                 <div className="text-sm text-[var(--semantic-text-secondary)] font-medium">Imported</div>
               </div>
               <div className="text-center p-4 bg-white/80 rounded-lg">
-                <div className="text-3xl font-bold text-red-600 mb-1">
+                <div className="text-3xl font-bold text-[var(--semantic-error)] mb-1">
                   {importStatus.failed}
                 </div>
                 <div className="text-sm text-[var(--semantic-text-secondary)] font-medium">Failed</div>
@@ -264,16 +264,16 @@ export default function ResidentsStep({
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-blue-200 rounded-xl p-5 backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-5 backdrop-blur-sm">
           <div className="flex gap-4">
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary)] flex items-center justify-center">
                 <Sparkles className="h-5 w-5 text-white" />
               </div>
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-blue-900 mb-1">Add Manually Later</p>
-              <p className="text-sm text-blue-800">
+              <p className="font-semibold text-[var(--semantic-primary-dark)] mb-1">Add Manually Later</p>
+              <p className="text-sm text-[var(--semantic-primary-dark)]">
                 You can skip this step and add residents one-by-one from the Resident Directory later. 
                 However, importing now saves time if you have many residents.
               </p>

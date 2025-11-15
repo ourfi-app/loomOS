@@ -95,7 +95,7 @@ export function CardStackView({ onClose }: { onClose: () => void }) {
                   
                   <button
                     onClick={(e) => handleCardClose(e, card.id)}
-                    className="w-8 h-8 rounded-full bg-white/20 hover:bg-red-500 flex items-center justify-center transition-colors"
+                    className="w-8 h-8 rounded-full bg-white/20 hover:bg-[var(--semantic-error)] flex items-center justify-center transition-colors"
                   >
                     <X className="w-4 h-4 text-white" />
                   </button>

@@ -33,7 +33,7 @@ export function CanvasPane() {
   const dimensions = viewportDimensions[viewport];
 
   return (
-    <div className="flex flex-col h-full bg-[#EAEAEA] dark:bg-gray-950">
+    <div className="flex flex-col h-full webos-gradient-bg dark:bg-gray-950">
       {/* Toolbar */}
       <Toolbar />
 
@@ -83,7 +83,7 @@ export function CanvasPane() {
 
         {/* Properties Panel */}
         {selectedNode && (
-          <div className="w-80 border-l border-[var(--semantic-border-light)] dark:border-gray-700 bg-white dark:bg-gray-800">
+          <div className="w-80 border-l border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)] bg-white dark:bg-[var(--semantic-text-primary)]">
             <PropertiesPanel />
           </div>
         )}

@@ -143,7 +143,7 @@ export function UploadDialog({
             </div>
             {file && (
               <div className="flex items-center gap-2 p-3 bg-muted rounded-md">
-                <FileText className="h-4 w-4 text-blue-600" />
+                <FileText className="h-4 w-4 text-[var(--semantic-primary)]" />
                 <div className="flex-1">
                   <p className="text-sm font-medium">{file.name}</p>
                   <p className="text-xs text-muted-foreground">
@@ -187,9 +187,9 @@ export function UploadDialog({
           </div>
 
           {/* Info Message */}
-          <div className="flex gap-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
-            <AlertCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
-            <p className="text-xs text-blue-700">
+          <div className="flex gap-2 p-3 bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-md">
+            <AlertCircle className="h-4 w-4 text-[var(--semantic-primary)] mt-0.5 flex-shrink-0" />
+            <p className="text-xs text-[var(--semantic-primary-dark)]">
               Uploaded documents will be visible to users based on the folder's
               permission settings. Make sure you're uploading to the correct folder.
             </p>

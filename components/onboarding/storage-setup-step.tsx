@@ -69,7 +69,7 @@ export default function StorageSetupStep({
             onClick={() => setStorageType('builtin')}
             className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 relative overflow-hidden ${
               storageType === 'builtin'
-                ? 'border-blue-500 bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30 shadow-lg shadow-blue-500/20'
+                ? 'border-[var(--semantic-primary)] bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30 shadow-lg shadow-blue-500/20'
                 : 'border-[var(--semantic-border-light)] hover:border-[var(--semantic-border-medium)] bg-white hover:shadow-md'
             }`}
           >
@@ -99,7 +99,7 @@ export default function StorageSetupStep({
                       animate={{ scale: 1 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                     >
-                      <Check className="h-5 w-5 text-blue-600" />
+                      <Check className="h-5 w-5 text-[var(--semantic-primary)]" />
                     </motion.div>
                   )}
                   <span className="text-xs px-2.5 py-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold shadow-sm">
@@ -146,13 +146,13 @@ export default function StorageSetupStep({
             disabled
             className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 relative overflow-hidden opacity-60 cursor-not-allowed ${
               storageType === 'google-drive'
-                ? 'border-blue-500 bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30'
+                ? 'border-[var(--semantic-primary)] bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30'
                 : 'border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)]'
             }`}
           >
             <div className="relative flex items-start gap-4">
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                storageType === 'google-drive' ? 'bg-blue-600 text-white' : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-tertiary)]'
+                storageType === 'google-drive' ? 'bg-[var(--semantic-primary)] text-white' : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-tertiary)]'
               }`}>
                 <HardDrive className="h-6 w-6" />
               </div>
@@ -160,7 +160,7 @@ export default function StorageSetupStep({
                 <div className="flex items-center gap-2 mb-2">
                   <h3 className="font-bold text-[var(--semantic-text-primary)] text-lg">Google Drive Integration</h3>
                   {storageType === 'google-drive' && (
-                    <Check className="h-5 w-5 text-blue-600" />
+                    <Check className="h-5 w-5 text-[var(--semantic-primary)]" />
                   )}
                   <span className="text-xs px-2.5 py-1 bg-amber-100 text-amber-700 rounded-full font-semibold">
                     Coming Soon
@@ -182,7 +182,7 @@ export default function StorageSetupStep({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-200 rounded-xl p-5 mb-8 shadow-lg"
+          className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-5 mb-8 shadow-lg"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-400/5 via-purple-400/5 to-pink-400/5" />
           <div className="relative flex gap-3">

@@ -134,15 +134,15 @@ export default function BuildingServicesPage() {
         />
 
         {/* Emergency Services Alert */}
-        <Card className="border-orange-200 bg-orange-50 dark:bg-orange-950/20">
+        <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)] dark:bg-orange-950/20">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <AlertCircle className="h-5 w-5 text-orange-600 mt-0.5" />
+              <AlertCircle className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
               <div>
                 <h3 className="font-semibold text-orange-900 dark:text-orange-100">
                   Emergency Services
                 </h3>
-                <p className="text-sm text-orange-700 dark:text-orange-200 mt-1">
+                <p className="text-sm text-[var(--semantic-primary-dark)] dark:text-orange-200 mt-1">
                   For urgent issues, contact the appropriate emergency service provider
                   directly. All emergency services are available 24/7.
                 </p>

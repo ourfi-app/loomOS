@@ -64,9 +64,9 @@ export function LoomOSBreadcrumb({
                 href="/dashboard"
                 className={cn(
                   'flex items-center gap-1 px-2 py-1 rounded',
-                  'text-sm text-neutral-600 dark:text-neutral-400',
-                  'hover:text-neutral-900 dark:hover:text-neutral-100',
-                  'hover:bg-neutral-100 dark:hover:bg-neutral-800',
+                  'text-sm text-[var(--semantic-text-secondary)] dark:text-neutral-400',
+                  'hover:text-[var(--semantic-text-primary)] dark:hover:text-neutral-100',
+                  'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-neutral-800',
                   'transition-colors'
                 )}
               >
@@ -74,7 +74,7 @@ export function LoomOSBreadcrumb({
               </Link>
             </li>
             {displayItems.length > 0 && (
-              <li className="text-neutral-400 dark:text-neutral-600">
+              <li className="text-neutral-400 dark:text-[var(--semantic-text-secondary)]">
                 <ChevronRight className="w-4 h-4" />
               </li>
             )}
@@ -94,9 +94,9 @@ export function LoomOSBreadcrumb({
                     href={item.href}
                     className={cn(
                       'flex items-center gap-2 px-2 py-1 rounded',
-                      'text-sm text-neutral-600 dark:text-neutral-400',
-                      'hover:text-neutral-900 dark:hover:text-neutral-100',
-                      'hover:bg-neutral-100 dark:hover:bg-neutral-800',
+                      'text-sm text-[var(--semantic-text-secondary)] dark:text-neutral-400',
+                      'hover:text-[var(--semantic-text-primary)] dark:hover:text-neutral-100',
+                      'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-neutral-800',
                       'transition-colors'
                     )}
                   >
@@ -108,8 +108,8 @@ export function LoomOSBreadcrumb({
                     'flex items-center gap-2 px-2 py-1',
                     'text-sm font-medium',
                     index === displayItems.length - 1
-                      ? 'text-neutral-900 dark:text-neutral-100'
-                      : 'text-neutral-600 dark:text-neutral-400'
+                      ? 'text-[var(--semantic-text-primary)] dark:text-neutral-100'
+                      : 'text-[var(--semantic-text-secondary)] dark:text-neutral-400'
                   )}>
                     {item.icon}
                     <span>{item.label}</span>
@@ -119,7 +119,7 @@ export function LoomOSBreadcrumb({
             </li>
             
             {index < displayItems.length - 1 && (
-              <li className="text-neutral-400 dark:text-neutral-600">
+              <li className="text-neutral-400 dark:text-[var(--semantic-text-secondary)]">
                 <ChevronRight className="w-4 h-4" />
               </li>
             )}
@@ -161,9 +161,9 @@ export function LoomOSBreadcrumbItem({
         href={href}
         className={cn(
           'flex items-center gap-2 px-2 py-1 rounded',
-          'text-sm text-neutral-600 dark:text-neutral-400',
-          'hover:text-neutral-900 dark:hover:text-neutral-100',
-          'hover:bg-neutral-100 dark:hover:bg-neutral-800',
+          'text-sm text-[var(--semantic-text-secondary)] dark:text-neutral-400',
+          'hover:text-[var(--semantic-text-primary)] dark:hover:text-neutral-100',
+          'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-neutral-800',
           'transition-colors',
           className
         )}
@@ -180,8 +180,8 @@ export function LoomOSBreadcrumbItem({
         'flex items-center gap-2 px-2 py-1',
         'text-sm font-medium',
         current 
-          ? 'text-neutral-900 dark:text-neutral-100' 
-          : 'text-neutral-600 dark:text-neutral-400',
+          ? 'text-[var(--semantic-text-primary)] dark:text-neutral-100' 
+          : 'text-[var(--semantic-text-secondary)] dark:text-neutral-400',
         className
       )}
       aria-current={current ? 'page' : undefined}

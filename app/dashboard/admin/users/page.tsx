@@ -326,7 +326,7 @@ export default function UserManagementPage() {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading users...</p>
         </div>
       </div>
@@ -348,7 +348,7 @@ export default function UserManagementPage() {
       <div className="flex items-center justify-between px-6 py-4 border-b">
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Users className="h-6 w-6 text-blue-600" />
+            <Users className="h-6 w-6 text-[var(--semantic-primary)]" />
             User Management
           </h1>
           <p className="text-sm text-muted-foreground mt-1">

@@ -162,7 +162,7 @@ export default function AssociationConfigPage() {
         gradient={APP_COLORS.admin.light}
       >
         <div className="flex items-center justify-center h-full">
-          <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+          <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
         </div>
       </DesktopAppWrapper>
     );
@@ -536,9 +536,9 @@ export default function AssociationConfigPage() {
 
                   <Separator className="my-6" />
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
                     <div className="flex items-start gap-2">
-                      <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+                      <Info className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
                       <div className="flex-1">
                         <h4 className="font-medium text-[var(--semantic-text-primary)] mb-2">Financial Summary</h4>
                         <div className="space-y-1 text-sm text-[var(--semantic-text-secondary)]">

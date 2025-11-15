@@ -131,7 +131,7 @@ function ContainerSettings() {
         <select
           value={flexDirection}
           onChange={(e) => setProp((props: ContainerProps) => (props.flexDirection = e.target.value as 'row' | 'column'))}
-          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)] rounded-lg text-sm"
         >
           <option value="column">Column</option>
           <option value="row">Row</option>

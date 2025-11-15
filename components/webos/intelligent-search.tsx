@@ -51,7 +51,7 @@ export function IntelligentSearch({ isOpen, onClose }: IntelligentSearchProps) {
         type: 'suggestion',
         title: 'Check Today\'s Schedule',
         subtitle: 'You have 2 upcoming meetings',
-        icon: <Calendar className="w-5 h-5 text-blue-400" />,
+        icon: <Calendar className="w-5 h-5 text-[var(--semantic-primary)]" />,
         action: () => router.push('/dashboard/apps/calendar'),
         score: 0.9,
       });
@@ -63,7 +63,7 @@ export function IntelligentSearch({ isOpen, onClose }: IntelligentSearchProps) {
         type: 'suggestion',
         title: 'Catch up on Messages',
         subtitle: '3 unread conversations',
-        icon: <MessageSquare className="w-5 h-5 text-purple-400" />,
+        icon: <MessageSquare className="w-5 h-5 text-[var(--semantic-accent)]" />,
         action: () => router.push('/dashboard/messages'),
         score: 0.85,
       });
@@ -90,7 +90,7 @@ export function IntelligentSearch({ isOpen, onClose }: IntelligentSearchProps) {
       type: 'action',
       title: 'Send New Message',
       subtitle: 'Start a conversation',
-      icon: <MessageSquare className="w-5 h-5 text-purple-400" />,
+      icon: <MessageSquare className="w-5 h-5 text-[var(--semantic-accent)]" />,
       action: () => {
         router.push('/dashboard/messages');
         onClose();
@@ -112,7 +112,7 @@ export function IntelligentSearch({ isOpen, onClose }: IntelligentSearchProps) {
       type: 'action',
       title: 'Book Amenity',
       subtitle: 'Reserve community spaces',
-      icon: <Calendar className="w-5 h-5 text-blue-400" />,
+      icon: <Calendar className="w-5 h-5 text-[var(--semantic-primary)]" />,
       action: () => {
         router.push('/dashboard/building-services');
         onClose();

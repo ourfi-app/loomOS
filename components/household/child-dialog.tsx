@@ -111,7 +111,7 @@ export default function ChildDialog({ open, onClose, unitNumber, editingChild }:
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">
-              Name <span className="text-red-500">*</span>
+              Name <span className="text-[var(--semantic-error)]">*</span>
             </Label>
             <Input
               id="name"

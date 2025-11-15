@@ -10,7 +10,7 @@ export default function EmailTab() {
       <div className="max-w-2xl w-full text-center space-y-6">
         <div className="flex justify-center">
           <div className="p-6 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20">
-            <Send className="h-16 w-16 text-blue-600" />
+            <Send className="h-16 w-16 text-[var(--semantic-primary)]" />
           </div>
         </div>
 
@@ -24,7 +24,7 @@ export default function EmailTab() {
         <Card>
           <CardContent className="p-6 space-y-4">
             <div className="flex items-start gap-3 text-left">
-              <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+              <AlertCircle className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
               <div className="flex-1">
                 <h3 className="font-semibold mb-1">Email Access Coming Soon</h3>
                 <p className="text-sm text-muted-foreground">

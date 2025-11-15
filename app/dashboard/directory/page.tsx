@@ -683,7 +683,7 @@ export default function DirectoryPage() {
                                     {resident.committeeMemberships.length > 0 && (
                                       <Badge className={cn(
                                         'text-xs px-1.5 py-0',
-                                        isSelected ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-700'
+                                        isSelected ? 'bg-white/20 text-white' : 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]'
                                       )}>
                                         <Users size={10} className="mr-1" />
                                         {resident.committeeMemberships.length} Committee{resident.committeeMemberships.length > 1 ? 's' : ''}
@@ -692,7 +692,7 @@ export default function DirectoryPage() {
                                     {resident.pets.length > 0 && (
                                       <Badge className={cn(
                                         'text-xs px-1.5 py-0',
-                                        isSelected ? 'bg-white/20 text-white' : 'bg-green-100 text-green-700'
+                                        isSelected ? 'bg-white/20 text-white' : 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]'
                                       )}>
                                         <PawPrint size={10} className="mr-1" />
                                         {resident.pets.length} Pet{resident.pets.length > 1 ? 's' : ''}
@@ -701,7 +701,7 @@ export default function DirectoryPage() {
                                     {resident.children.length > 0 && (
                                       <Badge className={cn(
                                         'text-xs px-1.5 py-0',
-                                        isSelected ? 'bg-white/20 text-white' : 'bg-purple-100 text-purple-700'
+                                        isSelected ? 'bg-white/20 text-white' : 'bg-[var(--semantic-accent-subtle)] text-[var(--semantic-accent-dark)]'
                                       )}>
                                         <Baby size={10} className="mr-1" />
                                         {resident.children.length} {resident.children.length > 1 ? 'Children' : 'Child'}
@@ -710,7 +710,7 @@ export default function DirectoryPage() {
                                     {resident.additionalResidents.length > 0 && (
                                       <Badge className={cn(
                                         'text-xs px-1.5 py-0',
-                                        isSelected ? 'bg-white/20 text-white' : 'bg-orange-100 text-orange-700'
+                                        isSelected ? 'bg-white/20 text-white' : 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]'
                                       )}>
                                         <UserPlus size={10} className="mr-1" />
                                         +{resident.additionalResidents.length}
@@ -897,7 +897,7 @@ export default function DirectoryPage() {
                     </Avatar>
                     {hasBoardAccess(selectedResident.role) && (
                       <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full border-2 border-white/30 flex items-center justify-center">
-                        <Shield size={12} className="text-blue-600" />
+                        <Shield size={12} className="text-[var(--semantic-primary)]" />
                       </div>
                     )}
                   </div>
@@ -1059,7 +1059,7 @@ export default function DirectoryPage() {
                                   {additionalResident.name}
                                 </div>
                                 {additionalResident.isEmergencyContact && (
-                                  <Badge className="bg-red-100 text-red-700 text-xs px-1.5 py-0">
+                                  <Badge className="bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)] text-xs px-1.5 py-0">
                                     <AlertCircle size={10} className="mr-1" />
                                     Emergency
                                   </Badge>

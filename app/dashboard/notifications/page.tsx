@@ -85,7 +85,7 @@ export default function NotificationsPage() {
 
   const getIcon = (isUrgent: boolean) => {
     if (isUrgent) {
-      return <AlertCircle className="w-5 h-5 text-red-500" />;
+      return <AlertCircle className="w-5 h-5 text-[var(--semantic-error)]" />;
     }
     return <Info className="w-5 h-5 text-webos-badge" />;
   };
@@ -162,10 +162,10 @@ export default function NotificationsPage() {
     timestamp: format(new Date(userNotif.createdAt), 'h:mm a'),
     selected: selectedNotification?.id === userNotif.id,
     badge: userNotif.notification.isUrgent ? (
-      <AlertCircle className="w-3 h-3 text-red-500" />
+      <AlertCircle className="w-3 h-3 text-[var(--semantic-error)]" />
     ) : undefined,
     icon: !userNotif.isRead ? (
-      <div className="w-2 h-2 rounded-full bg-orange-500" />
+      <div className="w-2 h-2 rounded-full bg-[var(--semantic-primary)]" />
     ) : undefined,
     onClick: () => handleNotificationClick(userNotif)
   }));
@@ -225,13 +225,13 @@ export default function NotificationsPage() {
               <div className="flex items-start gap-4">
                 <div className={cn(
                   'w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0',
-                  selectedNotification.notification.isUrgent ? 'bg-red-100' : 'bg-[var(--semantic-surface-hover)]'
+                  selectedNotification.notification.isUrgent ? 'bg-[var(--semantic-error-bg)]' : 'bg-[var(--semantic-surface-hover)]'
                 )}>
                   {getIcon(selectedNotification.notification.isUrgent)}
                 </div>
                 <div className="flex-1">
                   {selectedNotification.notification.isUrgent && (
-                    <Badge className="bg-red-500 text-white text-xs mb-2">URGENT</Badge>
+                    <Badge className="bg-[var(--semantic-error)] text-white text-xs mb-2">URGENT</Badge>
                   )}
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function NotificationsPage() {
                 <div className="text-sm text-[var(--semantic-text-secondary)] space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold">Type:</span>
-                    <Badge className="bg-gray-500 text-white text-xs">
+                    <Badge className="bg-[var(--semantic-text-tertiary)] text-white text-xs">
                       {selectedNotification.notification.type}
                     </Badge>
                   </div>
@@ -255,8 +255,8 @@ export default function NotificationsPage() {
                     <Badge className={cn(
                       'text-xs',
                       selectedNotification.isRead
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-blue-100 text-blue-700'
+                        ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]'
+                        : 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]'
                     )}>
                       {selectedNotification.isRead ? 'Read' : 'Unread'}
                     </Badge>
@@ -266,7 +266,7 @@ export default function NotificationsPage() {
                     <Badge className={cn(
                       'text-xs',
                       selectedNotification.notification.isUrgent
-                        ? 'bg-red-100 text-red-700'
+                        ? 'bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)]'
                         : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                     )}>
                       {selectedNotification.notification.isUrgent ? 'Urgent' : 'Normal'}

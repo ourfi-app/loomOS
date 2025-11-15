@@ -116,42 +116,42 @@ export default function SuperAdminDashboard() {
       description: 'Manage tenants and settings',
       href: '/dashboard/super-admin/organizations',
       icon: Building2,
-      color: 'text-blue-500'
+      color: 'text-[var(--semantic-primary)]'
     },
     {
       title: 'Users',
       description: 'Manage all platform users',
       href: '/dashboard/super-admin/users',
       icon: Users,
-      color: 'text-green-500'
+      color: 'text-[var(--semantic-success)]'
     },
     {
       title: 'Domains',
       description: 'Configure custom domains',
       href: '/dashboard/super-admin/domains',
       icon: Globe,
-      color: 'text-purple-500'
+      color: 'text-[var(--semantic-accent)]'
     },
     {
       title: 'API Management',
       description: 'API keys and usage',
       href: '/dashboard/super-admin/api',
       icon: Key,
-      color: 'text-orange-500'
+      color: 'text-[var(--semantic-primary)]'
     },
     {
       title: 'System Monitoring',
       description: 'Performance and health',
       href: '/dashboard/super-admin/monitoring',
       icon: Activity,
-      color: 'text-red-500'
+      color: 'text-[var(--semantic-error)]'
     },
     {
       title: 'Security',
       description: 'Security settings and logs',
       href: '/dashboard/super-admin/security',
       icon: Shield,
-      color: 'text-indigo-500'
+      color: 'text-[var(--semantic-accent)]'
     }
   ];
 
@@ -191,13 +191,13 @@ export default function SuperAdminDashboard() {
           <CardContent>
             <div className="text-2xl font-bold">{stats.organizations.total}</div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-green-500">{stats.organizations.active} active</span>
+              <span className="text-[var(--semantic-success)]">{stats.organizations.active} active</span>
               {' · '}
-              <span className="text-yellow-500">{stats.organizations.trial} trial</span>
+              <span className="text-[var(--semantic-warning)]">{stats.organizations.trial} trial</span>
               {stats.organizations.suspended > 0 && (
                 <>
                   {' · '}
-                  <span className="text-red-500">{stats.organizations.suspended} suspended</span>
+                  <span className="text-[var(--semantic-error)]">{stats.organizations.suspended} suspended</span>
                 </>
               )}
             </p>
@@ -214,7 +214,7 @@ export default function SuperAdminDashboard() {
           <CardContent>
             <div className="text-2xl font-bold">{stats.users.total}</div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-green-500">{stats.users.active} active</span>
+              <span className="text-[var(--semantic-success)]">{stats.users.active} active</span>
               {' · '}
               {stats.users.admins} admins
             </p>
@@ -309,10 +309,10 @@ export default function SuperAdminDashboard() {
               stats.recentActivity.map((activity) => (
                 <div key={activity.id} className="flex items-start space-x-3 pb-3 border-b last:border-0">
                   <div className="mt-0.5">
-                    {activity.type === 'success' && <CheckCircle className="h-4 w-4 text-green-500" />}
-                    {activity.type === 'warning' && <AlertCircle className="h-4 w-4 text-yellow-500" />}
-                    {activity.type === 'error' && <XCircle className="h-4 w-4 text-red-500" />}
-                    {activity.type === 'info' && <Activity className="h-4 w-4 text-blue-500" />}
+                    {activity.type === 'success' && <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />}
+                    {activity.type === 'warning' && <AlertCircle className="h-4 w-4 text-[var(--semantic-warning)]" />}
+                    {activity.type === 'error' && <XCircle className="h-4 w-4 text-[var(--semantic-error)]" />}
+                    {activity.type === 'info' && <Activity className="h-4 w-4 text-[var(--semantic-primary)]" />}
                   </div>
                   <div className="flex-1">
                     <p className="text-sm">{activity.description}</p>

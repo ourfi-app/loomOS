@@ -64,7 +64,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
             key={i}
             className={cn(
               "w-4 h-4",
-              i < rating ? "text-yellow-400" : "text-white/10"
+              i < rating ? "text-[var(--semantic-warning)]" : "text-white/10"
             )}
           />
         ))}
@@ -86,7 +86,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
               className="transition-transform hover:scale-110"
             >
               {(hoveredRating || userRating) >= starValue ? (
-                <MdStar className="w-6 h-6 text-yellow-400" />
+                <MdStar className="w-6 h-6 text-[var(--semantic-warning)]" />
               ) : (
                 <MdStarBorder className="w-6 h-6 text-white/30" />
               )}
@@ -130,13 +130,13 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
               <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <h2 className="text-xl font-display text-white truncate max-w-[300px]">{app.title}</h2>
                 {app.isNew && (
-                  <span className="px-2 py-0.5 bg-green-500/20 text-green-300 text-xs font-medium rounded-full flex items-center gap-1 flex-shrink-0">
+                  <span className="px-2 py-0.5 bg-[var(--semantic-success)]/20 text-green-300 text-xs font-medium rounded-full flex items-center gap-1 flex-shrink-0">
                     <MdNewReleases className="w-3 h-3" />
                     New
                   </span>
                 )}
                 {app.isBeta && (
-                  <span className="px-2 py-0.5 bg-blue-500/20 text-blue-300 text-xs font-medium rounded-full flex items-center gap-1 flex-shrink-0">
+                  <span className="px-2 py-0.5 bg-[var(--semantic-primary)]/20 text-blue-300 text-xs font-medium rounded-full flex items-center gap-1 flex-shrink-0">
                     <MdScience className="w-3 h-3" />
                     Beta
                   </span>
@@ -232,7 +232,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                   <ul className="space-y-2">
                     {app.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-2 text-white/60 text-sm">
-                        <MdCheck className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <MdCheck className="w-4 h-4 text-[var(--semantic-success)] flex-shrink-0 mt-0.5" />
                         <span className="break-words">{feature}</span>
                       </li>
                     ))}
@@ -297,7 +297,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                   <ul className="space-y-1.5">
                     {app.permissions.map((permission, index) => (
                       <li key={index} className="flex items-start gap-2 text-white/60 text-sm">
-                        <MdInfo className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <MdInfo className="w-4 h-4 text-[var(--semantic-primary)] flex-shrink-0 mt-0.5" />
                         <span className="break-words">{permission}</span>
                       </li>
                     ))}
@@ -314,7 +314,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                 {app.canPinToDock && (
                   <div className="flex items-center justify-between text-sm gap-2">
                     <span className="text-white/60 truncate">Pin to Dock</span>
-                    <span className="text-green-400 flex-shrink-0">Supported</span>
+                    <span className="text-[var(--semantic-success)] flex-shrink-0">Supported</span>
                   </div>
                 )}
                 {app.hasWidget && (
@@ -353,7 +353,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                         className={cn(
                           "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-shrink-0",
                           feedbackType === 'bug'
-                            ? "bg-red-500/20 text-red-300 border border-red-500/30"
+                            ? "bg-[var(--semantic-error)]/20 text-red-300 border border-[var(--semantic-error)]/30"
                             : "bg-white/5 text-white/60 hover:bg-white/10 border border-transparent"
                         )}
                       >
@@ -365,7 +365,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                         className={cn(
                           "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-shrink-0",
                           feedbackType === 'feature'
-                            ? "bg-blue-500/20 text-blue-300 border border-blue-500/30"
+                            ? "bg-[var(--semantic-primary)]/20 text-blue-300 border border-[var(--semantic-primary)]/30"
                             : "bg-white/5 text-white/60 hover:bg-white/10 border border-transparent"
                         )}
                       >
@@ -377,7 +377,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                         className={cn(
                           "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-shrink-0",
                           feedbackType === 'praise'
-                            ? "bg-green-500/20 text-green-300 border border-green-500/30"
+                            ? "bg-[var(--semantic-success)]/20 text-green-300 border border-[var(--semantic-success)]/30"
                             : "bg-white/5 text-white/60 hover:bg-white/10 border border-transparent"
                         )}
                       >
@@ -414,8 +414,8 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
                 </>
               ) : (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
-                    <MdCheck className="w-8 h-8 text-green-400" />
+                  <div className="w-16 h-16 rounded-full bg-[var(--semantic-success)]/20 flex items-center justify-center mb-4">
+                    <MdCheck className="w-8 h-8 text-[var(--semantic-success)]" />
                   </div>
                   <h3 className="text-xl font-semibold text-white/90 mb-2">Thank you!</h3>
                   <p className="text-white/60 text-sm">

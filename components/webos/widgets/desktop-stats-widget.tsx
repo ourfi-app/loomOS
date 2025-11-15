@@ -125,12 +125,12 @@ export function DesktopStatsWidget({ widget }: DesktopStatsWidgetProps) {
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; text: string; border: string }> = {
-      blue: { bg: 'bg-blue-500/10', text: 'text-blue-500', border: 'border-blue-500/20' },
-      green: { bg: 'bg-green-500/10', text: 'text-green-500', border: 'border-green-500/20' },
+      blue: { bg: 'bg-[var(--semantic-primary)]/10', text: 'text-[var(--semantic-primary)]', border: 'border-[var(--semantic-primary)]/20' },
+      green: { bg: 'bg-[var(--semantic-success)]/10', text: 'text-[var(--semantic-success)]', border: 'border-[var(--semantic-success)]/20' },
       emerald: { bg: 'bg-emerald-500/10', text: 'text-emerald-500', border: 'border-emerald-500/20' },
-      orange: { bg: 'bg-orange-500/10', text: 'text-orange-500', border: 'border-orange-500/20' },
-      purple: { bg: 'bg-purple-500/10', text: 'text-purple-500', border: 'border-purple-500/20' },
-      pink: { bg: 'bg-pink-500/10', text: 'text-pink-500', border: 'border-pink-500/20' },
+      orange: { bg: 'bg-[var(--semantic-primary)]/10', text: 'text-[var(--semantic-primary)]', border: 'border-orange-500/20' },
+      purple: { bg: 'bg-[var(--semantic-accent)]/10', text: 'text-[var(--semantic-accent)]', border: 'border-purple-500/20' },
+      pink: { bg: 'bg-[var(--semantic-accent)]/10', text: 'text-[var(--semantic-accent)]', border: 'border-pink-500/20' },
     };
     return colors[color] || colors.blue;
   };
@@ -191,8 +191,8 @@ export function DesktopStatsWidget({ widget }: DesktopStatsWidgetProps) {
                   {stat.change !== undefined && (
                     <div className={cn(
                       'flex items-center gap-0.5 text-xs font-medium',
-                      stat.trend === 'up' && 'text-green-500',
-                      stat.trend === 'down' && 'text-red-500',
+                      stat.trend === 'up' && 'text-[var(--semantic-success)]',
+                      stat.trend === 'down' && 'text-[var(--semantic-error)]',
                       stat.trend === 'neutral' && 'text-muted-foreground'
                     )}>
                       {stat.trend === 'up' && <TrendingUp className="h-3 w-3" />}
@@ -217,13 +217,13 @@ export function DesktopStatsWidget({ widget }: DesktopStatsWidgetProps) {
         {/* Summary Section */}
         <div className="mt-4 p-3 rounded-lg bg-primary/5 border border-primary/10">
           <h4 className="text-xs font-semibold mb-2 flex items-center gap-1.5">
-            <TrendingUp className="h-3.5 w-3.5 text-green-500" />
+            <TrendingUp className="h-3.5 w-3.5 text-[var(--semantic-success)]" />
             Monthly Performance
           </h4>
           <div className="space-y-2 text-xs">
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">Overall Growth</span>
-              <span className="font-medium text-green-600">+3.7%</span>
+              <span className="font-medium text-[var(--semantic-success)]">+3.7%</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">Tasks Completed</span>
@@ -231,7 +231,7 @@ export function DesktopStatsWidget({ widget }: DesktopStatsWidgetProps) {
             </div>
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">Resident Satisfaction</span>
-              <span className="font-medium text-green-600">4.6/5.0</span>
+              <span className="font-medium text-[var(--semantic-success)]">4.6/5.0</span>
             </div>
           </div>
         </div>

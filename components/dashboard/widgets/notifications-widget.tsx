@@ -46,11 +46,11 @@ export function NotificationsWidget() {
     >
       <div className="flex items-center gap-3 mb-3">
         <div className="relative">
-          <div className="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
-            <Bell className="w-6 h-6 text-pink-600" />
+          <div className="w-12 h-12 rounded-xl bg-[var(--semantic-accent)]/10 flex items-center justify-center">
+            <Bell className="w-6 h-6 text-[var(--semantic-accent)]" />
           </div>
           {unreadCount > 0 && (
-            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-pink-600 text-white text-xs flex items-center justify-center font-bold">
+            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--semantic-accent-dark)] text-white text-xs flex items-center justify-center font-bold">
               {unreadCount > 9 ? '9+' : unreadCount}
             </div>
           )}
@@ -72,7 +72,7 @@ export function NotificationsWidget() {
             <div key={notif.id} className="flex items-start gap-2 text-sm">
               <div className={cn(
                 "w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0",
-                notif.isRead ? "bg-muted-foreground/30" : "bg-pink-600"
+                notif.isRead ? "bg-muted-foreground/30" : "bg-[var(--semantic-accent-dark)]"
               )} />
               <div className="flex-1 min-w-0">
                 <div className={cn(

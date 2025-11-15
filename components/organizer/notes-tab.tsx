@@ -217,7 +217,7 @@ export default function NotesTab() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-sm font-medium truncate">{note.title}</span>
-                        {note.isFavorite && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />}
+                        {note.isFavorite && <Star className="w-3 h-3 text-[var(--semantic-warning)] fill-yellow-500" />}
                         {note.isPinned && <span className="text-xs">📌</span>}
                       </div>
                       <p className="text-xs text-muted-foreground line-clamp-2">
@@ -295,7 +295,7 @@ export default function NotesTab() {
                     <Star
                       className={cn(
                         "h-4 w-4",
-                        selectedNote.isFavorite && "fill-yellow-500 text-yellow-500"
+                        selectedNote.isFavorite && "fill-yellow-500 text-[var(--semantic-warning)]"
                       )}
                     />
                   </Button>

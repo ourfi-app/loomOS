@@ -43,7 +43,7 @@ export function FloatingAssistantBubble() {
       </div>
       
       {/* Subtle status indicator - no animation */}
-      <div className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-green-400/80 rounded-full border-2 border-background flex items-center justify-center">
+      <div className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[var(--semantic-success)]/80 rounded-full border-2 border-background flex items-center justify-center">
         <div className="w-1.5 h-1.5 bg-white rounded-full" />
       </div>
     </button>

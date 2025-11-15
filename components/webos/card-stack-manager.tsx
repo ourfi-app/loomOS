@@ -178,7 +178,7 @@ export function CardStackManager({
                         e.stopPropagation();
                         handleCardMinimize(card.id);
                       }}
-                      className="p-1.5 rounded hover:bg-gray-300 transition-colors"
+                      className="p-1.5 rounded hover:bg-[var(--semantic-bg-muted)] transition-colors"
                     >
                       <Minus size={14} className="text-[var(--semantic-text-secondary)]" />
                     </motion.button>
@@ -190,7 +190,7 @@ export function CardStackManager({
                         e.stopPropagation();
                         handleCardMaximize(card.id);
                       }}
-                      className="p-1.5 rounded hover:bg-gray-300 transition-colors"
+                      className="p-1.5 rounded hover:bg-[var(--semantic-bg-muted)] transition-colors"
                     >
                       {isMaximized ? (
                         <Minimize2 size={14} className="text-[var(--semantic-text-secondary)]" />
@@ -206,9 +206,9 @@ export function CardStackManager({
                         e.stopPropagation();
                         handleCardClose(card.id);
                       }}
-                      className="p-1.5 rounded hover:bg-red-100 transition-colors"
+                      className="p-1.5 rounded hover:bg-[var(--semantic-error-bg)] transition-colors"
                     >
-                      <X size={14} className="text-[var(--semantic-text-secondary)] hover:text-red-600" />
+                      <X size={14} className="text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-error)]" />
                     </motion.button>
                   </div>
                 </div>
@@ -226,7 +226,7 @@ export function CardStackManager({
       {/* Minimized Cards Bar */}
       {cards.some((card) => card.minimized) && (
         <div className="fixed bottom-20 left-1/2 -translate-x-1/2 pointer-events-auto">
-          <div className="bg-gray-900/90 backdrop-blur-lg rounded-full px-4 py-2 shadow-xl flex items-center gap-2">
+          <div className="bg-[var(--semantic-text-primary)]/90 backdrop-blur-lg rounded-full px-4 py-2 shadow-xl flex items-center gap-2">
             <AnimatePresence>
               {cards
                 .filter((card) => card.minimized)
@@ -239,7 +239,7 @@ export function CardStackManager({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => handleCardMinimize(card.id)}
-                    className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-gray-600 transition-colors"
+                    className="w-10 h-10 rounded-full bg-[var(--semantic-text-secondary)] flex items-center justify-center text-white hover:bg-[var(--semantic-text-secondary)] transition-colors"
                     title={card.title}
                     transition={motionSpringPresets.stiff}
                   >

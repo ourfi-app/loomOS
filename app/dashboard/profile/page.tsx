@@ -251,7 +251,7 @@ export default function ProfilePage() {
                   </Avatar>
                   <label
                     htmlFor="avatar-upload"
-                    className="absolute bottom-0 right-0 p-2 bg-orange-500 text-white rounded-full cursor-pointer hover:bg-orange-600 transition-colors shadow-lg"
+                    className="absolute bottom-0 right-0 p-2 bg-[var(--semantic-primary)] text-white rounded-full cursor-pointer hover:bg-[var(--semantic-primary-dark)] transition-colors shadow-lg"
                   >
                     {uploadingAvatar ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -272,7 +272,7 @@ export default function ProfilePage() {
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-[var(--semantic-text-primary)]">{profile.name}</h3>
                   <div className="flex items-center gap-2 mt-2">
-                    <Badge className="capitalize bg-orange-500 text-white">
+                    <Badge className="capitalize bg-[var(--semantic-primary)] text-white">
                       {profile.role.toLowerCase().replace('_', ' ')}
                     </Badge>
                   </div>
@@ -332,7 +332,7 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName" className="text-sm font-medium">
-                      First Name <span className="text-red-500">*</span>
+                      First Name <span className="text-[var(--semantic-error)]">*</span>
                     </Label>
                     <Input
                       id="firstName"
@@ -346,7 +346,7 @@ export default function ProfilePage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName" className="text-sm font-medium">
-                      Last Name <span className="text-red-500">*</span>
+                      Last Name <span className="text-[var(--semantic-error)]">*</span>
                     </Label>
                     <Input
                       id="lastName"
@@ -362,7 +362,7 @@ export default function ProfilePage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium">
-                    Email <span className="text-red-500">*</span>
+                    Email <span className="text-[var(--semantic-error)]">*</span>
                   </Label>
                   <Input
                     id="email"
@@ -465,7 +465,7 @@ export default function ProfilePage() {
                 <Button 
                   type="submit" 
                   disabled={saving}
-                  className="bg-orange-500 hover:bg-orange-600 text-white"
+                  className="bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary-dark)] text-white"
                 >
                   {saving ? (
                     <>

@@ -72,13 +72,13 @@ export function DocumentsTab() {
   const getPermissionIcon = (permission: string) => {
     switch (permission) {
       case 'PUBLIC':
-        return <Globe className="h-4 w-4 text-green-500" />;
+        return <Globe className="h-4 w-4 text-[var(--semantic-success)]" />;
       case 'RESIDENTS_ONLY':
-        return <User className="h-4 w-4 text-blue-500" />;
+        return <User className="h-4 w-4 text-[var(--semantic-primary)]" />;
       case 'BOARD_ONLY':
-        return <Lock className="h-4 w-4 text-orange-500" />;
+        return <Lock className="h-4 w-4 text-[var(--semantic-primary)]" />;
       case 'ADMIN_ONLY':
-        return <Lock className="h-4 w-4 text-red-500" />;
+        return <Lock className="h-4 w-4 text-[var(--semantic-error)]" />;
       default:
         return <FileText className="h-4 w-4 text-[var(--semantic-text-tertiary)]" />;
     }
@@ -87,11 +87,11 @@ export function DocumentsTab() {
   const getPermissionBadge = (permission: string) => {
     switch (permission) {
       case 'PUBLIC':
-        return <Badge className="bg-green-500 hover:bg-green-600">Public</Badge>;
+        return <Badge className="bg-[var(--semantic-success)] hover:bg-[var(--semantic-success)]">Public</Badge>;
       case 'RESIDENTS_ONLY':
-        return <Badge className="bg-blue-500 hover:bg-blue-600">Residents</Badge>;
+        return <Badge className="bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary)]">Residents</Badge>;
       case 'BOARD_ONLY':
-        return <Badge className="bg-orange-500 hover:bg-orange-600">Board</Badge>;
+        return <Badge className="bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary-dark)]">Board</Badge>;
       case 'ADMIN_ONLY':
         return <Badge variant="destructive">Admin Only</Badge>;
       default:
@@ -377,7 +377,7 @@ export function DocumentsTab() {
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <FolderOpen className="h-5 w-5 text-blue-600" />
+                  <FolderOpen className="h-5 w-5 text-[var(--semantic-primary)]" />
                   <CardTitle className="text-base">{folder.name}</CardTitle>
                 </div>
                 {getPermissionIcon(folder.permission)}
@@ -414,7 +414,7 @@ export function DocumentsTab() {
         <CardContent>
           {loading ? (
             <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
               <p className="text-muted-foreground">Loading documents...</p>
             </div>
           ) : filteredDocuments.length > 0 ? (
@@ -422,7 +422,7 @@ export function DocumentsTab() {
               {filteredDocuments.map((doc) => (
                 <div key={doc.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex items-center gap-4">
-                    <FileText className="h-8 w-8 text-blue-600" />
+                    <FileText className="h-8 w-8 text-[var(--semantic-primary)]" />
                     <div>
                       <p className="font-medium">{doc.originalName}</p>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -457,9 +457,9 @@ export function DocumentsTab() {
                         disabled={deletingId === doc.id}
                       >
                         {deletingId === doc.id ? (
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600"></div>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-[var(--semantic-border-strong)]"></div>
                         ) : (
-                          <Trash2 className="h-4 w-4 text-red-600" />
+                          <Trash2 className="h-4 w-4 text-[var(--semantic-error)]" />
                         )}
                       </Button>
                     )}
@@ -483,18 +483,18 @@ export function DocumentsTab() {
 
       {/* Upload Instructions */}
       {userRole === 'RESIDENT' && (
-        <Card className="border-blue-200 bg-blue-50">
+        <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-blue-900">
+            <CardTitle className="flex items-center gap-2 text-[var(--semantic-primary-dark)]">
               <Upload className="h-5 w-5" />
               Need to Share a Document?
             </CardTitle>
-            <CardDescription className="text-blue-700">
+            <CardDescription className="text-[var(--semantic-primary-dark)]">
               Contact the board or property manager to upload documents to the shared library
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-blue-700">
+            <p className="text-sm text-[var(--semantic-primary-dark)]">
               Residents can access most documents but cannot upload directly. 
               Please email important documents to the board for inclusion in the library.
             </p>

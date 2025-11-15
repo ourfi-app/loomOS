@@ -155,7 +155,7 @@ export default function MessagesTab() {
                           <span className={cn("text-sm truncate", !isRead && "font-semibold")}>
                             {message.sender?.name}
                           </span>
-                          {isStarred && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />}
+                          {isStarred && <Star className="w-3 h-3 text-[var(--semantic-warning)] fill-yellow-500" />}
                           <span className="text-xs text-muted-foreground ml-auto">
                             {formatMessageDate(message.sentAt || message.createdAt)}
                           </span>

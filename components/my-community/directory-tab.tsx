@@ -102,7 +102,7 @@ export function DirectoryTab() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
       </div>
     );
   }
@@ -140,8 +140,8 @@ export function DirectoryTab() {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 bg-blue-100 rounded-lg">
-                        <IconComponent className="h-6 w-6 text-blue-600" />
+                      <div className="p-3 bg-[var(--semantic-primary-subtle)] rounded-lg">
+                        <IconComponent className="h-6 w-6 text-[var(--semantic-primary)]" />
                       </div>
                       <div>
                         <CardTitle>{committee.name}</CardTitle>
@@ -155,7 +155,7 @@ export function DirectoryTab() {
                             <Mail className="h-4 w-4" />
                             <a 
                               href={`mailto:${committee.email}`}
-                              className="hover:text-blue-600 transition-colors"
+                              className="hover:text-[var(--semantic-primary)] transition-colors"
                             >
                               {committee.email}
                             </a>
@@ -177,7 +177,7 @@ export function DirectoryTab() {
                               <div className="relative">
                                 <Avatar className="h-12 w-12">
                                   <AvatarImage src={member.user.image || undefined} />
-                                  <AvatarFallback className="bg-blue-100 text-blue-600">
+                                  <AvatarFallback className="bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary)]">
                                     {getInitials(member.user)}
                                   </AvatarFallback>
                                 </Avatar>
@@ -207,7 +207,7 @@ export function DirectoryTab() {
                                   <Mail className="h-3 w-3" />
                                   <a 
                                     href={`mailto:${member.user.email}`}
-                                    className="hover:text-blue-600 transition-colors truncate"
+                                    className="hover:text-[var(--semantic-primary)] transition-colors truncate"
                                   >
                                     {member.user.email}
                                   </a>
@@ -217,7 +217,7 @@ export function DirectoryTab() {
                                     <Phone className="h-3 w-3" />
                                     <a 
                                       href={`tel:${member.user.phone}`}
-                                      className="hover:text-blue-600 transition-colors"
+                                      className="hover:text-[var(--semantic-primary)] transition-colors"
                                     >
                                       {member.user.phone}
                                     </a>
@@ -310,7 +310,7 @@ export function DirectoryTab() {
                               <Mail className="h-3 w-3" />
                               <a 
                                 href={`mailto:${resident.email}`}
-                                className="hover:text-blue-600 transition-colors truncate"
+                                className="hover:text-[var(--semantic-primary)] transition-colors truncate"
                               >
                                 {resident.email}
                               </a>
@@ -320,7 +320,7 @@ export function DirectoryTab() {
                                 <Phone className="h-3 w-3" />
                                 <a 
                                   href={`tel:${resident.phone}`}
-                                  className="hover:text-blue-600 transition-colors"
+                                  className="hover:text-[var(--semantic-primary)] transition-colors"
                                 >
                                   {resident.phone}
                                 </a>

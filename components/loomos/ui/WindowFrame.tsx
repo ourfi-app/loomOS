@@ -41,7 +41,7 @@ export function WindowFrame({
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ type: 'spring', ...loomOSSpring }}
       className={cn(
-        'flex flex-col bg-white dark:bg-gray-900 rounded-lg shadow-2xl overflow-hidden',
+        'flex flex-col bg-white dark:bg-[var(--semantic-text-primary)] rounded-lg shadow-2xl overflow-hidden',
         className
       )}
       style={{
@@ -52,10 +52,10 @@ export function WindowFrame({
       }}
     >
       {/* Title Bar */}
-      <div className="flex items-center justify-between px-4 h-12 bg-[var(--semantic-bg-subtle)] dark:bg-gray-800 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+      <div className="flex items-center justify-between px-4 h-12 bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] border-b border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
         <div className="flex items-center gap-2">
           {Icon && <Icon className="w-4 h-4 text-[var(--semantic-text-secondary)] dark:text-[var(--semantic-text-tertiary)]" />}
-          <h1 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100">
+          <h1 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)]">
             {title}
           </h1>
         </div>
@@ -63,15 +63,15 @@ export function WindowFrame({
         {/* Window Controls */}
         <div className="flex items-center gap-2">
           <button
-            className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors"
+            className="w-3 h-3 rounded-full bg-[var(--semantic-warning)] hover:bg-yellow-600 transition-colors"
             aria-label="Minimize"
           />
           <button
-            className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"
+            className="w-3 h-3 rounded-full bg-[var(--semantic-success)] hover:bg-[var(--semantic-success)] transition-colors"
             aria-label="Maximize"
           />
           <button
-            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
+            className="w-3 h-3 rounded-full bg-[var(--semantic-error)] hover:bg-[var(--semantic-error)] transition-colors"
             aria-label="Close"
           />
         </div>
@@ -79,7 +79,7 @@ export function WindowFrame({
 
       {/* Toolbar (Optional) */}
       {toolbar && (
-        <div className="border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+        <div className="border-b border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
           {toolbar}
         </div>
       )}

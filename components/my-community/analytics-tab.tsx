@@ -310,10 +310,10 @@ export function AnalyticsTab() {
                   : '0';
 
                 const statusColors: Record<string, string> = {
-                  ONLINE: 'bg-green-500',
-                  AWAY: 'bg-yellow-500',
-                  BUSY: 'bg-red-500',
-                  OFFLINE: 'bg-gray-400',
+                  ONLINE: 'bg-[var(--semantic-success)]',
+                  AWAY: 'bg-[var(--semantic-warning)]',
+                  BUSY: 'bg-[var(--semantic-error)]',
+                  OFFLINE: 'bg-[var(--semantic-border-strong)]',
                 };
 
                 return (

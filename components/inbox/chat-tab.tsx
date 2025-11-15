@@ -125,7 +125,7 @@ export default function ChatTab() {
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full max-w-2xl mx-auto">
             <div className="p-4 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/20 mb-6">
-              <Sparkles className="h-12 w-12 text-purple-600" />
+              <Sparkles className="h-12 w-12 text-[var(--semantic-accent)]" />
             </div>
             <h2 className="text-2xl font-bold mb-2">How can I help you today?</h2>
             <p className="text-muted-foreground text-center mb-8">

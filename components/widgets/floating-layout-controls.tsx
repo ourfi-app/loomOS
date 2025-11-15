@@ -67,8 +67,8 @@ export function FloatingLayoutControls() {
         )}
         {isEditMode && (
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--semantic-primary)] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--semantic-primary)]"></span>
           </span>
         )}
       </Button>
@@ -82,7 +82,7 @@ export function FloatingLayoutControls() {
               <Button
                 variant="default"
                 size="icon"
-                className="h-10 w-10 rounded-full shadow-lg bg-green-600 hover:bg-green-700"
+                className="h-10 w-10 rounded-full shadow-lg bg-[var(--semantic-success)] hover:bg-[var(--semantic-success-dark)]"
                 title="Add Widget"
               >
                 <Plus className="h-5 w-5" />
@@ -132,7 +132,7 @@ export function FloatingLayoutControls() {
               <Button
                 variant="default"
                 size="icon"
-                className="h-10 w-10 rounded-full shadow-lg bg-red-600 hover:bg-red-700"
+                className="h-10 w-10 rounded-full shadow-lg bg-[var(--semantic-error)] hover:bg-[var(--semantic-error-dark)]"
                 title="Remove Widget"
               >
                 <Trash2 className="h-5 w-5" />
@@ -171,7 +171,7 @@ export function FloatingLayoutControls() {
             variant="default"
             size="icon"
             onClick={resetToDefault}
-            className="h-10 w-10 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700"
+            className="h-10 w-10 rounded-full shadow-lg bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary-dark)]"
             title="Reset Layout"
           >
             <RefreshCw className="h-5 w-5" />

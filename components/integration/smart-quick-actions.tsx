@@ -238,7 +238,7 @@ export function SmartQuickActions() {
         icon: CheckSquare,
         path: '/dashboard/apps/tasks',
         badge: `${stats.activeTasks}`,
-        color: 'text-blue-600',
+        color: 'text-[var(--semantic-primary)]',
         priority: 80,
       });
     }
@@ -250,7 +250,7 @@ export function SmartQuickActions() {
         icon: Calendar,
         path: '/dashboard/apps/calendar',
         badge: `${stats.upcomingEvents}`,
-        color: 'text-purple-600',
+        color: 'text-[var(--semantic-accent)]',
         priority: 75,
       });
     }
@@ -262,7 +262,7 @@ export function SmartQuickActions() {
         icon: MessageSquare,
         path: '/dashboard/messages',
         badge: `${stats.unreadMessages}`,
-        color: 'text-orange-600',
+        color: 'text-[var(--semantic-primary)]',
         priority: 85,
       });
     }

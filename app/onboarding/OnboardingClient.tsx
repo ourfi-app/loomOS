@@ -288,7 +288,7 @@ export default function OnboardingClient() {
   if (loading || status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
       </div>
     );
   }
@@ -338,7 +338,7 @@ export default function OnboardingClient() {
                     initial={{ opacity: 0, scale: 0.8, y: -10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg text-green-700 text-sm font-medium shadow-sm"
+                    className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-green-50 to-emerald-50 border border-[var(--semantic-success-bg)] rounded-lg text-[var(--semantic-success-dark)] text-sm font-medium shadow-sm"
                   >
                     <CheckCircle className="h-4 w-4" />
                     <span>Saved!</span>
@@ -446,9 +446,9 @@ export default function OnboardingClient() {
                   disabled={!isAccessible}
                   className={`relative z-20 w-16 h-16 rounded-2xl flex items-center justify-center border-3 transition-all shadow-lg ${
                     isCurrent
-                      ? 'bg-gradient-to-br from-blue-500 to-indigo-600 border-blue-400 text-white shadow-blue-300'
+                      ? 'bg-gradient-to-br from-blue-500 to-indigo-600 border-[var(--semantic-primary)] text-white shadow-blue-300'
                       : isCompleted
-                      ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-400 text-green-600 shadow-green-200'
+                      ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-[var(--semantic-success)] text-[var(--semantic-success)] shadow-green-200'
                       : 'bg-white border-[var(--semantic-border-medium)] text-[var(--semantic-text-tertiary)] shadow-gray-200'
                   } ${isAccessible ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'}`}
                   whileHover={isAccessible ? { scale: 1.08, y: -2 } : {}}
@@ -478,7 +478,7 @@ export default function OnboardingClient() {
                   {!isCompleted && (
                     <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
                       isCurrent
-                        ? 'bg-white text-blue-600 shadow-md'
+                        ? 'bg-white text-[var(--semantic-primary)] shadow-md'
                         : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-secondary)]'
                     }`}>
                       {index + 1}
@@ -496,7 +496,7 @@ export default function OnboardingClient() {
                   <p
                     className={`text-xs font-semibold mb-0.5 ${
                       isCurrent
-                        ? 'text-blue-600'
+                        ? 'text-[var(--semantic-primary)]'
                         : isCompleted
                         ? 'text-[var(--semantic-text-primary)]'
                         : 'text-[var(--semantic-text-tertiary)]'
@@ -505,7 +505,7 @@ export default function OnboardingClient() {
                     {step.title}
                   </p>
                   <p className={`text-[10px] ${
-                    isCurrent ? 'text-blue-500' : 'text-[var(--semantic-text-tertiary)]'
+                    isCurrent ? 'text-[var(--semantic-primary)]' : 'text-[var(--semantic-text-tertiary)]'
                   }`}>
                     {step.description}
                   </p>
@@ -522,7 +522,7 @@ export default function OnboardingClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <Card className="p-4 shadow-lg border-2 border-blue-100 bg-gradient-to-br from-white to-blue-50">
+            <Card className="p-4 shadow-lg border-2 border-[var(--semantic-primary-light)] bg-gradient-to-br from-white to-blue-50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <motion.div

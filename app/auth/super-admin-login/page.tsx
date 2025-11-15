@@ -79,24 +79,24 @@ export default function SuperAdminLoginPage() {
         </Link>
 
         {/* Logo and Title Card */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-red-200 text-center">
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-[var(--semantic-error-border)] text-center">
           <div className="mx-auto mb-6 w-20 h-20 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center shadow-lg">
             <Shield className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-red-950">Super Admin Access</h1>
-          <p className="text-red-700 mt-2 font-medium">Platform Management Console</p>
-          <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-red-100 rounded-full">
-            <Lock className="w-3 h-3 text-red-600" />
-            <span className="text-xs font-medium text-red-700">Restricted Access</span>
+          <p className="text-[var(--semantic-error-dark)] mt-2 font-medium">Platform Management Console</p>
+          <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-[var(--semantic-error-bg)] rounded-full">
+            <Lock className="w-3 h-3 text-[var(--semantic-error)]" />
+            <span className="text-xs font-medium text-[var(--semantic-error-dark)]">Restricted Access</span>
           </div>
         </div>
 
         {/* Login Form Card */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-red-200">
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-[var(--semantic-error-border)]">
           {error && (
-            <Alert className="bg-red-50 border-red-300 rounded-lg mb-5">
-              <AlertCircle className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-700 text-sm font-medium">{error}</AlertDescription>
+            <Alert className="bg-[var(--semantic-error-bg)] border-[var(--semantic-error-border)] rounded-lg mb-5">
+              <AlertCircle className="h-4 w-4 text-[var(--semantic-error)]" />
+              <AlertDescription className="text-[var(--semantic-error-dark)] text-sm font-medium">{error}</AlertDescription>
             </Alert>
           )}
 
@@ -112,7 +112,7 @@ export default function SuperAdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-11 rounded-lg bg-white border-red-300 focus:border-red-500 focus:ring-red-500 text-red-950"
+                className="h-11 rounded-lg bg-white border-[var(--semantic-error-border)] focus:border-[var(--semantic-error)] focus:ring-red-500 text-red-950"
                 disabled={isLoading}
               />
             </div>
@@ -129,13 +129,13 @@ export default function SuperAdminLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="h-11 rounded-lg bg-white border-red-300 focus:border-red-500 focus:ring-red-500 text-red-950 pr-10"
+                  className="h-11 rounded-lg bg-white border-[var(--semantic-error-border)] focus:border-[var(--semantic-error)] focus:ring-red-500 text-red-950 pr-10"
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400 hover:text-red-600 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--semantic-error)] hover:text-[var(--semantic-error)] transition-colors"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                   disabled={isLoading}
                 >
@@ -164,12 +164,12 @@ export default function SuperAdminLoginPage() {
           </form>
 
           {/* Security Notice */}
-          <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="mt-6 p-4 bg-[var(--semantic-error-bg)] border border-[var(--semantic-error-border)] rounded-lg">
             <div className="flex gap-3">
-              <Lock className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-              <div className="text-xs text-red-700 space-y-1">
+              <Lock className="w-5 h-5 text-[var(--semantic-error)] flex-shrink-0 mt-0.5" />
+              <div className="text-xs text-[var(--semantic-error-dark)] space-y-1">
                 <p className="font-semibold">Security Notice:</p>
-                <ul className="list-disc list-inside space-y-1 text-red-600">
+                <ul className="list-disc list-inside space-y-1 text-[var(--semantic-error)]">
                   <li>This is a restricted access area</li>
                   <li>All login attempts are logged</li>
                   <li>Unauthorized access is prohibited</li>
@@ -180,12 +180,12 @@ export default function SuperAdminLoginPage() {
         </div>
 
         {/* Regular Login Link Card */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-red-200 text-center">
-          <p className="text-sm text-red-700">
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-[var(--semantic-error-border)] text-center">
+          <p className="text-sm text-[var(--semantic-error-dark)]">
             Not a super admin?{' '}
             <Link
               href="/auth/login"
-              className="text-red-600 hover:text-red-800 font-semibold underline"
+              className="text-[var(--semantic-error)] hover:text-[var(--semantic-error-dark)] font-semibold underline"
             >
               Regular Login
             </Link>
@@ -194,7 +194,7 @@ export default function SuperAdminLoginPage() {
 
         {/* Default Credentials Notice (Development Only) */}
         {process.env.NODE_ENV === 'development' && (
-          <div className="bg-yellow-500/20 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-yellow-400">
+          <div className="bg-[var(--semantic-warning)]/20 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-[var(--semantic-warning)]">
             <p className="text-xs text-yellow-100 text-center font-medium">
               <strong>Dev Mode:</strong> Default credentials - Email: superadmin@trellis.com | Password: SuperAdmin123!
             </p>

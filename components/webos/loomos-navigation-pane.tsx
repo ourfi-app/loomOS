@@ -19,7 +19,7 @@ interface LoomOSNavigationPaneProps {
 
 export function LoomOSNavigationPane({ title, items, className = '' }: LoomOSNavigationPaneProps) {
   return (
-    <div className={`w-60 bg-gradient-to-b from-gray-300 to-gray-400 border-r border-gray-500 flex flex-col flex-shrink-0 ${className}`}>
+    <div className={`w-60 bg-gradient-to-b from-gray-300 to-gray-400 border-r border-[var(--semantic-border-strong)] flex flex-col flex-shrink-0 ${className}`}>
       <div className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-3 py-2 text-[11px] font-bold tracking-wider">
         {title.toUpperCase()}
       </div>
@@ -29,7 +29,7 @@ export function LoomOSNavigationPane({ title, items, className = '' }: LoomOSNav
           <div 
             key={item.id}
             className={`flex items-center justify-between px-3 py-2.5 border-b border-[var(--semantic-border-strong)] cursor-pointer transition-colors ${
-              item.active ? 'bg-gray-800 text-white' : 'text-[var(--semantic-text-primary)] hover:bg-gray-300'
+              item.active ? 'bg-[var(--semantic-text-primary)] text-white' : 'text-[var(--semantic-text-primary)] hover:bg-[var(--semantic-bg-muted)]'
             }`}
             onClick={item.onClick}
           >
@@ -43,7 +43,7 @@ export function LoomOSNavigationPane({ title, items, className = '' }: LoomOSNav
             </div>
             {item.count !== undefined && item.count > 0 && (
               <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-                item.active ? 'bg-white text-[var(--semantic-text-primary)]' : 'bg-gray-500 text-white'
+                item.active ? 'bg-white text-[var(--semantic-text-primary)]' : 'bg-[var(--semantic-text-tertiary)] text-white'
               }`}>
                 {item.count}
               </span>

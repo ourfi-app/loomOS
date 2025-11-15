@@ -147,8 +147,8 @@ export default function DocumentsStep({
     <Card className="p-6 md:p-8 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 border-0 shadow-xl backdrop-blur-sm">
       {/* Enhanced Header */}
       <div className="mb-8 relative">
-        <div className="absolute -top-2 -left-2 w-24 h-24 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -top-2 -right-2 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -left-2 w-24 h-24 bg-[var(--semantic-primary)]/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -right-2 w-32 h-32 bg-[var(--semantic-accent)]/10 rounded-full blur-3xl"></div>
         
         <div className="relative">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/30 mb-4 group hover:scale-110 transition-transform duration-300">
@@ -169,7 +169,7 @@ export default function DocumentsStep({
       {/* Storage Selection with Enhanced Design */}
       <div className="mb-8 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-[var(--semantic-border-light)] shadow-md">
         <div className="flex items-center gap-2 mb-4">
-          <Cloud className="h-5 w-5 text-blue-600" />
+          <Cloud className="h-5 w-5 text-[var(--semantic-primary)]" />
           <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)]">Document Storage</h3>
         </div>
         
@@ -178,19 +178,19 @@ export default function DocumentsStep({
             onClick={() => setStorageType('builtin')}
             className={`group p-5 rounded-xl border-2 transition-all text-left relative overflow-hidden ${
               storageType === 'builtin'
-                ? 'border-blue-500 bg-gradient-to-br from-blue-50 to-blue-100/50 shadow-lg shadow-blue-500/20'
-                : 'border-[var(--semantic-border-light)] bg-white hover:border-blue-300 hover:shadow-md'
+                ? 'border-[var(--semantic-primary)] bg-gradient-to-br from-blue-50 to-blue-100/50 shadow-lg shadow-blue-500/20'
+                : 'border-[var(--semantic-border-light)] bg-white hover:border-[var(--semantic-primary-light)] hover:shadow-md'
             }`}
           >
             {storageType === 'builtin' && (
-              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--semantic-primary)]/10 rounded-full blur-2xl"></div>
             )}
             
             <div className="relative flex items-start gap-4">
               <div className={`p-3 rounded-xl transition-all ${
                 storageType === 'builtin' 
-                  ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' 
-                  : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] group-hover:bg-blue-100 group-hover:text-blue-600'
+                  ? 'bg-[var(--semantic-primary)] text-white shadow-lg shadow-blue-500/30' 
+                  : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] group-hover:bg-[var(--semantic-primary-subtle)] group-hover:text-[var(--semantic-primary)]'
               }`}>
                 <Cloud className="h-6 w-6" />
               </div>
@@ -199,7 +199,7 @@ export default function DocumentsStep({
                 <div className="flex items-center gap-2 mb-1">
                   <p className="font-semibold text-base">Built-in Cloud</p>
                   {storageType === 'builtin' && (
-                    <Check className="h-5 w-5 text-blue-600" />
+                    <Check className="h-5 w-5 text-[var(--semantic-primary)]" />
                   )}
                 </div>
                 <p className="text-sm text-[var(--semantic-text-secondary)]">Secure, automatic backups included</p>
@@ -247,8 +247,8 @@ export default function DocumentsStep({
               key={docType.id}
               className={`group border-2 rounded-xl p-5 transition-all duration-300 backdrop-blur-sm ${
                 uploaded 
-                  ? 'bg-gradient-to-br from-green-50 to-emerald-50/50 border-green-300 shadow-md shadow-green-500/10' 
-                  : 'bg-white/80 border-[var(--semantic-border-light)] hover:border-blue-300 hover:shadow-md hover:bg-blue-50/30'
+                  ? 'bg-gradient-to-br from-green-50 to-emerald-50/50 border-[var(--semantic-success-border)] shadow-md shadow-green-500/10' 
+                  : 'bg-white/80 border-[var(--semantic-border-light)] hover:border-[var(--semantic-primary-light)] hover:shadow-md hover:bg-[var(--semantic-primary-subtle)]/30'
               }`}
             >
               <div className="flex items-center justify-between gap-4">
@@ -256,8 +256,8 @@ export default function DocumentsStep({
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`p-2 rounded-lg ${
                       uploaded 
-                        ? 'bg-green-500 text-white' 
-                        : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] group-hover:bg-blue-100 group-hover:text-blue-600'
+                        ? 'bg-[var(--semantic-success)] text-white' 
+                        : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] group-hover:bg-[var(--semantic-primary-subtle)] group-hover:text-[var(--semantic-primary)]'
                     }`}>
                       {uploaded ? (
                         <Check className="h-4 w-4" />
@@ -272,7 +272,7 @@ export default function DocumentsStep({
                           {docType.title}
                         </h4>
                         {docType.required && (
-                          <span className="text-xs px-2.5 py-0.5 bg-red-100 text-red-700 rounded-full font-medium">
+                          <span className="text-xs px-2.5 py-0.5 bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)] rounded-full font-medium">
                             Required
                           </span>
                         )}
@@ -283,7 +283,7 @@ export default function DocumentsStep({
 
                   {uploaded && (
                     <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)] mt-3 pl-12 truncate">
-                      <FileText className="h-4 w-4 flex-shrink-0 text-green-600" />
+                      <FileText className="h-4 w-4 flex-shrink-0 text-[var(--semantic-success)]" />
                       <span className="font-medium truncate">{uploaded.fileName}</span>
                       <span className="text-xs text-[var(--semantic-text-tertiary)]">
                         ({(uploaded.fileSize / 1024).toFixed(1)} KB)
@@ -299,7 +299,7 @@ export default function DocumentsStep({
                       size="sm"
                       onClick={() => handleRemoveDoc(docType.id)}
                       disabled={isUploading}
-                      className="hover:bg-red-100 hover:text-red-600"
+                      className="hover:bg-[var(--semantic-error-bg)] hover:text-[var(--semantic-error)]"
                     >
                       <X className="h-4 w-4" />
                     </Button>
@@ -325,7 +325,7 @@ export default function DocumentsStep({
                           document.getElementById(`file-${docType.id}`)?.click()
                         }
                         disabled={isUploading}
-                        className="bg-white hover:bg-blue-50 hover:border-blue-500 hover:text-blue-600"
+                        className="bg-white hover:bg-[var(--semantic-primary-subtle)] hover:border-[var(--semantic-primary)] hover:text-[var(--semantic-primary)]"
                       >
                         {isUploading ? (
                           <>
@@ -349,26 +349,26 @@ export default function DocumentsStep({
       </div>
 
       {/* Enhanced Info Box */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-blue-200 rounded-xl p-5 mb-8 backdrop-blur-sm">
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-5 mb-8 backdrop-blur-sm">
         <div className="flex gap-4">
           <div className="flex-shrink-0">
-            <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary)] flex items-center justify-center">
               <Sparkles className="h-5 w-5 text-white" />
             </div>
           </div>
           <div className="flex-1">
-            <p className="font-semibold text-blue-900 mb-2">Quick Tips</p>
-            <ul className="space-y-1.5 text-sm text-blue-800">
+            <p className="font-semibold text-[var(--semantic-primary-dark)] mb-2">Quick Tips</p>
+            <ul className="space-y-1.5 text-sm text-[var(--semantic-primary-dark)]">
               <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-0.5">•</span>
+                <span className="text-[var(--semantic-primary)] mt-0.5">•</span>
                 <span>PDF format recommended for best compatibility</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-0.5">•</span>
+                <span className="text-[var(--semantic-primary)] mt-0.5">•</span>
                 <span>You can add more documents anytime from the Documents app</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-0.5">•</span>
+                <span className="text-[var(--semantic-primary)] mt-0.5">•</span>
                 <span>All files are encrypted and backed up automatically</span>
               </li>
             </ul>

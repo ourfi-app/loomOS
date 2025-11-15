@@ -137,7 +137,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-            <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] px-3 py-1.5 bg-blue-100 rounded-full">
+            <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] px-3 py-1.5 bg-[var(--semantic-primary-subtle)] rounded-full">
               Core Setup
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
@@ -153,8 +153,8 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                   transition={{ delay: index * 0.1 }}
                   className={`relative overflow-hidden border-2 rounded-xl p-5 transition-all duration-300 ${
                     section.isComplete
-                      ? 'bg-gradient-to-br from-green-50 via-emerald-50/50 to-green-50/30 border-green-200 shadow-sm hover:shadow-md'
-                      : 'bg-gradient-to-br from-red-50 via-rose-50/50 to-red-50/30 border-red-200 shadow-sm'
+                      ? 'bg-gradient-to-br from-green-50 via-emerald-50/50 to-green-50/30 border-[var(--semantic-success-bg)] shadow-sm hover:shadow-md'
+                      : 'bg-gradient-to-br from-red-50 via-rose-50/50 to-red-50/30 border-[var(--semantic-error-border)] shadow-sm'
                   }`}
                 >
                   {/* Animated Background Gradient */}
@@ -209,7 +209,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-200 to-transparent" />
-            <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] px-3 py-1.5 bg-purple-100 rounded-full">
+            <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] px-3 py-1.5 bg-[var(--semantic-accent-subtle)] rounded-full">
               Optional Configuration
               <span className="text-xs text-[var(--semantic-text-tertiary)] font-normal ml-2">(Can be added later)</span>
             </h3>
@@ -226,7 +226,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                   transition={{ delay: (requiredSections.length + index) * 0.1 }}
                   className={`relative overflow-hidden border-2 rounded-xl p-4 transition-all duration-300 ${
                     section.isComplete
-                      ? 'bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30 border-blue-200 shadow-sm hover:shadow-md'
+                      ? 'bg-gradient-to-br from-blue-50 via-indigo-50/50 to-blue-50/30 border-[var(--semantic-primary-light)] shadow-sm hover:shadow-md'
                       : 'bg-gradient-to-br from-gray-50 via-slate-50/50 to-gray-50/30 border-[var(--semantic-border-light)]'
                   }`}
                 >
@@ -250,7 +250,7 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
                           animate={{ scale: 1 }}
                           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                         >
-                          <Check className="h-4 w-4 text-blue-600" />
+                          <Check className="h-4 w-4 text-[var(--semantic-primary)]" />
                         </motion.div>
                       )}
                     </div>
@@ -274,12 +274,12 @@ export default function ReviewStep({ data, onNext, saving }: ReviewStepProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-200 rounded-xl p-6 mb-8 shadow-lg"
+          className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-6 mb-8 shadow-lg"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10" />
           <div className="relative">
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="h-5 w-5 text-purple-600" />
+              <Sparkles className="h-5 w-5 text-[var(--semantic-accent)]" />
               <h3 className="font-semibold text-[var(--semantic-text-primary)]">What happens next?</h3>
             </div>
             <ul className="space-y-3">

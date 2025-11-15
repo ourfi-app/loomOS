@@ -16,22 +16,22 @@ const sizeClasses = {
 
 const statusConfig = {
   ONLINE: {
-    className: 'member-status-online bg-green-500',
+    className: 'member-status-online bg-[var(--semantic-success)]',
     label: 'Online',
     pulseClass: 'status-online-pulse',
   },
   AWAY: {
-    className: 'member-status-away bg-yellow-500',
+    className: 'member-status-away bg-[var(--semantic-warning)]',
     label: 'Away',
     pulseClass: '',
   },
   BUSY: {
-    className: 'member-status-busy bg-red-500',
+    className: 'member-status-busy bg-[var(--semantic-error)]',
     label: 'Busy',
     pulseClass: '',
   },
   OFFLINE: {
-    className: 'member-status-offline bg-gray-400',
+    className: 'member-status-offline bg-[var(--semantic-border-strong)]',
     label: 'Offline',
     pulseClass: '',
   },

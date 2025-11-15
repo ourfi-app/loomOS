@@ -356,7 +356,7 @@ export function AIAssistant({ isOpen, onClose }: AssistantProps) {
               </div>
             )}
           </div>
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-orange-500 rounded-full border-2 border-white animate-pulse" />
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-[var(--semantic-primary)] rounded-full border-2 border-white animate-pulse" />
         </div>
       </button>
     );
@@ -460,9 +460,9 @@ export function AIAssistant({ isOpen, onClose }: AssistantProps) {
                     >
                       <div className={cn(
                         "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0",
-                        suggestion.category === 'action' && "bg-blue-500/10 text-blue-600",
-                        suggestion.category === 'info' && "bg-orange-500/10 text-orange-600",
-                        suggestion.category === 'navigation' && "bg-green-500/10 text-green-600"
+                        suggestion.category === 'action' && "bg-[var(--semantic-primary)]/10 text-[var(--semantic-primary)]",
+                        suggestion.category === 'info' && "bg-[var(--semantic-primary)]/10 text-[var(--semantic-primary)]",
+                        suggestion.category === 'navigation' && "bg-[var(--semantic-success)]/10 text-[var(--semantic-success)]"
                       )}>
                         <suggestion.icon className="w-4 h-4" />
                       </div>
@@ -482,7 +482,7 @@ export function AIAssistant({ isOpen, onClose }: AssistantProps) {
 
               {/* Quick Tips */}
               <div className="webos-assistant-tip">
-                <Lightbulb className="w-4 h-4 text-yellow-600 flex-shrink-0" />
+                <Lightbulb className="w-4 h-4 text-[var(--semantic-warning)] flex-shrink-0" />
                 <p className="text-xs text-muted-foreground">
                   <span className="font-medium text-foreground">Tip:</span> I understand context! Ask me anything about what you're currently viewing.
                 </p>

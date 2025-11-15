@@ -52,7 +52,7 @@ const PRODUCTIVITY_APPS: ProductivityApp[] = [
     icon: <Mail className="h-8 w-8" />,
     path: '/dashboard/apps/email',
     gradient: 'from-blue-400 via-blue-500 to-indigo-500',
-    color: 'text-blue-500',
+    color: 'text-[var(--semantic-primary)]',
     category: 'Communication',
     features: [
       'Three-pane LoomOS layout',
@@ -128,7 +128,7 @@ const PRODUCTIVITY_APPS: ProductivityApp[] = [
     icon: <Palette className="h-8 w-8" />,
     path: '/dashboard/apps/designer',
     gradient: 'from-pink-400 via-rose-500 to-red-500',
-    color: 'text-pink-500',
+    color: 'text-[var(--semantic-accent)]',
     category: 'Development',
     features: [
       'Visual app builder',
@@ -149,7 +149,7 @@ const PRODUCTIVITY_APPS: ProductivityApp[] = [
     icon: <Brush className="h-8 w-8" />,
     path: '/dashboard/apps/brandy',
     gradient: 'from-purple-400 via-pink-500 to-rose-500',
-    color: 'text-purple-500',
+    color: 'text-[var(--semantic-accent)]',
     category: 'Design',
     features: [
       'Visual design canvas',
@@ -168,7 +168,7 @@ const PRODUCTIVITY_APPS: ProductivityApp[] = [
     icon: <Zap className="h-8 w-8" />,
     path: '/dashboard/apps/enhancements',
     gradient: 'from-yellow-400 via-orange-500 to-red-500',
-    color: 'text-yellow-500',
+    color: 'text-[var(--semantic-warning)]',
     category: 'System',
     features: [
       'Real-time WebSocket updates',
@@ -188,7 +188,7 @@ const PRODUCTIVITY_APPS: ProductivityApp[] = [
     icon: <DollarSign className="h-8 w-8" />,
     path: '/dashboard/apps/accounting',
     gradient: 'from-blue-400 via-cyan-500 to-teal-500',
-    color: 'text-blue-500',
+    color: 'text-[var(--semantic-primary)]',
     category: 'Finance',
     features: [
       'Transaction management',
@@ -207,7 +207,7 @@ const PRODUCTIVITY_APPS: ProductivityApp[] = [
     icon: <PieChart className="h-8 w-8" />,
     path: '/dashboard/apps/budgeting',
     gradient: 'from-green-400 via-emerald-500 to-teal-500',
-    color: 'text-green-500',
+    color: 'text-[var(--semantic-success)]',
     category: 'Finance',
     features: [
       'Budget creation',
@@ -356,7 +356,7 @@ export default function AppsLauncherPage() {
                     {app.rating && (
                       <div className="flex items-center gap-2 pt-2">
                         <div className="flex items-center">
-                          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                          <Star className="h-4 w-4 fill-yellow-400 text-[var(--semantic-warning)]" />
                           <span className="ml-1 text-sm font-medium text-[var(--semantic-text-secondary)]">
                             {app.rating}
                           </span>
@@ -435,7 +435,7 @@ export default function AppsLauncherPage() {
                   {selectedApp.rating && (
                     <div className="flex items-center gap-2">
                       <div className="flex items-center">
-                        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        <Star className="h-5 w-5 fill-yellow-400 text-[var(--semantic-warning)]" />
                         <span className="ml-1 font-semibold text-[var(--semantic-text-primary)]">
                           {selectedApp.rating}
                         </span>

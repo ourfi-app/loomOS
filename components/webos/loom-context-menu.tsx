@@ -140,7 +140,7 @@ export function LoomContextMenu({
                 'text-left'
               )}
             >
-              <Sparkles className="w-4 h-4 flex-shrink-0 text-purple-500" />
+              <Sparkles className="w-4 h-4 flex-shrink-0 text-[var(--semantic-accent)]" />
               <span>Analyze Loom</span>
             </button>
 
@@ -156,7 +156,7 @@ export function LoomContextMenu({
                 'text-left'
               )}
             >
-              <ListTodo className="w-4 h-4 flex-shrink-0 text-blue-500" />
+              <ListTodo className="w-4 h-4 flex-shrink-0 text-[var(--semantic-primary)]" />
               <span>Create Task List</span>
             </button>
 
@@ -172,7 +172,7 @@ export function LoomContextMenu({
                 'text-left'
               )}
             >
-              <Mail className="w-4 h-4 flex-shrink-0 text-green-500" />
+              <Mail className="w-4 h-4 flex-shrink-0 text-[var(--semantic-success)]" />
               <span>Draft Summary Email</span>
             </button>
           </div>

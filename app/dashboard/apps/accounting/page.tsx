@@ -88,7 +88,7 @@ export default function AccountingPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-                  <TrendingUp className="h-4 w-4 text-green-600" />
+                  <TrendingUp className="h-4 w-4 text-[var(--semantic-success)]" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">$145,250</div>
@@ -99,7 +99,7 @@ export default function AccountingPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Expenses</CardTitle>
-                  <TrendingDown className="h-4 w-4 text-red-600" />
+                  <TrendingDown className="h-4 w-4 text-[var(--semantic-error)]" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">$98,420</div>
@@ -110,7 +110,7 @@ export default function AccountingPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Net Income</CardTitle>
-                  <DollarSign className="h-4 w-4 text-blue-600" />
+                  <DollarSign className="h-4 w-4 text-[var(--semantic-primary)]" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">$46,830</div>
@@ -121,7 +121,7 @@ export default function AccountingPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Reserve Fund</CardTitle>
-                  <Calculator className="h-4 w-4 text-purple-600" />
+                  <Calculator className="h-4 w-4 text-[var(--semantic-accent)]" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">$285,000</div>
@@ -152,14 +152,14 @@ export default function AccountingPage() {
                           <div
                             className={`p-2 rounded-full ${
                               transaction.type === 'income'
-                                ? 'bg-green-100 dark:bg-green-900/20'
-                                : 'bg-red-100 dark:bg-red-900/20'
+                                ? 'bg-[var(--semantic-success-bg)] dark:bg-green-900/20'
+                                : 'bg-[var(--semantic-error-bg)] dark:bg-red-900/20'
                             }`}
                           >
                             {transaction.type === 'income' ? (
-                              <TrendingUp className="h-4 w-4 text-green-600" />
+                              <TrendingUp className="h-4 w-4 text-[var(--semantic-success)]" />
                             ) : (
-                              <TrendingDown className="h-4 w-4 text-red-600" />
+                              <TrendingDown className="h-4 w-4 text-[var(--semantic-error)]" />
                             )}
                           </div>
                           <div>
@@ -174,8 +174,8 @@ export default function AccountingPage() {
                           <p
                             className={`font-semibold ${
                               transaction.type === 'income'
-                                ? 'text-green-600'
-                                : 'text-red-600'
+                                ? 'text-[var(--semantic-success)]'
+                                : 'text-[var(--semantic-error)]'
                             }`}
                           >
                             {transaction.type === 'income' ? '+' : '-'}$
@@ -224,8 +224,8 @@ export default function AccountingPage() {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/20">
-                      <PieChart className="h-6 w-6 text-blue-600" />
+                    <div className="p-3 rounded-lg bg-[var(--semantic-primary-subtle)] dark:bg-[var(--semantic-primary-dark)]/20">
+                      <PieChart className="h-6 w-6 text-[var(--semantic-primary)]" />
                     </div>
                     <div>
                       <CardTitle>Financial Summary</CardTitle>
@@ -238,8 +238,8 @@ export default function AccountingPage() {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-green-100 dark:bg-green-900/20">
-                      <BarChart3 className="h-6 w-6 text-green-600" />
+                    <div className="p-3 rounded-lg bg-[var(--semantic-success-bg)] dark:bg-green-900/20">
+                      <BarChart3 className="h-6 w-6 text-[var(--semantic-success)]" />
                     </div>
                     <div>
                       <CardTitle>Income Statement</CardTitle>
@@ -252,8 +252,8 @@ export default function AccountingPage() {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-purple-100 dark:bg-purple-900/20">
-                      <Calculator className="h-6 w-6 text-purple-600" />
+                    <div className="p-3 rounded-lg bg-[var(--semantic-accent-subtle)] dark:bg-purple-900/20">
+                      <Calculator className="h-6 w-6 text-[var(--semantic-accent)]" />
                     </div>
                     <div>
                       <CardTitle>Balance Sheet</CardTitle>
@@ -266,8 +266,8 @@ export default function AccountingPage() {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-orange-100 dark:bg-orange-900/20">
-                      <FileText className="h-6 w-6 text-orange-600" />
+                    <div className="p-3 rounded-lg bg-[var(--semantic-primary-subtle)] dark:bg-orange-900/20">
+                      <FileText className="h-6 w-6 text-[var(--semantic-primary)]" />
                     </div>
                     <div>
                       <CardTitle>Cash Flow</CardTitle>

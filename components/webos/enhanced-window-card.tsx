@@ -196,7 +196,7 @@ export function EnhancedWindowCard({
               <button
                 onClick={onClose}
                 className={cn(
-                  'p-1.5 rounded-lg hover:bg-red-500 hover:text-white',
+                  'p-1.5 rounded-lg hover:bg-[var(--semantic-error)] hover:text-white',
                   'transition-colors focus:outline-none focus:ring-2 focus:ring-red-300'
                 )}
                 title="Close"
@@ -218,7 +218,7 @@ export function EnhancedWindowCard({
             className={cn(
               'absolute bottom-0 right-0 w-4 h-4',
               'cursor-se-resize',
-              'hover:bg-blue-500/20'
+              'hover:bg-[var(--semantic-primary)]/20'
             )}
             onMouseDown={(e) => {
               e.preventDefault();

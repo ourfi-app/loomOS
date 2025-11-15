@@ -109,7 +109,7 @@ export function LoomOSSwipeNavigation({
     <div className={cn('flex flex-col h-full', className)}>
       {/* Tabs */}
       {showTabs && (
-        <div className="flex border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900">
+        <div className="flex border-b border-[var(--semantic-border-light)] dark:border-neutral-700 bg-white dark:bg-neutral-900">
           {views.map((view, index) => (
             <button
               key={view.id}
@@ -117,8 +117,8 @@ export function LoomOSSwipeNavigation({
               className={cn(
                 'flex-1 px-4 py-3 text-sm font-medium transition-colors relative',
                 index === currentIndex
-                  ? 'text-neutral-900 dark:text-neutral-100'
-                  : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100'
+                  ? 'text-[var(--semantic-text-primary)] dark:text-neutral-100'
+                  : 'text-[var(--semantic-text-secondary)] dark:text-neutral-400 hover:text-[var(--semantic-text-primary)] dark:hover:text-neutral-100'
               )}
             >
               {view.label}
@@ -127,7 +127,7 @@ export function LoomOSSwipeNavigation({
               {index === currentIndex && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--semantic-primary)]"
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
               )}
@@ -174,8 +174,8 @@ export function LoomOSSwipeNavigation({
               className={cn(
                 'w-2 h-2 rounded-full transition-all',
                 index === currentIndex
-                  ? 'bg-blue-500 w-6'
-                  : 'bg-neutral-300 dark:bg-neutral-600 hover:bg-neutral-400 dark:hover:bg-neutral-500'
+                  ? 'bg-[var(--semantic-primary)] w-6'
+                  : 'bg-[var(--semantic-bg-muted)] dark:bg-neutral-600 hover:bg-[var(--semantic-border-strong)] dark:hover:bg-[var(--semantic-text-tertiary)]'
               )}
               aria-label={`Go to ${view.label}`}
               aria-current={index === currentIndex ? 'true' : 'false'}

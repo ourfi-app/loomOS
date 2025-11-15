@@ -58,10 +58,10 @@ export function ValidationPanel({ code, onValidate }: ValidationPanelProps) {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 90) return 'text-green-600';
-    if (score >= 70) return 'text-yellow-600';
-    if (score >= 50) return 'text-orange-600';
-    return 'text-red-600';
+    if (score >= 90) return 'text-[var(--semantic-success)]';
+    if (score >= 70) return 'text-[var(--semantic-warning)]';
+    if (score >= 50) return 'text-[var(--semantic-primary)]';
+    return 'text-[var(--semantic-error)]';
   };
 
   const getScoreBadge = (score: number) => {
@@ -111,9 +111,9 @@ export function ValidationPanel({ code, onValidate }: ValidationPanelProps) {
                   Quality Score
                 </span>
                 {result.isValid ? (
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
+                  <CheckCircle2 className="w-5 h-5 text-[var(--semantic-success)]" />
                 ) : (
-                  <XCircle className="w-5 h-5 text-red-600" />
+                  <XCircle className="w-5 h-5 text-[var(--semantic-error)]" />
                 )}
               </div>
               <div className="flex items-baseline gap-2">
@@ -129,19 +129,19 @@ export function ValidationPanel({ code, onValidate }: ValidationPanelProps) {
 
             <div className="flex gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-red-600">
+                <div className="text-2xl font-bold text-[var(--semantic-error)]">
                   {result.errors.length}
                 </div>
                 <div className="text-xs text-muted-foreground">Errors</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-600">
+                <div className="text-2xl font-bold text-[var(--semantic-warning)]">
                   {result.warnings.length}
                 </div>
                 <div className="text-xs text-muted-foreground">Warnings</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">
+                <div className="text-2xl font-bold text-[var(--semantic-primary)]">
                   {result.suggestions.length}
                 </div>
                 <div className="text-xs text-muted-foreground">Tips</div>
@@ -154,7 +154,7 @@ export function ValidationPanel({ code, onValidate }: ValidationPanelProps) {
             {result.errors.length > 0 && (
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <XCircle className="w-5 h-5 text-red-600" />
+                  <XCircle className="w-5 h-5 text-[var(--semantic-error)]" />
                   <h4 className="font-semibold">Errors ({result.errors.length})</h4>
                 </div>
                 <div className="space-y-2">
@@ -169,7 +169,7 @@ export function ValidationPanel({ code, onValidate }: ValidationPanelProps) {
             {result.warnings.length > 0 && (
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <AlertTriangle className="w-5 h-5 text-yellow-600" />
+                  <AlertTriangle className="w-5 h-5 text-[var(--semantic-warning)]" />
                   <h4 className="font-semibold">Warnings ({result.warnings.length})</h4>
                 </div>
                 <div className="space-y-2">
@@ -184,7 +184,7 @@ export function ValidationPanel({ code, onValidate }: ValidationPanelProps) {
             {result.suggestions.length > 0 && (
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Lightbulb className="w-5 h-5 text-blue-600" />
+                  <Lightbulb className="w-5 h-5 text-[var(--semantic-primary)]" />
                   <h4 className="font-semibold">Suggestions ({result.suggestions.length})</h4>
                 </div>
                 <div className="space-y-2">
@@ -256,14 +256,14 @@ function ErrorCard({ error }: { error: ValidationError }) {
 
 function WarningCard({ warning }: { warning: ValidationWarning }) {
   return (
-    <Alert className="border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20">
+    <Alert className="border-[var(--semantic-warning-bg)] bg-[var(--semantic-warning-bg)] dark:bg-yellow-950/20">
       <div className="flex items-start gap-2">
-        <AlertTriangle className="w-4 h-4 text-yellow-600" />
+        <AlertTriangle className="w-4 h-4 text-[var(--semantic-warning)]" />
         <div className="flex-1">
           <div className="font-semibold text-yellow-900 dark:text-yellow-100">
             {warning.message}
           </div>
-          <div className="text-sm mt-1 text-yellow-800 dark:text-yellow-200">
+          <div className="text-sm mt-1 text-[var(--semantic-warning-dark)] dark:text-yellow-200">
             <strong>Suggestion:</strong> {warning.suggestion}
           </div>
           {(warning.line || warning.column) && (
@@ -272,7 +272,7 @@ function WarningCard({ warning }: { warning: ValidationWarning }) {
             </div>
           )}
         </div>
-        <Badge className="bg-yellow-200 text-yellow-900">
+        <Badge className="bg-[var(--semantic-warning-bg)] text-yellow-900">
           {warning.type}
         </Badge>
       </div>
@@ -283,31 +283,31 @@ function WarningCard({ warning }: { warning: ValidationWarning }) {
 function SuggestionCard({ suggestion }: { suggestion: ValidationSuggestion }) {
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'high': return 'bg-red-100 text-red-900';
-      case 'medium': return 'bg-yellow-100 text-yellow-900';
-      case 'low': return 'bg-green-100 text-green-900';
+      case 'high': return 'bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)]';
+      case 'medium': return 'bg-[var(--semantic-warning-bg)] text-yellow-900';
+      case 'low': return 'bg-[var(--semantic-success-bg)] text-green-900';
       default: return 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-primary)]';
     }
   };
 
   const getEffortColor = (effort: string) => {
     switch (effort) {
-      case 'high': return 'bg-red-100 text-red-900';
-      case 'medium': return 'bg-yellow-100 text-yellow-900';
-      case 'low': return 'bg-green-100 text-green-900';
+      case 'high': return 'bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)]';
+      case 'medium': return 'bg-[var(--semantic-warning-bg)] text-yellow-900';
+      case 'low': return 'bg-[var(--semantic-success-bg)] text-green-900';
       default: return 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-primary)]';
     }
   };
 
   return (
-    <Alert className="border-blue-200 bg-blue-50 dark:bg-blue-950/20">
+    <Alert className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/20">
       <div className="flex items-start gap-2">
-        <Lightbulb className="w-4 h-4 text-blue-600" />
+        <Lightbulb className="w-4 h-4 text-[var(--semantic-primary)]" />
         <div className="flex-1">
-          <div className="font-semibold text-blue-900 dark:text-blue-100">
+          <div className="font-semibold text-[var(--semantic-primary-dark)] dark:text-blue-100">
             {suggestion.title}
           </div>
-          <div className="text-sm mt-1 text-blue-800 dark:text-blue-200">
+          <div className="text-sm mt-1 text-[var(--semantic-primary-dark)] dark:text-blue-200">
             {suggestion.description}
           </div>
           {suggestion.code && (
@@ -324,7 +324,7 @@ function SuggestionCard({ suggestion }: { suggestion: ValidationSuggestion }) {
             </Badge>
           </div>
         </div>
-        <Badge className="bg-blue-200 text-blue-900">
+        <Badge className="bg-[var(--semantic-primary-light)] text-[var(--semantic-primary-dark)]">
           {suggestion.category}
         </Badge>
       </div>

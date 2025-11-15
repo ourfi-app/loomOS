@@ -52,7 +52,7 @@ export function LoomIcon({ loom, onClick, onContextMenu }: LoomIconProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="absolute -bottom-2 w-2 h-2 bg-purple-400 rounded-full shadow-lg animate-pulse"
+        className="absolute -bottom-2 w-2 h-2 bg-[var(--semantic-accent)] rounded-full shadow-lg animate-pulse"
       />
     </motion.button>
   );

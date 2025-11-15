@@ -93,9 +93,9 @@ export default function DomainsManagement() {
     >
       <div className="space-y-4">
         {/* DNS Configuration Guide */}
-        <Card className="border-blue-500/50 bg-blue-50/50 dark:bg-blue-950/20">
+        <Card className="border-[var(--semantic-primary)]/50 bg-[var(--semantic-primary-subtle)]/50 dark:bg-blue-950/20">
           <CardHeader>
-            <CardTitle className="flex items-center text-blue-700 dark:text-blue-400">
+            <CardTitle className="flex items-center text-[var(--semantic-primary-dark)] dark:text-[var(--semantic-primary)]">
               <Globe className="w-5 h-5 mr-2" />
               Domain Configuration Guide
             </CardTitle>
@@ -103,7 +103,7 @@ export default function DomainsManagement() {
           <CardContent className="space-y-2 text-sm">
             <p><strong>For subdomains:</strong> Automatically configured as [subdomain].yoursaas.com</p>
             <p><strong>For custom domains:</strong> Organization must add these DNS records:</p>
-            <div className="mt-2 p-3 bg-white dark:bg-gray-800 rounded-md font-mono text-xs">
+            <div className="mt-2 p-3 bg-white dark:bg-[var(--semantic-text-primary)] rounded-md font-mono text-xs">
               <div>Type: A</div>
               <div>Name: @ (or your domain)</div>
               <div>Value: [Your Server IP]</div>
@@ -172,7 +172,7 @@ export default function DomainsManagement() {
                         </TableCell>
                         <TableCell>
                           {domain.verified ? (
-                            <Badge variant="default" className="bg-green-500">
+                            <Badge variant="default" className="bg-[var(--semantic-success)]">
                               <CheckCircle className="w-3 h-3 mr-1" />
                               Verified
                             </Badge>

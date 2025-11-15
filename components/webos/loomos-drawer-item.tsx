@@ -72,7 +72,7 @@ export function LoomOSDrawerItem({
   return (
     <div
       className={cn(
-        'border-b border-neutral-200 dark:border-neutral-700',
+        'border-b border-[var(--semantic-border-light)] dark:border-neutral-700',
         className
       )}
       data-state={isExpanded ? 'open' : 'closed'}
@@ -83,9 +83,9 @@ export function LoomOSDrawerItem({
         className={cn(
           'w-full flex items-center gap-3 px-4 py-3',
           'transition-colors duration-200',
-          'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-          'focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-800',
-          'active:bg-neutral-200 dark:active:bg-neutral-700',
+          'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-neutral-800',
+          'focus:outline-none focus:bg-[var(--semantic-surface-hover)] dark:focus:bg-neutral-800',
+          'active:bg-[var(--semantic-bg-muted)] dark:active:bg-neutral-700',
           headerClassName
         )}
         aria-expanded={isExpanded}
@@ -93,13 +93,13 @@ export function LoomOSDrawerItem({
       >
         {/* Icon */}
         {icon && (
-          <div className="flex-shrink-0 text-neutral-600 dark:text-neutral-400">
+          <div className="flex-shrink-0 text-[var(--semantic-text-secondary)] dark:text-neutral-400">
             {IconComponent ? <IconComponent className="w-5 h-5" /> : <>{icon}</>}
           </div>
         )}
         
         {/* Title */}
-        <span className="flex-1 text-left text-sm font-medium text-neutral-900 dark:text-neutral-100">
+        <span className="flex-1 text-left text-sm font-medium text-[var(--semantic-text-primary)] dark:text-neutral-100">
           {title}
         </span>
         
@@ -107,7 +107,7 @@ export function LoomOSDrawerItem({
         <motion.div
           animate={{ rotate: isExpanded ? 90 : 0 }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="flex-shrink-0 text-neutral-500 dark:text-neutral-400"
+          className="flex-shrink-0 text-[var(--semantic-text-tertiary)] dark:text-neutral-400"
         >
           <ChevronRight className="w-5 h-5" />
         </motion.div>

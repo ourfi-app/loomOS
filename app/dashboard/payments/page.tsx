@@ -52,11 +52,11 @@ export default function PaymentsPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'paid':
-        return <CheckCircle2 className="h-4 w-4 text-green-600" />;
+        return <CheckCircle2 className="h-4 w-4 text-[var(--semantic-success)]" />;
       case 'pending':
-        return <Clock className="h-4 w-4 text-yellow-600" />;
+        return <Clock className="h-4 w-4 text-[var(--semantic-warning)]" />;
       case 'overdue':
-        return <AlertCircle className="h-4 w-4 text-red-600" />;
+        return <AlertCircle className="h-4 w-4 text-[var(--semantic-error)]" />;
       default:
         return null;
     }
@@ -124,7 +124,7 @@ export default function PaymentsPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Paid This Year</CardTitle>
-                  <CheckCircle2 className="h-4 w-4 text-green-600" />
+                  <CheckCircle2 className="h-4 w-4 text-[var(--semantic-success)]" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">$24,500.00</div>

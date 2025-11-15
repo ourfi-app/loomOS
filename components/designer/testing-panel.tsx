@@ -67,10 +67,10 @@ export function TestingPanel({ code, componentName, onTestComplete }: TestingPan
   };
 
   const getCoverageColor = (coverage: number) => {
-    if (coverage >= 90) return 'bg-green-600';
+    if (coverage >= 90) return 'bg-[var(--semantic-success)]';
     if (coverage >= 70) return 'bg-yellow-600';
-    if (coverage >= 50) return 'bg-orange-600';
-    return 'bg-red-600';
+    if (coverage >= 50) return 'bg-[var(--semantic-primary-dark)]';
+    return 'bg-[var(--semantic-error)]';
   };
 
   return (
@@ -125,15 +125,15 @@ export function TestingPanel({ code, componentName, onTestComplete }: TestingPan
               <div className="text-xs text-muted-foreground">Total Tests</div>
             </Card>
             
-            <Card className="p-4 border-green-200 bg-green-50 dark:bg-green-950/20">
-              <div className="text-2xl font-bold text-green-600">
+            <Card className="p-4 border-[var(--semantic-success-bg)] bg-[var(--semantic-success-bg)] dark:bg-green-950/20">
+              <div className="text-2xl font-bold text-[var(--semantic-success)]">
                 {suite.passedTests}
               </div>
               <div className="text-xs text-muted-foreground">Passed</div>
             </Card>
             
-            <Card className="p-4 border-red-200 bg-red-50 dark:bg-red-950/20">
-              <div className="text-2xl font-bold text-red-600">
+            <Card className="p-4 border-[var(--semantic-error-border)] bg-[var(--semantic-error-bg)] dark:bg-red-950/20">
+              <div className="text-2xl font-bold text-[var(--semantic-error)]">
                 {suite.failedTests}
               </div>
               <div className="text-xs text-muted-foreground">Failed</div>
@@ -188,11 +188,11 @@ function TestCaseCard({ test }: { test: TestCase }) {
   const getStatusIcon = () => {
     switch (test.status) {
       case 'passed':
-        return <CheckCircle2 className="w-5 h-5 text-green-600" />;
+        return <CheckCircle2 className="w-5 h-5 text-[var(--semantic-success)]" />;
       case 'failed':
-        return <XCircle className="w-5 h-5 text-red-600" />;
+        return <XCircle className="w-5 h-5 text-[var(--semantic-error)]" />;
       case 'running':
-        return <Loader2 className="w-5 h-5 animate-spin text-blue-600" />;
+        return <Loader2 className="w-5 h-5 animate-spin text-[var(--semantic-primary)]" />;
       default:
         return <Clock className="w-5 h-5 text-[var(--semantic-text-tertiary)]" />;
     }
@@ -201,11 +201,11 @@ function TestCaseCard({ test }: { test: TestCase }) {
   const getStatusColor = () => {
     switch (test.status) {
       case 'passed':
-        return 'border-green-200 bg-green-50 dark:bg-green-950/20';
+        return 'border-[var(--semantic-success-bg)] bg-[var(--semantic-success-bg)] dark:bg-green-950/20';
       case 'failed':
-        return 'border-red-200 bg-red-50 dark:bg-red-950/20';
+        return 'border-[var(--semantic-error-border)] bg-[var(--semantic-error-bg)] dark:bg-red-950/20';
       case 'running':
-        return 'border-blue-200 bg-blue-50 dark:bg-blue-950/20';
+        return 'border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/20';
       default:
         return '';
     }
@@ -214,13 +214,13 @@ function TestCaseCard({ test }: { test: TestCase }) {
   const getTypeColor = () => {
     switch (test.type) {
       case 'unit':
-        return 'bg-blue-100 text-blue-900';
+        return 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]';
       case 'integration':
-        return 'bg-purple-100 text-purple-900';
+        return 'bg-[var(--semantic-accent-subtle)] text-purple-900';
       case 'accessibility':
-        return 'bg-green-100 text-green-900';
+        return 'bg-[var(--semantic-success-bg)] text-green-900';
       case 'performance':
-        return 'bg-orange-100 text-orange-900';
+        return 'bg-[var(--semantic-primary-subtle)] text-orange-900';
       default:
         return 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-primary)]';
     }
@@ -246,7 +246,7 @@ function TestCaseCard({ test }: { test: TestCase }) {
             </div>
           )}
           {test.error && (
-            <div className="text-sm text-red-600 mt-2 p-2 bg-red-100 dark:bg-red-950/50 rounded">
+            <div className="text-sm text-[var(--semantic-error)] mt-2 p-2 bg-[var(--semantic-error-bg)] dark:bg-red-950/50 rounded">
               <strong>Error:</strong> {test.error}
             </div>
           )}

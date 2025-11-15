@@ -223,7 +223,7 @@ export default function DirectoryRequestsPage() {
               </div>
               <div>
                 <p className="text-xs text-[var(--semantic-text-tertiary)] mb-1">Requested</p>
-                <p className="text-green-600 font-medium">
+                <p className="text-[var(--semantic-success)] font-medium">
                   {requested[field.key] || <span className="text-[var(--semantic-text-tertiary)] italic">Not set</span>}
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function DirectoryRequestsPage() {
       gradient={APP_COLORS.admin.light}
     >
       <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
       </div>
     </DesktopAppWrapper>
     );
@@ -314,21 +314,21 @@ export default function DirectoryRequestsPage() {
                 count={pendingRequests.length}
                 selected={selectedFilter === 'pending'}
                 onClick={() => setSelectedFilter('pending')}
-                icon={<Clock className="w-4 h-4 text-orange-600" />}
+                icon={<Clock className="w-4 h-4 text-[var(--semantic-primary)]" />}
               />
               <LoomOSNavListItem
                 label="Approved"
                 count={approvedRequests.length}
                 selected={selectedFilter === 'approved'}
                 onClick={() => setSelectedFilter('approved')}
-                icon={<CheckCircle className="w-4 h-4 text-green-600" />}
+                icon={<CheckCircle className="w-4 h-4 text-[var(--semantic-success)]" />}
               />
               <LoomOSNavListItem
                 label="Rejected"
                 count={rejectedRequests.length}
                 selected={selectedFilter === 'rejected'}
                 onClick={() => setSelectedFilter('rejected')}
-                icon={<XCircle className="w-4 h-4 text-red-600" />}
+                icon={<XCircle className="w-4 h-4 text-[var(--semantic-error)]" />}
               />
             </div>
           </div>
@@ -373,8 +373,8 @@ export default function DirectoryRequestsPage() {
                         <Badge
                           variant={request.status === 'PENDING' ? 'default' : request.status === 'APPROVED' ? 'default' : 'destructive'}
                           className={
-                            request.status === 'PENDING' ? 'bg-orange-100 text-orange-700' :
-                            request.status === 'APPROVED' ? 'bg-green-100 text-green-700' : ''
+                            request.status === 'PENDING' ? 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]' :
+                            request.status === 'APPROVED' ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]' : ''
                           }
                         >
                           {request.status}
@@ -415,8 +415,8 @@ export default function DirectoryRequestsPage() {
                   <Badge
                     variant={selectedRequest.status === 'PENDING' ? 'default' : selectedRequest.status === 'APPROVED' ? 'default' : 'destructive'}
                     className={
-                      selectedRequest.status === 'PENDING' ? 'bg-orange-100 text-orange-700' :
-                      selectedRequest.status === 'APPROVED' ? 'bg-green-100 text-green-700' : ''
+                      selectedRequest.status === 'PENDING' ? 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]' :
+                      selectedRequest.status === 'APPROVED' ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]' : ''
                     }
                   >
                     {selectedRequest.status}

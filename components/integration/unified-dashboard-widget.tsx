@@ -156,15 +156,15 @@ export function UnifiedDashboardWidget() {
   const getPriorityColor = (priority: string) => {
     switch (priority?.toUpperCase()) {
       case 'URGENT':
-        return 'bg-red-500';
+        return 'bg-[var(--semantic-error)]';
       case 'HIGH':
-        return 'bg-orange-500';
+        return 'bg-[var(--semantic-primary)]';
       case 'MEDIUM':
-        return 'bg-yellow-500';
+        return 'bg-[var(--semantic-warning)]';
       case 'LOW':
-        return 'bg-green-500';
+        return 'bg-[var(--semantic-success)]';
       default:
-        return 'bg-gray-500';
+        return 'bg-[var(--semantic-text-tertiary)]';
     }
   };
 

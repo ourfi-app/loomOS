@@ -42,13 +42,13 @@ const typeIcons = {
 };
 
 const typeColors = {
-  meeting: 'text-blue-500',
-  maintenance: 'text-orange-500',
-  legal: 'text-purple-500',
-  bill: 'text-green-500',
+  meeting: 'text-[var(--semantic-primary)]',
+  maintenance: 'text-[var(--semantic-primary)]',
+  legal: 'text-[var(--semantic-accent)]',
+  bill: 'text-[var(--semantic-success)]',
   email: 'text-cyan-500',
-  announcement: 'text-red-500',
-  event: 'text-pink-500',
+  announcement: 'text-[var(--semantic-error)]',
+  event: 'text-[var(--semantic-accent)]',
 };
 
 const statusIcons = {
@@ -254,7 +254,7 @@ export function FeedWidget() {
                   className={cn(
                     "group p-3 rounded-lg border border-border/30 bg-background/40",
                     "hover:bg-background/60 hover:border-border/50 transition-all cursor-pointer",
-                    item.status === 'overdue' && "border-red-500/30 bg-red-500/5"
+                    item.status === 'overdue' && "border-[var(--semantic-error)]/30 bg-[var(--semantic-error)]/5"
                   )}
                   onClick={() => {
                     if (item.actionUrl) {
@@ -291,14 +291,14 @@ export function FeedWidget() {
                         <div className="flex items-center gap-1 text-xs text-muted-foreground">
                           <StatusIcon className={cn(
                             "w-3 h-3",
-                            item.status === 'overdue' && "text-red-500",
-                            item.status === 'completed' && "text-green-500",
-                            item.status === 'upcoming' && "text-blue-500"
+                            item.status === 'overdue' && "text-[var(--semantic-error)]",
+                            item.status === 'completed' && "text-[var(--semantic-success)]",
+                            item.status === 'upcoming' && "text-[var(--semantic-primary)]"
                           )} />
                           <span>{formatDate(item.date)}</span>
                         </div>
                         {item.priority === 'high' && (
-                          <span className="px-1.5 py-0.5 text-[10px] font-medium bg-red-500/10 text-red-500 rounded">
+                          <span className="px-1.5 py-0.5 text-[10px] font-medium bg-[var(--semantic-error)]/10 text-[var(--semantic-error)] rounded">
                             Priority
                           </span>
                         )}

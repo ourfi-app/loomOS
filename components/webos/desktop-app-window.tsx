@@ -351,7 +351,7 @@ export function DesktopAppWindow({
                     'px-4 py-2 transition-colors focus:outline-none',
                     'h-full flex items-center justify-center',
                     gradient 
-                      ? 'hover:bg-red-500/80 hover:text-white' 
+                      ? 'hover:bg-[var(--semantic-error)]/80 hover:text-white' 
                       : 'hover:bg-destructive hover:text-destructive-foreground'
                   )}
                   title="Close"

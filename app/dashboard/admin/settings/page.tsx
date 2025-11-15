@@ -220,7 +220,7 @@ export default function SettingsPage() {
                 {savingPalette ? (
                   <div className="flex items-center justify-center py-12">
                     <div className="text-center">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
                       <p className="text-muted-foreground">Applying color palette...</p>
                     </div>
                   </div>
@@ -231,11 +231,11 @@ export default function SettingsPage() {
                     onSelect={handlePaletteChange}
                   />
                 )}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
                   <div className="flex items-start gap-2">
-                    <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+                    <Info className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
                     <div className="flex-1">
-                      <p className="text-sm text-blue-800">
+                      <p className="text-sm text-[var(--semantic-primary-dark)]">
                         The selected color palette will be applied throughout the portal. The page will automatically reload to apply the new colors.
                       </p>
                     </div>
@@ -263,7 +263,7 @@ export default function SettingsPage() {
                     <div className="space-y-2">
                       <Label htmlFor="monthlyAmount">
                         Monthly Dues Amount
-                        <span className="text-red-500 ml-1">*</span>
+                        <span className="text-[var(--semantic-error)] ml-1">*</span>
                       </Label>
                       <div className="relative">
                         <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">$</span>
@@ -286,7 +286,7 @@ export default function SettingsPage() {
                     <div className="space-y-2">
                       <Label htmlFor="dueDay">
                         Monthly Due Day
-                        <span className="text-red-500 ml-1">*</span>
+                        <span className="text-[var(--semantic-error)] ml-1">*</span>
                       </Label>
                       <Input
                         id="dueDay"
@@ -341,12 +341,12 @@ export default function SettingsPage() {
                   <Separator />
 
                   {/* Current Configuration Preview */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
                     <div className="flex items-start gap-2">
-                      <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+                      <Info className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
                       <div className="flex-1">
-                        <h4 className="font-medium text-blue-900 mb-2">Current Configuration</h4>
-                        <div className="space-y-1 text-sm text-blue-800">
+                        <h4 className="font-medium text-[var(--semantic-primary-dark)] mb-2">Current Configuration</h4>
+                        <div className="space-y-1 text-sm text-[var(--semantic-primary-dark)]">
                           <p>
                             • Residents will be charged <strong>${settings.monthlyAmount.toFixed(2)}</strong> on the <strong>{settings.dueDay}{getDaySuffix(settings.dueDay)}</strong> of each month
                           </p>
@@ -373,10 +373,10 @@ export default function SettingsPage() {
               </Card>
 
               {/* Notice */}
-              <Card className="border-orange-200 bg-orange-50 mt-6">
+              <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)] mt-6">
                 <CardContent className="pt-6">
                   <div className="flex items-start gap-2">
-                    <AlertCircle className="h-5 w-5 text-orange-600 mt-0.5" />
+                    <AlertCircle className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
                     <div className="flex-1">
                       <h4 className="font-medium text-orange-900 mb-1">Important Notice</h4>
                       <p className="text-sm text-orange-800">
@@ -406,7 +406,7 @@ export default function SettingsPage() {
                   <Separator />
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Database Status</span>
-                    <Badge variant="default" className="bg-green-600">Connected</Badge>
+                    <Badge variant="default" className="bg-[var(--semantic-success)]">Connected</Badge>
                   </div>
                   <Separator />
                   <div className="flex items-center justify-between">

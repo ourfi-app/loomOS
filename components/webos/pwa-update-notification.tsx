@@ -60,7 +60,7 @@ export function PWAUpdateNotification() {
                 <Button
                   size="sm"
                   onClick={handleUpdate}
-                  className="bg-white hover:bg-white/90 text-blue-600 h-8 px-3"
+                  className="bg-white hover:bg-white/90 text-[var(--semantic-primary)] h-8 px-3"
                 >
                   Update
                 </Button>

@@ -202,11 +202,11 @@ export default function TasksTab() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'HIGH':
-        return 'text-red-600';
+        return 'text-[var(--semantic-error)]';
       case 'MEDIUM':
-        return 'text-yellow-600';
+        return 'text-[var(--semantic-warning)]';
       case 'LOW':
-        return 'text-blue-600';
+        return 'text-[var(--semantic-primary)]';
       default:
         return 'text-[var(--semantic-text-secondary)]';
     }
@@ -285,7 +285,7 @@ export default function TasksTab() {
                       className="mt-0.5"
                     >
                       {task.status === 'COMPLETED' ? (
-                        <CheckCircle2 className="h-5 w-5 text-green-600" />
+                        <CheckCircle2 className="h-5 w-5 text-[var(--semantic-success)]" />
                       ) : (
                         <Circle className="h-5 w-5 text-muted-foreground" />
                       )}
@@ -300,7 +300,7 @@ export default function TasksTab() {
                         >
                           {task.title}
                         </span>
-                        {task.isFavorite && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />}
+                        {task.isFavorite && <Star className="w-3 h-3 text-[var(--semantic-warning)] fill-yellow-500" />}
                       </div>
                       {task.description && (
                         <p className="text-xs text-muted-foreground line-clamp-1 mb-2">
@@ -444,7 +444,7 @@ export default function TasksTab() {
                       className="flex-shrink-0"
                     >
                       {selectedTask.status === 'COMPLETED' ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-600" />
+                        <CheckCircle2 className="h-6 w-6 text-[var(--semantic-success)]" />
                       ) : (
                         <Circle className="h-6 w-6 text-muted-foreground" />
                       )}

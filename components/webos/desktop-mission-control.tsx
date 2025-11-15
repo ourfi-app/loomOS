@@ -217,7 +217,7 @@ export function DesktopMissionControl({ isOpen, onClose }: DesktopMissionControl
                         </span>
                       )}
                       {windowState?.isSnapped && (
-                        <span className="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">
+                        <span className="text-xs px-3 py-1 rounded-full bg-[var(--semantic-primary)]/10 text-[var(--semantic-primary)] border border-[var(--semantic-primary)]/20">
                           Snapped
                         </span>
                       )}

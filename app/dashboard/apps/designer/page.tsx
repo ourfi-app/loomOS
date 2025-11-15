@@ -731,7 +731,7 @@ export default function AppDesigner() {
                           />
                         </TabsContent>
 
-                        <TabsContent value="code" className="flex-1 bg-gray-900 text-gray-100 rounded-lg m-4">
+                        <TabsContent value="code" className="flex-1 bg-[var(--semantic-text-primary)] text-[var(--semantic-text-inverse)] rounded-lg m-4">
                           <ScrollArea className="h-[70vh] p-6">
                             <pre className="whitespace-pre-wrap font-mono text-sm">
                               {generatedComponentCode || '// Code will appear here after you generate it on the canvas.'}
@@ -753,13 +753,13 @@ export default function AppDesigner() {
                       </div>
 
                       {/* Info Banner */}
-                      <Card className="bg-blue-50 border-blue-200">
+                      <Card className="bg-[var(--semantic-primary-subtle)] border-[var(--semantic-primary-light)]">
                         <CardContent className="p-4">
                           <div className="flex items-start gap-3">
-                            <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                            <div className="text-sm text-blue-900">
+                            <Info className="w-5 h-5 text-[var(--semantic-primary)] mt-0.5 flex-shrink-0" />
+                            <div className="text-sm text-[var(--semantic-primary-dark)]">
                               <p className="font-medium mb-1">How Import Works</p>
-                              <p className="text-blue-800">
+                              <p className="text-[var(--semantic-primary-dark)]">
                                 Click any app below to analyze its structure. The designer will extract
                                 layout patterns, components, and features, then load them into the design
                                 editor where you can customize and modify them.
@@ -1432,7 +1432,7 @@ export default function AppDesigner() {
                                   <div className="space-y-2">
                                     {[1, 2, 3, 4].map((i) => (
                                       <div key={i} className="h-9 bg-white rounded shadow-sm flex items-center px-3">
-                                        <div className="w-4 h-4 rounded bg-gray-300 mr-2"></div>
+                                        <div className="w-4 h-4 rounded bg-[var(--semantic-bg-muted)] mr-2"></div>
                                         <div className="h-2 bg-[var(--semantic-bg-muted)] rounded flex-1"></div>
                                       </div>
                                     ))}
@@ -1441,14 +1441,14 @@ export default function AppDesigner() {
                                 <div className="w-96 bg-white border-r p-4 flex-shrink-0 overflow-y-auto">
                                   <div className="mb-3">
                                     <div className="h-10 bg-[var(--semantic-surface-hover)] rounded flex items-center px-3">
-                                      <div className="w-4 h-4 rounded bg-gray-300 mr-2"></div>
+                                      <div className="w-4 h-4 rounded bg-[var(--semantic-bg-muted)] mr-2"></div>
                                       <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-32"></div>
                                     </div>
                                   </div>
                                   <div className="space-y-3">
                                     {[1, 2, 3, 4, 5].map((i) => (
                                       <div key={i} className="h-20 bg-[var(--semantic-bg-subtle)] rounded-lg p-3 border border-[var(--semantic-border-light)]">
-                                        <div className="h-3 bg-gray-300 rounded w-3/4 mb-2"></div>
+                                        <div className="h-3 bg-[var(--semantic-bg-muted)] rounded w-3/4 mb-2"></div>
                                         <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-1/2"></div>
                                       </div>
                                     ))}
@@ -1476,7 +1476,7 @@ export default function AppDesigner() {
                                   <div className="space-y-3">
                                     {[1, 2, 3, 4, 5].map((i) => (
                                       <div key={i} className="h-20 bg-[var(--semantic-bg-subtle)] rounded-lg p-3 border border-[var(--semantic-border-light)]">
-                                        <div className="h-3 bg-gray-300 rounded w-3/4 mb-2"></div>
+                                        <div className="h-3 bg-[var(--semantic-bg-muted)] rounded w-3/4 mb-2"></div>
                                         <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-1/2"></div>
                                       </div>
                                     ))}
@@ -1499,7 +1499,7 @@ export default function AppDesigner() {
                                 <div className="space-y-3">
                                   {[1, 2, 3, 4, 5, 6].map((i) => (
                                     <div key={i} className="h-24 bg-[var(--semantic-bg-subtle)] rounded-lg p-3 border border-[var(--semantic-border-light)]">
-                                      <div className="h-3 bg-gray-300 rounded w-3/4 mb-2"></div>
+                                      <div className="h-3 bg-[var(--semantic-bg-muted)] rounded w-3/4 mb-2"></div>
                                       <div className="h-2 bg-[var(--semantic-bg-muted)] rounded w-1/2"></div>
                                     </div>
                                   ))}
@@ -1513,8 +1513,8 @@ export default function AppDesigner() {
                             <div className="bg-gradient-to-r from-gray-700 to-gray-600 px-6 py-3 flex justify-center gap-8 flex-shrink-0">
                               {[1, 2, 3, 4].map((i) => (
                                 <div key={i} className="flex flex-col items-center gap-1">
-                                  <div className="w-7 h-7 bg-gray-500 rounded"></div>
-                                  <div className="w-10 h-1 bg-gray-600 rounded"></div>
+                                  <div className="w-7 h-7 bg-[var(--semantic-text-tertiary)] rounded"></div>
+                                  <div className="w-10 h-1 bg-[var(--semantic-text-secondary)] rounded"></div>
                                 </div>
                               ))}
                             </div>
@@ -1523,7 +1523,7 @@ export default function AppDesigner() {
                           {/* Gesture Area */}
                           {currentApp.designPatterns.hasGestureArea && (
                             <div className="bg-black py-3 flex justify-center flex-shrink-0">
-                              <div className="w-28 h-1 bg-gray-700 rounded-full"></div>
+                              <div className="w-28 h-1 bg-[var(--semantic-text-secondary)] rounded-full"></div>
                             </div>
                           )}
                         </div>
@@ -1551,7 +1551,7 @@ export default function AppDesigner() {
 
                     <Card>
                       <CardContent className="p-0">
-                        <div className="bg-gray-900 text-gray-100 p-6 rounded-lg font-mono text-sm overflow-x-auto">
+                        <div className="bg-[var(--semantic-text-primary)] text-[var(--semantic-text-inverse)] p-6 rounded-lg font-mono text-sm overflow-x-auto">
                           <pre className="whitespace-pre-wrap">{generateCode()}</pre>
                         </div>
                       </CardContent>
@@ -1635,7 +1635,7 @@ export default function AppDesigner() {
                         <div className="space-y-4">
                           <div>
                             <h4 className="font-semibold text-sm text-[var(--semantic-text-secondary)] mb-2">1. Install Dependencies</h4>
-                            <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs">
+                            <div className="bg-[var(--semantic-text-primary)] text-[var(--semantic-text-inverse)] p-3 rounded font-mono text-xs">
                               yarn add lucide-react
                             </div>
                           </div>

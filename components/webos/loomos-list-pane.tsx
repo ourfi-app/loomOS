@@ -47,7 +47,7 @@ export function LoomOSListPane({
       key={item.id}
       className={`p-4 border-b border-[var(--semantic-border-light)] cursor-pointer transition-colors ${
         item.selected 
-          ? 'bg-orange-50 border-l-4 border-l-orange-500' 
+          ? 'bg-[var(--semantic-primary-subtle)] border-l-4 border-l-orange-500' 
           : 'hover:bg-[var(--semantic-bg-subtle)]'
       }`}
       onClick={item.onClick}

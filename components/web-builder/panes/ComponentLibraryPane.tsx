@@ -94,8 +94,8 @@ function ComponentCard({ component, onDragStart }: ComponentCardProps) {
       draggable
       onDragStart={onDragStart}
       className={cn(
-        'p-3 rounded-lg border border-[var(--semantic-border-light)] dark:border-gray-700',
-        'bg-white dark:bg-gray-800 cursor-move',
+        'p-3 rounded-lg border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]',
+        'bg-white dark:bg-[var(--semantic-text-primary)] cursor-move',
         'hover:border-loomos-orange hover:shadow-md transition-all',
         'group'
       )}
@@ -105,7 +105,7 @@ function ComponentCard({ component, onDragStart }: ComponentCardProps) {
           {component.icon}
         </div>
         <div className="flex-1 min-w-0">
-          <h4 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100 truncate">
+          <h4 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)] truncate">
             {component.name}
           </h4>
           <p className="text-xs text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] line-clamp-2 mt-1">
@@ -115,7 +115,7 @@ function ComponentCard({ component, onDragStart }: ComponentCardProps) {
             {component.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-2 py-0.5 rounded bg-[var(--semantic-surface-hover)] dark:bg-gray-700 text-[var(--semantic-text-secondary)] dark:text-gray-300"
+                className="text-xs px-2 py-0.5 rounded bg-[var(--semantic-surface-hover)] dark:bg-[var(--semantic-text-secondary)] text-[var(--semantic-text-secondary)] dark:text-[var(--semantic-text-tertiary)]"
               >
                 {tag}
               </span>
@@ -179,9 +179,9 @@ export function ComponentLibraryPane() {
   }, [searchQuery]);
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-gray-800">
+    <div className="flex flex-col h-full bg-white dark:bg-[var(--semantic-text-primary)]">
       {/* Search Header */}
-      <div className="p-4 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+      <div className="p-4 border-b border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--semantic-text-tertiary)]" />
           <input
@@ -190,8 +190,8 @@ export function ComponentLibraryPane() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className={cn(
-              'w-full pl-10 pr-4 py-2 rounded-lg border border-[var(--semantic-border-light)] dark:border-gray-700',
-              'bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 text-sm',
+              'w-full pl-10 pr-4 py-2 rounded-lg border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]',
+              'bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] text-sm',
               'focus:outline-none focus:ring-2 focus:ring-loomos-orange focus:border-transparent',
               'placeholder:text-[var(--semantic-text-tertiary)]'
             )}
@@ -225,7 +225,7 @@ export function ComponentLibraryPane() {
       </div>
 
       {/* AI Quick Actions */}
-      <div className="p-4 border-t border-[var(--semantic-border-light)] dark:border-gray-700 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900">
+      <div className="p-4 border-t border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)] bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)]">
         <button
           onClick={toggleAIDrawer}
           className={cn(

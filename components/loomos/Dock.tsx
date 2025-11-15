@@ -189,7 +189,7 @@ function DockIcon({ app, isActive, onClick, onLongPress }: DockIconProps) {
         {/* Notification Badge */}
         {app.hasNotification && (
           <motion.div
-            className="loomos-notification-badge absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-red-500 rounded-full flex items-center justify-center"
+            className="loomos-notification-badge absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-[var(--semantic-error)] rounded-full flex items-center justify-center"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 500, damping: 15 }}
@@ -206,7 +206,7 @@ function DockIcon({ app, isActive, onClick, onLongPress }: DockIconProps) {
       {/* Running Indicator Dot */}
       {app.isRunning && (
         <motion.div
-          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-gray-700 rounded-full"
+          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[var(--semantic-text-secondary)] rounded-full"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 500, damping: 20 }}
@@ -217,7 +217,7 @@ function DockIcon({ app, isActive, onClick, onLongPress }: DockIconProps) {
       <motion.div
         className={cn(
           'absolute bottom-full mb-2 left-1/2 -translate-x-1/2',
-          'px-2 py-1 bg-gray-900 text-white text-xs rounded',
+          'px-2 py-1 bg-[var(--semantic-text-primary)] text-white text-xs rounded',
           'whitespace-nowrap pointer-events-none',
           'opacity-0'
         )}
@@ -236,7 +236,7 @@ function DockIcon({ app, isActive, onClick, onLongPress }: DockIconProps) {
  */
 export function LoomOSDockSeparator() {
   return (
-    <div className="loomos-dock-separator w-px h-12 bg-gray-300 mx-2" />
+    <div className="loomos-dock-separator w-px h-12 bg-[var(--semantic-bg-muted)] mx-2" />
   );
 }
 

@@ -51,11 +51,11 @@ export function LoomOSGroupBox({
         // Variant styles
         variant === 'light' && [
           'bg-white dark:bg-neutral-900',
-          'border-neutral-200 dark:border-neutral-700'
+          'border-[var(--semantic-border-light)] dark:border-neutral-700'
         ],
         variant === 'dark' && [
-          'bg-neutral-50 dark:bg-neutral-800',
-          'border-neutral-300 dark:border-neutral-600'
+          'bg-[var(--semantic-bg-subtle)] dark:bg-neutral-800',
+          'border-[var(--semantic-border-medium)] dark:border-neutral-600'
         ],
         
         className
@@ -66,14 +66,14 @@ export function LoomOSGroupBox({
       {title && (
         <div className="mb-3">
           <h3 className={cn(
-            'text-sm font-semibold text-neutral-900 dark:text-neutral-100',
+            'text-sm font-semibold text-[var(--semantic-text-primary)] dark:text-neutral-100',
             titleClassName
           )}>
             {title}
           </h3>
           {description && (
             <p className={cn(
-              'mt-1 text-xs text-neutral-600 dark:text-neutral-400',
+              'mt-1 text-xs text-[var(--semantic-text-secondary)] dark:text-neutral-400',
               descriptionClassName
             )}>
               {description}
