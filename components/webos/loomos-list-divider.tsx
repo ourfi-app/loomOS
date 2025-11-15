@@ -42,14 +42,14 @@ export function LoomOSListDivider({
         
         // Variant styles
         variant === 'light' && [
-          'bg-neutral-100 dark:bg-neutral-800',
-          'text-neutral-600 dark:text-neutral-400',
-          'border-neutral-200 dark:border-neutral-700'
+          'bg-[var(--semantic-surface-hover)] dark:bg-neutral-800',
+          'text-[var(--semantic-text-secondary)] dark:text-neutral-400',
+          'border-[var(--semantic-border-light)] dark:border-neutral-700'
         ],
         variant === 'dark' && [
-          'bg-neutral-200 dark:bg-neutral-900',
-          'text-neutral-700 dark:text-neutral-300',
-          'border-neutral-300 dark:border-neutral-600'
+          'bg-[var(--semantic-bg-muted)] dark:bg-neutral-900',
+          'text-[var(--semantic-text-secondary)] dark:text-neutral-300',
+          'border-[var(--semantic-border-medium)] dark:border-neutral-600'
         ],
         
         className
@@ -62,8 +62,8 @@ export function LoomOSListDivider({
         {count !== undefined && (
           <span className={cn(
             'ml-2 px-2 py-0.5 rounded-full text-xs font-medium',
-            'bg-neutral-200 dark:bg-neutral-700',
-            'text-neutral-700 dark:text-neutral-300'
+            'bg-[var(--semantic-bg-muted)] dark:bg-neutral-700',
+            'text-[var(--semantic-text-secondary)] dark:text-neutral-300'
           )}>
             {count}
           </span>

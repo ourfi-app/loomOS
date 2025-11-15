@@ -89,7 +89,7 @@ function TextSettings() {
         <textarea
           value={text}
           onChange={(e) => setProp((props: TextProps) => (props.text = e.target.value))}
-          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm min-h-[100px]"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)] rounded-lg text-sm min-h-[100px]"
           placeholder="Enter text..."
         />
       </div>
@@ -120,7 +120,7 @@ function TextSettings() {
         <select
           value={fontWeight}
           onChange={(e) => setProp((props: TextProps) => (props.fontWeight = e.target.value as TextProps['fontWeight']))}
-          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 border border-[var(--semantic-border-light)] dark:border-gray-700 rounded-lg text-sm"
+          className="w-full px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)] rounded-lg text-sm"
         >
           <option value="normal">Normal</option>
           <option value="medium">Medium</option>
@@ -156,7 +156,7 @@ function TextSettings() {
                 'flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                 textAlign === align
                   ? 'bg-loomos-orange text-white'
-                  : 'bg-[var(--semantic-surface-hover)] dark:bg-gray-800 text-[var(--semantic-text-secondary)] dark:text-gray-300 hover:bg-[var(--semantic-bg-muted)] dark:hover:bg-gray-700'
+                  : 'bg-[var(--semantic-surface-hover)] dark:bg-[var(--semantic-text-primary)] text-[var(--semantic-text-secondary)] dark:text-[var(--semantic-text-tertiary)] hover:bg-[var(--semantic-bg-muted)] dark:hover:bg-[var(--semantic-text-secondary)]'
               )}
             >
               {align.charAt(0).toUpperCase() + align.slice(1)}

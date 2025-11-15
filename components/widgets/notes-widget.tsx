@@ -97,11 +97,11 @@ export function NotesWidget() {
 
   const getColorClasses = (color?: string) => {
     switch (color) {
-      case 'yellow': return 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800';
-      case 'blue': return 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800';
-      case 'green': return 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800';
-      case 'purple': return 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800';
-      case 'pink': return 'bg-pink-50 dark:bg-pink-900/20 border-pink-200 dark:border-pink-800';
+      case 'yellow': return 'bg-[var(--semantic-warning-bg)] dark:bg-yellow-900/20 border-[var(--semantic-warning-bg)] dark:border-yellow-800';
+      case 'blue': return 'bg-[var(--semantic-primary-subtle)] dark:bg-[var(--semantic-primary-dark)]/20 border-[var(--semantic-primary-light)] dark:border-blue-800';
+      case 'green': return 'bg-[var(--semantic-success-bg)] dark:bg-green-900/20 border-[var(--semantic-success-bg)] dark:border-green-800';
+      case 'purple': return 'bg-[var(--semantic-accent-subtle)] dark:bg-purple-900/20 border-[var(--semantic-accent-light)] dark:border-purple-800';
+      case 'pink': return 'bg-[var(--semantic-accent-subtle)] dark:bg-pink-900/20 border-[var(--semantic-accent-light)] dark:border-pink-800';
       default: return 'bg-muted/30 border-border/50';
     }
   };

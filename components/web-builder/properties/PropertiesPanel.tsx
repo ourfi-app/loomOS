@@ -30,10 +30,10 @@ export function PropertiesPanel() {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
         <div className="flex items-center gap-2">
           <Settings2 className="w-4 h-4 text-[var(--semantic-text-secondary)] dark:text-[var(--semantic-text-tertiary)]" />
-          <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] dark:text-gray-100">
+          <h3 className="text-sm font-semibold text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)]">
             Properties
           </h3>
         </div>
@@ -42,7 +42,7 @@ export function PropertiesPanel() {
             actions.selectNode(undefined);
             setSelectedNode(null);
           }}
-          className="p-1.5 rounded-lg hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-gray-700 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-[var(--semantic-text-secondary)] transition-colors"
           aria-label="Close properties panel"
         >
           <X className="w-4 h-4" />
@@ -58,7 +58,7 @@ export function PropertiesPanel() {
               <label className="block text-xs font-medium text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-2">
                 Component
               </label>
-              <div className="px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 rounded-lg text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100">
+              <div className="px-3 py-2 bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] rounded-lg text-sm font-medium text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)]">
                 {selected.name}
               </div>
             </div>
@@ -68,7 +68,7 @@ export function PropertiesPanel() {
 
             {/* Delete Button */}
             {selected.isDeletable && (
-              <div className="mt-6 pt-6 border-t border-[var(--semantic-border-light)] dark:border-gray-700">
+              <div className="mt-6 pt-6 border-t border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
                 <button
                   onClick={() => {
                     actions.delete(selected.id);
@@ -76,8 +76,8 @@ export function PropertiesPanel() {
                   }}
                   className={cn(
                     'w-full px-4 py-2 rounded-lg transition-colors min-h-[44px]',
-                    'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400',
-                    'hover:bg-red-100 dark:hover:bg-red-900/40 font-medium text-sm'
+                    'bg-[var(--semantic-error-bg)] dark:bg-red-900/20 text-[var(--semantic-error)] dark:text-[var(--semantic-error)]',
+                    'hover:bg-[var(--semantic-error-bg)] dark:hover:bg-red-900/40 font-medium text-sm'
                   )}
                 >
                   Delete Component

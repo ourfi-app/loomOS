@@ -45,7 +45,7 @@ export default function SettingsStep({
       <Card className="p-6 md:p-8 bg-gradient-to-br from-white via-orange-50/30 to-amber-50/20 border-0 shadow-xl backdrop-blur-sm">
         {/* Enhanced Header */}
         <div className="mb-8 relative">
-          <div className="absolute -top-2 -left-2 w-24 h-24 bg-orange-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute -top-2 -left-2 w-24 h-24 bg-[var(--semantic-primary)]/10 rounded-full blur-3xl"></div>
           <div className="absolute -top-2 -right-2 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl"></div>
           
           <div className="relative">
@@ -194,7 +194,7 @@ export default function SettingsStep({
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-[var(--semantic-primary-light)] hover:bg-[var(--semantic-primary-subtle)]/50 transition-all duration-300 cursor-pointer">
                 <Checkbox
                   id="creditCard"
                   checked={formData.acceptCreditCard}
@@ -213,7 +213,7 @@ export default function SettingsStep({
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-green-300 hover:bg-green-50/50 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-[var(--semantic-success-border)] hover:bg-[var(--semantic-success-bg)]/50 transition-all duration-300 cursor-pointer">
                 <Checkbox
                   id="ach"
                   checked={formData.acceptACH}
@@ -232,7 +232,7 @@ export default function SettingsStep({
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-purple-300 hover:bg-purple-50/50 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start gap-4 p-4 rounded-xl border-2 border-[var(--semantic-border-light)] hover:border-[var(--semantic-accent-light)] hover:bg-[var(--semantic-accent-subtle)]/50 transition-all duration-300 cursor-pointer">
                 <Checkbox
                   id="check"
                   checked={formData.acceptCheck}
@@ -254,16 +254,16 @@ export default function SettingsStep({
           </div>
 
           {/* Info Note */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-blue-200 rounded-xl p-5 backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-5 backdrop-blur-sm">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary)] flex items-center justify-center">
                   <Sparkles className="h-5 w-5 text-white" />
                 </div>
               </div>
               <div className="flex-1">
-                <p className="font-semibold text-blue-900 mb-1">Customize Anytime</p>
-                <p className="text-sm text-blue-800">
+                <p className="font-semibold text-[var(--semantic-primary-dark)] mb-1">Customize Anytime</p>
+                <p className="text-sm text-[var(--semantic-primary-dark)]">
                   All these settings can be changed later from System Settings. You can also set custom dues amounts for individual units.
                 </p>
               </div>

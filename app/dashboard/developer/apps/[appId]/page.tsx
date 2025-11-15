@@ -92,7 +92,7 @@ export default function AppManagementPage() {
           <p className="text-[var(--semantic-text-secondary)] mb-4">App not found</p>
           <Link
             href="/dashboard/developer"
-            className="text-orange-600 hover:underline"
+            className="text-[var(--semantic-primary)] hover:underline"
           >
             Back to Dashboard
           </Link>
@@ -107,7 +107,7 @@ export default function AppManagementPage() {
       <div className="mb-8">
         <Link
           href="/dashboard/developer"
-          className="text-orange-600 hover:underline mb-4 inline-block"
+          className="text-[var(--semantic-primary)] hover:underline mb-4 inline-block"
         >
           ← Back to Dashboard
         </Link>
@@ -125,12 +125,12 @@ export default function AppManagementPage() {
               <span
                 className={`px-3 py-1 rounded-full text-sm ${
                   app.status === 'PUBLISHED'
-                    ? 'bg-green-100 text-green-700'
+                    ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]'
                     : app.status === 'DRAFT'
                     ? 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                     : app.status === 'PENDING_REVIEW'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-yellow-100 text-yellow-700'
+                    ? 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]'
+                    : 'bg-[var(--semantic-warning-bg)] text-[var(--semantic-warning-dark)]'
                 }`}
               >
                 {app.status}
@@ -147,7 +147,7 @@ export default function AppManagementPage() {
             </Link>
             <Link
               href={`/dashboard/developer/apps/${app.id}/submit-version`}
-              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
+              className="px-4 py-2 bg-[var(--semantic-primary)] text-white rounded-lg hover:bg-[var(--semantic-primary-dark)]"
             >
               Submit Update
             </Link>
@@ -169,7 +169,7 @@ export default function AppManagementPage() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`pb-3 px-1 ${
                 activeTab === tab.id
-                  ? 'border-b-2 border-orange-500 text-orange-600 font-semibold'
+                  ? 'border-b-2 border-orange-500 text-[var(--semantic-primary)] font-semibold'
                   : 'text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)]'
               }`}
             >
@@ -275,16 +275,16 @@ export default function AppManagementPage() {
 
           {/* Danger Zone */}
           {(app.status === 'DRAFT' || app.status === 'REJECTED') && (
-            <div className="bg-red-50 p-6 rounded-lg border border-red-200">
-              <h2 className="text-xl font-semibold text-red-700 mb-2">
+            <div className="bg-[var(--semantic-error-bg)] p-6 rounded-lg border border-[var(--semantic-error-border)]">
+              <h2 className="text-xl font-semibold text-[var(--semantic-error-dark)] mb-2">
                 Danger Zone
               </h2>
-              <p className="text-red-600 mb-4">
+              <p className="text-[var(--semantic-error)] mb-4">
                 Delete this app permanently. This action cannot be undone.
               </p>
               <button
                 onClick={handleDelete}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                className="px-4 py-2 bg-[var(--semantic-error)] text-white rounded-lg hover:bg-[var(--semantic-error-dark)]"
               >
                 Delete App
               </button>
@@ -378,7 +378,7 @@ export default function AppManagementPage() {
                     <span
                       className={`px-3 py-1 rounded-full text-sm ${
                         version.status === 'published'
-                          ? 'bg-green-100 text-green-700'
+                          ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]'
                           : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                       }`}
                     >

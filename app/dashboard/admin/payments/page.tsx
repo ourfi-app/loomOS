@@ -197,11 +197,11 @@ export default function PaymentManagementPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'PAID':
-        return <CheckCircle className="h-4 w-4 text-green-600" />;
+        return <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />;
       case 'PENDING':
-        return <Clock className="h-4 w-4 text-orange-600" />;
+        return <Clock className="h-4 w-4 text-[var(--semantic-primary)]" />;
       case 'OVERDUE':
-        return <AlertTriangle className="h-4 w-4 text-red-600" />;
+        return <AlertTriangle className="h-4 w-4 text-[var(--semantic-error)]" />;
       case 'CANCELLED':
         return <XCircle className="h-4 w-4 text-[var(--semantic-text-secondary)]" />;
       default:
@@ -313,7 +313,7 @@ export default function PaymentManagementPage() {
                       <span>Unit {payment.user.unitNumber || 'N/A'}</span>
                     </div>
                     <div className="flex items-center gap-3 text-xs">
-                      <span className="font-semibold text-green-600">
+                      <span className="font-semibold text-[var(--semantic-success)]">
                         ${Number(payment.amount).toFixed(2)}
                       </span>
                       <span className="text-muted-foreground">
@@ -351,9 +351,9 @@ export default function PaymentManagementPage() {
           <div className="space-y-6">
             {/* Status Banner */}
             <div className={`p-4 rounded-lg border ${
-              selectedPayment.status === 'PAID' ? 'bg-green-50 border-green-200' :
-              selectedPayment.status === 'PENDING' ? 'bg-orange-50 border-orange-200' :
-              selectedPayment.status === 'OVERDUE' ? 'bg-red-50 border-red-200' :
+              selectedPayment.status === 'PAID' ? 'bg-[var(--semantic-success-bg)] border-[var(--semantic-success-bg)]' :
+              selectedPayment.status === 'PENDING' ? 'bg-[var(--semantic-primary-subtle)] border-[var(--semantic-primary-light)]' :
+              selectedPayment.status === 'OVERDUE' ? 'bg-[var(--semantic-error-bg)] border-[var(--semantic-error-border)]' :
               'bg-[var(--semantic-bg-subtle)] border-[var(--semantic-border-light)]'
             }`}>
               <div className="flex items-center gap-3">
@@ -379,7 +379,7 @@ export default function PaymentManagementPage() {
               <div className="space-y-3">
                 <div className="flex items-start justify-between py-2">
                   <span className="text-sm text-muted-foreground">Amount</span>
-                  <span className="text-lg font-bold text-green-600">
+                  <span className="text-lg font-bold text-[var(--semantic-success)]">
                     ${Number(selectedPayment.amount).toFixed(2)}
                   </span>
                 </div>

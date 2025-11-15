@@ -214,7 +214,7 @@ export function GoogleDriveBrowser({
       <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Cloud className="h-5 w-5 text-blue-600" />
+            <Cloud className="h-5 w-5 text-[var(--semantic-primary)]" />
             Import from Google Drive
           </DialogTitle>
           <DialogDescription>
@@ -249,7 +249,7 @@ export function GoogleDriveBrowser({
           <ScrollArea className="h-[300px] border rounded-md p-4">
             {loading ? (
               <div className="flex items-center justify-center h-full">
-                <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+                <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
               </div>
             ) : files.length > 0 ? (
               <div className="space-y-2">
@@ -259,14 +259,14 @@ export function GoogleDriveBrowser({
                     onClick={() => handleFileSelect(file)}
                     className={`flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors ${
                       selectedFile?.id === file.id
-                        ? 'bg-blue-100 border-2 border-blue-500'
+                        ? 'bg-[var(--semantic-primary-subtle)] border-2 border-[var(--semantic-primary)]'
                         : 'hover:bg-muted border border-transparent'
                     }`}
                   >
                     {file.mimeType === 'application/vnd.google-apps.folder' ? (
-                      <Folder className="h-5 w-5 text-yellow-600 flex-shrink-0" />
+                      <Folder className="h-5 w-5 text-[var(--semantic-warning)] flex-shrink-0" />
                     ) : (
-                      <FileText className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                      <FileText className="h-5 w-5 text-[var(--semantic-primary)] flex-shrink-0" />
                     )}
                     <div className="flex-1 min-w-0">
                       <p className="font-medium truncate">{file.name}</p>
@@ -277,7 +277,7 @@ export function GoogleDriveBrowser({
                       </p>
                     </div>
                     {isGoogleDocsType(file.mimeType) && file.mimeType !== 'application/vnd.google-apps.folder' && (
-                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                      <span className="text-xs bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)] px-2 py-1 rounded">
                         Google Doc
                       </span>
                     )}
@@ -294,9 +294,9 @@ export function GoogleDriveBrowser({
 
           {/* Selected File Info */}
           {selectedFile && (
-            <div className="p-3 bg-blue-50 border border-blue-200 rounded-md">
-              <p className="text-sm font-medium text-blue-900">Selected File:</p>
-              <p className="text-sm text-blue-700">{selectedFile.name}</p>
+            <div className="p-3 bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-md">
+              <p className="text-sm font-medium text-[var(--semantic-primary-dark)]">Selected File:</p>
+              <p className="text-sm text-[var(--semantic-primary-dark)]">{selectedFile.name}</p>
             </div>
           )}
 

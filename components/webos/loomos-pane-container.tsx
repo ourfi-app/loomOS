@@ -160,8 +160,8 @@ export function LoomOSContainerPane({
         
         // Desktop styles
         !isMobile && [
-          type === 'navigation' && 'border-r border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900',
-          type === 'list' && 'border-r border-neutral-200 dark:border-neutral-700',
+          type === 'navigation' && 'border-r border-[var(--semantic-border-light)] dark:border-neutral-700 bg-[var(--semantic-bg-subtle)] dark:bg-neutral-900',
+          type === 'list' && 'border-r border-[var(--semantic-border-light)] dark:border-neutral-700',
           fill ? 'flex-1' : width && `w-[${width}px] flex-shrink-0`
         ],
         
@@ -185,7 +185,7 @@ export function LoomOSContainerPane({
     >
       {/* Mobile Back Button */}
       {isMobile && showBackButton && (
-        <div className="sticky top-0 z-10 flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700">
+        <div className="sticky top-0 z-10 flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-900 border-b border-[var(--semantic-border-light)] dark:border-neutral-700">
           <button
             onClick={() => {
               if (onBack) {
@@ -194,7 +194,7 @@ export function LoomOSContainerPane({
                 setActivePane(null);
               }
             }}
-            className="flex items-center gap-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100"
+            className="flex items-center gap-2 text-sm font-medium text-[var(--semantic-text-secondary)] dark:text-neutral-300 hover:text-[var(--semantic-text-primary)] dark:hover:text-neutral-100"
           >
             <ChevronLeft className="w-5 h-5" />
             Back
@@ -225,8 +225,8 @@ export function LoomOSPaneToggle({ paneId, className }: LoomOSPaneToggleProps) {
       onClick={() => setActivePane(activePane === paneId ? null : paneId)}
       className={cn(
         'md:hidden p-2 rounded-lg',
-        'text-neutral-700 dark:text-neutral-300',
-        'hover:bg-neutral-100 dark:hover:bg-neutral-800',
+        'text-[var(--semantic-text-secondary)] dark:text-neutral-300',
+        'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-neutral-800',
         'transition-colors',
         className
       )}

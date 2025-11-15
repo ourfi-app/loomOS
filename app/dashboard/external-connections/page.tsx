@@ -123,11 +123,11 @@ export default function ExternalConnectionsPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'connected':
-        return <CheckCircle2 className="h-5 w-5 text-green-500" />;
+        return <CheckCircle2 className="h-5 w-5 text-[var(--semantic-success)]" />;
       case 'disconnected':
         return <XCircle className="h-5 w-5 text-[var(--semantic-text-tertiary)]" />;
       case 'error':
-        return <AlertTriangle className="h-5 w-5 text-red-500" />;
+        return <AlertTriangle className="h-5 w-5 text-[var(--semantic-error)]" />;
       default:
         return <Activity className="h-5 w-5 text-[var(--semantic-text-tertiary)]" />;
     }
@@ -136,11 +136,11 @@ export default function ExternalConnectionsPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'connected':
-        return <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">Connected</Badge>;
+        return <Badge variant="outline" className="bg-[var(--semantic-success)]/10 text-[var(--semantic-success)] border-[var(--semantic-success)]/20">Connected</Badge>;
       case 'disconnected':
-        return <Badge variant="outline" className="bg-gray-500/10 text-[var(--semantic-text-tertiary)] border-gray-500/20">Disconnected</Badge>;
+        return <Badge variant="outline" className="bg-[var(--semantic-text-tertiary)]/10 text-[var(--semantic-text-tertiary)] border-[var(--semantic-border-strong)]/20">Disconnected</Badge>;
       case 'error':
-        return <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">Error</Badge>;
+        return <Badge variant="outline" className="bg-[var(--semantic-error)]/10 text-[var(--semantic-error)] border-[var(--semantic-error)]/20">Error</Badge>;
       default:
         return <Badge variant="outline">Unknown</Badge>;
     }
@@ -219,11 +219,11 @@ export default function ExternalConnectionsPage() {
               <div className="text-sm text-muted-foreground">Overall Status</div>
               <div className="flex items-center gap-2">
                 {healthPercentage === 100 ? (
-                  <CheckCircle2 className="h-6 w-6 text-green-500" />
+                  <CheckCircle2 className="h-6 w-6 text-[var(--semantic-success)]" />
                 ) : healthPercentage >= 75 ? (
-                  <AlertTriangle className="h-6 w-6 text-yellow-500" />
+                  <AlertTriangle className="h-6 w-6 text-[var(--semantic-warning)]" />
                 ) : (
-                  <XCircle className="h-6 w-6 text-red-500" />
+                  <XCircle className="h-6 w-6 text-[var(--semantic-error)]" />
                 )}
                 <div className="text-2xl font-bold">{healthPercentage}%</div>
               </div>

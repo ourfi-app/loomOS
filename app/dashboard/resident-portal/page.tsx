@@ -116,18 +116,18 @@ export default function ResidentPortalPage() {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'available':
-        return 'bg-green-500';
+        return 'bg-[var(--semantic-success)]';
       case 'pending':
-        return 'bg-yellow-500';
+        return 'bg-[var(--semantic-warning)]';
       case 'sold':
       case 'rented':
-        return 'bg-gray-500';
+        return 'bg-[var(--semantic-text-tertiary)]';
       case 'new':
-        return 'bg-blue-500';
+        return 'bg-[var(--semantic-primary)]';
       case 'contacted':
-        return 'bg-purple-500';
+        return 'bg-[var(--semantic-accent)]';
       default:
-        return 'bg-gray-500';
+        return 'bg-[var(--semantic-text-tertiary)]';
     }
   };
 
@@ -330,7 +330,7 @@ export default function ResidentPortalPage() {
                 <CardTitle className="text-sm font-medium">New</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-blue-600">
+                <div className="text-2xl font-bold text-[var(--semantic-primary)]">
                   {inquiries.filter(i => i.status === 'new').length}
                 </div>
               </CardContent>
@@ -341,7 +341,7 @@ export default function ResidentPortalPage() {
                 <CardTitle className="text-sm font-medium">In Progress</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-yellow-600">
+                <div className="text-2xl font-bold text-[var(--semantic-warning)]">
                   {inquiries.filter(i => ['contacted', 'scheduled'].includes(i.status)).length}
                 </div>
               </CardContent>
@@ -352,7 +352,7 @@ export default function ResidentPortalPage() {
                 <CardTitle className="text-sm font-medium">Converted</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-green-600">
+                <div className="text-2xl font-bold text-[var(--semantic-success)]">
                   {inquiries.filter(i => i.status === 'converted').length}
                 </div>
               </CardContent>
@@ -467,9 +467,9 @@ export default function ResidentPortalPage() {
                       <div className="flex items-start justify-between mb-3">
                         <h4 className="font-semibold">{amenity.name}</h4>
                         {amenity.isAvailable ? (
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <CheckCircle className="w-5 h-5 text-[var(--semantic-success)]" />
                         ) : (
-                          <AlertCircle className="w-5 h-5 text-red-600" />
+                          <AlertCircle className="w-5 h-5 text-[var(--semantic-error)]" />
                         )}
                       </div>
                       <Badge variant="outline" className="mb-3 capitalize">

@@ -118,7 +118,7 @@ export default function PetDialog({ open, onClose, unitNumber, editingPet }: Pet
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name">
-                Pet Name <span className="text-red-500">*</span>
+                Pet Name <span className="text-[var(--semantic-error)]">*</span>
               </Label>
               <Input
                 id="name"
@@ -131,7 +131,7 @@ export default function PetDialog({ open, onClose, unitNumber, editingPet }: Pet
 
             <div className="space-y-2">
               <Label htmlFor="type">
-                Type <span className="text-red-500">*</span>
+                Type <span className="text-[var(--semantic-error)]">*</span>
               </Label>
               <Select
                 value={formData.type || 'dog'}

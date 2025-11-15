@@ -106,7 +106,7 @@ export default function DocumentsPage() {
             <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
               <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
                 <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-blue-500" />
+                  <FolderOpen className="h-8 w-8 text-[var(--semantic-primary)]" />
                   <div>
                     <p className="font-medium">Bylaws</p>
                     <p className="text-sm text-muted-foreground">12 files</p>
@@ -115,7 +115,7 @@ export default function DocumentsPage() {
               </Card>
               <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
                 <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-green-500" />
+                  <FolderOpen className="h-8 w-8 text-[var(--semantic-success)]" />
                   <div>
                     <p className="font-medium">Policies</p>
                     <p className="text-sm text-muted-foreground">8 files</p>
@@ -124,7 +124,7 @@ export default function DocumentsPage() {
               </Card>
               <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
                 <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-purple-500" />
+                  <FolderOpen className="h-8 w-8 text-[var(--semantic-accent)]" />
                   <div>
                     <p className="font-medium">Minutes</p>
                     <p className="text-sm text-muted-foreground">24 files</p>
@@ -133,7 +133,7 @@ export default function DocumentsPage() {
               </Card>
               <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
                 <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-orange-500" />
+                  <FolderOpen className="h-8 w-8 text-[var(--semantic-primary)]" />
                   <div>
                     <p className="font-medium">Forms</p>
                     <p className="text-sm text-muted-foreground">15 files</p>
@@ -160,7 +160,7 @@ export default function DocumentsPage() {
                         className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors"
                       >
                         <div className="flex items-center gap-4">
-                          <FileText className="h-8 w-8 text-blue-500" />
+                          <FileText className="h-8 w-8 text-[var(--semantic-primary)]" />
                           <div>
                             <p className="font-medium">{doc.name}</p>
                             <p className="text-sm text-muted-foreground">

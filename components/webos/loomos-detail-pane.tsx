@@ -32,7 +32,7 @@ export function LoomOSDetailPane({
       <div className={`${width} bg-white flex items-center justify-center text-[var(--semantic-text-tertiary)] ${className}`}>
         <div className="text-center">
           {emptyIcon && (
-            <div className="mx-auto mb-4 opacity-50 text-gray-300">
+            <div className="mx-auto mb-4 opacity-50 text-[var(--semantic-text-tertiary)]">
               {emptyIcon}
             </div>
           )}

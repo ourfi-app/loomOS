@@ -156,17 +156,17 @@ export function DesktopActivityWidget({ widget }: DesktopActivityWidgetProps) {
   };
 
   const getActivityColor = (type: string, status?: string) => {
-    if (status === 'success') return 'text-green-500 bg-green-500/10';
-    if (status === 'warning') return 'text-yellow-500 bg-yellow-500/10';
-    if (status === 'error') return 'text-red-500 bg-red-500/10';
+    if (status === 'success') return 'text-[var(--semantic-success)] bg-[var(--semantic-success)]/10';
+    if (status === 'warning') return 'text-[var(--semantic-warning)] bg-[var(--semantic-warning)]/10';
+    if (status === 'error') return 'text-[var(--semantic-error)] bg-[var(--semantic-error)]/10';
 
     const colors: Record<string, string> = {
-      user: 'text-blue-500 bg-blue-500/10',
-      task: 'text-green-500 bg-green-500/10',
-      message: 'text-purple-500 bg-purple-500/10',
-      document: 'text-orange-500 bg-orange-500/10',
-      event: 'text-pink-500 bg-pink-500/10',
-      system: 'text-[var(--semantic-text-tertiary)] bg-gray-500/10',
+      user: 'text-[var(--semantic-primary)] bg-[var(--semantic-primary)]/10',
+      task: 'text-[var(--semantic-success)] bg-[var(--semantic-success)]/10',
+      message: 'text-[var(--semantic-accent)] bg-[var(--semantic-accent)]/10',
+      document: 'text-[var(--semantic-primary)] bg-[var(--semantic-primary)]/10',
+      event: 'text-[var(--semantic-accent)] bg-[var(--semantic-accent)]/10',
+      system: 'text-[var(--semantic-text-tertiary)] bg-[var(--semantic-text-tertiary)]/10',
     };
     return colors[type] || 'text-muted-foreground bg-muted/50';
   };

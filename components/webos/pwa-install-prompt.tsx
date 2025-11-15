@@ -82,7 +82,7 @@ export function PWAInstallPrompt() {
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
                   <div className="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                    <Download className="w-8 h-8 text-blue-600" />
+                    <Download className="w-8 h-8 text-[var(--semantic-primary)]" />
                   </div>
                 </motion.div>
 
@@ -154,7 +154,7 @@ function FeatureItem({ icon, text }: { icon: React.ReactNode; text: string }) {
       animate={{ opacity: 1, x: 0 }}
       className="flex items-center gap-3 text-slate-300"
     >
-      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-[var(--semantic-primary)]/20 flex items-center justify-center flex-shrink-0">
         {icon}
       </div>
       <span className="text-sm">{text}</span>

@@ -114,10 +114,10 @@ export default function DesignerTab() {
         </div>
 
         {/* Overview */}
-        <Card className="border-indigo-200 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/20 dark:to-purple-950/20">
+        <Card className="border-[var(--semantic-accent-light)] bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/20 dark:to-purple-950/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-indigo-600" />
+              <Sparkles className="h-5 w-5 text-[var(--semantic-accent)]" />
               Visual Application Builder
             </CardTitle>
             <CardDescription>
@@ -131,7 +131,7 @@ export default function DesignerTab() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {designerFeatures.map((feature, idx) => (
                 <div key={idx} className="flex items-start gap-2">
-                  <feature.icon className="h-4 w-4 text-indigo-600 mt-0.5" />
+                  <feature.icon className="h-4 w-4 text-[var(--semantic-accent)] mt-0.5" />
                   <div>
                     <p className="text-sm font-medium">{feature.title}</p>
                     <p className="text-xs text-muted-foreground">{feature.description}</p>
@@ -149,7 +149,7 @@ export default function DesignerTab() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-yellow-600" />
+                  <Zap className="h-5 w-5 text-[var(--semantic-warning)]" />
                   Launch App Designer
                 </CardTitle>
               </CardHeader>
@@ -178,7 +178,7 @@ export default function DesignerTab() {
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2">
-                      <template.icon className="h-4 w-4 text-indigo-600" />
+                      <template.icon className="h-4 w-4 text-[var(--semantic-accent)]" />
                       <CardTitle className="text-sm">{template.name}</CardTitle>
                     </div>
                     <Badge variant="outline" className="text-xs">
@@ -202,7 +202,7 @@ export default function DesignerTab() {
           <CardContent className="space-y-3">
             <div className="grid grid-cols-1 gap-3">
               <div className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
-                <Monitor className="h-5 w-5 text-indigo-600 mt-0.5" />
+                <Monitor className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
                 <div className="flex-1">
                   <p className="text-sm font-medium">Desktop Applications</p>
                   <p className="text-xs text-muted-foreground">
@@ -211,7 +211,7 @@ export default function DesignerTab() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
-                <Tablet className="h-5 w-5 text-indigo-600 mt-0.5" />
+                <Tablet className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
                 <div className="flex-1">
                   <p className="text-sm font-medium">Responsive Layouts</p>
                   <p className="text-xs text-muted-foreground">
@@ -220,7 +220,7 @@ export default function DesignerTab() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
-                <Code className="h-5 w-5 text-indigo-600 mt-0.5" />
+                <Code className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
                 <div className="flex-1">
                   <p className="text-sm font-medium">Production-Ready Code</p>
                   <p className="text-xs text-muted-foreground">

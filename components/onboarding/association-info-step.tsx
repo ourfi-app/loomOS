@@ -195,7 +195,7 @@ export default function AssociationInfoStep({
 
   return (
     <TooltipProvider>
-      <Card className="p-6 md:p-8 shadow-2xl border-2 border-blue-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/20">
+      <Card className="p-6 md:p-8 shadow-2xl border-2 border-[var(--semantic-primary-light)] bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/20">
         <div className="mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 mb-4 shadow-lg">
             <Building2 className="h-8 w-8 text-white" />
@@ -210,18 +210,18 @@ export default function AssociationInfoStep({
 
         <form onSubmit={handleSubmit} className="space-y-8">
         {/* Basic Information */}
-        <div className="space-y-5 bg-gradient-to-br from-white to-blue-50/30 p-6 rounded-xl border-2 border-blue-100 shadow-md">
+        <div className="space-y-5 bg-gradient-to-br from-white to-blue-50/30 p-6 rounded-xl border-2 border-[var(--semantic-primary-light)] shadow-md">
           <h3 className="text-xl font-bold text-[var(--semantic-text-primary)] flex items-center gap-2">
             Basic Information
-            <span className="text-xs px-2 py-1 bg-red-100 text-red-700 rounded-full font-semibold border border-red-200">Required</span>
+            <span className="text-xs px-2 py-1 bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)] rounded-full font-semibold border border-[var(--semantic-error-border)]">Required</span>
           </h3>
           
           <div className="space-y-4">
             <div>
               <Label htmlFor="associationName" className="flex items-center gap-2">
-                Association Name <span className="text-red-500">*</span>
+                Association Name <span className="text-[var(--semantic-error)]">*</span>
                 {getFieldState('associationName') === 'success' && (
-                  <CheckCircle className="h-4 w-4 text-green-600" />
+                  <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                 )}
                 <Tooltip>
                   <TooltipTrigger type="button">
@@ -238,10 +238,10 @@ export default function AssociationInfoStep({
                 onChange={(e) => handleChange('associationName', e.target.value)}
                 onBlur={() => handleBlur('associationName')}
                 placeholder="e.g., Montrecott Condominium Association"
-                className={errors.associationName ? 'border-red-500' : touched.associationName && formData.associationName ? 'border-green-500' : ''}
+                className={errors.associationName ? 'border-[var(--semantic-error)]' : touched.associationName && formData.associationName ? 'border-[var(--semantic-success)]' : ''}
               />
               {errors.associationName && (
-                <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.associationName}
                 </p>
@@ -251,9 +251,9 @@ export default function AssociationInfoStep({
             <div className="grid md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
                 <Label htmlFor="streetAddress" className="flex items-center gap-2">
-                  Street Address <span className="text-red-500">*</span>
+                  Street Address <span className="text-[var(--semantic-error)]">*</span>
                   {getFieldState('streetAddress') === 'success' && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                   )}
                 </Label>
                 <Input
@@ -262,10 +262,10 @@ export default function AssociationInfoStep({
                   onChange={(e) => handleChange('streetAddress', e.target.value)}
                   onBlur={() => handleBlur('streetAddress')}
                   placeholder="e.g., 1907 Montrose Ave"
-                  className={errors.streetAddress ? 'border-red-500' : touched.streetAddress && formData.streetAddress ? 'border-green-500' : ''}
+                  className={errors.streetAddress ? 'border-[var(--semantic-error)]' : touched.streetAddress && formData.streetAddress ? 'border-[var(--semantic-success)]' : ''}
                 />
                 {errors.streetAddress && (
-                  <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                  <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                     <AlertCircle className="h-3 w-3" />
                     {errors.streetAddress}
                   </p>
@@ -274,9 +274,9 @@ export default function AssociationInfoStep({
 
               <div>
                 <Label htmlFor="city" className="flex items-center gap-2">
-                  City <span className="text-red-500">*</span>
+                  City <span className="text-[var(--semantic-error)]">*</span>
                   {getFieldState('city') === 'success' && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                   )}
                 </Label>
                 <Input
@@ -285,10 +285,10 @@ export default function AssociationInfoStep({
                   onChange={(e) => handleChange('city', e.target.value)}
                   onBlur={() => handleBlur('city')}
                   placeholder="e.g., Chicago"
-                  className={errors.city ? 'border-red-500' : touched.city && formData.city ? 'border-green-500' : ''}
+                  className={errors.city ? 'border-[var(--semantic-error)]' : touched.city && formData.city ? 'border-[var(--semantic-success)]' : ''}
                 />
                 {errors.city && (
-                  <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                  <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                     <AlertCircle className="h-3 w-3" />
                     {errors.city}
                   </p>
@@ -297,9 +297,9 @@ export default function AssociationInfoStep({
 
               <div>
                 <Label htmlFor="state" className="flex items-center gap-2">
-                  State <span className="text-red-500">*</span>
+                  State <span className="text-[var(--semantic-error)]">*</span>
                   {getFieldState('state') === 'success' && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                   )}
                 </Label>
                 <Select
@@ -309,7 +309,7 @@ export default function AssociationInfoStep({
                     setTouched((prev) => ({ ...prev, state: true }));
                   }}
                 >
-                  <SelectTrigger className={errors.state ? 'border-red-500' : touched.state && formData.state ? 'border-green-500' : ''}>
+                  <SelectTrigger className={errors.state ? 'border-[var(--semantic-error)]' : touched.state && formData.state ? 'border-[var(--semantic-success)]' : ''}>
                     <SelectValue placeholder="Select state" />
                   </SelectTrigger>
                   <SelectContent>
@@ -321,7 +321,7 @@ export default function AssociationInfoStep({
                   </SelectContent>
                 </Select>
                 {errors.state && (
-                  <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                  <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                     <AlertCircle className="h-3 w-3" />
                     {errors.state}
                   </p>
@@ -330,9 +330,9 @@ export default function AssociationInfoStep({
 
               <div>
                 <Label htmlFor="zipCode" className="flex items-center gap-2">
-                  ZIP Code <span className="text-red-500">*</span>
+                  ZIP Code <span className="text-[var(--semantic-error)]">*</span>
                   {getFieldState('zipCode') === 'success' && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                   )}
                 </Label>
                 <Input
@@ -341,10 +341,10 @@ export default function AssociationInfoStep({
                   onChange={(e) => handleChange('zipCode', e.target.value)}
                   onBlur={() => handleBlur('zipCode')}
                   placeholder="e.g., 60613"
-                  className={errors.zipCode ? 'border-red-500' : touched.zipCode && formData.zipCode && !errors.zipCode ? 'border-green-500' : ''}
+                  className={errors.zipCode ? 'border-[var(--semantic-error)]' : touched.zipCode && formData.zipCode && !errors.zipCode ? 'border-[var(--semantic-success)]' : ''}
                 />
                 {errors.zipCode && (
-                  <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                  <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                     <AlertCircle className="h-3 w-3" />
                     {errors.zipCode}
                   </p>
@@ -353,9 +353,9 @@ export default function AssociationInfoStep({
 
               <div>
                 <Label htmlFor="totalUnits" className="flex items-center gap-2">
-                  Total Units <span className="text-red-500">*</span>
+                  Total Units <span className="text-[var(--semantic-error)]">*</span>
                   {getFieldState('totalUnits') === 'success' && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                   )}
                   <Tooltip>
                     <TooltipTrigger type="button">
@@ -374,10 +374,10 @@ export default function AssociationInfoStep({
                   onBlur={() => handleBlur('totalUnits')}
                   placeholder="e.g., 48"
                   min="1"
-                  className={errors.totalUnits ? 'border-red-500' : touched.totalUnits && formData.totalUnits ? 'border-green-500' : ''}
+                  className={errors.totalUnits ? 'border-[var(--semantic-error)]' : touched.totalUnits && formData.totalUnits ? 'border-[var(--semantic-success)]' : ''}
                 />
                 {errors.totalUnits && (
-                  <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                  <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                     <AlertCircle className="h-3 w-3" />
                     {errors.totalUnits}
                   </p>
@@ -391,15 +391,15 @@ export default function AssociationInfoStep({
         <div className="space-y-5 bg-gradient-to-br from-white to-green-50/20 p-6 rounded-xl border-2 border-green-100 shadow-md">
           <h3 className="text-xl font-bold text-[var(--semantic-text-primary)] flex items-center gap-2">
             Contact Information
-            <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full font-semibold border border-green-200">Email Required</span>
+            <span className="text-xs px-2 py-1 bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)] rounded-full font-semibold border border-[var(--semantic-success-bg)]">Email Required</span>
           </h3>
           
           <div className="grid md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
               <Label htmlFor="officeEmail" className="flex items-center gap-2">
-                Office Email <span className="text-red-500">*</span>
+                Office Email <span className="text-[var(--semantic-error)]">*</span>
                 {getFieldState('officeEmail') === 'success' && (
-                  <CheckCircle className="h-4 w-4 text-green-600" />
+                  <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />
                 )}
                 <Tooltip>
                   <TooltipTrigger type="button">
@@ -417,10 +417,10 @@ export default function AssociationInfoStep({
                 onChange={(e) => handleChange('officeEmail', e.target.value)}
                 onBlur={() => handleBlur('officeEmail')}
                 placeholder="office@montrecott.com"
-                className={errors.officeEmail ? 'border-red-500' : touched.officeEmail && formData.officeEmail && !errors.officeEmail ? 'border-green-500' : ''}
+                className={errors.officeEmail ? 'border-[var(--semantic-error)]' : touched.officeEmail && formData.officeEmail && !errors.officeEmail ? 'border-[var(--semantic-success)]' : ''}
               />
               {errors.officeEmail && (
-                <p className="text-sm text-red-500 mt-1 flex items-center gap-1">
+                <p className="text-sm text-[var(--semantic-error)] mt-1 flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.officeEmail}
                 </p>

@@ -16,8 +16,8 @@ export function RealtimeIndicator() {
         'text-xs font-medium',
         'transition-all duration-300',
         isConnected
-          ? 'bg-green-500/10 text-green-600 dark:text-green-400'
-          : 'bg-red-500/10 text-red-600 dark:text-red-400'
+          ? 'bg-[var(--semantic-success)]/10 text-[var(--semantic-success)] dark:text-[var(--semantic-success)]'
+          : 'bg-[var(--semantic-error)]/10 text-[var(--semantic-error)] dark:text-[var(--semantic-error)]'
       )}
     >
       {isConnected ? (

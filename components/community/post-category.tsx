@@ -11,27 +11,27 @@ const categoryConfig = {
   GENERAL: {
     label: 'General',
     icon: Users,
-    className: 'category-general bg-blue-50 text-blue-700 border-blue-200',
+    className: 'category-general bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)] border-[var(--semantic-primary-light)]',
   },
   ANNOUNCEMENTS: {
     label: 'Announcements',
     icon: Megaphone,
-    className: 'category-announcements bg-orange-50 text-orange-700 border-orange-200',
+    className: 'category-announcements bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)] border-[var(--semantic-primary-light)]',
   },
   HELP: {
     label: 'Help',
     icon: HelpCircle,
-    className: 'category-help bg-green-50 text-green-700 border-green-200',
+    className: 'category-help bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)] border-[var(--semantic-success-bg)]',
   },
   FEEDBACK: {
     label: 'Feedback',
     icon: MessageSquare,
-    className: 'category-feedback bg-purple-50 text-purple-700 border-purple-200',
+    className: 'category-feedback bg-[var(--semantic-accent-subtle)] text-[var(--semantic-accent-dark)] border-[var(--semantic-accent-light)]',
   },
   EVENTS: {
     label: 'Events',
     icon: PartyPopper,
-    className: 'category-events bg-pink-50 text-pink-700 border-pink-200',
+    className: 'category-events bg-[var(--semantic-accent-subtle)] text-[var(--semantic-accent-dark)] border-[var(--semantic-accent-light)]',
   },
 };
 

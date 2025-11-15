@@ -41,12 +41,12 @@ export function PaymentWidget() {
     return (
       <Card className="p-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
-            <CreditCard className="w-6 h-6 text-green-600" />
+          <div className="w-12 h-12 rounded-xl bg-[var(--semantic-success)]/10 flex items-center justify-center">
+            <CreditCard className="w-6 h-6 text-[var(--semantic-success)]" />
           </div>
           <div className="flex-1">
             <div className="text-sm font-medium text-muted-foreground">Next Payment</div>
-            <div className="text-lg font-bold text-green-600">All Paid Up! ✓</div>
+            <div className="text-lg font-bold text-[var(--semantic-success)]">All Paid Up! ✓</div>
           </div>
         </div>
       </Card>
@@ -68,11 +68,11 @@ export function PaymentWidget() {
       <div className="flex items-center gap-3">
         <div className={cn(
           "w-12 h-12 rounded-xl flex items-center justify-center",
-          isOverdue ? "bg-red-500/10" : isDueSoon ? "bg-orange-500/10" : "bg-blue-500/10"
+          isOverdue ? "bg-[var(--semantic-error)]/10" : isDueSoon ? "bg-[var(--semantic-primary)]/10" : "bg-[var(--semantic-primary)]/10"
         )}>
           <CreditCard className={cn(
             "w-6 h-6",
-            isOverdue ? "text-red-600" : isDueSoon ? "text-orange-600" : "text-blue-600"
+            isOverdue ? "text-[var(--semantic-error)]" : isDueSoon ? "text-[var(--semantic-primary)]" : "text-[var(--semantic-primary)]"
           )} />
         </div>
         
@@ -81,7 +81,7 @@ export function PaymentWidget() {
           <div className="text-lg font-bold">${nextPayment.amount}</div>
           <div className={cn(
             "text-xs",
-            isOverdue ? "text-red-600" : isDueSoon ? "text-orange-600" : "text-muted-foreground"
+            isOverdue ? "text-[var(--semantic-error)]" : isDueSoon ? "text-[var(--semantic-primary)]" : "text-muted-foreground"
           )}>
             {isOverdue 
               ? `Overdue ${Math.abs(daysUntilDue)} days` 

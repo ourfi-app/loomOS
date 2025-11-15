@@ -83,10 +83,10 @@ export function DesktopNotesWidget({ widget }: DesktopNotesWidgetProps) {
 
   const getColorClasses = (color?: string) => {
     switch (color) {
-      case 'yellow': return 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800';
-      case 'blue': return 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800';
-      case 'green': return 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800';
-      case 'purple': return 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800';
+      case 'yellow': return 'bg-[var(--semantic-warning-bg)] dark:bg-yellow-900/20 border-[var(--semantic-warning-bg)] dark:border-yellow-800';
+      case 'blue': return 'bg-[var(--semantic-primary-subtle)] dark:bg-[var(--semantic-primary-dark)]/20 border-[var(--semantic-primary-light)] dark:border-blue-800';
+      case 'green': return 'bg-[var(--semantic-success-bg)] dark:bg-green-900/20 border-[var(--semantic-success-bg)] dark:border-green-800';
+      case 'purple': return 'bg-[var(--semantic-accent-subtle)] dark:bg-purple-900/20 border-[var(--semantic-accent-light)] dark:border-purple-800';
       default: return 'bg-muted/30 border-border/50';
     }
   };
@@ -150,7 +150,7 @@ export function DesktopNotesWidget({ widget }: DesktopNotesWidgetProps) {
                       <h4 className="text-sm font-semibold line-clamp-1 flex-1">
                         {note.title}
                       </h4>
-                      <Pin className="w-3 h-3 text-yellow-500 fill-yellow-500 flex-shrink-0" />
+                      <Pin className="w-3 h-3 text-[var(--semantic-warning)] fill-yellow-500 flex-shrink-0" />
                     </div>
                     <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
                       {note.content}

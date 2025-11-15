@@ -186,7 +186,7 @@ export default function SystemSettingsPage() {
                 <div className="font-semibold text-sm">Building Services</div>
                 <div className="text-xs text-muted-foreground">Infrastructure monitoring</div>
               </div>
-              <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
+              <Badge variant="outline" className="bg-[var(--semantic-success)]/10 text-[var(--semantic-success)] border-[var(--semantic-success)]/20">
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 8/8
               </Badge>
@@ -204,7 +204,7 @@ export default function SystemSettingsPage() {
                 <div className="font-semibold text-sm">External Connections</div>
                 <div className="text-xs text-muted-foreground">API integrations</div>
               </div>
-              <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
+              <Badge variant="outline" className="bg-[var(--semantic-success)]/10 text-[var(--semantic-success)] border-[var(--semantic-success)]/20">
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 5/6
               </Badge>
@@ -215,8 +215,8 @@ export default function SystemSettingsPage() {
         <Card className="cursor-pointer hover:bg-muted/50 transition-colors" onClick={() => router.push('/dashboard/system-config')}>
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-500/10 rounded-lg">
-                <Settings className="h-5 w-5 text-purple-500" />
+              <div className="p-2 bg-[var(--semantic-accent)]/10 rounded-lg">
+                <Settings className="h-5 w-5 text-[var(--semantic-accent)]" />
               </div>
               <div className="flex-1">
                 <div className="font-semibold text-sm">System Config</div>

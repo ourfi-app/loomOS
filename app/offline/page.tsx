@@ -83,11 +83,11 @@ export default function OfflinePage() {
             {/* Status indicator */}
             <div className="flex items-center justify-center gap-2 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
               <div className="relative">
-                <div className="w-3 h-3 bg-orange-500 rounded-full" />
+                <div className="w-3 h-3 bg-[var(--semantic-primary)] rounded-full" />
                 <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute inset-0 w-3 h-3 bg-orange-500 rounded-full"
+                  className="absolute inset-0 w-3 h-3 bg-[var(--semantic-primary)] rounded-full"
                 />
               </div>
               <span className="text-sm text-slate-300">
@@ -121,15 +121,15 @@ export default function OfflinePage() {
               </h3>
               <ul className="space-y-2 text-sm text-slate-400">
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-[var(--semantic-primary)] rounded-full mt-1.5 flex-shrink-0" />
                   <span>View previously loaded pages</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-[var(--semantic-primary)] rounded-full mt-1.5 flex-shrink-0" />
                   <span>Access cached documents and data</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-[var(--semantic-primary)] rounded-full mt-1.5 flex-shrink-0" />
                   <span>Changes will sync when you're back online</span>
                 </li>
               </ul>

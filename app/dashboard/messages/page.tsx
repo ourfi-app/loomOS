@@ -629,7 +629,7 @@ export default function MessagesPage() {
       >
         <Star className={cn(
           'w-4 h-4',
-          selectedMessage.recipients[0]?.isStarred && 'fill-yellow-400 text-yellow-400'
+          selectedMessage.recipients[0]?.isStarred && 'fill-yellow-400 text-[var(--semantic-warning)]'
         )} />
       </button>
       <button
@@ -648,7 +648,7 @@ export default function MessagesPage() {
       </button>
       <button
         onClick={() => void deleteMessage(selectedMessage.id)}
-        className="p-2 hover:bg-red-50 text-red-600 rounded-lg transition-colors"
+        className="p-2 hover:bg-[var(--semantic-error-bg)] text-[var(--semantic-error)] rounded-lg transition-colors"
         aria-label="Delete"
       >
         <Trash2 className="w-4 h-4" />
@@ -782,7 +782,7 @@ export default function MessagesPage() {
             <AnimatePresence>
               {selectionMode && (
                 <motion.div
-                  className="h-14 px-6 bg-blue-50 border-b border-blue-200 flex items-center justify-between"
+                  className="h-14 px-6 bg-[var(--semantic-primary-subtle)] border-b border-[var(--semantic-primary-light)] flex items-center justify-between"
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 56, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -854,7 +854,7 @@ export default function MessagesPage() {
                 title={selectedIds.size === filteredMessages.length && filteredMessages.length > 0 ? "Deselect all (Cmd/Ctrl+A)" : "Select all (Cmd/Ctrl+A)"}
               >
                 {selectedIds.size === filteredMessages.length && filteredMessages.length > 0 ? (
-                  <CheckSquare className="w-4 h-4 text-blue-600" />
+                  <CheckSquare className="w-4 h-4 text-[var(--semantic-primary)]" />
                 ) : (
                   <Square className="w-4 h-4 text-[var(--semantic-text-tertiary)]" />
                 )}
@@ -883,7 +883,7 @@ export default function MessagesPage() {
             ) : filteredMessages.length === 0 ? (
               <div className="flex items-center justify-center h-64">
                 <div className="text-center">
-                  <Mail className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <Mail className="w-16 h-16 text-[var(--semantic-text-tertiary)] mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-[var(--semantic-text-primary)] mb-2">
                     No messages
                   </h3>
@@ -964,8 +964,8 @@ export default function MessagesPage() {
                                       className={cn(
                                         'w-4 h-4',
                                         isStarred 
-                                          ? 'fill-yellow-400 text-yellow-400' 
-                                          : 'text-[var(--semantic-text-tertiary)] hover:text-yellow-400'
+                                          ? 'fill-yellow-400 text-[var(--semantic-warning)]' 
+                                          : 'text-[var(--semantic-text-tertiary)] hover:text-[var(--semantic-warning)]'
                                       )} 
                                     />
                                   </button>
@@ -1015,7 +1015,7 @@ export default function MessagesPage() {
                         </ContextMenuItem>
                         <ContextMenuSeparator />
                         <ContextMenuItem onClick={(e) => { e.stopPropagation(); toggleStar(message.id); }}>
-                          <Star className={cn("w-4 h-4 mr-2", isStarred && "fill-yellow-400 text-yellow-400")} />
+                          <Star className={cn("w-4 h-4 mr-2", isStarred && "fill-yellow-400 text-[var(--semantic-warning)]")} />
                           {isStarred ? 'Unstar' : 'Star'}
                           <span className="ml-auto text-xs text-[var(--semantic-text-tertiary)]">S</span>
                         </ContextMenuItem>
@@ -1026,7 +1026,7 @@ export default function MessagesPage() {
                         <ContextMenuSeparator />
                         <ContextMenuItem 
                           onClick={(e) => { e.stopPropagation(); deleteMessage(message.id); }}
-                          className="text-red-600 focus:text-red-600"
+                          className="text-[var(--semantic-error)] focus:text-[var(--semantic-error)]"
                         >
                           <Trash2 className="w-4 h-4 mr-2" />
                           Delete

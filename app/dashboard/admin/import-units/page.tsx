@@ -351,7 +351,7 @@ export default function ImportUnitsPage() {
               Validation Results
               <div className="ml-auto flex gap-2">
                 {validCount > 0 && (
-                  <Badge variant="default" className="bg-green-600">
+                  <Badge variant="default" className="bg-[var(--semantic-success)]">
                     {validCount} Valid
                   </Badge>
                 )}
@@ -392,7 +392,7 @@ export default function ImportUnitsPage() {
                         <TableCell className="font-medium">{result.row}</TableCell>
                         <TableCell>
                           {result.status === 'valid' && (
-                            <Badge variant="default" className="bg-green-600">
+                            <Badge variant="default" className="bg-[var(--semantic-success)]">
                               <CheckCircle2 className="h-3 w-3 mr-1" />
                               Valid
                             </Badge>
@@ -423,7 +423,7 @@ export default function ImportUnitsPage() {
                         <TableCell className="text-sm text-muted-foreground">
                           {result.message}
                           {result.existingUser && (
-                            <span className="text-blue-600 ml-1">(Existing user)</span>
+                            <span className="text-[var(--semantic-primary)] ml-1">(Existing user)</span>
                           )}
                         </TableCell>
                       </TableRow>
@@ -438,10 +438,10 @@ export default function ImportUnitsPage() {
 
       {/* Success Message */}
       {importComplete && (
-        <Alert className="border-green-200 bg-green-50">
-          <CheckCircle2 className="h-4 w-4 text-green-600" />
+        <Alert className="border-[var(--semantic-success-bg)] bg-[var(--semantic-success-bg)]">
+          <CheckCircle2 className="h-4 w-4 text-[var(--semantic-success)]" />
           <AlertTitle className="text-green-900">Import Successful!</AlertTitle>
-          <AlertDescription className="text-green-800">
+          <AlertDescription className="text-[var(--semantic-success-dark)]">
             Your unit and account data has been successfully imported. Users can now claim their households using their email addresses.
           </AlertDescription>
         </Alert>

@@ -185,7 +185,7 @@ export default function OrganizationsManagement() {
     if (!org.isActive) {
       return <Badge variant="secondary">Inactive</Badge>;
     }
-    return <Badge variant="default" className="bg-green-500">Active</Badge>;
+    return <Badge variant="default" className="bg-[var(--semantic-success)]">Active</Badge>;
   };
 
   const getPlanBadge = (planType: string) => {
@@ -333,7 +333,7 @@ export default function OrganizationsManagement() {
                             </DropdownMenuItem>
                             <DropdownMenuItem 
                               onClick={() => handleDelete(org)}
-                              className="text-red-600"
+                              className="text-[var(--semantic-error)]"
                             >
                               <Trash2 className="h-4 w-4 mr-2" />
                               Delete

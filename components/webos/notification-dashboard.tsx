@@ -299,7 +299,7 @@ export function NotificationDashboard() {
                                     e.stopPropagation();
                                     dismissNotification(notification.id);
                                   }}
-                                  className="w-6 h-6 flex items-center justify-center rounded hover:bg-[#E0E0E0] transition-colors text-[var(--semantic-text-secondary)] flex-shrink-0"
+                                  className="w-6 h-6 flex items-center justify-center rounded hover:bg-[var(--semantic-bg-muted)] transition-colors text-[var(--semantic-text-secondary)] flex-shrink-0"
                                 >
                                   <X className="w-3 h-3" />
                                 </button>

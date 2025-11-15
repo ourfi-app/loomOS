@@ -87,7 +87,7 @@ export const RenderNode = ({ render }: { render: React.ReactElement }) => {
             className={cn(
               'absolute -top-7 left-0 px-2 py-1 text-xs font-medium rounded-t',
               'bg-loomos-orange text-white shadow-lg',
-              isHover && !isActive && 'bg-blue-400'
+              isHover && !isActive && 'bg-[var(--semantic-primary)]'
             )}
           >
             {name}

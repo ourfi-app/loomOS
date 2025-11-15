@@ -459,10 +459,10 @@ export default function MarketplacePage() {
                                 {app.name}
                               </span>
                               {installed && (
-                                <CheckCircle className="w-3.5 h-3.5 text-green-600 flex-shrink-0" />
+                                <CheckCircle className="w-3.5 h-3.5 text-[var(--semantic-success)] flex-shrink-0" />
                               )}
                               {updateAvailable && (
-                                <ArrowUpCircle className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                                <ArrowUpCircle className="w-3.5 h-3.5 text-[var(--semantic-primary)] flex-shrink-0" />
                               )}
                             </div>
                             <p className="text-xs text-muted-foreground line-clamp-1">
@@ -471,7 +471,7 @@ export default function MarketplacePage() {
                             <div className="flex items-center gap-2 mt-1">
                               {app.rating && (
                                 <div className="flex items-center gap-1">
-                                  <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                                  <Star className="w-3 h-3 text-[var(--semantic-warning)] fill-yellow-500" />
                                   <span className="text-xs text-muted-foreground">
                                     {app.rating.toFixed(1)}
                                   </span>
@@ -533,7 +533,7 @@ export default function MarketplacePage() {
                             <Badge variant="secondary">System App</Badge>
                           )}
                           {selectedApp.isFeatured && (
-                            <Badge variant="secondary" className="bg-yellow-500/10 text-yellow-700">
+                            <Badge variant="secondary" className="bg-[var(--semantic-warning)]/10 text-[var(--semantic-warning-dark)]">
                               <Sparkles className="w-3 h-3 mr-1" />
                               Featured
                             </Badge>
@@ -547,7 +547,7 @@ export default function MarketplacePage() {
                       {selectedApp.rating && (
                         <div className="text-center p-3 bg-muted/30 rounded-lg">
                           <div className="flex items-center justify-center gap-1 mb-1">
-                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                            <Star className="w-4 h-4 text-[var(--semantic-warning)] fill-yellow-500" />
                             <span className="text-lg font-bold">{selectedApp.rating.toFixed(1)}</span>
                           </div>
                           <p className="text-xs text-muted-foreground">
@@ -587,7 +587,7 @@ export default function MarketplacePage() {
                         <ul className="space-y-2">
                           {selectedApp.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-2 text-sm">
-                              <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-4 h-4 text-[var(--semantic-success)] mt-0.5 flex-shrink-0" />
                               <span>{feature}</span>
                             </li>
                           ))}
@@ -615,12 +615,12 @@ export default function MarketplacePage() {
 
                     {/* Update Notes */}
                     {updateAvailable && selectedApp.updateNotes && (
-                      <div className="space-y-3 p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-900">
-                        <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-100 uppercase tracking-wider flex items-center gap-2">
+                      <div className="space-y-3 p-4 bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/30 rounded-lg border border-[var(--semantic-primary-light)] dark:border-blue-900">
+                        <h3 className="text-sm font-semibold text-[var(--semantic-primary-dark)] dark:text-blue-100 uppercase tracking-wider flex items-center gap-2">
                           <Clock className="w-4 h-4" />
                           What's New
                         </h3>
-                        <p className="text-sm text-blue-800 dark:text-blue-200">{selectedApp.updateNotes}</p>
+                        <p className="text-sm text-[var(--semantic-primary-dark)] dark:text-blue-200">{selectedApp.updateNotes}</p>
                       </div>
                     )}
 

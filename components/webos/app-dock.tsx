@@ -104,7 +104,7 @@ const DockItem = memo(({
               className={cn(
                 "absolute -bottom-2 rounded-full shadow-lg",
                 isActive ? "w-2 h-2 bg-white animate-pulse" : 
-                isMinimized ? "w-2.5 h-2.5 bg-yellow-500" : 
+                isMinimized ? "w-2.5 h-2.5 bg-[var(--semantic-warning)]" : 
                 "w-1.5 h-1.5 bg-white/60"
               )} 
             />
@@ -114,7 +114,7 @@ const DockItem = memo(({
             <motion.div 
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-yellow-500 border-2 border-background flex items-center justify-center"
+              className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--semantic-warning)] border-2 border-background flex items-center justify-center"
             >
               <Minimize2 className="w-3 h-3 text-white" />
             </motion.div>

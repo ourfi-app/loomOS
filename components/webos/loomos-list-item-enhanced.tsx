@@ -179,7 +179,7 @@ export function LoomOSListItemEnhanced({
             <>
               {onSwipeRight && swipeOffset > 0 && (
                 <button 
-                  className="h-full px-6 bg-green-500 text-white flex items-center"
+                  className="h-full px-6 bg-[var(--semantic-success)] text-white flex items-center"
                   onClick={(e) => {
                     e.stopPropagation();
                     resetSwipe();
@@ -191,7 +191,7 @@ export function LoomOSListItemEnhanced({
               )}
               {onSwipeLeft && swipeOffset < 0 && (
                 <button 
-                  className="h-full px-6 bg-red-500 text-white flex items-center"
+                  className="h-full px-6 bg-[var(--semantic-error)] text-white flex items-center"
                   onClick={(e) => {
                     e.stopPropagation();
                     resetSwipe();
@@ -211,12 +211,12 @@ export function LoomOSListItemEnhanced({
         className={cn(
           'relative flex items-center gap-3 px-4 py-3 border-b',
           'bg-white dark:bg-neutral-900',
-          'border-neutral-200 dark:border-neutral-700',
+          'border-[var(--semantic-border-light)] dark:border-neutral-700',
           'transition-all duration-200',
           
           // Interactive states
-          !editMode && 'cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800',
-          selected && 'bg-neutral-100 dark:bg-neutral-800',
+          !editMode && 'cursor-pointer hover:bg-[var(--semantic-bg-subtle)] dark:hover:bg-neutral-800',
+          selected && 'bg-[var(--semantic-surface-hover)] dark:bg-neutral-800',
           unread && 'font-semibold',
           
           // Drag & drop
@@ -239,7 +239,7 @@ export function LoomOSListItemEnhanced({
       >
         {/* Edit Mode: Drag Handle */}
         {editMode && draggable && (
-          <div className="flex-shrink-0 text-neutral-400 dark:text-neutral-500 cursor-move">
+          <div className="flex-shrink-0 text-neutral-400 dark:text-[var(--semantic-text-tertiary)] cursor-move">
             <GripVertical className="w-5 h-5" />
           </div>
         )}
@@ -252,8 +252,8 @@ export function LoomOSListItemEnhanced({
                 'w-6 h-6 rounded border-2 flex items-center justify-center',
                 'transition-colors',
                 checked 
-                  ? 'bg-blue-500 border-blue-500 text-white' 
-                  : 'border-neutral-300 dark:border-neutral-600'
+                  ? 'bg-[var(--semantic-primary)] border-[var(--semantic-primary)] text-white' 
+                  : 'border-[var(--semantic-border-medium)] dark:border-neutral-600'
               )}
               onClick={(e) => {
                 e.stopPropagation();
@@ -270,7 +270,7 @@ export function LoomOSListItemEnhanced({
 
         {/* Unread Indicator */}
         {unread && !editMode && (
-          <div className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500" aria-label="Unread" />
+          <div className="flex-shrink-0 w-2 h-2 rounded-full bg-[var(--semantic-primary)]" aria-label="Unread" />
         )}
 
         {/* Item Content */}
@@ -307,11 +307,11 @@ function StatusBadge({ type, color }: BadgeConfig) {
   const Icon = config.icon;
 
   const defaultColors: Record<BadgeType, string> = {
-    unread: 'text-blue-500',
-    forwarded: 'text-purple-500',
-    flagged: 'text-red-500',
-    attachment: 'text-neutral-500',
-    important: 'text-orange-500'
+    unread: 'text-[var(--semantic-primary)]',
+    forwarded: 'text-[var(--semantic-accent)]',
+    flagged: 'text-[var(--semantic-error)]',
+    attachment: 'text-[var(--semantic-text-tertiary)]',
+    important: 'text-[var(--semantic-primary)]'
   };
 
   return (

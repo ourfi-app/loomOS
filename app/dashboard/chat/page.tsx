@@ -225,9 +225,9 @@ export default function ChatPage() {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'rules': return 'bg-webos-orange';
-      case 'payments': return 'bg-green-500';
-      case 'documents': return 'bg-purple-500';
-      default: return 'bg-gray-500';
+      case 'payments': return 'bg-[var(--semantic-success)]';
+      case 'documents': return 'bg-[var(--semantic-accent)]';
+      default: return 'bg-[var(--semantic-text-tertiary)]';
     }
   };
 

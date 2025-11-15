@@ -93,8 +93,8 @@ export default function EmailSetupStep({
     <Card className="p-6 md:p-8 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/20 border-0 shadow-xl backdrop-blur-sm">
       {/* Enhanced Header */}
       <div className="mb-8 relative">
-        <div className="absolute -top-2 -left-2 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -top-2 -right-2 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -left-2 w-24 h-24 bg-[var(--semantic-accent)]/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -right-2 w-32 h-32 bg-[var(--semantic-accent)]/10 rounded-full blur-3xl"></div>
         
         <div className="relative">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg shadow-purple-500/30 mb-4 group hover:scale-110 transition-transform duration-300">
@@ -119,30 +119,30 @@ export default function EmailSetupStep({
 
       <div className="space-y-6">
         {/* SendGrid Instructions */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-blue-200 rounded-xl p-5 backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-5 backdrop-blur-sm">
           <div className="flex gap-4">
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary)] flex items-center justify-center">
                 <Sparkles className="h-5 w-5 text-white" />
               </div>
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-blue-900 mb-3">SendGrid Setup Instructions</p>
-              <ol className="space-y-2 text-sm text-blue-800">
+              <p className="font-semibold text-[var(--semantic-primary-dark)] mb-3">SendGrid Setup Instructions</p>
+              <ol className="space-y-2 text-sm text-[var(--semantic-primary-dark)]">
                 <li className="flex items-start gap-2">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center mt-0.5">1</span>
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[var(--semantic-primary)] text-white text-xs flex items-center justify-center mt-0.5">1</span>
                   <span>Create a free SendGrid account at sendgrid.com</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center mt-0.5">2</span>
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[var(--semantic-primary)] text-white text-xs flex items-center justify-center mt-0.5">2</span>
                   <span>Verify your sender email address</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center mt-0.5">3</span>
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[var(--semantic-primary)] text-white text-xs flex items-center justify-center mt-0.5">3</span>
                   <span>Generate an API key from Settings → API Keys</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center mt-0.5">4</span>
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[var(--semantic-primary)] text-white text-xs flex items-center justify-center mt-0.5">4</span>
                   <span>Copy and paste the API key below</span>
                 </li>
               </ol>
@@ -150,7 +150,7 @@ export default function EmailSetupStep({
                 href="https://app.sendgrid.com/settings/api_keys"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mt-4 font-semibold text-sm hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-[var(--semantic-primary)] hover:text-[var(--semantic-primary-dark)] mt-4 font-semibold text-sm hover:gap-3 transition-all"
               >
                 Open SendGrid Dashboard
                 <ExternalLink className="h-4 w-4" />
@@ -217,7 +217,7 @@ export default function EmailSetupStep({
               variant="outline"
               onClick={handleTestConnection}
               disabled={testing || !apiKey || !fromEmail}
-              className="bg-white hover:bg-purple-50 hover:border-purple-500 hover:text-purple-600 h-11"
+              className="bg-white hover:bg-[var(--semantic-accent-subtle)] hover:border-purple-500 hover:text-[var(--semantic-accent)] h-11"
             >
               {testing ? (
                 <>
@@ -233,14 +233,14 @@ export default function EmailSetupStep({
             </Button>
 
             {testResult === 'success' && (
-              <div className="flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg border border-green-200">
+              <div className="flex items-center gap-2 px-4 py-2 bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)] rounded-lg border border-[var(--semantic-success-bg)]">
                 <Check className="h-5 w-5" />
                 <span className="text-sm font-semibold">Connected Successfully</span>
               </div>
             )}
 
             {testResult === 'error' && (
-              <div className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-700 rounded-lg border border-red-200">
+              <div className="flex items-center gap-2 px-4 py-2 bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)] rounded-lg border border-[var(--semantic-error-border)]">
                 <X className="h-5 w-5" />
                 <span className="text-sm font-semibold">Connection Failed</span>
               </div>

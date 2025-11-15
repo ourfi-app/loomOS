@@ -188,7 +188,7 @@ export function JustType({
             'bg-white border-2 border-[var(--semantic-border-light)]',
             'rounded-2xl',
             'text-base text-[var(--semantic-text-primary)] placeholder-gray-400',
-            'focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20',
+            'focus:outline-none focus:border-[var(--semantic-primary)] focus:ring-4 focus:ring-blue-500/20',
             'transition-all duration-200',
             'shadow-lg'
           )}
@@ -311,7 +311,7 @@ function SearchResultItem({ result, isSelected, onClick }: SearchResultItemProps
         'loomos-search-result w-full px-4 py-3 flex items-center gap-3',
         'hover:bg-[var(--semantic-bg-subtle)] transition-colors',
         'border-b border-[var(--semantic-border-light)] last:border-b-0',
-        isSelected && 'bg-blue-50'
+        isSelected && 'bg-[var(--semantic-primary-subtle)]'
       )}
       onClick={onClick}
       whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}

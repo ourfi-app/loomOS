@@ -104,7 +104,7 @@ export default function APIManagement() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{apiStats.errorRate}%</div>
-              <p className="text-xs text-green-500">
+              <p className="text-xs text-[var(--semantic-success)]">
                 Below target of 1%
               </p>
             </CardContent>
@@ -153,7 +153,7 @@ export default function APIManagement() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Badge variant="default" className="bg-green-500">Active</Badge>
+                  <Badge variant="default" className="bg-[var(--semantic-success)]">Active</Badge>
                   <Button variant="ghost" size="sm">
                     <Copy className="w-4 h-4" />
                   </Button>
@@ -171,7 +171,7 @@ export default function APIManagement() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Badge variant="default" className="bg-green-500">Active</Badge>
+                  <Badge variant="default" className="bg-[var(--semantic-success)]">Active</Badge>
                   <Button variant="ghost" size="sm">
                     <Copy className="w-4 h-4" />
                   </Button>

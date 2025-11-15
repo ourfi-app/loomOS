@@ -28,9 +28,9 @@ const TaskItem = memo(({
   onToggle: (id: string) => void;
 }) => {
   const priorityColors = {
-    high: 'text-red-500 border-red-200',
-    medium: 'text-yellow-500 border-yellow-200',
-    low: 'text-green-500 border-green-200',
+    high: 'text-[var(--semantic-error)] border-[var(--semantic-error-border)]',
+    medium: 'text-[var(--semantic-warning)] border-[var(--semantic-warning-bg)]',
+    low: 'text-[var(--semantic-success)] border-[var(--semantic-success-bg)]',
   };
 
   return (
@@ -43,7 +43,7 @@ const TaskItem = memo(({
       )}
     >
       {task.completed ? (
-        <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+        <CheckCircle2 className="h-5 w-5 text-[var(--semantic-success)] flex-shrink-0 mt-0.5" />
       ) : (
         <Circle className={cn('h-5 w-5 flex-shrink-0 mt-0.5', priorityColors[task.priority])} />
       )}
@@ -237,9 +237,9 @@ export const OptimizedTasksWidget = memo(() => {
 
       {/* Stats */}
       {stats.high > 0 && (
-        <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg mb-4">
-          <AlertCircle className="h-4 w-4 text-red-500" />
-          <span className="text-sm text-red-700 dark:text-red-400">
+        <div className="flex items-center gap-2 p-3 bg-[var(--semantic-error-bg)] dark:bg-red-950/20 rounded-lg mb-4">
+          <AlertCircle className="h-4 w-4 text-[var(--semantic-error)]" />
+          <span className="text-sm text-[var(--semantic-error-dark)] dark:text-[var(--semantic-error)]">
             {stats.high} high priority {stats.high === 1 ? 'task' : 'tasks'}
           </span>
         </div>

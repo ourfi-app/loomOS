@@ -172,7 +172,7 @@ export function QuickAppSwitcher({ isOpen, onClose, onAppSelect }: QuickAppSwitc
                         </div>
                         {app.averageRating && (
                           <div className="flex items-center justify-center gap-1 mt-1">
-                            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                            <Star className="w-3 h-3 fill-yellow-400 text-[var(--semantic-warning)]" />
                             <span className="text-xs text-muted-foreground">
                               {app.averageRating.toFixed(1)}
                             </span>
@@ -222,7 +222,7 @@ export function QuickAppSwitcher({ isOpen, onClose, onAppSelect }: QuickAppSwitc
                           </div>
                           {app.averageRating && (
                             <div className="flex items-center justify-center gap-1 mt-1">
-                              <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                              <Star className="w-3 h-3 fill-yellow-400 text-[var(--semantic-warning)]" />
                               <span className="text-xs text-muted-foreground">
                                 {app.averageRating.toFixed(1)}
                               </span>

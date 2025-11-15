@@ -61,11 +61,11 @@ export default function PaymentsTab() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'PAID':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />;
       case 'PENDING':
-        return <Clock className="h-4 w-4 text-orange-500" />;
+        return <Clock className="h-4 w-4 text-[var(--semantic-primary)]" />;
       case 'OVERDUE':
-        return <AlertTriangle className="h-4 w-4 text-red-500" />;
+        return <AlertTriangle className="h-4 w-4 text-[var(--semantic-error)]" />;
       default:
         return <Clock className="h-4 w-4 text-[var(--semantic-text-tertiary)]" />;
     }
@@ -74,7 +74,7 @@ export default function PaymentsTab() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'PAID':
-        return <Badge className="bg-green-500 hover:bg-green-600">Paid</Badge>;
+        return <Badge className="bg-[var(--semantic-success)] hover:bg-[var(--semantic-success)]">Paid</Badge>;
       case 'PENDING':
         return <Badge variant="secondary">Pending</Badge>;
       case 'OVERDUE':
@@ -194,7 +194,7 @@ export default function PaymentsTab() {
             <CheckCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-2xl font-bold text-[var(--semantic-success)]">
               {stats.paymentStatus || 'Current'}
             </div>
             <p className="text-xs text-muted-foreground">Overall status</p>
@@ -232,7 +232,7 @@ export default function PaymentsTab() {
         <CardContent>
           {loading ? (
             <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
               <p className="text-muted-foreground">Loading payments...</p>
             </div>
           ) : filteredPayments.length > 0 ? (
@@ -285,28 +285,28 @@ export default function PaymentsTab() {
 
       {/* Make Payment Card (for residents with pending payments) */}
       {userRole === 'RESIDENT' && (
-        <Card className="border-blue-200 bg-blue-50">
+        <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-blue-900">
+            <CardTitle className="flex items-center gap-2 text-[var(--semantic-primary-dark)]">
               <CreditCard className="h-5 w-5" />
               Make a Payment
             </CardTitle>
-            <CardDescription className="text-blue-700">
+            <CardDescription className="text-[var(--semantic-primary-dark)]">
               Pay your monthly dues or special assessments securely online
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium text-blue-900">
+                <p className="font-medium text-[var(--semantic-primary-dark)]">
                   Current amount due: ${(stats.currentDue || 350).toLocaleString()}
                 </p>
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-[var(--semantic-primary-dark)]">
                   Secure payment processing powered by Stripe
                 </p>
               </div>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary-dark)]"
                 onClick={() => handlePayNow({
                   id: 'current-due',
                   description: 'Current Monthly Dues',

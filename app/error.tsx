@@ -31,28 +31,28 @@ export default function Error({
           <div className="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center mb-4 shadow-lg">
             <AlertCircle className="w-10 h-10 text-white" />
           </div>
-          <CardTitle className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+          <CardTitle className="text-3xl font-bold text-[var(--semantic-text-primary)] dark:text-white mb-2">
             Oops! Something went wrong
           </CardTitle>
-          <CardDescription className="text-lg text-slate-600 dark:text-slate-400">
+          <CardDescription className="text-lg text-[var(--semantic-text-secondary)] dark:text-slate-400">
             We encountered an unexpected error while processing your request
           </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-4">
           {/* Error Details */}
-          <div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-4 border border-slate-200 dark:border-slate-800">
+          <div className="bg-[var(--semantic-bg-subtle)] dark:bg-slate-900/50 rounded-lg p-4 border border-[var(--semantic-border-light)] dark:border-slate-800">
             <div className="flex items-start gap-3">
-              <FileWarning className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+              <FileWarning className="w-5 h-5 text-[var(--semantic-error)] dark:text-[var(--semantic-error)] flex-shrink-0 mt-0.5" />
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm text-slate-900 dark:text-white mb-1">
+                <h3 className="font-semibold text-sm text-[var(--semantic-text-primary)] dark:text-white mb-1">
                   Error Details
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 break-words">
+                <p className="text-sm text-[var(--semantic-text-secondary)] dark:text-slate-400 break-words">
                   {error.message || 'An unexpected error occurred'}
                 </p>
                 {error.digest && (
-                  <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">
+                  <p className="text-xs text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] mt-2">
                     Error ID: {error.digest}
                   </p>
                 )}
@@ -61,21 +61,21 @@ export default function Error({
           </div>
 
           {/* Helpful Tips */}
-          <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 border border-blue-200 dark:border-blue-900">
-            <h3 className="font-semibold text-sm text-blue-900 dark:text-blue-300 mb-2">
+          <div className="bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/20 rounded-lg p-4 border border-[var(--semantic-primary-light)] dark:border-blue-900">
+            <h3 className="font-semibold text-sm text-[var(--semantic-primary-dark)] dark:text-blue-300 mb-2">
               What you can do:
             </h3>
-            <ul className="space-y-1 text-sm text-blue-800 dark:text-blue-400">
+            <ul className="space-y-1 text-sm text-[var(--semantic-primary-dark)] dark:text-[var(--semantic-primary)]">
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 dark:text-blue-400">•</span>
+                <span className="text-[var(--semantic-primary)] dark:text-[var(--semantic-primary)]">•</span>
                 <span>Try refreshing the page</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 dark:text-blue-400">•</span>
+                <span className="text-[var(--semantic-primary)] dark:text-[var(--semantic-primary)]">•</span>
                 <span>Go back to the home page</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 dark:text-blue-400">•</span>
+                <span className="text-[var(--semantic-primary)] dark:text-[var(--semantic-primary)]">•</span>
                 <span>If the problem persists, contact support</span>
               </li>
             </ul>
@@ -87,7 +87,7 @@ export default function Error({
               <summary className="cursor-pointer text-slate-400 hover:text-slate-300 mb-2 font-mono">
                 Stack Trace (Development Only)
               </summary>
-              <pre className="text-red-400 overflow-x-auto whitespace-pre-wrap break-all">
+              <pre className="text-[var(--semantic-error)] overflow-x-auto whitespace-pre-wrap break-all">
                 {error.stack}
               </pre>
             </details>

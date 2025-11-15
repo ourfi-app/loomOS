@@ -52,7 +52,7 @@ export default function SystemMonitoring() {
 // Back handled in toolbar
       // onBack={() => router.push('/dashboard/super-admin')}
       toolbar={
-        <Badge variant="default" className="bg-green-500">
+        <Badge variant="default" className="bg-[var(--semantic-success)]">
           <CheckCircle className="w-4 h-4 mr-1" />
           All Systems Operational
         </Badge>
@@ -133,7 +133,7 @@ export default function SystemMonitoring() {
             </CardHeader>
             <CardContent>
               <div className="text-lg font-bold">{systemHealth.uptime}</div>
-              <p className="text-xs text-green-500 mt-2">
+              <p className="text-xs text-[var(--semantic-success)] mt-2">
                 99.98% availability
               </p>
             </CardContent>
@@ -167,7 +167,7 @@ export default function SystemMonitoring() {
                       </div>
                     </div>
                   </div>
-                  <Badge variant="default" className="bg-green-500">
+                  <Badge variant="default" className="bg-[var(--semantic-success)]">
                     <CheckCircle className="w-3 h-3 mr-1" />
                     Operational
                   </Badge>

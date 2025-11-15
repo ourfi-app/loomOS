@@ -18,10 +18,10 @@ interface StatusSelectorProps {
 }
 
 const statusOptions = [
-  { value: MemberStatus.ONLINE, label: 'Online', color: 'bg-green-500' },
-  { value: MemberStatus.AWAY, label: 'Away', color: 'bg-yellow-500' },
-  { value: MemberStatus.BUSY, label: 'Busy', color: 'bg-red-500' },
-  { value: MemberStatus.OFFLINE, label: 'Offline', color: 'bg-gray-400' },
+  { value: MemberStatus.ONLINE, label: 'Online', color: 'bg-[var(--semantic-success)]' },
+  { value: MemberStatus.AWAY, label: 'Away', color: 'bg-[var(--semantic-warning)]' },
+  { value: MemberStatus.BUSY, label: 'Busy', color: 'bg-[var(--semantic-error)]' },
+  { value: MemberStatus.OFFLINE, label: 'Offline', color: 'bg-[var(--semantic-border-strong)]' },
 ];
 
 export function StatusSelector({ currentStatus, onStatusChange }: StatusSelectorProps) {

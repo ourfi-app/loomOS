@@ -12,7 +12,7 @@ export function FloatingAccessibilityButton() {
     <>
       <button
         onClick={() => setShowPanel(true)}
-        className="fixed bottom-20 right-4 w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
+        className="fixed bottom-20 right-4 w-12 h-12 rounded-full bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary)] text-white shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
         aria-label="Open accessibility settings"
         title="Accessibility Settings"
       >

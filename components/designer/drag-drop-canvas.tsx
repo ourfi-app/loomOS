@@ -151,7 +151,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                     href={library.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-blue-600 hover:underline mt-1 inline-block"
+                    className="text-xs text-[var(--semantic-primary)] hover:underline mt-1 inline-block"
                   >
                     View Docs →
                   </a>
@@ -173,8 +173,8 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                         onDragStart={() => handleDragStart(component)}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-                            <IconComponent size={20} className="text-blue-600" />
+                          <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary-subtle)] flex items-center justify-center flex-shrink-0">
+                            <IconComponent size={20} className="text-[var(--semantic-primary)]" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-medium text-sm">{component.name}</h4>
@@ -258,7 +258,7 @@ export default function DragDropCanvas({ onCodeGenerated }: DragDropCanvasProps)
                 <div
                   key={component.id}
                   className={`absolute bg-white rounded-lg border-2 p-4 cursor-move transition-all ${
-                    isSelected ? 'border-blue-500 shadow-lg' : 'border-[var(--semantic-border-light)] hover:border-[var(--semantic-border-strong)]'
+                    isSelected ? 'border-[var(--semantic-primary)] shadow-lg' : 'border-[var(--semantic-border-light)] hover:border-[var(--semantic-border-strong)]'
                   }`}
                   style={{
                     left: component.x,

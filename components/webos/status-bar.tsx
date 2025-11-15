@@ -323,7 +323,7 @@ function UserProfileFlyout({
                       </>
                     ) : (
                       <>
-                        <WifiOff className="w-4 h-4 text-orange-500" />
+                        <WifiOff className="w-4 h-4 text-[var(--semantic-primary)]" />
                         <span className="text-muted-foreground">Offline</span>
                       </>
                     )}

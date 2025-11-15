@@ -75,7 +75,7 @@ export function DesktopContextMenu({ x, y, items, onClose }: DesktopContextMenuP
                   'hover:bg-[var(--semantic-surface-hover)] active:bg-[var(--semantic-bg-muted)]',
                   'focus:outline-none focus:bg-[var(--semantic-surface-hover)]',
                   item.disabled && 'cursor-not-allowed opacity-50',
-                  item.danger && 'text-red-600 hover:bg-red-50 active:bg-red-100'
+                  item.danger && 'text-[var(--semantic-error)] hover:bg-[var(--semantic-error-bg)] active:bg-[var(--semantic-error-bg)]'
                 )}
               >
                 {item.icon && (

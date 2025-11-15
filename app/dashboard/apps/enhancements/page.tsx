@@ -45,7 +45,7 @@ export default function EnhancementsPage() {
       title: 'Real-time WebSocket Updates',
       description: 'Live synchronization across all connected clients',
       status: isConnected ? 'Connected' : 'Disconnected',
-      statusColor: isConnected ? 'bg-green-500' : 'bg-red-500',
+      statusColor: isConnected ? 'bg-[var(--semantic-success)]' : 'bg-[var(--semantic-error)]',
       demo: 'Automatic updates when data changes in any app',
     },
     {
@@ -53,7 +53,7 @@ export default function EnhancementsPage() {
       title: 'Advanced Filtering',
       description: 'Sophisticated filtering with multiple conditions',
       status: 'Available',
-      statusColor: 'bg-blue-500',
+      statusColor: 'bg-[var(--semantic-primary)]',
       demo: 'Filter with AND/OR operators and save filters',
     },
     {
@@ -61,7 +61,7 @@ export default function EnhancementsPage() {
       title: 'Workflow Automation',
       description: 'Create automated workflows with triggers and actions',
       status: `${workflows.length} Active`,
-      statusColor: 'bg-purple-500',
+      statusColor: 'bg-[var(--semantic-accent)]',
       demo: 'Automate repetitive tasks and notifications',
     },
     {
@@ -69,7 +69,7 @@ export default function EnhancementsPage() {
       title: 'External Calendar Integration',
       description: 'Sync with Google Calendar, Outlook, and more',
       status: `${connectedProviders.length} Connected`,
-      statusColor: 'bg-orange-500',
+      statusColor: 'bg-[var(--semantic-primary)]',
       demo: 'Two-way sync with external calendars',
     },
     {
@@ -85,7 +85,7 @@ export default function EnhancementsPage() {
       title: 'Keyboard Shortcuts',
       description: 'Navigate and control the app with keyboard',
       status: 'Active',
-      statusColor: 'bg-pink-500',
+      statusColor: 'bg-[var(--semantic-accent)]',
       demo: 'Press Ctrl+/ to view all shortcuts',
     },
     {
@@ -93,7 +93,7 @@ export default function EnhancementsPage() {
       title: 'Drag and Drop',
       description: 'Move items between different apps',
       status: 'Enabled',
-      statusColor: 'bg-indigo-500',
+      statusColor: 'bg-[var(--semantic-accent)]',
       demo: 'Drag tasks to calendar, notes to documents',
     },
   ];
@@ -214,13 +214,13 @@ export default function EnhancementsPage() {
                       <div className="space-y-3">
                         <h4 className="font-medium">Active Workflows ({workflows.length})</h4>
                         {workflows.map((workflow, index) => (
-                          <Card key={index} className="p-4 bg-green-50 dark:bg-green-950/20">
+                          <Card key={index} className="p-4 bg-[var(--semantic-success-bg)] dark:bg-green-950/20">
                             <div className="flex items-center justify-between">
                               <div>
                                 <h5 className="font-medium">{workflow.name}</h5>
                                 <p className="text-sm text-muted-foreground">{workflow.description}</p>
                               </div>
-                              <Badge className="bg-green-500 text-white">Active</Badge>
+                              <Badge className="bg-[var(--semantic-success)] text-white">Active</Badge>
                             </div>
                           </Card>
                         ))}
@@ -289,7 +289,7 @@ export default function EnhancementsPage() {
                   <CardContent>
                     <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <Wifi className={`w-5 h-5 ${isConnected ? 'text-green-500' : 'text-red-500'}`} />
+                        <Wifi className={`w-5 h-5 ${isConnected ? 'text-[var(--semantic-success)]' : 'text-[var(--semantic-error)]'}`} />
                         <div>
                           <h5 className="font-medium">Connection Status</h5>
                           <p className="text-sm text-muted-foreground">
@@ -297,7 +297,7 @@ export default function EnhancementsPage() {
                           </p>
                         </div>
                       </div>
-                      <Badge className={isConnected ? 'bg-green-500' : 'bg-red-500'}>
+                      <Badge className={isConnected ? 'bg-[var(--semantic-success)]' : 'bg-[var(--semantic-error)]'}>
                         {isConnected ? 'Live' : 'Offline'}
                       </Badge>
                     </div>

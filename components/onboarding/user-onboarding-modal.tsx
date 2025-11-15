@@ -56,9 +56,9 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         <p className="text-[var(--semantic-text-secondary)]">
           As a board member, you have access to powerful tools to manage the Montrecott community effectively.
         </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 mb-2">Your Responsibilities:</h4>
-          <ul className="space-y-2 text-sm text-blue-800">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
+          <h4 className="font-semibold text-[var(--semantic-primary-dark)] mb-2">Your Responsibilities:</h4>
+          <ul className="space-y-2 text-sm text-[var(--semantic-primary-dark)]">
             <li className="flex items-start gap-2">
               <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <span>Review and approve resident requests</span>
@@ -92,21 +92,21 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Users className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Users className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">User Management</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Add, edit, or remove residents and manage roles</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Bell className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Bell className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Announcements</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Post important updates to all residents</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+            <FileText className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Directory Requests</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Review and approve profile change requests</p>
@@ -128,21 +128,21 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <MessageSquare className="h-5 w-5 text-purple-600 mt-0.5" />
+            <MessageSquare className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Messages</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Communicate with residents privately</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <FileText className="h-5 w-5 text-orange-600 mt-0.5" />
+            <FileText className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Documents</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Upload and manage community documents</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <CreditCard className="h-5 w-5 text-green-600 mt-0.5" />
+            <CreditCard className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Payments</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Track dues and view payment history</p>
@@ -164,9 +164,9 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         <p className="text-[var(--semantic-text-secondary)]">
           Your main navigation is at the bottom of the screen. Click any icon to open an app or view its menu.
         </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 mb-2">Pro Tips:</h4>
-          <ul className="space-y-2 text-sm text-blue-800">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
+          <h4 className="font-semibold text-[var(--semantic-primary-dark)] mb-2">Pro Tips:</h4>
+          <ul className="space-y-2 text-sm text-[var(--semantic-primary-dark)]">
             <li className="flex items-start gap-2">
               <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <span>Click once to open an app</span>
@@ -198,14 +198,14 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Search className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Search className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Quick Launch</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Type app names to open them instantly</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <MessageSquare className="h-5 w-5 text-purple-600 mt-0.5" />
+            <MessageSquare className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">AI Assistant</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Ask questions in natural language</p>
@@ -229,21 +229,21 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Layout className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Layout className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multiple Windows</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Open several apps side by side</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Settings className="h-5 w-5 text-purple-600 mt-0.5" />
+            <Settings className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Window Snapping</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Drag windows to screen edges to snap them</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Sparkles className="h-5 w-5 text-green-600 mt-0.5" />
+            <Sparkles className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multitasking View</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Press F3 or click dock to see all open windows</p>
@@ -267,21 +267,21 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <ArrowLeft className="h-5 w-5 text-blue-600 mt-0.5" />
+            <ArrowLeft className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Swipe Navigation</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe left/right to go back and forward</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <ArrowRight className="h-5 w-5 text-purple-600 mt-0.5" />
+            <ArrowRight className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Pull to Refresh</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Pull down on lists to refresh content</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Bell className="h-5 w-5 text-green-600 mt-0.5" />
+            <Bell className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Notification Drawer</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe down from the top for notifications</p>
@@ -299,15 +299,15 @@ const BOARD_MEMBER_STEPS: OnboardingStep[] = [
     position: 'center',
     content: (
       <div className="space-y-4 text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-2">
-          <CheckCircle2 className="h-8 w-8 text-green-600" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--semantic-success-bg)] mb-2">
+          <CheckCircle2 className="h-8 w-8 text-[var(--semantic-success)]" />
         </div>
         <p className="text-[var(--semantic-text-secondary)]">
           You're now ready to start managing the Montrecott community!
         </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 mb-2">Remember:</h4>
-          <ul className="space-y-2 text-sm text-blue-800 text-left">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
+          <h4 className="font-semibold text-[var(--semantic-primary-dark)] mb-2">Remember:</h4>
+          <ul className="space-y-2 text-sm text-[var(--semantic-primary-dark)] text-left">
             <li className="flex items-start gap-2">
               <span className="font-semibold">•</span>
               <span>Access the Help panel anytime from the status bar</span>
@@ -339,9 +339,9 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         <p className="text-[var(--semantic-text-secondary)]">
           Welcome to the Montrecott community management portal! This is your one-stop platform for everything related to your home and community.
         </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 mb-2">What You Can Do:</h4>
-          <ul className="space-y-2 text-sm text-blue-800">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
+          <h4 className="font-semibold text-[var(--semantic-primary-dark)] mb-2">What You Can Do:</h4>
+          <ul className="space-y-2 text-sm text-[var(--semantic-primary-dark)]">
             <li className="flex items-start gap-2">
               <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <span>View and pay association dues online</span>
@@ -370,12 +370,12 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     icon: Users,
     content: (
       <div className="space-y-4">
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+        <div className="bg-[var(--semantic-success-bg)] border border-[var(--semantic-success-bg)] rounded-lg p-4 mb-4">
           <div className="flex items-start gap-2">
-            <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="h-5 w-5 text-[var(--semantic-success)] mt-0.5 flex-shrink-0" />
             <div>
               <h4 className="font-semibold text-green-900">Basic Info Complete!</h4>
-              <p className="text-sm text-green-800 mt-1">
+              <p className="text-sm text-[var(--semantic-success-dark)] mt-1">
                 We've saved your name, email, phone, and unit number during signup.
               </p>
             </div>
@@ -386,29 +386,29 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Users className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Users className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Additional Residents</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Add family members or roommates living in your unit</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Users className="h-5 w-5 text-purple-600 mt-0.5" />
+            <Users className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Children</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Register children in your household</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Home className="h-5 w-5 text-green-600 mt-0.5" />
+            <Home className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Pets</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Register your pets (required by HOA)</p>
             </div>
           </div>
         </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
-          <p className="text-sm text-blue-800">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-3 mt-4">
+          <p className="text-sm text-[var(--semantic-primary-dark)]">
             💡 <strong>Tip:</strong> You can skip this for now and add household details later from <strong>My Household</strong> in the app dock.
           </p>
         </div>
@@ -427,21 +427,21 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Building2 className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Building2 className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">My Community</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">View resident directory and community documents</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <CreditCard className="h-5 w-5 text-green-600 mt-0.5" />
+            <CreditCard className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Payments</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">View dues and payment history</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <FileText className="h-5 w-5 text-orange-600 mt-0.5" />
+            <FileText className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Documents</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Access bylaws, rules, and forms</p>
@@ -461,9 +461,9 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         <p className="text-[var(--semantic-text-secondary)]">
           Have questions? Our AI Assistant is here to help!
         </p>
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+        <div className="bg-[var(--semantic-accent-subtle)] border border-[var(--semantic-accent-light)] rounded-lg p-4">
           <div className="flex items-start gap-3 mb-3">
-            <MessageSquare className="h-6 w-6 text-purple-600 mt-0.5" />
+            <MessageSquare className="h-6 w-6 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-purple-900">AI Assistant</h4>
               <p className="text-sm text-purple-800">
@@ -497,9 +497,9 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         <p className="text-[var(--semantic-text-secondary)]">
           Your main navigation is at the bottom of the screen. Click any icon to open an app or access quick actions.
         </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 mb-2">Pro Tips:</h4>
-          <ul className="space-y-2 text-sm text-blue-800">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
+          <h4 className="font-semibold text-[var(--semantic-primary-dark)] mb-2">Pro Tips:</h4>
+          <ul className="space-y-2 text-sm text-[var(--semantic-primary-dark)]">
             <li className="flex items-start gap-2">
               <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <span>Click once to open an app</span>
@@ -531,14 +531,14 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Search className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Search className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Quick Launch</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Type to find and open apps instantly</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <MessageSquare className="h-5 w-5 text-purple-600 mt-0.5" />
+            <MessageSquare className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Ask Questions</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Get help from the AI assistant</p>
@@ -562,21 +562,21 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Layout className="h-5 w-5 text-blue-600 mt-0.5" />
+            <Layout className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multiple Windows</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Open and arrange apps side by side</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Settings className="h-5 w-5 text-purple-600 mt-0.5" />
+            <Settings className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Window Snapping</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Drag to screen edges to snap windows</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Sparkles className="h-5 w-5 text-green-600 mt-0.5" />
+            <Sparkles className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Multitasking View</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Press F3 to see all open windows</p>
@@ -600,21 +600,21 @@ const RESIDENT_STEPS: OnboardingStep[] = [
         </p>
         <div className="grid gap-3">
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <ArrowLeft className="h-5 w-5 text-blue-600 mt-0.5" />
+            <ArrowLeft className="h-5 w-5 text-[var(--semantic-primary)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Swipe Navigation</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe left/right to go back and forward</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <ArrowRight className="h-5 w-5 text-purple-600 mt-0.5" />
+            <ArrowRight className="h-5 w-5 text-[var(--semantic-accent)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Pull to Refresh</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Pull down on lists to update content</p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-3 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-            <Bell className="h-5 w-5 text-green-600 mt-0.5" />
+            <Bell className="h-5 w-5 text-[var(--semantic-success)] mt-0.5" />
             <div>
               <h4 className="font-semibold text-[var(--semantic-text-primary)]">Notification Drawer</h4>
               <p className="text-sm text-[var(--semantic-text-secondary)]">Swipe down from top for notifications</p>
@@ -632,15 +632,15 @@ const RESIDENT_STEPS: OnboardingStep[] = [
     position: 'center',
     content: (
       <div className="space-y-4 text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-2">
-          <CheckCircle2 className="h-8 w-8 text-green-600" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--semantic-success-bg)] mb-2">
+          <CheckCircle2 className="h-8 w-8 text-[var(--semantic-success)]" />
         </div>
         <p className="text-[var(--semantic-text-secondary)]">
           You're all set to start exploring your Montrecott community portal!
         </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 mb-2">Remember:</h4>
-          <ul className="space-y-2 text-sm text-blue-800 text-left">
+        <div className="bg-[var(--semantic-primary-subtle)] border border-[var(--semantic-primary-light)] rounded-lg p-4">
+          <h4 className="font-semibold text-[var(--semantic-primary-dark)] mb-2">Remember:</h4>
+          <ul className="space-y-2 text-sm text-[var(--semantic-primary-dark)] text-left">
             <li className="flex items-start gap-2">
               <span className="font-semibold">•</span>
               <span>Access the Help panel anytime from the status bar</span>
@@ -796,8 +796,8 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
           <div className="px-6 pt-6 pb-4 border-b bg-gradient-to-r from-blue-50 to-purple-50">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                  <StepIcon className="h-5 w-5 text-blue-600" />
+                <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary-subtle)] flex items-center justify-center">
+                  <StepIcon className="h-5 w-5 text-[var(--semantic-primary)]" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-[var(--semantic-text-primary)]">{step.title}</h2>
@@ -805,7 +805,7 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <div className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
+                <div className="px-3 py-1 bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)] text-xs font-medium rounded-full">
                   Welcome Tour
                 </div>
                 {currentStep > 0 && currentStep < steps.length - 1 && (

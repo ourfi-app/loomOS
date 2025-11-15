@@ -130,7 +130,7 @@ export function EmailWidget() {
       <div className="p-4 border-b border-border/30 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500/10 to-indigo-500/10">
-            <Mail className="w-5 h-5 text-blue-500" />
+            <Mail className="w-5 h-5 text-[var(--semantic-primary)]" />
           </div>
           <div>
             <h3 className="font-semibold text-sm">Inbox</h3>
@@ -184,10 +184,10 @@ export function EmailWidget() {
                         {email.from}
                       </span>
                       {email.isPriority && (
-                        <AlertCircle className="w-3 h-3 text-red-500 flex-shrink-0" />
+                        <AlertCircle className="w-3 h-3 text-[var(--semantic-error)] flex-shrink-0" />
                       )}
                       {email.isStarred && (
-                        <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 flex-shrink-0" />
+                        <Star className="w-3 h-3 text-[var(--semantic-warning)] fill-yellow-500 flex-shrink-0" />
                       )}
                     </div>
                     

@@ -226,19 +226,19 @@ export function ActivityTimeline({ limit = 20, showFilters = true, userId }: Act
       case 'payment':
         return 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/20';
       case 'document':
-        return 'text-blue-600 bg-blue-100 dark:bg-blue-900/20';
+        return 'text-[var(--semantic-primary)] bg-[var(--semantic-primary-subtle)] dark:bg-[var(--semantic-primary-dark)]/20';
       case 'message':
-        return 'text-purple-600 bg-purple-100 dark:bg-purple-900/20';
+        return 'text-[var(--semantic-accent)] bg-[var(--semantic-accent-subtle)] dark:bg-purple-900/20';
       case 'task':
-        return 'text-orange-600 bg-orange-100 dark:bg-orange-900/20';
+        return 'text-[var(--semantic-primary)] bg-[var(--semantic-primary-subtle)] dark:bg-orange-900/20';
       case 'event':
-        return 'text-pink-600 bg-pink-100 dark:bg-pink-900/20';
+        return 'text-[var(--semantic-accent)] bg-[var(--semantic-accent-subtle)] dark:bg-pink-900/20';
       case 'announcement':
-        return 'text-red-600 bg-red-100 dark:bg-red-900/20';
+        return 'text-[var(--semantic-error)] bg-[var(--semantic-error-bg)] dark:bg-red-900/20';
       case 'directory':
         return 'text-cyan-600 bg-cyan-100 dark:bg-cyan-900/20';
       default:
-        return 'text-[var(--semantic-text-secondary)] bg-[var(--semantic-surface-hover)] dark:bg-gray-900/20';
+        return 'text-[var(--semantic-text-secondary)] bg-[var(--semantic-surface-hover)] dark:bg-[var(--semantic-text-primary)]/20';
     }
   };
 

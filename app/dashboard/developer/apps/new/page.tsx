@@ -137,7 +137,7 @@ export default function NewAppPage() {
       <div className="mb-8">
         <Link
           href="/dashboard/developer"
-          className="text-orange-600 hover:underline mb-4 inline-block"
+          className="text-[var(--semantic-primary)] hover:underline mb-4 inline-block"
         >
           ← Back to Dashboard
         </Link>
@@ -238,7 +238,7 @@ export default function NewAppPage() {
                 <button
                   type="button"
                   onClick={handleAddTag}
-                  className="px-4 py-2 bg-[var(--semantic-bg-muted)] rounded-lg hover:bg-gray-300"
+                  className="px-4 py-2 bg-[var(--semantic-bg-muted)] rounded-lg hover:bg-[var(--semantic-bg-muted)]"
                 >
                   Add
                 </button>
@@ -247,7 +247,7 @@ export default function NewAppPage() {
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm flex items-center gap-2"
+                    className="bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)] px-3 py-1 rounded-full text-sm flex items-center gap-2"
                   >
                     {tag}
                     <button
@@ -405,7 +405,7 @@ export default function NewAppPage() {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 disabled:opacity-50"
+            className="flex-1 bg-[var(--semantic-primary)] text-white py-3 rounded-lg hover:bg-[var(--semantic-primary-dark)] disabled:opacity-50"
           >
             {loading ? 'Creating...' : 'Create App'}
           </button>

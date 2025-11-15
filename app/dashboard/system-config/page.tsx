@@ -432,7 +432,7 @@ export default function SystemConfigPage() {
                 <span className="font-medium">23%</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-green-500" style={{ width: '23%' }} />
+                <div className="h-full bg-[var(--semantic-success)]" style={{ width: '23%' }} />
               </div>
             </div>
             <div className="space-y-2">
@@ -441,7 +441,7 @@ export default function SystemConfigPage() {
                 <span className="font-medium">2.1 GB / 4 GB</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-yellow-500" style={{ width: '52.5%' }} />
+                <div className="h-full bg-[var(--semantic-warning)]" style={{ width: '52.5%' }} />
               </div>
             </div>
             <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function SystemConfigPage() {
                 <span className="font-medium">42 GB / 100 GB</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500" style={{ width: '42%' }} />
+                <div className="h-full bg-[var(--semantic-primary)]" style={{ width: '42%' }} />
               </div>
             </div>
           </div>

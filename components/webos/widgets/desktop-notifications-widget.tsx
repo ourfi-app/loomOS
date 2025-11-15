@@ -127,11 +127,11 @@ export function DesktopNotificationsWidget({ widget }: DesktopNotificationsWidge
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'alert': return 'text-red-500 bg-red-500/10';
-      case 'warning': return 'text-yellow-500 bg-yellow-500/10';
-      case 'success': return 'text-green-500 bg-green-500/10';
-      case 'message': return 'text-blue-500 bg-blue-500/10';
-      case 'info': return 'text-purple-500 bg-purple-500/10';
+      case 'alert': return 'text-[var(--semantic-error)] bg-[var(--semantic-error)]/10';
+      case 'warning': return 'text-[var(--semantic-warning)] bg-[var(--semantic-warning)]/10';
+      case 'success': return 'text-[var(--semantic-success)] bg-[var(--semantic-success)]/10';
+      case 'message': return 'text-[var(--semantic-primary)] bg-[var(--semantic-primary)]/10';
+      case 'info': return 'text-[var(--semantic-accent)] bg-[var(--semantic-accent)]/10';
       default: return 'text-muted-foreground bg-muted/50';
     }
   };
@@ -236,7 +236,7 @@ export function DesktopNotificationsWidget({ widget }: DesktopNotificationsWidge
                           className="p-1 rounded hover:bg-muted transition-colors"
                           title="Mark as read"
                         >
-                          <Check className="w-3.5 h-3.5 text-green-500" />
+                          <Check className="w-3.5 h-3.5 text-[var(--semantic-success)]" />
                         </button>
                       )}
                       <button

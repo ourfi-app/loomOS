@@ -332,8 +332,8 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
         <h3 className="text-lg font-semibold mb-4">Generate Code</h3>
 
         {!validation.valid && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <div className="flex items-start gap-2 text-red-700">
+          <div className="mb-4 p-3 bg-[var(--semantic-error-bg)] border border-[var(--semantic-error-border)] rounded-lg">
+            <div className="flex items-start gap-2 text-[var(--semantic-error-dark)]">
               <AlertCircle size={16} className="mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium mb-1">Schema Errors:</p>
@@ -348,8 +348,8 @@ export default function SchemaBuilder({ appName, onSchemaGenerated }: SchemaBuil
         )}
 
         {validation.valid && (
-          <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-            <div className="flex items-center gap-2 text-green-700">
+          <div className="mb-4 p-3 bg-[var(--semantic-success-bg)] border border-[var(--semantic-success-bg)] rounded-lg">
+            <div className="flex items-center gap-2 text-[var(--semantic-success-dark)]">
               <Check size={16} />
               <p className="text-sm font-medium">Schema is valid</p>
             </div>

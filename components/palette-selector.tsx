@@ -31,7 +31,7 @@ export function PaletteSelector({ palettes, selectedPaletteId, onSelect }: Palet
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-sm">{palette.name}</h3>
                 {selectedPaletteId === palette.id && (
-                  <div className="h-5 w-5 rounded-full bg-blue-600 flex items-center justify-center">
+                  <div className="h-5 w-5 rounded-full bg-[var(--semantic-primary)] flex items-center justify-center">
                     <Check className="h-3 w-3 text-white" />
                   </div>
                 )}

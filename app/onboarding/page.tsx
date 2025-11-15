@@ -6,7 +6,7 @@ const OnboardingClient = dynamic(() => import('./OnboardingClient'), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+      <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
     </div>
   ),
 });

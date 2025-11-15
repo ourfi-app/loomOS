@@ -35,8 +35,8 @@ export interface SwipeableCardProps {
 
 const colorMap = {
   primary: 'bg-primary text-primary-foreground',
-  success: 'bg-green-500 text-white',
-  warning: 'bg-yellow-500 text-white',
+  success: 'bg-[var(--semantic-success)] text-white',
+  warning: 'bg-[var(--semantic-warning)] text-white',
   destructive: 'bg-destructive text-destructive-foreground',
 };
 

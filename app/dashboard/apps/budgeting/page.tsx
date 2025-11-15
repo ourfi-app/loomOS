@@ -86,7 +86,7 @@ export default function BudgetingPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Spent</CardTitle>
-                <TrendingDown className="h-4 w-4 text-red-500" />
+                <TrendingDown className="h-4 w-4 text-[var(--semantic-error)]" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">$78,450</div>
@@ -97,7 +97,7 @@ export default function BudgetingPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Remaining</CardTitle>
-                <TrendingUp className="h-4 w-4 text-green-500" />
+                <TrendingUp className="h-4 w-4 text-[var(--semantic-success)]" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">$46,550</div>

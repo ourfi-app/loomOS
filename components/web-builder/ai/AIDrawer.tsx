@@ -20,8 +20,8 @@ function AIQuickAction({ icon: Icon, title, description, onClick }: AIQuickActio
     <button
       onClick={onClick}
       className={cn(
-        'w-full p-3 rounded-lg border border-[var(--semantic-border-light)] dark:border-gray-700',
-        'bg-white dark:bg-gray-800 hover:border-loomos-orange hover:bg-[var(--semantic-bg-subtle)] dark:hover:bg-gray-700',
+        'w-full p-3 rounded-lg border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]',
+        'bg-white dark:bg-[var(--semantic-text-primary)] hover:border-loomos-orange hover:bg-[var(--semantic-bg-subtle)] dark:hover:bg-[var(--semantic-text-secondary)]',
         'transition-all text-left group min-h-[44px]'
       )}
     >
@@ -30,7 +30,7 @@ function AIQuickAction({ icon: Icon, title, description, onClick }: AIQuickActio
           <Icon className="w-4 h-4 text-loomos-orange" />
         </div>
         <div className="flex-1">
-          <h4 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-gray-100">
+          <h4 className="text-sm font-medium text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)]">
             {title}
           </h4>
           <p className="text-xs text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] mt-0.5">
@@ -95,21 +95,21 @@ export function AIDrawer() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', ...loomOSSpring }}
-            className="fixed right-0 top-0 bottom-0 w-96 bg-white dark:bg-gray-800 shadow-2xl z-50 flex flex-col"
+            className="fixed right-0 top-0 bottom-0 w-96 bg-white dark:bg-[var(--semantic-text-primary)] shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+            <div className="flex items-center justify-between p-4 border-b border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-lg bg-loomos-orange/10">
                   <Sparkles className="w-5 h-5 text-loomos-orange" />
                 </div>
-                <h2 className="font-semibold text-[var(--semantic-text-primary)] dark:text-gray-100">
+                <h2 className="font-semibold text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)]">
                   AI Assistant
                 </h2>
               </div>
               <button
                 onClick={toggleAIDrawer}
-                className="p-2 hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-[var(--semantic-text-secondary)] rounded-lg transition-colors"
                 aria-label="Close AI Assistant"
               >
                 <X className="w-4 h-4" />
@@ -117,7 +117,7 @@ export function AIDrawer() {
             </div>
 
             {/* Quick Actions */}
-            <div className="p-4 space-y-2 border-b border-[var(--semantic-border-light)] dark:border-gray-700">
+            <div className="p-4 space-y-2 border-b border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
               <h3 className="text-xs font-semibold text-[var(--semantic-text-tertiary)] dark:text-[var(--semantic-text-tertiary)] uppercase tracking-wider mb-3">
                 Quick Actions
               </h3>
@@ -170,7 +170,7 @@ export function AIDrawer() {
                         'px-4 py-2 rounded-lg text-sm max-w-[80%]',
                         message.role === 'user'
                           ? 'bg-loomos-orange text-white'
-                          : 'bg-[var(--semantic-surface-hover)] dark:bg-gray-700 text-[var(--semantic-text-primary)] dark:text-gray-100'
+                          : 'bg-[var(--semantic-surface-hover)] dark:bg-[var(--semantic-text-secondary)] text-[var(--semantic-text-primary)] dark:text-[var(--semantic-text-inverse)]'
                       )}
                     >
                       {message.content}
@@ -183,11 +183,11 @@ export function AIDrawer() {
                   <div className="w-8 h-8 rounded-lg bg-loomos-orange/10 flex items-center justify-center flex-shrink-0">
                     <Sparkles className="w-4 h-4 text-loomos-orange animate-pulse" />
                   </div>
-                  <div className="px-4 py-2 rounded-lg bg-[var(--semantic-surface-hover)] dark:bg-gray-700">
+                  <div className="px-4 py-2 rounded-lg bg-[var(--semantic-surface-hover)] dark:bg-[var(--semantic-text-secondary)]">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 rounded-full bg-gray-400 animate-pulse" />
-                      <div className="w-2 h-2 rounded-full bg-gray-400 animate-pulse delay-75" />
-                      <div className="w-2 h-2 rounded-full bg-gray-400 animate-pulse delay-150" />
+                      <div className="w-2 h-2 rounded-full bg-[var(--semantic-border-strong)] animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-[var(--semantic-border-strong)] animate-pulse delay-75" />
+                      <div className="w-2 h-2 rounded-full bg-[var(--semantic-border-strong)] animate-pulse delay-150" />
                     </div>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ export function AIDrawer() {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-[var(--semantic-border-light)] dark:border-gray-700">
+            <div className="p-4 border-t border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]">
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <input
                   type="text"
@@ -203,8 +203,8 @@ export function AIDrawer() {
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder="Describe what you want to build..."
                   className={cn(
-                    'flex-1 px-4 py-2 rounded-lg border border-[var(--semantic-border-light)] dark:border-gray-700',
-                    'bg-[var(--semantic-bg-subtle)] dark:bg-gray-900 text-sm',
+                    'flex-1 px-4 py-2 rounded-lg border border-[var(--semantic-border-light)] dark:border-[var(--semantic-border-strong)]',
+                    'bg-[var(--semantic-bg-subtle)] dark:bg-[var(--semantic-text-primary)] text-sm',
                     'focus:outline-none focus:ring-2 focus:ring-loomos-orange focus:border-transparent',
                     'placeholder:text-[var(--semantic-text-tertiary)]'
                   )}

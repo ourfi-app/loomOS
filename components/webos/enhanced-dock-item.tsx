@@ -157,7 +157,7 @@ export const EnhancedDockItem = memo(({
                   exit={{ opacity: 0, x: -20 }}
                   className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full mr-2 z-10"
                 >
-                  <div className="bg-blue-500 rounded-full p-2 shadow-lg">
+                  <div className="bg-[var(--semantic-primary)] rounded-full p-2 shadow-lg">
                     {isPinned ? (
                       <PinOff className="w-5 h-5 text-white" />
                     ) : (
@@ -173,7 +173,7 @@ export const EnhancedDockItem = memo(({
                   exit={{ opacity: 0, x: 20 }}
                   className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full ml-2 z-10"
                 >
-                  <div className="bg-purple-500 rounded-full p-2 shadow-lg">
+                  <div className="bg-[var(--semantic-accent)] rounded-full p-2 shadow-lg">
                     <Info className="w-5 h-5 text-white" />
                   </div>
                 </motion.div>
@@ -273,7 +273,7 @@ export const EnhancedDockItem = memo(({
             <AnimatePresence>
               {isMinimized && (
                 <motion.div 
-                  className="absolute -bottom-1.5 w-2 h-2 rounded-full bg-blue-400 shadow-lg"
+                  className="absolute -bottom-1.5 w-2 h-2 rounded-full bg-[var(--semantic-primary)] shadow-lg"
                   initial={{ scale: 0 }}
                   animate={{ 
                     scale: [1, 1.2, 1],
@@ -325,7 +325,7 @@ export const EnhancedDockItem = memo(({
                         e.stopPropagation();
                         onRemove(app.id);
                       }}
-                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors z-20"
+                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[var(--semantic-error)] text-white flex items-center justify-center shadow-lg hover:bg-[var(--semantic-error)] transition-colors z-20"
                     >
                       <X className="w-4 h-4" />
                     </motion.button>

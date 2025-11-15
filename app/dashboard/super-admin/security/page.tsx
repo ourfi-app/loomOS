@@ -67,7 +67,7 @@ export default function SecurityManagement() {
 // Back handled in toolbar
       // onBack={() => router.push('/dashboard/super-admin')}
       toolbar={
-        <Badge variant="default" className="bg-green-500">
+        <Badge variant="default" className="bg-[var(--semantic-success)]">
           <Shield className="w-4 h-4 mr-1" />
           Secure
         </Badge>
@@ -115,7 +115,7 @@ export default function SecurityManagement() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">98/100</div>
-              <p className="text-xs text-green-500">
+              <p className="text-xs text-[var(--semantic-success)]">
                 Excellent security posture
               </p>
             </CardContent>
@@ -135,9 +135,9 @@ export default function SecurityManagement() {
               {securityEvents.map((event) => (
                 <div key={event.id} className="flex items-start space-x-3 pb-3 border-b last:border-0">
                   <div className="mt-0.5">
-                    {event.type === 'success' && <CheckCircle className="h-4 w-4 text-green-500" />}
-                    {event.type === 'warning' && <AlertTriangle className="h-4 w-4 text-yellow-500" />}
-                    {event.type === 'info' && <Eye className="h-4 w-4 text-blue-500" />}
+                    {event.type === 'success' && <CheckCircle className="h-4 w-4 text-[var(--semantic-success)]" />}
+                    {event.type === 'warning' && <AlertTriangle className="h-4 w-4 text-[var(--semantic-warning)]" />}
+                    {event.type === 'info' && <Eye className="h-4 w-4 text-[var(--semantic-primary)]" />}
                   </div>
                   <div className="flex-1">
                     <div className="font-medium">{event.title}</div>
@@ -167,7 +167,7 @@ export default function SecurityManagement() {
                     Require 2FA for all admin users
                   </div>
                 </div>
-                <Badge variant="default" className="bg-green-500">Enabled</Badge>
+                <Badge variant="default" className="bg-[var(--semantic-success)]">Enabled</Badge>
               </div>
 
               <div className="flex items-center justify-between p-4 border rounded-lg">

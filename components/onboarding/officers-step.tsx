@@ -104,8 +104,8 @@ export default function OfficersStep({
     <Card className="p-6 md:p-8 bg-gradient-to-br from-white via-indigo-50/30 to-blue-50/20 border-0 shadow-xl backdrop-blur-sm">
       {/* Enhanced Header */}
       <div className="mb-8 relative">
-        <div className="absolute -top-2 -left-2 w-24 h-24 bg-indigo-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -top-2 -right-2 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -left-2 w-24 h-24 bg-[var(--semantic-accent)]/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-2 -right-2 w-32 h-32 bg-[var(--semantic-primary)]/10 rounded-full blur-3xl"></div>
         
         <div className="relative">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg shadow-indigo-500/30 mb-4 group hover:scale-110 transition-transform duration-300">
@@ -147,7 +147,7 @@ export default function OfficersStep({
                       Officer {index + 1}
                     </h3>
                     {isValid && (
-                      <div className="flex items-center gap-1.5 text-xs text-green-600 mt-0.5">
+                      <div className="flex items-center gap-1.5 text-xs text-[var(--semantic-success)] mt-0.5">
                         <CheckCircle className="h-3.5 w-3.5" />
                         <span className="font-medium">Complete</span>
                       </div>
@@ -158,7 +158,7 @@ export default function OfficersStep({
                   variant="ghost"
                   size="sm"
                   onClick={() => removeOfficer(officer.id)}
-                  className="hover:bg-red-100 hover:text-red-600"
+                  className="hover:bg-[var(--semantic-error-bg)] hover:text-[var(--semantic-error)]"
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -241,7 +241,7 @@ export default function OfficersStep({
         <Button 
           variant="outline" 
           onClick={addOfficer} 
-          className="w-full h-12 border-2 border-dashed border-[var(--semantic-border-medium)] hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 transition-all duration-300 group"
+          className="w-full h-12 border-2 border-dashed border-[var(--semantic-border-medium)] hover:border-indigo-500 hover:bg-[var(--semantic-accent-subtle)] hover:text-[var(--semantic-accent)] transition-all duration-300 group"
         >
           <Plus className="h-5 w-5 mr-2 group-hover:rotate-90 transition-transform duration-300" />
           <span className="font-semibold">Add Another Officer</span>
@@ -249,16 +249,16 @@ export default function OfficersStep({
       </div>
 
       {/* Skip Notice */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-blue-200 rounded-xl p-5 mb-6 backdrop-blur-sm">
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-5 mb-6 backdrop-blur-sm">
         <div className="flex gap-4">
           <div className="flex-shrink-0">
-            <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-[var(--semantic-primary)] flex items-center justify-center">
               <Sparkles className="h-5 w-5 text-white" />
             </div>
           </div>
           <div className="flex-1">
-            <p className="font-semibold text-blue-900 mb-1">Skip This Step?</p>
-            <p className="text-sm text-blue-800">
+            <p className="font-semibold text-[var(--semantic-primary-dark)] mb-1">Skip This Step?</p>
+            <p className="text-sm text-[var(--semantic-primary-dark)]">
               No problem! You can add board members anytime from the Admin Dashboard → User Management section.
             </p>
           </div>

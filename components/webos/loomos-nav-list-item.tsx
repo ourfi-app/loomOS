@@ -27,8 +27,8 @@ export function LoomOSNavListItem({
       className={cn(
         'w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors',
         selected
-          ? 'bg-orange-50 text-orange-700 font-medium dark:bg-orange-900/20 dark:text-orange-400'
-          : 'text-[var(--semantic-text-secondary)] hover:bg-[var(--semantic-surface-hover)] dark:text-gray-300 dark:hover:bg-gray-800',
+          ? 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)] font-medium dark:bg-orange-900/20 dark:text-[var(--semantic-primary)]'
+          : 'text-[var(--semantic-text-secondary)] hover:bg-[var(--semantic-surface-hover)] dark:text-[var(--semantic-text-tertiary)] dark:hover:bg-[var(--semantic-text-primary)]',
         className
       )}
     >

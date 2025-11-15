@@ -31,7 +31,7 @@ export function StatCard({
   onClick
 }: StatCardProps) {
   const TrendIcon = change?.trend === 'up' ? TrendingUp : change?.trend === 'down' ? TrendingDown : Minus;
-  const trendColor = change?.trend === 'up' ? 'text-green-600' : change?.trend === 'down' ? 'text-red-600' : 'text-muted-foreground';
+  const trendColor = change?.trend === 'up' ? 'text-[var(--semantic-success)]' : change?.trend === 'down' ? 'text-[var(--semantic-error)]' : 'text-muted-foreground';
 
   return (
     <Card 

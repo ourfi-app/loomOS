@@ -235,7 +235,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                 className={cn(
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   sortMode === 'alphabetical'
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-[var(--semantic-primary)] text-white'
                     : 'bg-white/60 text-[var(--semantic-text-secondary)] hover:bg-white'
                 )}
               >
@@ -246,7 +246,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                 className={cn(
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   sortMode === 'recent'
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-[var(--semantic-primary)] text-white'
                     : 'bg-white/60 text-[var(--semantic-text-secondary)] hover:bg-white'
                 )}
               >
@@ -257,7 +257,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                 className={cn(
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   sortMode === 'frequent'
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-[var(--semantic-primary)] text-white'
                     : 'bg-white/60 text-[var(--semantic-text-secondary)] hover:bg-white'
                 )}
               >
@@ -345,7 +345,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
                     <div className={cn(
                       'absolute top-2 left-2',
                       'px-2 py-1 rounded-full',
-                      'bg-yellow-400 text-yellow-900',
+                      'bg-[var(--semantic-warning)] text-yellow-900',
                       'text-[10px] sm:text-xs font-bold'
                     )}>
                       NEW
@@ -360,7 +360,7 @@ export function ResponsiveAppLauncher({ isOpen, onClose }: ResponsiveAppLauncher
           {filteredApps.length === 0 && (
             <div className="text-center py-12 sm:py-16 md:py-20">
               <SparklesIcon className={cn(
-                'mx-auto text-gray-300 mb-4',
+                'mx-auto text-[var(--semantic-text-tertiary)] mb-4',
                 'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20'
               )} />
               <h3 className={cn(

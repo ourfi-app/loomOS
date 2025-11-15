@@ -106,7 +106,7 @@ export function CardView({ cards, appComponents }: CardViewProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => closeCard(activeCard.id)}
-              className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-500/20 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[var(--semantic-error)]/20 transition-colors"
               title="Close"
             >
               <X className="w-4 h-4" />
@@ -209,7 +209,7 @@ export function CardView({ cards, appComponents }: CardViewProps) {
                     <div className="px-4 py-2 bg-[var(--semantic-surface-hover)] border-t border-[var(--semantic-border-light)] flex items-center justify-between text-xs text-[var(--semantic-text-secondary)]">
                       <span>{card.minimized ? 'Minimized' : 'Running'}</span>
                       {!card.minimized && (
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[var(--semantic-success)] animate-pulse" />
                       )}
                     </div>
                   </div>

@@ -185,7 +185,7 @@ export default function DeveloperDashboard() {
           <button
             type="submit"
             disabled={isRegistering}
-            className="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 disabled:opacity-50"
+            className="w-full bg-[var(--semantic-primary)] text-white py-3 rounded-lg hover:bg-[var(--semantic-primary-dark)] disabled:opacity-50"
           >
             {isRegistering ? 'Registering...' : 'Register as Developer'}
           </button>
@@ -207,7 +207,7 @@ export default function DeveloperDashboard() {
         </div>
         <Link
           href="/dashboard/developer/apps/new"
-          className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600"
+          className="bg-[var(--semantic-primary)] text-white px-6 py-3 rounded-lg hover:bg-[var(--semantic-primary-dark)]"
         >
           Create New App
         </Link>
@@ -219,7 +219,7 @@ export default function DeveloperDashboard() {
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-sm text-[var(--semantic-text-secondary)] mb-1">Total Apps</div>
             <div className="text-3xl font-bold">{stats.totalApps}</div>
-            <div className="text-sm text-green-600 mt-2">
+            <div className="text-sm text-[var(--semantic-success)] mt-2">
               {stats.publishedApps} published
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function DeveloperDashboard() {
             </p>
             <Link
               href="/dashboard/developer/apps/new"
-              className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600"
+              className="inline-block bg-[var(--semantic-primary)] text-white px-6 py-3 rounded-lg hover:bg-[var(--semantic-primary-dark)]"
             >
               Create Your First App
             </Link>
@@ -301,12 +301,12 @@ export default function DeveloperDashboard() {
                     <span
                       className={`px-3 py-1 rounded-full text-sm ${
                         app.status === 'PUBLISHED'
-                          ? 'bg-green-100 text-green-700'
+                          ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]'
                           : app.status === 'DRAFT'
                           ? 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
                           : app.status === 'PENDING_REVIEW'
-                          ? 'bg-blue-100 text-blue-700'
-                          : 'bg-yellow-100 text-yellow-700'
+                          ? 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]'
+                          : 'bg-[var(--semantic-warning-bg)] text-[var(--semantic-warning-dark)]'
                       }`}
                     >
                       {app.status}

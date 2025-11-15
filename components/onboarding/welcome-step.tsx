@@ -44,7 +44,7 @@ export default function WelcomeStep({ onNext, isFirst }: WelcomeStepProps) {
   ];
 
   return (
-    <Card className="p-8 md:p-12 shadow-2xl border-2 border-blue-100 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/30">
+    <Card className="p-8 md:p-12 shadow-2xl border-2 border-[var(--semantic-primary-light)] bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/30">
       <div className="text-center mb-10">
         <motion.div 
           className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 mb-6 shadow-xl"
@@ -111,44 +111,44 @@ export default function WelcomeStep({ onNext, isFirst }: WelcomeStepProps) {
       </div>
 
       <motion.div 
-        className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-6 mb-10 shadow-lg"
+        className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-[var(--semantic-primary-light)] rounded-xl p-6 mb-10 shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
       >
         <div className="flex items-center gap-2 mb-4">
-          <Clock className="h-5 w-5 text-blue-600" />
-          <h3 className="font-bold text-blue-900 text-lg">
+          <Clock className="h-5 w-5 text-[var(--semantic-primary)]" />
+          <h3 className="font-bold text-[var(--semantic-primary-dark)] text-lg">
             What you'll set up:
           </h3>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-3">
-            <div className="flex items-center gap-2 font-semibold text-blue-800">
+            <div className="flex items-center gap-2 font-semibold text-[var(--semantic-primary-dark)]">
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center shadow-md">
                 <CheckCircle className="h-4 w-4" />
               </div>
               Required Steps
             </div>
-            <ul className="space-y-2 ml-8 text-sm text-blue-700">
+            <ul className="space-y-2 ml-8 text-sm text-[var(--semantic-primary-dark)]">
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold mt-0.5">•</span>
+                <span className="text-[var(--semantic-primary)] font-bold mt-0.5">•</span>
                 <span>Basic association information</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold mt-0.5">•</span>
+                <span className="text-[var(--semantic-primary)] font-bold mt-0.5">•</span>
                 <span>Essential documents (Bylaws)</span>
               </li>
             </ul>
           </div>
           <div className="space-y-3">
-            <div className="flex items-center gap-2 font-semibold text-blue-800">
+            <div className="flex items-center gap-2 font-semibold text-[var(--semantic-primary-dark)]">
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-white flex items-center justify-center shadow-md">
                 <span className="text-xs font-bold">~</span>
               </div>
               Optional Steps (Skip if needed)
             </div>
-            <ul className="space-y-2 ml-8 text-sm text-blue-700">
+            <ul className="space-y-2 ml-8 text-sm text-[var(--semantic-primary-dark)]">
               <li className="flex items-start gap-2">
                 <span className="text-amber-600 font-bold mt-0.5">•</span>
                 <span>Email configuration</span>

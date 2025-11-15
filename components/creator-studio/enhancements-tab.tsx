@@ -136,10 +136,10 @@ export default function EnhancementsTab() {
         </div>
 
         {/* Overview */}
-        <Card className="border-pink-200 bg-gradient-to-br from-pink-50/50 to-rose-50/50 dark:from-pink-950/20 dark:to-rose-950/20">
+        <Card className="border-[var(--semantic-accent-light)] bg-gradient-to-br from-pink-50/50 to-rose-50/50 dark:from-pink-950/20 dark:to-rose-950/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Rocket className="h-5 w-5 text-pink-600" />
+              <Rocket className="h-5 w-5 text-[var(--semantic-accent)]" />
               Platform Capabilities
             </CardTitle>
             <CardDescription>
@@ -175,8 +175,8 @@ export default function EnhancementsTab() {
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-3 flex-1">
-                        <div className={`p-2 rounded-lg ${feature.enabled ? 'bg-pink-100 dark:bg-pink-900/20' : 'bg-muted'}`}>
-                          <Icon className={`h-4 w-4 ${feature.enabled ? 'text-pink-600' : 'text-muted-foreground'}`} />
+                        <div className={`p-2 rounded-lg ${feature.enabled ? 'bg-[var(--semantic-accent-subtle)] dark:bg-pink-900/20' : 'bg-muted'}`}>
+                          <Icon className={`h-4 w-4 ${feature.enabled ? 'text-[var(--semantic-accent)]' : 'text-muted-foreground'}`} />
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
@@ -206,12 +206,12 @@ export default function EnhancementsTab() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">Beta Features</h3>
-            <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
+            <Badge variant="secondary" className="bg-[var(--semantic-warning-bg)] text-[var(--semantic-warning-dark)] dark:bg-yellow-900/20 dark:text-[var(--semantic-warning)]">
               <Flag className="h-3 w-3 mr-1" />
               Experimental
             </Badge>
           </div>
-          <Card className="border-yellow-200 bg-yellow-50/50 dark:bg-yellow-950/10">
+          <Card className="border-[var(--semantic-warning-bg)] bg-[var(--semantic-warning-bg)]/50 dark:bg-yellow-950/10">
             <CardHeader className="pb-3">
               <CardDescription className="text-xs">
                 Beta features are experimental and may change. Enable at your own risk.
@@ -221,9 +221,9 @@ export default function EnhancementsTab() {
               {betaFeatures.map((feature) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={feature.id} className="flex items-center justify-between p-3 bg-white dark:bg-black/20 rounded-lg border border-yellow-200/50">
+                  <div key={feature.id} className="flex items-center justify-between p-3 bg-white dark:bg-black/20 rounded-lg border border-[var(--semantic-warning-bg)]/50">
                     <div className="flex items-center gap-3">
-                      <Icon className="h-4 w-4 text-yellow-600" />
+                      <Icon className="h-4 w-4 text-[var(--semantic-warning)]" />
                       <div>
                         <p className="text-sm font-medium">{feature.title}</p>
                         <p className="text-xs text-muted-foreground">{feature.description}</p>

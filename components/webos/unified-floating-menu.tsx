@@ -425,7 +425,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
                     "transition-all duration-300"
                   )}>
                     <Zap 
-                      className="w-6 h-6 text-purple-500 transition-colors duration-300"
+                      className="w-6 h-6 text-[var(--semantic-accent)] transition-colors duration-300"
                       strokeWidth={2}
                       style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.12))' }}
                     />

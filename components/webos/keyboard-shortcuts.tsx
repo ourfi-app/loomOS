@@ -86,7 +86,7 @@ export function KeyboardShortcuts() {
         {/* Header */}
         <div className="bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-4 flex items-center justify-between border-b border-[var(--semantic-border-medium)]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-[var(--semantic-accent)] flex items-center justify-center">
               <Command className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -96,7 +96,7 @@ export function KeyboardShortcuts() {
           </div>
           <button
             onClick={() => setShowHelp(false)}
-            className="w-8 h-8 rounded-full hover:bg-gray-300 flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-[var(--semantic-bg-muted)] flex items-center justify-center transition-colors"
             aria-label="Close keyboard shortcuts"
           >
             <X className="w-5 h-5 text-[var(--semantic-text-secondary)]" />
@@ -141,9 +141,9 @@ export function KeyboardShortcuts() {
             ))}
           </div>
           
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="text-sm font-semibold text-blue-900 mb-2">General Navigation</h3>
-            <ul className="text-xs text-blue-800 space-y-1">
+          <div className="mt-6 p-4 bg-[var(--semantic-primary-subtle)] rounded-lg border border-[var(--semantic-primary-light)]">
+            <h3 className="text-sm font-semibold text-[var(--semantic-primary-dark)] mb-2">General Navigation</h3>
+            <ul className="text-xs text-[var(--semantic-primary-dark)] space-y-1">
               <li>• <kbd className="px-1 py-0.5 bg-white rounded text-xs">Tab</kbd> - Move focus forward</li>
               <li>• <kbd className="px-1 py-0.5 bg-white rounded text-xs">Shift+Tab</kbd> - Move focus backward</li>
               <li>• <kbd className="px-1 py-0.5 bg-white rounded text-xs">Enter</kbd> or <kbd className="px-1 py-0.5 bg-white rounded text-xs">Space</kbd> - Activate button</li>

@@ -1,0 +1,872 @@
+================================================================================
+COMPREHENSIVE WEBOS STYLING AUDIT REPORT
+================================================================================
+
+## EXECUTIVE SUMMARY
+Total Issues Found: 371
+Total Files Affected: 116
+
+## ISSUES BY CATEGORY
+
+### Hardcoded hex colors
+   Issues: 118 across 17 files
+
+### RGB/RGBA colors
+   Issues: 45 across 17 files
+
+### Tailwind gray classes
+   Issues: 2 across 2 files
+
+### Tailwind blue classes
+   Issues: 18 across 9 files
+
+### Tailwind red classes
+   Issues: 20 across 10 files
+
+### Tailwind green classes
+   Issues: 19 across 12 files
+
+### Tailwind yellow classes
+   Issues: 20 across 10 files
+
+### Tailwind orange classes
+   Issues: 22 across 14 files
+
+### Tailwind purple classes
+   Issues: 19 across 10 files
+
+### Tailwind indigo classes
+   Issues: 6 across 1 files
+
+### Tailwind pink classes
+   Issues: 5 across 4 files
+
+### Tailwind slate classes
+   Issues: 18 across 3 files
+
+### Tailwind zinc classes
+   Issues: 0 across 0 files
+
+### Tailwind neutral classes
+   Issues: 59 across 7 files
+
+### Tailwind stone classes
+   Issues: 0 across 0 files
+
+
+================================================================================
+## DETAILED BREAKDOWN BY CATEGORY
+================================================================================
+
+
+### HARDCODED HEX COLORS
+Pattern: #[0-9A-Fa-f]{6}\b|#[0-9A-Fa-f]{3}\b
+Total Issues: 118
+Files Affected: 17
+
+Top 20 Files with Most Issues:
+  app/auth/register/page.tsx: 23 issues
+  components/webos/notification-dashboard.tsx: 19 issues
+  app/dashboard/apps/designer/page.tsx: 16 issues
+  app/page.tsx: 14 issues
+  components/loomos/Dock.tsx: 12 issues
+  components/onboarding/complete-step.tsx: 8 issues
+  components/maps/MapboxMap.tsx: 7 issues
+  app/auth/login/page.tsx: 4 issues
+  components/designer/drag-drop-canvas.tsx: 3 issues
+  components/macos/window-chrome.tsx: 3 issues
+  app/layout.tsx: 2 issues
+  components/web-builder/registry/components/Text.tsx: 2 issues
+  app/dashboard/admin/association/page.tsx: 1 issues
+  components/webos/app-grid-launcher.tsx: 1 issues
+  components/webos/app-detail-modal.tsx: 1 issues
+  components/web-builder/registry/components/Container.tsx: 1 issues
+  components/macos/app-layout.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: app/auth/register/page.tsx
+  Line 163: #4285F4
+  Context: fill="#4285F4"
+
+  File: app/auth/register/page.tsx
+  Line 167: #34A853
+  Context: fill="#34A853"
+
+  File: components/webos/notification-dashboard.tsx
+  Line 121: #080907
+  Context: <div className="bg-[#080907] text-white px-4 py-3 flex items-center justify-between">
+
+  File: components/webos/notification-dashboard.tsx
+  Line 126: #0066CC
+  Context: <span className="bg-[#0066CC] text-white text-xs px-2 py-0.5 rounded-full font-medium">
+
+  File: app/dashboard/apps/designer/page.tsx
+  Line 86: #3B82F6
+  Context: primary: '#3B82F6',
+
+  File: app/dashboard/apps/designer/page.tsx
+  Line 87: #6366F1
+  Context: secondary: '#6366F1',
+
+  File: app/page.tsx
+  Line 411: #EAEAEA
+  Context: <div id="design" className="py-24 bg-gradient-to-b from-[#EAEAEA] to-white">
+
+  File: app/page.tsx
+  Line 439: #F18825
+  Context: #F18825 orange accent
+
+  File: components/loomos/Dock.tsx
+  Line 256: #3B82F6
+  Context: color1: '#3B82F6',
+
+  File: components/loomos/Dock.tsx
+  Line 257: #1D4ED8
+  Context: color2: '#1D4ED8',
+
+--------------------------------------------------------------------------------
+
+### RGB/RGBA COLORS
+Pattern: rgba?\([^)]+\)
+Total Issues: 45
+Files Affected: 17
+
+Top 20 Files with Most Issues:
+  app/page.tsx: 8 issues
+  components/widgets/search-assistant-bar.tsx: 6 issues
+  components/webos/unified-floating-menu.tsx: 4 issues
+  components/webos/app-dock.tsx: 4 issues
+  app/onboarding/OnboardingClient.tsx: 3 issues
+  components/webos/desktop-search-bar.tsx: 3 issues
+  app/auth/super-admin-login/page.tsx: 2 issues
+  components/welcome-tutorial.tsx: 2 issues
+  components/webos/desktop-top-bar.tsx: 2 issues
+  components/webos/card-3d-view.tsx: 2 issues
+  components/onboarding/user-onboarding-modal.tsx: 2 issues
+  components/onboarding/complete-step.tsx: 2 issues
+  components/webos/loom-context-menu.tsx: 1 issues
+  components/webos/loom-icon.tsx: 1 issues
+  components/webos/loomos-container.tsx: 1 issues
+  components/maps/MapboxMap.tsx: 1 issues
+  components/loomos/JustType.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: app/page.tsx
+  Line 158: rgba(241, 136, 37, 0.03)
+  Context: linear-gradient(rgba(241, 136, 37, 0.03) 1px, transparent 1px),
+
+  File: app/page.tsx
+  Line 159: rgba(241, 136, 37, 0.03)
+  Context: linear-gradient(90deg, rgba(241, 136, 37, 0.03) 1px, transparent 1px)
+
+  File: components/widgets/search-assistant-bar.tsx
+  Line 148: rgba(0,0,0,0.12)
+  Context: 'shadow-[0_8px_32px_rgba(0,0,0,0.12)]',
+
+  File: components/widgets/search-assistant-bar.tsx
+  Line 149: rgba(0,0,0,0.16)
+  Context: isFocused && 'bg-white/8 border-white/20 shadow-[0_12px_48px_rgba(0,0,0,0.16)]'
+
+  File: components/webos/unified-floating-menu.tsx
+  Line 255: rgba(0,0,0,0.1)
+  Context: "shadow-[0_-4px_24px_rgba(0,0,0,0.1)]",
+
+  File: components/webos/unified-floating-menu.tsx
+  Line 361: rgba(0,0,0,0.12)
+  Context: style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.12))' }}
+
+  File: components/webos/app-dock.tsx
+  Line 575: rgba(255, 255, 255, 0.7)
+  Context: background: 'rgba(255, 255, 255, 0.7)',
+
+  File: components/webos/app-dock.tsx
+  Line 578: rgba(0, 120, 255, 0.5)
+  Context: border: isDragOver ? '2px solid rgba(0, 120, 255, 0.5)' : '1px solid rgba(0, 0, 0, 0.08)',
+
+  File: app/onboarding/OnboardingClient.tsx
+  Line 458: rgba(59, 130, 246, 0.39)
+  Context: "0 4px 14px 0 rgba(59, 130, 246, 0.39)",
+
+  File: app/onboarding/OnboardingClient.tsx
+  Line 459: rgba(59, 130, 246, 0.5)
+  Context: "0 6px 20px 0 rgba(59, 130, 246, 0.5)",
+
+--------------------------------------------------------------------------------
+
+### TAILWIND GRAY CLASSES
+Pattern: (text|bg|border)-gray-\d+
+Total Issues: 2
+Files Affected: 2
+
+Top 20 Files with Most Issues:
+  app/web-builder/page.tsx: 1 issues
+  components/web-builder/panes/CanvasPane.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: app/web-builder/page.tsx
+  Line 10: bg-gray-950
+  Context: <div className="flex items-center justify-center min-h-screen bg-[var(--semantic-surface-hover)] dar
+
+  File: components/web-builder/panes/CanvasPane.tsx
+  Line 36: bg-gray-950
+  Context: <div className="flex flex-col h-full webos-gradient-bg dark:bg-gray-950">
+
+--------------------------------------------------------------------------------
+
+### TAILWIND BLUE CLASSES
+Pattern: (text|bg|border)-blue-\d+
+Total Issues: 18
+Files Affected: 9
+
+Top 20 Files with Most Issues:
+  app/dashboard/marketplace/page.tsx: 4 issues
+  app/error.tsx: 3 issues
+  components/designer/validation-panel.tsx: 3 issues
+  app/page.tsx: 2 issues
+  components/webos/app-detail-modal.tsx: 2 issues
+  app/dashboard/super-admin/domains/page.tsx: 1 issues
+  components/webos/widgets/desktop-notes-widget.tsx: 1 issues
+  components/designer/testing-panel.tsx: 1 issues
+  components/widgets/notes-widget.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: app/dashboard/marketplace/page.tsx
+  Line 618: bg-blue-950
+  Context: <div className="space-y-3 p-4 bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/30 rounded-lg bor
+
+  File: app/dashboard/marketplace/page.tsx
+  Line 618: border-blue-900
+  Context: <div className="space-y-3 p-4 bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/30 rounded-lg bor
+
+  File: app/error.tsx
+  Line 64: bg-blue-950
+  Context: <div className="bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/20 rounded-lg p-4 border border
+
+  File: app/error.tsx
+  Line 64: border-blue-900
+  Context: <div className="bg-[var(--semantic-primary-subtle)] dark:bg-blue-950/20 rounded-lg p-4 border border
+
+  File: components/designer/validation-panel.tsx
+  Line 303: bg-blue-950
+  Context: <Alert className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)] dark:bg
+
+  File: components/designer/validation-panel.tsx
+  Line 307: text-blue-100
+  Context: <div className="font-semibold text-[var(--semantic-primary-dark)] dark:text-blue-100">
+
+  File: app/page.tsx
+  Line 616: text-blue-300
+  Context: <div className="ml-4 text-blue-300">{`{ Card, Button }`}</div>
+
+  File: app/page.tsx
+  Line 621: text-blue-300
+  Context: <div className="ml-4 text-blue-300">MyApp</div>
+
+  File: components/webos/app-detail-modal.tsx
+  Line 139: text-blue-300
+  Context: <span className="px-2 py-0.5 bg-[var(--semantic-primary)]/20 text-blue-300 text-xs font-medium round
+
+  File: components/webos/app-detail-modal.tsx
+  Line 368: text-blue-300
+  Context: ? "bg-[var(--semantic-primary)]/20 text-blue-300 border border-[var(--semantic-primary)]/30"
+
+--------------------------------------------------------------------------------
+
+### TAILWIND RED CLASSES
+Pattern: (text|bg|border)-red-\d+
+Total Issues: 20
+Files Affected: 10
+
+Top 20 Files with Most Issues:
+  app/auth/super-admin-login/page.tsx: 6 issues
+  components/designer/testing-panel.tsx: 3 issues
+  components/webos/widgets/desktop-tasks-widget.tsx: 2 issues
+  components/web-builder/properties/PropertiesPanel.tsx: 2 issues
+  components/ui/toast.tsx: 2 issues
+  app/dashboard/apps/accounting/page.tsx: 1 issues
+  components/webos/app-detail-modal.tsx: 1 issues
+  components/integration/activity-timeline.tsx: 1 issues
+  components/widgets/tasks-widget.tsx: 1 issues
+  components/widgets/optimized-task-widget.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: app/auth/super-admin-login/page.tsx
+  Line 75: text-red-100
+  Context: className="inline-flex items-center gap-2 text-sm text-red-100 hover:text-white transition-colors"
+
+  File: app/auth/super-admin-login/page.tsx
+  Line 86: text-red-950
+  Context: <h1 className="text-3xl font-bold text-red-950">Super Admin Access</h1>
+
+  File: components/designer/testing-panel.tsx
+  Line 135: bg-red-950
+  Context: <Card className="p-4 border-[var(--semantic-error-border)] bg-[var(--semantic-error-bg)] dark:bg-red
+
+  File: components/designer/testing-panel.tsx
+  Line 206: bg-red-950
+  Context: return 'border-[var(--semantic-error-border)] bg-[var(--semantic-error-bg)] dark:bg-red-950/20';
+
+  File: components/webos/widgets/desktop-tasks-widget.tsx
+  Line 170: bg-red-950
+  Context: <div className="mx-4 mt-3 p-2.5 bg-[var(--semantic-error-bg)] dark:bg-red-950/20 rounded-lg flex ite
+
+  File: components/webos/widgets/desktop-tasks-widget.tsx
+  Line 170: border-red-900
+  Context: <div className="mx-4 mt-3 p-2.5 bg-[var(--semantic-error-bg)] dark:bg-red-950/20 rounded-lg flex ite
+
+  File: components/web-builder/properties/PropertiesPanel.tsx
+  Line 79: bg-red-900
+  Context: 'bg-[var(--semantic-error-bg)] dark:bg-red-900/20 text-[var(--semantic-error)] dark:text-[var(--sema
+
+  File: components/web-builder/properties/PropertiesPanel.tsx
+  Line 80: bg-red-900
+  Context: 'hover:bg-[var(--semantic-error-bg)] dark:hover:bg-red-900/40 font-medium text-sm'
+
+  File: components/ui/toast.tsx
+  Line 81: text-red-300
+  Context: "absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-fo
+
+  File: components/ui/toast.tsx
+  Line 81: text-red-50
+  Context: "absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-fo
+
+--------------------------------------------------------------------------------
+
+### TAILWIND GREEN CLASSES
+Pattern: (text|bg|border)-green-\d+
+Total Issues: 19
+Files Affected: 12
+
+Top 20 Files with Most Issues:
+  components/designer/testing-panel.tsx: 3 issues
+  app/dashboard/apps/accounting/page.tsx: 2 issues
+  components/webos/app-detail-modal.tsx: 2 issues
+  components/webos/widgets/desktop-notes-widget.tsx: 2 issues
+  components/designer/validation-panel.tsx: 2 issues
+  components/widgets/notes-widget.tsx: 2 issues
+  app/page.tsx: 1 issues
+  app/dashboard/apps/enhancements/page.tsx: 1 issues
+  app/dashboard/admin/import-units/page.tsx: 1 issues
+  components/onboarding/association-info-step.tsx: 1 issues
+  components/onboarding/user-onboarding-modal.tsx: 1 issues
+  components/onboarding/residents-step.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: components/designer/testing-panel.tsx
+  Line 128: bg-green-950
+  Context: <Card className="p-4 border-[var(--semantic-success-bg)] bg-[var(--semantic-success-bg)] dark:bg-gre
+
+  File: components/designer/testing-panel.tsx
+  Line 204: bg-green-950
+  Context: return 'border-[var(--semantic-success-bg)] bg-[var(--semantic-success-bg)] dark:bg-green-950/20';
+
+  File: app/dashboard/apps/accounting/page.tsx
+  Line 155: bg-green-900
+  Context: ? 'bg-[var(--semantic-success-bg)] dark:bg-green-900/20'
+
+  File: app/dashboard/apps/accounting/page.tsx
+  Line 241: bg-green-900
+  Context: <div className="p-3 rounded-lg bg-[var(--semantic-success-bg)] dark:bg-green-900/20">
+
+  File: components/webos/app-detail-modal.tsx
+  Line 133: text-green-300
+  Context: <span className="px-2 py-0.5 bg-[var(--semantic-success)]/20 text-green-300 text-xs font-medium roun
+
+  File: components/webos/app-detail-modal.tsx
+  Line 380: text-green-300
+  Context: ? "bg-[var(--semantic-success)]/20 text-green-300 border border-[var(--semantic-success)]/30"
+
+  File: components/webos/widgets/desktop-notes-widget.tsx
+  Line 88: bg-green-900
+  Context: case 'green': return 'bg-[var(--semantic-success-bg)] dark:bg-green-900/20 border-[var(--semantic-su
+
+  File: components/webos/widgets/desktop-notes-widget.tsx
+  Line 88: border-green-800
+  Context: case 'green': return 'bg-[var(--semantic-success-bg)] dark:bg-green-900/20 border-[var(--semantic-su
+
+  File: components/designer/validation-panel.tsx
+  Line 288: text-green-900
+  Context: case 'low': return 'bg-[var(--semantic-success-bg)] text-green-900';
+
+  File: components/designer/validation-panel.tsx
+  Line 297: text-green-900
+  Context: case 'low': return 'bg-[var(--semantic-success-bg)] text-green-900';
+
+--------------------------------------------------------------------------------
+
+### TAILWIND YELLOW CLASSES
+Pattern: (text|bg|border)-yellow-\d+
+Total Issues: 20
+Files Affected: 10
+
+Top 20 Files with Most Issues:
+  components/designer/validation-panel.tsx: 7 issues
+  app/dashboard/admin/import-units/page.tsx: 2 issues
+  components/webos/widgets/desktop-notes-widget.tsx: 2 issues
+  components/creator-studio/enhancements-tab.tsx: 2 issues
+  components/widgets/notes-widget.tsx: 2 issues
+  app/page.tsx: 1 issues
+  app/auth/super-admin-login/page.tsx: 1 issues
+  components/webos/responsive-app-launcher.tsx: 1 issues
+  components/designer/testing-panel.tsx: 1 issues
+  components/loomos/ui/WindowFrame.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: components/designer/validation-panel.tsx
+  Line 259: bg-yellow-950
+  Context: <Alert className="border-[var(--semantic-warning-bg)] bg-[var(--semantic-warning-bg)] dark:bg-yellow
+
+  File: components/designer/validation-panel.tsx
+  Line 263: text-yellow-900
+  Context: <div className="font-semibold text-yellow-900 dark:text-yellow-100">
+
+  File: app/dashboard/admin/import-units/page.tsx
+  Line 359: bg-yellow-600
+  Context: <Badge variant="secondary" className="bg-yellow-600 text-white">
+
+  File: app/dashboard/admin/import-units/page.tsx
+  Line 401: bg-yellow-600
+  Context: <Badge variant="secondary" className="bg-yellow-600 text-white">
+
+  File: components/webos/widgets/desktop-notes-widget.tsx
+  Line 86: bg-yellow-900
+  Context: case 'yellow': return 'bg-[var(--semantic-warning-bg)] dark:bg-yellow-900/20 border-[var(--semantic-
+
+  File: components/webos/widgets/desktop-notes-widget.tsx
+  Line 86: border-yellow-800
+  Context: case 'yellow': return 'bg-[var(--semantic-warning-bg)] dark:bg-yellow-900/20 border-[var(--semantic-
+
+  File: components/creator-studio/enhancements-tab.tsx
+  Line 209: bg-yellow-900
+  Context: <Badge variant="secondary" className="bg-[var(--semantic-warning-bg)] text-[var(--semantic-warning-d
+
+  File: components/creator-studio/enhancements-tab.tsx
+  Line 214: bg-yellow-950
+  Context: <Card className="border-[var(--semantic-warning-bg)] bg-[var(--semantic-warning-bg)]/50 dark:bg-yell
+
+  File: components/widgets/notes-widget.tsx
+  Line 100: bg-yellow-900
+  Context: case 'yellow': return 'bg-[var(--semantic-warning-bg)] dark:bg-yellow-900/20 border-[var(--semantic-
+
+  File: components/widgets/notes-widget.tsx
+  Line 100: border-yellow-800
+  Context: case 'yellow': return 'bg-[var(--semantic-warning-bg)] dark:bg-yellow-900/20 border-[var(--semantic-
+
+--------------------------------------------------------------------------------
+
+### TAILWIND ORANGE CLASSES
+Pattern: (text|bg|border)-orange-\d+
+Total Issues: 22
+Files Affected: 14
+
+Top 20 Files with Most Issues:
+  app/dashboard/building-services/page.tsx: 4 issues
+  components/onboarding/settings-step.tsx: 4 issues
+  app/dashboard/developer/apps/[appId]/page.tsx: 2 issues
+  app/dashboard/admin/settings/page.tsx: 2 issues
+  app/dashboard/apps/accounting/page.tsx: 1 issues
+  app/dashboard/developer/page.tsx: 1 issues
+  app/dashboard/developer/apps/new/page.tsx: 1 issues
+  components/webos/loomos-list-pane.tsx: 1 issues
+  components/webos/card-stack-manager.tsx: 1 issues
+  components/webos/loomos-action-button.tsx: 1 issues
+  components/webos/loomos-nav-list-item.tsx: 1 issues
+  components/webos/widgets/desktop-stats-widget.tsx: 1 issues
+  components/integration/activity-timeline.tsx: 1 issues
+  components/designer/testing-panel.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: app/dashboard/building-services/page.tsx
+  Line 137: bg-orange-950
+  Context: <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)] dark:bg-
+
+  File: app/dashboard/building-services/page.tsx
+  Line 142: text-orange-900
+  Context: <h3 className="font-semibold text-orange-900 dark:text-orange-100">
+
+  File: components/onboarding/settings-step.tsx
+  Line 106: border-orange-500
+  Context: className="pl-10 h-11 border-[var(--semantic-border-medium)] focus:border-orange-500 focus:ring-oran
+
+  File: components/onboarding/settings-step.tsx
+  Line 128: border-orange-500
+  Context: className="h-11 border-[var(--semantic-border-medium)] focus:border-orange-500 focus:ring-orange-500
+
+  File: app/dashboard/developer/apps/[appId]/page.tsx
+  Line 83: border-orange-500
+  Context: <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500" />
+
+  File: app/dashboard/developer/apps/[appId]/page.tsx
+  Line 172: border-orange-500
+  Context: ? 'border-b-2 border-orange-500 text-[var(--semantic-primary)] font-semibold'
+
+  File: app/dashboard/admin/settings/page.tsx
+  Line 381: text-orange-900
+  Context: <h4 className="font-medium text-orange-900 mb-1">Important Notice</h4>
+
+  File: app/dashboard/admin/settings/page.tsx
+  Line 382: text-orange-800
+  Context: <p className="text-sm text-orange-800">
+
+  File: app/dashboard/apps/accounting/page.tsx
+  Line 269: bg-orange-900
+  Context: <div className="p-3 rounded-lg bg-[var(--semantic-primary-subtle)] dark:bg-orange-900/20">
+
+  File: app/dashboard/developer/page.tsx
+  Line 107: border-orange-500
+  Context: <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500" />
+
+--------------------------------------------------------------------------------
+
+### TAILWIND PURPLE CLASSES
+Pattern: (text|bg|border)-purple-\d+
+Total Issues: 19
+Files Affected: 10
+
+Top 20 Files with Most Issues:
+  components/onboarding/email-setup-step.tsx: 4 issues
+  components/onboarding/user-onboarding-modal.tsx: 3 issues
+  app/page.tsx: 2 issues
+  components/webos/unified-floating-menu.tsx: 2 issues
+  components/webos/widgets/desktop-notes-widget.tsx: 2 issues
+  components/widgets/notes-widget.tsx: 2 issues
+  app/dashboard/apps/accounting/page.tsx: 1 issues
+  components/webos/widgets/desktop-stats-widget.tsx: 1 issues
+  components/integration/activity-timeline.tsx: 1 issues
+  components/designer/testing-panel.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: components/onboarding/email-setup-step.tsx
+  Line 177: border-purple-500
+  Context: className="font-mono h-11 border-[var(--semantic-border-medium)] focus:border-purple-500 focus:ring-
+
+  File: components/onboarding/email-setup-step.tsx
+  Line 194: border-purple-500
+  Context: className="h-11 border-[var(--semantic-border-medium)] focus:border-purple-500 focus:ring-purple-500
+
+  File: components/onboarding/user-onboarding-modal.tsx
+  Line 468: text-purple-900
+  Context: <h4 className="font-semibold text-purple-900">AI Assistant</h4>
+
+  File: components/onboarding/user-onboarding-modal.tsx
+  Line 469: text-purple-800
+  Context: <p className="text-sm text-purple-800">
+
+  File: app/page.tsx
+  Line 615: text-purple-300
+  Context: <div className="text-purple-300">import</div>
+
+  File: app/page.tsx
+  Line 617: text-purple-300
+  Context: <div className="text-purple-300">from</div>
+
+  File: components/webos/unified-floating-menu.tsx
+  Line 422: border-purple-500
+  Context: "border border-purple-500/20",
+
+  File: components/webos/unified-floating-menu.tsx
+  Line 423: border-purple-500
+  Context: "group-hover:border-purple-500/30",
+
+  File: components/webos/widgets/desktop-notes-widget.tsx
+  Line 89: bg-purple-900
+  Context: case 'purple': return 'bg-[var(--semantic-accent-subtle)] dark:bg-purple-900/20 border-[var(--semant
+
+  File: components/webos/widgets/desktop-notes-widget.tsx
+  Line 89: border-purple-800
+  Context: case 'purple': return 'bg-[var(--semantic-accent-subtle)] dark:bg-purple-900/20 border-[var(--semant
+
+--------------------------------------------------------------------------------
+
+### TAILWIND INDIGO CLASSES
+Pattern: (text|bg|border)-indigo-\d+
+Total Issues: 6
+Files Affected: 1
+
+Top 20 Files with Most Issues:
+  components/onboarding/officers-step.tsx: 6 issues
+
+Sample Issues (first 10):
+  File: components/onboarding/officers-step.tsx
+  Line 138: border-indigo-300
+  Context: className="group border-2 rounded-xl p-5 bg-white/80 backdrop-blur-sm border-[var(--semantic-border-
+
+  File: components/onboarding/officers-step.tsx
+  Line 179: border-indigo-500
+  Context: className="h-10 border-[var(--semantic-border-medium)] focus:border-indigo-500 focus:ring-indigo-500
+
+--------------------------------------------------------------------------------
+
+### TAILWIND PINK CLASSES
+Pattern: (text|bg|border)-pink-\d+
+Total Issues: 5
+Files Affected: 4
+
+Top 20 Files with Most Issues:
+  components/widgets/notes-widget.tsx: 2 issues
+  components/webos/widgets/desktop-stats-widget.tsx: 1 issues
+  components/integration/activity-timeline.tsx: 1 issues
+  components/creator-studio/enhancements-tab.tsx: 1 issues
+
+Sample Issues (first 10):
+  File: components/widgets/notes-widget.tsx
+  Line 104: bg-pink-900
+  Context: case 'pink': return 'bg-[var(--semantic-accent-subtle)] dark:bg-pink-900/20 border-[var(--semantic-a
+
+  File: components/widgets/notes-widget.tsx
+  Line 104: border-pink-800
+  Context: case 'pink': return 'bg-[var(--semantic-accent-subtle)] dark:bg-pink-900/20 border-[var(--semantic-a
+
+  File: components/webos/widgets/desktop-stats-widget.tsx
+  Line 133: border-pink-500
+  Context: pink: { bg: 'bg-[var(--semantic-accent)]/10', text: 'text-[var(--semantic-accent)]', border: 'border
+
+  File: components/integration/activity-timeline.tsx
+  Line 235: bg-pink-900
+  Context: return 'text-[var(--semantic-accent)] bg-[var(--semantic-accent-subtle)] dark:bg-pink-900/20';
+
+  File: components/creator-studio/enhancements-tab.tsx
+  Line 178: bg-pink-900
+  Context: <div className={`p-2 rounded-lg ${feature.enabled ? 'bg-[var(--semantic-accent-subtle)] dark:bg-pink
+
+--------------------------------------------------------------------------------
+
+### TAILWIND SLATE CLASSES
+Pattern: (text|bg|border)-slate-\d+
+Total Issues: 18
+Files Affected: 3
+
+Top 20 Files with Most Issues:
+  app/offline/page.tsx: 9 issues
+  app/error.tsx: 7 issues
+  components/webos/pwa-install-prompt.tsx: 2 issues
+
+Sample Issues (first 10):
+  File: app/offline/page.tsx
+  Line 50: bg-slate-900
+  Context: <div className="bg-slate-900/50 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overf
+
+  File: app/offline/page.tsx
+  Line 67: text-slate-400
+  Context: <WifiOff className="w-12 h-12 text-slate-400" />
+
+  File: app/error.tsx
+  Line 37: text-slate-400
+  Context: <CardDescription className="text-lg text-[var(--semantic-text-secondary)] dark:text-slate-400">
+
+  File: app/error.tsx
+  Line 44: bg-slate-900
+  Context: <div className="bg-[var(--semantic-bg-subtle)] dark:bg-slate-900/50 rounded-lg p-4 border border-[va
+
+  File: components/webos/pwa-install-prompt.tsx
+  Line 104: text-slate-400
+  Context: <p className="text-sm text-slate-400">
+
+  File: components/webos/pwa-install-prompt.tsx
+  Line 155: text-slate-300
+  Context: className="flex items-center gap-3 text-slate-300"
+
+--------------------------------------------------------------------------------
+
+### TAILWIND NEUTRAL CLASSES
+Pattern: (text|bg|border)-neutral-\d+
+Total Issues: 59
+Files Affected: 7
+
+Top 20 Files with Most Issues:
+  components/webos/loomos-breadcrumb-enhanced.tsx: 15 issues
+  components/webos/loomos-pane-container.tsx: 10 issues
+  components/webos/loomos-list-divider.tsx: 8 issues
+  components/webos/loomos-swipe-navigation.tsx: 7 issues
+  components/webos/loomos-drawer-item.tsx: 7 issues
+  components/webos/loomos-group-box.tsx: 6 issues
+  components/webos/loomos-list-item-enhanced.tsx: 6 issues
+
+Sample Issues (first 10):
+  File: components/webos/loomos-breadcrumb-enhanced.tsx
+  Line 67: text-neutral-400
+  Context: 'text-sm text-[var(--semantic-text-secondary)] dark:text-neutral-400',
+
+  File: components/webos/loomos-breadcrumb-enhanced.tsx
+  Line 68: text-neutral-100
+  Context: 'hover:text-[var(--semantic-text-primary)] dark:hover:text-neutral-100',
+
+  File: components/webos/loomos-pane-container.tsx
+  Line 163: border-neutral-700
+  Context: type === 'navigation' && 'border-r border-[var(--semantic-border-light)] dark:border-neutral-700 bg-
+
+  File: components/webos/loomos-pane-container.tsx
+  Line 163: bg-neutral-900
+  Context: type === 'navigation' && 'border-r border-[var(--semantic-border-light)] dark:border-neutral-700 bg-
+
+  File: components/webos/loomos-list-divider.tsx
+  Line 45: bg-neutral-800
+  Context: 'bg-[var(--semantic-surface-hover)] dark:bg-neutral-800',
+
+  File: components/webos/loomos-list-divider.tsx
+  Line 46: text-neutral-400
+  Context: 'text-[var(--semantic-text-secondary)] dark:text-neutral-400',
+
+  File: components/webos/loomos-swipe-navigation.tsx
+  Line 112: border-neutral-700
+  Context: <div className="flex border-b border-[var(--semantic-border-light)] dark:border-neutral-700 bg-white
+
+  File: components/webos/loomos-swipe-navigation.tsx
+  Line 112: bg-neutral-900
+  Context: <div className="flex border-b border-[var(--semantic-border-light)] dark:border-neutral-700 bg-white
+
+  File: components/webos/loomos-drawer-item.tsx
+  Line 75: border-neutral-700
+  Context: 'border-b border-[var(--semantic-border-light)] dark:border-neutral-700',
+
+  File: components/webos/loomos-drawer-item.tsx
+  Line 86: bg-neutral-800
+  Context: 'hover:bg-[var(--semantic-surface-hover)] dark:hover:bg-neutral-800',
+
+--------------------------------------------------------------------------------
+
+================================================================================
+## FILES REQUIRING ATTENTION (Top 30)
+================================================================================
+
+1. app/page.tsx
+   Total Issues: 28
+   Categories: Hardcoded hex colors: 14, RGB/RGBA colors: 8, Tailwind blue classes: 2, Tailwind green classes: 1, Tailwind yellow classes: 1, Tailwind purple classes: 2
+
+2. app/auth/register/page.tsx
+   Total Issues: 23
+   Categories: Hardcoded hex colors: 23
+
+3. components/webos/notification-dashboard.tsx
+   Total Issues: 19
+   Categories: Hardcoded hex colors: 19
+
+4. app/dashboard/apps/designer/page.tsx
+   Total Issues: 16
+   Categories: Hardcoded hex colors: 16
+
+5. components/webos/loomos-breadcrumb-enhanced.tsx
+   Total Issues: 15
+   Categories: Tailwind neutral classes: 15
+
+6. components/loomos/Dock.tsx
+   Total Issues: 12
+   Categories: Hardcoded hex colors: 12
+
+7. components/designer/validation-panel.tsx
+   Total Issues: 12
+   Categories: Tailwind blue classes: 3, Tailwind green classes: 2, Tailwind yellow classes: 7
+
+8. components/onboarding/complete-step.tsx
+   Total Issues: 10
+   Categories: Hardcoded hex colors: 8, RGB/RGBA colors: 2
+
+9. app/error.tsx
+   Total Issues: 10
+   Categories: Tailwind blue classes: 3, Tailwind slate classes: 7
+
+10. components/designer/testing-panel.tsx
+   Total Issues: 10
+   Categories: Tailwind blue classes: 1, Tailwind green classes: 3, Tailwind yellow classes: 1, Tailwind purple classes: 1, Tailwind red classes: 3, Tailwind orange classes: 1
+
+11. components/webos/loomos-pane-container.tsx
+   Total Issues: 10
+   Categories: Tailwind neutral classes: 10
+
+12. app/auth/super-admin-login/page.tsx
+   Total Issues: 9
+   Categories: RGB/RGBA colors: 2, Tailwind yellow classes: 1, Tailwind red classes: 6
+
+13. components/widgets/notes-widget.tsx
+   Total Issues: 9
+   Categories: Tailwind blue classes: 1, Tailwind green classes: 2, Tailwind yellow classes: 2, Tailwind purple classes: 2, Tailwind pink classes: 2
+
+14. app/offline/page.tsx
+   Total Issues: 9
+   Categories: Tailwind slate classes: 9
+
+15. components/maps/MapboxMap.tsx
+   Total Issues: 8
+   Categories: Hardcoded hex colors: 7, RGB/RGBA colors: 1
+
+16. components/webos/loomos-list-divider.tsx
+   Total Issues: 8
+   Categories: Tailwind neutral classes: 8
+
+17. components/webos/widgets/desktop-notes-widget.tsx
+   Total Issues: 7
+   Categories: Tailwind blue classes: 1, Tailwind green classes: 2, Tailwind yellow classes: 2, Tailwind purple classes: 2
+
+18. components/webos/loomos-swipe-navigation.tsx
+   Total Issues: 7
+   Categories: Tailwind neutral classes: 7
+
+19. components/webos/loomos-drawer-item.tsx
+   Total Issues: 7
+   Categories: Tailwind neutral classes: 7
+
+20. components/webos/app-detail-modal.tsx
+   Total Issues: 6
+   Categories: Hardcoded hex colors: 1, Tailwind blue classes: 2, Tailwind green classes: 2, Tailwind red classes: 1
+
+21. components/webos/unified-floating-menu.tsx
+   Total Issues: 6
+   Categories: RGB/RGBA colors: 4, Tailwind purple classes: 2
+
+22. components/onboarding/user-onboarding-modal.tsx
+   Total Issues: 6
+   Categories: RGB/RGBA colors: 2, Tailwind green classes: 1, Tailwind purple classes: 3
+
+23. components/widgets/search-assistant-bar.tsx
+   Total Issues: 6
+   Categories: RGB/RGBA colors: 6
+
+24. components/webos/loomos-group-box.tsx
+   Total Issues: 6
+   Categories: Tailwind neutral classes: 6
+
+25. components/webos/loomos-list-item-enhanced.tsx
+   Total Issues: 6
+   Categories: Tailwind neutral classes: 6
+
+26. components/onboarding/officers-step.tsx
+   Total Issues: 6
+   Categories: Tailwind indigo classes: 6
+
+27. app/dashboard/apps/accounting/page.tsx
+   Total Issues: 5
+   Categories: Tailwind green classes: 2, Tailwind purple classes: 1, Tailwind red classes: 1, Tailwind orange classes: 1
+
+28. app/auth/login/page.tsx
+   Total Issues: 4
+   Categories: Hardcoded hex colors: 4
+
+29. components/webos/app-dock.tsx
+   Total Issues: 4
+   Categories: RGB/RGBA colors: 4
+
+30. app/dashboard/marketplace/page.tsx
+   Total Issues: 4
+   Categories: Tailwind blue classes: 4
+
+================================================================================
+## RECOMMENDATIONS
+================================================================================
+
+1. Replace all hardcoded hex colors with CSS variables:
+   - Background colors → var(--semantic-bg-base), var(--semantic-surface-base)
+   - Text colors → var(--semantic-text-primary/secondary/tertiary)
+   - Border colors → var(--semantic-border-light/medium/strong)
+
+2. Replace Tailwind color classes with semantic classes:
+   - text-gray-X → inline styles with var(--semantic-text-X)
+   - bg-gray-X → inline styles with var(--semantic-bg-X)
+   - border-gray-X → inline styles with var(--semantic-border-X)
+
+3. Use webOS utility classes where appropriate:
+   - .webos-gradient-bg for main backgrounds
+   - .text-primary, .text-secondary, .text-tertiary for text
+   - .bg-surface for cards and surfaces
+
+4. Maintain consistency in status/feedback colors:
+   - Use semantic error, success, warning, info variables
