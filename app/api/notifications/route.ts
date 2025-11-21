@@ -119,16 +119,18 @@ export async function PATCH(request: Request) {
     const { user, session } = await validateAuthentication(request);
     const organizationId = await getCurrentOrganizationId();
 
-    // Parse request body
+    // Parse and validate request body
     const body = await request.json();
-    // TODO: Add specific validation schema for this endpoint
     const bodySchema = z.object({
-      // Define your schema here
-    });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
+      notificationId: z.string().optional(),
+      markAllAsRead: z.boolean().optional(),
+    }).refine(
+      (data) => data.notificationId || data.markAllAsRead,
+      { message: 'Either notificationId or markAllAsRead must be provided' }
+    );
+    const validatedBody = bodySchema.parse(body);
     
-    const { notificationId, markAllAsRead } = body;
+    const { notificationId, markAllAsRead } = validatedBody;
 
     let result;
     let message;

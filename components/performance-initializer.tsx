@@ -16,6 +16,10 @@ import { initDevUtils } from '@/lib/dev-utils';
 
 export function PerformanceInitializer() {
   useEffect(() => {
+    let updateInterval: NodeJS.Timeout | null = null;
+    let longTaskObserver: PerformanceObserver | null = null;
+    const loadHandlers: Array<() => void> = [];
+
     // Initialize development utilities (development only)
     if (process.env.NODE_ENV === 'development') {
       initDevUtils();
@@ -43,13 +47,12 @@ export function PerformanceInitializer() {
       'serviceWorker' in navigator
     ) {
       // Wait for page load to avoid interfering with development
-      window.addEventListener('load', () => {
+      const swLoadHandler = () => {
         registerServiceWorker()
           .then((registration) => {
             if (registration) {
-
               // Check for updates periodically
-              setInterval(() => {
+              updateInterval = setInterval(() => {
                 registration.update();
               }, 60 * 60 * 1000); // Check every hour
             }
@@ -57,7 +60,10 @@ export function PerformanceInitializer() {
           .catch((error) => {
             console.warn('[SW] Registration failed:', error);
           });
-      });
+      };
+      
+      loadHandlers.push(swLoadHandler);
+      window.addEventListener('load', swLoadHandler);
     }
 
     // Prefetch critical routes
@@ -69,23 +75,24 @@ export function PerformanceInitializer() {
         '/dashboard/tasks',
       ];
 
-      // Prefetch after page load
-      if (document.readyState === 'complete') {
+      const prefetchRoutes = () => {
         criticalRoutes.forEach((route) => {
           const link = document.createElement('link');
           link.rel = 'prefetch';
           link.href = route;
           document.head.appendChild(link);
         });
+      };
+
+      // Prefetch after page load
+      if (document.readyState === 'complete') {
+        prefetchRoutes();
       } else {
-        window.addEventListener('load', () => {
-          criticalRoutes.forEach((route) => {
-            const link = document.createElement('link');
-            link.rel = 'prefetch';
-            link.href = route;
-            document.head.appendChild(link);
-          });
-        });
+        const prefetchLoadHandler = () => {
+          prefetchRoutes();
+        };
+        loadHandlers.push(prefetchLoadHandler);
+        window.addEventListener('load', prefetchLoadHandler);
       }
     }
 
@@ -93,7 +100,7 @@ export function PerformanceInitializer() {
     if (typeof window !== 'undefined' && 'PerformanceObserver' in window) {
       // Monitor long tasks
       try {
-        const longTaskObserver = new PerformanceObserver((list) => {
+        longTaskObserver = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
             if (entry.duration > 50) {
               console.warn('[Performance] Long task detected:', {
@@ -108,6 +115,26 @@ export function PerformanceInitializer() {
         // Long task observer not supported
       }
     }
+
+    // Cleanup function
+    return () => {
+      // Clear update interval
+      if (updateInterval) {
+        clearInterval(updateInterval);
+      }
+
+      // Disconnect performance observer
+      if (longTaskObserver) {
+        longTaskObserver.disconnect();
+      }
+
+      // Remove event listeners
+      if (typeof window !== 'undefined' && loadHandlers.length > 0) {
+        loadHandlers.forEach((handler) => {
+          window.removeEventListener('load', handler);
+        });
+      }
+    };
   }, []);
 
   return null;

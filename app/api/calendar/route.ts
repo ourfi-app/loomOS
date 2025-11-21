@@ -91,50 +91,42 @@ export async function POST(req: Request) {
     const user = await validateAuthentication();
     const organizationId = await getCurrentOrganizationId();
 
-    // Parse request body
+    // Parse and validate request body
     const body = await req.json();
-    // TODO: Add specific validation schema for this endpoint
-    const bodySchema = z.object({
-      // Define your schema here
-    });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
-    
-
-    // Validate required fields
-    validateRequiredFields(body, ['title', 'startDate', 'endDate']);
+    const { createCalendarEventSchema } = await import('@/lib/validation-schemas');
+    const validatedBody = createCalendarEventSchema.parse(body);
 
     // Create event
     const event = await prisma.calendarEvent.create({
       data: {
         organizationId,
         userId: user.id,
-        title: body.title,
-        description: body.description,
-        location: body.location,
-        startDate: new Date(body.startDate),
-        endDate: new Date(body.endDate),
-        startTime: body.startTime,
-        endTime: body.endTime,
-        isAllDay: body.isAllDay || false,
-        type: body.type || 'EVENT',
-        color: body.color || 'from-blue-500 to-blue-600',
-        attendees: body.attendees || [],
-        attendeeCount: body.attendeeCount,
-        isRecurring: body.isRecurring || false,
-        recurrence: body.recurrence || 'NONE',
-        recurrenceEnd: body.recurrenceEnd ? new Date(body.recurrenceEnd) : null,
-        reminders: body.reminders || [],
-        isPrivate: body.isPrivate || false,
-        isFavorite: body.isFavorite || false,
-        category: body.category || 'personal',
+        title: validatedBody.title,
+        description: validatedBody.description,
+        location: validatedBody.location,
+        startDate: new Date(validatedBody.startDate),
+        endDate: new Date(validatedBody.endDate),
+        startTime: validatedBody.startTime,
+        endTime: validatedBody.endTime,
+        isAllDay: validatedBody.isAllDay || false,
+        type: validatedBody.type || 'EVENT',
+        color: validatedBody.color || 'from-blue-500 to-blue-600',
+        attendees: validatedBody.attendees || [],
+        attendeeCount: validatedBody.attendeeCount,
+        isRecurring: validatedBody.isRecurring || false,
+        recurrence: validatedBody.recurrence || 'NONE',
+        recurrenceEnd: validatedBody.recurrenceEnd ? new Date(validatedBody.recurrenceEnd) : null,
+        reminders: validatedBody.reminders || [],
+        isPrivate: validatedBody.isPrivate || false,
+        isFavorite: validatedBody.isFavorite || false,
+        category: validatedBody.category || 'personal',
       },
     });
 
     // Integration: Send notification if event has attendees
-    if (body.attendees && Array.isArray(body.attendees) && body.attendees.length > 0) {
+    if (validatedBody.attendees && Array.isArray(validatedBody.attendees) && validatedBody.attendees.length > 0) {
       try {
-        const attendeeIds = body.attendees
+        const attendeeIds = validatedBody.attendees
           .filter((a: any) => a.userId && a.userId !== user.id)
           .map((a: any) => a.userId);
 
