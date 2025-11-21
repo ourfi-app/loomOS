@@ -71,25 +71,25 @@ export function GlassPanel({
   onClick,
   interactive = false,
 }: GlassPanelProps) {
-  // Variant-specific backgrounds
+  // Variant-specific backgrounds - using design system tokens
   const variantBackgrounds = {
-    light: 'rgba(255, 255, 255, 0.4)',
-    medium: 'rgba(255, 255, 255, 0.8)',
-    dark: 'rgba(26, 26, 26, 0.8)',
+    light: 'var(--glass-bg-light)',
+    medium: 'var(--glass-bg)',
+    dark: 'var(--glass-bg-dark)',
   };
 
-  // Blur amounts
+  // Blur amounts - using design system tokens
   const blurAmounts = {
-    light: '8px',
-    medium: '10px',
-    strong: '16px',
+    light: 'var(--glass-blur-light)',
+    medium: 'var(--glass-blur)',
+    strong: 'var(--glass-blur-strong)',
   };
 
-  // Border colors
+  // Border colors - using design system tokens
   const borderColors = {
-    light: 'rgba(255, 255, 255, 0.3)',
-    medium: 'rgba(255, 255, 255, 0.5)',
-    dark: 'rgba(255, 255, 255, 0.1)',
+    light: 'var(--glass-border)',
+    medium: 'var(--glass-border-strong)',
+    dark: 'var(--glass-border)',
   };
 
   // Rounded classes

@@ -61,7 +61,7 @@ export function DesktopSearchBar() {
         <div 
           className="flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-light"
           style={{
-            background: 'rgba(0, 0, 0, 0.05)',
+            background: 'var(--color-neutral-100)',
             border: '1px solid var(--webos-border-secondary)',
             color: 'var(--webos-text-tertiary)',
             fontFamily: 'Helvetica Neue, monospace',

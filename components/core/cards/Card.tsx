@@ -71,28 +71,28 @@ export function Card({
     ...style,
   };
 
-  // Variant-specific styles
+  // Variant-specific styles - using design system tokens
   const variantStyles: Record<string, CSSProperties> = {
     default: {
-      backgroundColor: '#f5f5f5',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+      backgroundColor: 'var(--color-neutral-100)',
+      border: '1px solid var(--glass-border)',
+      boxShadow: 'var(--shadow-xl)',
     },
     glass: {
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      backdropFilter: 'blur(10px)',
-      WebkitBackdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255, 255, 255, 0.5)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+      backgroundColor: 'var(--glass-bg)',
+      backdropFilter: 'var(--glass-blur)',
+      WebkitBackdropFilter: 'var(--glass-blur)',
+      border: '1px solid var(--glass-border)',
+      boxShadow: 'var(--shadow-xl)',
     },
     elevated: {
-      backgroundColor: '#f5f5f5',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
-      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)',
+      backgroundColor: 'var(--color-neutral-100)',
+      border: '1px solid var(--glass-border)',
+      boxShadow: 'var(--shadow-2xl)',
     },
     flat: {
-      backgroundColor: '#f5f5f5',
-      border: '1px solid #e0e0e0',
+      backgroundColor: 'var(--color-neutral-100)',
+      border: '1px solid var(--color-neutral-200)',
       boxShadow: 'none',
     },
   };

@@ -70,8 +70,8 @@ export function Window({
       )}
       style={{
         backgroundColor: 'white',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: 'var(--shadow-2xl)',
+        border: '1px solid var(--glass-border)',
         ...style,
       }}
     >
@@ -118,7 +118,7 @@ function WindowTitleBar({
   return (
     <div
       className="flex items-center justify-between px-4 py-1.5"
-      style={{ backgroundColor: '#1a1a1a', color: '#e8e8e8' }}
+      style={{ backgroundColor: 'var(--color-neutral-900)', color: 'var(--color-neutral-100)' }}
     >
       {/* Left side - Icon and Title */}
       <div className="flex items-center space-x-2">

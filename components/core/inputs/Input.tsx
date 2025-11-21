@@ -75,19 +75,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    // Variant styles
+    // Variant styles - using design system tokens
     const variantStyles: Record<string, CSSProperties> = {
       default: {
-        backgroundColor: 'rgba(255, 255, 255, 0.6)',
-        border: '1px solid #d0d0d0',
-        color: '#4a4a4a',
+        backgroundColor: 'var(--glass-bg)',
+        border: '1px solid var(--color-neutral-300)',
+        color: 'var(--color-neutral-700)',
       },
       glass: {
-        backgroundColor: 'rgba(255, 255, 255, 0.6)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.5)',
-        color: '#4a4a4a',
+        backgroundColor: 'var(--glass-bg)',
+        backdropFilter: 'var(--glass-blur)',
+        WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
+        color: 'var(--color-neutral-700)',
       },
     };
 
@@ -96,7 +96,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             className="block text-xs font-light tracking-wider mb-2 uppercase"
-            style={{ color: '#6a6a6a' }}
+            style={{ color: 'var(--color-neutral-600)' }}
           >
             {label}
           </label>
@@ -238,7 +238,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             className="block text-xs font-light tracking-wider mb-2 uppercase"
-            style={{ color: '#6a6a6a' }}
+            style={{ color: 'var(--color-neutral-600)' }}
           >
             {label}
           </label>

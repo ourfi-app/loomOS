@@ -93,8 +93,8 @@ function TimeFlyout({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                   <div 
                     className="p-2 rounded-xl"
                     style={{
-                      backgroundColor: 'rgba(122, 158, 181, 0.15)',
-                      border: '1px solid rgba(122, 158, 181, 0.2)'
+                      backgroundColor: 'var(--color-neutral-100)',
+                      border: '1px solid var(--color-neutral-200)'
                     }}
                   >
                     <Clock className="w-5 h-5" strokeWidth={2} style={{ color: 'var(--webos-app-blue)' }} />
@@ -278,8 +278,8 @@ function UserProfileFlyout({
                 <div 
                   className="flex items-center gap-3 p-3 rounded-2xl mb-2"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(122, 158, 181, 0.15), rgba(122, 158, 181, 0.1))',
-                    border: '1px solid rgba(122, 158, 181, 0.2)'
+                    background: 'var(--glass-bg)',
+                    border: '1px solid var(--glass-border)'
                   }}
                 >
                   <Avatar className="h-10 w-10 ring-2" style={{ ringColor: 'rgba(122, 158, 181, 0.3)' }}>
@@ -388,7 +388,7 @@ function UserProfileFlyout({
                   <button
                     onClick={handleSignOut}
                     className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
-                    style={{ color: '#dc2626' }}
+                    style={{ color: 'var(--color-error-600)' }}
                   >
                     <LogOut className="w-4 h-4" strokeWidth={2} />
                     <span>Sign Out</span>
@@ -506,7 +506,7 @@ export function StatusBar() {
         }}
         className="fixed top-0 left-0 right-0 h-10 z-[100] px-4"
         style={{
-          background: 'linear-gradient(135deg, rgba(216, 216, 216, 0.95) 0%, rgba(232, 232, 232, 0.95) 50%, rgba(216, 216, 216, 0.95) 100%)',
+          background: 'var(--glass-bg)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: '1px solid var(--webos-border-secondary)',
@@ -550,7 +550,7 @@ export function StatusBar() {
                   animate={{ scale: 1 }}
                   className="absolute -top-0.5 -right-0.5 min-w-[14px] h-[14px] px-0.5 rounded-full text-[8px] font-light flex items-center justify-center"
                   style={{
-                    background: 'linear-gradient(to bottom right, #ef4444, #dc2626)',
+                    background: 'var(--color-error-600)',
                     color: 'var(--webos-text-white)',
                     boxShadow: 'var(--webos-shadow-sm)'
                   }}
@@ -571,8 +571,8 @@ export function StatusBar() {
               whileTap={{ scale: 0.98 }}
               title="Weather Information"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                border: '1px solid rgba(0, 0, 0, 0.05)'
+                backgroundColor: 'var(--glass-bg)',
+                border: '1px solid var(--glass-border)'
               }}
             >
               <Cloud className="w-4 h-4 transition-colors" strokeWidth={2} style={{ color: 'var(--webos-app-teal)' }} />
@@ -593,8 +593,8 @@ export function StatusBar() {
               whileTap={{ scale: 0.98 }}
               title="Date & Time"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                border: '1px solid rgba(0, 0, 0, 0.05)'
+                backgroundColor: 'var(--glass-bg)',
+                border: '1px solid var(--glass-border)'
               }}
             >
               <Clock className="w-4 h-4 transition-colors" strokeWidth={2} style={{ color: 'var(--webos-app-blue)' }} />
@@ -618,8 +618,8 @@ export function StatusBar() {
               whileTap={{ scale: 0.98 }}
               title={session?.user?.name || 'User Menu'}
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                border: '1px solid rgba(0, 0, 0, 0.05)'
+                backgroundColor: 'var(--glass-bg)',
+                border: '1px solid var(--glass-border)'
               }}
             >
               <Avatar className="h-6 w-6 ring-2" style={{ ringColor: 'var(--webos-border-secondary)' }}>

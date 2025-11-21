@@ -206,7 +206,7 @@ export function LoomAIModal({ title, content, isOpen, isLoading, onClose }: Loom
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[10001] flex items-center justify-center"
           style={{
-            background: 'rgba(0, 0, 0, 0.3)',
+            background: 'var(--color-neutral-900/30)',
             backdropFilter: 'blur(10px)',
           }}
           onClick={onClose}
