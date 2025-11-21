@@ -44,21 +44,14 @@ export async function POST(req: NextRequest) {
 
     const organizationId = await getCurrentOrganizationId();
     const body = await req.json();
-    // TODO: Add specific validation schema for this endpoint
-    const bodySchema = z.object({
-      // Define your schema here
+    const { createPetSchema } = await import('@/lib/validation-schemas');
+    // Extend schema with unitNumber for this route
+    const petWithUnitSchema = createPetSchema.extend({
+      unitNumber: z.string().min(1, 'Unit number is required'),
     });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
+    const validatedBody = petWithUnitSchema.parse(body);
     
-    const { unitNumber, name, type, breed, color, weight, age, description } = body;
-
-    if (!unitNumber || !name || !type) {
-      return NextResponse.json(
-        { error: "Unit number, name, and type are required" },
-        { status: 400 }
-      );
-    }
+    const { unitNumber, name, species: type, breed, color, weight, age, notes: description } = validatedBody;
 
     const pet = await prisma.pet.create({
       data: {

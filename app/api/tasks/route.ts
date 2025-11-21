@@ -117,30 +117,25 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    // TODO: Add specific validation schema for this endpoint
-    const bodySchema = z.object({
-      // Define your schema here
-    });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
-    
+    const { createTaskSchema } = await import('@/lib/validation-schemas');
+    const validatedBody = createTaskSchema.parse(body);
 
     const task = await prisma.task.create({
       data: {
         organizationId,
-        title: body.title,
-        description: body.description,
-        status: body.status || 'TODO',
-        priority: body.priority || 'MEDIUM',
-        dueDate: body.dueDate ? new Date(body.dueDate) : null,
+        title: validatedBody.title,
+        description: validatedBody.description,
+        status: validatedBody.status || 'TODO',
+        priority: validatedBody.priority || 'MEDIUM',
+        dueDate: validatedBody.dueDate ? new Date(validatedBody.dueDate) : null,
         userId: user.id,
-        assignedTo: body.assignedTo || null,
-        category: body.category || 'general',
-        tags: body.tags || [],
-        isRecurring: body.isRecurring || false,
-        recurrencePattern: body.recurrencePattern,
-        reminderDate: body.reminderDate ? new Date(body.reminderDate) : null,
-        isFavorite: body.isFavorite || false
+        assignedTo: validatedBody.assignedTo || null,
+        category: validatedBody.category || 'general',
+        tags: validatedBody.tags || [],
+        isRecurring: validatedBody.isRecurring || false,
+        recurrencePattern: validatedBody.recurrencePattern,
+        reminderDate: validatedBody.reminderDate ? new Date(validatedBody.reminderDate) : null,
+        isFavorite: validatedBody.isFavorite || false
       },
       include: {
         user: {
