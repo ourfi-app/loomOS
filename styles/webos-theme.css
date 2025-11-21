@@ -101,8 +101,8 @@
      TYPOGRAPHY SYSTEM
      ======================================== */
   
-  --webos-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
-                     "Helvetica Neue", Arial, sans-serif;
+  /* Prioritize Helvetica Neue Light for webOS aesthetic */
+  --webos-font-sans: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   
   /* Font Sizes */
   --webos-text-xs: 0.75rem;              /* 12px */
@@ -152,6 +152,49 @@
   --webos-z-modal: 500;
   --webos-z-tooltip: 600;
   --webos-z-notification: 700;
+
+  /* ========================================
+     ADDITIONAL WEBOS DESIGN TOKENS
+     ======================================== */
+  
+  /* Background Gradients & Glass Effects */
+  --webos-bg-gradient: linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%);
+  --webos-bg-glass: rgba(255, 255, 255, 0.8);
+  --webos-bg-glass-strong: rgba(247, 246, 244, 0.95);
+  
+  /* Extended Text Colors */
+  --webos-text-muted: #9a9a9a;
+  --webos-text-white: #ffffff;
+  
+  /* UI Element Colors */
+  --webos-ui-dark: #1a1a1a;
+  --webos-ui-medium-dark: #4a4a4a;
+  --webos-ui-medium: #5a5a5a;
+  --webos-ui-light: #6a6a6a;
+  
+  /* Border Glass Effect */
+  --webos-border-glass: rgba(255, 255, 255, 0.5);
+  
+  /* App-Specific Colors (for gradients and accents) */
+  --webos-app-blue: #8a8a8a;
+  --webos-app-brown: #b58a7a;
+  --webos-app-tan: #b5a07a;
+  --webos-app-purple: #9d8ab5;
+  --webos-app-teal: #7ab5a8;
+  --webos-app-rose: #b57a9e;
+  --webos-app-gray: #a8a8a8;
+  --webos-app-green: #8ba87d;
+  
+  /* Additional Spacing */
+  --webos-space-card: 2rem; /* 32px */
+  
+  /* Additional Shadows */
+  --webos-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  
+  /* Additional Transitions */
+  --webos-transition-fast: 0.2s ease;
+  --webos-transition-base: 0.3s ease-out;
+  --webos-transition-slow: 0.5s ease-in-out;
 }
 
 /* ========================================
@@ -160,6 +203,7 @@
 
 .webos-theme {
   font-family: var(--webos-font-sans);
+  font-weight: 300; /* Light weight for webOS aesthetic */
   background: var(--webos-bg-primary);
   color: var(--webos-text-primary);
   -webkit-font-smoothing: antialiased;
