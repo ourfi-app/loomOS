@@ -848,7 +848,7 @@ kbd.webos-kbd {
   height: 2.5rem;
   display: flex;
   align-items: center;
-  justify-center;
+  justify-content: center;
   border-radius: 12px;
   background: var(--webos-bg-tertiary);
   color: var(--webos-app-blue);
@@ -888,7 +888,7 @@ kbd.webos-kbd {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-center;
+  justify-content: center;
   padding: 4rem 2rem;
   text-align: center;
   font-family: 'Helvetica Neue', Arial, sans-serif;
