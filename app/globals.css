@@ -40,9 +40,9 @@
     --popover-foreground: 210 15% 20%; /* #2C3440 - Navy Gray */
 
     /* Primary Brand Colors */
-    --primary: 207 90% 54%;           /* #2B8ED9 - Trust Blue */
+    --primary: 0 0% 54%;              /* Neutral Gray - Palm webOS aesthetic */
     --primary-foreground: 0 0% 100%;  /* Pure White */
-    --primary-dark: 207 90% 45%;      /* #1474B8 - Deeper Blue */
+    --primary-dark: 0 0% 45%;         /* Darker Gray */
 
     /* Secondary & Accent */
     --secondary: 210 10% 45%;         /* #686E77 - Medium Gray */
@@ -72,11 +72,11 @@
     /* Borders & Inputs */
     --border: 30 8% 85%;              /* #D8D6D3 - Subtle Border */
     --input: 30 8% 85%;               /* #D8D6D3 - Input Border */
-    --ring: 207 90% 54%;              /* #2B8ED9 - Blue Focus Ring */
+    --ring: 0 0% 54%;                 /* Neutral Gray Focus Ring */
     --radius: 0.75rem;
 
     /* Feature/Section Colors for Charts & Gradients */
-    --chart-1: 207 90% 54%;           /* Trust Blue - Primary */
+    --chart-1: 0 0% 54%;              /* Neutral Gray - Primary */
     --chart-2: 142 55% 45%;           /* Green - Finance */
     --chart-3: 25 90% 55%;            /* Orange - Community */
     --chart-4: 260 60% 55%;           /* Purple - Admin */
@@ -109,9 +109,9 @@
     --popover-foreground: 30 8% 92%;  /* #EAEAE8 - Off White */
 
     /* Primary Brand Colors */
-    --primary: 207 90% 60%;           /* #3D9FE8 - Lighter Trust Blue */
+    --primary: 0 0% 60%;              /* Neutral Gray - Palm webOS aesthetic */
     --primary-foreground: 0 0% 100%;  /* Pure White */
-    --primary-dark: 207 90% 50%;      /* #1A85D9 - Blue for Dark */
+    --primary-dark: 0 0% 50%;         /* Darker Gray for Dark Mode */
 
     /* Secondary & Accent */
     --secondary: 220 10% 35%;         /* #535861 - Medium Dark Gray */
@@ -141,10 +141,10 @@
     /* Borders & Inputs */
     --border: 220 10% 25%;            /* #3A3F4A - Dark Border */
     --input: 220 10% 25%;             /* #3A3F4A - Input Border */
-    --ring: 207 90% 60%;              /* #3D9FE8 - Blue Focus Ring */
+    --ring: 0 0% 60%;                 /* Neutral Gray Focus Ring */
 
     /* Feature/Section Colors - Adjusted for Dark Mode */
-    --chart-1: 207 90% 60%;           /* Trust Blue */
+    --chart-1: 0 0% 60%;              /* Neutral Gray */
     --chart-2: 142 55% 50%;           /* Green */
     --chart-3: 25 90% 60%;            /* Orange */
     --chart-4: 260 60% 60%;           /* Purple */
