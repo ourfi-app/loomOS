@@ -267,8 +267,8 @@ const config: Config = {
           foreground: 'var(--text-primary)',
         },
         primary: {
-          DEFAULT: 'rgb(var(--accent-blue-rgb) / <alpha-value>)',
-          foreground: 'var(--text-on-accent)',
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'var(--bg-secondary)',
