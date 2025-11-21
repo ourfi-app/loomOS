@@ -7,14 +7,14 @@ import { useRouter } from 'next/navigation';
 import { Bell, CheckCircle, AlertCircle, Info, X, Menu, RefreshCw, Check, Trash2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
   LoomOSAppHeader,
   LoomOSNavigationPane,
   LoomOSListPane,
   LoomOSDetailPane,
-  LoomOSSectionHeader,
-  LoomOSActionButton
+  LoomOSSectionHeader
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 import type { NavigationItem, ListItem } from '@/components/webos';
@@ -197,20 +197,20 @@ export default function NotificationsPage() {
             selectedNotification ? (
               <div className="flex items-center gap-2">
                 {!selectedNotification.isRead && (
-                  <LoomOSActionButton
+                  <Button
                     icon={<Check className="w-4 h-4" />}
                     onClick={() => markAsRead(selectedNotification.id)}
                   >
                     Mark Read
-                  </LoomOSActionButton>
+                  </Button>
                 )}
-                <LoomOSActionButton
+                <Button
                   icon={<Trash2 className="w-4 h-4" />}
                   onClick={() => deleteNotification(selectedNotification.id)}
-                  variant="danger"
+                  variant="destructive"
                 >
                   Delete
-                </LoomOSActionButton>
+                </Button>
               </div>
             ) : undefined
           }

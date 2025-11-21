@@ -13,7 +13,7 @@ import { DirectoryCardSkeleton } from '@/components/common/skeleton-screens';
 import { toastError } from '@/lib/toast-helpers';
 import { useDirectoryData } from '@/hooks/use-api';
 import {
-  LoomOSListItemEnhanced,
+  LoomOSListItem,
   LoomOSGroupBox,
   LoomOSListDivider
 } from '@/components/webos';
@@ -575,7 +575,7 @@ export default function DirectoryPage() {
                           const isSelected = selectedCommittee?.id === committee.id;
                           
                           return (
-                            <LoomOSListItemEnhanced
+                            <LoomOSListItem
                               key={committee.id}
                               selected={isSelected}
                               onClick={() => setSelectedCommittee(committee)}
@@ -609,7 +609,7 @@ export default function DirectoryPage() {
                                   {committee.members.length}
                                 </Badge>
                               </div>
-                            </LoomOSListItemEnhanced>
+                            </LoomOSListItem>
                           );
                         }}
                         estimatedItemHeight={70}
@@ -639,7 +639,7 @@ export default function DirectoryPage() {
                           const isBoardMember = hasBoardAccess(resident.role);
                           
                           return (
-                            <LoomOSListItemEnhanced
+                            <LoomOSListItem
                               key={resident.id}
                               selected={isSelected}
                               onClick={() => setSelectedResident(resident)}
@@ -719,7 +719,7 @@ export default function DirectoryPage() {
                                   </div>
                                 </div>
                               </div>
-                            </LoomOSListItemEnhanced>
+                            </LoomOSListItem>
                           );
                         }}
                         estimatedItemHeight={90}

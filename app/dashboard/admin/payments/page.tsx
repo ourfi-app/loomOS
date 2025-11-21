@@ -14,9 +14,8 @@ import {
   DesktopAppWrapper,
   LoomOSNavigationPane,
   LoomOSDetailPane,
-  LoomOSListItemEnhanced,
+  LoomOSListItem,
   LoomOSListDivider,
-  LoomOSActionButton,
   LoomOSEmptyState,
   LoomOSLoadingState,
 } from '@/components/webos';
@@ -297,7 +296,7 @@ export default function PaymentManagementPage() {
         <div className="flex-1 overflow-y-auto">
           {filteredPayments.length > 0 ? (
             filteredPayments.map((payment) => (
-              <LoomOSListItemEnhanced
+              <LoomOSListItem
                 key={payment.id}
                 selected={selectedPayment?.id === payment.id}
                 onClick={() => setSelectedPayment(payment)}
@@ -325,7 +324,7 @@ export default function PaymentManagementPage() {
                     {getStatusBadge(payment.status)}
                   </div>
                 </div>
-              </LoomOSListItemEnhanced>
+              </LoomOSListItem>
             ))
           ) : (
             <LoomOSEmptyState

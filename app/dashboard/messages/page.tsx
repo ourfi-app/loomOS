@@ -41,9 +41,8 @@ import { useDeepLinkSelection } from '@/hooks/use-deep-link';
 import {
   LoomOSNavigationPane,
   LoomOSDetailPane,
-  LoomOSListItemEnhanced,
+  LoomOSListItem,
   LoomOSListDivider,
-  LoomOSActionButton,
   LoomOSAppHeader
 } from '@/components/webos';
 
@@ -920,7 +919,7 @@ export default function MessagesPage() {
                   return (
                     <ContextMenu key={message.id}>
                       <ContextMenuTrigger asChild>
-                        <LoomOSListItemEnhanced
+                        <LoomOSListItem
                           data-message-index={messageIndex}
                           selected={isSelected}
                           checked={isChecked}
@@ -999,7 +998,7 @@ export default function MessagesPage() {
                               </div>
                             </div>
                           </div>
-                        </LoomOSListItemEnhanced>
+                        </LoomOSListItem>
                       </ContextMenuTrigger>
                       
                       <ContextMenuContent className="w-64">

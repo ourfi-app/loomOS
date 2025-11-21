@@ -9,7 +9,11 @@ interface LoomOSListItemProps {
   children: ReactNode;
   selected?: boolean;
   unread?: boolean;
+  checked?: boolean;
+  editMode?: boolean;
   onClick?: () => void;
+  onDoubleClick?: () => void;
+  onCheck?: (checked: boolean) => void;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
   swipeActions?: ReactNode;
@@ -17,13 +21,18 @@ interface LoomOSListItemProps {
   draggable?: boolean;
   onDragStart?: (e: React.DragEvent) => void;
   onDrop?: (e: React.DragEvent) => void;
+  'data-message-index'?: number;
 }
 
 export function LoomOSListItem({
   children,
   selected,
   unread,
+  checked,
+  editMode,
   onClick,
+  onDoubleClick,
+  onCheck,
   onSwipeLeft,
   onSwipeRight,
   swipeActions,
@@ -31,6 +40,7 @@ export function LoomOSListItem({
   draggable,
   onDragStart,
   onDrop,
+  'data-message-index': dataMessageIndex,
 }: LoomOSListItemProps) {
   const itemRef = useRef<HTMLDivElement>(null);
   const [isSwiped, setIsSwiped] = useState(false);
@@ -112,15 +122,18 @@ export function LoomOSListItem({
       onDragStart={onDragStart}
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
+      data-message-index={dataMessageIndex}
     >
       <div
         className={cn(
           'loomos-list-item',
           selected && 'selected',
           unread && 'unread',
-          isSwiped && 'swiped'
+          isSwiped && 'swiped',
+          checked && 'checked'
         )}
         onClick={onClick}
+        onDoubleClick={onDoubleClick}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -129,6 +142,20 @@ export function LoomOSListItem({
           transition: isSwiped ? 'none' : 'transform 0.2s ease-out',
         }}
       >
+        {editMode && onCheck && (
+          <div className="mr-2 flex-shrink-0">
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={(e) => {
+                e.stopPropagation();
+                onCheck(e.target.checked);
+              }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-4 h-4 rounded border-gray-300"
+            />
+          </div>
+        )}
         {children}
       </div>
       {(onSwipeLeft || onSwipeRight) && (

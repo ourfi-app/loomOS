@@ -35,9 +35,8 @@ import {
   DesktopAppWrapper,
   LoomOSNavigationPane,
   LoomOSDetailPane,
-  LoomOSActionButton,
   LoomOSEmptyState,
-  LoomOSListItemEnhanced,
+  LoomOSListItem,
 } from '@/components/webos';
 import { APP_REGISTRY } from '@/lib/enhanced-app-registry';
 import { ErrorBoundary } from '@/components/common';
@@ -200,14 +199,14 @@ export default function SystemConfigPage() {
   // Toolbar actions
   const toolbarActions = (
     <div className="flex items-center gap-2">
-      <LoomOSActionButton
+      <Button
         icon={<Save className="w-4 h-4" />}
         onClick={saveSettings}
         disabled={loading}
         size="sm"
       >
         {loading ? 'Saving...' : 'Save Changes'}
-      </LoomOSActionButton>
+      </Button>
     </div>
   );
 
@@ -517,7 +516,7 @@ export default function SystemConfigPage() {
               ) : (
                 <div>
                   {categorySettings.map((setting, index) => (
-                    <LoomOSListItemEnhanced
+                    <LoomOSListItem
                       key={setting.id}
                       selected={selectedSetting?.id === setting.id}
                       onClick={() => setSelectedSetting(setting)}
@@ -533,7 +532,7 @@ export default function SystemConfigPage() {
                         </div>
                         <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                       </div>
-                    </LoomOSListItemEnhanced>
+                    </LoomOSListItem>
                   ))}
                 </div>
               )}
