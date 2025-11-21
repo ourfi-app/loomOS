@@ -43,33 +43,44 @@ export default function DashboardPage() {
       {cards.length === 0 && (
         <div className="h-full w-full flex flex-col items-center justify-start p-8 pt-24">
           {/* "JUST TYPE" Search Bar - webOS Style */}
-          <div className="w-full max-w-2xl mb-12 space-y-3">
+          <div className="w-full max-w-2xl mb-12 space-y-2">
             <div 
-              className="text-xs font-light text-[var(--webos-text-tertiary)] text-center tracking-[0.3em] uppercase"
-              style={{ opacity: searchFocused ? 0 : 1, transition: 'opacity 0.3s' }}
+              className="text-xs font-light text-center tracking-[0.3em] uppercase"
+              style={{ 
+                color: 'var(--webos-text-tertiary)',
+                opacity: searchFocused ? 0 : 1, 
+                transition: 'opacity 0.3s ease-out' 
+              }}
             >
               Just Type
             </div>
             <div
               className={cn(
                 "relative rounded-full overflow-hidden transition-all duration-300",
-                "bg-white/90 backdrop-blur-xl shadow-xl",
-                searchFocused ? "ring-2 ring-blue-400" : ""
+                "bg-white backdrop-blur-sm",
+                searchFocused ? "ring-2 ring-offset-2" : ""
               )}
               style={{
-                border: '1px solid rgba(207, 204, 199, 0.3)',
+                border: '1px solid var(--webos-border-light)',
                 boxShadow: searchFocused 
-                  ? '0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(59, 130, 246, 0.1)'
-                  : '0 4px 16px rgba(0, 0, 0, 0.1)'
+                  ? 'var(--webos-shadow-elevated), 0 0 0 3px rgba(128, 128, 128, 0.1)'
+                  : 'var(--webos-shadow-card)',
+                ringColor: searchFocused ? 'var(--webos-accent-blue)' : 'transparent'
               }}
             >
-              <div className="flex items-center px-6 py-4">
-                <Search className="w-5 h-5 text-[var(--webos-text-tertiary)] mr-3" />
+              <div className="flex items-center px-6 py-3.5">
+                <Search 
+                  className="w-5 h-5 mr-3" 
+                  style={{ color: 'var(--webos-text-tertiary)' }}
+                />
                 <input
                   type="text"
                   placeholder="Search apps, contacts, messages..."
-                  className="flex-1 bg-transparent border-none outline-none text-base font-light"
-                  style={{ color: 'var(--webos-text-primary)' }}
+                  className="flex-1 bg-transparent border-none outline-none text-base font-light placeholder:font-light"
+                  style={{ 
+                    color: 'var(--webos-text-primary)',
+                    fontFamily: '"Helvetica Neue", Arial, sans-serif'
+                  }}
                   onFocus={() => setSearchFocused(true)}
                   onBlur={() => setSearchFocused(false)}
                 />
@@ -80,7 +91,8 @@ export default function DashboardPage() {
           {/* App Preview Cards - webOS Style Carousel */}
           <div className="w-full max-w-6xl">
             <h2 
-              className="text-sm font-light text-[var(--webos-text-secondary)] mb-6 px-4 uppercase tracking-wide"
+              className="text-sm font-light mb-6 px-4 uppercase tracking-wide"
+              style={{ color: 'var(--webos-text-secondary)' }}
             >
               Recent Apps
             </h2>
@@ -90,6 +102,16 @@ export default function DashboardPage() {
                 {featuredApps.map((app, index) => {
                   const appDef = APP_REGISTRY[app.id];
                   const AppIcon = app.icon;
+                  
+                  // Muted webOS-style gradients
+                  const webOSGradients = [
+                    'linear-gradient(135deg, #9ca3a0 0%, #b8bfbc 100%)', // Gray
+                    'linear-gradient(135deg, #8ba87d 0%, #a3b89a 100%)', // Green
+                    'linear-gradient(135deg, #b58a7a 0%, #c4a090 100%)', // Brown
+                    'linear-gradient(135deg, #9d8ab5 0%, #b3a0c4 100%)', // Purple
+                    'linear-gradient(135deg, #7ab5a8 0%, #90c4b8 100%)', // Teal
+                    'linear-gradient(135deg, #b57a9e 0%, #c490ae 100%)', // Rose
+                  ];
                   
                   return (
                     <div
@@ -101,49 +123,69 @@ export default function DashboardPage() {
                     >
                       <button
                         onClick={() => openApp(app.id)}
-                        className="group relative w-80 h-48 rounded-3xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="group relative w-80 h-48 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-102 focus:outline-none focus:ring-2"
                         style={{
-                          background: 'rgba(255, 255, 255, 0.95)',
-                          backdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(207, 204, 199, 0.3)',
-                          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)'
+                          background: 'white',
+                          border: '1px solid var(--webos-border-light)',
+                          boxShadow: 'var(--webos-shadow-card)',
+                          transition: 'all 0.3s var(--webos-ease-out)',
+                          ringColor: 'var(--webos-accent-blue)'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.boxShadow = 'var(--webos-shadow-card-hover)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.boxShadow = 'var(--webos-shadow-card)';
                         }}
                       >
                         {/* App Preview Content */}
                         <div className="absolute inset-0 flex flex-col">
                           {/* Header with App Info */}
                           <div 
-                            className="flex items-center gap-3 p-6 bg-gradient-to-br"
+                            className="flex items-center gap-3 p-5"
                             style={{
-                              background: appDef?.gradient 
-                                ? `linear-gradient(135deg, ${appDef.gradient.split(' ')[0].replace('from-', '')} 0%, ${appDef.gradient.split(' ')[1].replace('to-', '')} 100%)`
-                                : 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)'
+                              background: webOSGradients[index % webOSGradients.length]
                             }}
                           >
-                            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg">
-                              <AppIcon className="w-7 h-7 text-white" />
+                            <div 
+                              className="w-11 h-11 rounded-xl flex items-center justify-center"
+                              style={{
+                                background: 'rgba(255, 255, 255, 0.25)',
+                                backdropFilter: 'blur(8px)',
+                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                              }}
+                            >
+                              <AppIcon className="w-6 h-6 text-white" />
                             </div>
                             <div className="flex-1 text-left">
-                              <h3 className="text-white font-semibold text-lg">
+                              <h3 className="text-white font-light text-base tracking-tight">
                                 {appDef?.title || app.id}
                               </h3>
-                              <p className="text-white/80 text-xs">
-                                {appDef?.description?.substring(0, 30) || 'Open app'}...
+                              <p className="text-white/80 text-xs font-light">
+                                {appDef?.description?.substring(0, 28) || 'Open app'}...
                               </p>
                             </div>
                           </div>
 
                           {/* Preview Area */}
-                          <div className="flex-1 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-6">
-                            <div className="text-center opacity-40">
-                              <AppIcon className="w-16 h-16 mx-auto mb-2 text-gray-400" />
-                              <p className="text-xs text-gray-500">Preview coming soon</p>
+                          <div 
+                            className="flex-1 flex items-center justify-center p-6"
+                            style={{ background: 'var(--webos-bg-secondary)' }}
+                          >
+                            <div className="text-center opacity-30">
+                              <AppIcon 
+                                className="w-14 h-14 mx-auto mb-2" 
+                                style={{ color: 'var(--webos-text-tertiary)' }}
+                              />
+                              <p 
+                                className="text-xs font-light"
+                                style={{ color: 'var(--webos-text-secondary)' }}
+                              >
+                                Preview
+                              </p>
                             </div>
                           </div>
                         </div>
-
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       </button>
                     </div>
                   );
@@ -154,26 +196,31 @@ export default function DashboardPage() {
 
           {/* Keyboard Shortcut Hint */}
           <div 
-            className="mt-8 text-xs font-light tracking-wide text-[var(--webos-text-tertiary)]"
+            className="mt-8 text-xs font-light tracking-wide"
+            style={{ color: 'var(--webos-text-tertiary)' }}
           >
             Press{' '}
             <kbd 
-              className="px-2 py-1 rounded-lg text-xs font-light"
+              className="px-2 py-0.5 rounded text-xs font-light"
               style={{ 
-                backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                border: '1px solid var(--webos-border-secondary)',
-                boxShadow: 'var(--webos-shadow-sm)'
+                backgroundColor: 'white',
+                border: '1px solid var(--webos-border-light)',
+                boxShadow: 'var(--webos-shadow-sm)',
+                color: 'var(--webos-text-secondary)',
+                fontFamily: '"Helvetica Neue", monospace'
               }}
             >
               Cmd+K
             </kbd>
             {' '}or{' '}
             <kbd 
-              className="px-2 py-1 rounded-lg text-xs font-light"
+              className="px-2 py-0.5 rounded text-xs font-light"
               style={{ 
-                backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                border: '1px solid var(--webos-border-secondary)',
-                boxShadow: 'var(--webos-shadow-sm)'
+                backgroundColor: 'white',
+                border: '1px solid var(--webos-border-light)',
+                boxShadow: 'var(--webos-shadow-sm)',
+                color: 'var(--webos-text-secondary)',
+                fontFamily: '"Helvetica Neue", monospace'
               }}
             >
               Ctrl+K
