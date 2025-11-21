@@ -53,7 +53,6 @@ export function KeyboardShortcuts() {
       description: 'Open command palette',
       action: () => {
         // TODO: Open command palette
-        console.log('Command palette');
       },
     },
   ];

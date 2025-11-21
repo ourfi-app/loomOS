@@ -24,7 +24,6 @@ import { cn } from '@/lib/utils';
  * // Search input
  * <SearchInput
  *   placeholder="JUST TYPE"
- *   onSearch={(value) => console.log(value)}
  * />
  * 
  * // Glass input

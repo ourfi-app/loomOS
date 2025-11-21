@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
@@ -184,7 +185,6 @@ export async function POST(request: NextRequest) {
           }
         }
       });
-      console.log(`[Integration] Created notification for ${recipientIds.length} message recipients`);
     } catch (notificationError) {
       console.error('[Integration] Failed to send notifications:', notificationError);
       // Don't fail the request if notifications fail

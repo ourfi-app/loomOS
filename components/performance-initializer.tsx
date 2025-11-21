@@ -1,3 +1,6 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
+// TODO: Review setInterval calls for proper cleanup in useEffect return functions
+// TODO: Review addEventListener calls for proper cleanup in useEffect return functions
 
 'use client';
 
@@ -44,7 +47,6 @@ export function PerformanceInitializer() {
         registerServiceWorker()
           .then((registration) => {
             if (registration) {
-              console.log('[SW] Service worker registered successfully');
 
               // Check for updates periodically
               setInterval(() => {

@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 /**
  * Web Vitals Monitoring
@@ -59,7 +60,6 @@ export function initWebVitals(onReport?: (metric: WebVitalMetric) => void) {
 
         // Log to console in development
         if (process.env.NODE_ENV === 'development') {
-          console.log(`[Web Vitals] ${metric.name}:`, vitalMetric);
         }
 
         // Call custom report handler
@@ -214,7 +214,6 @@ export class PerformanceMonitor {
       const layoutShiftObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if ((entry as any).hadRecentInput) continue;
-          console.log('[Performance] Layout shift:', {
             value: (entry as any).value,
             sources: (entry as any).sources,
           });

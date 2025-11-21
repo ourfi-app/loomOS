@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 /**
  * Developer Service
  * Handles developer registration, profile management, and statistics
@@ -305,11 +306,9 @@ export class DeveloperService {
         text: `Hi ${developer.displayName},\n\nThank you for registering as a developer on loomOS! Please verify your email address by visiting:\n\n${verificationUrl}\n\nIf you didn't create a developer account, you can safely ignore this email.`,
       });
 
-      console.log(`Verification email sent to ${developer.supportEmail}`);
     } catch (error) {
       console.error('Failed to send verification email:', error);
       // Don't throw - we don't want to fail registration if email fails
-      console.log(`Verification link (email failed): ${verificationUrl}`);
     }
   }
 

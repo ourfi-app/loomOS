@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 /**
  * PWA Utilities
@@ -50,7 +51,6 @@ export async function registerServiceWorker(): Promise<ServiceWorkerRegistration
       scope: '/',
     });
     
-    console.log('ServiceWorker registered:', registration.scope);
 
     // Check for updates
     registration.addEventListener('updatefound', () => {
@@ -59,7 +59,6 @@ export async function registerServiceWorker(): Promise<ServiceWorkerRegistration
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             // New version available
-            console.log('New version available!');
             window.dispatchEvent(new Event('swUpdated'));
           }
         });
@@ -111,7 +110,6 @@ export async function requestPersistentStorage(): Promise<boolean> {
 
   try {
     const isPersisted = await navigator.storage.persist();
-    console.log('Persistent storage:', isPersisted ? 'granted' : 'denied');
     return isPersisted;
   } catch (error) {
     console.error('Persistent storage request failed:', error);
@@ -221,7 +219,6 @@ export async function registerBackgroundSync(
   if ('sync' in registration) {
     try {
       await (registration as any).sync.register(tag);
-      console.log('Background sync registered:', tag);
     } catch (error) {
       console.error('Background sync registration failed:', error);
     }

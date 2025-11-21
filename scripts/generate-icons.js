@@ -12,7 +12,6 @@ if (!fs.existsSync(outputDir)) {
 }
 
 async function generateIcons() {
-  console.log('Generating icon sizes for Community Manager...');
   
   for (const size of sizes) {
     const outputPath = path.join(outputDir, `icon-${size}x${size}.png`);
@@ -23,10 +22,8 @@ async function generateIcons() {
       })
       .png()
       .toFile(outputPath);
-    console.log(`✓ Generated ${size}x${size} icon`);
   }
   
-  console.log('All icons generated successfully!');
 }
 
 generateIcons().catch(console.error);

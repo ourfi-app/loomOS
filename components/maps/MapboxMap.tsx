@@ -1,3 +1,4 @@
+// TODO: Review addEventListener calls for proper cleanup in useEffect return functions
 'use client';
 
 import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';

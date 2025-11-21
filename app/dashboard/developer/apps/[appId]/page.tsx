@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 /**
  * App Management Page
  * View and manage individual app details, analytics, and versions

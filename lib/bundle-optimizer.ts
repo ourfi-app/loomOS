@@ -102,8 +102,6 @@ export function reportBundleMetrics() {
       }, 0);
       
       console.group('📦 Bundle Metrics');
-      console.log(`Total JS Size: ${(totalSize / 1024).toFixed(2)} KB`);
-      console.log(`Number of JS Files: ${jsResources.length}`);
       console.groupEnd();
     }
   }

@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 'use client';
 
@@ -127,7 +128,6 @@ export default function AdminDashboardPage() {
           label: 'Export Report',
           onClick: () => {
             // TODO: Implement export functionality
-            console.log('Export report');
           },
         },
       ],

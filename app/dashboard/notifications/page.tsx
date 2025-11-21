@@ -118,7 +118,6 @@ export default function NotificationsPage() {
       const deepLink = linkMatch ? linkMatch[1] : null;
       
       if (deepLink) {
-        console.log(`[Notifications] Navigating to deep link: ${deepLink}`);
         router.push(deepLink);
       }
     } catch (error) {

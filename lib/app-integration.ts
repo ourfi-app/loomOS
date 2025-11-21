@@ -54,7 +54,6 @@ class AppIntegrationService {
    */
   async triggerNotification(event: AppEvent, title: string, message: string, isUrgent = false) {
     // This will be called by API routes to create notifications
-    console.log(`[Integration] Notification triggered: ${title}`);
     return { title, message, isUrgent };
   }
 }

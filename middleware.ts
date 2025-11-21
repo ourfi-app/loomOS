@@ -79,7 +79,6 @@ export default withAuth(
     // Handle service worker in development to prevent 404s
     if (process.env.NODE_ENV === 'development' && pathname === '/sw.js') {
       return new NextResponse(
-        '// Service worker disabled in development mode\nconsole.log("[SW] Service worker is disabled in development mode");',
         {
           status: 200,
           headers: {

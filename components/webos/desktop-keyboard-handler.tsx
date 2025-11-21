@@ -119,7 +119,6 @@ export function DesktopKeyboardHandler({
       // Show All Shortcuts (Ctrl+Shift+/)
       if (ctrl && shift && e.key === '?') {
         e.preventDefault();
-        console.log('Show keyboard shortcuts dialog');
         return;
       }
       
@@ -129,7 +128,6 @@ export function DesktopKeyboardHandler({
         if (!['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
           e.preventDefault();
           executeShortcut('new-task');
-          console.log('Create new task');
           return;
         }
       }
@@ -140,7 +138,6 @@ export function DesktopKeyboardHandler({
         if (!['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
           e.preventDefault();
           executeShortcut('new-note');
-          console.log('Create new note');
           return;
         }
       }
@@ -151,7 +148,6 @@ export function DesktopKeyboardHandler({
         if (!['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
           e.preventDefault();
           executeShortcut('new-message');
-          console.log('Create new message');
           return;
         }
       }
@@ -160,7 +156,6 @@ export function DesktopKeyboardHandler({
       if (ctrl && shift && e.key === '4') {
         e.preventDefault();
         executeShortcut('screenshot');
-        console.log('Take screenshot');
         return;
       }
     };

@@ -33,7 +33,6 @@ class CalendarIntegrationManager {
   private events: Map<string, ExternalEvent> = new Map();
 
   async connectProvider(provider: CalendarProvider): Promise<boolean> {
-    console.log(`Connecting to ${provider} calendar...`);
 
     switch (provider) {
       case 'google':
@@ -59,7 +58,6 @@ class CalendarIntegrationManager {
     try {
       // This would use Google Calendar API
       // For now, this is a placeholder implementation
-      console.log('Google Calendar connection would happen here');
 
       this.syncs.set('google', {
         provider: 'google',
@@ -77,7 +75,6 @@ class CalendarIntegrationManager {
   private async connectOutlook(): Promise<boolean> {
     try {
       // This would use Microsoft Graph API
-      console.log('Outlook Calendar connection would happen here');
 
       this.syncs.set('outlook', {
         provider: 'outlook',
@@ -95,7 +92,6 @@ class CalendarIntegrationManager {
   private async connectApple(): Promise<boolean> {
     try {
       // This would use Apple Calendar API (iCloud)
-      console.log('Apple Calendar connection would happen here');
 
       this.syncs.set('apple', {
         provider: 'apple',
@@ -116,7 +112,6 @@ class CalendarIntegrationManager {
       return [];
     }
 
-    console.log(`Syncing events from ${provider}...`);
 
     try {
       // This would fetch events from the external calendar
@@ -138,13 +133,11 @@ class CalendarIntegrationManager {
   private async fetchEvents(provider: CalendarProvider): Promise<ExternalEvent[]> {
     // This would call the actual API
     // For now, return empty array
-    console.log(`Fetching events from ${provider}...`);
     return [];
   }
 
   async createEvent(event: Omit<ExternalEvent, 'id'>, provider: CalendarProvider): Promise<ExternalEvent | null> {
     try {
-      console.log(`Creating event on ${provider}:`, event);
 
       // This would call the actual API to create the event
       const createdEvent: ExternalEvent = {
@@ -169,7 +162,6 @@ class CalendarIntegrationManager {
     }
 
     try {
-      console.log(`Updating event ${eventId} on ${event.provider}:`, updates);
 
       // This would call the actual API to update the event
       const updatedEvent: ExternalEvent = {
@@ -193,7 +185,6 @@ class CalendarIntegrationManager {
     }
 
     try {
-      console.log(`Deleting event ${eventId} from ${event.provider}`);
 
       // This would call the actual API to delete the event
       this.events.delete(eventId);

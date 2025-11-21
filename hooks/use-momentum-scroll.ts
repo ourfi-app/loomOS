@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 /**
  * Momentum Scroll Hook
@@ -150,7 +151,7 @@ export function useSimpleMomentumScroll(elementRef: React.RefObject<HTMLElement>
 
     // Enable smooth scrolling
     element.style.scrollBehavior = 'smooth';
-    // @ts-ignore - WebKit-specific property for iOS momentum scrolling
+    // @ts-expect-error - WebKit-specific property for iOS momentum scrolling
     element.style.webkitOverflowScrolling = 'touch';
 
     // Add CSS for better scroll performance
@@ -159,7 +160,7 @@ export function useSimpleMomentumScroll(elementRef: React.RefObject<HTMLElement>
 
     return () => {
       element.style.scrollBehavior = '';
-      // @ts-ignore
+      // @ts-expect-error
       element.style.webkitOverflowScrolling = '';
       element.style.willChange = '';
       element.style.transform = '';

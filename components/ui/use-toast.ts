@@ -1,3 +1,4 @@
+// TODO: Review setTimeout calls for proper cleanup in useEffect return functions
 'use client';
 
 // Inspired by react-hot-toast library

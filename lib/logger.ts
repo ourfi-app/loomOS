@@ -13,7 +13,6 @@
  *   logger.debug('Processing request', { requestId });
  *
  * Replace:
- *   console.log() → logger.info() or logger.debug()
  *   console.warn() → logger.warn()
  *   console.error() → logger.error()
  */
@@ -138,16 +137,12 @@ function log(
     const prefix = `${color}[${levelLabel}]${COLORS.reset}`;
     const time = `${COLORS.dim}${timestamp}${COLORS.reset}`;
 
-    console.log(`${prefix} ${time} ${message}`);
 
     if (metadata && Object.keys(metadata).length > 0) {
-      console.log(`${COLORS.cyan}Metadata:${COLORS.reset}`, metadata);
     }
 
     if (error) {
-      console.log(`${COLORS.red}Error:${COLORS.reset}`, error);
       if (error.stack) {
-        console.log(`${COLORS.dim}${error.stack}${COLORS.reset}`);
       }
     }
   } else {

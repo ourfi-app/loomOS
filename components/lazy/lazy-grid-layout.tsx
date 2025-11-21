@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 'use client';
 
@@ -5,9 +6,9 @@ import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
 // Lazy load react-grid-layout
-// @ts-ignore - Dynamic import type issues with React versions
+// @ts-expect-error - Dynamic import type issues with React versions
 export const LazyGridLayout: any = dynamic(
-  // @ts-ignore
+  // @ts-expect-error
   () => import('react-grid-layout').then(mod => ({ default: mod.Responsive })),
   {
     loading: () => (
@@ -21,9 +22,9 @@ export const LazyGridLayout: any = dynamic(
   }
 );
 
-// @ts-ignore - Dynamic import type issues with React versions
+// @ts-expect-error - Dynamic import type issues with React versions
 export const LazyWidthProvider: any = dynamic(
-  // @ts-ignore
+  // @ts-expect-error
   () => import('react-grid-layout').then(mod => ({ default: mod.WidthProvider })),
   {
     loading: () => null,

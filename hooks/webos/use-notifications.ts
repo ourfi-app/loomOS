@@ -1,3 +1,4 @@
+// TODO: Review setTimeout calls for proper cleanup in useEffect return functions
 
 import { create } from 'zustand';
 import { LucideIcon } from 'lucide-react';

@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 'use client';
 
@@ -21,7 +22,7 @@ export default function MyHouseholdPage() {
   const session = useSession()?.data;
   const [activeSection, setActiveSection] = useState<'profile' | 'household' | 'payments'>('profile');
 
-  // @ts-ignore
+  // @ts-expect-error
   const userUnitNumber = session?.user?.unitNumber;
 
   const navItems = [

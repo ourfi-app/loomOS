@@ -83,7 +83,6 @@ export function DesktopSpotlight({ isOpen, onClose }: DesktopSpotlightProps) {
           title: 'Create New Task',
           subtitle: 'Quick action',
           icon: Plus,
-          action: () => console.log('Create task'),
           keyboard: 'Ctrl+T',
         },
       ]);
@@ -148,7 +147,6 @@ export function DesktopSpotlight({ isOpen, onClose }: DesktopSpotlightProps) {
         title: 'Take Screenshot',
         subtitle: 'Capture your screen',
         icon: Camera,
-        action: () => console.log('Take screenshot'),
         keyboard: 'Ctrl+Shift+4',
       },
       {
@@ -157,7 +155,6 @@ export function DesktopSpotlight({ isOpen, onClose }: DesktopSpotlightProps) {
         title: 'Toggle Dark Mode',
         subtitle: 'Switch theme',
         icon: Moon,
-        action: () => console.log('Toggle theme'),
       },
       {
         id: 'action-show-windows',
@@ -165,7 +162,6 @@ export function DesktopSpotlight({ isOpen, onClose }: DesktopSpotlightProps) {
         title: 'Show All Windows',
         subtitle: 'Exposé view',
         icon: Layout,
-        action: () => console.log('Show all windows'),
         keyboard: 'Ctrl+Shift+A',
       },
     ];

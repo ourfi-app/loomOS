@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 
 'use client';
@@ -79,7 +80,7 @@ export default function HouseholdTab() {
   const [editingChild, setEditingChild] = useState<Child | null>(null);
   const [editingResident, setEditingResident] = useState<AdditionalResident | null>(null);
 
-  // @ts-ignore
+  // @ts-expect-error
   const userUnitNumber = session?.user?.unitNumber;
 
   useEffect(() => {

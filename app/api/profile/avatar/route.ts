@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate file type
+  // TODO: Add magic number validation for enhanced security
     if (!file.type.startsWith('image/')) {
       throw new ApiError('Only image files are allowed', 400);
     }

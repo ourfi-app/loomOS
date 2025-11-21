@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 /**
  * Development Utilities
@@ -37,7 +38,6 @@ export function initDevErrorFilter() {
     } else {
       // Log a friendlier message instead
       if (message.includes('not-found') || message.includes('error')) {
-        console.log(
           '%c[Next.js Dev]%c Compiling error/not-found pages (this is normal)',
           'color: #0070f3; font-weight: bold',
           'color: inherit'
@@ -58,7 +58,6 @@ export function initDevErrorFilter() {
     }
   };
 
-  console.log(
     '%c[Dev Utils]%c Development error filtering enabled',
     'color: #10b981; font-weight: bold',
     'color: inherit'
@@ -85,7 +84,6 @@ export function initDevUtils() {
           caches.keys().then((names) => {
             names.forEach((name) => caches.delete(name));
           });
-          console.log('✅ Caches cleared');
         }
       },
       unregisterSW: () => {
@@ -93,7 +91,6 @@ export function initDevUtils() {
           navigator.serviceWorker.getRegistrations().then((registrations) => {
             registrations.forEach((registration) => registration.unregister());
           });
-          console.log('✅ Service workers unregistered');
         }
       },
       reload: () => {
@@ -101,7 +98,6 @@ export function initDevUtils() {
       },
     },
     help: () => {
-      console.log(`
 %cCommunity Manager - Development Utils%c
 
 Available commands:
@@ -120,7 +116,6 @@ They occur during Next.js hot module replacement and don't affect functionality.
   };
 
   // Show help message
-  console.log(
     '%cType __DEV__.help() for development utilities',
     'color: #0070f3; font-style: italic'
   );

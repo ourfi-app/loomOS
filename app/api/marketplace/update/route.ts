@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 /**
  * API Route: /api/marketplace/update
  * Update an app to the latest version

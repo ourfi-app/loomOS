@@ -19,7 +19,6 @@ async function main() {
       },
     });
 
-    console.log('✓ Default organization created/updated:', defaultOrg.id);
 
     // Update all users without an organization to use the default
     const result = await prisma.user.updateMany({
@@ -31,7 +30,6 @@ async function main() {
       },
     });
 
-    console.log(`✓ Updated ${result.count} users to use default organization`);
   } catch (error) {
     console.error('Error:', error);
     process.exit(1);

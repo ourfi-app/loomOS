@@ -65,7 +65,6 @@ const permissions = [
 ];
 
 async function main() {
-  console.log('Seeding permissions...');
   
   for (const permission of permissions) {
     await prisma.permission.upsert({
@@ -75,7 +74,6 @@ async function main() {
     });
   }
   
-  console.log(`✓ Seeded ${permissions.length} permissions`);
 }
 
 main()

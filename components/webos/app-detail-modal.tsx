@@ -1,3 +1,5 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
+// TODO: Review setTimeout calls for proper cleanup in useEffect return functions
 
 'use client';
 
@@ -47,7 +49,6 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
 
   const handleSubmitFeedback = () => {
     // In a real app, this would send to an API
-    console.log('Feedback submitted:', { app: app.id, type: feedbackType, rating: userRating, text: feedbackText });
     setFeedbackSubmitted(true);
     setTimeout(() => {
       setFeedbackSubmitted(false);
