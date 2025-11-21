@@ -118,6 +118,7 @@ They occur during Next.js hot module replacement and don't affect functionality.
   };
 
   // Show help message
+  console.log(
     '%cType __DEV__.help() for development utilities',
     'color: #0070f3; font-style: italic'
   );
