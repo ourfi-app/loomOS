@@ -56,8 +56,8 @@ export const updateUserSchema = z.object({
 export const createMessageSchema = z.object({
   subject: z.string().min(1, 'Subject is required'),
   body: z.string().min(1, 'Message body is required'),
-  recipientIds: z.array(z.string()).min(1, 'At least one recipient is required'),
-  priority: z.enum(['LOW', 'NORMAL', 'HIGH']).optional(),
+  recipientIds: z.array(z.string().min(1, 'Recipient ID cannot be empty')).min(1, 'At least one recipient is required'),
+  priority: z.enum(['LOW', 'NORMAL', 'HIGH', 'URGENT']).optional().default('NORMAL'),
   attachments: z.array(z.object({
     name: z.string(),
     url: z.string(),
@@ -252,6 +252,149 @@ export const sendChatMessageSchema = z.object({
     url: z.string(),
     type: z.string(),
   })).optional(),
+});
+
+// ============================================================================
+// Notification Schemas
+// ============================================================================
+
+export const createNotificationSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  message: z.string().min(1, 'Message is required'),
+  type: z.enum(['EMAIL', 'SMS', 'BOTH']).default('EMAIL'),
+  isUrgent: z.boolean().optional().default(false),
+  recipientIds: z.array(z.string()).min(1, 'At least one recipient is required'),
+  scheduledFor: z.string().datetime().optional(),
+});
+
+export const updateNotificationSchema = z.object({
+  isRead: z.boolean().optional(),
+  readAt: z.string().datetime().optional(),
+});
+
+export const markNotificationReadSchema = z.object({
+  isRead: z.boolean(),
+});
+
+// ============================================================================
+// User Management Schemas
+// ============================================================================
+
+export const updateUserRoleSchema = z.object({
+  role: z.enum(['USER', 'ADMIN', 'SUPER_ADMIN', 'BOARD_MEMBER']),
+});
+
+export const updateUserBadgeSchema = z.object({
+  badge: z.string().optional(),
+  color: z.string().optional(),
+});
+
+export const updateUserStatusSchema = z.object({
+  status: z.enum(['ACTIVE', 'INACTIVE', 'PENDING']).optional(),
+  onlineStatus: z.enum(['ONLINE', 'OFFLINE', 'AWAY', 'BUSY']).optional(),
+});
+
+// ============================================================================
+// Pet Schemas
+// ============================================================================
+
+export const createPetSchema = z.object({
+  name: z.string().min(1, 'Pet name is required'),
+  species: z.string().min(1, 'Species is required'),
+  breed: z.string().optional(),
+  age: z.number().min(0).optional(),
+  weight: z.number().min(0).optional(),
+  color: z.string().optional(),
+  microchipId: z.string().optional(),
+  notes: z.string().optional(),
+  imageUrl: z.string().url().optional(),
+});
+
+export const updatePetSchema = z.object({
+  name: z.string().min(1).optional(),
+  species: z.string().optional(),
+  breed: z.string().optional(),
+  age: z.number().min(0).optional(),
+  weight: z.number().min(0).optional(),
+  color: z.string().optional(),
+  microchipId: z.string().optional(),
+  notes: z.string().optional(),
+  imageUrl: z.string().url().optional(),
+});
+
+// ============================================================================
+// Message Folder Schemas
+// ============================================================================
+
+export const createMessageFolderSchema = z.object({
+  name: z.string().min(1, 'Folder name is required'),
+  icon: z.string().optional(),
+  displayOrder: z.number().optional(),
+});
+
+export const updateMessageFolderSchema = z.object({
+  name: z.string().min(1).optional(),
+  icon: z.string().optional(),
+  displayOrder: z.number().optional(),
+});
+
+// ============================================================================
+// Committee Schemas
+// ============================================================================
+
+export const updateCommitteeSchema = z.object({
+  name: z.string().min(1).optional(),
+  description: z.string().optional(),
+  type: z.enum(['BOARD', 'ADVISORY', 'SPECIAL']).optional(),
+  status: z.enum(['ACTIVE', 'INACTIVE']).optional(),
+});
+
+export const addCommitteeMemberSchema = z.object({
+  userId: z.string().min(1, 'User ID is required'),
+  role: z.enum(['CHAIR', 'MEMBER', 'SECRETARY']).optional().default('MEMBER'),
+  startDate: z.string().datetime().optional(),
+});
+
+export const updateCommitteeMemberSchema = z.object({
+  role: z.enum(['CHAIR', 'MEMBER', 'SECRETARY']).optional(),
+  endDate: z.string().datetime().optional(),
+});
+
+// ============================================================================
+// Calendar Update Schema
+// ============================================================================
+
+export const updateCalendarEventSchema = z.object({
+  title: z.string().min(1).optional(),
+  description: z.string().optional(),
+  startDate: z.string().datetime().optional(),
+  endDate: z.string().datetime().optional(),
+  allDay: z.boolean().optional(),
+  location: z.string().optional(),
+  category: z.string().optional(),
+  recurrence: z.object({
+    frequency: z.enum(['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']),
+    interval: z.number().min(1),
+    endDate: z.string().datetime().optional(),
+  }).optional(),
+});
+
+// ============================================================================
+// Google Drive Import Schema
+// ============================================================================
+
+export const googleDriveImportSchema = z.object({
+  fileId: z.string().min(1, 'File ID is required'),
+  folderId: z.string().optional(),
+  includePermissions: z.boolean().optional().default(false),
+});
+
+// ============================================================================
+// Message Star Schema
+// ============================================================================
+
+export const starMessageSchema = z.object({
+  isStarred: z.boolean(),
 });
 
 // ============================================================================

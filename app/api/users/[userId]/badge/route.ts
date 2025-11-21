@@ -38,14 +38,10 @@ export async function PATCH(
     }
 
     const body = await request.json();
-    // TODO: Add specific validation schema for this endpoint
-    const bodySchema = z.object({
-      // Define your schema here
-    });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
+    const { updateUserBadgeSchema } = await import('@/lib/validation-schemas');
+    const validatedBody = updateUserBadgeSchema.parse(body);
     
-    const { badge } = body;
+    const { badge } = validatedBody;
 
     // Validate badge value
     if (badge !== null && !Object.values(MemberBadge).includes(badge)) {

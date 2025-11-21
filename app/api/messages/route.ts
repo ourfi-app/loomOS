@@ -124,22 +124,12 @@ export async function POST(request: NextRequest) {
 
     const userId = (session.user as any).id;
     const body = await request.json();
-    // TODO: Add specific validation schema for this endpoint
-    const bodySchema = z.object({
-      // Define your schema here
-    });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
     
-    const { subject, body: messageBody, recipientIds, priority = 'NORMAL' } = body;
-
-    if (!subject || !messageBody || !recipientIds || recipientIds.length === 0) {
-      return handleApiError(
-        new Error('Missing required fields'),
-        'Failed to create message',
-        request
-      );
-    }
+    // Validate input
+    const { createMessageSchema } = await import('@/lib/validation-schemas');
+    const validatedBody = createMessageSchema.parse(body);
+    
+    const { subject, body: messageBody, recipientIds, priority = 'NORMAL' } = validatedBody;
 
     const message = await prisma.message.create({
       data: {

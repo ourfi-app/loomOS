@@ -92,21 +92,12 @@ export async function POST(
     }
 
     const body = await request.json();
-    // TODO: Add specific validation schema for this endpoint
     const bodySchema = z.object({
-      // Define your schema here
+      customRoleId: z.string().min(1, 'Custom role ID is required'),
     });
-    // Uncomment to enable validation:
-    // const validatedBody = bodySchema.parse(body);
+    const validatedBody = bodySchema.parse(body);
     
-    const { customRoleId } = body;
-
-    if (!customRoleId) {
-      return NextResponse.json(
-        { error: 'customRoleId is required' },
-        { status: 400 }
-      );
-    }
+    const { customRoleId } = validatedBody;
 
     const targetUser = await prisma.user.findUnique({
       where: { id: params.userId },

@@ -92,17 +92,23 @@ const MapboxMap = forwardRef<MapboxMapRef, MapboxMapProps>(
       map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
       // Handle map clicks
+      let clickHandler: ((e: mapboxgl.MapMouseEvent) => void) | null = null;
       if (onMapClick) {
-        map.current.on('click', (e: mapboxgl.MapMouseEvent) => {
+        clickHandler = (e: mapboxgl.MapMouseEvent) => {
           if (isAddMode) {
             onMapClick({ lng: e.lngLat.lng, lat: e.lngLat.lat });
           }
-        });
+        };
+        map.current.on('click', clickHandler);
       }
 
       // Cleanup on unmount
       return () => {
         if (map.current) {
+          // Remove click handler if it was added
+          if (clickHandler) {
+            map.current.off('click', clickHandler);
+          }
           map.current.remove();
           map.current = null;
         }
