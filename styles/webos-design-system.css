@@ -114,6 +114,7 @@
   
   /* Primary Accent (webOS Blue - for links, selections) */
   --accent-blue: #4a90e2;
+  --accent-blue-rgb: 74 144 226; /* RGB channels for Tailwind opacity modifiers */
   --accent-blue-light: #6ba3e8;
   --accent-blue-dark: #3a7bc8;
   --accent-blue-subtle: rgba(74, 144, 226, 0.08);
