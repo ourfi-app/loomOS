@@ -6,25 +6,22 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap text-sm font-light tracking-wide transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-primary-foreground shadow-lg shadow-primary/25",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm hover:shadow-md",
-        outline:
-          "border border-border bg-card hover:bg-muted hover:text-foreground shadow-sm",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-muted hover:text-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "rounded-xl hover:opacity-90",
+        destructive: "rounded-xl hover:opacity-90",
+        outline: "rounded-xl border hover:opacity-90",
+        secondary: "rounded-xl hover:opacity-90",
+        ghost: "rounded-xl hover:bg-neutral-100",
+        link: "underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-5 py-2",
-        sm: "h-9 rounded-md px-4 text-sm",
-        lg: "h-12 rounded-md px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-11 px-5 py-3",
+        sm: "h-9 px-3 py-1.5 text-xs",
+        lg: "h-12 px-6 py-4 text-base",
+        icon: "h-10 w-10 rounded-full",
       },
     },
     defaultVariants: {
@@ -34,6 +31,35 @@ const buttonVariants = cva(
   }
 )
 
+// Inline variant styles
+const variantStyles: Record<string, React.CSSProperties> = {
+  default: {
+    backgroundColor: '#1a1a1a',
+    color: '#ffffff',
+  },
+  destructive: {
+    backgroundColor: '#dc3545',
+    color: '#ffffff',
+  },
+  outline: {
+    backgroundColor: 'transparent',
+    color: '#4a4a4a',
+    borderColor: '#d0d0d0',
+  },
+  secondary: {
+    backgroundColor: 'rgba(200, 200, 200, 0.5)',
+    color: '#4a4a4a',
+  },
+  ghost: {
+    backgroundColor: 'transparent',
+    color: '#4a4a4a',
+  },
+  link: {
+    backgroundColor: 'transparent',
+    color: '#4a4a4a',
+  },
+}
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -41,11 +67,12 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant = "default", size, asChild = false, style, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
+        style={{ ...variantStyles[variant || "default"], ...style }}
         ref={ref}
         {...props}
       />
