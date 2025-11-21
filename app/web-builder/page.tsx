@@ -7,7 +7,13 @@ import { WebBuilderShell } from '@/components/web-builder/WebBuilderShell';
 
 export default function WebBuilderPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--semantic-surface-hover)] dark:bg-gray-950 p-4">
+    <div 
+      className="flex items-center justify-center min-h-screen p-4"
+      style={{
+        background: 'var(--webos-bg-gradient)',
+        fontFamily: 'Helvetica Neue, Arial, sans-serif'
+      }}
+    >
       <WindowFrame
         title="Web Builder"
         icon={Code}

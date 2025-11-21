@@ -4,7 +4,6 @@
 import { useEffect, useState } from 'react';
 import { WifiOff, RefreshCw, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { isOnline } from '@/lib/pwa-utils';
 
 export default function OfflinePage() {
@@ -41,20 +40,38 @@ export default function OfflinePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
+    <div 
+      className="min-h-screen flex items-center justify-center p-4"
+      style={{
+        background: 'var(--webos-bg-gradient)',
+        fontFamily: 'Helvetica Neue, Arial, sans-serif'
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
         className="max-w-md w-full"
       >
-        <div className="bg-slate-900/50 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
+        <div 
+          className="rounded-3xl overflow-hidden"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-xl)'
+          }}
+        >
           {/* Header with animated icon */}
-          <div className="relative h-48 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 flex items-center justify-center">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+          <div 
+            className="relative h-48 flex items-center justify-center"
+            style={{
+              background: 'linear-gradient(135deg, #d0d0d0 0%, #e0e0e0 50%, #d0d0d0 100%)'
+            }}
+          >
             <motion.div
               animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, -5, 0],
+                scale: [1, 1.05, 1],
               }}
               transition={{
                 duration: 2,
@@ -63,8 +80,14 @@ export default function OfflinePage() {
               }}
               className="relative"
             >
-              <div className="w-24 h-24 bg-gradient-to-br from-slate-700 to-slate-800 rounded-3xl flex items-center justify-center shadow-xl">
-                <WifiOff className="w-12 h-12 text-slate-400" />
+              <div 
+                className="w-24 h-24 rounded-3xl flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, var(--webos-app-gray), var(--webos-text-secondary))',
+                  boxShadow: 'var(--webos-shadow-lg)'
+                }}
+              >
+                <WifiOff className="w-12 h-12" style={{ color: 'var(--webos-text-white)' }} />
               </div>
             </motion.div>
           </div>
@@ -72,64 +95,110 @@ export default function OfflinePage() {
           {/* Content */}
           <div className="p-8 space-y-6">
             <div className="text-center space-y-3">
-              <h1 className="text-2xl font-bold text-white">
+              <h1 
+                className="text-2xl font-light tracking-tight"
+                style={{ color: 'var(--webos-text-primary)' }}
+              >
                 You're Offline
               </h1>
-              <p className="text-slate-400">
+              <p 
+                className="text-sm font-light"
+                style={{ color: 'var(--webos-text-secondary)' }}
+              >
                 It looks like you've lost your internet connection. Don't worry, you can still access cached content.
               </p>
             </div>
 
             {/* Status indicator */}
-            <div className="flex items-center justify-center gap-2 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
+            <div 
+              className="flex items-center justify-center gap-2 p-3 rounded-xl"
+              style={{
+                background: 'var(--webos-bg-secondary)',
+                border: '1px solid var(--webos-border-secondary)'
+              }}
+            >
               <div className="relative">
-                <div className="w-3 h-3 bg-[var(--semantic-primary)] rounded-full" />
+                <div 
+                  className="w-3 h-3 rounded-full" 
+                  style={{ background: 'var(--webos-app-blue)' }}
+                />
                 <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute inset-0 w-3 h-3 bg-[var(--semantic-primary)] rounded-full"
+                  className="absolute inset-0 w-3 h-3 rounded-full"
+                  style={{ background: 'var(--webos-app-blue)' }}
                 />
               </div>
-              <span className="text-sm text-slate-300">
+              <span 
+                className="text-sm font-light"
+                style={{ color: 'var(--webos-text-tertiary)' }}
+              >
                 No internet connection
               </span>
             </div>
 
             {/* Actions */}
             <div className="space-y-3">
-              <Button
+              <button
                 onClick={handleRefresh}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                className="w-full rounded-xl py-3 px-6 flex items-center justify-center text-sm font-light tracking-wide uppercase transition-all hover:opacity-90"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Try Again
-              </Button>
-              <Button
+              </button>
+              <button
                 onClick={handleGoHome}
-                variant="outline"
-                className="w-full bg-white/5 border-white/10 hover:bg-white/10 text-white"
+                className="w-full rounded-xl py-3 px-6 flex items-center justify-center text-sm font-light tracking-wide uppercase transition-all hover:opacity-90"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid var(--webos-border-secondary)',
+                  color: 'var(--webos-text-primary)',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
               >
                 <Home className="w-4 h-4 mr-2" />
                 Go to Home
-              </Button>
+              </button>
             </div>
 
             {/* Tips */}
-            <div className="pt-4 border-t border-slate-700/50">
-              <h3 className="text-sm font-medium text-slate-300 mb-3">
+            <div 
+              className="pt-4"
+              style={{
+                borderTop: '1px solid var(--webos-border-secondary)'
+              }}
+            >
+              <h3 
+                className="text-xs font-light tracking-wider mb-3 uppercase"
+                style={{ color: 'var(--webos-text-tertiary)' }}
+              >
                 While you're offline:
               </h3>
-              <ul className="space-y-2 text-sm text-slate-400">
+              <ul className="space-y-2 text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[var(--semantic-primary)] rounded-full mt-1.5 flex-shrink-0" />
+                  <div 
+                    className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
+                    style={{ background: 'var(--webos-app-blue)' }}
+                  />
                   <span>View previously loaded pages</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[var(--semantic-primary)] rounded-full mt-1.5 flex-shrink-0" />
+                  <div 
+                    className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
+                    style={{ background: 'var(--webos-app-blue)' }}
+                  />
                   <span>Access cached documents and data</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[var(--semantic-primary)] rounded-full mt-1.5 flex-shrink-0" />
+                  <div 
+                    className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
+                    style={{ background: 'var(--webos-app-blue)' }}
+                  />
                   <span>Changes will sync when you're back online</span>
                 </li>
               </ul>
