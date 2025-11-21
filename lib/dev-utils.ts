@@ -100,7 +100,7 @@ export function initDevUtils() {
       },
     },
     help: () => {
-%cCommunity Manager - Development Utils%c
+      console.log(`%cCommunity Manager - Development Utils%c
 
 Available commands:
   __DEV__.utils.clearCache()     - Clear all caches
