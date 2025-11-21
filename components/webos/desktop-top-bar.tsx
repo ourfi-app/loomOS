@@ -34,18 +34,18 @@ export function DesktopTopBar() {
     <motion.div
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      transition={{ duration: 0.2 }}
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        background: 'rgba(255, 255, 255, 0.7)',
-        backdropFilter: 'blur(15px)',
-        WebkitBackdropFilter: 'blur(15px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+        background: 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        borderBottom: '1px solid #e0e0e0',
       }}
     >
       <div className="flex items-center justify-between px-6 py-3">
         {/* Left: Logo */}
-        <div className="flex items-center gap-2 font-medium text-foreground">
+        <div className="flex items-center gap-2 font-light" style={{ color: '#4a4a4a' }}>
           {/* loomOS Interlace Logo */}
           <svg
             width="20"
@@ -61,14 +61,14 @@ export function DesktopTopBar() {
             <path d="M10 6v12" />
             <path d="M14 6v12" />
           </svg>
-          <strong className="text-base tracking-wide">loomOS</strong>
+          <span className="text-base tracking-wide font-light">loomOS</span>
         </div>
 
         {/* Right: Status Icons + Time */}
-        <div className="flex items-center gap-3 text-sm font-medium text-foreground/70">
+        <div className="flex items-center gap-3 text-sm font-light" style={{ color: '#8a8a8a' }}>
           <Wifi className="w-[18px] h-[18px]" />
           <Volume2 className="w-[18px] h-[18px]" />
-          <span className="text-foreground">{currentTime}</span>
+          <span style={{ color: '#4a4a4a' }}>{currentTime}</span>
         </div>
       </div>
     </motion.div>

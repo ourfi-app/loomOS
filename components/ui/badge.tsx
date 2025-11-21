@@ -6,18 +6,15 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full px-3 py-1 text-xs font-medium transition-all duration-200",
+  "inline-flex items-center rounded-full px-3 py-1 text-xs font-light transition-all duration-200 ease-out",
   {
     variants: {
       variant: {
-        default:
-          "bg-primary/10 text-primary border border-primary/20",
-        secondary:
-          "bg-nordic-frost text-nordic-night border border-nordic-frost",
-        destructive:
-          "bg-destructive/10 text-destructive border border-destructive/20",
-        outline: "border border-nordic-frost text-nordic-gray bg-white",
-        success: "bg-nordic-aurora-green/10 text-nordic-aurora-green border border-nordic-aurora-green/20",
+        default: "border",
+        secondary: "border",
+        destructive: "border",
+        outline: "border bg-white",
+        success: "border",
       },
     },
     defaultVariants: {
@@ -26,13 +23,45 @@ const badgeVariants = cva(
   }
 )
 
+const badgeStyles: Record<string, React.CSSProperties> = {
+  default: {
+    backgroundColor: 'rgba(74, 74, 74, 0.1)',
+    color: '#4a4a4a',
+    borderColor: 'rgba(74, 74, 74, 0.2)',
+  },
+  secondary: {
+    backgroundColor: '#e8e8e8',
+    color: '#4a4a4a',
+    borderColor: '#d0d0d0',
+  },
+  destructive: {
+    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+    color: '#dc3545',
+    borderColor: 'rgba(220, 53, 69, 0.2)',
+  },
+  outline: {
+    backgroundColor: 'white',
+    color: '#6a6a6a',
+    borderColor: '#d0d0d0',
+  },
+  success: {
+    backgroundColor: 'rgba(40, 167, 69, 0.1)',
+    color: '#28a745',
+    borderColor: 'rgba(40, 167, 69, 0.2)',
+  },
+}
+
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-function Badge({ className, variant, ...props }: BadgeProps) {
+function Badge({ className, variant = "default", style, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div 
+      className={cn(badgeVariants({ variant }), className)} 
+      style={{ ...badgeStyles[variant || "default"], ...style }}
+      {...props} 
+    />
   )
 }
 
