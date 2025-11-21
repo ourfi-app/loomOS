@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { validateAuth, createSuccessResponse, errorResponse, handleApiError, logApiRequest } from '@/lib/api-utils';
 import { searchDocumentChunks } from '@/lib/document-processor';
 

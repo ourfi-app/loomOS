@@ -1,7 +1,13 @@
-
 import { NextRequest, NextResponse } from 'next/server';
+import { validateAuth, createErrorResponse, createSuccessResponse } from '@/lib/api-utils';
+import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
+
+const previewSchema = z.object({
+  code: z.string().min(1, 'Code is required'),
+  type: z.enum(['component', 'page', 'api']).optional(),
+});
 
 /**
  * Preview API
@@ -9,27 +15,24 @@ export const dynamic = 'force-dynamic';
  */
 export async function POST(req: NextRequest) {
   try {
-    const { code, type = 'component' } = await req.json();
-
-    if (!code) {
-      return NextResponse.json(
-        { error: 'No code provided' },
-        { status: 400 }
-      );
-    }
+    // Authenticate user
+    const session = await validateAuth(req);
+    
+    const body = await req.json();
+    const { code, type = 'component' } = previewSchema.parse(body);
 
     // Validate the code syntax (basic check)
     try {
       // Try to detect common syntax errors
       if (!code.includes('export default')) {
-        return NextResponse.json({
+        return createSuccessResponse({
           valid: false,
           error: 'Missing default export',
         });
       }
 
       if (type === 'component' && !code.includes('return (')) {
-        return NextResponse.json({
+        return createSuccessResponse({
           valid: false,
           error: 'Component must have a return statement',
         });
@@ -37,34 +40,44 @@ export async function POST(req: NextRequest) {
 
       // Basic React syntax check
       if (code.includes('class extends') && !code.includes('React.Component')) {
-        return NextResponse.json({
+        return createSuccessResponse({
           valid: false,
           error: 'Invalid React component syntax',
         });
       }
 
-      return NextResponse.json({
+      return createSuccessResponse({
         valid: true,
         code,
         analysis: {
           lines: code.split('\n').length,
-          hasTypeScript: code.includes(': ') || code.includes('<'),
-          hasHooks: code.includes('useState') || code.includes('useEffect'),
-          hasApiIntegration: code.includes('fetch') || code.includes('api'),
+          hasExport: code.includes('export'),
+          hasImports: code.includes('import'),
+          type,
         },
       });
-    } catch (error) {
-      return NextResponse.json({
+    } catch (syntaxError) {
+      return createSuccessResponse({
         valid: false,
-        error: 'Syntax error in code',
-        details: error instanceof Error ? error.message : 'Unknown error',
+        error: syntaxError instanceof Error ? syntaxError.message : 'Syntax error',
       });
     }
   } catch (error) {
-    console.error('Preview error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[API Error] Preview error:', error);
+    
+    if (error instanceof z.ZodError) {
+      return createErrorResponse(
+        'Validation failed: ' + error.errors.map(e => e.message).join(', '),
+        400,
+        'VALIDATION_ERROR',
+        error.errors
+      );
+    }
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

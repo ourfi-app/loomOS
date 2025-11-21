@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { validateAuth, createSuccessResponse, handleApiError, logApiRequest } from '@/lib/api-utils';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
@@ -100,6 +101,13 @@ export async function POST(
     const userId = (session.user as any).id;
     const postId = params.id;
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { content, parentId } = body;
 
     if (!content || content.trim() === '') {

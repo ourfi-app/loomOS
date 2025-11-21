@@ -1,266 +1,294 @@
 /**
- * API Request Validation Schemas
- *
- * Centralized Zod schemas for validating API request bodies.
- * Ensures type safety and data integrity across all API routes.
- *
- * Usage:
- *   import { createCommitteeSchema } from '@/lib/validation-schemas';
- *   const result = validateRequestBody(req, createCommitteeSchema);
+ * Validation Schemas for API Routes
+ * Using Zod for runtime type validation
  */
 
 import { z } from 'zod';
-import { UserRole, PaymentStatus, NotificationType, MessagePriority, TaskPriority, TaskStatus } from '@prisma/client';
 
-// ============================================================
-// COMMITTEE SCHEMAS
-// ============================================================
+// ============================================================================
+// Common Schemas
+// ============================================================================
 
-export const createCommitteeSchema = z.object({
-  name: z.string().min(1, 'Committee name is required').max(100, 'Name too long'),
-  description: z.string().max(500, 'Description too long').optional(),
-  type: z.string().min(1, 'Committee type is required'),
-  email: z.string().email('Invalid email address').optional().or(z.literal('')),
-  displayOrder: z.number().int().min(0).optional(),
+export const idSchema = z.string().uuid('Invalid ID format');
+export const emailSchema = z.string().email('Invalid email format');
+export const phoneSchema = z.string().regex(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number').optional();
+export const urlSchema = z.string().url('Invalid URL format');
+export const dateSchema = z.string().datetime().or(z.date());
+
+// ============================================================================
+// Auth & User Schemas
+// ============================================================================
+
+export const signupSchema = z.object({
+  email: emailSchema,
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  unitNumber: z.string().optional(),
+  role: z.enum(['RESIDENT', 'BOARD_MEMBER', 'ADMIN']).optional(),
 });
 
-export const updateCommitteeSchema = createCommitteeSchema.partial();
-
-export const addCommitteeMemberSchema = z.object({
-  userId: z.string().min(1, 'User ID is required'),
-  position: z.string().max(100, 'Position name too long').optional(),
-  bio: z.string().max(1000, 'Bio too long').optional(),
-  displayOrder: z.number().int().min(0).optional(),
-});
-
-export const updateCommitteeMemberSchema = addCommitteeMemberSchema.partial();
-
-// ============================================================
-// USER SCHEMAS
-// ============================================================
-
-export const createUserSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters').optional(),
-  firstName: z.string().min(1, 'First name is required').max(50, 'First name too long'),
-  lastName: z.string().min(1, 'Last name is required').max(50, 'Last name too long'),
-  unitNumber: z.string().max(20, 'Unit number too long').optional(),
-  phone: z.string().max(20, 'Phone number too long').optional(),
-  role: z.nativeEnum(UserRole).default(UserRole.RESIDENT),
-  isActive: z.boolean().default(true),
+export const registerSchema = z.object({
+  email: emailSchema,
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  name: z.string().min(1, 'Name is required'),
+  phone: z.string().min(1, 'Phone is required'),
+  unitNumber: z.string().min(1, 'Unit number is required'),
+  role: z.enum(['RESIDENT', 'BOARD_MEMBER', 'ADMIN']).optional(),
 });
 
 export const updateUserSchema = z.object({
-  email: z.string().email('Invalid email address').optional(),
-  firstName: z.string().min(1).max(50).optional(),
-  lastName: z.string().min(1).max(50).optional(),
-  unitNumber: z.string().max(20).optional(),
-  phone: z.string().max(20).optional(),
-  role: z.nativeEnum(UserRole).optional(),
+  firstName: z.string().min(1).optional(),
+  lastName: z.string().min(1).optional(),
+  name: z.string().min(1).optional(),
+  email: emailSchema.optional(),
+  phone: phoneSchema,
+  unitNumber: z.string().optional(),
+  bio: z.string().optional(),
+  role: z.enum(['RESIDENT', 'BOARD_MEMBER', 'ADMIN', 'SUPER_ADMIN']).optional(),
   isActive: z.boolean().optional(),
 });
 
-export const updateUserProfileSchema = z.object({
-  firstName: z.string().min(1).max(50).optional(),
-  lastName: z.string().min(1).max(50).optional(),
-  phone: z.string().max(20).optional(),
-  image: z.string().url().optional(),
-});
-
-export const changePasswordSchema = z.object({
-  currentPassword: z.string().min(1, 'Current password is required'),
-  newPassword: z.string().min(8, 'New password must be at least 8 characters'),
-  confirmPassword: z.string().min(1, 'Please confirm your new password'),
-}).refine((data) => data.newPassword === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ['confirmPassword'],
-});
-
-// ============================================================
-// PAYMENT SCHEMAS
-// ============================================================
-
-export const createPaymentSchema = z.object({
-  userId: z.string().min(1, 'User ID is required'),
-  amount: z.number().positive('Amount must be positive').multipleOf(0.01),
-  dueDate: z.string().datetime('Invalid date format').or(z.date()),
-  description: z.string().max(200, 'Description too long').optional(),
-  type: z.string().default('monthly_dues'),
-});
-
-export const updatePaymentSchema = z.object({
-  status: z.nativeEnum(PaymentStatus).optional(),
-  paidDate: z.string().datetime().or(z.date()).optional(),
-  stripePaymentId: z.string().optional(),
-});
-
-export const processPaymentSchema = z.object({
-  paymentId: z.string().min(1, 'Payment ID is required'),
-  stripeToken: z.string().min(1, 'Stripe token is required'),
-});
-
-// ============================================================
-// TASK SCHEMAS
-// ============================================================
-
-export const createTaskSchema = z.object({
-  title: z.string().min(1, 'Task title is required').max(200, 'Title too long'),
-  description: z.string().max(2000, 'Description too long').optional(),
-  status: z.nativeEnum(TaskStatus).default(TaskStatus.TODO),
-  priority: z.nativeEnum(TaskPriority).default(TaskPriority.MEDIUM),
-  dueDate: z.string().datetime().or(z.date()).optional(),
-  assignedTo: z.string().optional(),
-  category: z.string().max(50).default('general'),
-  tags: z.array(z.string().max(30)).default([]),
-  isRecurring: z.boolean().default(false),
-  recurrencePattern: z.string().max(100).optional(),
-});
-
-export const updateTaskSchema = createTaskSchema.partial();
-
-// ============================================================
-// MESSAGE SCHEMAS
-// ============================================================
+// ============================================================================
+// Message Schemas
+// ============================================================================
 
 export const createMessageSchema = z.object({
-  subject: z.string().min(1, 'Subject is required').max(200, 'Subject too long'),
-  body: z.string().min(1, 'Message body is required').max(10000, 'Message too long'),
-  recipients: z.array(z.object({
-    userId: z.string().min(1),
-    type: z.enum(['TO', 'CC', 'BCC']).default('TO'),
-  })).min(1, 'At least one recipient is required'),
-  priority: z.nativeEnum(MessagePriority).default(MessagePriority.NORMAL),
-  hasAttachments: z.boolean().default(false),
+  subject: z.string().min(1, 'Subject is required'),
+  body: z.string().min(1, 'Message body is required'),
+  recipientIds: z.array(z.string()).min(1, 'At least one recipient is required'),
+  priority: z.enum(['LOW', 'NORMAL', 'HIGH']).optional(),
+  attachments: z.array(z.object({
+    name: z.string(),
+    url: z.string(),
+    size: z.number(),
+  })).optional(),
 });
 
 export const updateMessageSchema = z.object({
   isRead: z.boolean().optional(),
   isStarred: z.boolean().optional(),
-  folderId: z.string().optional(),
+  folder: z.string().optional(),
 });
 
-// ============================================================
-// ANNOUNCEMENT SCHEMAS
-// ============================================================
+// ============================================================================
+// Calendar Schemas
+// ============================================================================
+
+export const createCalendarEventSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  description: z.string().optional(),
+  location: z.string().optional(),
+  startDate: dateSchema,
+  endDate: dateSchema,
+  startTime: z.string().optional(),
+  endTime: z.string().optional(),
+  isAllDay: z.boolean().optional(),
+  type: z.enum(['EVENT', 'MEETING', 'REMINDER', 'TASK']).optional(),
+  color: z.string().optional(),
+  attendees: z.array(z.any()).optional(),
+  attendeeCount: z.number().optional(),
+  isRecurring: z.boolean().optional(),
+  recurrence: z.enum(['NONE', 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']).optional(),
+  recurrenceEnd: dateSchema.optional(),
+  reminders: z.array(z.any()).optional(),
+  isPrivate: z.boolean().optional(),
+  isFavorite: z.boolean().optional(),
+  category: z.string().optional(),
+});
+
+// ============================================================================
+// Document Schemas
+// ============================================================================
+
+export const uploadDocumentSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  description: z.string().optional(),
+  category: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  isPublic: z.boolean().optional(),
+});
+
+export const searchDocumentsSchema = z.object({
+  query: z.string().min(1, 'Search query is required'),
+  category: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  limit: z.number().min(1).max(100).optional(),
+});
+
+// ============================================================================
+// Task Schemas
+// ============================================================================
+
+export const createTaskSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  description: z.string().optional(),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']).optional(),
+  status: z.enum(['TODO', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']).optional(),
+  dueDate: dateSchema.optional(),
+  assigneeId: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+});
+
+export const updateTaskSchema = z.object({
+  title: z.string().min(1).optional(),
+  description: z.string().optional(),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']).optional(),
+  status: z.enum(['TODO', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']).optional(),
+  dueDate: dateSchema.optional(),
+  assigneeId: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+});
+
+// ============================================================================
+// Payment Schemas
+// ============================================================================
+
+export const createPaymentSchema = z.object({
+  amount: z.number().positive('Amount must be positive'),
+  description: z.string().min(1, 'Description is required'),
+  dueDate: dateSchema,
+  type: z.enum(['MAINTENANCE', 'SPECIAL_ASSESSMENT', 'FINE', 'OTHER']).optional(),
+});
+
+export const processPaymentSchema = z.object({
+  paymentMethodId: z.string().min(1, 'Payment method is required'),
+  amount: z.number().positive('Amount must be positive'),
+});
+
+// ============================================================================
+// Announcement Schemas
+// ============================================================================
 
 export const createAnnouncementSchema = z.object({
-  title: z.string().min(1, 'Title is required').max(200, 'Title too long'),
-  content: z.string().min(1, 'Content is required').max(10000, 'Content too long'),
-  priority: z.enum(['urgent', 'normal', 'low']).default('normal'),
-  targetRole: z.nativeEnum(UserRole).optional(),
-  isActive: z.boolean().default(true),
+  title: z.string().min(1, 'Title is required'),
+  content: z.string().min(1, 'Content is required'),
+  priority: z.enum(['LOW', 'NORMAL', 'HIGH', 'URGENT']).optional(),
+  expiresAt: dateSchema.optional(),
+  isPinned: z.boolean().optional(),
+  category: z.string().optional(),
 });
 
-export const updateAnnouncementSchema = createAnnouncementSchema.partial();
-
-// ============================================================
-// NOTIFICATION SCHEMAS
-// ============================================================
-
-export const createNotificationSchema = z.object({
-  title: z.string().min(1, 'Title is required').max(200, 'Title too long'),
-  message: z.string().min(1, 'Message is required').max(1000, 'Message too long'),
-  type: z.nativeEnum(NotificationType).default(NotificationType.EMAIL),
-  isUrgent: z.boolean().default(false),
-  scheduledAt: z.string().datetime().or(z.date()).optional(),
-  recipientIds: z.array(z.string().min(1)).min(1, 'At least one recipient is required'),
+export const updateAnnouncementSchema = z.object({
+  title: z.string().min(1).optional(),
+  content: z.string().min(1).optional(),
+  priority: z.enum(['LOW', 'NORMAL', 'HIGH', 'URGENT']).optional(),
+  expiresAt: dateSchema.optional(),
+  isPinned: z.boolean().optional(),
+  category: z.string().optional(),
 });
 
-// ============================================================
-// HOUSEHOLD SCHEMAS
-// ============================================================
+// ============================================================================
+// Maintenance Request Schemas
+// ============================================================================
 
-export const createPetSchema = z.object({
-  unitNumber: z.string().min(1, 'Unit number is required').max(20),
-  name: z.string().min(1, 'Pet name is required').max(50),
-  type: z.string().min(1, 'Pet type is required').max(30),
-  breed: z.string().max(50).optional(),
-  color: z.string().max(30).optional(),
-  weight: z.string().max(20).optional(),
-  age: z.string().max(20).optional(),
-  description: z.string().max(500).optional(),
+export const createMaintenanceRequestSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  description: z.string().min(1, 'Description is required'),
+  category: z.string().optional(),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']).optional(),
+  location: z.string().optional(),
+  images: z.array(z.string()).optional(),
 });
 
-export const updatePetSchema = createPetSchema.partial().omit({ unitNumber: true });
-
-export const createChildSchema = z.object({
-  unitNumber: z.string().min(1, 'Unit number is required').max(20),
-  name: z.string().min(1, 'Child name is required').max(100),
-  age: z.number().int().min(0).max(18).optional(),
-  birthYear: z.number().int().min(1900).max(new Date().getFullYear()).optional(),
-  grade: z.string().max(20).optional(),
-  school: z.string().max(100).optional(),
+export const updateMaintenanceRequestSchema = z.object({
+  title: z.string().min(1).optional(),
+  description: z.string().min(1).optional(),
+  status: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']).optional(),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']).optional(),
+  assignedTo: z.string().optional(),
+  notes: z.string().optional(),
 });
 
-export const updateChildSchema = createChildSchema.partial().omit({ unitNumber: true });
+// ============================================================================
+// Brandy AI Schemas
+// ============================================================================
 
-export const createAdditionalResidentSchema = z.object({
-  unitNumber: z.string().min(1, 'Unit number is required').max(20),
-  name: z.string().min(1, 'Resident name is required').max(100),
-  relationship: z.string().min(1, 'Relationship is required').max(50),
-  email: z.string().email().optional().or(z.literal('')),
-  phone: z.string().max(20).optional(),
-  isEmergencyContact: z.boolean().default(false),
+export const brandyGenerateWebSchema = z.object({
+  prompt: z.string().min(1, 'Prompt is required'),
+  context: z.string().optional(),
+  style: z.string().optional(),
 });
 
-export const updateAdditionalResidentSchema = createAdditionalResidentSchema.partial().omit({ unitNumber: true });
-
-// ============================================================
-// PROPERTY SCHEMAS
-// ============================================================
-
-export const createPropertyUnitSchema = z.object({
-  unitNumber: z.string().min(1, 'Unit number is required').max(20),
-  building: z.string().max(50).optional(),
-  floor: z.number().int().optional(),
-  streetAddress: z.string().max(200).optional(),
-  city: z.string().max(100).optional(),
-  state: z.string().max(50).optional(),
-  zipCode: z.string().max(10).optional(),
-  latitude: z.number().optional(),
-  longitude: z.number().optional(),
-  squareFootage: z.number().int().positive().optional(),
-  bedrooms: z.number().int().min(0).optional(),
-  bathrooms: z.number().min(0).optional(),
-  parkingSpaces: z.number().int().min(0).default(0),
-  storageUnit: z.string().max(50).optional(),
-  balconySize: z.string().max(50).optional(),
-  yearBuilt: z.number().int().min(1800).max(new Date().getFullYear()).optional(),
-  notes: z.string().max(1000).optional(),
-  occupancyStatus: z.enum(['occupied', 'vacant', 'rented', 'for_sale']).default('occupied'),
-  monthlyDues: z.number().positive().multipleOf(0.01).optional(),
+export const brandyClaudeHelperSchema = z.object({
+  message: z.string().min(1, 'Message is required'),
+  conversationId: z.string().optional(),
+  context: z.any().optional(),
 });
 
-export const updatePropertyUnitSchema = createPropertyUnitSchema.partial().omit({ unitNumber: true });
+// ============================================================================
+// Organization Schemas
+// ============================================================================
 
-// ============================================================
-// NOTE SCHEMAS
-// ============================================================
-
-export const createNoteSchema = z.object({
-  title: z.string().min(1, 'Title is required').max(200, 'Title too long'),
-  content: z.string().min(1, 'Content is required').max(50000, 'Content too long'),
-  category: z.string().max(50).default('general'),
-  color: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Invalid color format').optional(),
-  isFavorite: z.boolean().default(false),
-  isPinned: z.boolean().default(false),
-  tags: z.array(z.string().max(30)).default([]),
+export const createOrganizationSchema = z.object({
+  name: z.string().min(1, 'Organization name is required'),
+  domain: z.string().min(1, 'Domain is required'),
+  type: z.enum(['HOA', 'CONDO', 'APARTMENT', 'OTHER']).optional(),
+  address: z.string().optional(),
+  phone: phoneSchema,
+  email: emailSchema.optional(),
 });
 
-export const updateNoteSchema = createNoteSchema.partial();
+export const updateOrganizationSchema = z.object({
+  name: z.string().min(1).optional(),
+  domain: z.string().min(1).optional(),
+  type: z.enum(['HOA', 'CONDO', 'APARTMENT', 'OTHER']).optional(),
+  address: z.string().optional(),
+  phone: phoneSchema,
+  email: emailSchema.optional(),
+  settings: z.any().optional(),
+});
 
-// ============================================================
-// TYPE EXPORTS
-// ============================================================
+// ============================================================================
+// Chat Schemas
+// ============================================================================
 
-export type CreateCommitteeInput = z.infer<typeof createCommitteeSchema>;
-export type UpdateCommitteeInput = z.infer<typeof updateCommitteeSchema>;
-export type CreateUserInput = z.infer<typeof createUserSchema>;
-export type UpdateUserInput = z.infer<typeof updateUserSchema>;
-export type CreatePaymentInput = z.infer<typeof createPaymentSchema>;
-export type UpdatePaymentInput = z.infer<typeof updatePaymentSchema>;
-export type CreateTaskInput = z.infer<typeof createTaskSchema>;
-export type UpdateTaskInput = z.infer<typeof updateTaskSchema>;
-export type CreateMessageInput = z.infer<typeof createMessageSchema>;
-export type CreateNoteInput = z.infer<typeof createNoteSchema>;
-export type UpdateNoteInput = z.infer<typeof updateNoteSchema>;
+export const sendChatMessageSchema = z.object({
+  message: z.string().min(1, 'Message is required'),
+  conversationId: z.string().optional(),
+  recipientId: z.string().optional(),
+  attachments: z.array(z.object({
+    name: z.string(),
+    url: z.string(),
+    type: z.string(),
+  })).optional(),
+});
+
+// ============================================================================
+// Generic Schemas
+// ============================================================================
+
+export const paginationSchema = z.object({
+  page: z.number().min(1).optional(),
+  limit: z.number().min(1).max(100).optional(),
+  sortBy: z.string().optional(),
+  sortOrder: z.enum(['asc', 'desc']).optional(),
+});
+
+export const idParamSchema = z.object({
+  id: idSchema,
+});
+
+// ============================================================================
+// Helper Functions
+// ============================================================================
+
+/**
+ * Validate request body against a schema
+ */
+export function validateBody<T>(schema: z.ZodSchema<T>, body: unknown): T {
+  return schema.parse(body);
+}
+
+/**
+ * Safely validate request body and return result
+ */
+export function safeValidateBody<T>(
+  schema: z.ZodSchema<T>,
+  body: unknown
+): { success: true; data: T } | { success: false; error: z.ZodError } {
+  const result = schema.safeParse(body);
+  return result.success
+    ? { success: true, data: result.data }
+    : { success: false, error: result.error };
+}

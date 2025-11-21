@@ -1,5 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { validateComponentCode, validateComponentMetadata } from '@/lib/app-validation';
@@ -13,6 +14,13 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { code, metadata, type = 'code' } = body;
 
     if (type === 'metadata') {

@@ -19,6 +19,7 @@ export const dynamic = "force-dynamic";
  * @returns {Object} - Role-based dashboard statistics
  */
 export async function GET(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -153,5 +154,15 @@ export async function GET(request: NextRequest) {
     );
   } catch (error) {
     return handleApiError(error, '/api/dashboard/stats', request);
+  }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

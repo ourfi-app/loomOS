@@ -6,6 +6,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { validateAuth, createErrorResponse, createSuccessResponse } from '@/lib/api-utils';
 import { withTenant, withAdminTenant, validateRequestBody } from '@/lib/api-middleware';
 import { createCommitteeSchema } from '@/lib/validation-schemas';
 import { handleApiError, ApiError } from '@/lib/api-errors';

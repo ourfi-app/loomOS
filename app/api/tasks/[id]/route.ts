@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -68,6 +69,13 @@ export async function PUT(
     logApiRequest('PUT', `/api/tasks/${params.id}`, { userId: session?.user?.id });
 
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
 
     const updateData: any = {
       title: body.title,

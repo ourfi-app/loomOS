@@ -1,5 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
@@ -15,6 +16,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
+  try {
   const startTime = Date.now();
   let userId: string | undefined;
 
@@ -62,9 +64,20 @@ export async function GET(request: NextRequest) {
     logApiCall('GET', '/api/profile', status, Date.now() - startTime, userId, message);
     return errorResponse(message, status);
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 export async function PUT(request: NextRequest) {
+  try {
   const startTime = Date.now();
   let userId: string | undefined;
 
@@ -76,6 +89,13 @@ export async function PUT(request: NextRequest) {
 
     // Parse request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { firstName, lastName, phone, email, currentPassword, newPassword } = body;
 
     // Validate required fields for profile update
@@ -155,5 +175,15 @@ export async function PUT(request: NextRequest) {
     
     logApiCall('PUT', '/api/profile', status, Date.now() - startTime, userId, message);
     return errorResponse(message, status);
+  }
+
+  } catch (error) {
+    console.error('[API Error] PUT error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

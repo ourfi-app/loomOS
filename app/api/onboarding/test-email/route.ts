@@ -1,5 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { getServerSession } from 'next-auth';
 import { authOptions, hasAdminAccess } from '@/lib/auth';
 
@@ -16,6 +17,13 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { provider, apiKey, fromEmail, fromName } = body;
 
     // Test SendGrid connection

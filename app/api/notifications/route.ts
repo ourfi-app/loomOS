@@ -1,5 +1,6 @@
 
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -24,6 +25,7 @@ import {
  */
 export const dynamic = 'force-dynamic';
 export async function GET(request: Request) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -86,6 +88,16 @@ export async function GET(request: Request) {
   } catch (error) {
     return handleApiError(error, '/api/notifications', request);
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 /**
@@ -99,6 +111,7 @@ export async function GET(request: Request) {
  * @returns {Object} - Success status
  */
 export async function PATCH(request: Request) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -108,6 +121,13 @@ export async function PATCH(request: Request) {
 
     // Parse request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { notificationId, markAllAsRead } = body;
 
     let result;
@@ -190,5 +210,15 @@ export async function PATCH(request: Request) {
     );
   } catch (error) {
     return handleApiError(error, '/api/notifications', request);
+  }
+
+  } catch (error) {
+    console.error('[API Error] PATCH error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

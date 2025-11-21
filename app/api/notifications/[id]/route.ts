@@ -1,5 +1,6 @@
 
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -26,6 +27,7 @@ export async function PATCH(
   request: Request,
   { params }: { params: { id: string } }
 ) {
+  try {
   const startTime = Date.now();
   const notificationId = params.id; // Move outside try block for error handling
   
@@ -41,6 +43,13 @@ export async function PATCH(
 
     // Parse request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { read } = body;
 
     // Validate required fields
@@ -97,6 +106,16 @@ export async function PATCH(
   } catch (error) {
     return handleApiError(error, `/api/notifications/${notificationId}`, request);
   }
+
+  } catch (error) {
+    console.error('[API Error] PATCH error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 /**
@@ -109,6 +128,7 @@ export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
 ) {
+  try {
   const startTime = Date.now();
   const notificationId = params.id; // Move outside try block for error handling
   
@@ -163,5 +183,15 @@ export async function DELETE(
     );
   } catch (error) {
     return handleApiError(error, `/api/notifications/${notificationId}`, request);
+  }
+
+  } catch (error) {
+    console.error('[API Error] DELETE error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

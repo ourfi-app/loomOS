@@ -14,6 +14,7 @@ import {
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
+  try {
   const startTime = Date.now();
   let userId: string | undefined;
 
@@ -59,5 +60,15 @@ export async function GET(request: NextRequest) {
     
     logApiCall('GET', '/api/payments/next', status, Date.now() - startTime, userId, message);
     return errorResponse(message, status);
+  }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

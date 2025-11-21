@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -16,6 +17,7 @@ export async function GET(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -50,6 +52,16 @@ export async function GET(
     logApiCall('GET', `/api/calendar/${(await params).id}`, 500, duration, undefined, (error as Error).message);
     return errorResponse('Failed to fetch event', 500);
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 // PUT update an event
@@ -57,6 +69,7 @@ export async function PUT(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -66,6 +79,13 @@ export async function PUT(
 
     const { id } = await params;
     const body = await req.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
 
     // Verify ownership
     const existingEvent = await prisma.calendarEvent.findFirst({
@@ -156,6 +176,16 @@ export async function PUT(
     logApiCall('PUT', `/api/calendar/${(await params).id}`, 500, duration, undefined, (error as Error).message);
     return errorResponse('Failed to update event', 500);
   }
+
+  } catch (error) {
+    console.error('[API Error] PUT error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 // DELETE an event
@@ -163,6 +193,7 @@ export async function DELETE(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -217,6 +248,16 @@ export async function DELETE(
     }
     logApiCall('DELETE', `/api/calendar/${(await params).id}`, 500, duration, undefined, (error as Error).message);
     return errorResponse('Failed to delete event', 500);
+  }
+
+  } catch (error) {
+    console.error('[API Error] DELETE error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }
 

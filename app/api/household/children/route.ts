@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -17,6 +18,7 @@ import {
  */
 export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -78,6 +80,16 @@ export async function GET(request: NextRequest) {
     
     return errorResponse('Failed to fetch children');
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 /**
@@ -85,6 +97,7 @@ export async function GET(request: NextRequest) {
  * Create a new child record for the authenticated user's unit
  */
 export async function POST(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -106,6 +119,13 @@ export async function POST(request: NextRequest) {
     
     // Parse and validate request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     validateRequiredFields(body, ['name']);
     
     // Create the child record within the organization
@@ -153,5 +173,15 @@ export async function POST(request: NextRequest) {
     );
     
     return errorResponse('Failed to create child record');
+  }
+
+  } catch (error) {
+    console.error('[API Error] POST error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

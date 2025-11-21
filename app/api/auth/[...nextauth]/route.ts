@@ -1,5 +1,6 @@
 
 import NextAuth from "next-auth";
+import { validateAuth, createErrorResponse, createSuccessResponse } from '@/lib/api-utils';
 import { authOptions } from "@/lib/auth";
 
 const handler = NextAuth(authOptions);
