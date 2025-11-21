@@ -41,7 +41,6 @@ export * from './sonner';
 export * from './switch';
 export * from './table';
 export * from './tabs';
-export * from './task-card';
 export * from './textarea';
 export * from './toast';
 export { Toaster } from './toaster';
@@ -49,28 +48,3 @@ export * from './toggle-group';
 export * from './toggle';
 export * from './tooltip';
 export * from './use-toast';
-
-// LoomOS Components
-export {
-  LoomOSDialog,
-  LoomOSDialogTrigger,
-  LoomOSDialogContent,
-  LoomOSDialogHeader,
-  LoomOSDialogTitle,
-  LoomOSDialogDescription,
-  LoomOSDialogBody,
-  LoomOSDialogFooter,
-  LoomOSDialogPrimaryAction,
-  LoomOSDialogSecondaryAction,
-  LoomOSDialogClose,
-  ConfirmationDialog,
-  TextEntryDialog,
-  FormPopupDialog,
-  FormField as LoomOSFormField,
-} from './loomos-dialog';
-export { LoomOSDatePicker } from './loomos-date-picker';
-export { FilePicker, AttachmentButton } from './file-picker';
-export { AudioPlayer, VideoPlayer } from './media-player';
-export { ShareDialog, ShareButton } from './share-dialog';
-export { SegmentedControl } from './segmented-control';
-export { LoomOSButton } from './loomos-button';

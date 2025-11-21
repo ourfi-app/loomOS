@@ -21,7 +21,6 @@ export * from './loomos-list-pane';
 export * from './loomos-detail-pane';
 export * from './loomos-nav-list-item';
 export * from './loomos-list-item';
-export * from './loomos-list-item-enhanced';
 export * from './loomos-list-divider';
 export * from './loomos-empty-state';
 export * from './loomos-loading-state';
@@ -29,7 +28,6 @@ export * from './loomos-loading-state';
 // UI components
 export * from './loomos-app-header';
 export * from './loomos-section-header';
-export * from './loomos-action-button';
 export * from './loomos-group-box';
 
 // Mobile components

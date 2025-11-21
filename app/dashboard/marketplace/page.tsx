@@ -40,10 +40,9 @@ import { cn } from '@/lib/utils';
 import { toast } from 'react-hot-toast';
 import * as LucideIcons from 'lucide-react';
 import { 
-  LoomOSListItemEnhanced,
+  LoomOSListItem,
   LoomOSNavigationPane,
   LoomOSDetailPane,
-  LoomOSActionButton,
   LoomOSEmptyState,
   LoomOSLoadingState,
   DesktopAppWrapper
@@ -315,13 +314,13 @@ export default function MarketplacePage() {
           className="pl-9 w-64 webos-pebble"
         />
       </div>
-      <LoomOSActionButton
+      <Button
         icon={<RefreshCw className="w-4 h-4" />}
         onClick={loadInitialData}
         size="sm"
       >
         Refresh
-      </LoomOSActionButton>
+      </Button>
     </div>
   );
 
@@ -331,7 +330,7 @@ export default function MarketplacePage() {
       {isInstalled(selectedApp.id) ? (
         <>
           {hasUpdate(selectedApp.id) && (
-            <LoomOSActionButton
+            <Button
               icon={<ArrowUpCircle className="w-4 h-4" />}
               onClick={() => handleUpdate(selectedApp)}
               disabled={updating === selectedApp.id}
@@ -345,14 +344,14 @@ export default function MarketplacePage() {
               ) : (
                 'Update'
               )}
-            </LoomOSActionButton>
+            </Button>
           )}
           {!selectedApp.isSystem && (
-            <LoomOSActionButton
+            <Button
               icon={<Trash2 className="w-4 h-4" />}
               onClick={() => handleUninstall(selectedApp)}
               disabled={uninstalling === selectedApp.id}
-              variant="danger"
+              variant="destructive"
               size="sm"
             >
               {uninstalling === selectedApp.id ? (
@@ -363,11 +362,11 @@ export default function MarketplacePage() {
               ) : (
                 'Uninstall'
               )}
-            </LoomOSActionButton>
+            </Button>
           )}
         </>
       ) : (
-        <LoomOSActionButton
+        <Button
           icon={<Download className="w-4 h-4" />}
           onClick={() => handleInstall(selectedApp)}
           disabled={installing === selectedApp.id}
@@ -381,7 +380,7 @@ export default function MarketplacePage() {
           ) : (
             'Install'
           )}
-        </LoomOSActionButton>
+        </Button>
       )}
     </div>
   ) : undefined;
@@ -435,7 +434,7 @@ export default function MarketplacePage() {
                     const updateAvailable = hasUpdate(app.id);
 
                     return (
-                      <LoomOSListItemEnhanced
+                      <LoomOSListItem
                         key={app.id}
                         selected={selectedApp?.id === app.id}
                         onClick={() => setSelectedApp(app)}
@@ -483,7 +482,7 @@ export default function MarketplacePage() {
                             </div>
                           </div>
                         </div>
-                      </LoomOSListItemEnhanced>
+                      </LoomOSListItem>
                     );
                   })}
                 </div>

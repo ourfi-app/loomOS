@@ -38,7 +38,7 @@ import {
   LoomOSDetailPane,
   LoomOSNavListItem,
   LoomOSGroupBox,
-  LoomOSListItemEnhanced,
+  LoomOSListItem,
   LoomOSEmptyState,
 } from '@/components/webos';
 import { DesktopAppWrapper } from '@/components/webos/desktop-app-wrapper';
@@ -360,7 +360,7 @@ export default function DirectoryRequestsPage() {
             ) : (
               <div className="divide-y divide-gray-100">
                 {filteredRequests.map((request) => (
-                  <LoomOSListItemEnhanced
+                  <LoomOSListItem
                     key={request.id}
                     selected={selectedRequest?.id === request.id}
                     onClick={() => setSelectedRequest(request)}
@@ -393,7 +393,7 @@ export default function DirectoryRequestsPage() {
                         </div>
                       </div>
                     </div>
-                  </LoomOSListItemEnhanced>
+                  </LoomOSListItem>
                 ))}
               </div>
             )}

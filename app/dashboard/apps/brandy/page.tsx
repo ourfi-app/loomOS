@@ -52,8 +52,7 @@ import { ErrorBoundary } from '@/components/common';
 import { toastError, toastCRUD } from '@/lib/toast-helpers';
 import { 
   DesktopAppWrapper,
-  LoomOSActionButton,
-  LoomOSEmptyState,
+  LoomOSEmptyState
 } from '@/components/webos';
 import { APP_COLORS } from '@/lib/app-design-system';
 
