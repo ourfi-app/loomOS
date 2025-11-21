@@ -1,0 +1,86 @@
+/**
+ * WebOS-Inspired Design Tokens
+ * Phase 1: Landing Page Redesign
+ */
+
+:root {
+  /* ========================================
+     COLOR SYSTEM
+     ======================================== */
+  
+  /* Background Colors */
+  --webos-bg-gradient: linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%);
+  --webos-bg-primary: #f5f5f5;
+  --webos-bg-secondary: #f8f8f8;
+  --webos-bg-tertiary: #e8e8e8;
+  --webos-bg-white: #ffffff;
+  --webos-bg-glass: rgba(255, 255, 255, 0.8);
+  --webos-bg-glass-strong: rgba(247, 246, 244, 0.95);
+  
+  /* Text Colors */
+  --webos-text-primary: #4a4a4a;
+  --webos-text-secondary: #8a8a8a;
+  --webos-text-tertiary: #6a6a6a;
+  --webos-text-muted: #9a9a9a;
+  --webos-text-white: #ffffff;
+  
+  /* UI Element Colors */
+  --webos-ui-dark: #1a1a1a;
+  --webos-ui-medium-dark: #4a4a4a;
+  --webos-ui-medium: #5a5a5a;
+  --webos-ui-light: #6a6a6a;
+  
+  /* Border Colors */
+  --webos-border-primary: #e8e8e8;
+  --webos-border-secondary: #d0d0d0;
+  --webos-border-tertiary: #e0e0e0;
+  --webos-border-glass: rgba(255, 255, 255, 0.5);
+  
+  /* App-Specific Colors */
+  --webos-app-blue: #7a9eb5;
+  --webos-app-brown: #b58a7a;
+  --webos-app-tan: #b5a07a;
+  --webos-app-purple: #9d8ab5;
+  --webos-app-teal: #7ab5a8;
+  --webos-app-rose: #b57a9e;
+  --webos-app-gray: #a8a8a8;
+  --webos-app-green: #8ba87d;
+  
+  /* ========================================
+     SPACING SYSTEM
+     ======================================== */
+  --webos-space-card: 2rem; /* 32px */
+  --webos-radius-card: 1.5rem; /* 24px */
+  --webos-radius-button: 0.75rem; /* 12px */
+  --webos-radius-input: 0.75rem; /* 12px */
+  
+  /* ========================================
+     SHADOW SYSTEM
+     ======================================== */
+  --webos-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --webos-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --webos-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --webos-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+  --webos-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  
+  /* ========================================
+     TRANSITION SYSTEM
+     ======================================== */
+  --webos-transition-fast: 0.2s ease;
+  --webos-transition-base: 0.3s ease-out;
+  --webos-transition-slow: 0.5s ease-in-out;
+}
+
+/* Dark mode overrides (if needed) */
+.dark {
+  --webos-bg-primary: #4a4a4a;
+  --webos-bg-secondary: #3a3a3a;
+  --webos-bg-tertiary: #2a2a2a;
+  --webos-bg-glass: rgba(74, 74, 74, 0.8);
+  --webos-bg-glass-strong: rgba(56, 56, 56, 0.95);
+  --webos-text-primary: #e8e8e8;
+  --webos-text-secondary: #b0b0b0;
+  --webos-text-tertiary: #9a9a9a;
+  --webos-border-primary: #5a5a5a;
+  --webos-border-secondary: #4a4a4a;
+}

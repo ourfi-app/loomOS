@@ -24,12 +24,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-// loomOS physics constants
-const loomOSSpring = {
+// WebOS-inspired animation constants
+const webOSTransition = {
   type: "spring" as const,
-  stiffness: 300,
-  damping: 25,
-  mass: 1
+  stiffness: 260,
+  damping: 30,
+  mass: 0.8
+};
+
+const webOSFade = {
+  duration: 0.3,
+  ease: "easeOut"
 };
 
 // Navigation Component
@@ -49,47 +54,71 @@ const Navigation: React.FC<NavigationProps> = ({ onLoginClick }) => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
+        scrolled ? 'backdrop-blur-md shadow-sm' : ''
       }`}
+      style={{
+        background: scrolled ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
+        borderBottom: scrolled ? '1px solid var(--webos-border-primary)' : 'none'
+      }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={loomOSSpring}
+      transition={webOSTransition}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              className="w-10 h-10 bg-gradient-to-br from-loomos-orange to-loomos-orange-dark rounded-xl flex items-center justify-center"
+              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #9ca3a0, #b8bfbc)',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+              }}
               whileHover={{ scale: 1.05 }}
-              transition={loomOSSpring}
+              transition={webOSTransition}
             >
-              <span className="text-white font-bold text-xl">L</span>
+              <span className="text-white font-light text-xl">L</span>
             </motion.div>
-            <span className="font-display text-2xl font-bold text-[var(--semantic-text-primary)]">loomOS</span>
+            <span className="font-sans text-2xl font-light tracking-tight" style={{ color: 'var(--webos-text-primary)' }}>
+              loomOS
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-[var(--semantic-text-primary)] hover:text-loomos-orange transition-colors font-medium">Features</a>
-            <a href="#developers" className="text-[var(--semantic-text-primary)] hover:text-loomos-orange transition-colors font-medium">Developers</a>
-            <a href="#design" className="text-[var(--semantic-text-primary)] hover:text-loomos-orange transition-colors font-medium">Design</a>
-            <a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer" className="text-[var(--semantic-text-primary)] hover:text-loomos-orange transition-colors font-medium">GitHub</a>
+            <a href="#features" className="text-sm font-light transition-colors" style={{ color: 'var(--webos-text-primary)' }}>
+              Features
+            </a>
+            <a href="#developers" className="text-sm font-light transition-colors" style={{ color: 'var(--webos-text-primary)' }}>
+              Developers
+            </a>
+            <a href="#design" className="text-sm font-light transition-colors" style={{ color: 'var(--webos-text-primary)' }}>
+              Design
+            </a>
+            <a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer" className="text-sm font-light transition-colors" style={{ color: 'var(--webos-text-primary)' }}>
+              GitHub
+            </a>
           </div>
 
           <div className="flex items-center space-x-4">
             <button
               onClick={onLoginClick}
-              className="text-[var(--semantic-text-primary)] hover:text-loomos-orange transition-colors font-semibold"
+              className="text-sm font-light transition-colors"
+              style={{ color: 'var(--webos-text-primary)' }}
             >
               Log In
             </button>
             <Link href="/auth/register">
               <motion.button
-                className="bg-gradient-to-r from-loomos-orange to-loomos-orange-dark text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all"
-                whileHover={{ scale: 1.05 }}
+                className="px-6 py-2 rounded-xl text-sm font-light tracking-wide transition-all"
+                style={{
+                  backgroundColor: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+                whileHover={{ scale: 1.05, opacity: 0.9 }}
                 whileTap={{ scale: 0.98 }}
-                transition={loomOSSpring}
+                transition={webOSTransition}
               >
-                Get Started
+                GET STARTED
               </motion.button>
             </Link>
           </div>
@@ -129,11 +158,11 @@ const CardStack = () => {
             rotate: index * 2,
             scale: 1 - (index * 0.05)
           }}
-          transition={{ ...loomOSSpring, delay: 0.5 + (index * 0.1) }}
+          transition={{ ...webOSTransition, delay: 0.5 + (index * 0.1) }}
           whileHover={{
             y: -10,
             scale: 1.02 - (index * 0.05),
-            transition: loomOSSpring
+            transition: webOSTransition
           }}
         >
           <div className="text-white">
@@ -153,77 +182,90 @@ const CardStack = () => {
 // Hero Section
 const Hero = () => {
   return (
-    <div className="relative pt-32 pb-20 overflow-hidden " style={{
-      backgroundImage: `
-        linear-gradient(rgba(241, 136, 37, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(241, 136, 37, 0.03) 1px, transparent 1px)
-      `,
-      backgroundSize: '8px 8px'
+    <div className="relative pt-32 pb-20 overflow-hidden" style={{
+      background: 'var(--webos-bg-gradient)'
     }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={loomOSSpring}
+            transition={webOSTransition}
           >
             <motion.div
-              className="inline-flex items-center space-x-2 bg-loomos-orange/10 border border-loomos-orange/20 rounded-full px-4 py-2 mb-6 cursor-pointer"
+              className="inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 cursor-pointer"
+              style={{
+                backgroundColor: 'rgba(156, 163, 160, 0.1)',
+                border: '1px solid rgba(156, 163, 160, 0.2)'
+              }}
               whileHover={{ scale: 1.05 }}
-              transition={loomOSSpring}
+              transition={webOSTransition}
             >
-              <span className="w-2 h-2 bg-loomos-orange rounded-full animate-pulse"></span>
-              <span className="text-sm font-semibold text-loomos-orange">Open Source • MIT Licensed</span>
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#a8a8a8' }}></span>
+              <span className="text-xs font-light tracking-wide" style={{ color: 'var(--webos-text-tertiary)' }}>
+                OPEN SOURCE • MIT LICENSED
+              </span>
             </motion.div>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--semantic-text-primary)] mb-6 leading-tight">
+            <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight" style={{ color: 'var(--webos-text-primary)' }}>
               Computing.<br />
-              <span className="bg-gradient-to-r from-loomos-orange to-loomos-orange-dark bg-clip-text text-transparent">
-                Liberated.
+              <span style={{ color: 'var(--webos-text-secondary)' }}>
+                Reimagined.
               </span>
             </h1>
 
-            <p className="text-xl text-[var(--semantic-text-secondary)] mb-8 leading-relaxed">
-              The beautiful, open-source operating system that frees you from Apple and Google&apos;s grip.
+            <p className="text-lg font-light mb-8 leading-relaxed" style={{ color: 'var(--webos-text-secondary)' }}>
+              The beautiful, open-source operating system that frees you from vendor lock-in.
               Activity-centric design meets modern web technology.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link href="/auth/register">
                 <motion.button
-                  className="bg-gradient-to-r from-loomos-orange to-loomos-orange-dark text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all flex items-center space-x-2"
+                  className="px-8 py-4 rounded-xl text-sm font-light tracking-wide transition-all flex items-center space-x-2"
+                  style={{
+                    backgroundColor: 'var(--webos-ui-dark)',
+                    color: 'var(--webos-text-white)',
+                    boxShadow: 'var(--webos-shadow-md)'
+                  }}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  transition={loomOSSpring}
+                  transition={webOSTransition}
                 >
-                  <span>Get Started Free</span>
+                  <span>GET STARTED FREE</span>
                   <ChevronRight className="w-5 h-5" />
                 </motion.button>
               </Link>
 
               <a href="https://github.com/ourfi-app/loomOS" target="_blank" rel="noopener noreferrer">
                 <motion.button
-                  className="bg-white border-2 border-[var(--semantic-border-medium)] text-[var(--semantic-text-primary)] px-8 py-4 rounded-xl font-semibold text-lg hover:border-loomos-orange hover:shadow-lg transition-all"
+                  className="px-8 py-4 rounded-xl text-sm font-light tracking-wide transition-all"
+                  style={{
+                    backgroundColor: 'var(--webos-bg-white)',
+                    color: 'var(--webos-text-primary)',
+                    border: '1px solid var(--webos-border-secondary)',
+                    boxShadow: 'var(--webos-shadow-sm)'
+                  }}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  transition={loomOSSpring}
+                  transition={webOSTransition}
                 >
-                  View Documentation
+                  VIEW DOCUMENTATION
                 </motion.button>
               </a>
             </div>
 
-            <div className="mt-12 flex items-center space-x-8 text-sm text-[var(--semantic-text-secondary)]">
+            <div className="mt-12 flex items-center space-x-8 text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>
               <div className="flex items-center space-x-2">
-                <Check className="w-4 h-4 text-loomos-orange" />
+                <Check className="w-4 h-4" style={{ color: 'var(--webos-app-gray)' }} />
                 <span>No vendor lock-in</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Check className="w-4 h-4 text-loomos-orange" />
+                <Check className="w-4 h-4" style={{ color: 'var(--webos-app-gray)' }} />
                 <span>Self-hostable</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Check className="w-4 h-4 text-loomos-orange" />
+                <Check className="w-4 h-4" style={{ color: 'var(--webos-app-gray)' }} />
                 <span>85% revenue share</span>
               </div>
             </div>
@@ -232,18 +274,12 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ ...loomOSSpring, delay: 0.2 }}
+            transition={{ ...webOSTransition, delay: 0.2 }}
           >
             <CardStack />
           </motion.div>
         </div>
       </div>
-
-      <motion.div
-        className="absolute top-20 right-20 w-20 h-20 bg-loomos-orange/10 rounded-full blur-xl"
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      />
     </div>
   );
 };
@@ -284,17 +320,37 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
   return (
     <motion.div
       ref={ref}
-      className="bg-white border border-[var(--semantic-border-medium)] rounded-2xl p-8 shadow-sm cursor-pointer"
+      className="rounded-3xl p-8 cursor-pointer"
+      style={{
+        backgroundColor: 'var(--webos-bg-white)',
+        border: '1px solid var(--webos-border-primary)',
+        boxShadow: 'var(--webos-shadow-sm)'
+      }}
       initial={{ opacity: 0, y: 30 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ ...loomOSSpring, delay: delay * 0.1 }}
-      whileHover={{ y: -8, boxShadow: '0 10px 15px -3px rgba(241, 136, 37, 0.15)' }}
+      transition={{ ...webOSTransition, delay: delay * 0.1 }}
+      whileHover={{ 
+        y: -8, 
+        boxShadow: 'var(--webos-shadow-md)',
+        transition: { duration: 0.2 }
+      }}
     >
-      <div className="w-14 h-14 bg-gradient-to-br from-loomos-orange to-loomos-orange-dark rounded-xl flex items-center justify-center mb-6 text-white">
+      <div 
+        className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
+        style={{
+          background: 'linear-gradient(135deg, #9ca3a0, #b8bfbc)',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          color: 'var(--webos-text-white)'
+        }}
+      >
         <Icon className="w-6 h-6" />
       </div>
-      <h3 className="font-display text-2xl font-bold text-[var(--semantic-text-primary)] mb-4">{title}</h3>
-      <p className="text-[var(--semantic-text-secondary)] leading-relaxed">{description}</p>
+      <h3 className="font-sans text-xl font-light mb-4 tracking-tight" style={{ color: 'var(--webos-text-primary)' }}>
+        {title}
+      </h3>
+      <p className="font-light text-sm leading-relaxed" style={{ color: 'var(--webos-text-secondary)' }}>
+        {description}
+      </p>
     </motion.div>
   );
 };
@@ -335,22 +391,22 @@ const Features = () => {
   ];
 
   return (
-    <div id="features" className="py-24 ">
+    <div id="features" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={loomOSSpring}
+          transition={webOSTransition}
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-[var(--semantic-text-primary)] mb-4">
+          <h2 className="font-sans text-4xl md:text-5xl font-light mb-4 tracking-tight" style={{ color: 'var(--webos-text-primary)' }}>
             Everything You Need.{' '}
-            <span className="bg-gradient-to-r from-loomos-orange to-loomos-orange-dark bg-clip-text text-transparent">
+            <span style={{ color: 'var(--webos-text-secondary)' }}>
               Nothing You Don&apos;t.
             </span>
           </h2>
-          <p className="text-xl text-[var(--semantic-text-secondary)] max-w-3xl mx-auto">
+          <p className="text-lg font-light max-w-3xl mx-auto" style={{ color: 'var(--webos-text-secondary)' }}>
             Built on the revolutionary design principles of webOS, rebuilt for today with modern web technologies.
           </p>
         </motion.div>
@@ -391,7 +447,7 @@ const Stats = () => {
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ ...loomOSSpring, delay: index * 0.1 }}
+              transition={{ ...webOSTransition, delay: index * 0.1 }}
             >
               <div className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-loomos-orange to-loomos-orange-dark bg-clip-text text-transparent mb-2">
                 {stat.value}
@@ -415,7 +471,7 @@ const DesignSystem = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={loomOSSpring}
+          transition={webOSTransition}
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[var(--semantic-text-primary)] mb-4">
             Beautiful by Design.<br />
@@ -430,7 +486,7 @@ const DesignSystem = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={loomOSSpring}
+            transition={webOSTransition}
           >
             <h3 className="font-display text-3xl font-bold text-[var(--semantic-text-primary)] mb-6">Signature Orange</h3>
             <p className="text-[var(--semantic-text-secondary)] text-lg mb-6">
@@ -471,7 +527,7 @@ const DesignSystem = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={loomOSSpring}
+            transition={webOSTransition}
           >
             <div className="bg-white border border-[var(--semantic-border-medium)] rounded-2xl p-6 shadow-lg">
               <h4 className="font-display text-xl font-bold text-[var(--semantic-text-primary)] mb-4">Physics-Based Motion</h4>
@@ -497,7 +553,7 @@ const DesignSystem = () => {
                     className="w-11 h-11 bg-loomos-orange text-white rounded-lg hover:bg-loomos-orange-dark transition-colors font-semibold"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    transition={loomOSSpring}
+                    transition={webOSTransition}
                   >
                     {letter}
                   </motion.button>
@@ -529,7 +585,7 @@ const DeveloperSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={loomOSSpring}
+          transition={webOSTransition}
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
             Build Apps That Matter.{' '}
@@ -563,7 +619,7 @@ const DeveloperSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ ...loomOSSpring, delay: index * 0.1 }}
+              transition={{ ...webOSTransition, delay: index * 0.1 }}
               whileHover={{ y: -8, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
             >
               <h3 className="font-display text-2xl font-bold mb-4">{item.title}</h3>
@@ -577,7 +633,7 @@ const DeveloperSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={loomOSSpring}
+          transition={webOSTransition}
         >
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -604,7 +660,7 @@ const DeveloperSection = () => {
                   className="bg-white text-loomos-orange px-8 py-4 rounded-xl font-semibold hover:bg-[var(--semantic-surface-hover)] transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
-                  transition={loomOSSpring}
+                  transition={webOSTransition}
                 >
                   Start Building
                 </motion.button>
@@ -645,7 +701,7 @@ const CTA = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={loomOSSpring}
+          transition={webOSTransition}
         >
           Ready to Break Free?
         </motion.h2>
@@ -654,7 +710,7 @@ const CTA = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ ...loomOSSpring, delay: 0.1 }}
+          transition={{ ...webOSTransition, delay: 0.1 }}
         >
           Join thousands of users and developers who&apos;ve chosen computing freedom.
           Beautiful design, modern technology, zero lock-in.
@@ -665,14 +721,14 @@ const CTA = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ ...loomOSSpring, delay: 0.2 }}
+          transition={{ ...webOSTransition, delay: 0.2 }}
         >
           <Link href="/auth/register">
             <motion.button
               className="bg-white text-loomos-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-[var(--semantic-surface-hover)] transition-colors shadow-xl"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              transition={loomOSSpring}
+              transition={webOSTransition}
             >
               Start Using loomOS
             </motion.button>
@@ -683,7 +739,7 @@ const CTA = () => {
               className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/20 transition-colors"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              transition={loomOSSpring}
+              transition={webOSTransition}
             >
               View on GitHub
             </motion.button>
@@ -695,7 +751,7 @@ const CTA = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ ...loomOSSpring, delay: 0.3 }}
+          transition={{ ...webOSTransition, delay: 0.3 }}
         >
           <div className="flex items-center space-x-2">
             <Check className="w-4 h-4" />
@@ -839,27 +895,35 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-[#2C3440]/50 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4 backdrop-blur-md"
+          style={{ background: 'rgba(0, 0, 0, 0.4)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
           <motion.div
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative"
+            className="rounded-3xl max-w-md w-full p-8 relative"
+            style={{
+              backgroundColor: 'var(--webos-bg-glass)',
+              backdropFilter: 'blur(16px)',
+              boxShadow: 'var(--webos-shadow-xl)',
+              border: '1px solid var(--webos-border-glass)'
+            }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
-            transition={loomOSSpring}
+            transition={webOSTransition}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="font-display text-3xl font-bold text-[var(--semantic-text-primary)]">
+              <h2 className="font-sans text-2xl font-light tracking-tight" style={{ color: 'var(--webos-text-primary)' }}>
                 {isSignup ? 'Create Account' : 'Welcome Back'}
               </h2>
               <button
                 onClick={onClose}
-                className="text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)] transition-colors"
+                className="transition-colors"
+                style={{ color: 'var(--webos-text-secondary)' }}
               >
                 <X className="w-6 h-6" />
               </button>
@@ -941,25 +1005,30 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={loomOSSpring}
+                transition={webOSTransition}
               >
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-loomos-orange to-loomos-orange-dark text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all"
+                  className="w-full px-8 py-4 rounded-xl text-sm font-light tracking-wide transition-all"
+                  style={{
+                    backgroundColor: 'var(--webos-ui-dark)',
+                    color: 'var(--webos-text-white)'
+                  }}
                   disabled={isLoading || isGoogleLoading}
                 >
-                  {isLoading ? 'Loading...' : (isSignup ? 'Create Account' : 'Log In')}
+                  {isLoading ? 'LOADING...' : (isSignup ? 'CREATE ACCOUNT' : 'LOG IN')}
                 </Button>
               </motion.div>
             </form>
 
             <div className="mt-6 text-center">
-              <p className="text-[var(--semantic-text-secondary)]">
+              <p className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>
                 {isSignup ? 'Already have an account?' : "Don't have an account?"}
                 {' '}
                 <button
                   onClick={() => setIsSignup(!isSignup)}
-                  className="text-loomos-orange hover:text-loomos-orange-dark font-semibold"
+                  className="font-normal transition-colors"
+                  style={{ color: 'var(--webos-text-primary)' }}
                 >
                   {isSignup ? 'Log In' : 'Sign Up'}
                 </button>
@@ -975,7 +1044,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   className="flex items-center justify-center space-x-2 px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[var(--semantic-border-medium)] rounded-xl hover:border-loomos-orange transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  transition={loomOSSpring}
+                  transition={webOSTransition}
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -990,7 +1059,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     className="flex items-center justify-center space-x-2 px-4 py-3 bg-[var(--semantic-surface-hover)] border-2 border-[var(--semantic-border-medium)] rounded-xl hover:border-loomos-orange transition-all w-full"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    transition={loomOSSpring}
+                    transition={webOSTransition}
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -1012,7 +1081,7 @@ export default function LoomOSLanding() {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen font-sans font-light" style={{ background: 'var(--webos-bg-gradient)' }}>
       <Navigation onLoginClick={() => setShowLogin(true)} />
       <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
       <Hero />
