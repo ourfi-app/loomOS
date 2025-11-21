@@ -645,3 +645,334 @@ kbd.webos-kbd {
   font-family: monospace;
   box-shadow: 0 1px 2px var(--webos-shadow-sm);
 }
+
+
+
+/* ========================================
+   WEBOS JUST TYPE UNIVERSAL SEARCH
+   Modern Palm webOS-inspired search modal
+   ======================================== */
+
+/* Backdrop overlay */
+.webos-just-type-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9998;
+  animation: webos-fade-in 0.2s ease-out;
+}
+
+/* Main modal container */
+.webos-just-type-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  background: var(--webos-bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--webos-border-glass);
+  border-radius: 24px;
+  box-shadow: var(--webos-shadow-xl);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  animation: webos-scale-in 0.2s ease-out;
+}
+
+/* Header section with search input */
+.webos-just-type-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--webos-border-secondary);
+  background: var(--webos-bg-white);
+}
+
+/* Search input field */
+.webos-just-type-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--webos-text-primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.webos-just-type-input::placeholder {
+  color: var(--webos-text-secondary);
+  font-weight: 300;
+}
+
+/* Close button */
+.webos-just-type-close {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--webos-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.webos-just-type-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--webos-text-primary);
+}
+
+/* Tabs section */
+.webos-just-type-tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--webos-border-secondary);
+  background: var(--webos-bg-primary);
+}
+
+/* Individual tab button */
+.webos-just-type-tab {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--webos-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.webos-just-type-tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--webos-text-primary);
+}
+
+.webos-just-type-tab-active {
+  background: var(--webos-bg-white);
+  color: var(--webos-text-primary);
+  font-weight: 400;
+  box-shadow: var(--webos-shadow-sm);
+}
+
+/* Results section */
+.webos-just-type-results {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--webos-bg-white);
+}
+
+/* Scrollbar styling for results */
+.webos-just-type-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.webos-just-type-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.webos-just-type-results::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.webos-just-type-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Results list container */
+.webos-just-type-results-list {
+  padding: 0.75rem 0;
+}
+
+/* Category section */
+.webos-just-type-category {
+  margin-bottom: 1rem;
+}
+
+/* Category title */
+.webos-just-type-category-title {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--webos-text-tertiary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Individual result item */
+.webos-just-type-result {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.webos-just-type-result:hover {
+  background: var(--webos-bg-secondary);
+}
+
+.webos-just-type-result-selected {
+  background: var(--webos-bg-tertiary);
+}
+
+/* Result icon */
+.webos-just-type-result-icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-center;
+  border-radius: 12px;
+  background: var(--webos-bg-tertiary);
+  color: var(--webos-app-blue);
+}
+
+/* Result content */
+.webos-just-type-result-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Result title */
+.webos-just-type-result-title {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--webos-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Result description */
+.webos-just-type-result-description {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--webos-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.125rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Empty state */
+.webos-just-type-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-center;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Footer section with keyboard hints */
+.webos-just-type-footer {
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid var(--webos-border-secondary);
+  background: var(--webos-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Keyboard key styling */
+.webos-kbd {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin: 0 0.125rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', monospace;
+  line-height: 1;
+  color: var(--webos-text-primary);
+  background: var(--webos-bg-white);
+  border: 1px solid var(--webos-border-secondary);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Animations */
+@keyframes webos-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes webos-scale-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .webos-just-type-modal {
+    width: 95%;
+    max-height: 85vh;
+    border-radius: 20px;
+  }
+  
+  .webos-just-type-header {
+    padding: 1rem;
+  }
+  
+  .webos-just-type-tabs {
+    padding: 0.5rem 0.75rem;
+    gap: 0.125rem;
+  }
+  
+  .webos-just-type-tab {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.7rem;
+  }
+  
+  .webos-just-type-category-title {
+    padding: 0.5rem 1rem;
+  }
+  
+  .webos-just-type-result {
+    padding: 0.625rem 1rem;
+  }
+  
+  .webos-just-type-footer {
+    padding: 0.625rem 1rem;
+    font-size: 0.7rem;
+  }
+}
