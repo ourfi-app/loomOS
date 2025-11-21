@@ -1,75 +1,92 @@
 /**
  * loomOS Core Design Tokens
  *
- * These are IMMUTABLE brand tokens that define the loomOS identity.
+ * These are IMMUTABLE design tokens that define the loomOS identity.
  * Apps MUST NOT override these tokens.
  * Apps customize their appearance using semantic tokens that reference these.
  *
- * Version: 1.0
- * Last Updated: November 7, 2025
+ * Version: 2.0 - Phase 1: Foundation
+ * Last Updated: November 21, 2025
+ * Design System: Minimalist, Glassmorphism, Neutral Palette
  */
 
 :root {
   /* ========================================
-     BRAND COLORS - The loomOS Identity
+     NEUTRAL COLOR PALETTE - Minimalist Design
      ======================================== */
 
-  /* Primary Brand Color - The loomOS Signature */
-  --loomos-orange: #F18825;           /* Liberation & warmth */
-  --loomos-orange-light: #F39C47;     /* Lighter shade */
-  --loomos-orange-dark: #D77418;      /* Darker shade */
-  --loomos-orange-subtle: #FFF4E6;    /* Very light background */
+  /* Primary Neutral Palette */
+  --neutral-lightest: #f5f5f5;        /* Card backgrounds, lightest surfaces */
+  --neutral-light: #e8e8e8;           /* Secondary backgrounds */
+  --neutral-medium: #d8d8d8;          /* Borders, dividers */
+  --neutral-dark: #d0d0d0;            /* Subtle borders */
+  --neutral-border: #e0e0e0;          /* Default border color */
 
-  /* Secondary Brand Colors */
-  --trust-blue: #2196F3;              /* Reliability & openness */
-  --trust-blue-light: #42A5F5;        /* Lighter shade */
-  --trust-blue-dark: #1976D2;         /* Darker shade */
-  --trust-blue-subtle: #E3F2FD;       /* Very light background */
-
-  --growth-green: #4CAF50;            /* Freedom & progress */
-  --growth-green-light: #66BB6A;      /* Lighter shade */
-  --growth-green-dark: #388E3C;       /* Darker shade */
-  --growth-green-subtle: #E8F5E9;     /* Very light background */
-
-  /* ========================================
-     NEUTRAL COLORS - Warm Gray Scale
-     ======================================== */
-
-  /* Light Mode Neutrals */
-  --neutral-50: #FAFAFA;              /* Lightest */
-  --neutral-100: #F5F5F5;
-  --neutral-200: #EEEEEE;
-  --neutral-300: #E0E0E0;
-  --neutral-400: #BDBDBD;
-  --neutral-500: #9E9E9E;
-  --neutral-600: #757575;
-  --neutral-700: #616161;
-  --neutral-800: #424242;
-  --neutral-900: #212121;             /* Darkest */
+  /* Legacy neutral mappings for backward compatibility */
+  --neutral-50: #f5f5f5;
+  --neutral-100: #e8e8e8;
+  --neutral-200: #d8d8d8;
+  --neutral-300: #d0d0d0;
+  --neutral-400: #c0c0c0;
+  --neutral-500: #a0a0a0;
+  --neutral-600: #808080;
+  --neutral-700: #606060;
+  --neutral-800: #404040;
+  --neutral-900: #2a2a2a;
 
   /* webOS Neutral Palette - Clean Gray Scale */
-  --webos-gray-50: #fafafa;           /* Lightest gray */
-  --webos-gray-100: #f5f5f5;
-  --webos-gray-200: #eeeeee;
-  --webos-gray-300: #e8e8e8;          /* Main background */
-  --webos-gray-400: #e0e0e0;
-  --webos-gray-500: #cccccc;
-  --webos-gray-600: #999999;
-  --webos-gray-700: #666666;
-  --webos-gray-800: #333333;
-  --webos-gray-900: #000000;          /* Pure black */
+  --webos-gray-50: #f5f5f5;
+  --webos-gray-100: #e8e8e8;
+  --webos-gray-200: #e0e0e0;
+  --webos-gray-300: #d8d8d8;
+  --webos-gray-400: #d0d0d0;
+  --webos-gray-500: #c0c0c0;
+  --webos-gray-600: #a0a0a0;
+  --webos-gray-700: #808080;
+  --webos-gray-800: #404040;
+  --webos-gray-900: #1a1a1a;
 
-  /* Warm Gray Variants (with slight orange tint) */
-  --warm-gray-50: #FAFAF9;
-  --warm-gray-100: #F5F5F4;
-  --warm-gray-200: #E7E5E4;
-  --warm-gray-300: #D6D3D1;
-  --warm-gray-400: #A8A29E;
-  --warm-gray-500: #78716C;
-  --warm-gray-600: #57534E;
-  --warm-gray-700: #44403C;
-  --warm-gray-800: #292524;
-  --warm-gray-900: #1C1917;
+  /* ========================================
+     TEXT COLORS - Neutral Typography
+     ======================================== */
+
+  --text-primary: #4a4a4a;            /* Primary text color */
+  --text-secondary: #6a6a6a;          /* Secondary text */
+  --text-tertiary: #8a8a8a;           /* Labels, captions */
+  --text-muted: #9a9a9a;              /* Disabled, placeholder */
+  --text-inverse: #ffffff;            /* White text for dark backgrounds */
+
+  /* ========================================
+     CHROME COLORS - Dark UI Elements
+     ======================================== */
+
+  --chrome-dark: #1a1a1a;             /* Top bar, dark chrome */
+  --chrome-medium: #4a4a4a;           /* Medium chrome */
+  --chrome-light: #5a5a5a;            /* Light chrome */
+  --chrome-text: #e8e8e8;             /* Text on dark chrome */
+
+  /* ========================================
+     GLASSMORPHISM EFFECTS
+     ======================================== */
+
+  /* Glass backgrounds */
+  --glass-white-80: rgba(255, 255, 255, 0.8);
+  --glass-white-60: rgba(255, 255, 255, 0.6);
+  --glass-white-40: rgba(255, 255, 255, 0.4);
+  --glass-black-80: rgba(26, 26, 26, 0.8);
+  --glass-black-60: rgba(26, 26, 26, 0.6);
+  --glass-black-10: rgba(0, 0, 0, 0.1);
+
+  /* Glass borders */
+  --glass-border-light: rgba(255, 255, 255, 0.5);
+  --glass-border-medium: rgba(255, 255, 255, 0.3);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+
+  /* Blur strength */
+  --blur-sm: 8px;
+  --blur-md: 10px;
+  --blur-lg: 16px;
+  --blur-xl: 24px;
 
   /* ========================================
      SEMANTIC STATUS COLORS
@@ -141,37 +158,38 @@
   --space-4xl: var(--space-16); /* 64px */
 
   /* ========================================
-     TYPOGRAPHY SCALE
+     TYPOGRAPHY SCALE - Helvetica Neue System
      ======================================== */
 
   /* Font Families */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: 'Helvetica Neue', 'Helvetica', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
-  --font-display: "Prelude", var(--font-sans); /* loomOS display font */
+  --font-display: var(--font-sans); /* Use Helvetica Neue for display */
 
   /* Font Sizes */
-  --text-xs: 0.6875rem;   /* 11px */
-  --text-sm: 0.8125rem;   /* 13px */
-  --text-base: 0.875rem;  /* 14px */
-  --text-lg: 1rem;        /* 16px */
-  --text-xl: 1.125rem;    /* 18px */
-  --text-2xl: 1.5rem;     /* 24px */
-  --text-3xl: 1.875rem;   /* 30px */
+  --text-xs: 0.6875rem;   /* 11px - Labels, fine print */
+  --text-sm: 0.75rem;     /* 12px - Secondary text */
+  --text-base: 0.8125rem; /* 13px - Body text */
+  --text-md: 0.875rem;    /* 14px - Emphasized body */
+  --text-lg: 1rem;        /* 16px - Small headers */
+  --text-xl: 1.125rem;    /* 18px - Medium headers */
+  --text-2xl: 1.5rem;     /* 24px - Large headers */
+  --text-3xl: 1.875rem;   /* 30px - Display text */
   --text-4xl: 2.25rem;    /* 36px */
   --text-5xl: 3rem;       /* 48px */
   --text-6xl: 3.75rem;    /* 60px */
 
-  /* Font Weights */
+  /* Font Weights - Emphasis on Light */
   --font-thin: 100;
-  --font-extralight: 200;
-  --font-light: 300;
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  --font-extrabold: 800;
-  --font-black: 900;
+  --font-extralight: 200;   /* Use for large headers */
+  --font-light: 300;        /* Default weight */
+  --font-normal: 400;       /* Use for emphasis only */
+  --font-medium: 500;       /* Rarely used */
+  --font-semibold: 600;     /* Rarely used */
+  --font-bold: 700;         /* Avoid */
+  --font-extrabold: 800;    /* Avoid */
+  --font-black: 900;        /* Avoid */
 
   /* Line Heights */
   --leading-none: 1;
@@ -185,8 +203,8 @@
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;
   --tracking-normal: 0em;
-  --tracking-wide: 0.025em;
-  --tracking-wider: 0.05em;
+  --tracking-wide: 0.025em;     /* Use for labels */
+  --tracking-wider: 0.05em;     /* Use for uppercase labels */
   --tracking-widest: 0.1em;
 
   /* ========================================
@@ -204,23 +222,27 @@
   --radius-full: 9999px;    /* Circles/pills */
 
   /* ========================================
-     SHADOW SCALE
+     SHADOW SCALE - Glassmorphism Shadows
      ======================================== */
 
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.18);
+  --shadow-2xl: 0 24px 60px rgba(0, 0, 0, 0.2);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 
-  /* Special Shadows */
-  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Special Shadows for Glassmorphism */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --shadow-glass-hover: 0 12px 40px rgba(0, 0, 0, 0.18);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.15);
   --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
   --shadow-card-active: 0 8px 20px rgba(0, 0, 0, 0.15);
   --shadow-dock: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-window: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --shadow-overlay: 0 20px 60px rgba(0, 0, 0, 0.2);
 
   /* ========================================
      COMPONENT DIMENSIONS
@@ -287,6 +309,15 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+
+  /* ========================================
+     BACKGROUND GRADIENTS
+     ======================================== */
+
+  /* Main background gradient for loomOS */
+  --bg-gradient-main: linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%);
+  --bg-gradient-subtle: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 50%, #e8e8e8 100%);
+  --bg-gradient-light: linear-gradient(135deg, #f5f5f5 0%, #ffffff 50%, #f5f5f5 100%);
 }
 
 /* ========================================
@@ -295,44 +326,68 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Brand colors stay the same in dark mode */
-    /* Only neutral colors change */
-
     /* Inverted Neutrals for Dark Mode */
-    --neutral-50: #212121;
-    --neutral-100: #424242;
-    --neutral-200: #616161;
-    --neutral-300: #757575;
-    --neutral-400: #9E9E9E;
-    --neutral-500: #BDBDBD;
-    --neutral-600: #E0E0E0;
-    --neutral-700: #EEEEEE;
-    --neutral-800: #F5F5F5;
-    --neutral-900: #FAFAFA;
+    --neutral-lightest: #2a2a2a;
+    --neutral-light: #3a3a3a;
+    --neutral-medium: #4a4a4a;
+    --neutral-dark: #5a5a5a;
+    --neutral-border: #404040;
 
-    /* Inverted Warm Grays */
-    --warm-gray-50: #1C1917;
-    --warm-gray-100: #292524;
-    --warm-gray-200: #44403C;
-    --warm-gray-300: #57534E;
-    --warm-gray-400: #78716C;
-    --warm-gray-500: #A8A29E;
-    --warm-gray-600: #D6D3D1;
-    --warm-gray-700: #E7E5E4;
-    --warm-gray-800: #F5F5F4;
-    --warm-gray-900: #FAFAF9;
+    --neutral-50: #2a2a2a;
+    --neutral-100: #3a3a3a;
+    --neutral-200: #4a4a4a;
+    --neutral-300: #5a5a5a;
+    --neutral-400: #707070;
+    --neutral-500: #909090;
+    --neutral-600: #b0b0b0;
+    --neutral-700: #c0c0c0;
+    --neutral-800: #d8d8d8;
+    --neutral-900: #e8e8e8;
+
+    /* Inverted webOS grays */
+    --webos-gray-50: #2a2a2a;
+    --webos-gray-100: #3a3a3a;
+    --webos-gray-200: #4a4a4a;
+    --webos-gray-300: #5a5a5a;
+    --webos-gray-400: #6a6a6a;
+    --webos-gray-500: #808080;
+    --webos-gray-600: #a0a0a0;
+    --webos-gray-700: #c0c0c0;
+    --webos-gray-800: #e0e0e0;
+    --webos-gray-900: #ffffff;
+
+    /* Inverted text colors */
+    --text-primary: #e8e8e8;
+    --text-secondary: #c0c0c0;
+    --text-tertiary: #a0a0a0;
+    --text-muted: #808080;
+    --text-inverse: #1a1a1a;
 
     /* Adjusted shadows for dark mode (stronger) */
-    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
-    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.3);
-    --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-card-active: 0 8px 20px rgba(0, 0, 0, 0.5);
-    --shadow-dock: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-2xl: 0 24px 60px rgba(0, 0, 0, 0.7);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-glass-hover: 0 12px 40px rgba(0, 0, 0, 0.65);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-card-active: 0 8px 20px rgba(0, 0, 0, 0.6);
+    --shadow-dock: 0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-window: 0 20px 60px rgba(0, 0, 0, 0.8);
+    --shadow-overlay: 0 20px 60px rgba(0, 0, 0, 0.7);
+
+    /* Dark mode backgrounds */
+    --bg-gradient-main: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 50%, #2a2a2a 100%);
+    --bg-gradient-subtle: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 50%, #3a3a3a 100%);
+    --bg-gradient-light: linear-gradient(135deg, #4a4a4a 0%, #5a5a5a 50%, #4a4a4a 100%);
+
+    /* Dark mode glass */
+    --glass-white-80: rgba(42, 42, 42, 0.8);
+    --glass-white-60: rgba(42, 42, 42, 0.6);
+    --glass-white-40: rgba(42, 42, 42, 0.4);
   }
 }
