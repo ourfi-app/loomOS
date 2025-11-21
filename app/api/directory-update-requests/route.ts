@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import { hasAdminAccess } from '@/lib/auth';
@@ -21,6 +22,7 @@ import { serverNotifications, logIntegrationEvent, getAdminUserIds } from '@/lib
  */
 export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -113,6 +115,16 @@ export async function GET(request: NextRequest) {
     
     return errorResponse('Failed to fetch directory update requests');
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 /**
@@ -122,6 +134,7 @@ export async function GET(request: NextRequest) {
  * - Admins can request updates for any user
  */
 export async function POST(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -131,6 +144,13 @@ export async function POST(request: NextRequest) {
     
     // Parse and validate request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { userId, updateType, requestedData, reason, currentData } = body;
     
     // Validate required fields
@@ -245,5 +265,15 @@ export async function POST(request: NextRequest) {
     );
     
     return errorResponse('Failed to create directory update request');
+  }
+
+  } catch (error) {
+    console.error('[API Error] POST error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

@@ -1,5 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { getServerSession } from 'next-auth/next';
 import { authOptions, hasAdminAccess } from '@/lib/auth';
 import { prisma } from '@/lib/db';
@@ -18,6 +19,13 @@ export async function PUT(
     }
     const organizationId = await getCurrentOrganizationId();
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { name, description, type, email, displayOrder, isActive } = body;
 
     const committee = await prisma.committee.update({

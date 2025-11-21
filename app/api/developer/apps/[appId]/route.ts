@@ -6,6 +6,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getDeveloperService, getAppSubmissionService } from '@/lib/marketplace';
@@ -92,6 +93,13 @@ export async function PUT(
     }
 
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
 
     const app = await appSubmissionService.updateApp(
       params.appId,

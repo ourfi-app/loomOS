@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { stripe, formatAmountForStripe } from '@/lib/stripe';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -14,6 +15,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
+  try {
   const startTime = Date.now();
   let userId: string | undefined;
 
@@ -27,6 +29,13 @@ export async function POST(request: NextRequest) {
 
     // Parse request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { paymentId, amount, description } = body;
 
     // Validate required fields
@@ -84,5 +93,15 @@ export async function POST(request: NextRequest) {
     
     logApiCall('POST', '/api/payments/create-checkout-session', status, Date.now() - startTime, userId, message);
     return errorResponse(message, status);
+  }
+
+  } catch (error) {
+    console.error('[API Error] POST error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

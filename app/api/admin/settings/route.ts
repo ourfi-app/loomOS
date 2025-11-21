@@ -1,5 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import {
   validateAuthentication,
@@ -20,6 +21,7 @@ import {
  */
 export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -54,6 +56,16 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     return handleApiError(error, '/api/admin/settings', request);
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 /**
@@ -70,6 +82,7 @@ export async function GET(request: NextRequest) {
  * @returns {Object} - Created settings
  */
 export async function POST(request: NextRequest) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -81,6 +94,13 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { monthlyAmount, dueDay, lateFee, gracePeriod } = body;
 
     // Validate required fields
@@ -133,5 +153,15 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     return handleApiError(error, '/api/admin/settings', request);
+  }
+
+  } catch (error) {
+    console.error('[API Error] POST error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

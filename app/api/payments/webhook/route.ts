@@ -16,6 +16,7 @@ export const dynamic = 'force-dynamic';
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 
 export async function POST(request: NextRequest) {
+  try {
   const startTime = Date.now();
 
   try {
@@ -129,5 +130,15 @@ export async function POST(request: NextRequest) {
     
     logApiCall('POST', '/api/payments/webhook', status, Date.now() - startTime, undefined, message);
     return errorResponse(message, status);
+  }
+
+  } catch (error) {
+    console.error('[API Error] POST error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

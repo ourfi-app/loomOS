@@ -15,6 +15,7 @@
  */
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { validateAuth, createSuccessResponse, handleApiError, logApiRequest, withSecurity } from '@/lib/api-utils';
 import { sendEmail, validateEmails, isEmailServiceConfigured } from '@/lib/email-service';
@@ -32,6 +33,13 @@ export async function POST(request: NextRequest) {
     const organizationId = await getCurrentOrganizationId();
     const userId = (session.user as any).id;
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
 
     const {
       recipientEmails,

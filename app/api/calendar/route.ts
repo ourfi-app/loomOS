@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -14,6 +15,7 @@ import { serverNotifications, logIntegrationEvent } from '@/lib/server-integrati
 // GET all events for the logged-in user
 export const dynamic = 'force-dynamic';
 export async function GET(req: Request) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -67,10 +69,21 @@ export async function GET(req: Request) {
     logApiCall('GET', '/api/calendar', 500, duration, undefined, (error as Error).message);
     return errorResponse('Failed to fetch events', 500);
   }
+
+  } catch (error) {
+    console.error('[API Error] GET error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 // POST create a new event
 export async function POST(req: Request) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -80,6 +93,13 @@ export async function POST(req: Request) {
 
     // Parse request body
     const body = await req.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
 
     // Validate required fields
     validateRequiredFields(body, ['title', 'startDate', 'endDate']);
@@ -154,6 +174,16 @@ export async function POST(req: Request) {
     }
     logApiCall('POST', '/api/calendar', 500, duration, undefined, (error as Error).message);
     return errorResponse('Failed to create event', 500);
+  }
+
+  } catch (error) {
+    console.error('[API Error] POST error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }
 

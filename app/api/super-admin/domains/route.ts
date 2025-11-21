@@ -4,6 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
+import { validateAuth, createErrorResponse, createSuccessResponse } from '@/lib/api-utils';
 import { withSuperAdminAuth } from '@/lib/api/with-tenant-auth';
 import { prisma } from '@/lib/db';
 

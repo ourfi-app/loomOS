@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -21,6 +22,7 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -44,6 +46,13 @@ export async function PUT(
     
     // Parse and validate request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     validateRequiredFields(body, ['name', 'relationship']);
     
     // Check if resident exists and belongs to user's unit
@@ -111,6 +120,16 @@ export async function PUT(
     
     return errorResponse('Failed to update resident');
   }
+
+  } catch (error) {
+    console.error('[API Error] PUT error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
+  }
 }
 
 /**
@@ -122,6 +141,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -198,5 +218,15 @@ export async function DELETE(
     );
     
     return errorResponse('Failed to delete resident');
+  }
+
+  } catch (error) {
+    console.error('[API Error] DELETE error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

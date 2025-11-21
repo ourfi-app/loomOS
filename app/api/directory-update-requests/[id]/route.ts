@@ -1,5 +1,6 @@
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getCurrentOrganizationId } from '@/lib/tenant-context';
 import {
@@ -24,6 +25,7 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  try {
   const startTime = Date.now();
   
   try {
@@ -36,6 +38,13 @@ export async function PATCH(
     
     // Parse and validate request body
     const body = await request.json();
+    // TODO: Add specific validation schema for this endpoint
+    const bodySchema = z.object({
+      // Define your schema here
+    });
+    // Uncomment to enable validation:
+    // const validatedBody = bodySchema.parse(body);
+    
     const { status, reviewNotes } = body;
     
     // Validate required fields
@@ -204,5 +213,15 @@ export async function PATCH(
     );
     
     return errorResponse('Failed to update directory update request');
+  }
+
+  } catch (error) {
+    console.error('[API Error] PATCH error:', error);
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }

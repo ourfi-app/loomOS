@@ -1,20 +1,19 @@
-
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db";
 import { UserRole } from "@prisma/client";
+import { signupSchema } from "@/lib/validation-schemas";
+import { createErrorResponse, createSuccessResponse } from "@/lib/api-utils";
+import { z } from "zod";
+import { z } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, password, firstName, lastName, unitNumber, role = "RESIDENT" } = body;
-
-    if (!email || !password || !firstName || !lastName) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
+    
+    // Validate input
+    const validatedData = signupSchema.parse(body);
+    const { email, password, firstName, lastName, unitNumber, role = "RESIDENT" } = validatedData;
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
@@ -22,10 +21,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (existingUser) {
-      return NextResponse.json(
-        { error: "User already exists with this email" },
-        { status: 400 }
-      );
+      return createErrorResponse("User already exists with this email", 400, "DUPLICATE_ENTRY");
     }
 
     // Hash password
@@ -48,22 +44,29 @@ export async function POST(request: NextRequest) {
         email: true,
         firstName: true,
         lastName: true,
+        name: true,
         unitNumber: true,
         role: true,
-        createdAt: true,
-      }
+      },
     });
 
-    return NextResponse.json({
-      message: "User created successfully",
-      user
-    }, { status: 201 });
-
+    return createSuccessResponse(user, { count: 1 });
   } catch (error) {
-    console.error("Signup error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+    console.error('[API Error] Signup error:', error);
+    
+    if (error instanceof z.ZodError) {
+      return createErrorResponse(
+        'Validation failed: ' + error.errors.map(e => e.message).join(', '),
+        400,
+        'VALIDATION_ERROR',
+        error.errors
+      );
+    }
+    
+    if (error instanceof Error) {
+      return createErrorResponse(error.message, 500, 'INTERNAL_ERROR');
+    }
+    
+    return createErrorResponse('Internal server error', 500, 'INTERNAL_ERROR');
   }
 }
