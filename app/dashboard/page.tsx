@@ -18,6 +18,7 @@ export default function DashboardPage() {
       className="relative h-full w-full overflow-hidden"
       style={{
         background: 'var(--webos-bg-gradient)',
+        fontFamily: 'Helvetica Neue, Arial, sans-serif'
       }}
     >
       {/* 3D Card Switcher View */}

@@ -53,7 +53,7 @@ export function LoomOSContainer({
   }, [wallpaper]);
 
   return (
-    <div className="loomos-container">
+    <div className="loomos-container" style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif' }}>
       {/* Desktop Background Layer - z-index: 0 */}
       <div
         className="fixed inset-0 pointer-events-none"

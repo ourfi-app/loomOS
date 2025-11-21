@@ -77,28 +77,45 @@ function TimeFlyout({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             transition={{ duration: 0.15 }}
             className="absolute top-12 right-40 z-[96] w-80"
           >
-            <div className="bg-background/95 backdrop-blur-xl border rounded-xl shadow-2xl overflow-hidden">
+            <div 
+              className="rounded-3xl overflow-hidden"
+              style={{
+                background: 'var(--webos-bg-glass)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid var(--webos-border-glass)',
+                boxShadow: 'var(--webos-shadow-xl)',
+                fontFamily: 'Helvetica Neue, Arial, sans-serif'
+              }}
+            >
               <div className="p-4 space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <Clock className="w-5 h-5 text-primary" />
+                  <div 
+                    className="p-2 rounded-xl"
+                    style={{
+                      backgroundColor: 'rgba(122, 158, 181, 0.15)',
+                      border: '1px solid rgba(122, 158, 181, 0.2)'
+                    }}
+                  >
+                    <Clock className="w-5 h-5" strokeWidth={2} style={{ color: 'var(--webos-app-blue)' }} />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold tabular-nums">{time}</div>
-                    <div className="text-sm text-muted-foreground">{fullDate}</div>
+                    <div className="text-2xl font-light tabular-nums" style={{ color: 'var(--webos-text-primary)' }}>{time}</div>
+                    <div className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>{fullDate}</div>
                   </div>
                 </div>
                 
-                <div className="pt-2 border-t">
+                <div className="pt-2" style={{ borderTop: '1px solid var(--webos-border-primary)' }}>
                   <button
                     onClick={() => {
                       onClose();
                       window.open('/dashboard/apps/calendar', '_self');
                     }}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent transition-colors"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl transition-colors font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
                   >
-                    <span className="text-sm font-medium">Open Calendar</span>
-                    <Calendar className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm">Open Calendar</span>
+                    <Calendar className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                   </button>
                 </div>
               </div>
@@ -139,28 +156,38 @@ function WeatherFlyout({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
             transition={{ duration: 0.15 }}
             className="absolute top-12 right-72 z-[96] w-72"
           >
-            <div className="bg-background/95 backdrop-blur-xl border rounded-xl shadow-2xl overflow-hidden">
+            <div 
+              className="rounded-3xl overflow-hidden"
+              style={{
+                background: 'var(--webos-bg-glass)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid var(--webos-border-glass)',
+                boxShadow: 'var(--webos-shadow-xl)',
+                fontFamily: 'Helvetica Neue, Arial, sans-serif'
+              }}
+            >
               <div className="p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-3xl font-bold">{weather.temp}°F</div>
-                    <div className="text-sm text-muted-foreground">{weather.condition}</div>
+                    <div className="text-3xl font-light" style={{ color: 'var(--webos-text-primary)' }}>{weather.temp}°F</div>
+                    <div className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>{weather.condition}</div>
                   </div>
-                  <Cloud className="w-12 h-12 text-sky-500" />
+                  <Cloud className="w-12 h-12" strokeWidth={1.5} style={{ color: 'var(--webos-app-teal)' }} />
                 </div>
                 
-                <div className="grid grid-cols-2 gap-3 pt-2 border-t">
+                <div className="grid grid-cols-2 gap-3 pt-2" style={{ borderTop: '1px solid var(--webos-border-primary)' }}>
                   <div>
-                    <div className="text-xs text-muted-foreground">High / Low</div>
-                    <div className="text-sm font-semibold">{weather.high}° / {weather.low}°</div>
+                    <div className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>High / Low</div>
+                    <div className="text-sm font-light" style={{ color: 'var(--webos-text-primary)' }}>{weather.high}° / {weather.low}°</div>
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Humidity</div>
-                    <div className="text-sm font-semibold">{weather.humidity}%</div>
+                    <div className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>Humidity</div>
+                    <div className="text-sm font-light" style={{ color: 'var(--webos-text-primary)' }}>{weather.humidity}%</div>
                   </div>
                   <div className="col-span-2">
-                    <div className="text-xs text-muted-foreground">Wind</div>
-                    <div className="text-sm font-semibold">{weather.wind} mph</div>
+                    <div className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>Wind</div>
+                    <div className="text-sm font-light" style={{ color: 'var(--webos-text-primary)' }}>{weather.wind} mph</div>
                   </div>
                 </div>
               </div>
@@ -235,20 +262,42 @@ function UserProfileFlyout({
             transition={{ duration: 0.15 }}
             className="absolute top-12 right-4 z-[96] w-64"
           >
-            <div className="bg-background/95 backdrop-blur-xl border rounded-xl shadow-2xl overflow-hidden">
+            <div 
+              className="rounded-3xl overflow-hidden"
+              style={{
+                background: 'var(--webos-bg-glass)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid var(--webos-border-glass)',
+                boxShadow: 'var(--webos-shadow-xl)',
+                fontFamily: 'Helvetica Neue, Arial, sans-serif'
+              }}
+            >
               <div className="p-3">
                 {/* User Info */}
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/50 mb-2">
-                  <Avatar className="h-10 w-10 ring-2 ring-primary/20">
-                    <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                <div 
+                  className="flex items-center gap-3 p-3 rounded-2xl mb-2"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(122, 158, 181, 0.15), rgba(122, 158, 181, 0.1))',
+                    border: '1px solid rgba(122, 158, 181, 0.2)'
+                  }}
+                >
+                  <Avatar className="h-10 w-10 ring-2" style={{ ringColor: 'rgba(122, 158, 181, 0.3)' }}>
+                    <AvatarFallback 
+                      className="font-light text-sm"
+                      style={{
+                        backgroundColor: 'var(--webos-app-blue)',
+                        color: 'var(--webos-text-white)'
+                      }}
+                    >
                       {session?.user?.name?.charAt(0)?.toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-sm truncate">
+                    <div className="font-light text-sm truncate" style={{ color: 'var(--webos-text-primary)' }}>
                       {session?.user?.name || 'Guest User'}
                     </div>
-                    <div className="text-xs text-muted-foreground truncate">
+                    <div className="text-xs font-light truncate" style={{ color: 'var(--webos-text-secondary)' }}>
                       {session?.user?.email || 'Not logged in'}
                     </div>
                   </div>
@@ -258,40 +307,43 @@ function UserProfileFlyout({
                 <div className="space-y-1">
                   <button
                     onClick={handleProfile}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent transition-colors text-sm"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
                   >
-                    <User className="w-4 h-4 text-muted-foreground" />
+                    <User className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                     <span>My Profile</span>
                   </button>
                   
                   <button
                     onClick={handleSettings}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent transition-colors text-sm"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
                   >
-                    <Settings className="w-4 h-4 text-muted-foreground" />
+                    <Settings className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                     <span>Settings</span>
                   </button>
 
-                  <div className="my-2 border-t" />
+                  <div className="my-2" style={{ borderTop: '1px solid var(--webos-border-primary)' }} />
 
                   {/* Theme Toggle */}
                   <button
                     onClick={() => {
                       onThemeToggle();
                     }}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent transition-colors text-sm"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
                   >
                     {theme === 'dark' ? (
                       <>
-                        <Moon className="w-4 h-4 text-muted-foreground" />
+                        <Moon className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                         <span>Dark Mode</span>
-                        <div className="ml-auto h-4 w-4 rounded-full bg-primary" />
+                        <div className="ml-auto h-4 w-4 rounded-full" style={{ backgroundColor: 'var(--webos-app-blue)' }} />
                       </>
                     ) : (
                       <>
-                        <Sun className="w-4 h-4 text-muted-foreground" />
+                        <Sun className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                         <span>Light Mode</span>
-                        <div className="ml-auto h-4 w-4 rounded-full bg-primary" />
+                        <div className="ml-auto h-4 w-4 rounded-full" style={{ backgroundColor: 'var(--webos-app-blue)' }} />
                       </>
                     )}
                   </button>
@@ -299,43 +351,46 @@ function UserProfileFlyout({
                   {/* Accessibility */}
                   <button
                     onClick={handleAccessibility}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent transition-colors text-sm"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
                   >
-                    <Eye className="w-4 h-4 text-muted-foreground" />
+                    <Eye className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                     <span>Accessibility</span>
                   </button>
 
                   {/* Help */}
                   <button
                     onClick={handleHelp}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent transition-colors text-sm"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
                   >
-                    <HelpCircle className="w-4 h-4 text-muted-foreground" />
+                    <HelpCircle className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
                     <span>Help & Support</span>
                   </button>
 
                   {/* Network Status (Read-only indicator) */}
-                  <div className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm">
+                  <div className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-light">
                     {isOnline ? (
                       <>
-                        <Wifi className="w-4 h-4 text-emerald-500" />
-                        <span className="text-muted-foreground">Online</span>
+                        <Wifi className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-app-teal)' }} />
+                        <span style={{ color: 'var(--webos-text-secondary)' }}>Online</span>
                       </>
                     ) : (
                       <>
-                        <WifiOff className="w-4 h-4 text-[var(--semantic-primary)]" />
-                        <span className="text-muted-foreground">Offline</span>
+                        <WifiOff className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-text-secondary)' }} />
+                        <span style={{ color: 'var(--webos-text-secondary)' }}>Offline</span>
                       </>
                     )}
                   </div>
 
-                  <div className="my-2 border-t" />
+                  <div className="my-2" style={{ borderTop: '1px solid var(--webos-border-primary)' }} />
 
                   <button
                     onClick={handleSignOut}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-destructive/10 hover:text-destructive transition-colors text-sm"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-sm font-light"
+                    style={{ color: '#dc2626' }}
                   >
-                    <LogOut className="w-4 h-4" />
+                    <LogOut className="w-4 h-4" strokeWidth={2} />
                     <span>Sign Out</span>
                   </button>
                 </div>
@@ -449,38 +504,56 @@ export function StatusBar() {
           damping: 25,
           duration: 0.3
         }}
-        className="fixed top-0 left-0 right-0 h-10 bg-gradient-to-b from-background/95 via-background/90 to-background/85 backdrop-blur-xl border-b border-border/40 z-[100] px-4 shadow-sm"
+        className="fixed top-0 left-0 right-0 h-10 z-[100] px-4"
+        style={{
+          background: 'linear-gradient(135deg, rgba(216, 216, 216, 0.95) 0%, rgba(232, 232, 232, 0.95) 50%, rgba(216, 216, 216, 0.95) 100%)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '1px solid var(--webos-border-secondary)',
+          boxShadow: 'var(--webos-shadow-sm)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
       >
         <div className="h-full flex items-center justify-between max-w-screen-2xl mx-auto">
           {/* Left: Home Button + Notifications */}
           <div className="flex items-center gap-2">
             <motion.button 
               onClick={handleReturnHome}
-              className="flex items-center gap-2 text-foreground/90 font-semibold hover:text-foreground transition-all cursor-pointer group px-2 py-1 rounded-md hover:bg-accent/50 active:scale-95"
+              className="flex items-center gap-2 transition-all cursor-pointer group px-2 py-1 rounded-md active:scale-95"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               title="Return to Home Dashboard"
+              style={{
+                color: 'var(--webos-text-primary)',
+                fontWeight: '300'
+              }}
             >
-              <Home className="w-4 h-4 text-primary" strokeWidth={2.5} />
-              <span className="text-xs tracking-wide font-bold">Community Manager</span>
+              <Home className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-app-blue)' }} />
+              <span className="text-xs tracking-wide font-light">Community Manager</span>
             </motion.button>
 
-            <div className="h-5 w-px bg-border/60" />
+            <div className="h-5 w-px" style={{ backgroundColor: 'var(--webos-border-secondary)' }} />
 
             {/* Notifications */}
             <motion.button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="relative flex items-center justify-center w-8 h-8 text-muted-foreground hover:text-foreground transition-all rounded-md hover:bg-accent/50"
+              className="relative flex items-center justify-center w-8 h-8 transition-all rounded-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               title="Notifications"
+              style={{ color: 'var(--webos-text-secondary)' }}
             >
-              <Bell className="w-4 h-4" strokeWidth={2.5} />
+              <Bell className="w-4 h-4" strokeWidth={2} />
               {unreadCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-0.5 -right-0.5 min-w-[14px] h-[14px] px-0.5 bg-gradient-to-br from-red-500 to-red-600 rounded-full text-[8px] font-bold text-white flex items-center justify-center shadow-md"
+                  className="absolute -top-0.5 -right-0.5 min-w-[14px] h-[14px] px-0.5 rounded-full text-[8px] font-light flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(to bottom right, #ef4444, #dc2626)',
+                    color: 'var(--webos-text-white)',
+                    boxShadow: 'var(--webos-shadow-sm)'
+                  }}
                 >
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </motion.span>
@@ -493,59 +566,74 @@ export function StatusBar() {
             {/* Weather with Flyout */}
             <motion.button
               onClick={() => setShowWeatherFlyout(!showWeatherFlyout)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg hover:bg-accent/60 transition-all group border border-transparent hover:border-border/40"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg transition-all group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               title="Weather Information"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                border: '1px solid rgba(0, 0, 0, 0.05)'
+              }}
             >
-              <Cloud className="w-4 h-4 text-sky-500 group-hover:text-sky-600 transition-colors" strokeWidth={2} />
-              <span className="text-xs font-semibold text-foreground/80 group-hover:text-foreground">72°F</span>
+              <Cloud className="w-4 h-4 transition-colors" strokeWidth={2} style={{ color: 'var(--webos-app-teal)' }} />
+              <span className="text-xs font-light" style={{ color: 'var(--webos-text-primary)' }}>72°F</span>
               <ChevronDown className={cn(
-                "w-3 h-3 text-muted-foreground transition-transform",
+                "w-3 h-3 transition-transform",
                 showWeatherFlyout && "rotate-180"
-              )} />
+              )} style={{ color: 'var(--webos-text-secondary)' }} />
             </motion.button>
 
-            <div className="h-5 w-px bg-border/60" />
+            <div className="h-5 w-px" style={{ backgroundColor: 'var(--webos-border-secondary)' }} />
             
             {/* Time/Date with Flyout */}
             <motion.button
               onClick={() => setShowTimeFlyout(!showTimeFlyout)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg hover:bg-accent/60 transition-all group border border-transparent hover:border-border/40"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg transition-all group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               title="Date & Time"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                border: '1px solid rgba(0, 0, 0, 0.05)'
+              }}
             >
-              <Clock className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" strokeWidth={2} />
+              <Clock className="w-4 h-4 transition-colors" strokeWidth={2} style={{ color: 'var(--webos-app-blue)' }} />
               <div className="flex flex-col items-start -space-y-0.5">
-                <span className="text-xs font-semibold tabular-nums text-foreground/80 group-hover:text-foreground leading-none">{time}</span>
-                <span className="text-[10px] font-medium text-muted-foreground leading-none">{shortDate}</span>
+                <span className="text-xs font-light tabular-nums leading-none" style={{ color: 'var(--webos-text-primary)' }}>{time}</span>
+                <span className="text-[10px] font-light leading-none" style={{ color: 'var(--webos-text-secondary)' }}>{shortDate}</span>
               </div>
               <ChevronDown className={cn(
-                "w-3 h-3 text-muted-foreground transition-transform",
+                "w-3 h-3 transition-transform",
                 showTimeFlyout && "rotate-180"
-              )} />
+              )} style={{ color: 'var(--webos-text-secondary)' }} />
             </motion.button>
 
-            <div className="h-5 w-px bg-border/60" />
+            <div className="h-5 w-px" style={{ backgroundColor: 'var(--webos-border-secondary)' }} />
 
             {/* User Profile with Flyout */}
             <motion.button
               onClick={() => setShowUserFlyout(!showUserFlyout)}
-              className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-accent/60 transition-all border border-transparent hover:border-border/40"
+              className="flex items-center gap-2 px-2 py-1 rounded-lg transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               title={session?.user?.name || 'User Menu'}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                border: '1px solid rgba(0, 0, 0, 0.05)'
+              }}
             >
-              <Avatar className="h-6 w-6 ring-2 ring-border/50">
-                <AvatarFallback className="bg-primary text-primary-foreground text-[10px] font-bold">
+              <Avatar className="h-6 w-6 ring-2" style={{ ringColor: 'var(--webos-border-secondary)' }}>
+                <AvatarFallback className="text-[10px] font-light" style={{ 
+                  backgroundColor: 'var(--webos-app-blue)',
+                  color: 'var(--webos-text-white)' 
+                }}>
                   {session?.user?.name?.charAt(0)?.toUpperCase() || 'U'}
                 </AvatarFallback>
               </Avatar>
               <ChevronDown className={cn(
-                "w-3 h-3 text-muted-foreground transition-transform",
+                "w-3 h-3 transition-transform",
                 showUserFlyout && "rotate-180"
-              )} />
+              )} style={{ color: 'var(--webos-text-secondary)' }} />
             </motion.button>
 
           </div>

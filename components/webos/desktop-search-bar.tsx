@@ -29,19 +29,24 @@ export function DesktopSearchBar() {
         onClick={openSearch}
         style={{
           width: '400px',
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(15px)',
-          WebkitBackdropFilter: 'blur(15px)',
+          background: 'var(--webos-bg-glass)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           borderRadius: '20px',
-          border: '1px solid rgba(0, 0, 0, 0.05)',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+          border: '1px solid var(--webos-border-glass)',
+          boxShadow: 'var(--webos-shadow-md)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
         }}
       >
-        <Search className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+        <Search className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--webos-text-secondary)' }} />
         <input
           type="text"
           placeholder="Just type..."
-          className="flex-1 bg-transparent border-none outline-none text-base font-light text-foreground placeholder:text-muted-foreground"
+          className="flex-1 bg-transparent border-none outline-none text-base font-light"
+          style={{ 
+            color: 'var(--webos-text-primary)',
+            fontWeight: '300'
+          }}
           onFocus={openSearch}
           readOnly
         />
