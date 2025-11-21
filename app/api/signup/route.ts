@@ -5,7 +5,6 @@ import { UserRole } from "@prisma/client";
 import { signupSchema } from "@/lib/validation-schemas";
 import { createErrorResponse, createSuccessResponse } from "@/lib/api-utils";
 import { z } from "zod";
-import { z } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {
