@@ -3,6 +3,9 @@
 @tailwind utilities;
 @import './styles/loomos/animations.css';
 
+/* WebOS Design Tokens for Landing Page Redesign */
+@import '../styles/webos-design-tokens.css';
+
 /* ========================================
    loomOS Design System v1.0
    Import new semantic token architecture
