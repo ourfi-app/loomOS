@@ -59,6 +59,7 @@ export function initDevErrorFilter() {
     }
   };
 
+  console.log(
     '%c[Dev Utils]%c Development error filtering enabled',
     'color: #10b981; font-weight: bold',
     'color: inherit'
