@@ -214,6 +214,7 @@ export class PerformanceMonitor {
       const layoutShiftObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if ((entry as any).hadRecentInput) continue;
+          console.warn('[Performance] Layout shift detected:', {
             value: (entry as any).value,
             sources: (entry as any).sources,
           });

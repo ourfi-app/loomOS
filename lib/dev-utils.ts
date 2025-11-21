@@ -38,6 +38,7 @@ export function initDevErrorFilter() {
     } else {
       // Log a friendlier message instead
       if (message.includes('not-found') || message.includes('error')) {
+        console.log(
           '%c[Next.js Dev]%c Compiling error/not-found pages (this is normal)',
           'color: #0070f3; font-weight: bold',
           'color: inherit'
