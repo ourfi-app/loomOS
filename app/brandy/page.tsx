@@ -257,7 +257,13 @@ function BrandyApp() {
   // ============================================================================
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#EAEAEA] dark:bg-gray-950 p-4">
+    <div 
+      className="flex items-center justify-center min-h-screen p-4"
+      style={{
+        background: 'var(--webos-bg-gradient)',
+        fontFamily: 'Helvetica Neue, Arial, sans-serif'
+      }}
+    >
       <WindowFrame
         title="Brandy - Brand Strategist + Web Builder"
         icon={Sparkles}
@@ -267,9 +273,20 @@ function BrandyApp() {
         defaultHeight={900}
         className="max-w-[95vw] max-h-[95vh]"
       >
-        <div className="flex flex-col h-full bg-white dark:bg-gray-900">
+        <div 
+          className="flex flex-col h-full"
+          style={{
+            background: 'var(--webos-bg-white)'
+          }}
+        >
           {/* Mode Tabs */}
-          <div className="flex border-b border-[var(--semantic-border-light)] dark:border-gray-700 bg-[var(--semantic-bg-subtle)] dark:bg-gray-800">
+          <div 
+            className="flex"
+            style={{
+              borderBottom: '1px solid var(--webos-border-primary)',
+              background: 'var(--webos-bg-secondary)'
+            }}
+          >
             <ModeTab
               icon={Sparkles}
               label="Logo Studio"
