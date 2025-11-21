@@ -114,7 +114,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen webos-gradient-bg flex items-center justify-center p-6">
+    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)' }}>
       <div className="w-full max-w-md space-y-6">
         {/* Back to Home */}
         <Link 
