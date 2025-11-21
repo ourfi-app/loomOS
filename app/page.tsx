@@ -153,7 +153,7 @@ const CardStack = () => {
 // Hero Section
 const Hero = () => {
   return (
-    <div className="relative pt-32 pb-20 overflow-hidden webos-gradient-bg" style={{
+    <div className="relative pt-32 pb-20 overflow-hidden " style={{
       backgroundImage: `
         linear-gradient(rgba(241, 136, 37, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(241, 136, 37, 0.03) 1px, transparent 1px)
@@ -335,7 +335,7 @@ const Features = () => {
   ];
 
   return (
-    <div id="features" className="py-24 webos-gradient-bg">
+    <div id="features" className="py-24 ">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -450,7 +450,7 @@ const DesignSystem = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 webos-gradient-bg rounded-xl border-2 border-[var(--semantic-border-medium)]"></div>
+                <div className="w-16 h-16  rounded-xl border-2 border-[var(--semantic-border-medium)]"></div>
                 <div>
                   <div className="font-semibold text-[var(--semantic-text-primary)]">#EAEAEA</div>
                   <div className="text-sm text-[var(--semantic-text-secondary)]">Off-White Background</div>
@@ -1012,7 +1012,7 @@ export default function LoomOSLanding() {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
-    <div className="min-h-screen webos-gradient-bg">
+    <div className="min-h-screen ">
       <Navigation onLoginClick={() => setShowLogin(true)} />
       <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
       <Hero />
