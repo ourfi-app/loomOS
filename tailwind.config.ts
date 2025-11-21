@@ -38,12 +38,12 @@ const config: Config = {
       // TYPOGRAPHY - From design-tokens/core.css
       // ========================================
       fontFamily: {
-        sans: ['Titillium Web', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-        serif: ['Cambo', 'Georgia', 'serif'],
-        mono: ['SF Mono', 'Monaco', 'monospace'],
-        display: ['Prelude', 'Cambo', 'Georgia', 'serif'],
-        webos: ['Titillium Web', '-apple-system', 'system-ui', 'sans-serif'],
-        loomos: ['Prelude', '-apple-system', 'system-ui', 'sans-serif'],
+        sans: ['Helvetica Neue', 'Helvetica', 'Arial', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+        mono: ['SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
+        display: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        webos: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        loomos: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       fontSize: {
         'xs': ['var(--text-xs)', { lineHeight: 'var(--leading-tight)' }],      // 11px
@@ -92,6 +92,10 @@ const config: Config = {
         'card-hover': 'var(--shadow-card-hover)',
         'card-active': 'var(--shadow-card-active)',
         'dock': 'var(--shadow-dock)',
+        'glass': 'var(--shadow-glass)',
+        'glass-hover': 'var(--shadow-glass-hover)',
+        'window': 'var(--shadow-window)',
+        'overlay': 'var(--shadow-overlay)',
         'none': 'none',
       },
       colors: {
@@ -155,7 +159,64 @@ const config: Config = {
         documents: 'hsl(var(--documents))',
         community: 'hsl(var(--community))',
         messaging: 'hsl(var(--messaging))',
-        // loomOS Brand Colors (keep for compatibility)
+        // ========================================
+        // NEW NEUTRAL PALETTE - Phase 1 Foundation
+        // ========================================
+        neutral: {
+          lightest: 'var(--neutral-lightest)',  // #f5f5f5
+          light: 'var(--neutral-light)',        // #e8e8e8
+          medium: 'var(--neutral-medium)',      // #d8d8d8
+          dark: 'var(--neutral-dark)',          // #d0d0d0
+          border: 'var(--neutral-border)',      // #e0e0e0
+          50: 'var(--neutral-50)',
+          100: 'var(--neutral-100)',
+          200: 'var(--neutral-200)',
+          300: 'var(--neutral-300)',
+          400: 'var(--neutral-400)',
+          500: 'var(--neutral-500)',
+          600: 'var(--neutral-600)',
+          700: 'var(--neutral-700)',
+          800: 'var(--neutral-800)',
+          900: 'var(--neutral-900)',
+        },
+        // webOS gray scale
+        webos: {
+          50: 'var(--webos-gray-50)',
+          100: 'var(--webos-gray-100)',
+          200: 'var(--webos-gray-200)',
+          300: 'var(--webos-gray-300)',
+          400: 'var(--webos-gray-400)',
+          500: 'var(--webos-gray-500)',
+          600: 'var(--webos-gray-600)',
+          700: 'var(--webos-gray-700)',
+          800: 'var(--webos-gray-800)',
+          900: 'var(--webos-gray-900)',
+        },
+        // Text colors
+        text: {
+          primary: 'var(--text-primary)',       // #4a4a4a
+          secondary: 'var(--text-secondary)',   // #6a6a6a
+          tertiary: 'var(--text-tertiary)',     // #8a8a8a
+          muted: 'var(--text-muted)',           // #9a9a9a
+          inverse: 'var(--text-inverse)',       // #ffffff
+        },
+        // Chrome/Dark UI colors
+        chrome: {
+          dark: 'var(--chrome-dark)',           // #1a1a1a
+          medium: 'var(--chrome-medium)',       // #4a4a4a
+          light: 'var(--chrome-light)',         // #5a5a5a
+          text: 'var(--chrome-text)',           // #e8e8e8
+        },
+        // Glass effects (for use with bg-opacity)
+        glass: {
+          'white-80': 'var(--glass-white-80)',
+          'white-60': 'var(--glass-white-60)',
+          'white-40': 'var(--glass-white-40)',
+          'black-80': 'var(--glass-black-80)',
+          'black-60': 'var(--glass-black-60)',
+          'black-10': 'var(--glass-black-10)',
+        },
+        // loomOS Brand Colors (legacy - deprecated)
         loomos: {
           orange: '#F18825',
           'orange-light': '#FF9A3C',
@@ -314,6 +375,15 @@ const config: Config = {
         'webos-fast': '200ms',
         'webos-normal': '300ms',
         'webos-slow': '400ms',
+      },
+      // ========================================
+      // BACKDROP BLUR - For glassmorphism
+      // ========================================
+      backdropBlur: {
+        'sm': 'var(--blur-sm)',      // 8px
+        'md': 'var(--blur-md)',      // 10px
+        'lg': 'var(--blur-lg)',      // 16px
+        'xl': 'var(--blur-xl)',      // 24px
       },
     },
   },
