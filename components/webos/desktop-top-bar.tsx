@@ -37,15 +37,17 @@ export function DesktopTopBar() {
       transition={{ duration: 0.2 }}
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        background: 'rgba(255, 255, 255, 0.8)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        borderBottom: '1px solid #e0e0e0',
+        background: 'linear-gradient(135deg, rgba(216, 216, 216, 0.95) 0%, rgba(232, 232, 232, 0.95) 50%, rgba(216, 216, 216, 0.95) 100%)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid var(--webos-border-secondary)',
+        boxShadow: 'var(--webos-shadow-sm)',
+        fontFamily: 'Helvetica Neue, Arial, sans-serif'
       }}
     >
       <div className="flex items-center justify-between px-6 py-3">
         {/* Left: Logo */}
-        <div className="flex items-center gap-2 font-light" style={{ color: '#4a4a4a' }}>
+        <div className="flex items-center gap-2 font-light" style={{ color: 'var(--webos-text-primary)', fontWeight: '300' }}>
           {/* loomOS Interlace Logo */}
           <svg
             width="20"
@@ -65,10 +67,10 @@ export function DesktopTopBar() {
         </div>
 
         {/* Right: Status Icons + Time */}
-        <div className="flex items-center gap-3 text-sm font-light" style={{ color: '#8a8a8a' }}>
-          <Wifi className="w-[18px] h-[18px]" />
-          <Volume2 className="w-[18px] h-[18px]" />
-          <span style={{ color: '#4a4a4a' }}>{currentTime}</span>
+        <div className="flex items-center gap-3 text-sm font-light" style={{ color: 'var(--webos-text-secondary)', fontWeight: '300' }}>
+          <Wifi className="w-[18px] h-[18px]" strokeWidth={2} />
+          <Volume2 className="w-[18px] h-[18px]" strokeWidth={2} />
+          <span style={{ color: 'var(--webos-text-primary)' }}>{currentTime}</span>
         </div>
       </div>
     </motion.div>
