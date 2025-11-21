@@ -8,7 +8,8 @@ import {
   Plus,
   ChevronLeft,
   ChevronRight,
-  RefreshCw
+  RefreshCw,
+  Video
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,46 @@ import {
   LoomOSLoadingState,
 } from '@/components/webos';
 import { useCalendarEvents, type CalendarEvent } from '@/hooks/use-api';
+import { format, parseISO, isSameDay } from 'date-fns';
+
+// webOS-inspired event color schemes
+const EVENT_COLORS = {
+  work: {
+    bg: 'bg-blue-500',
+    text: 'text-white',
+    border: 'border-blue-600',
+    light: 'bg-blue-100',
+    gradient: 'from-blue-400 to-blue-600'
+  },
+  personal: {
+    bg: 'bg-red-500',
+    text: 'text-white',
+    border: 'border-red-600',
+    light: 'bg-red-100',
+    gradient: 'from-red-400 to-red-600'
+  },
+  meeting: {
+    bg: 'bg-yellow-500',
+    text: 'text-gray-900',
+    border: 'border-yellow-600',
+    light: 'bg-yellow-100',
+    gradient: 'from-yellow-400 to-yellow-600'
+  },
+  deadline: {
+    bg: 'bg-purple-500',
+    text: 'text-white',
+    border: 'border-purple-600',
+    light: 'bg-purple-100',
+    gradient: 'from-purple-400 to-purple-600'
+  },
+  social: {
+    bg: 'bg-green-500',
+    text: 'text-white',
+    border: 'border-green-600',
+    light: 'bg-green-100',
+    gradient: 'from-green-400 to-green-600'
+  }
+};
 
 export default function CalendarTab() {
   const { data: events, isLoading, refresh } = useCalendarEvents();
@@ -199,34 +240,73 @@ export default function CalendarTab() {
               description="No events scheduled for this day"
             />
           ) : (
-            <div className="p-2 space-y-2">
-              {selectedDateEvents.map(event => (
-                <Card
-                  key={event.id}
-                  className={cn(
-                    "cursor-pointer transition-colors hover:bg-muted/50",
-                    selectedEvent?.id === event.id && "ring-2 ring-primary"
-                  )}
-                  onClick={() => setSelectedEvent(event)}
-                >
-                  <CardContent className="p-3">
-                    <h4 className="font-medium mb-1">{event.title}</h4>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="h-3 w-3" />
-                      <span>{event.startTime || 'All day'}</span>
-                    </div>
-                    {event.location && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                        <MapPin className="h-3 w-3" />
-                        <span>{event.location}</span>
-                      </div>
+            <div className="p-4 space-y-3">
+              {selectedDateEvents.map((event, index) => {
+                // Map event category to color scheme
+                const categoryLower = (event.category || 'work').toLowerCase();
+                const colorScheme = EVENT_COLORS[categoryLower as keyof typeof EVENT_COLORS] || EVENT_COLORS.work;
+                
+                return (
+                  <div
+                    key={event.id}
+                    className={cn(
+                      "relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-200",
+                      "hover:scale-[1.02] hover:shadow-lg",
+                      selectedEvent?.id === event.id && "ring-2 ring-white shadow-xl scale-[1.02]"
                     )}
-                    <Badge variant="outline" className="mt-2">
-                      {event.category}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              ))}
+                    style={{
+                      animation: `slide-up 0.3s ease-out ${index * 0.05}s backwards`
+                    }}
+                    onClick={() => setSelectedEvent(event)}
+                  >
+                    {/* Colorful Background Gradient - webOS Style */}
+                    <div className={cn(
+                      "bg-gradient-to-br p-4",
+                      colorScheme.bg === 'bg-yellow-500' 
+                        ? 'from-yellow-400 to-orange-500'
+                        : colorScheme.bg === 'bg-blue-500'
+                        ? 'from-blue-400 to-cyan-600'
+                        : colorScheme.bg === 'bg-red-500'
+                        ? 'from-red-400 to-rose-600'
+                        : colorScheme.bg === 'bg-purple-500'
+                        ? 'from-purple-400 to-violet-600'
+                        : 'from-green-400 to-emerald-600'
+                    )}>
+                      {/* Event Title */}
+                      <h4 className={cn(
+                        "font-medium text-base mb-2 leading-snug",
+                        colorScheme.text
+                      )}>
+                        {event.title}
+                      </h4>
+                      
+                      {/* Event Time */}
+                      <div className={cn(
+                        "flex items-center gap-1.5 text-sm mb-1",
+                        colorScheme.text,
+                        "opacity-90"
+                      )}>
+                        <span className="italic">
+                          {event.startTime || 'All day'}
+                          {event.endTime && ` - ${event.endTime}`}
+                        </span>
+                      </div>
+
+                      {/* Event Location */}
+                      {event.location && (
+                        <div className={cn(
+                          "flex items-center gap-1.5 text-xs mt-1",
+                          colorScheme.text,
+                          "opacity-80 italic"
+                        )}>
+                          <MapPin className="h-3 w-3" />
+                          <span>{event.location}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
         </ScrollArea>
