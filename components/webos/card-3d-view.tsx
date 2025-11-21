@@ -81,8 +81,8 @@ function Card3D({ card, index, isActive, isPinned, onClick, onClose, onDragStart
             ? 'rotateY(-5deg) scale(1)'
             : 'rotateY(-12deg) scale(0.9)',
           boxShadow: isHovered
-            ? '0 20px 50px rgba(0, 0, 0, 0.2)'
-            : '0 15px 40px rgba(0, 0, 0, 0.15)',
+            ? 'var(--shadow-2xl)'
+            : 'var(--shadow-xl)',
           backfaceVisibility: 'hidden',
         }}
       >

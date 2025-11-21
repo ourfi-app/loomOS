@@ -573,11 +573,11 @@ export function AppDock() {
             isDragOver && 'drag-over'
           )}
           style={{
-            background: 'rgba(255, 255, 255, 0.7)',
-            backdropFilter: 'blur(15px)',
-            WebkitBackdropFilter: 'blur(15px)',
-            border: isDragOver ? '2px solid rgba(0, 120, 255, 0.5)' : '1px solid rgba(0, 0, 0, 0.08)',
-            boxShadow: isDragOver ? '0 0 30px 10px rgba(0, 120, 255, 0.3)' : undefined,
+            background: 'var(--glass-bg)',
+            backdropFilter: 'var(--glass-blur)',
+            WebkitBackdropFilter: 'var(--glass-blur)',
+            border: isDragOver ? '2px solid var(--color-primary-500)' : '1px solid var(--glass-border)',
+            boxShadow: isDragOver ? 'var(--shadow-glow)' : 'var(--shadow-lg)',
           }}
           onDragOver={handleDockDragOver}
           onDragLeave={handleDockDragLeave}

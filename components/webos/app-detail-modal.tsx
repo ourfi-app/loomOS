@@ -104,7 +104,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl bg-[#1a1a1a]/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/5 overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-3xl bg-surface/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with gradient */}

@@ -37,7 +37,7 @@ export function DesktopTopBar() {
       transition={{ duration: 0.2 }}
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        background: 'linear-gradient(135deg, rgba(216, 216, 216, 0.95) 0%, rgba(232, 232, 232, 0.95) 50%, rgba(216, 216, 216, 0.95) 100%)',
+        background: 'var(--glass-bg)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderBottom: '1px solid var(--webos-border-secondary)',

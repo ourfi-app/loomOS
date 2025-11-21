@@ -253,7 +253,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
               "backdrop-blur-2xl bg-gradient-to-t",
               "from-background/50 via-background/30 to-transparent",
               "border-t border-primary/10",
-              "shadow-[0_-4px_24px_rgba(0,0,0,0.1)]",
+              "shadow-2xl",
               "transition-all duration-300",
               isActive && "backdrop-blur-3xl from-background/60 via-background/40"
             )}
@@ -359,7 +359,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
                     <Search 
                       className="w-6 h-6 text-cyan-500 transition-colors duration-300"
                       strokeWidth={2}
-                      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.12))' }}
+                      style={{ filter: 'var(--drop-shadow-sm)' }}
                     />
                   </div>
                   
@@ -428,7 +428,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
                     <Zap 
                       className="w-6 h-6 text-[var(--semantic-accent)] transition-colors duration-300"
                       strokeWidth={2}
-                      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.12))' }}
+                      style={{ filter: 'var(--drop-shadow-sm)' }}
                     />
                   </div>
                   
@@ -533,7 +533,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
                         )}
                         strokeWidth={2}
                         style={{
-                          filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.12))',
+                          filter: 'var(--drop-shadow-sm)',
                         }}
                       />
                     </div>

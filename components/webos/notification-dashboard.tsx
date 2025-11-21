@@ -118,12 +118,12 @@ export function NotificationDashboard() {
       className="fixed top-8 right-4 w-96 max-h-[600px] bg-[var(--semantic-surface-hover)] rounded-lg shadow-2xl overflow-hidden z-[1060] border border-[var(--semantic-border-light)]"
     >
       {/* Header */}
-      <div className="bg-[#080907] text-white px-4 py-3 flex items-center justify-between">
+      <div className="bg-surface-dark text-white px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Bell className="w-4 h-4" />
           <h3 className="font-semibold text-sm">Notifications</h3>
           {notifications.length > 0 && (
-            <span className="bg-[#0066CC] text-white text-xs px-2 py-0.5 rounded-full font-medium">
+            <span className="bg-primary text-white text-xs px-2 py-0.5 rounded-full font-medium">
               {notifications.length}
             </span>
           )}
@@ -148,7 +148,7 @@ export function NotificationDashboard() {
             <p className="text-[var(--semantic-text-secondary)] text-sm">No notifications</p>
           </div>
         ) : (
-          <div className="divide-y divide-[#E0E0E0]">
+          <div className="divide-y divide-border">
             {Object.entries(groupedNotifications).map(([key, items]) => {
               const Icon = getIconForType(key);
               const isExpanded = expandedGroups.has(key);
@@ -159,16 +159,16 @@ export function NotificationDashboard() {
                   {/* Group Header */}
                   <button
                     onClick={() => toggleGroup(key)}
-                    className="w-full px-4 py-3 flex items-center justify-between hover:bg-[#F0F0F0] transition-colors"
+                    className="w-full px-4 py-3 flex items-center justify-between hover:bg-surface-hover transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <div className={cn(
                         "w-10 h-10 rounded-lg flex items-center justify-center",
-                        hasUnread(items) ? "bg-[#0066CC]/10" : "bg-[var(--semantic-surface-hover)]"
+                        hasUnread(items) ? "bg-primary/10" : "bg-[var(--semantic-surface-hover)]"
                       )}>
                         <Icon className={cn(
                           "w-5 h-5",
-                          hasUnread(items) ? "text-[#0066CC]" : "text-[var(--semantic-text-secondary)]"
+                          hasUnread(items) ? "text-primary" : "text-[var(--semantic-text-secondary)]"
                         )} />
                       </div>
                       <div className="text-left">
@@ -180,7 +180,7 @@ export function NotificationDashboard() {
                     </div>
                     <div className="flex items-center gap-2">
                       {unreadCount > 0 && (
-                        <span className="bg-[#0066CC] text-white text-xs px-2 py-0.5 rounded-full font-medium min-w-[24px] text-center">
+                        <span className="bg-primary text-white text-xs px-2 py-0.5 rounded-full font-medium min-w-[24px] text-center">
                           {unreadCount}
                         </span>
                       )}
@@ -222,7 +222,7 @@ export function NotificationDashboard() {
                                 e.stopPropagation();
                                 markGroupAsRead(key);
                               }}
-                              className="flex-1 flex items-center justify-center gap-2 px-3 py-1.5 text-xs text-[#0066CC] bg-[#0066CC]/5 hover:bg-[#0066CC]/10 rounded transition-colors"
+                              className="flex-1 flex items-center justify-center gap-2 px-3 py-1.5 text-xs text-primary bg-primary/5 hover:bg-primary/10 rounded transition-colors"
                             >
                               <CheckCheck className="w-3 h-3" />
                               Mark All Read
@@ -232,7 +232,7 @@ export function NotificationDashboard() {
                                 e.stopPropagation();
                                 dismissGroup(key);
                               }}
-                              className="flex-1 flex items-center justify-center gap-2 px-3 py-1.5 text-xs text-[#CC0000] bg-[#CC0000]/5 hover:bg-[#CC0000]/10 rounded transition-colors"
+                              className="flex-1 flex items-center justify-center gap-2 px-3 py-1.5 text-xs text-error bg-error/5 hover:bg-error/10 rounded transition-colors"
                             >
                               <Trash2 className="w-3 h-3" />
                               Clear All
@@ -241,7 +241,7 @@ export function NotificationDashboard() {
                         )}
 
                         {/* Individual Notifications */}
-                        <div className="divide-y divide-[#E0E0E0]">
+                        <div className="divide-y divide-border">
                           {items.map((notification, index) => (
                             <motion.div
                               key={notification.id}
@@ -251,8 +251,8 @@ export function NotificationDashboard() {
                               transition={{ delay: index * 0.05 }}
                               onClick={() => handleNotificationClick(notification)}
                               className={cn(
-                                "px-4 py-3 hover:bg-[#F0F0F0] transition-colors relative cursor-pointer",
-                                !notification.read && "bg-[#0066CC]/5"
+                                "px-4 py-3 hover:bg-surface-hover transition-colors relative cursor-pointer",
+                                !notification.read && "bg-primary/5"
                               )}
                             >
                               <div className="flex items-start gap-3">
@@ -262,7 +262,7 @@ export function NotificationDashboard() {
                                       {notification.title}
                                     </h5>
                                     {!notification.read && (
-                                      <div className="w-2 h-2 rounded-full bg-[#0066CC] flex-shrink-0 mt-1" />
+                                      <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-1" />
                                     )}
                                   </div>
                                   <p className="text-xs text-[var(--semantic-text-secondary)] mb-2">
@@ -284,7 +284,7 @@ export function NotificationDashboard() {
                                             action.handler();
                                             dismissNotification(notification.id);
                                           }}
-                                          className="text-xs px-3 py-1.5 bg-[#00AA00] text-white rounded hover:bg-[#00AA00]/90 transition-colors font-medium"
+                                          className="text-xs px-3 py-1.5 bg-success text-white rounded hover:bg-success/90 transition-colors font-medium"
                                         >
                                           {action.label}
                                         </button>

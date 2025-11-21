@@ -96,7 +96,7 @@ function AppButton({ app, isActive, isInDock, isFavorite, onClick, onAddToDock, 
 
             {/* Status Indicators */}
             {isActive && (
-              <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[var(--semantic-success)] border-2 border-[#1a1a1a] animate-pulse" />
+              <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[var(--semantic-success)] border-2 border-surface-dark animate-pulse" />
             )}
             {isInDock && (
               <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-white shadow-md" />

@@ -42,7 +42,7 @@ export function LoomIcon({ loom, onClick, onContextMenu }: LoomIconProps) {
           'group-hover:shadow-2xl transition-shadow'
         )}
         style={{
-          boxShadow: '0 5px 15px rgba(118, 75, 162, 0.4)',
+          boxShadow: 'var(--shadow-glow)',
         }}
       >
         <Archive className="h-7 w-7 sm:h-8 sm:w-8 text-white drop-shadow-md" />

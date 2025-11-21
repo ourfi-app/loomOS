@@ -4,14 +4,16 @@ import React, { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * Button Component - Phase 1: Foundation
+ * Button Component - webOS Design System
  * 
- * Button component following the new design system:
- * - Primary: Dark (#1a1a1a) with white text
- * - Secondary: Light neutral with dark text
+ * Button component using the webOS design system tokens:
+ * - Primary: Dark (neutral-900) with white text
+ * - Secondary: Light neutral (neutral-100) with dark text
  * - Icon: Minimal styling for icon-only buttons
  * - Navigation: For dock and app launcher
  * - Ghost: Transparent with hover effect
+ * 
+ * Uses design system color and spacing tokens for consistency.
  * 
  * @example
  * ```tsx
@@ -78,29 +80,29 @@ export function Button({
     lg: 'px-6 py-4 text-base',
   };
 
-  // Variant styles
+  // Variant styles - using design system tokens
   const variantStyles: Record<string, CSSProperties> = {
     primary: {
-      backgroundColor: '#1a1a1a',
-      color: '#ffffff',
+      backgroundColor: 'var(--color-neutral-900)',
+      color: 'var(--color-neutral-0)',
     },
     secondary: {
-      backgroundColor: 'rgba(200, 200, 200, 0.5)',
-      color: '#4a4a4a',
+      backgroundColor: 'var(--color-neutral-100)',
+      color: 'var(--color-neutral-700)',
     },
     ghost: {
       backgroundColor: 'transparent',
-      color: '#4a4a4a',
+      color: 'var(--color-neutral-700)',
       border: '1px solid transparent',
     },
     icon: {
       backgroundColor: 'transparent',
-      color: '#8a8a8a',
-      padding: '8px',
+      color: 'var(--color-neutral-500)',
+      padding: 'var(--spacing-2)',
     },
     navigation: {
       backgroundColor: 'transparent',
-      color: '#4a4a4a',
+      color: 'var(--color-neutral-700)',
     },
   };
 
@@ -198,7 +200,7 @@ export function IconButton({
         className
       )}
       aria-label={ariaLabel}
-      style={{ color: '#8a8a8a' }}
+      style={{ color: 'var(--color-neutral-500)' }}
       {...props}
     >
       {icon}
@@ -239,12 +241,12 @@ export function NavigationButton({
         active && 'bg-neutral-200',
         className
       )}
-      style={{ color: '#4a4a4a' }}
+      style={{ color: 'var(--color-neutral-700)' }}
       {...props}
     >
       <div className="w-6 h-6 mb-1">{icon}</div>
       {label && (
-        <span className="text-xs font-light" style={{ color: '#6a6a6a' }}>
+        <span className="text-xs font-light" style={{ color: 'var(--color-neutral-600)' }}>
           {label}
         </span>
       )}

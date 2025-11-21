@@ -1,24 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================================
+   WEBOS DESIGN SYSTEM - Single Source of Truth
+   ============================================================================
+   All design tokens consolidated in one file.
+   See /docs/DESIGN_SYSTEM.md for full documentation.
+   ============================================================================ */
+@import '../styles/webos-design-system.css';
+
+/* ============================================================================
+   CUSTOM ANIMATIONS
+   ============================================================================ */
 @import './styles/loomos/animations.css';
 
-/* WebOS Design Tokens for Landing Page Redesign */
+/* ============================================================================
+   LEGACY IMPORTS (Deprecated - Will be removed in v2.0)
+   ============================================================================
+   These imports are kept for backwards compatibility.
+   Please migrate to webos-design-system.css tokens.
+   See /docs/MIGRATION_GUIDE.md
+   ============================================================================ */
+
+/* Uncomment if you need backwards compatibility during migration:
 @import '../styles/webos-design-tokens.css';
-
-/* ========================================
-   loomOS Design System v1.0
-   Import new semantic token architecture
-   ======================================== */
-@import '../design-tokens/semantic.css';  /* Imports core.css automatically */
+@import '../design-tokens/semantic.css';
+@import '../design-tokens/core.css';
 @import '../design-tokens/motion.css';
-
-/* Legacy Design Tokens (for backwards compatibility) */
 @import '../styles/design-tokens.css';
-
-/* Import WebOS Design Tokens and Component Styles */
 @import '../styles/loomos-tokens.css';
 @import '../styles/loomos-components.css';
+*/
 
 
 .animate-shimmer {
