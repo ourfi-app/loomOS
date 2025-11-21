@@ -138,7 +138,10 @@ export default function WebOSDemoPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--semantic-bg-base)' }}>
+    <div 
+      className="min-h-screen" 
+      style={{ background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)' }}
+    >
       {/* Top Section with Search */}
       <div className="container mx-auto pt-16 pb-12">
         <WebOSJustTypeSearch
