@@ -35,7 +35,6 @@ export function useCreateMessage() {
       showSuccessToast: true,
       successMessage: 'Message sent successfully',
       onSuccess: (data, variables) => {
-        console.log('Message created:', data);
         // Optionally refresh message list or navigate
       },
     }

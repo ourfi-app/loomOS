@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';

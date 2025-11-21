@@ -12,10 +12,8 @@ async function main() {
 
   try {
     await client.connect();
-    console.log('🔌 Connected to database\n');
 
     // First, create the necessary enums and tables
-    console.log('📋 Creating schema...\n');
 
     // Create UserRole enum
     await client.query(`
@@ -76,7 +74,6 @@ async function main() {
       CREATE UNIQUE INDEX IF NOT EXISTS "users_email_key" ON "users"("email");
     `);
 
-    console.log('✅ Schema created successfully\n');
 
     // Check if super admin already exists
     const email = 'superadmin@trellis.com';
@@ -86,14 +83,11 @@ async function main() {
     );
 
     if (checkResult.rows.length > 0) {
-      console.log('✅ Super Admin account already exists!');
-      console.log(`   Email: ${email}`);
-      console.log(`   Role: ${checkResult.rows[0].role}`);
       return;
     }
 
     // Create super admin user
-    const password = 'SuperAdmin123!';
+    const password = process.env.SUPER_ADMIN_PASSWORD || 'changeme-superadmin-dev';
     const hashedPassword = await bcrypt.hash(password, 10);
     const id = 'user_' + Math.random().toString(36).substr(2, 9);
 
@@ -115,12 +109,6 @@ async function main() {
       true
     ]);
 
-    console.log('✅ Super Admin account created successfully!\n');
-    console.log('📧 Login Credentials:');
-    console.log(`   Email: ${email}`);
-    console.log(`   Password: ${password}\n`);
-    console.log('⚠️  IMPORTANT: Change this password after first login!\n');
-    console.log('🎉 You can now access the Super Admin Dashboard at /dashboard/super-admin\n');
 
   } catch (error) {
     console.error('❌ Error:', error.message);

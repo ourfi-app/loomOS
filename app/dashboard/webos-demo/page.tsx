@@ -15,7 +15,6 @@ import { Mail, FileText, Calendar, Users, Settings, MessageSquare } from 'lucide
  */
 export default function WebOSDemoPage() {
   const handleSearch = (query: string) => {
-    console.log('Search query:', query);
     // Implement search functionality here
   };
 
@@ -41,7 +40,6 @@ export default function WebOSDemoPage() {
           </div>
         </div>
       ),
-      onClick: () => console.log('Mail clicked')
     },
     {
       id: 'documents',
@@ -64,7 +62,6 @@ export default function WebOSDemoPage() {
           </div>
         </div>
       ),
-      onClick: () => console.log('Documents clicked')
     },
     {
       id: 'calendar',
@@ -87,7 +84,6 @@ export default function WebOSDemoPage() {
           </div>
         </div>
       ),
-      onClick: () => console.log('Calendar clicked')
     },
     {
       id: 'contacts',
@@ -110,7 +106,6 @@ export default function WebOSDemoPage() {
           </div>
         </div>
       ),
-      onClick: () => console.log('Contacts clicked')
     },
     {
       id: 'messages',
@@ -133,7 +128,6 @@ export default function WebOSDemoPage() {
           </div>
         </div>
       ),
-      onClick: () => console.log('Messages clicked')
     }
   ];
 

@@ -8,10 +8,9 @@ config();
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🚀 Creating Super Admin account...\n');
 
   const email = 'superadmin@trellis.com';
-  const password = 'SuperAdmin123!';
+  const password = process.env.SUPER_ADMIN_PASSWORD || 'changeme-superadmin-dev';
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Check if super admin already exists
@@ -22,9 +21,6 @@ async function main() {
   });
 
   if (existingSuperAdmin) {
-    console.log('✅ Super Admin account already exists!');
-    console.log(`   Email: ${email}`);
-    console.log(`   Role: ${existingSuperAdmin.role}`);
     return;
   }
 
@@ -43,12 +39,6 @@ async function main() {
     },
   });
 
-  console.log('✅ Super Admin account created successfully!');
-  console.log('\n📧 Login Credentials:');
-  console.log(`   Email: ${email}`);
-  console.log(`   Password: ${password}`);
-  console.log('\n⚠️  IMPORTANT: Change this password after first login!');
-  console.log('\n🎉 You can now access the Super Admin Dashboard at /super-admin');
 }
 
 main()

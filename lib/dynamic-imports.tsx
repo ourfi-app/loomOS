@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 /**
  * Centralized dynamic imports for heavy libraries
  *
@@ -157,9 +158,9 @@ export const DynamicRechartsBar = dynamic(
  * React Grid Layout - Draggable grid system (~100 KB)
  * Used for dashboard layouts
  */
-// @ts-ignore - Dynamic import type issues with React versions
+// @ts-expect-error - Dynamic import type issues with React versions
 export const DynamicGridLayout = dynamic(
-  // @ts-ignore
+  // @ts-expect-error
   () => import('react-grid-layout'),
   {
     ssr: false,

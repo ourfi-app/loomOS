@@ -77,13 +77,11 @@ class WorkflowEngine {
   }
 
   async executeWorkflow(workflow: Workflow, triggerData: any) {
-    console.log(`Executing workflow: ${workflow.name}`, triggerData);
 
     // Check conditions
     if (workflow.conditions && workflow.conditions.length > 0) {
       const conditionsMet = this.checkConditions(workflow.conditions, triggerData);
       if (!conditionsMet) {
-        console.log('Workflow conditions not met');
         return;
       }
     }
@@ -153,7 +151,6 @@ class WorkflowEngine {
   }
 
   private async sendNotification(config: any, data: any) {
-    console.log('Sending notification:', config, data);
     // TODO: Implement notification sending
     // This would integrate with a notification system/service
   }
@@ -174,7 +171,6 @@ class WorkflowEngine {
         text: body,
       });
 
-      console.log('Workflow email sent:', config, data);
     } catch (error) {
       console.error('Failed to send workflow email:', error);
       throw error;
@@ -182,19 +178,16 @@ class WorkflowEngine {
   }
 
   private async createTask(config: any, data: any) {
-    console.log('Creating task:', config, data);
     // TODO: Implement task creation
     // This would integrate with the task management system
   }
 
   private async createNote(config: any, data: any) {
-    console.log('Creating note:', config, data);
     // TODO: Implement note creation
     // This would integrate with the notes system
   }
 
   private async sendMessage(config: any, data: any) {
-    console.log('Sending message:', config, data);
     // TODO: Implement message sending
     // This would integrate with the messaging system
   }
@@ -210,7 +203,6 @@ class WorkflowEngine {
   }
 
   private async callWebhook(config: any, data: any) {
-    console.log('Calling webhook:', config, data);
     try {
       const response = await fetch(config.url, {
         method: config.method || 'POST',

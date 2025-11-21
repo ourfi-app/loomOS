@@ -146,7 +146,6 @@ export class LoomOSMarketplace {
 
     // In a real implementation, this would submit to a decentralized marketplace
     // or peer-to-peer network, not a centralized app store
-    console.log('Publishing app:', app.name);
 
     // For now, just add to installed apps
     this.installedApps.set(app.id, app);

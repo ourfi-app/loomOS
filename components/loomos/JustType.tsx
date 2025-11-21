@@ -395,21 +395,18 @@ function defaultSearch(query: string): SearchResult[] {
       type: 'app',
       title: 'Email',
       subtitle: 'Check your messages',
-      action: () => console.log('Open Email'),
     },
     {
       id: 'calendar-app',
       type: 'app',
       title: 'Calendar',
       subtitle: 'View your schedule',
-      action: () => console.log('Open Calendar'),
     },
     {
       id: 'tasks-app',
       type: 'app',
       title: 'Tasks',
       subtitle: 'Manage your todos',
-      action: () => console.log('Open Tasks'),
     },
   ];
 

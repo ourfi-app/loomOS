@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
@@ -104,7 +105,6 @@ export async function POST(req: NextRequest) {
               text: `Hi ${firstName},\n\nWelcome to your community portal! An account has been created for you.\n\nEmail: ${email}\nTemporary Password: ${tempPassword}\n\nPlease log in at: ${loginUrl}\n\nIMPORTANT: Please change your password after your first login for security.\n\nIf you have any questions, please contact your building management.`,
             });
 
-            console.log(`Invitation email sent to ${email}`);
           } catch (emailError) {
             console.error('Failed to send invitation email:', emailError);
             // Don't fail the import if email fails

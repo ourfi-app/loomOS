@@ -1,3 +1,5 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
+// TODO: Review setTimeout calls for proper cleanup in useEffect return functions
 'use client';
 
 import { useSession } from 'next-auth/react';

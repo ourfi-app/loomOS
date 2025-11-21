@@ -3,7 +3,6 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('Seeding messages...');
 
   // Get all board members and admins
   const boardMembers = await prisma.user.findMany({
@@ -16,7 +15,6 @@ async function main() {
   });
 
   if (boardMembers.length < 2) {
-    console.log('Need at least 2 board members/admins to seed messages');
     return;
   }
 
@@ -114,7 +112,6 @@ ${sender.name}`,
     });
   }
 
-  console.log(`Created ${messages.length} sample messages`);
 }
 
 main()

@@ -42,7 +42,6 @@ export async function POST(req: NextRequest) {
     try {
       await mkdir(appDir, { recursive: true });
     } catch (error) {
-      console.log('Directory already exists or error creating:', error);
     }
 
     // Write the main component file

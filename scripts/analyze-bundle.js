@@ -25,7 +25,6 @@ function formatBytes(bytes) {
 }
 
 function analyzeBundle() {
-  console.log('🔍 Analyzing bundle...\n');
 
   const buildManifest = path.join(BUILD_DIR, 'build-manifest.json');
   
@@ -101,27 +100,19 @@ function analyzeBundle() {
   fs.writeFileSync(BUNDLE_ANALYSIS_FILE, JSON.stringify(analysis, null, 2));
 
   // Print summary
-  console.log('📊 Bundle Analysis Summary\n');
-  console.log(`Total Bundle Size: ${formatBytes(analysis.totalSize)}\n`);
   
-  console.log('📦 Largest Pages:');
   const sortedPages = Object.entries(analysis.pages)
     .sort(([, a], [, b]) => b.size - a.size)
     .slice(0, 10);
   
   sortedPages.forEach(([page, data]) => {
-    console.log(`  ${page.padEnd(50)} ${data.sizeFormatted}`);
   });
 
   if (analysis.recommendations.length > 0) {
-    console.log('\n⚠️  Recommendations:');
     analysis.recommendations.forEach(rec => {
-      console.log(`  ${rec.type} - ${rec.page} (${rec.size})`);
-      console.log(`    → ${rec.suggestion}\n`);
     });
   }
 
-  console.log(`\n✓ Detailed analysis saved to: ${BUNDLE_ANALYSIS_FILE}`);
 }
 
 try {

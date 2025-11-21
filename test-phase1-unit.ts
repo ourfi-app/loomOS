@@ -101,8 +101,6 @@ function getTenantUrl(subdomain: string | null, customDomain: string | null): st
 }
 
 // Test Runner
-console.log('🧪 Phase 1 Testing: Multi-Tenancy Infrastructure\n');
-console.log('='.repeat(60));
 
 let passed = 0;
 let failed = 0;
@@ -111,21 +109,16 @@ function test(name: string, fn: () => boolean) {
   try {
     const result = fn();
     if (result) {
-      console.log(`✅ ${name}`);
       passed++;
     } else {
-      console.log(`❌ ${name}`);
       failed++;
     }
   } catch (error: any) {
-    console.log(`❌ ${name} - Error: ${error.message}`);
     failed++;
   }
 }
 
 // Test 1: Subdomain Extraction
-console.log('\n📍 Test Suite 1: Subdomain Extraction');
-console.log('-'.repeat(60));
 
 test('Extract subdomain from montrecott.loomos.com', () => {
   return extractSubdomain('montrecott.loomos.com') === 'montrecott';
@@ -148,8 +141,6 @@ test('Extract staging subdomain', () => {
 });
 
 // Test 2: Subdomain Validation
-console.log('\n📍 Test Suite 2: Subdomain Validation');
-console.log('-'.repeat(60));
 
 test('Valid: montrecott', () => {
   return validateSubdomain('montrecott').valid === true;
@@ -188,8 +179,6 @@ test('Invalid: my_org (underscore)', () => {
 });
 
 // Test 3: Custom Domain Validation
-console.log('\n📍 Test Suite 3: Custom Domain Validation');
-console.log('-'.repeat(60));
 
 test('Valid: montrecott.com', () => {
   return validateCustomDomain('montrecott.com').valid === true;
@@ -212,8 +201,6 @@ test('Valid: uppercase.COM (case insensitive)', () => {
 });
 
 // Test 4: DNS Verification Token
-console.log('\n📍 Test Suite 4: DNS Verification Token');
-console.log('-'.repeat(60));
 
 const token1 = generateDNSVerificationToken();
 const token2 = generateDNSVerificationToken();
@@ -231,8 +218,6 @@ test('Token has sufficient length', () => {
 });
 
 // Test 5: Tenant URL Generation
-console.log('\n📍 Test Suite 5: Tenant URL Generation');
-console.log('-'.repeat(60));
 
 test('Subdomain URL generation', () => {
   const url = getTenantUrl('montrecott', null);
@@ -255,24 +240,9 @@ test('Root domain fallback', () => {
 });
 
 // Summary
-console.log('\n' + '='.repeat(60));
-console.log('📊 Test Summary');
-console.log('='.repeat(60));
-console.log(`✅ Passed: ${passed}`);
-console.log(`❌ Failed: ${failed}`);
-console.log(`📈 Success Rate: ${((passed / (passed + failed)) * 100).toFixed(1)}%`);
 
 if (failed === 0) {
-  console.log('\n🎉 All tests passed! Phase 1 routing utilities are working correctly.');
 } else {
-  console.log('\n⚠️  Some tests failed. Please review the output above.');
   process.exit(1);
 }
 
-console.log('\n📝 Next Steps:');
-console.log('  1. ✅ Routing utilities tested');
-console.log('  2. ⏳ Run database migration');
-console.log('  3. ⏳ Test API endpoints');
-console.log('  4. ⏳ Test tenant isolation middleware');
-console.log('  5. ⏳ Create test organization');
-console.log('\n');

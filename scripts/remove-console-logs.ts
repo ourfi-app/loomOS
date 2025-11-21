@@ -191,18 +191,13 @@ async function processFile(filePath: string, options: ScriptOptions): Promise<Ch
 }
 
 function printReport(allChanges: ChangeReport[], options: ScriptOptions) {
-  console.log('\n' + '='.repeat(80));
-  console.log(`${colors.cyan}Console.log Removal Report${colors.reset}`);
-  console.log('='.repeat(80) + '\n');
 
   if (options.dryRun) {
-    console.log(
       `${colors.yellow}⚠️  DRY RUN MODE - No files were modified${colors.reset}\n`
     );
   }
 
   if (allChanges.length === 0) {
-    console.log(`${colors.green}✓ No console.log statements found!${colors.reset}\n`);
     return;
   }
 
@@ -215,7 +210,6 @@ function printReport(allChanges: ChangeReport[], options: ScriptOptions) {
     return acc;
   }, {} as Record<string, ChangeReport[]>);
 
-  console.log(
     `${colors.blue}Found ${allChanges.length} console.log statement(s) in ${
       Object.keys(changesByFile).length
     } file(s)${colors.reset}\n`
@@ -223,41 +217,24 @@ function printReport(allChanges: ChangeReport[], options: ScriptOptions) {
 
   // Print details for each file
   Object.entries(changesByFile).forEach(([file, changes]) => {
-    console.log(`${colors.cyan}${file}${colors.reset}`);
     changes.forEach((change) => {
-      console.log(`  Line ${change.lineNumber}:`);
-      console.log(`  ${colors.red}- ${change.originalLine.trim()}${colors.reset}`);
       if (options.comment && change.modifiedLine !== '(removed)') {
-        console.log(`  ${colors.green}+ ${change.modifiedLine.trim()}${colors.reset}`);
       }
     });
-    console.log('');
   });
 
   // Print summary
-  console.log('='.repeat(80));
-  console.log(`${colors.cyan}Summary:${colors.reset}`);
-  console.log(`  Total files affected: ${Object.keys(changesByFile).length}`);
-  console.log(`  Total console.log statements: ${allChanges.length}`);
   if (options.dryRun) {
-    console.log(
       `  ${colors.yellow}Action: None (dry run)${colors.reset}`
     );
   } else if (options.comment) {
-    console.log(`  ${colors.green}Action: Commented out${colors.reset}`);
   } else {
-    console.log(`  ${colors.green}Action: Removed${colors.reset}`);
   }
-  console.log('='.repeat(80) + '\n');
 }
 
 async function main() {
   const options = parseArgs();
 
-  console.log(`${colors.cyan}🧹 Console.log Removal Tool${colors.reset}\n`);
-  console.log(`Mode: ${options.dryRun ? 'Dry Run' : 'Live'}`);
-  console.log(`Action: ${options.comment ? 'Comment' : 'Remove'}`);
-  console.log(
     `Target: ${options.targetDir || DEFAULT_DIRECTORIES.join(', ')}\n`
   );
 
@@ -280,7 +257,6 @@ async function main() {
     }
   }
 
-  console.log(`Scanning ${allFiles.length} files...\n`);
 
   const allChanges: ChangeReport[] = [];
 
@@ -292,7 +268,6 @@ async function main() {
   printReport(allChanges, options);
 
   if (options.dryRun && allChanges.length > 0) {
-    console.log(
       `${colors.yellow}To apply these changes, run the script again without --dry-run${colors.reset}\n`
     );
   }

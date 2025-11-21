@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
 import { getAllApps, APP_REGISTRY } from '../lib/enhanced-app-registry';
@@ -18,12 +19,10 @@ function mapCategory(category: string): string {
 }
 
 async function seedMarketplace() {
-  console.log('🌱 Starting marketplace seed...');
 
   try {
     // Connect to database
     await prisma.$connect();
-    console.log('✅ Connected to database');
     
     // Get default organization
     const org = await prisma.organization.findFirst();
@@ -33,11 +32,9 @@ async function seedMarketplace() {
       process.exit(1);
     }
 
-    console.log(`✅ Found organization: ${org.name}`);
 
     // Get all apps from the registry (include admin apps)
     const allApps = getAllApps(true);
-    console.log(`📱 Found ${allApps.length} apps in registry`);
 
     let seededCount = 0;
     let updatedCount = 0;
@@ -90,10 +87,6 @@ async function seedMarketplace() {
       }
     }
 
-    console.log(`\n✅ Marketplace seeding complete!`);
-    console.log(`   - New apps created: ${seededCount}`);
-    console.log(`   - Existing apps updated: ${updatedCount}`);
-    console.log(`   - Total apps in marketplace: ${allApps.length}`);
 
   } catch (error) {
     console.error('❌ Error seeding marketplace:', error);

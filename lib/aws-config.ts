@@ -7,7 +7,7 @@ export interface BucketConfig {
 }
 
 export function getBucketConfig(): BucketConfig {
-  const bucketName = process.env.AWS_BUCKET_NAME;
+  const bucketName = process.env.AWS_BUCKET_NAME || "";
   const folderPrefix = process.env.AWS_FOLDER_PREFIX || '';
 
   if (!bucketName) {

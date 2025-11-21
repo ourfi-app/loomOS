@@ -5,7 +5,6 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Starting database seed...');
 
   // Create default organization first
   const organization = await prisma.organization.upsert({
@@ -24,10 +23,9 @@ async function main() {
     },
   });
 
-  console.log(`✅ Created organization: ${organization.name}`);
 
   // Create admin user (required for testing)
-  const adminPassword = await bcrypt.hash('johndoe123', 12);
+  const adminPassword = await bcrypt.hash(process.env.SEED_ADMIN_PASSWORD || 'changeme-admin-dev', 12);
   const admin = await prisma.user.upsert({
     where: { email: 'john@doe.com' },
     update: {},
@@ -45,10 +43,9 @@ async function main() {
     },
   });
 
-  console.log(`✅ Created admin user: ${admin.email}`);
 
   // Create sample board member
-  const boardPassword = await bcrypt.hash('board123', 12);
+  const boardPassword = await bcrypt.hash(process.env.SEED_BOARD_PASSWORD || 'changeme-board-dev', 12);
   const boardMember = await prisma.user.upsert({
     where: { email: 'sarah.board@condoassoc.com' },
     update: {},
@@ -67,10 +64,9 @@ async function main() {
     },
   });
 
-  console.log(`✅ Created board member: ${boardMember.email}`);
 
   // Create sample residents
-  const residentPassword = await bcrypt.hash('resident123', 12);
+  const residentPassword = await bcrypt.hash(process.env.SEED_RESIDENT_PASSWORD || 'changeme-resident-dev', 12);
   
   const residents = [
     {
@@ -114,7 +110,6 @@ async function main() {
         onboardingCompleted: true,
       },
     });
-    console.log(`✅ Created resident: ${user.email}`);
   }
 
   // Create dues settings
@@ -132,7 +127,6 @@ async function main() {
     },
   });
 
-  console.log('✅ Created dues settings');
 
   // Create sample payments for residents
   const allUsers = await prisma.user.findMany({
@@ -188,7 +182,6 @@ async function main() {
     });
   }
 
-  console.log('✅ Created sample payments');
 
   // Create sample announcements
   await prisma.announcement.create({
@@ -425,7 +418,6 @@ async function main() {
   }
 
   // Seed Tasks
-  console.log('Creating sample tasks...');
   const sampleTasks = [
     {
       organizationId: organization.id,
@@ -503,7 +495,6 @@ async function main() {
   }
 
   // Seed Notes
-  console.log('Creating sample notes...');
   const sampleNotes = [
     {
       organizationId: organization.id,
@@ -636,7 +627,6 @@ Serves 8-10 people. Always a hit at community events!`,
   }
 
   // Seed Calendar Events
-  console.log('Creating sample calendar events...');
   const today = new Date();
   const sampleEvents = [
     {
@@ -786,15 +776,6 @@ Serves 8-10 people. Always a hit at community events!`,
     });
   }
 
-  console.log('✅ Database has been seeded successfully!');
-  console.log('🔑 Test accounts created:');
-  console.log('   Admin: john@doe.com / johndoe123');
-  console.log('   Board Member: sarah.board@condoassoc.com / board123');
-  console.log('   Resident: mike.resident@email.com / resident123');
-  console.log('📝 Sample data created:');
-  console.log('   - 6 tasks with various statuses and priorities');
-  console.log('   - 6 notes across different categories');
-  console.log('   - 9 calendar events including meetings, reminders, and holidays');
 }
 
 main()

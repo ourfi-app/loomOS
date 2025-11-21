@@ -166,7 +166,6 @@ export function measureRender(
     const start = performance.now();
     callback();
     const end = performance.now();
-    console.log(`[Render Time] ${componentName}: ${(end - start).toFixed(2)}ms`);
   } else {
     callback();
   }

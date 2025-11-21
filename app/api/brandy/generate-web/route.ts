@@ -6,7 +6,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { authOptions } from '@/lib/auth';
 
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+  apiKey: process.env.ANTHROPIC_API_KEY || "",
 });
 
 interface WebGenerationRequest {

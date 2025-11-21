@@ -139,7 +139,6 @@ function Card3D({ card, index, isActive, isPinned, onClick, onClose, onDragStart
             onClick={(e) => {
               e.stopPropagation();
               // Future: AI assistant integration
-              console.log('AI action for:', card.id);
             }}
           >
             <Sparkles className="w-4 h-4" />

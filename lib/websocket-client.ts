@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 /**
  * WebSocket Client for Real-time Updates
@@ -35,7 +36,6 @@ class WebSocketManager {
       this.ws = new WebSocket(wsUrl);
 
       this.ws.onopen = () => {
-        console.log('WebSocket connected');
         this.isConnecting = false;
         this.reconnectAttempts = 0;
       };
@@ -55,7 +55,6 @@ class WebSocketManager {
       };
 
       this.ws.onclose = () => {
-        console.log('WebSocket disconnected');
         this.isConnecting = false;
         this.attemptReconnect(token);
       };
@@ -69,7 +68,6 @@ class WebSocketManager {
     if (this.reconnectAttempts < this.maxReconnectAttempts) {
       this.reconnectAttempts++;
       const delay = this.reconnectDelay * Math.pow(2, this.reconnectAttempts - 1);
-      console.log(`Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts})`);
       setTimeout(() => this.connect(token), delay);
     }
   }

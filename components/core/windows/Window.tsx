@@ -16,8 +16,6 @@ import { cn } from '@/lib/utils';
  * ```tsx
  * <Window
  *   title="Mail"
- *   onClose={() => console.log('close')}
- *   onMinimize={() => console.log('minimize')}
  * >
  *   <p>Window content goes here</p>
  * </Window>

@@ -570,5 +570,4 @@ export const serverNotifications = {
  * Log integration events for debugging and analytics
  */
 export function logIntegrationEvent(event: { type: string; data: any }) {
-  console.log(`[Integration Event] ${event.type}:`, event.data);
 }

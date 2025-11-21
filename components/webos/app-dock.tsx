@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 
 'use client';
@@ -166,7 +167,6 @@ const DockItem = memo(({
           </>
         )}
         
-        <ContextMenuItem onClick={() => console.log('Show app info:', app.id)}>
           <Info className="mr-2 h-4 w-4" />
           <span>App Info</span>
         </ContextMenuItem>

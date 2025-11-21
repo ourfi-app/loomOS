@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 /**
  * Brandy: Integrated Brand Strategist + Web Builder
  * Main application page

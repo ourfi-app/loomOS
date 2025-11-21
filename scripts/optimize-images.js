@@ -10,7 +10,6 @@ const images = [
 ];
 
 async function optimizeImages() {
-  console.log('Starting image optimization...\n');
 
   for (const imagePath of images) {
     const fullPath = path.join(__dirname, '..', imagePath);
@@ -31,16 +30,11 @@ async function optimizeImages() {
       const newSizeKB = (newStats.size / 1024).toFixed(2);
       const savings = ((1 - newStats.size / originalStats.size) * 100).toFixed(1);
 
-      console.log(`✓ ${path.basename(imagePath)}`);
-      console.log(`  Original: ${originalSizeKB} KB`);
-      console.log(`  WebP: ${newSizeKB} KB`);
-      console.log(`  Savings: ${savings}%\n`);
     } catch (error) {
       console.error(`✗ Failed to process ${imagePath}:`, error.message);
     }
   }
 
-  console.log('Image optimization complete!');
 }
 
 optimizeImages().catch(console.error);

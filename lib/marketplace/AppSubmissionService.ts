@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 /**
  * App Submission Service
  * Handles app creation, version submission, and publishing workflow
@@ -442,7 +443,6 @@ export class AppSubmissionService {
         text: `New App Submission\n\nApp Name: ${app.name}\nDeveloper: ${developerName}\nVersion: ${submission.version}\nSubmission ID: ${submission.id}\n\nReview at: ${reviewUrl}`,
       });
 
-      console.log('Review team notified about submission:', submission.id);
     } catch (error) {
       console.error('Failed to send review team notification:', error);
       // Don't throw - submission should still succeed even if email fails

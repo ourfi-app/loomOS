@@ -75,7 +75,6 @@ export function DeprecatedRouteHandler({
         }
 
         // Redirect to the new consolidated app
-        console.log(`[Deprecation] Redirecting from ${app.path} to ${newUrl}`);
         router.replace(newUrl);
       }
     }

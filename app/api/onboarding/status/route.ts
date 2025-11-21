@@ -1,3 +1,4 @@
+// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
@@ -29,7 +30,6 @@ export async function GET(request: NextRequest) {
       organizationId = await getCurrentOrganizationId();
     } catch (error) {
       // User doesn't have an organization yet - this is expected during initial setup
-      console.log('User does not have organization ID yet - initial onboarding in progress');
     }
 
     // Get or create association settings

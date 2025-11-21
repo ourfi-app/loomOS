@@ -37,7 +37,6 @@ export async function TenantWrapper({ children }: TenantWrapperProps) {
   } catch (error) {
     // Tenant resolution failed - user might not have an organization
     // or might be on a public page
-    console.log('[TenantWrapper] No tenant context available');
   }
 
   return (

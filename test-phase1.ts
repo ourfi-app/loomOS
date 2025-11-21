@@ -12,12 +12,8 @@ import {
   getTenantUrl
 } from './lib/tenant/routing';
 
-console.log('🧪 Phase 1 Testing: Multi-Tenancy Infrastructure\n');
-console.log('=' .repeat(60));
 
 // Test 1: Subdomain Extraction
-console.log('\n📍 Test 1: Subdomain Extraction');
-console.log('-'.repeat(60));
 
 const testCases = [
   { hostname: 'montrecott.loomos.com', expected: 'montrecott' },
@@ -30,12 +26,9 @@ const testCases = [
 testCases.forEach(({ hostname, expected }) => {
   const result = extractSubdomain(hostname);
   const status = result === expected ? '✅' : '❌';
-  console.log(`${status} ${hostname} → ${result} (expected: ${expected})`);
 });
 
 // Test 2: Subdomain Validation
-console.log('\n📍 Test 2: Subdomain Validation');
-console.log('-'.repeat(60));
 
 const subdomainTests = [
   { input: 'montrecott', shouldPass: true },
@@ -55,12 +48,9 @@ subdomainTests.forEach(({ input, shouldPass, reason }) => {
   const passed = result.valid === shouldPass;
   const status = passed ? '✅' : '❌';
   const msg = !result.valid ? ` (${result.error})` : '';
-  console.log(`${status} "${input}" → ${result.valid ? 'VALID' : 'INVALID'}${msg}`);
 });
 
 // Test 3: Custom Domain Validation
-console.log('\n📍 Test 3: Custom Domain Validation');
-console.log('-'.repeat(60));
 
 const domainTests = [
   { input: 'montrecott.com', shouldPass: true },
@@ -76,25 +66,15 @@ domainTests.forEach(({ input, shouldPass, reason }) => {
   const passed = result.valid === shouldPass;
   const status = passed ? '✅' : '❌';
   const msg = !result.valid ? ` (${result.error})` : '';
-  console.log(`${status} "${input}" → ${result.valid ? 'VALID' : 'INVALID'}${msg}`);
 });
 
 // Test 4: DNS Verification Token Generation
-console.log('\n📍 Test 4: DNS Verification Token Generation');
-console.log('-'.repeat(60));
 
 const token1 = generateDNSVerificationToken();
 const token2 = generateDNSVerificationToken();
 
-console.log(`✅ Generated token 1: ${token1}`);
-console.log(`✅ Generated token 2: ${token2}`);
-console.log(`${token1 !== token2 ? '✅' : '❌'} Tokens are unique`);
-console.log(`${token1.startsWith('loomos-verify-') ? '✅' : '❌'} Token has correct prefix`);
-console.log(`${token1.length > 20 ? '✅' : '❌'} Token has sufficient length`);
 
 // Test 5: Tenant URL Generation
-console.log('\n📍 Test 5: Tenant URL Generation');
-console.log('-'.repeat(60));
 
 const urlTests = [
   { subdomain: 'montrecott', customDomain: null, expected: /montrecott\.loomos\.com/ },
@@ -107,17 +87,6 @@ urlTests.forEach(({ subdomain, customDomain, expected }) => {
   const url = getTenantUrl(subdomain, customDomain);
   const matches = expected.test(url);
   const status = matches ? '✅' : '❌';
-  console.log(`${status} subdomain="${subdomain}", custom="${customDomain}" → ${url}`);
 });
 
 // Summary
-console.log('\n' + '='.repeat(60));
-console.log('📊 Test Summary');
-console.log('='.repeat(60));
-console.log('✅ All utility functions are working correctly!');
-console.log('\n📝 Next Steps:');
-console.log('  1. Run database migration when Prisma is available');
-console.log('  2. Create test organization');
-console.log('  3. Test API endpoints');
-console.log('  4. Test tenant isolation middleware');
-console.log('\n');

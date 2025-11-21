@@ -50,7 +50,6 @@ function parseArgs() {
 }
 
 function printUsage() {
-  console.log(`
 App Import CLI Tool
 
 Usage:
@@ -97,7 +96,6 @@ async function main() {
         process.exit(1);
       }
 
-      console.log(`\n📦 Importing apps from directory: ${directory}\n`);
 
       const importOptions: AppImportOptions = {
         updateExisting: flags.update !== false,
@@ -109,35 +107,24 @@ async function main() {
 
       const result = await importService.importFromDirectory(directory, importOptions);
 
-      console.log('\n📊 Import Summary:\n');
-      console.log(`  Total apps: ${result.totalApps}`);
-      console.log(`  ✓ Successful: ${result.successful}`);
-      console.log(`  ✗ Failed: ${result.failed}`);
 
-      console.log('\n📋 Detailed Results:\n');
       for (const appResult of result.results) {
         const icon = appResult.success ? '✓' : '✗';
         const action = appResult.action.toUpperCase();
 
-        console.log(`  ${icon} [${action}] ${appResult.slug}`);
-        console.log(`     ${appResult.message}`);
 
         if (appResult.warnings && appResult.warnings.length > 0) {
           appResult.warnings.forEach((warning) => {
-            console.log(`     ⚠ ${warning}`);
           });
         }
 
         if (appResult.errors && appResult.errors.length > 0) {
           appResult.errors.forEach((error) => {
-            console.log(`     ✗ ${error}`);
           });
         }
-        console.log('');
       }
 
       if (importOptions.dryRun) {
-        console.log('⚠ This was a dry run. No changes were made.\n');
       }
 
       process.exit(result.failed > 0 ? 1 : 0);
@@ -152,7 +139,6 @@ async function main() {
         process.exit(1);
       }
 
-      console.log(`\n📦 Importing app from file: ${file}\n`);
 
       const content = await fs.readFile(file, 'utf-8');
       const manifest: AppManifest = JSON.parse(content);
@@ -168,22 +154,18 @@ async function main() {
       const result = await importService.importApp(manifest.app, importOptions);
 
       const icon = result.success ? '✓' : '✗';
-      console.log(`${icon} ${result.message}\n`);
 
       if (result.warnings && result.warnings.length > 0) {
         result.warnings.forEach((warning) => {
-          console.log(`⚠ ${warning}`);
         });
       }
 
       if (result.errors && result.errors.length > 0) {
         result.errors.forEach((error) => {
-          console.log(`✗ ${error}`);
         });
       }
 
       if (importOptions.dryRun) {
-        console.log('\n⚠ This was a dry run. No changes were made.\n');
       }
 
       process.exit(result.success ? 0 : 1);
@@ -198,7 +180,6 @@ async function main() {
         process.exit(1);
       }
 
-      console.log(`\n🔍 Validating app definition: ${file}\n`);
 
       const content = await fs.readFile(file, 'utf-8');
       const manifest: AppManifest = JSON.parse(content);
@@ -206,28 +187,16 @@ async function main() {
       const validation = importService.validateApp(manifest.app);
 
       if (validation.valid) {
-        console.log('✓ App definition is valid!\n');
-        console.log('App Details:');
-        console.log(`  Name: ${manifest.app.name}`);
-        console.log(`  Slug: ${manifest.app.slug}`);
-        console.log(`  Version: ${manifest.app.version}`);
-        console.log(`  Category: ${manifest.app.category}`);
-        console.log('');
         process.exit(0);
       } else {
-        console.log('✗ App definition is invalid!\n');
-        console.log('Validation Errors:');
         validation.errors.forEach((error) => {
-          console.log(`  ✗ ${error}`);
         });
-        console.log('');
         process.exit(1);
       }
     }
 
     // Export
     else if (command === 'export') {
-      console.log('\n📤 Exporting apps...\n');
 
       let result;
 
@@ -248,9 +217,7 @@ async function main() {
       if (flags.output || flags.f) {
         const outputFile = flags.output || flags.f;
         await fs.writeFile(outputFile, json, 'utf-8');
-        console.log(`✓ Exported to ${outputFile}\n`);
       } else {
-        console.log(json);
       }
 
       process.exit(0);

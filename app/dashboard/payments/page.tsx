@@ -35,7 +35,6 @@ export default function PaymentsPage() {
         setPayments(result.data.payments || []);
         if (result.data.stats) {
           // Store stats if needed for dashboard display
-          console.log('Payment stats:', result.data.stats);
         }
       } else {
         console.error('Failed to fetch payments:', result.error || 'Unknown error');
