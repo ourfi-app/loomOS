@@ -470,7 +470,7 @@ export default function UserManagementPage() {
           {/* Navigation Pane - Filters */}
           <LoomOSContainerPane id="filters" type="navigation" width={240}>
             <div className="p-4 space-y-1">
-              <h3 className="text-xs font-light tracking-wider uppercase" style={{ color: 'var(--webos-text-tertiary' }} mb-3">Filters</h3>
+              <h3 className="text-xs font-light tracking-wider uppercase" style={{ color: 'var(--webos-text-tertiary)' }} className="mb-3">Filters</h3>
               {filterOptions.map(filter => (
                 <LoomOSNavListItem
                   key={filter.id}
