@@ -236,33 +236,79 @@ export default function ChatPage() {
     <>
       {/* Blur Backdrop Overlay */}
       <div 
-        className="fixed inset-0 bg-black/20 backdrop-blur-md z-40 animate-fade-in"
+        className="fixed inset-0 backdrop-blur-md z-40 animate-fade-in"
         onClick={handleClose}
+        style={{
+          background: 'rgba(0, 0, 0, 0.2)'
+        }}
       />
 
       {/* Right Side Panel */}
-      <div className="fixed inset-y-0 right-0 w-full md:w-[600px] bg-white shadow-2xl z-50 flex flex-col animate-slide-in-right border-l border-nordic-frost">
+      <div 
+        className="fixed inset-y-0 right-0 w-full md:w-[600px] z-50 flex flex-col animate-slide-in-right"
+        style={{
+          background: 'var(--webos-bg-white)',
+          boxShadow: 'var(--webos-shadow-xl)',
+          border: '1px solid var(--webos-border-glass)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
         {/* Header */}
-        <div className="bg-gradient-to-r from-primary to-nordic-ocean text-white px-6 py-5 flex items-center justify-between shadow-lg">
+        <div 
+          className="px-6 py-5 flex items-center justify-between rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)',
+            color: 'var(--webos-text-primary)'
+          }}
+        >
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
+            <div 
+              className="p-2 rounded-xl backdrop-blur-sm"
+              style={{
+                background: 'var(--webos-ui-dark)',
+                color: 'var(--webos-text-white)'
+              }}
+            >
               <Zap className="h-6 w-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold flex items-center gap-2">
+              <h2 
+                className="text-xl font-light tracking-tight flex items-center gap-2"
+                style={{ color: 'var(--webos-text-primary)' }}
+              >
                 AI Assistant
-                <Badge variant="secondary" className="text-xs bg-white/20 text-white border-white/30">
+                <Badge 
+                  variant="secondary" 
+                  className="text-xs font-light tracking-wide uppercase"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.2)',
+                    color: 'var(--webos-text-primary)',
+                    border: '1px solid var(--webos-border-secondary)'
+                  }}
+                >
                   ChatLLM
                 </Badge>
               </h2>
-              <p className="text-sm text-white/80">Just type your question and get instant answers</p>
+              <p 
+                className="text-sm font-light"
+                style={{ color: 'var(--webos-text-secondary)' }}
+              >
+                Just type your question and get instant answers
+              </p>
             </div>
           </div>
           <Button
             variant="ghost"
             size="icon"
             onClick={handleClose}
-            className="text-white hover:bg-white/20 rounded-xl"
+            className="rounded-xl font-light hover:opacity-90"
+            style={{
+              color: 'var(--webos-text-primary)',
+              background: 'rgba(255, 255, 255, 0.1)'
+            }}
           >
             <X className="h-5 w-5" />
           </Button>
@@ -270,35 +316,71 @@ export default function ChatPage() {
 
         {/* Status Bar */}
         {isLoading && (
-          <div className="px-6 py-3 bg-gradient-nordic border-b border-nordic-frost">
-            <div className="flex items-center gap-2 text-sm text-nordic-gray">
-              <Loader2 className="h-4 w-4 animate-spin text-primary" />
-              <span className="font-medium">AI is thinking...</span>
+          <div 
+            className="px-6 py-3 border-b"
+            style={{
+              background: 'var(--webos-bg-secondary)',
+              borderColor: 'var(--webos-border-primary)'
+            }}
+          >
+            <div 
+              className="flex items-center gap-2 text-sm font-light"
+              style={{ color: 'var(--webos-text-secondary)' }}
+            >
+              <Loader2 
+                className="h-4 w-4 animate-spin"
+                style={{ color: 'var(--webos-app-blue)' }}
+              />
+              <span>AI is thinking...</span>
             </div>
           </div>
         )}
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4 bg-gradient-to-b from-nordic-frost/10 to-white">
+        <div 
+          className="flex-1 overflow-y-auto px-6 py-6 space-y-4"
+          style={{
+            background: 'var(--webos-bg-gradient)'
+          }}
+        >
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center px-4">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary to-nordic-ocean rounded-3xl flex items-center justify-center mb-6 shadow-lg">
-                <Bot className="h-10 w-10 text-white" />
+              <div 
+                className="w-20 h-20 rounded-3xl flex items-center justify-center mb-6"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  boxShadow: 'var(--webos-shadow-lg)'
+                }}
+              >
+                <Bot className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-semibold text-nordic-night mb-2">
+              <h3 
+                className="text-xl font-light tracking-tight mb-2"
+                style={{ color: 'var(--webos-text-primary)' }}
+              >
                 Hello, {userName}! 👋
               </h3>
-              <p className="text-muted-foreground mb-4 max-w-sm">
+              <p 
+                className="mb-4 max-w-sm font-light"
+                style={{ color: 'var(--webos-text-secondary)' }}
+              >
                 I'm powered by ChatLLM. Just type your question below and I'll help you instantly!
               </p>
-              <div className="flex items-center gap-2 text-sm text-primary mb-8">
+              <div 
+                className="flex items-center gap-2 text-sm mb-8"
+                style={{ color: 'var(--webos-app-blue)' }}
+              >
                 <Zap className="h-4 w-4" />
-                <span className="font-medium">Fast, Simple, Intelligent</span>
+                <span className="font-light">Fast, Simple, Intelligent</span>
               </div>
               
               {/* Suggested Questions */}
               <div className="w-full max-w-md">
-                <h4 className="text-sm font-semibold text-nordic-gray mb-3 text-left">
+                <h4 
+                  className="text-xs font-light tracking-wider uppercase mb-3 text-left"
+                  style={{ color: 'var(--webos-text-tertiary)' }}
+                >
                   Popular Questions
                 </h4>
                 <div className="space-y-2">
@@ -306,13 +388,25 @@ export default function ChatPage() {
                     <Button
                       key={index}
                       variant="outline"
-                      className="w-full justify-start text-left h-auto py-3 px-4 hover:bg-nordic-frost hover:border-primary/30 transition-all duration-200"
+                      className="w-full justify-start text-left h-auto py-3 px-4 rounded-xl font-light transition-all duration-200 hover:opacity-90"
+                      style={{
+                        background: 'var(--webos-bg-glass)',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid var(--webos-border-glass)',
+                        color: 'var(--webos-text-primary)'
+                      }}
                       onClick={() => handleSuggestedQuestion(suggestion.question)}
                     >
-                      <div className={`p-1.5 rounded-lg mr-3 text-white ${getCategoryColor(suggestion.category)}`}>
+                      <div 
+                        className="p-1.5 rounded-lg mr-3"
+                        style={{
+                          background: 'var(--webos-ui-dark)',
+                          color: 'var(--webos-text-white)'
+                        }}
+                      >
                         {suggestion.icon}
                       </div>
-                      <span className="text-sm font-medium text-nordic-night">{suggestion.question}</span>
+                      <span className="text-sm font-light">{suggestion.question}</span>
                     </Button>
                   ))}
                 </div>
