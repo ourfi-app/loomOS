@@ -255,7 +255,7 @@ export function AccessibilityPanel({ onClose }: AccessibilityPanelProps) {
           <Button
             variant="outline"
             size="sm"
-            onClick={resetToDefaults}
+            onClick={() => resetToDefaults()}
             className="flex items-center gap-2"
           >
             <RotateCcw className="w-4 h-4" />

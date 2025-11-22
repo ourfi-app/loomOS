@@ -366,7 +366,7 @@ export function DesktopCustomizationPanel({ isOpen, onClose }: DesktopCustomizat
               
               {/* Footer */}
               <div className="flex items-center justify-between p-6 border-t bg-muted/30">
-                <Button variant="outline" onClick={resetToDefaults}>
+                <Button variant="outline" onClick={() => resetToDefaults()}>
                   Reset to Defaults
                 </Button>
                 <Button onClick={onClose}>

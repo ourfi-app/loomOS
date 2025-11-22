@@ -83,8 +83,14 @@ const productionEnvSchema = envSchema.extend({
 });
 
 /**
+ * Check if we're in a browser context
+ */
+const isBrowser = typeof window !== 'undefined';
+
+/**
  * Validate and parse environment variables
- * Throws an error if validation fails
+ * In browser context: logs warnings and returns safe defaults
+ * In server context: throws an error if validation fails
  */
 function validateEnv() {
   const isProduction = process.env.NODE_ENV === 'production';
@@ -99,7 +105,29 @@ function validateEnv() {
         return `  - ${path}: ${err.message}`;
       }).join('\n');
 
-      console.error('\n❌ Invalid environment variables:\n');
+      // In browser context, only log warnings and return a proxy
+      if (isBrowser) {
+        console.warn('\n⚠️  Missing or invalid environment variables (browser context):\n');
+        console.warn(errorMessages);
+        console.warn('\n📝 Some features may not work correctly. Check your .env file.\n');
+        
+        // Return a proxy that logs warnings when accessed
+        return new Proxy({} as any, {
+          get(target, prop) {
+            if (typeof prop === 'string') {
+              const value = process.env[prop];
+              if (!value) {
+                console.warn(`⚠️  Accessing missing environment variable: ${prop}`);
+              }
+              return value || '';
+            }
+            return undefined;
+          }
+        });
+      }
+
+      // In server context, throw an error
+      console.error('\n❌ Invalid environment variables (server context):\n');
       console.error(errorMessages);
       console.error('\n📝 Please check your .env file and ensure all required variables are set correctly.\n');
 
@@ -111,7 +139,8 @@ function validateEnv() {
 
 /**
  * Validated environment variables
- * This will throw an error at module import time if validation fails
+ * In browser context: returns safe proxy with warnings
+ * In server context: throws an error at module import time if validation fails
  */
 export const env = validateEnv();
 
