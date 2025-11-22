@@ -288,8 +288,14 @@ export default function OnboardingClient() {
 
   if (loading || status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
+      <div 
+        className="min-h-screen flex items-center justify-center"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
+        <Loader2 className="h-8 w-8 animate-spin" style={{ color: 'var(--webos-app-blue)' }} />
       </div>
     );
   }
@@ -302,29 +308,62 @@ export default function OnboardingClient() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Enhanced Header with Gradient */}
-      <div className="bg-gradient-to-b from-white to-gray-50 border-b border-[var(--semantic-border-light)] shadow-lg sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
+    <div 
+      className="min-h-screen"
+      style={{
+        background: 'var(--webos-bg-gradient)',
+        fontFamily: 'Helvetica Neue, Arial, sans-serif'
+      }}
+    >
+      {/* Enhanced Header with WebOS Glassmorphism */}
+      <div 
+        className="border-b sticky top-0 z-10"
+        style={{
+          background: 'var(--webos-bg-glass)',
+          backdropFilter: 'blur(20px)',
+          borderColor: 'var(--webos-border-glass)',
+          boxShadow: 'var(--webos-shadow-md)'
+        }}
+      >
         <div className="container mx-auto px-4 py-5">
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-4">
               {/* Logo/Icon */}
               <motion.div
-                className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg"
+                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
               >
-                <Building2 className="h-6 w-6 text-white" />
+                <Building2 className="h-6 w-6" style={{ color: 'var(--webos-text-white)' }} />
               </motion.div>
               <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <h1 
+                  className="text-2xl font-light tracking-tight"
+                  style={{ color: 'var(--webos-text-primary)' }}
+                >
                   Association Setup Wizard
                 </h1>
-                <p className="text-sm text-[var(--semantic-text-secondary)] mt-0.5 flex items-center gap-2">
-                  <span className="font-medium">Step {currentStep + 1} of {ONBOARDING_STEPS.length}:</span>
-                  <span className="text-[var(--semantic-text-primary)]">{currentStepInfo.title}</span>
+                <p 
+                  className="text-sm font-light mt-0.5 flex items-center gap-2"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                >
+                  <span className="font-light tracking-wide uppercase text-xs" style={{ color: 'var(--webos-text-tertiary)' }}>
+                    Step {currentStep + 1} of {ONBOARDING_STEPS.length}:
+                  </span>
+                  <span style={{ color: 'var(--webos-text-primary)' }}>{currentStepInfo.title}</span>
                   {!currentStepInfo.required && (
-                    <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full font-medium border border-amber-200">
+                    <span 
+                      className="text-xs px-2 py-0.5 rounded-full font-light border"
+                      style={{
+                        background: 'var(--webos-bg-tertiary)',
+                        color: 'var(--webos-text-tertiary)',
+                        borderColor: 'var(--webos-border-secondary)'
+                      }}
+                    >
                       Optional
                     </span>
                   )}
@@ -339,7 +378,13 @@ export default function OnboardingClient() {
                     initial={{ opacity: 0, scale: 0.8, y: -10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-green-50 to-emerald-50 border border-[var(--semantic-success-bg)] rounded-lg text-[var(--semantic-success-dark)] text-sm font-medium shadow-sm"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-sm font-light"
+                    style={{
+                      background: 'var(--webos-bg-glass)',
+                      border: '1px solid var(--webos-border-glass)',
+                      color: 'var(--webos-app-green)',
+                      boxShadow: 'var(--webos-shadow-sm)'
+                    }}
                   >
                     <CheckCircle className="h-4 w-4" />
                     <span>Saved!</span>
@@ -379,18 +424,27 @@ export default function OnboardingClient() {
             </div>
           </div>
 
-          {/* Enhanced Progress Bar */}
+          {/* Enhanced Progress Bar - WebOS Style */}
           <div className="relative">
-            <div className="h-3 bg-[var(--semantic-bg-muted)] rounded-full overflow-hidden shadow-inner">
+            <div 
+              className="h-3 rounded-full overflow-hidden"
+              style={{
+                background: 'var(--webos-bg-tertiary)',
+                boxShadow: 'var(--webos-shadow-inset)'
+              }}
+            >
               <motion.div
-                className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full relative"
+                className="h-full rounded-full relative"
+                style={{
+                  background: 'var(--webos-ui-dark)'
+                }}
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Shine effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
                 />
@@ -398,7 +452,13 @@ export default function OnboardingClient() {
             </div>
             {/* Progress percentage */}
             <motion.div
-              className="absolute -top-7 text-xs font-bold text-[var(--semantic-text-secondary)] bg-white px-2 py-0.5 rounded shadow-sm border border-[var(--semantic-border-light)]"
+              className="absolute -top-7 text-xs font-light px-2 py-0.5 rounded"
+              style={{
+                background: 'var(--webos-bg-white)',
+                color: 'var(--webos-text-secondary)',
+                border: '1px solid var(--webos-border-primary)',
+                boxShadow: 'var(--webos-shadow-sm)'
+              }}
               initial={{ left: 0 }}
               animate={{ left: `${Math.min(progress, 95)}%` }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -409,11 +469,17 @@ export default function OnboardingClient() {
         </div>
       </div>
 
-      {/* Enhanced Step Navigator - Desktop */}
+      {/* Enhanced Step Navigator - Desktop - WebOS Style */}
       <div className="container mx-auto px-4 py-10">
         <div className="hidden lg:flex justify-between mb-10 max-w-6xl mx-auto relative">
           {/* Background connector line */}
-          <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-full" style={{ zIndex: 0 }} />
+          <div 
+            className="absolute top-8 left-0 right-0 h-1 rounded-full" 
+            style={{ 
+              background: 'var(--webos-border-primary)', 
+              zIndex: 0 
+            }} 
+          />
 
           {ONBOARDING_STEPS.map((step, index) => {
             const Icon = step.icon;
@@ -427,11 +493,14 @@ export default function OnboardingClient() {
                 className="flex flex-col items-center relative z-10"
                 style={{ width: `${100 / ONBOARDING_STEPS.length}%` }}
               >
-                {/* Animated Connector Line */}
+                {/* Animated Connector Line - WebOS */}
                 {index < ONBOARDING_STEPS.length - 1 && (
                   <div className="absolute top-8 left-1/2 w-full h-1 rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"
+                      className="h-full rounded-full"
+                      style={{
+                        background: 'var(--webos-ui-dark)'
+                      }}
                       initial={{ width: 0 }}
                       animate={{
                         width: isCompleted ? '100%' : '0%'
@@ -441,27 +510,33 @@ export default function OnboardingClient() {
                   </div>
                 )}
 
-                {/* Enhanced Step Icon */}
+                {/* Enhanced Step Icon - WebOS Style */}
                 <motion.button
                   onClick={() => isAccessible && setCurrentStep(index)}
                   disabled={!isAccessible}
-                  className={`relative z-20 w-16 h-16 rounded-2xl flex items-center justify-center border-3 transition-all shadow-lg ${
-                    isCurrent
-                      ? 'bg-gradient-to-br from-blue-500 to-indigo-600 border-[var(--semantic-primary)] text-white shadow-blue-300'
+                  className={`relative z-20 w-16 h-16 rounded-2xl flex items-center justify-center border-2 transition-all ${
+                    isAccessible ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'
+                  }`}
+                  style={{
+                    background: isCurrent
+                      ? 'var(--webos-ui-dark)'
                       : isCompleted
-                      ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-[var(--semantic-success)] text-[var(--semantic-success)] shadow-green-200'
-                      : 'bg-white border-[var(--semantic-border-medium)] text-[var(--semantic-text-tertiary)] shadow-gray-200'
-                  } ${isAccessible ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'}`}
+                      ? 'var(--webos-bg-glass)'
+                      : 'var(--webos-bg-white)',
+                    borderColor: isCurrent
+                      ? 'var(--webos-ui-dark)'
+                      : isCompleted
+                      ? 'var(--webos-ui-light)'
+                      : 'var(--webos-border-secondary)',
+                    color: isCurrent
+                      ? 'var(--webos-text-white)'
+                      : isCompleted
+                      ? 'var(--webos-ui-medium)'
+                      : 'var(--webos-text-muted)',
+                    boxShadow: isCurrent ? 'var(--webos-shadow-lg)' : 'var(--webos-shadow-sm)'
+                  }}
                   whileHover={isAccessible ? { scale: 1.08, y: -2 } : {}}
                   whileTap={isAccessible ? { scale: 0.95 } : {}}
-                  animate={isCurrent ? {
-                    boxShadow: [
-                      "0 4px 14px 0 rgba(59, 130, 246, 0.39)",
-                      "0 6px 20px 0 rgba(59, 130, 246, 0.5)",
-                      "0 4px 14px 0 rgba(59, 130, 246, 0.39)"
-                    ]
-                  } : {}}
-                  transition={{ duration: 2, repeat: Infinity }}
                 >
                   {isCompleted && !isCurrent ? (
                     <motion.div
@@ -475,19 +550,26 @@ export default function OnboardingClient() {
                     <Icon className="h-7 w-7" />
                   )}
 
-                  {/* Step number badge for current/upcoming */}
+                  {/* Step number badge for current/upcoming - WebOS */}
                   {!isCompleted && (
-                    <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                      isCurrent
-                        ? 'bg-white text-[var(--semantic-primary)] shadow-md'
-                        : 'bg-[var(--semantic-bg-muted)] text-[var(--semantic-text-secondary)]'
-                    }`}>
+                    <div 
+                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-light"
+                      style={{
+                        background: isCurrent
+                          ? 'var(--webos-bg-white)'
+                          : 'var(--webos-bg-tertiary)',
+                        color: isCurrent
+                          ? 'var(--webos-ui-dark)'
+                          : 'var(--webos-text-secondary)',
+                        boxShadow: 'var(--webos-shadow-sm)'
+                      }}
+                    >
                       {index + 1}
                     </div>
                   )}
                 </motion.button>
 
-                {/* Step Label with enhanced styling */}
+                {/* Step Label - WebOS Style */}
                 <motion.div
                   className="mt-3 text-center max-w-[110px]"
                   initial={{ opacity: 0, y: 5 }}
@@ -495,19 +577,25 @@ export default function OnboardingClient() {
                   transition={{ delay: index * 0.05 }}
                 >
                   <p
-                    className={`text-xs font-semibold mb-0.5 ${
-                      isCurrent
-                        ? 'text-[var(--semantic-primary)]'
+                    className="text-xs font-light mb-0.5"
+                    style={{
+                      color: isCurrent
+                        ? 'var(--webos-text-primary)'
                         : isCompleted
-                        ? 'text-[var(--semantic-text-primary)]'
-                        : 'text-[var(--semantic-text-tertiary)]'
-                    }`}
+                        ? 'var(--webos-text-primary)'
+                        : 'var(--webos-text-tertiary)'
+                    }}
                   >
                     {step.title}
                   </p>
-                  <p className={`text-[10px] ${
-                    isCurrent ? 'text-[var(--semantic-primary)]' : 'text-[var(--semantic-text-tertiary)]'
-                  }`}>
+                  <p 
+                    className="text-[10px] font-light"
+                    style={{
+                      color: isCurrent
+                        ? 'var(--webos-text-secondary)'
+                        : 'var(--webos-text-muted)'
+                    }}
+                  >
                     {step.description}
                   </p>
                 </motion.div>
@@ -516,50 +604,81 @@ export default function OnboardingClient() {
           })}
         </div>
 
-        {/* Enhanced Mobile Step Indicator */}
+        {/* Enhanced Mobile Step Indicator - WebOS Style */}
         <div className="lg:hidden mb-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <Card className="p-4 shadow-lg border-2 border-[var(--semantic-primary-light)] bg-gradient-to-br from-white to-blue-50">
+            <div 
+              className="p-4 rounded-3xl"
+              style={{
+                background: 'var(--webos-bg-glass)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid var(--webos-border-glass)',
+                boxShadow: 'var(--webos-shadow-xl)'
+              }}
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <motion.div
-                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md"
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{
+                      background: 'var(--webos-ui-dark)',
+                      boxShadow: 'var(--webos-shadow-md)'
+                    }}
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
                   >
                     {(() => {
                       const Icon = currentStepInfo.icon;
-                      return <Icon className="h-6 w-6 text-white" />;
+                      return <Icon className="h-6 w-6" style={{ color: 'var(--webos-text-white)' }} />;
                     })()}
                   </motion.div>
                   <div>
-                    <p className="font-semibold text-[var(--semantic-text-primary)] flex items-center gap-2">
+                    <p 
+                      className="font-light flex items-center gap-2"
+                      style={{ color: 'var(--webos-text-primary)' }}
+                    >
                       {currentStepInfo.title}
                       {!currentStepInfo.required && (
-                        <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full font-medium border border-amber-200">
+                        <span 
+                          className="text-xs px-2 py-0.5 rounded-full font-light border"
+                          style={{
+                            background: 'var(--webos-bg-tertiary)',
+                            color: 'var(--webos-text-tertiary)',
+                            borderColor: 'var(--webos-border-secondary)'
+                          }}
+                        >
                           Optional
                         </span>
                       )}
                     </p>
-                    <p className="text-xs text-[var(--semantic-text-secondary)] mt-0.5">
+                    <p 
+                      className="text-xs font-light mt-0.5"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
                       {currentStepInfo.description}
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-1">
-                  <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  <span 
+                    className="text-lg font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
+                  >
                     {currentStep + 1}/{ONBOARDING_STEPS.length}
                   </span>
-                  <span className="text-[10px] text-[var(--semantic-text-tertiary)]">
+                  <span 
+                    className="text-[10px] font-light"
+                    style={{ color: 'var(--webos-text-tertiary)' }}
+                  >
                     {Math.round(progress)}% complete
                   </span>
                 </div>
               </div>
-            </Card>
+            </div>
           </motion.div>
         </div>
 
