@@ -341,34 +341,54 @@
 }
 
 /**
- * Pulse Glow
+ * Pulse Glow (OPTIMIZED)
  * Used for: Active states, focus indicators
  * Duration: 2s infinite
- * Performance: Moderate (box-shadow is CPU-intensive)
- * Note: Consider replacing with transform/opacity for better performance
+ * Performance: Excellent (replaced box-shadow with scale + opacity)
+ * Optimized: Uses GPU-accelerated transform and opacity
  */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(241, 136, 37, 0.3);
+    transform: scale(1);
+    opacity: 0.8;
   }
   50% {
-    box-shadow: 0 0 16px rgba(241, 136, 37, 0.6);
+    transform: scale(1.05);
+    opacity: 1;
   }
 }
 
 /**
- * Breathe
+ * Pulse Glow Shadow (Alternative - for when shadow is needed)
+ * Used for: Special cases where shadow effect is required
+ * Duration: 2s infinite
+ * Performance: Moderate (box-shadow is CPU-intensive)
+ * Note: Use sparingly, prefer pulse-glow for better performance
+ */
+@keyframes pulse-glow-shadow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(241, 136, 37, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(241, 136, 37, 0.6));
+  }
+}
+
+/**
+ * Breathe (OPTIMIZED)
  * Used for: Dock active indicators
  * Duration: 4s infinite
- * Performance: Moderate (box-shadow is CPU-intensive)
- * Note: Consider replacing with transform/opacity for better performance
+ * Performance: Excellent (replaced box-shadow with scale + opacity)
+ * Optimized: Uses GPU-accelerated transform for smoother animation
  */
 @keyframes breathe {
   0%, 100% {
-    box-shadow: 0 0 12px rgba(241, 136, 37, 0.15);
+    transform: scale(1);
+    opacity: 0.9;
   }
   50% {
-    box-shadow: 0 0 16px rgba(241, 136, 37, 0.25);
+    transform: scale(1.02);
+    opacity: 1;
   }
 }
 
@@ -384,6 +404,191 @@
   }
   50%, 100% {
     caret-color: transparent;
+  }
+}
+
+/* ============================================
+   ENHANCED SPRING-BASED ANIMATIONS
+   ============================================ */
+
+/**
+ * Spring Scale In
+ * Used for: Modals, dialogs, important UI elements
+ * Duration: 0.5s
+ * Performance: Excellent (transform only)
+ * Physics: Spring-like bounce for natural feel
+ */
+@keyframes spring-scale-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/**
+ * Elastic Slide Up
+ * Used for: Bottom sheets, notifications with personality
+ * Duration: 0.6s
+ * Performance: Excellent (transform + opacity)
+ * Physics: Elastic overshoot for playful feel
+ */
+@keyframes elastic-slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-8%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(4%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Smooth Slide In
+ * Used for: Sidebar panels, drawer menus
+ * Duration: 0.4s
+ * Performance: Excellent (transform only)
+ * Easing: Smooth deceleration curve
+ */
+@keyframes smooth-slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/**
+ * Fade In Scale
+ * Used for: Cards, images, content blocks
+ * Duration: 0.4s
+ * Performance: Excellent (transform + opacity)
+ * Effect: Subtle zoom + fade for elegant entrance
+ */
+@keyframes fade-in-scale {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/**
+ * Slide Fade In
+ * Used for: List items, staggered content
+ * Duration: 0.3s
+ * Performance: Excellent (transform + opacity)
+ * Effect: Gentle upward motion with fade
+ */
+@keyframes slide-fade-in {
+  0% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * Rotate Fade In
+ * Used for: Icons, badges, status indicators
+ * Duration: 0.3s
+ * Performance: Excellent (transform + opacity)
+ * Effect: Slight rotation for attention-grabbing entrance
+ */
+@keyframes rotate-fade-in {
+  0% {
+    transform: rotate(-10deg) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/**
+ * Jello (Wobble)
+ * Used for: Interactive feedback, attention-seeking
+ * Duration: 0.5s
+ * Performance: Excellent (transform only)
+ * Effect: Playful jello-like wobble
+ */
+@keyframes jello {
+  0%, 100% {
+    transform: skewX(0deg) skewY(0deg);
+  }
+  30% {
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+  40% {
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+  50% {
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+  65% {
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  75% {
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+}
+
+/**
+ * Pulse Scale
+ * Used for: Notification badges, activity indicators
+ * Duration: 1s infinite
+ * Performance: Excellent (transform only)
+ * Effect: Gentle pulsing scale for continuous animation
+ */
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/**
+ * Wiggle
+ * Used for: Error states, invalid inputs
+ * Duration: 0.4s
+ * Performance: Excellent (transform only)
+ * Effect: Horizontal shake for feedback
+ */
+@keyframes wiggle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-4px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(4px);
   }
 }
 
@@ -459,6 +664,61 @@
 
 .loomos-dock-active-glow {
   animation: breathe 4s ease-in-out infinite;
+}
+
+/* Enhanced Animations - Spring Physics */
+.animate-spring-scale-in {
+  animation: spring-scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-elastic-slide-up {
+  animation: elastic-slide-up 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-smooth-slide-in {
+  animation: smooth-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-fade-in {
+  animation: slide-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-rotate-fade-in {
+  animation: rotate-fade-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-jello {
+  animation: jello 0.5s ease-in-out;
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 1s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* Performance Optimizations - Will-Change Hints */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+.will-animate-transform {
+  will-change: transform;
+}
+
+.will-animate-opacity {
+  will-change: opacity;
+}
+
+/* Remove will-change after animation completes (add via JS) */
+.animation-complete {
+  will-change: auto;
 }
 
 /* ============================================

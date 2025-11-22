@@ -1,73 +1,69 @@
 
 /**
- * Performance Optimization Utilities
- * Provides helpers for lazy loading, memoization, and component optimization
+ * Performance Utilities for loomOS
+ * 
+ * Collection of utilities for optimizing performance:
+ * - Lazy loading helpers
+ * - Memoization utilities
+ * - Performance monitoring
+ * - Bundle size optimization
  */
 
-import { ComponentType, lazy, LazyExoticComponent } from 'react';
+import dynamic from 'next/dynamic';
+import { ComponentType, ReactElement } from 'react';
 
 /**
- * Creates a lazy-loaded component with automatic retry logic
- * Useful for handling network failures during code splitting
+ * Lazy Load Component with Loading State
+ * 
+ * Wrapper around Next.js dynamic import with custom loading component
+ * 
+ * @example
+ * const HeavyChart = lazyLoad(() => import('./heavy-chart'), {
+ *   loading: <LoadingSpinner />
+ * });
  */
-export function lazyWithRetry<T extends ComponentType<any>>(
-  importFn: () => Promise<{ default: T }>,
-  retries = 3,
-  interval = 1000
-): LazyExoticComponent<T> {
-  return lazy(() => {
-    return new Promise((resolve, reject) => {
-      const attemptImport = (attemptsLeft: number) => {
-        importFn()
-          .then(resolve)
-          .catch((error) => {
-            if (attemptsLeft === 1) {
-              reject(error);
-              return;
-            }
-            
-            console.warn(
-              `Failed to load component. Retrying... (${retries - attemptsLeft + 1}/${retries})`,
-              error
-            );
-            
-            setTimeout(() => {
-              attemptImport(attemptsLeft - 1);
-            }, interval);
-          });
-      };
-      
-      attemptImport(retries);
-    });
+export function lazyLoad<P = {}>(
+  importFunc: () => Promise<{ default: ComponentType<P> }>,
+  options?: {
+    loading?: ReactElement;
+    ssr?: boolean;
+  }
+): ComponentType<P> {
+  return dynamic(importFunc, {
+    loading: () => options?.loading || null,
+    ssr: options?.ssr !== undefined ? options.ssr : false,
   });
 }
 
 /**
- * Debounces a function to prevent excessive calls
- * Useful for search inputs, window resize handlers, etc.
+ * Debounce Function
+ * 
+ * Delays execution until after a specified time has elapsed
+ * Useful for search inputs, scroll handlers, resize events
+ * 
+ * @example
+ * const debouncedSearch = debounce(handleSearch, 300);
  */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  delay: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null;
+  let timeoutId: NodeJS.Timeout;
   
-  return function executedFunction(...args: Parameters<T>) {
-    const later = () => {
-      timeout = null;
-      func(...args);
-    };
-    
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-    timeout = setTimeout(later, wait);
+  return function (...args: Parameters<T>) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
   };
 }
 
 /**
- * Throttles a function to limit execution frequency
- * Useful for scroll handlers, mouse move handlers, etc.
+ * Throttle Function
+ * 
+ * Limits execution to once per specified time period
+ * Useful for scroll handlers, mouse move events
+ * 
+ * @example
+ * const throttledScroll = throttle(handleScroll, 100);
  */
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
@@ -75,7 +71,7 @@ export function throttle<T extends (...args: any[]) => any>(
 ): (...args: Parameters<T>) => void {
   let inThrottle: boolean;
   
-  return function executedFunction(...args: Parameters<T>) {
+  return function (...args: Parameters<T>) {
     if (!inThrottle) {
       func(...args);
       inThrottle = true;
@@ -85,56 +81,193 @@ export function throttle<T extends (...args: any[]) => any>(
 }
 
 /**
- * Checks if two objects are shallowly equal
- * Useful for React.memo comparison functions
+ * Intersection Observer Hook Helper
+ * 
+ * Efficiently detect when an element enters viewport
+ * Useful for lazy loading images, infinite scroll, analytics
+ * 
+ * @example
+ * const observer = createIntersectionObserver(
+ *   (entries) => console.log('Element visible:', entries[0].isIntersecting),
+ *   { threshold: 0.5 }
+ * );
  */
-export function shallowEqual(obj1: any, obj2: any): boolean {
-  if (obj1 === obj2) return true;
-  
-  if (
-    typeof obj1 !== 'object' ||
-    obj1 === null ||
-    typeof obj2 !== 'object' ||
-    obj2 === null
-  ) {
-    return false;
+export function createIntersectionObserver(
+  callback: IntersectionObserverCallback,
+  options?: IntersectionObserverInit
+): IntersectionObserver | null {
+  if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+    return null;
   }
   
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
-  
-  if (keys1.length !== keys2.length) return false;
-  
-  for (const key of keys1) {
-    if (obj1[key] !== obj2[key]) return false;
-  }
-  
-  return true;
+  return new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: '50px',
+    threshold: 0.1,
+    ...options,
+  });
 }
 
 /**
- * Creates a comparison function for React.memo that ignores specific props
- * Useful when you want to memoize a component but allow certain props to change
+ * Request Idle Callback Wrapper
+ * 
+ * Schedule non-critical work during browser idle time
+ * Useful for analytics, prefetching, background tasks
+ * 
+ * @example
+ * scheduleIdleTask(() => {
+ *   // Non-critical work
+ * });
  */
-export function createPropsComparator<T extends Record<string, any>>(
-  ignoreProps: (keyof T)[]
-) {
-  return (prevProps: T, nextProps: T): boolean => {
-    const prevFiltered = { ...prevProps };
-    const nextFiltered = { ...nextProps };
-    
-    ignoreProps.forEach((prop) => {
-      delete prevFiltered[prop];
-      delete nextFiltered[prop];
-    });
-    
-    return shallowEqual(prevFiltered, nextFiltered);
-  };
+export function scheduleIdleTask(
+  callback: () => void,
+  options?: { timeout?: number }
+): number | NodeJS.Timeout {
+  if (typeof window === 'undefined') {
+    return setTimeout(callback, 0);
+  }
+  
+  if ('requestIdleCallback' in window) {
+    return window.requestIdleCallback(callback, options);
+  }
+  
+  return setTimeout(callback, 1);
 }
 
 /**
- * Preloads an image to prevent layout shifts
- * Returns a promise that resolves when the image is loaded
+ * Cancel Idle Callback
+ */
+export function cancelIdleTask(id: number | NodeJS.Timeout): void {
+  if (typeof window === 'undefined') {
+    clearTimeout(id as NodeJS.Timeout);
+    return;
+  }
+  
+  if ('cancelIdleCallback' in window) {
+    window.cancelIdleCallback(id as number);
+  } else {
+    clearTimeout(id as NodeJS.Timeout);
+  }
+}
+
+/**
+ * Performance Mark
+ * 
+ * Mark performance timing points for measurement
+ * 
+ * @example
+ * performanceMark('component-render-start');
+ * // ... render logic
+ * performanceMark('component-render-end');
+ * const duration = performanceMeasure('component-render', 'component-render-start', 'component-render-end');
+ */
+export function performanceMark(name: string): void {
+  if (typeof window !== 'undefined' && 'performance' in window) {
+    performance.mark(name);
+  }
+}
+
+/**
+ * Performance Measure
+ * 
+ * Measure time between two marks
+ */
+export function performanceMeasure(
+  name: string,
+  startMark: string,
+  endMark: string
+): number {
+  if (typeof window !== 'undefined' && 'performance' in window) {
+    try {
+      performance.measure(name, startMark, endMark);
+      const measure = performance.getEntriesByName(name)[0];
+      return measure ? measure.duration : 0;
+    } catch (e) {
+      console.warn('Performance measurement failed:', e);
+      return 0;
+    }
+  }
+  return 0;
+}
+
+/**
+ * Memoize Function
+ * 
+ * Cache function results based on arguments
+ * Useful for expensive calculations
+ * 
+ * @example
+ * const expensiveCalculation = memoize((n: number) => {
+ *   // Heavy computation
+ *   return result;
+ * });
+ */
+export function memoize<T extends (...args: any[]) => any>(
+  func: T,
+  getKey?: (...args: Parameters<T>) => string
+): T {
+  const cache = new Map<string, ReturnType<T>>();
+  
+  return ((...args: Parameters<T>) => {
+    const key = getKey ? getKey(...args) : JSON.stringify(args);
+    
+    if (cache.has(key)) {
+      return cache.get(key)!;
+    }
+    
+    const result = func(...args);
+    cache.set(key, result);
+    return result;
+  }) as T;
+}
+
+/**
+ * Batch Updates
+ * 
+ * Batch multiple state updates to reduce re-renders
+ * 
+ * @example
+ * batchUpdates(() => {
+ *   setState1(value1);
+ *   setState2(value2);
+ *   setState3(value3);
+ * });
+ */
+export function batchUpdates(callback: () => void): void {
+  if (typeof window !== 'undefined' && 'requestAnimationFrame' in window) {
+    requestAnimationFrame(callback);
+  } else {
+    callback();
+  }
+}
+
+/**
+ * Check if element is in viewport
+ * 
+ * Simple synchronous viewport check
+ * Use IntersectionObserver for better performance with multiple elements
+ */
+export function isInViewport(element: HTMLElement): boolean {
+  if (typeof window === 'undefined') return false;
+  
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+/**
+ * Preload Image
+ * 
+ * Preload an image for faster display
+ * 
+ * @example
+ * preloadImage('/path/to/image.jpg')
+ *   .then(() => console.log('Image loaded'))
+ *   .catch(() => console.log('Image failed'));
  */
 export function preloadImage(src: string): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -146,110 +279,34 @@ export function preloadImage(src: string): Promise<void> {
 }
 
 /**
- * Batch multiple state updates together for better performance
- * Uses requestAnimationFrame to batch updates
+ * Preload Multiple Images
  */
-export function batchUpdates(updates: Array<() => void>): void {
-  requestAnimationFrame(() => {
-    updates.forEach(update => update());
-  });
+export function preloadImages(srcs: string[]): Promise<void[]> {
+  return Promise.all(srcs.map(preloadImage));
 }
 
 /**
- * Measures component render time (development only)
+ * Get Performance Metrics
+ * 
+ * Get current page performance metrics
  */
-export function measureRender(
-  componentName: string,
-  callback: () => void
-): void {
-  if (process.env.NODE_ENV === 'development') {
-    const start = performance.now();
-    callback();
-    const end = performance.now();
-  } else {
-    callback();
+export function getPerformanceMetrics(): {
+  ttfb?: number; // Time to First Byte
+  fcp?: number;  // First Contentful Paint
+  lcp?: number;  // Largest Contentful Paint
+  fid?: number;  // First Input Delay
+  cls?: number;  // Cumulative Layout Shift
+} {
+  if (typeof window === 'undefined' || !('performance' in window)) {
+    return {};
   }
-}
-
-/**
- * Creates a virtual scroll container data
- * Calculates which items should be rendered in a virtualized list
- */
-export interface VirtualScrollData {
-  visibleStartIndex: number;
-  visibleEndIndex: number;
-  offsetY: number;
-  totalHeight: number;
-}
-
-export function calculateVirtualScroll(
-  scrollTop: number,
-  containerHeight: number,
-  itemHeight: number,
-  totalItems: number,
-  overscan: number = 3
-): VirtualScrollData {
-  const visibleStartIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - overscan);
-  const visibleEndIndex = Math.min(
-    totalItems - 1,
-    Math.ceil((scrollTop + containerHeight) / itemHeight) + overscan
-  );
+  
+  const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+  const paint = performance.getEntriesByType('paint');
   
   return {
-    visibleStartIndex,
-    visibleEndIndex,
-    offsetY: visibleStartIndex * itemHeight,
-    totalHeight: totalItems * itemHeight,
+    ttfb: navigation ? navigation.responseStart - navigation.requestStart : undefined,
+    fcp: paint.find((entry) => entry.name === 'first-contentful-paint')?.startTime,
+    // LCP, FID, CLS require web-vitals library for accurate measurement
   };
-}
-
-/**
- * Intersection Observer hook helper
- * Returns whether an element is in viewport
- */
-export function createIntersectionObserver(
-  callback: (entry: IntersectionObserverEntry) => void,
-  options?: IntersectionObserverInit
-): IntersectionObserver {
-  return new IntersectionObserver(
-    (entries) => {
-      entries.forEach(callback);
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '50px',
-      ...options,
-    }
-  );
-}
-
-/**
- * Efficient array chunking for rendering large lists
- */
-export function chunkArray<T>(array: T[], chunkSize: number): T[][] {
-  const chunks: T[][] = [];
-  for (let i = 0; i < array.length; i += chunkSize) {
-    chunks.push(array.slice(i, i + chunkSize));
-  }
-  return chunks;
-}
-
-/**
- * Memory-efficient map for large datasets
- * Uses WeakMap to allow garbage collection
- */
-export class OptimizedCache<K extends object, V> {
-  private cache = new WeakMap<K, V>();
-  
-  get(key: K): V | undefined {
-    return this.cache.get(key);
-  }
-  
-  set(key: K, value: V): void {
-    this.cache.set(key, value);
-  }
-  
-  has(key: K): boolean {
-    return this.cache.has(key);
-  }
 }
