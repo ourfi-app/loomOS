@@ -221,7 +221,13 @@ export default function ContactsPage() {
       icon={<Users className="w-5 h-5" />}
       gradient={appDef.gradient}
     >
-      <div className="h-full flex overflow-hidden">
+      <div 
+        className="h-full flex overflow-hidden"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
         {/* Navigation Pane */}
         <LoomOSNavigationPane
           title="CONTACTS"
@@ -229,17 +235,37 @@ export default function ContactsPage() {
         />
 
         {/* Contact List Pane */}
-        <div className="w-[280px] flex-shrink-0 border-r border-[var(--semantic-border-light)] flex flex-col bg-[var(--semantic-bg-tertiary)] overflow-hidden">
+        <div 
+          className="w-[280px] flex-shrink-0 flex flex-col overflow-hidden"
+          style={{
+            borderRight: '1px solid var(--webos-border-primary)',
+            background: 'var(--webos-bg-white)'
+          }}
+        >
           {/* Search */}
-          <div className="p-4 border-b border-[var(--semantic-border-light)] bg-[var(--semantic-surface-base)]">
+          <div 
+            className="p-4"
+            style={{
+              borderBottom: '1px solid var(--webos-border-primary)',
+              background: 'var(--webos-bg-secondary)'
+            }}
+          >
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[var(--semantic-text-tertiary)]" />
+              <Search 
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                style={{ color: 'var(--webos-text-tertiary)' }}
+              />
               <Input
                 type="text"
                 placeholder="Search contacts..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-[var(--semantic-bg-subtle)] border-[var(--semantic-border-light)]"
+                className="pl-10 rounded-xl font-light"
+                style={{
+                  background: 'var(--webos-bg-white)',
+                  border: '1px solid var(--webos-border-secondary)',
+                  color: 'var(--webos-text-primary)'
+                }}
               />
             </div>
           </div>
