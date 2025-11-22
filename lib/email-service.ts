@@ -181,7 +181,7 @@ export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
     subject: 'Important Announcement',
     htmlTemplate: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center;">
+        <div style="background: linear-gradient(135deg, #8a8a8a 0%, #666666 100%); padding: 30px; text-align: center;">
           <h1 style="color: white; margin: 0;">{{title}}</h1>
         </div>
         <div style="padding: 30px; background: #f9fafb;">

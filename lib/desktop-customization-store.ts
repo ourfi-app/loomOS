@@ -59,14 +59,14 @@ interface DesktopCustomizationState {
 
 const DEFAULT_WALLPAPER: DesktopWallpaper = {
   type: 'gradient',
-  value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  value: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)',
   blur: 0,
   dim: 0,
 };
 
 const DEFAULT_THEME: DesktopTheme = {
   mode: 'auto',
-  accentColor: '#667eea',
+  accentColor: '#7a9eb5',
   fontScale: 1.0,
   reduceMotion: false,
 };
@@ -184,17 +184,17 @@ export const useDesktopCustomization = create<DesktopCustomizationState>()(
 // Preset wallpapers
 export const PRESET_WALLPAPERS = {
   solid: [
-    { name: 'Ocean Blue', value: '#667eea' },
+    { name: 'Light Gray', value: '#e8e8e8' },
     { name: 'Sunset Orange', value: '#f093fb' },
     { name: 'Forest Green', value: '#4facfe' },
-    { name: 'Royal Purple', value: '#764ba2' },
+    { name: 'Medium Gray', value: '#999999' },
     { name: 'Coral Red', value: '#fa709a' },
     { name: 'Slate Gray', value: '#64748b' },
   ],
   gradient: [
     { 
-      name: 'Purple Dream', 
-      value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' 
+      name: 'WebOS Gray', 
+      value: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)' 
     },
     { 
       name: 'Sunset Vibes', 

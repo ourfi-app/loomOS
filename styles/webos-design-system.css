@@ -103,7 +103,7 @@
   --border-light: var(--neutral-400);      /* #e0e0e0 - Default borders */
   --border-medium: var(--neutral-500);     /* #d4d4d4 - Emphasized borders */
   --border-dark: var(--neutral-600);       /* #b0b0b0 - Strong borders */
-  --border-focus: #4a90e2;                 /* Focus rings (webOS blue) */
+  --border-focus: #8a8a8a;                 /* Focus rings (gray) */
   
   
   /* ==========================================================================
@@ -112,12 +112,12 @@
      Minimal color usage - only for critical interactions
      ========================================================================== */
   
-  /* Primary Accent (webOS Blue - for links, selections) */
-  --accent-blue: #4a90e2;
-  --accent-blue-rgb: 74 144 226; /* RGB channels for Tailwind opacity modifiers */
-  --accent-blue-light: #6ba3e8;
-  --accent-blue-dark: #3a7bc8;
-  --accent-blue-subtle: rgba(74, 144, 226, 0.08);
+  /* Primary Accent (Gray - for links, selections, webOS aesthetic) */
+  --accent-blue: #7a9eb5;
+  --accent-blue-rgb: 122 158 181; /* RGB channels for Tailwind opacity modifiers */
+  --accent-blue-light: #8fabc4;
+  --accent-blue-dark: #6b8fa6;
+  --accent-blue-subtle: rgba(122, 158, 181, 0.08);
   
   /* Semantic Status Colors */
   --status-success: #5cb85c;
@@ -135,10 +135,10 @@
   --status-warning-dark: #e09d3e;
   --status-warning-subtle: rgba(240, 173, 78, 0.08);
   
-  --status-info: #4a90e2;
-  --status-info-light: #6ba3e8;
-  --status-info-dark: #3a7bc8;
-  --status-info-subtle: rgba(74, 144, 226, 0.08);
+  --status-info: #7a9eb5;
+  --status-info-light: #8fabc4;
+  --status-info-dark: #6b8fa6;
+  --status-info-subtle: rgba(122, 158, 181, 0.08);
   
   
   /* ==========================================================================
@@ -912,12 +912,12 @@
      Adjusted for better visibility in dark mode
      ========================================================================== */
   
-  /* Primary Accent (webOS Blue - brightened for dark mode) */
-  --accent-blue: #5fa3e8;
-  --accent-blue-rgb: 95 163 232;
-  --accent-blue-light: #7db4ed;
-  --accent-blue-dark: #4a90e2;
-  --accent-blue-subtle: rgba(95, 163, 232, 0.12);
+  /* Primary Accent (Gray-blue - brightened for dark mode) */
+  --accent-blue: #8fabc4;
+  --accent-blue-rgb: 143 171 196;
+  --accent-blue-light: #a3bbd1;
+  --accent-blue-dark: #7a9eb5;
+  --accent-blue-subtle: rgba(143, 171, 196, 0.12);
   
   /* Semantic Status Colors (adjusted for dark mode) */
   --status-success: #6cc36c;
@@ -935,10 +935,10 @@
   --status-warning-dark: #f0ad4e;
   --status-warning-subtle: rgba(243, 188, 106, 0.12);
   
-  --status-info: #5fa3e8;
-  --status-info-light: #7db4ed;
-  --status-info-dark: #4a90e2;
-  --status-info-subtle: rgba(95, 163, 232, 0.12);
+  --status-info: #8fabc4;
+  --status-info-light: #a3bbd1;
+  --status-info-dark: #7a9eb5;
+  --status-info-subtle: rgba(143, 171, 196, 0.12);
   
   
   /* ==========================================================================
