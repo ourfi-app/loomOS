@@ -55,7 +55,7 @@ export function LayoutEditToggle() {
           )}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={resetToDefault}>
+        <DropdownMenuItem onClick={() => resetToDefault()}>
           <RefreshCw className="mr-2 h-4 w-4" />
           <span>Reset to Default</span>
         </DropdownMenuItem>
