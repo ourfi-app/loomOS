@@ -162,18 +162,38 @@ export default function SuperAdminDashboard() {
         icon={<Shield className="w-5 h-5" />}
         gradient="from-red-500 via-red-600 to-red-700"
       >
-    <div className="h-full flex flex-col overflow-hidden">
+    <div 
+      className="h-full flex flex-col overflow-hidden"
+      style={{
+        background: 'var(--webos-bg-gradient)',
+        fontFamily: "'Helvetica Neue', Arial, sans-serif"
+      }}
+    >
       <div className="flex-1 overflow-y-auto">
         <div className="container mx-auto p-6 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Super Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-1">
+          <h1 
+            className="text-3xl font-light tracking-tight"
+            style={{ color: 'var(--webos-text-primary)' }}
+          >
+            Super Admin Dashboard
+          </h1>
+          <p className="font-light mt-1" style={{ color: 'var(--webos-text-secondary)' }}>
             Platform-wide management and monitoring
           </p>
         </div>
-        <Badge variant="destructive" className="text-sm">
+        <Badge 
+          variant="destructive" 
+          className="text-sm font-light"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(220, 38, 38, 0.5)',
+            color: '#dc2626'
+          }}
+        >
           <Shield className="w-4 h-4 mr-1" />
           SUPER ADMIN
         </Badge>

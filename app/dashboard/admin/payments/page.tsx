@@ -271,9 +271,9 @@ export default function PaymentManagementPage() {
       />
 
       {/* Pane 2: Payment List */}
-      <div className="w-[420px] flex-shrink-0 border-r border-[var(--semantic-border-light)] flex flex-col bg-white">
+      <div className="w-[420px] flex-shrink-0 style={{ borderRight: '1px solid var(--webos-border-primary)' }} flex flex-col style={{ background: 'var(--webos-bg-white)' }}">
         {/* Header */}
-        <div className="h-16 px-6 flex items-center justify-between border-b border-[var(--semantic-border-light)]">
+        <div className="h-16 px-6 flex items-center justify-between style={{ borderBottom: '1px solid var(--webos-border-primary)' }}">
           <div>
             <h2 className="text-lg font-semibold">Payments</h2>
             <p className="text-xs text-muted-foreground">{filteredPayments.length} payments</p>
@@ -281,7 +281,7 @@ export default function PaymentManagementPage() {
         </div>
 
         {/* Search */}
-        <div className="px-6 py-4 border-b border-[var(--semantic-border-light)]">
+        <div className="px-6 py-4 style={{ borderBottom: '1px solid var(--webos-border-primary)' }}">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input

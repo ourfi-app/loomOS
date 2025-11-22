@@ -325,10 +325,20 @@ export default function UserManagementPage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="flex items-center justify-center h-full">
+      <div 
+        className="flex items-center justify-center h-full"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading users...</p>
+          <div 
+            className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4"
+            style={{ borderColor: 'var(--webos-app-blue)' }}
+          ></div>
+          <p className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
+            Loading users...
         </div>
       </div>
     );
@@ -459,7 +469,7 @@ export default function UserManagementPage() {
           {/* Navigation Pane - Filters */}
           <LoomOSContainerPane id="filters" type="navigation" width={240}>
             <div className="p-4 space-y-1">
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-3">Filters</h3>
+              <h3 className="text-xs font-light tracking-wider uppercase" style={{ color: 'var(--webos-text-tertiary' }} mb-3">Filters</h3>
               {filterOptions.map(filter => (
                 <LoomOSNavListItem
                   key={filter.id}

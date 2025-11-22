@@ -265,11 +265,30 @@ export default function DirectoryPage() {
 
   return (
     <ErrorBoundary>
-      <div className="flex h-full w-full overflow-hidden bg-white">
+      <div 
+        className="flex h-full w-full overflow-hidden"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
           {/* Pane 1: Navigation */}
           {showPane1 && (
-          <div className="w-60 bg-[var(--semantic-bg-subtle)] border-r border-[var(--semantic-border-light)] flex flex-col flex-shrink-0 overflow-y-auto">
-            <div className="px-3 py-2 text-xs font-semibold text-[var(--semantic-text-tertiary)] uppercase tracking-wider bg-[var(--semantic-surface-hover)] border-b border-[var(--semantic-border-light)]">
+          <div 
+            className="w-60 flex flex-col flex-shrink-0 overflow-y-auto"
+            style={{
+              background: 'var(--webos-bg-secondary)',
+              borderRight: '1px solid var(--webos-border-primary)'
+            }}
+          >
+            <div 
+              className="px-3 py-2 text-xs font-light uppercase tracking-wider"
+              style={{
+                color: 'var(--webos-text-tertiary)',
+                background: 'var(--webos-bg-tertiary)',
+                borderBottom: '1px solid var(--webos-border-primary)'
+              }}
+            >
               DIRECTORY
             </div>
             

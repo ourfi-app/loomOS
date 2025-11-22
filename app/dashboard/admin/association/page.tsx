@@ -162,8 +162,17 @@ export default function AssociationConfigPage() {
         icon={<Building2 className="w-5 h-5" />}
         gradient={APP_COLORS.admin.light}
       >
-        <div className="flex items-center justify-center h-full">
-          <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
+        <div 
+          className="flex items-center justify-center h-full"
+          style={{
+            background: 'var(--webos-bg-gradient)',
+            fontFamily: "'Helvetica Neue', Arial, sans-serif"
+          }}
+        >
+          <Loader2 
+            className="h-8 w-8 animate-spin"
+            style={{ color: 'var(--webos-app-blue)' }}
+          />
         </div>
       </DesktopAppWrapper>
     );
@@ -190,28 +199,60 @@ export default function AssociationConfigPage() {
       gradient={APP_COLORS.admin.light}
     >
       {/* Fixed Header */}
-      <div className="h-16 border-b border-[var(--semantic-border-light)] bg-white flex items-center justify-between px-6">
+      <div 
+        className="h-16 flex items-center justify-between px-6"
+        style={{
+          borderBottom: '1px solid var(--webos-border-primary)',
+          background: 'var(--webos-bg-white)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
         <div>
-          <h1 className="text-xl font-semibold text-[var(--semantic-text-primary)] flex items-center gap-2">
-            <Building2 className="h-5 w-5" />
+          <h1 
+            className="text-xl font-light tracking-tight flex items-center gap-2"
+            style={{ color: 'var(--webos-text-primary)' }}
+          >
+            <Building2 className="h-5 w-5" style={{ color: 'var(--webos-app-blue)' }} />
             Association Configuration
           </h1>
-          <p className="text-sm text-[var(--semantic-text-tertiary)]">
+          <p className="text-sm font-light" style={{ color: 'var(--webos-text-tertiary)' }}>
             Configure your condominium or homeowners association settings
           </p>
         </div>
-        <Button onClick={handleSaveSettings} disabled={saving}>
+        <Button 
+          onClick={handleSaveSettings} 
+          disabled={saving}
+          className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+          style={{
+            background: 'var(--webos-ui-dark)',
+            color: 'var(--webos-text-white)',
+            border: 'none',
+            boxShadow: 'var(--webos-shadow-sm)'
+          }}
+        >
           <Save className="h-4 w-4 mr-2" />
-          {saving ? 'Saving...' : 'Save Changes'}
+          {saving ? 'SAVING...' : 'SAVE CHANGES'}
         </Button>
       </div>
 
       {/* 2-Pane Layout */}
       <LoomOSPaneContainer>
         {/* Navigation Pane */}
-        <div className="w-60 flex-shrink-0 border-r border-[var(--semantic-border-light)] bg-white flex flex-col overflow-hidden">
-          <div className="p-4 border-b border-[var(--semantic-border-light)]">
-            <h2 className="text-xs font-semibold text-[var(--semantic-text-tertiary)] uppercase tracking-wider">
+        <div 
+          className="w-60 flex-shrink-0 flex flex-col overflow-hidden"
+          style={{
+            borderRight: '1px solid var(--webos-border-primary)',
+            background: 'var(--webos-bg-white)'
+          }}
+        >
+          <div 
+            className="p-4"
+            style={{ borderBottom: '1px solid var(--webos-border-primary)' }}
+          >
+            <h2 
+              className="text-xs font-light tracking-wider uppercase"
+              style={{ color: 'var(--webos-text-tertiary)' }}
+            >
               SETTINGS
             </h2>
           </div>
