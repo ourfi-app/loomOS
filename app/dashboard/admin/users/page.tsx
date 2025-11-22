@@ -339,6 +339,7 @@ export default function UserManagementPage() {
           ></div>
           <p className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
             Loading users...
+          </p>
         </div>
       </div>
     );
