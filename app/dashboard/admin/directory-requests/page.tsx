@@ -264,8 +264,17 @@ export default function DirectoryRequestsPage() {
       icon={<Users className="w-5 h-5" />}
       gradient={APP_COLORS.admin.light}
     >
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="h-8 w-8 animate-spin text-[var(--semantic-primary)]" />
+      <div 
+        className="flex items-center justify-center min-h-screen"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
+        <Loader2 
+          className="h-8 w-8 animate-spin"
+          style={{ color: 'var(--webos-app-blue)' }}
+        />
       </div>
     </DesktopAppWrapper>
     );
@@ -295,9 +304,22 @@ export default function DirectoryRequestsPage() {
       {/* 3-Pane Layout */}
       <LoomOSPaneContainer>
         {/* Navigation Pane */}
-        <div className="w-60 flex-shrink-0 border-r border-[var(--semantic-border-light)] bg-white flex flex-col overflow-hidden">
-          <div className="p-4 border-b border-[var(--semantic-border-light)]">
-            <h2 className="text-xs font-semibold text-[var(--semantic-text-tertiary)] uppercase tracking-wider">
+        <div 
+          className="w-60 flex-shrink-0 flex flex-col overflow-hidden"
+          style={{
+            borderRight: '1px solid var(--webos-border-primary)',
+            background: 'var(--webos-bg-white)',
+            fontFamily: "'Helvetica Neue', Arial, sans-serif"
+          }}
+        >
+          <div 
+            className="p-4"
+            style={{ borderBottom: '1px solid var(--webos-border-primary)' }}
+          >
+            <h2 
+              className="text-xs font-light tracking-wider uppercase"
+              style={{ color: 'var(--webos-text-tertiary)' }}
+            >
               FILTERS
             </h2>
           </div>

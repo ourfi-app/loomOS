@@ -96,10 +96,21 @@ export default function AdminDashboardPage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="flex items-center justify-center h-full">
+      <div 
+        className="flex items-center justify-center h-full"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading admin dashboard...</p>
+          <div 
+            className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4"
+            style={{ borderColor: 'var(--webos-app-blue)' }}
+          ></div>
+          <p className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
+            Loading admin dashboard...
+          </p>
         </div>
       </div>
     );
@@ -185,20 +196,38 @@ export default function AdminDashboardPage() {
       menuBar={menuBar}
       showMenuBar={true}
     >
-      <div className="h-full overflow-y-auto">
+      <div 
+        className="h-full overflow-y-auto"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
         <div className="space-y-6 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
-            <Shield className="h-8 w-8 text-[var(--semantic-primary)]" />
+          <h1 
+            className="text-3xl font-light tracking-tight flex items-center gap-2"
+            style={{ color: 'var(--webos-text-primary)' }}
+          >
+            <Shield className="h-8 w-8" style={{ color: 'var(--webos-app-blue)' }} />
             Admin Dashboard
           </h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="font-light mt-1" style={{ color: 'var(--webos-text-secondary)' }}>
             Comprehensive overview of your condo association
           </p>
         </div>
-        <Badge variant="secondary" className="text-lg px-4 py-2">
+        <Badge 
+          variant="secondary" 
+          className="text-lg px-4 py-2 font-light"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            color: 'var(--webos-text-primary)'
+          }}
+        >
           <Activity className="h-4 w-4 mr-2" />
           Live
         </Badge>
@@ -206,133 +235,240 @@ export default function AdminDashboardPage() {
 
       {/* Key Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Residents</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Total Residents</CardTitle>
+            <Users className="h-4 w-4" style={{ color: 'var(--webos-text-tertiary)' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.totalUsers}</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-[var(--semantic-success)] font-medium">{stats.activeUsers} active</span>
+            <div className="text-2xl font-light" style={{ color: 'var(--webos-text-primary)' }}>{stats.totalUsers}</div>
+            <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>
+              <span className="font-light" style={{ color: 'var(--webos-app-green)' }}>{stats.activeUsers} active</span>
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Monthly Revenue</CardTitle>
+            <DollarSign className="h-4 w-4" style={{ color: 'var(--webos-text-tertiary)' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${stats.monthlyRevenue.toLocaleString()}</div>
-            <div className="flex items-center gap-1 text-xs">
+            <div className="text-2xl font-light" style={{ color: 'var(--webos-text-primary)' }}>${stats.monthlyRevenue.toLocaleString()}</div>
+            <div className="flex items-center gap-1 text-xs font-light">
               {stats.collectionRate >= 80 ? (
                 <>
-                  <TrendingUp className="h-3 w-3 text-[var(--semantic-success)]" />
-                  <span className="text-[var(--semantic-success)]">{stats.collectionRate.toFixed(0)}% collected</span>
+                  <TrendingUp className="h-3 w-3" style={{ color: 'var(--webos-app-green)' }} />
+                  <span style={{ color: 'var(--webos-app-green)' }}>{stats.collectionRate.toFixed(0)}% collected</span>
                 </>
               ) : (
                 <>
-                  <TrendingDown className="h-3 w-3 text-[var(--semantic-primary)]" />
-                  <span className="text-[var(--semantic-primary)]">{stats.collectionRate.toFixed(0)}% collected</span>
+                  <TrendingDown className="h-3 w-3" style={{ color: 'var(--webos-app-blue)' }} />
+                  <span style={{ color: 'var(--webos-app-blue)' }}>{stats.collectionRate.toFixed(0)}% collected</span>
                 </>
               )}
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending Payments</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Pending Payments</CardTitle>
+            <Clock className="h-4 w-4" style={{ color: 'var(--webos-text-tertiary)' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.pendingPayments}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-light" style={{ color: 'var(--webos-text-primary)' }}>{stats.pendingPayments}</div>
+            <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>
               {stats.paidPayments} paid this month
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Overdue</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-[var(--semantic-error)]" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Overdue</CardTitle>
+            <AlertTriangle className="h-4 w-4" style={{ color: '#dc2626' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-[var(--semantic-error)]">{stats.overduePayments}</div>
-            <p className="text-xs text-muted-foreground">Require immediate attention</p>
+            <div className="text-2xl font-light" style={{ color: '#dc2626' }}>{stats.overduePayments}</div>
+            <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>Require immediate attention</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Secondary Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Documents</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Documents</CardTitle>
+            <FileText className="h-4 w-4" style={{ color: 'var(--webos-text-tertiary)' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.totalDocuments}</div>
-            <p className="text-xs text-muted-foreground">Total files in library</p>
+            <div className="text-2xl font-light" style={{ color: 'var(--webos-text-primary)' }}>{stats.totalDocuments}</div>
+            <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>Total files in library</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending Requests</CardTitle>
-            <Bell className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Pending Requests</CardTitle>
+            <Bell className="h-4 w-4" style={{ color: 'var(--webos-text-tertiary)' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.pendingRequests}</div>
-            <p className="text-xs text-muted-foreground">Directory update requests</p>
+            <div className="text-2xl font-light" style={{ color: 'var(--webos-text-primary)' }}>{stats.pendingRequests}</div>
+            <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>Directory update requests</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'var(--webos-bg-glass)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--webos-border-glass)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Units</CardTitle>
-            <Building className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-light" style={{ color: 'var(--webos-text-secondary)' }}>Units</CardTitle>
+            <Building className="h-4 w-4" style={{ color: 'var(--webos-text-tertiary)' }} />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.totalUnits}</div>
-            <p className="text-xs text-muted-foreground">Registered units</p>
+            <div className="text-2xl font-light" style={{ color: 'var(--webos-text-primary)' }}>{stats.totalUnits}</div>
+            <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>Registered units</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Quick Actions */}
-      <Card>
+      <Card 
+        className="rounded-3xl"
+        style={{
+          background: 'var(--webos-bg-glass)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid var(--webos-border-glass)',
+          boxShadow: 'var(--webos-shadow-md)'
+        }}
+      >
         <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
-          <CardDescription>Common administrative tasks</CardDescription>
+          <CardTitle 
+            className="text-xs font-light tracking-wider uppercase"
+            style={{ color: 'var(--webos-text-tertiary)' }}
+          >
+            QUICK ACTIONS
+          </CardTitle>
+          <CardDescription className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
+            Common administrative tasks
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link href="/dashboard/admin/users">
-              <Button variant="outline" className="w-full h-20 flex flex-col gap-2">
+              <Button 
+                variant="outline" 
+                className="w-full h-20 flex flex-col gap-2 rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  border: 'none',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+              >
                 <Users className="h-6 w-6" />
-                <span className="text-sm">Manage Users</span>
+                <span className="text-sm">MANAGE USERS</span>
               </Button>
             </Link>
             <Link href="/dashboard/admin/payments">
-              <Button variant="outline" className="w-full h-20 flex flex-col gap-2">
+              <Button 
+                variant="outline" 
+                className="w-full h-20 flex flex-col gap-2 rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  border: 'none',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+              >
                 <DollarSign className="h-6 w-6" />
-                <span className="text-sm">Manage Payments</span>
+                <span className="text-sm">MANAGE PAYMENTS</span>
               </Button>
             </Link>
             <Link href="/dashboard/admin/announcements">
-              <Button variant="outline" className="w-full h-20 flex flex-col gap-2">
+              <Button 
+                variant="outline" 
+                className="w-full h-20 flex flex-col gap-2 rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  border: 'none',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+              >
                 <Bell className="h-6 w-6" />
-                <span className="text-sm">Send Announcement</span>
+                <span className="text-sm">SEND ANNOUNCEMENT</span>
               </Button>
             </Link>
             <Link href="/dashboard/admin/settings">
-              <Button variant="outline" className="w-full h-20 flex flex-col gap-2">
+              <Button 
+                variant="outline" 
+                className="w-full h-20 flex flex-col gap-2 rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  border: 'none',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+              >
                 <Shield className="h-6 w-6" />
-                <span className="text-sm">Settings</span>
+                <span className="text-sm">SETTINGS</span>
               </Button>
             </Link>
           </div>
@@ -340,28 +476,45 @@ export default function AdminDashboardPage() {
       </Card>
 
       {/* Recent Activity */}
-      <Card>
+      <Card 
+        className="rounded-3xl"
+        style={{
+          background: 'var(--webos-bg-glass)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid var(--webos-border-glass)',
+          boxShadow: 'var(--webos-shadow-md)'
+        }}
+      >
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle 
+            className="flex items-center gap-2 text-xs font-light tracking-wider uppercase"
+            style={{ color: 'var(--webos-text-tertiary)' }}
+          >
             <Activity className="h-5 w-5" />
-            Recent Activity
+            RECENT ACTIVITY
           </CardTitle>
-          <CardDescription>Latest actions in the system</CardDescription>
+          <CardDescription className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
+            Latest actions in the system
+          </CardDescription>
         </CardHeader>
         <CardContent>
           {stats.recentActivity?.length > 0 ? (
             <div className="space-y-4">
               {stats.recentActivity.map((activity: any, index: number) => (
-                <div key={index} className="flex items-start gap-3 pb-3 border-b last:border-0">
+                <div 
+                  key={index} 
+                  className="flex items-start gap-3 pb-3 last:border-0"
+                  style={{ borderBottom: index < stats.recentActivity.length - 1 ? '1px solid var(--webos-border-primary)' : 'none' }}
+                >
                   <div className="mt-1">
-                    {activity.type === 'payment' && <DollarSign className="h-4 w-4 text-[var(--semantic-success)]" />}
-                    {activity.type === 'user' && <Users className="h-4 w-4 text-[var(--semantic-primary)]" />}
-                    {activity.type === 'document' && <FileText className="h-4 w-4 text-[var(--semantic-accent)]" />}
-                    {activity.type === 'request' && <Bell className="h-4 w-4 text-[var(--semantic-primary)]" />}
+                    {activity.type === 'payment' && <DollarSign className="h-4 w-4" style={{ color: 'var(--webos-app-green)' }} />}
+                    {activity.type === 'user' && <Users className="h-4 w-4" style={{ color: 'var(--webos-app-blue)' }} />}
+                    {activity.type === 'document' && <FileText className="h-4 w-4" style={{ color: 'var(--webos-app-brown)' }} />}
+                    {activity.type === 'request' && <Bell className="h-4 w-4" style={{ color: 'var(--webos-app-blue)' }} />}
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium">{activity.description}</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm font-light" style={{ color: 'var(--webos-text-primary)' }}>{activity.description}</p>
+                    <p className="text-xs font-light" style={{ color: 'var(--webos-text-secondary)' }}>
                       {new Date(activity.timestamp).toLocaleString()}
                     </p>
                   </div>
@@ -369,7 +522,7 @@ export default function AdminDashboardPage() {
               ))}
             </div>
           ) : (
-            <p className="text-center text-muted-foreground py-8">
+            <p className="text-center font-light py-8" style={{ color: 'var(--webos-text-secondary)' }}>
               No recent activity to display
             </p>
           )}
@@ -378,27 +531,76 @@ export default function AdminDashboardPage() {
 
       {/* Alerts & Warnings */}
       {(stats.overduePayments > 0 || stats.pendingRequests > 0) && (
-        <Card className="border-[var(--semantic-primary-light)] bg-[var(--semantic-primary-subtle)]">
+        <Card 
+          className="rounded-3xl"
+          style={{
+            background: 'rgba(254, 243, 199, 0.8)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(251, 191, 36, 0.5)',
+            boxShadow: 'var(--webos-shadow-md)'
+          }}
+        >
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-[var(--semantic-primary-dark)]">
+            <CardTitle 
+              className="flex items-center gap-2 text-xs font-light tracking-wider uppercase"
+              style={{ color: '#92400e' }}
+            >
               <AlertTriangle className="h-5 w-5" />
-              Attention Required
+              ATTENTION REQUIRED
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
             {stats.overduePayments > 0 && (
-              <div className="flex items-center justify-between p-3 bg-white rounded-lg">
-                <span className="text-sm">{stats.overduePayments} overdue payments need follow-up</span>
+              <div 
+                className="flex items-center justify-between p-3 rounded-xl"
+                style={{
+                  background: 'var(--webos-bg-white)',
+                  border: '1px solid var(--webos-border-primary)'
+                }}
+              >
+                <span className="text-sm font-light" style={{ color: 'var(--webos-text-primary)' }}>
+                  {stats.overduePayments} overdue payments need follow-up
+                </span>
                 <Link href="/dashboard/admin/payments?filter=overdue">
-                  <Button size="sm" variant="outline">Review</Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                    style={{
+                      background: 'var(--webos-ui-dark)',
+                      color: 'var(--webos-text-white)',
+                      border: 'none'
+                    }}
+                  >
+                    REVIEW
+                  </Button>
                 </Link>
               </div>
             )}
             {stats.pendingRequests > 0 && (
-              <div className="flex items-center justify-between p-3 bg-white rounded-lg">
-                <span className="text-sm">{stats.pendingRequests} directory update requests pending</span>
+              <div 
+                className="flex items-center justify-between p-3 rounded-xl"
+                style={{
+                  background: 'var(--webos-bg-white)',
+                  border: '1px solid var(--webos-border-primary)'
+                }}
+              >
+                <span className="text-sm font-light" style={{ color: 'var(--webos-text-primary)' }}>
+                  {stats.pendingRequests} directory update requests pending
+                </span>
                 <Link href="/dashboard/admin/directory-requests">
-                  <Button size="sm" variant="outline">Review</Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                    style={{
+                      background: 'var(--webos-ui-dark)',
+                      color: 'var(--webos-text-white)',
+                      border: 'none'
+                    }}
+                  >
+                    REVIEW
+                  </Button>
                 </Link>
               </div>
             )}

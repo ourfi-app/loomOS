@@ -343,10 +343,21 @@ export default function AnnouncementsPage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="flex items-center justify-center h-full">
+      <div 
+        className="flex items-center justify-center h-full"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--semantic-primary)] mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading announcements...</p>
+          <div 
+            className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4"
+            style={{ borderColor: 'var(--webos-app-blue)' }}
+          ></div>
+          <p className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
+            Loading announcements...
+          </p>
         </div>
       </div>
     );
@@ -362,15 +373,24 @@ export default function AnnouncementsPage() {
       icon={<Megaphone className="w-5 h-5" />}
       gradient={APP_COLORS.admin.light}
     >
-      <div className="h-full flex flex-col">
+      <div 
+        className="h-full flex flex-col"
+        style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}
+      >
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b">
+      <div 
+        className="flex items-center justify-between px-6 py-4"
+        style={{ borderBottom: '1px solid var(--webos-border-primary)' }}
+      >
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Megaphone className="h-6 w-6 text-[var(--semantic-primary)]" />
+          <h1 
+            className="text-2xl font-light tracking-tight flex items-center gap-2"
+            style={{ color: 'var(--webos-text-primary)' }}
+          >
+            <Megaphone className="h-6 w-6" style={{ color: 'var(--webos-app-blue)' }} />
             Announcements
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm font-light mt-1" style={{ color: 'var(--webos-text-secondary)' }}>
             Create and manage community announcements
           </p>
         </div>
@@ -379,43 +399,98 @@ export default function AnnouncementsPage() {
           if (!open) resetForm();
         }}>
           <DialogTrigger asChild>
-            <Button>
+            <Button 
+              className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+              style={{
+                background: 'var(--webos-ui-dark)',
+                color: 'var(--webos-text-white)',
+                border: 'none',
+                boxShadow: 'var(--webos-shadow-sm)'
+              }}
+            >
               <Plus className="h-4 w-4 mr-2" />
-              New Announcement
+              NEW ANNOUNCEMENT
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+          <DialogContent 
+            className="max-w-2xl rounded-3xl"
+            style={{
+              background: 'var(--webos-bg-glass)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid var(--webos-border-glass)',
+              fontFamily: "'Helvetica Neue', Arial, sans-serif"
+            }}
+          >
             <DialogHeader>
-              <DialogTitle>{editingAnnouncement ? 'Edit Announcement' : 'New Announcement'}</DialogTitle>
-              <DialogDescription>
+              <DialogTitle className="font-light" style={{ color: 'var(--webos-text-primary)' }}>
+                {editingAnnouncement ? 'Edit Announcement' : 'New Announcement'}
+              </DialogTitle>
+              <DialogDescription className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>
                 {editingAnnouncement ? 'Update announcement details' : 'Create a new announcement for residents'}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="title">Title*</Label>
+                <Label 
+                  htmlFor="title" 
+                  className="font-light"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                >
+                  Title*
+                </Label>
                 <Input
                   id="title"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   placeholder="Announcement title"
+                  className="rounded-xl font-light"
+                  style={{
+                    background: 'var(--webos-bg-white)',
+                    border: '1px solid var(--webos-border-primary)',
+                    color: 'var(--webos-text-primary)'
+                  }}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="content">Content*</Label>
+                <Label 
+                  htmlFor="content" 
+                  className="font-light"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                >
+                  Content*
+                </Label>
                 <Textarea
                   id="content"
                   value={formData.content}
                   onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                   placeholder="Announcement details..."
                   rows={6}
+                  className="rounded-xl font-light"
+                  style={{
+                    background: 'var(--webos-bg-white)',
+                    border: '1px solid var(--webos-border-primary)',
+                    color: 'var(--webos-text-primary)'
+                  }}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="priority">Priority</Label>
+                  <Label 
+                    htmlFor="priority" 
+                    className="font-light"
+                    style={{ color: 'var(--webos-text-secondary)' }}
+                  >
+                    Priority
+                  </Label>
                   <Select value={formData.priority} onValueChange={(value) => setFormData({ ...formData, priority: value })}>
-                    <SelectTrigger>
+                    <SelectTrigger 
+                      className="rounded-xl font-light"
+                      style={{
+                        background: 'var(--webos-bg-white)',
+                        border: '1px solid var(--webos-border-primary)',
+                        color: 'var(--webos-text-primary)'
+                      }}
+                    >
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -426,9 +501,22 @@ export default function AnnouncementsPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="targetRole">Target Audience</Label>
+                  <Label 
+                    htmlFor="targetRole" 
+                    className="font-light"
+                    style={{ color: 'var(--webos-text-secondary)' }}
+                  >
+                    Target Audience
+                  </Label>
                   <Select value={formData.targetRole} onValueChange={(value) => setFormData({ ...formData, targetRole: value })}>
-                    <SelectTrigger>
+                    <SelectTrigger 
+                      className="rounded-xl font-light"
+                      style={{
+                        background: 'var(--webos-bg-white)',
+                        border: '1px solid var(--webos-border-primary)',
+                        color: 'var(--webos-text-primary)'
+                      }}
+                    >
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -442,14 +530,32 @@ export default function AnnouncementsPage() {
               </div>
             </div>
             <DialogFooter>
-              <Button variant="outline" onClick={() => {
-                setIsDialogOpen(false);
-                resetForm();
-              }}>
-                Cancel
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setIsDialogOpen(false);
+                  resetForm();
+                }}
+                className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid var(--webos-border-secondary)',
+                  color: 'var(--webos-text-primary)'
+                }}
+              >
+                CANCEL
               </Button>
-              <Button onClick={editingAnnouncement ? handleUpdateAnnouncement : handleCreateAnnouncement}>
-                {editingAnnouncement ? 'Update' : 'Create'}
+              <Button 
+                onClick={editingAnnouncement ? handleUpdateAnnouncement : handleCreateAnnouncement}
+                className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  border: 'none',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+              >
+                {editingAnnouncement ? 'UPDATE' : 'CREATE'}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -462,7 +568,12 @@ export default function AnnouncementsPage() {
           {/* Navigation Pane - Filters */}
           <LoomOSContainerPane id="filters" type="navigation" width={240}>
             <div className="p-4 space-y-1">
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-3">Filters</h3>
+              <h3 
+                className="text-xs font-light tracking-wider uppercase mb-3"
+                style={{ color: 'var(--webos-text-tertiary)' }}
+              >
+                FILTERS
+              </h3>
               {filterOptions.map(filter => (
                 <LoomOSNavListItem
                   key={filter.id}
@@ -505,25 +616,45 @@ export default function AnnouncementsPage() {
                     size="sm"
                     variant="outline"
                     onClick={() => openEditDialog(selectedAnnouncement)}
+                    className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.6)',
+                      border: '1px solid var(--webos-border-secondary)',
+                      color: 'var(--webos-text-primary)'
+                    }}
                   >
                     <Edit className="h-4 w-4 mr-2" />
-                    Edit
+                    EDIT
                   </Button>
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleToggleActive(selectedAnnouncement.id, selectedAnnouncement.isActive)}
+                    className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                    style={{
+                      background: 'var(--webos-ui-dark)',
+                      color: 'var(--webos-text-white)',
+                      border: 'none',
+                      boxShadow: 'var(--webos-shadow-sm)'
+                    }}
                   >
                     <Bell className="h-4 w-4 mr-2" />
-                    {selectedAnnouncement.isActive ? 'Deactivate' : 'Activate'}
+                    {selectedAnnouncement.isActive ? 'DEACTIVATE' : 'ACTIVATE'}
                   </Button>
                   <Button
                     size="sm"
                     variant="destructive"
                     onClick={() => handleDeleteAnnouncement(selectedAnnouncement.id)}
+                    className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
+                    style={{
+                      background: '#dc2626',
+                      color: 'var(--webos-text-white)',
+                      border: 'none',
+                      boxShadow: 'var(--webos-shadow-sm)'
+                    }}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
-                    Delete
+                    DELETE
                   </Button>
                 </div>
               )}

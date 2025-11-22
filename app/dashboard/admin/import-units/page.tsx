@@ -168,10 +168,19 @@ export default function ImportUnitsPage() {
 
   if (status === 'loading') {
     return (
-      <div className="flex items-center justify-center h-full">
+      <div 
+        className="flex items-center justify-center h-full"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
+          <div 
+            className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4"
+            style={{ borderColor: 'var(--webos-app-blue)' }}
+          ></div>
+          <p className="font-light" style={{ color: 'var(--webos-text-secondary)' }}>Loading...</p>
         </div>
       </div>
     );
@@ -191,14 +200,24 @@ export default function ImportUnitsPage() {
       icon={<Upload className="w-5 h-5" />}
       gradient={APP_COLORS.admin.light}
     >
-      <div className="space-y-6 max-w-7xl">
+      <div 
+        className="space-y-6 max-w-7xl"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: "'Helvetica Neue', Arial, sans-serif",
+          padding: '24px'
+        }}
+      >
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold flex items-center gap-2 text-nordic-night">
-          <FileSpreadsheet className="h-8 w-8 text-primary" />
+        <h1 
+          className="text-3xl font-light tracking-tight flex items-center gap-2"
+          style={{ color: 'var(--webos-text-primary)' }}
+        >
+          <FileSpreadsheet className="h-8 w-8" style={{ color: 'var(--webos-app-blue)' }} />
           Import Units & Accounts
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="font-light mt-1" style={{ color: 'var(--webos-text-secondary)' }}>
           Bulk import units, accounts, and dues from a CSV file
         </p>
       </div>
