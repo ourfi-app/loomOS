@@ -755,7 +755,13 @@ export default function MessagesPage() {
 
   return (
     <ErrorBoundary>
-      <div className="h-full flex overflow-hidden">
+      <div 
+        className="h-full flex overflow-hidden"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
           {/* Navigation Pane - Folders */}
           <LoomOSNavigationPane
             title="FOLDERS"
@@ -763,15 +769,32 @@ export default function MessagesPage() {
           />
 
         {/* Message List Pane */}
-        <div className="w-[420px] flex-shrink-0 border-r border-[var(--semantic-border-light)] flex flex-col bg-white overflow-hidden">
+        <div 
+          className="w-[420px] flex-shrink-0 flex flex-col overflow-hidden"
+          style={{
+            borderRight: '1px solid var(--webos-border-primary)',
+            background: 'var(--webos-bg-white)'
+          }}
+        >
           {/* Header */}
-          <div className="border-b border-[var(--semantic-border-light)] bg-[var(--semantic-bg-subtle)]">
+          <div 
+            style={{
+              borderBottom: '1px solid var(--webos-border-primary)',
+              background: 'var(--webos-bg-secondary)'
+            }}
+          >
             <div className="h-16 px-6 flex items-center justify-between">
               <div>
-                <h2 className="font-semibold text-lg text-[var(--semantic-text-primary)]">
+                <h2 
+                  className="font-light text-lg tracking-tight"
+                  style={{ color: 'var(--webos-text-primary)' }}
+                >
                   {currentFolder?.name || 'Messages'}
                 </h2>
-                <p className="text-xs text-[var(--semantic-text-tertiary)]">
+                <p 
+                  className="text-xs font-light"
+                  style={{ color: 'var(--webos-text-tertiary)' }}
+                >
                   {filteredMessages.length} {filteredMessages.length === 1 ? 'message' : 'messages'}
                 </p>
               </div>
@@ -844,7 +867,13 @@ export default function MessagesPage() {
           </div>
 
           {/* Search Bar */}
-          <div className="px-6 py-4 border-b border-[var(--semantic-border-light)] bg-white">
+          <div 
+            className="px-6 py-4"
+            style={{
+              borderBottom: '1px solid var(--webos-border-primary)',
+              background: 'var(--webos-bg-white)'
+            }}
+          >
             <div className="flex items-center gap-3">
               {/* Select all checkbox */}
               <button

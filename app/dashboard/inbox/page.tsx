@@ -91,13 +91,24 @@ export default function InboxPage() {
       icon={InboxAppIcon ? <InboxAppIcon className="w-5 h-5" /> : <InboxIcon className="w-5 h-5" />}
       gradient={appDef?.gradient || 'from-blue-500 to-cyan-500'}
     >
-      <div className="h-full flex overflow-hidden">
+      <div 
+        className="h-full flex overflow-hidden"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
         <LoomOSNavigationPane
           title="Inbox"
           items={navItems}
         />
 
-        <div className="flex-1 bg-background overflow-hidden">
+        <div 
+          className="flex-1 overflow-hidden"
+          style={{
+            background: 'var(--webos-bg-gradient)'
+          }}
+        >
           {activeTab === 'messages' && <MessagesTab />}
           {activeTab === 'chat' && <ChatTab />}
           {activeTab === 'email' && <EmailTab />}

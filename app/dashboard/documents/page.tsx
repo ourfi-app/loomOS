@@ -57,10 +57,27 @@ export default function DocumentsPage() {
   if (loading) {
     return (
       <ErrorBoundary>
-        <div className="flex items-center justify-center h-full">
+        <div 
+          className="flex items-center justify-center h-full"
+          style={{
+            background: 'var(--webos-bg-gradient)',
+            fontFamily: 'Helvetica Neue, Arial, sans-serif'
+          }}
+        >
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Loading documents...</p>
+            <div 
+              className="animate-spin rounded-full h-12 w-12 mx-auto mb-4"
+              style={{ 
+                border: '2px solid transparent',
+                borderTopColor: 'var(--webos-app-brown)'
+              }}
+            />
+            <p 
+              className="font-light"
+              style={{ color: 'var(--webos-text-secondary)' }}
+            >
+              Loading documents...
+            </p>
           </div>
         </div>
       </ErrorBoundary>
@@ -69,32 +86,80 @@ export default function DocumentsPage() {
 
   return (
     <ErrorBoundary>
-      <div className="flex flex-col h-full">
-        <div className="flex-none border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div 
+        className="flex flex-col h-full"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
+        <div 
+          className="flex-none"
+          style={{
+            borderBottom: '1px solid var(--webos-border-primary)',
+            background: 'rgba(255, 255, 255, 0.6)',
+            backdropFilter: 'blur(20px)'
+          }}
+        >
           <div className="px-6 py-4">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h1 className="text-2xl font-bold">Documents</h1>
-                <p className="text-muted-foreground">Manage your community documents</p>
+                <h1 
+                  className="text-2xl font-light tracking-tight"
+                  style={{ color: 'var(--webos-text-primary)' }}
+                >
+                  Documents
+                </h1>
+                <p 
+                  className="font-light"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                >
+                  Manage your community documents
+                </p>
               </div>
-              <Button>
-                <Upload className="mr-2 h-4 w-4" />
+              <button
+                className="rounded-xl py-2 px-4 text-sm font-light tracking-wide uppercase transition-all hover:opacity-90 flex items-center gap-2"
+                style={{
+                  background: 'var(--webos-ui-dark)',
+                  color: 'var(--webos-text-white)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
+              >
+                <Upload className="h-4 w-4" />
                 Upload
-              </Button>
+              </button>
             </div>
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search 
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4"
+                  style={{ color: 'var(--webos-text-tertiary)' }}
+                />
                 <Input
                   placeholder="Search documents..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9"
+                  className="pl-9 rounded-xl font-light"
+                  style={{
+                    border: '1px solid var(--webos-border-secondary)',
+                    background: 'var(--webos-bg-white)',
+                    color: 'var(--webos-text-primary)'
+                  }}
                 />
               </div>
-              <Button variant="outline" size="icon">
-                <Filter className="h-4 w-4" />
-              </Button>
+              <button
+                className="rounded-xl p-2 transition-opacity hover:opacity-80"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid var(--webos-border-secondary)',
+                  boxShadow: 'var(--webos-shadow-sm)'
+                }}
+              >
+                <Filter 
+                  className="h-4 w-4"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -102,98 +167,221 @@ export default function DocumentsPage() {
         <div className="flex-1 overflow-auto p-6">
           {/* Folders */}
           <div className="mb-6">
-            <h2 className="text-lg font-semibold mb-4">Folders</h2>
+            <h2 
+              className="text-xs font-light tracking-wider uppercase mb-4"
+              style={{ color: 'var(--webos-text-tertiary)' }}
+            >
+              Folders
+            </h2>
             <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
-              <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
-                <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-[var(--semantic-primary)]" />
-                  <div>
-                    <p className="font-medium">Bylaws</p>
-                    <p className="text-sm text-muted-foreground">12 files</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
-                <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-[var(--semantic-success)]" />
-                  <div>
-                    <p className="font-medium">Policies</p>
-                    <p className="text-sm text-muted-foreground">8 files</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
-                <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-[var(--semantic-accent)]" />
-                  <div>
-                    <p className="font-medium">Minutes</p>
-                    <p className="text-sm text-muted-foreground">24 files</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="hover:bg-accent/50 cursor-pointer transition-colors">
-                <CardContent className="p-6 flex items-center gap-4">
-                  <FolderOpen className="h-8 w-8 text-[var(--semantic-primary)]" />
-                  <div>
-                    <p className="font-medium">Forms</p>
-                    <p className="text-sm text-muted-foreground">15 files</p>
-                  </div>
-                </CardContent>
-              </Card>
+              <div 
+                className="rounded-2xl cursor-pointer transition-opacity hover:opacity-90 p-6 flex items-center gap-4"
+                style={{
+                  background: 'var(--webos-bg-glass)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid var(--webos-border-glass)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
+              >
+                <FolderOpen 
+                  className="h-8 w-8"
+                  style={{ color: 'var(--webos-app-brown)' }}
+                />
+                <div>
+                  <p 
+                    className="font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
+                  >
+                    Bylaws
+                  </p>
+                  <p 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-tertiary)' }}
+                  >
+                    12 files
+                  </p>
+                </div>
+              </div>
+              <div 
+                className="rounded-2xl cursor-pointer transition-opacity hover:opacity-90 p-6 flex items-center gap-4"
+                style={{
+                  background: 'var(--webos-bg-glass)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid var(--webos-border-glass)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
+              >
+                <FolderOpen 
+                  className="h-8 w-8"
+                  style={{ color: 'var(--webos-app-green)' }}
+                />
+                <div>
+                  <p 
+                    className="font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
+                  >
+                    Policies
+                  </p>
+                  <p 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-tertiary)' }}
+                  >
+                    8 files
+                  </p>
+                </div>
+              </div>
+              <div 
+                className="rounded-2xl cursor-pointer transition-opacity hover:opacity-90 p-6 flex items-center gap-4"
+                style={{
+                  background: 'var(--webos-bg-glass)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid var(--webos-border-glass)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
+              >
+                <FolderOpen 
+                  className="h-8 w-8"
+                  style={{ color: 'var(--webos-app-teal)' }}
+                />
+                <div>
+                  <p 
+                    className="font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
+                  >
+                    Minutes
+                  </p>
+                  <p 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-tertiary)' }}
+                  >
+                    24 files
+                  </p>
+                </div>
+              </div>
+              <div 
+                className="rounded-2xl cursor-pointer transition-opacity hover:opacity-90 p-6 flex items-center gap-4"
+                style={{
+                  background: 'var(--webos-bg-glass)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid var(--webos-border-glass)',
+                  boxShadow: 'var(--webos-shadow-md)'
+                }}
+              >
+                <FolderOpen 
+                  className="h-8 w-8"
+                  style={{ color: 'var(--webos-app-tan)' }}
+                />
+                <div>
+                  <p 
+                    className="font-light"
+                    style={{ color: 'var(--webos-text-primary)' }}
+                  >
+                    Forms
+                  </p>
+                  <p 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-tertiary)' }}
+                  >
+                    15 files
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Documents */}
           <div>
-            <h2 className="text-lg font-semibold mb-4">Recent Documents</h2>
-            <Card>
-              <CardContent className="p-0">
-                <div className="divide-y">
-                  {filteredDocuments.length === 0 ? (
-                    <div className="text-center py-12 text-muted-foreground">
-                      {searchQuery ? 'No documents found' : 'No documents available'}
-                    </div>
-                  ) : (
-                    filteredDocuments.map((doc) => (
-                      <div
-                        key={doc.id}
-                        className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors"
-                      >
-                        <div className="flex items-center gap-4">
-                          <FileText className="h-8 w-8 text-[var(--semantic-primary)]" />
-                          <div>
-                            <p className="font-medium">{doc.name}</p>
-                            <p className="text-sm text-muted-foreground">
-                              {doc.size} • {new Date(doc.uploadedAt).toLocaleDateString()}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Button variant="ghost" size="icon">
-                            <Download className="h-4 w-4" />
-                          </Button>
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="icon">
-                                <MoreVertical className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                              <DropdownMenuItem>View</DropdownMenuItem>
-                              <DropdownMenuItem>Share</DropdownMenuItem>
-                              <DropdownMenuItem>Rename</DropdownMenuItem>
-                              <DropdownMenuItem className="text-destructive">
-                                Delete
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
+            <h2 
+              className="text-xs font-light tracking-wider uppercase mb-4"
+              style={{ color: 'var(--webos-text-tertiary)' }}
+            >
+              Recent Documents
+            </h2>
+            <div 
+              className="rounded-3xl overflow-hidden"
+              style={{
+                background: 'var(--webos-bg-glass)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid var(--webos-border-glass)',
+                boxShadow: 'var(--webos-shadow-xl)'
+              }}
+            >
+              <div style={{ borderTop: '1px solid var(--webos-border-primary)' }}>
+                {filteredDocuments.length === 0 ? (
+                  <div 
+                    className="text-center py-12 font-light"
+                    style={{ color: 'var(--webos-text-secondary)' }}
+                  >
+                    {searchQuery ? 'No documents found' : 'No documents available'}
+                  </div>
+                ) : (
+                  filteredDocuments.map((doc, index) => (
+                    <div
+                      key={doc.id}
+                      className="flex items-center justify-between p-4 transition-colors hover:bg-white/30"
+                      style={index > 0 ? { borderTop: '1px solid var(--webos-border-primary)' } : {}}
+                    >
+                      <div className="flex items-center gap-4">
+                        <FileText 
+                          className="h-8 w-8"
+                          style={{ color: 'var(--webos-app-brown)' }}
+                        />
+                        <div>
+                          <p 
+                            className="font-light"
+                            style={{ color: 'var(--webos-text-primary)' }}
+                          >
+                            {doc.name}
+                          </p>
+                          <p 
+                            className="text-sm font-light"
+                            style={{ color: 'var(--webos-text-secondary)' }}
+                          >
+                            {doc.size} • {new Date(doc.uploadedAt).toLocaleDateString()}
+                          </p>
                         </div>
                       </div>
-                    ))
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                      <div className="flex items-center gap-2">
+                        <button 
+                          className="p-2 rounded-lg transition-opacity hover:opacity-80"
+                          style={{
+                            background: 'rgba(255, 255, 255, 0.5)'
+                          }}
+                        >
+                          <Download 
+                            className="h-4 w-4"
+                            style={{ color: 'var(--webos-text-secondary)' }}
+                          />
+                        </button>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <button 
+                              className="p-2 rounded-lg transition-opacity hover:opacity-80"
+                              style={{
+                                background: 'rgba(255, 255, 255, 0.5)'
+                              }}
+                            >
+                              <MoreVertical 
+                                className="h-4 w-4"
+                                style={{ color: 'var(--webos-text-secondary)' }}
+                              />
+                            </button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>View</DropdownMenuItem>
+                            <DropdownMenuItem>Share</DropdownMenuItem>
+                            <DropdownMenuItem>Rename</DropdownMenuItem>
+                            <DropdownMenuItem className="text-destructive">
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

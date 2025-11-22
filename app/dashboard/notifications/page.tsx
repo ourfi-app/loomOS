@@ -171,7 +171,13 @@ export default function NotificationsPage() {
 
   return (
     <ErrorBoundary>
-      <div className="flex-1 flex overflow-hidden min-h-0">
+      <div 
+        className="flex-1 flex overflow-hidden min-h-0"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
           {/* Navigation Pane */}
           <LoomOSNavigationPane
             title="FILTERS"
@@ -222,52 +228,90 @@ export default function NotificationsPage() {
             <div className="space-y-6">
               {/* Icon and metadata */}
               <div className="flex items-start gap-4">
-                <div className={cn(
-                  'w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0',
-                  selectedNotification.notification.isUrgent ? 'bg-[var(--semantic-error-bg)]' : 'bg-[var(--semantic-surface-hover)]'
-                )}>
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: selectedNotification.notification.isUrgent 
+                      ? 'rgba(239, 68, 68, 0.1)' 
+                      : 'var(--webos-bg-secondary)'
+                  }}
+                >
                   {getIcon(selectedNotification.notification.isUrgent)}
                 </div>
                 <div className="flex-1">
                   {selectedNotification.notification.isUrgent && (
-                    <Badge className="bg-[var(--semantic-error)] text-white text-xs mb-2">URGENT</Badge>
+                    <Badge 
+                      className="font-light text-xs mb-2"
+                      style={{
+                        background: '#ef4444',
+                        color: 'var(--webos-text-white)'
+                      }}
+                    >
+                      URGENT
+                    </Badge>
                   )}
                 </div>
               </div>
 
               {/* Message content */}
-              <div className="text-base leading-relaxed text-[var(--semantic-text-secondary)]">
+              <div 
+                className="text-base leading-relaxed font-light"
+                style={{ color: 'var(--webos-text-secondary)' }}
+              >
                 {selectedNotification.notification.message}
               </div>
 
               {/* Metadata card */}
-              <div className="p-4 bg-[var(--semantic-bg-subtle)] rounded-lg border border-[var(--semantic-border-light)]">
-                <div className="text-sm text-[var(--semantic-text-secondary)] space-y-2">
+              <div 
+                className="p-4 rounded-xl"
+                style={{
+                  background: 'var(--webos-bg-secondary)',
+                  border: '1px solid var(--webos-border-primary)'
+                }}
+              >
+                <div 
+                  className="text-sm font-light space-y-2"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                >
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold">Type:</span>
-                    <Badge className="bg-[var(--semantic-text-tertiary)] text-white text-xs">
+                    <span className="font-light">Type:</span>
+                    <Badge 
+                      className="font-light text-xs"
+                      style={{
+                        background: 'var(--webos-ui-medium)',
+                        color: 'var(--webos-text-white)'
+                      }}
+                    >
                       {selectedNotification.notification.type}
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold">Status:</span>
-                    <Badge className={cn(
-                      'text-xs',
-                      selectedNotification.isRead
-                        ? 'bg-[var(--semantic-success-bg)] text-[var(--semantic-success-dark)]'
-                        : 'bg-[var(--semantic-primary-subtle)] text-[var(--semantic-primary-dark)]'
-                    )}>
+                    <span className="font-light">Status:</span>
+                    <Badge 
+                      className="font-light text-xs"
+                      style={{
+                        background: selectedNotification.isRead
+                          ? 'var(--webos-app-green)'
+                          : 'var(--webos-app-blue)',
+                        color: 'var(--webos-text-white)'
+                      }}
+                    >
                       {selectedNotification.isRead ? 'Read' : 'Unread'}
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold">Priority:</span>
-                    <Badge className={cn(
-                      'text-xs',
-                      selectedNotification.notification.isUrgent
-                        ? 'bg-[var(--semantic-error-bg)] text-[var(--semantic-error-dark)]'
-                        : 'bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)]'
-                    )}>
+                    <span className="font-light">Priority:</span>
+                    <Badge 
+                      className="font-light text-xs"
+                      style={{
+                        background: selectedNotification.notification.isUrgent
+                          ? '#ef4444'
+                          : 'var(--webos-bg-tertiary)',
+                        color: selectedNotification.notification.isUrgent
+                          ? 'var(--webos-text-white)'
+                          : 'var(--webos-text-secondary)'
+                      }}
+                    >
                       {selectedNotification.notification.isUrgent ? 'Urgent' : 'Normal'}
                     </Badge>
                   </div>

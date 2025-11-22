@@ -256,15 +256,29 @@ export default function ProfilePage() {
             <div className="p-6">
               <div className="flex items-start gap-6">
                 <div className="relative">
-                  <Avatar className="h-24 w-24 border-2 border-[var(--semantic-border-light)]">
+                  <Avatar 
+                    className="h-24 w-24"
+                    style={{ border: '2px solid var(--webos-border-primary)' }}
+                  >
                     <AvatarImage src={profile.image || undefined} />
-                    <AvatarFallback className="bg-[var(--semantic-surface-hover)] text-[var(--semantic-text-secondary)] text-2xl font-semibold">
+                    <AvatarFallback 
+                      className="text-2xl font-light"
+                      style={{
+                        background: 'var(--webos-bg-secondary)',
+                        color: 'var(--webos-text-secondary)'
+                      }}
+                    >
                       {getInitials()}
                     </AvatarFallback>
                   </Avatar>
                   <label
                     htmlFor="avatar-upload"
-                    className="absolute bottom-0 right-0 p-2 bg-[var(--semantic-primary)] text-white rounded-full cursor-pointer hover:bg-[var(--semantic-primary-dark)] transition-colors shadow-lg"
+                    className="absolute bottom-0 right-0 p-2 rounded-full cursor-pointer transition-opacity hover:opacity-90"
+                    style={{
+                      background: 'var(--webos-ui-dark)',
+                      color: 'var(--webos-text-white)',
+                      boxShadow: 'var(--webos-shadow-lg)'
+                    }}
                   >
                     {uploadingAvatar ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -283,31 +297,54 @@ export default function ProfilePage() {
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-[var(--semantic-text-primary)]">{profile.name}</h3>
+                  <h3 
+                    className="text-xl font-light tracking-tight"
+                    style={{ color: 'var(--webos-text-primary)' }}
+                  >
+                    {profile.name}
+                  </h3>
                   <div className="flex items-center gap-2 mt-2">
-                    <Badge className="capitalize bg-[var(--semantic-primary)] text-white">
+                    <Badge 
+                      className="capitalize font-light"
+                      style={{
+                        background: 'var(--webos-ui-dark)',
+                        color: 'var(--webos-text-white)'
+                      }}
+                    >
                       {profile.role.toLowerCase().replace('_', ' ')}
                     </Badge>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                    <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
+                    <div 
+                      className="flex items-center gap-2 text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
                       <Mail className="h-4 w-4 flex-shrink-0" />
                       <span className="truncate">{profile.email}</span>
                     </div>
                     {profile.phone && (
-                      <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
+                      <div 
+                        className="flex items-center gap-2 text-sm font-light"
+                        style={{ color: 'var(--webos-text-secondary)' }}
+                      >
                         <Phone className="h-4 w-4 flex-shrink-0" />
                         <span>{profile.phone}</span>
                       </div>
                     )}
                     {profile.unitNumber && (
-                      <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
+                      <div 
+                        className="flex items-center gap-2 text-sm font-light"
+                        style={{ color: 'var(--webos-text-secondary)' }}
+                      >
                         <Home className="h-4 w-4 flex-shrink-0" />
                         <span>Unit {profile.unitNumber}</span>
                       </div>
                     )}
-                    <div className="flex items-center gap-2 text-sm text-[var(--semantic-text-secondary)]">
+                    <div 
+                      className="flex items-center gap-2 text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
                       <Shield className="h-4 w-4 flex-shrink-0" />
                       <span>
                         Member since {new Date(profile.createdAt).toLocaleDateString('en-US', {
@@ -323,29 +360,62 @@ export default function ProfilePage() {
           </div>
 
           {/* Edit Profile Form */}
-          <div className="bg-white rounded-lg border border-[var(--semantic-border-light)] overflow-hidden">
+          <div 
+            className="rounded-3xl overflow-hidden"
+            style={{
+              background: 'var(--webos-bg-glass)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid var(--webos-border-glass)',
+              boxShadow: 'var(--webos-shadow-xl)'
+            }}
+          >
             <LoomOSSectionHeader title="Edit Profile" />
             
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
               {message && (
-                <Alert variant={message.type === 'success' ? 'default' : 'destructive'}>
+                <Alert 
+                  variant={message.type === 'success' ? 'default' : 'destructive'}
+                  style={{
+                    background: message.type === 'success' 
+                      ? 'var(--webos-bg-secondary)' 
+                      : 'rgba(239, 68, 68, 0.1)',
+                    border: `1px solid ${message.type === 'success' 
+                      ? 'var(--webos-border-primary)' 
+                      : 'rgba(239, 68, 68, 0.3)'}`,
+                    borderRadius: '12px'
+                  }}
+                >
                   {message.type === 'success' ? (
-                    <CheckCircle className="h-4 w-4" />
+                    <CheckCircle className="h-4 w-4" style={{ color: 'var(--webos-app-green)' }} />
                   ) : (
-                    <AlertCircle className="h-4 w-4" />
+                    <AlertCircle className="h-4 w-4" style={{ color: '#ef4444' }} />
                   )}
-                  <AlertDescription>{message.text}</AlertDescription>
+                  <AlertDescription 
+                    className="font-light"
+                    style={{ color: message.type === 'success' ? 'var(--webos-text-primary)' : '#dc2626' }}
+                  >
+                    {message.text}
+                  </AlertDescription>
                 </Alert>
               )}
 
               {/* Personal Information */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-[var(--semantic-text-secondary)] uppercase tracking-wide">Personal Information</h4>
+                <h4 
+                  className="text-xs font-light tracking-wider uppercase"
+                  style={{ color: 'var(--webos-text-tertiary)' }}
+                >
+                  Personal Information
+                </h4>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-sm font-medium">
-                      First Name <span className="text-[var(--semantic-error)]">*</span>
+                    <Label 
+                      htmlFor="firstName" 
+                      className="text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
+                      First Name <span style={{ color: '#ef4444' }}>*</span>
                     </Label>
                     <Input
                       id="firstName"
@@ -354,12 +424,21 @@ export default function ProfilePage() {
                       onChange={(e) => setFirstName(e.target.value)}
                       required
                       placeholder="John"
-                      className="border-[var(--semantic-border-medium)]"
+                      className="rounded-xl font-light"
+                      style={{
+                        border: '1px solid var(--webos-border-secondary)',
+                        background: 'var(--webos-bg-white)',
+                        color: 'var(--webos-text-primary)'
+                      }}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-sm font-medium">
-                      Last Name <span className="text-[var(--semantic-error)]">*</span>
+                    <Label 
+                      htmlFor="lastName" 
+                      className="text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
+                      Last Name <span style={{ color: '#ef4444' }}>*</span>
                     </Label>
                     <Input
                       id="lastName"
@@ -368,14 +447,23 @@ export default function ProfilePage() {
                       onChange={(e) => setLastName(e.target.value)}
                       required
                       placeholder="Doe"
-                      className="border-[var(--semantic-border-medium)]"
+                      className="rounded-xl font-light"
+                      style={{
+                        border: '1px solid var(--webos-border-secondary)',
+                        background: 'var(--webos-bg-white)',
+                        color: 'var(--webos-text-primary)'
+                      }}
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-medium">
-                    Email <span className="text-[var(--semantic-error)]">*</span>
+                  <Label 
+                    htmlFor="email" 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-secondary)' }}
+                  >
+                    Email <span style={{ color: '#ef4444' }}>*</span>
                   </Label>
                   <Input
                     id="email"
@@ -384,31 +472,60 @@ export default function ProfilePage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="john@example.com"
-                    className="border-[var(--semantic-border-medium)]"
+                    className="rounded-xl font-light"
+                    style={{
+                      border: '1px solid var(--webos-border-secondary)',
+                      background: 'var(--webos-bg-white)',
+                      color: 'var(--webos-text-primary)'
+                    }}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-sm font-medium">Phone Number</Label>
+                  <Label 
+                    htmlFor="phone" 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-secondary)' }}
+                  >
+                    Phone Number
+                  </Label>
                   <Input
                     id="phone"
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 (555) 123-4567"
-                    className="border-[var(--semantic-border-medium)]"
+                    className="rounded-xl font-light"
+                    style={{
+                      border: '1px solid var(--webos-border-secondary)',
+                      background: 'var(--webos-bg-white)',
+                      color: 'var(--webos-text-primary)'
+                    }}
                   />
                 </div>
 
                 {profile.unitNumber && (
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium">Unit Number</Label>
+                    <Label 
+                      className="text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
+                      Unit Number
+                    </Label>
                     <Input
                       value={profile.unitNumber}
                       disabled
-                      className="bg-[var(--semantic-bg-subtle)] border-[var(--semantic-border-medium)]"
+                      className="rounded-xl font-light"
+                      style={{
+                        background: 'var(--webos-bg-tertiary)',
+                        border: '1px solid var(--webos-border-primary)',
+                        color: 'var(--webos-text-secondary)'
+                      }}
                     />
-                    <p className="text-xs text-[var(--semantic-text-tertiary)]">
+                    <p 
+                      className="text-xs font-light"
+                      style={{ color: 'var(--webos-text-muted)' }}
+                    >
                       Contact an administrator to change your unit number
                     </p>
                   </div>
@@ -416,30 +533,61 @@ export default function ProfilePage() {
               </div>
 
               {/* Security Settings */}
-              <div className="border-t border-[var(--semantic-border-light)] pt-6 space-y-4">
+              <div 
+                className="pt-6 space-y-4"
+                style={{ borderTop: '1px solid var(--webos-border-primary)' }}
+              >
                 <div className="flex items-center gap-2">
-                  <Lock className="h-5 w-5 text-[var(--semantic-text-secondary)]" />
-                  <h4 className="text-sm font-semibold text-[var(--semantic-text-secondary)] uppercase tracking-wide">Change Password</h4>
+                  <Lock 
+                    className="h-5 w-5" 
+                    style={{ color: 'var(--webos-text-tertiary)' }} 
+                  />
+                  <h4 
+                    className="text-xs font-light tracking-wider uppercase"
+                    style={{ color: 'var(--webos-text-tertiary)' }}
+                  >
+                    Change Password
+                  </h4>
                 </div>
-                <p className="text-sm text-[var(--semantic-text-secondary)]">
+                <p 
+                  className="text-sm font-light"
+                  style={{ color: 'var(--webos-text-secondary)' }}
+                >
                   Leave blank if you don't want to change your password
                 </p>
 
                 <div className="space-y-2">
-                  <Label htmlFor="currentPassword" className="text-sm font-medium">Current Password</Label>
+                  <Label 
+                    htmlFor="currentPassword" 
+                    className="text-sm font-light"
+                    style={{ color: 'var(--webos-text-secondary)' }}
+                  >
+                    Current Password
+                  </Label>
                   <Input
                     id="currentPassword"
                     type="password"
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                     placeholder="Enter current password"
-                    className="border-[var(--semantic-border-medium)]"
+                    className="rounded-xl font-light"
+                    style={{
+                      border: '1px solid var(--webos-border-secondary)',
+                      background: 'var(--webos-bg-white)',
+                      color: 'var(--webos-text-primary)'
+                    }}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="newPassword" className="text-sm font-medium">New Password</Label>
+                    <Label 
+                      htmlFor="newPassword" 
+                      className="text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
+                      New Password
+                    </Label>
                     <Input
                       id="newPassword"
                       type="password"
@@ -447,11 +595,22 @@ export default function ProfilePage() {
                       onChange={(e) => setNewPassword(e.target.value)}
                       placeholder="Enter new password"
                       minLength={6}
-                      className="border-[var(--semantic-border-medium)]"
+                      className="rounded-xl font-light"
+                      style={{
+                        border: '1px solid var(--webos-border-secondary)',
+                        background: 'var(--webos-bg-white)',
+                        color: 'var(--webos-text-primary)'
+                      }}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="confirmPassword" className="text-sm font-medium">Confirm New Password</Label>
+                    <Label 
+                      htmlFor="confirmPassword" 
+                      className="text-sm font-light"
+                      style={{ color: 'var(--webos-text-secondary)' }}
+                    >
+                      Confirm New Password
+                    </Label>
                     <Input
                       id="confirmPassword"
                       type="password"
@@ -459,39 +618,58 @@ export default function ProfilePage() {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Confirm new password"
                       minLength={6}
-                      className="border-[var(--semantic-border-medium)]"
+                      className="rounded-xl font-light"
+                      style={{
+                        border: '1px solid var(--webos-border-secondary)',
+                        background: 'var(--webos-bg-white)',
+                        color: 'var(--webos-text-primary)'
+                      }}
                     />
                   </div>
                 </div>
               </div>
 
               {/* Form Actions */}
-              <div className="flex justify-end gap-3 pt-4 border-t border-[var(--semantic-border-light)]">
-                <Button
+              <div 
+                className="flex justify-end gap-3 pt-4"
+                style={{ borderTop: '1px solid var(--webos-border-primary)' }}
+              >
+                <button
                   type="button"
-                  variant="outline"
                   onClick={handleReset}
-                  className="border-[var(--semantic-border-medium)]"
+                  className="rounded-xl py-3 px-6 text-sm font-light tracking-wide uppercase transition-all hover:opacity-90"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.6)',
+                    border: '1px solid var(--webos-border-secondary)',
+                    color: 'var(--webos-text-primary)',
+                    boxShadow: 'var(--webos-shadow-sm)'
+                  }}
                 >
+                  <RefreshCw className="h-4 w-4 inline mr-2" />
                   Reset
-                </Button>
-                <Button 
+                </button>
+                <button 
                   type="submit" 
                   disabled={saving}
-                  className="bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary-dark)] text-white"
+                  className="rounded-xl py-3 px-6 text-sm font-light tracking-wide uppercase transition-all hover:opacity-90 disabled:opacity-50"
+                  style={{
+                    background: 'var(--webos-ui-dark)',
+                    color: 'var(--webos-text-white)',
+                    boxShadow: 'var(--webos-shadow-md)'
+                  }}
                 >
                   {saving ? (
                     <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      <Loader2 className="h-4 w-4 inline mr-2 animate-spin" />
                       Saving...
                     </>
                   ) : (
                     <>
-                      <Save className="h-4 w-4 mr-2" />
+                      <Save className="h-4 w-4 inline mr-2" />
                       Save Changes
                     </>
                   )}
-                </Button>
+                </button>
               </div>
             </form>
           </div>
