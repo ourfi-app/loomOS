@@ -37,17 +37,13 @@ export function DesktopTopBar() {
       transition={{ duration: 0.2 }}
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        background: 'var(--glass-bg)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid var(--webos-border-secondary)',
-        boxShadow: 'var(--webos-shadow-sm)',
+        backgroundColor: '#1a1a1a',
         fontFamily: 'Helvetica Neue, Arial, sans-serif'
       }}
     >
-      <div className="flex items-center justify-between px-6 py-3">
+      <div className="flex items-center justify-between px-6 py-2">
         {/* Left: Logo */}
-        <div className="flex items-center gap-2 font-light" style={{ color: 'var(--webos-text-primary)', fontWeight: '300' }}>
+        <div className="flex items-center gap-2 font-light" style={{ color: '#e8e8e8', fontWeight: '300' }}>
           {/* loomOS Interlace Logo */}
           <svg
             width="20"
@@ -63,14 +59,15 @@ export function DesktopTopBar() {
             <path d="M10 6v12" />
             <path d="M14 6v12" />
           </svg>
-          <span className="text-base tracking-wide font-light">loomOS</span>
+          <span className="text-sm tracking-wide font-light">loomOS</span>
         </div>
 
         {/* Right: Status Icons + Time */}
-        <div className="flex items-center gap-3 text-sm font-light" style={{ color: 'var(--webos-text-secondary)', fontWeight: '300' }}>
-          <Wifi className="w-[18px] h-[18px]" strokeWidth={2} />
-          <Volume2 className="w-[18px] h-[18px]" strokeWidth={2} />
-          <span style={{ color: 'var(--webos-text-primary)' }}>{currentTime}</span>
+        <div className="flex items-center gap-4 text-xs font-light" style={{ color: '#e8e8e8', fontWeight: '300' }}>
+          <Wifi className="w-4 h-4" strokeWidth={2} />
+          <Volume2 className="w-4 h-4" strokeWidth={2} />
+          <Clock className="w-4 h-4" strokeWidth={2} />
+          <span>{currentTime}</span>
         </div>
       </div>
     </motion.div>

@@ -1,76 +1,55 @@
-
 'use client';
 
-import { Skeleton } from '@/components/ui/skeleton';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import React from 'react';
 
 /**
  * Dashboard Loading State
  * 
- * Provides a skeleton screen for the dashboard while loading
+ * WebOS-styled loading skeleton with authentic aesthetic
  */
 export default function DashboardLoading() {
   return (
-    <div className="container mx-auto p-4 lg:p-6 space-y-6">
-      {/* Header Skeleton */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-2">
-          <Skeleton className="h-8 w-64" />
-          <Skeleton className="h-4 w-96" />
-        </div>
-        <Skeleton className="h-10 w-32" />
-      </div>
+    <div className="min-h-screen flex items-center justify-center" style={{ 
+      background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)'
+    }}>
+      <div className="flex flex-col items-center space-y-6">
+        {/* Loading Card Skeleton */}
+        <div 
+          className="animate-pulse"
+          style={{
+            width: '480px',
+            height: '400px',
+            backgroundColor: '#f5f5f5',
+            borderRadius: '24px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            padding: '32px'
+          }}
+        >
+          {/* Header skeleton */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="h-3 w-24 bg-gray-300 rounded"></div>
+            <div className="h-5 w-5 bg-gray-300 rounded-full"></div>
+          </div>
 
-      {/* Stats Cards Skeleton */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <Card key={i}>
-            <CardHeader className="pb-2">
-              <Skeleton className="h-4 w-24" />
-            </CardHeader>
-            <CardContent>
-              <Skeleton className="h-8 w-full mb-2" />
-              <Skeleton className="h-3 w-20" />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+          {/* Content skeleton */}
+          <div className="space-y-4">
+            <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+            <div className="h-4 bg-gray-300 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+            <div className="h-4 bg-gray-300 rounded w-2/3"></div>
+          </div>
 
-      {/* Main Content Skeleton */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        {/* Left Column */}
-        <div className="col-span-4 space-y-4">
-          <Card>
-            <CardHeader>
-              <Skeleton className="h-6 w-48" />
-              <Skeleton className="h-4 w-64 mt-2" />
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <Skeleton className="h-12 w-12 rounded-full" />
-                  <div className="flex-1 space-y-2">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-3 w-3/4" />
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+          {/* Bottom skeleton */}
+          <div className="mt-8 space-y-3">
+            <div className="h-12 bg-gray-300 rounded-xl"></div>
+            <div className="h-12 bg-gray-300 rounded-xl"></div>
+          </div>
         </div>
 
-        {/* Right Column */}
-        <div className="col-span-3 space-y-4">
-          <Card>
-            <CardHeader>
-              <Skeleton className="h-6 w-32" />
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <Skeleton key={i} className="h-24 w-full" />
-              ))}
-            </CardContent>
-          </Card>
+        {/* Loading text */}
+        <div className="text-xs font-light tracking-wider" style={{ color: '#8a8a8a' }}>
+          LOADING...
         </div>
       </div>
     </div>
