@@ -331,7 +331,7 @@
   /* webOS Interactive Surfaces */
   --semantic-surface-hover: var(--webos-gray-50);   /* #fafafa */
   --semantic-surface-active: var(--webos-gray-100); /* #f5f5f5 */
-  --semantic-surface-selected: rgba(74, 144, 226, 0.1); /* Blue tint */
+  --semantic-surface-selected: rgba(122, 158, 181, 0.1); /* Gray-blue tint */
 
   /* webOS Text Colors */
   --semantic-text-primary: var(--webos-gray-900);   /* #000000 - Pure black */
@@ -344,18 +344,18 @@
   --semantic-border-light: var(--webos-gray-400);   /* #e0e0e0 */
   --semantic-border-medium: var(--webos-gray-500);  /* #cccccc */
   --semantic-border-strong: var(--webos-gray-600);  /* #999999 */
-  --semantic-border-focus: #4a90e2;                 /* webOS blue accent */
+  --semantic-border-focus: #8a8a8a;                 /* webOS gray accent */
 
   /* webOS Accents - Minimal color usage */
-  --semantic-primary: #4a90e2;                      /* Blue for links/selections */
-  --semantic-primary-light: #6ba3e8;
-  --semantic-primary-dark: #3a7bc8;
-  --semantic-primary-subtle: rgba(74, 144, 226, 0.1);
+  --semantic-primary: #7a9eb5;                      /* Gray-blue for links/selections */
+  --semantic-primary-light: #8fabc4;
+  --semantic-primary-dark: #6b8fa6;
+  --semantic-primary-subtle: rgba(122, 158, 181, 0.1);
 
-  --semantic-accent: #4a90e2;
-  --semantic-accent-light: #6ba3e8;
-  --semantic-accent-dark: #3a7bc8;
-  --semantic-accent-subtle: rgba(74, 144, 226, 0.08);
+  --semantic-accent: #7a9eb5;
+  --semantic-accent-light: #8fabc4;
+  --semantic-accent-dark: #6b8fa6;
+  --semantic-accent-subtle: rgba(122, 158, 181, 0.08);
 
   /* webOS Status Colors */
   --semantic-success: #5cb85c;
@@ -364,12 +364,12 @@
   --semantic-error-bg: rgba(217, 83, 79, 0.1);
   --semantic-warning: #f0ad4e;
   --semantic-warning-bg: rgba(240, 173, 78, 0.1);
-  --semantic-info: #4a90e2;
-  --semantic-info-bg: rgba(74, 144, 226, 0.1);
+  --semantic-info: #7a9eb5;
+  --semantic-info-bg: rgba(122, 158, 181, 0.1);
 
   /* webOS Components */
-  --semantic-btn-primary-bg: #4a90e2;
-  --semantic-btn-primary-hover: #3a7bc8;
+  --semantic-btn-primary-bg: #7a9eb5;
+  --semantic-btn-primary-hover: #6b8fa6;
   
   --semantic-card-bg: #FFFFFF;
   --semantic-card-border: var(--webos-gray-400);
@@ -384,5 +384,5 @@
   --semantic-input-bg: #FFFFFF;
   --semantic-input-border: var(--webos-gray-400);
   --semantic-input-border-hover: var(--webos-gray-600);
-  --semantic-input-border-focus: #4a90e2;
+  --semantic-input-border-focus: #8a8a8a;
 }
