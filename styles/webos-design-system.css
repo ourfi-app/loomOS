@@ -823,7 +823,224 @@
 
 
 /* ============================================================================
-   PART 6: SCROLLBAR STYLING
+   PART 6: DARK MODE THEME
+   ============================================================================
+   Dark theme variant matching webOS aesthetic
+   - Deep neutral backgrounds
+   - Reduced contrast for eye comfort
+   - Preserved design language and hierarchy
+   ============================================================================ */
+
+.dark {
+  
+  /* ==========================================================================
+     DARK MODE: NEUTRAL COLOR PALETTE
+     ==========================================================================
+     Inverted neutral palette with adjusted contrast
+     ========================================================================== */
+  
+  /* Dark Mode Neutrals */
+  --neutral-50: #1a1a1a;           /* Dark surfaces */
+  --neutral-100: #262626;          /* Light dark surfaces, hover states */
+  --neutral-200: #333333;          /* Secondary dark backgrounds */
+  --neutral-300: #404040;          /* Primary dark background */
+  --neutral-400: #525252;          /* Dark borders, dividers */
+  --neutral-500: #737373;          /* Medium dark borders */
+  --neutral-600: #a3a3a3;          /* Strong light borders in dark mode */
+  --neutral-700: #d4d4d4;          /* Tertiary text in dark */
+  --neutral-800: #e5e5e5;          /* Secondary text in dark */
+  --neutral-900: #f5f5f5;          /* Primary text in dark */
+  --neutral-950: #fafafa;          /* Brightest text in dark */
+  
+  /* Dark Mode Semantic Aliases */
+  --neutral-lightest: var(--neutral-950);
+  --neutral-lighter: var(--neutral-900);
+  --neutral-light: var(--neutral-800);
+  --neutral-base: var(--neutral-300);
+  --neutral-medium: var(--neutral-500);
+  --neutral-dark: var(--neutral-400);
+  --neutral-darker: var(--neutral-200);
+  --neutral-darkest: var(--neutral-50);
+  
+  
+  /* ==========================================================================
+     DARK MODE: TEXT COLORS
+     ==========================================================================
+     Inverted text hierarchy with reduced contrast
+     ========================================================================== */
+  
+  --text-primary: #f5f5f5;         /* Primary text (light gray, not pure white) */
+  --text-secondary: #a3a3a3;       /* Secondary text, labels */
+  --text-tertiary: #737373;        /* Hints, placeholders */
+  --text-disabled: #525252;        /* Disabled state */
+  --text-inverse: #1a1a1a;         /* Text on light backgrounds in dark mode */
+  --text-on-accent: #ffffff;       /* Text on colored backgrounds */
+  
+  
+  /* ==========================================================================
+     DARK MODE: BACKGROUND COLORS
+     ==========================================================================
+     Dark surface hierarchy
+     ========================================================================== */
+  
+  --bg-primary: #1a1a1a;           /* Main dark background */
+  --bg-secondary: #262626;         /* Secondary dark areas */
+  --bg-tertiary: #333333;          /* Tertiary dark areas */
+  --bg-surface: #262626;           /* Cards, panels (elevated dark surface) */
+  --bg-elevated: #333333;          /* Elevated surfaces */
+  --bg-hover: #333333;             /* Hover states */
+  --bg-active: #404040;            /* Active states */
+  --bg-subtle: #222222;            /* Very subtle backgrounds */
+  
+  
+  /* ==========================================================================
+     DARK MODE: BORDER COLORS
+     ==========================================================================
+     Subtle borders for dark mode
+     ========================================================================== */
+  
+  --border-lightest: #2a2a2a;      /* Barely visible dark borders */
+  --border-light: #404040;         /* Default dark borders */
+  --border-medium: #525252;        /* Emphasized dark borders */
+  --border-dark: #737373;          /* Strong dark borders */
+  --border-focus: #5fa3e8;         /* Focus rings (brighter blue for dark) */
+  
+  
+  /* ==========================================================================
+     DARK MODE: ACCENT COLORS
+     ==========================================================================
+     Adjusted for better visibility in dark mode
+     ========================================================================== */
+  
+  /* Primary Accent (webOS Blue - brightened for dark mode) */
+  --accent-blue: #5fa3e8;
+  --accent-blue-rgb: 95 163 232;
+  --accent-blue-light: #7db4ed;
+  --accent-blue-dark: #4a90e2;
+  --accent-blue-subtle: rgba(95, 163, 232, 0.12);
+  
+  /* Semantic Status Colors (adjusted for dark mode) */
+  --status-success: #6cc36c;
+  --status-success-light: #7dd97d;
+  --status-success-dark: #5cb85c;
+  --status-success-subtle: rgba(108, 195, 108, 0.12);
+  
+  --status-error: #e36663;
+  --status-error-light: #e97a77;
+  --status-error-dark: #d9534f;
+  --status-error-subtle: rgba(227, 102, 99, 0.12);
+  
+  --status-warning: #f3bc6a;
+  --status-warning-light: #f5ca84;
+  --status-warning-dark: #f0ad4e;
+  --status-warning-subtle: rgba(243, 188, 106, 0.12);
+  
+  --status-info: #5fa3e8;
+  --status-info-light: #7db4ed;
+  --status-info-dark: #4a90e2;
+  --status-info-subtle: rgba(95, 163, 232, 0.12);
+  
+  
+  /* ==========================================================================
+     DARK MODE: CHROME/DARK UI COLORS
+     ==========================================================================
+     For headers, toolbars, status bars
+     ========================================================================== */
+  
+  --chrome-darkest: #000000;       /* Pure black (same as light mode) */
+  --chrome-darker: #0d0d0d;        /* Very dark chrome */
+  --chrome-dark: #1a1a1a;          /* Dark chrome */
+  --chrome-medium: #333333;        /* Medium chrome */
+  --chrome-light: #404040;         /* Light chrome */
+  --chrome-text: #f5f5f5;          /* Text on dark chrome */
+  --chrome-text-secondary: #a3a3a3; /* Secondary text on chrome */
+  
+  
+  /* ==========================================================================
+     DARK MODE: GLASSMORPHISM EFFECTS
+     ==========================================================================
+     Inverted glass effects for dark mode
+     ========================================================================== */
+  
+  /* Dark Glass Backgrounds */
+  --glass-white-95: rgba(38, 38, 38, 0.95);
+  --glass-white-90: rgba(38, 38, 38, 0.90);
+  --glass-white-80: rgba(38, 38, 38, 0.80);
+  --glass-white-70: rgba(38, 38, 38, 0.70);
+  --glass-white-60: rgba(38, 38, 38, 0.60);
+  
+  --glass-black-95: rgba(10, 10, 10, 0.95);
+  --glass-black-80: rgba(10, 10, 10, 0.80);
+  --glass-black-60: rgba(10, 10, 10, 0.60);
+  --glass-black-40: rgba(10, 10, 10, 0.40);
+  --glass-black-20: rgba(255, 255, 255, 0.05);
+  --glass-black-10: rgba(255, 255, 255, 0.02);
+  
+  /* Dark Glass Borders */
+  --glass-border-light: rgba(255, 255, 255, 0.1);
+  --glass-border-medium: rgba(255, 255, 255, 0.15);
+  --glass-border-dark: rgba(255, 255, 255, 0.2);
+  
+  
+  /* ==========================================================================
+     DARK MODE: SHADOWS
+     ==========================================================================
+     Enhanced shadows for better depth in dark mode
+     ========================================================================== */
+  
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.5);
+  --shadow-base: 0 2px 4px -1px rgba(0, 0, 0, 0.6), 0 1px 2px -1px rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.7);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  --shadow-3xl: 0 35px 60px -15px rgba(0, 0, 0, 0.9);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  --shadow-inner-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  
+  /* Component Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.7);
+  --shadow-card-active: 0 1px 4px rgba(0, 0, 0, 0.5);
+  --shadow-navbar: 0 2px 12px rgba(0, 0, 0, 0.6);
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.8);
+  --shadow-dock: 0 -4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-focus: 0 0 0 3px rgba(95, 163, 232, 0.15);
+  
+  
+  /* ==========================================================================
+     DARK MODE: SEMANTIC COLOR TOKENS
+     ==========================================================================
+     Contextual color applications for dark mode
+     ========================================================================== */
+  
+  /* Text Semantics */
+  --semantic-text-heading: var(--text-primary);
+  --semantic-text-body: var(--text-secondary);
+  --semantic-text-label: var(--text-tertiary);
+  --semantic-text-placeholder: var(--text-tertiary);
+  --semantic-text-link: var(--accent-blue);
+  --semantic-text-link-hover: var(--accent-blue-light);
+  
+  /* Background Semantics */
+  --semantic-bg-app: var(--bg-primary);
+  --semantic-bg-panel: var(--bg-secondary);
+  --semantic-bg-card: var(--bg-surface);
+  --semantic-bg-hover: var(--bg-hover);
+  --semantic-bg-active: var(--bg-active);
+  --semantic-bg-selected: var(--accent-blue-subtle);
+  
+  /* Border Semantics */
+  --semantic-border-default: var(--border-light);
+  --semantic-border-subtle: var(--border-lightest);
+  --semantic-border-strong: var(--border-medium);
+}
+
+
+/* ============================================================================
+   PART 7: SCROLLBAR STYLING
    ============================================================================
    Custom scrollbars matching webOS aesthetic
    ============================================================================ */
