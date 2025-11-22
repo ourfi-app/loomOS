@@ -233,10 +233,24 @@ export default function ProfilePage() {
 
   return (
     <ErrorBoundary>
-      <div className="flex-1 overflow-y-auto bg-[var(--semantic-bg-subtle)]">
+      <div 
+        className="flex-1 overflow-y-auto"
+        style={{
+          background: 'var(--webos-bg-gradient)',
+          fontFamily: 'Helvetica Neue, Arial, sans-serif'
+        }}
+      >
           <div className="max-w-4xl mx-auto p-6 space-y-6">
           {/* Profile Overview Section */}
-          <div className="bg-white rounded-lg border border-[var(--semantic-border-light)] overflow-hidden">
+          <div 
+            className="rounded-3xl overflow-hidden"
+            style={{
+              background: 'var(--webos-bg-glass)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid var(--webos-border-glass)',
+              boxShadow: 'var(--webos-shadow-xl)'
+            }}
+          >
             <LoomOSSectionHeader title="Profile Overview" />
             
             <div className="p-6">
