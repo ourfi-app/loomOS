@@ -1,4 +1,5 @@
 
+
 // loomOS Dashboard Layout - Full Design System Implementation with Responsive UI/UX
 'use client';
 
@@ -588,7 +589,7 @@ export default function DashboardLayout({
         fontFamily: '"Helvetica Neue", Arial, sans-serif'
       }}
     >
-      {/* System Status Bar - Responsive */}
+      {/* System Status Bar - Responsive - ALWAYS VISIBLE */}
       <SystemStatusBar 
         onOpenAppLauncher={() => setShowAppLauncher(true)}
         currentUser={session.user}
@@ -683,3 +684,4 @@ export default function DashboardLayout({
     </div>
   );
 }
+

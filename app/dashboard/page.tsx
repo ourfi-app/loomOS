@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState } from 'react';
@@ -114,7 +115,7 @@ function getStackCardPosition(cardIndex: number, totalCards: number, isExpanded:
   if (!isCentered || !isExpanded) {
     const rotationAngle = (cardIndex - (totalCards - 1) / 2) * 8;
     const horizontalOffset = (cardIndex - (totalCards - 1) / 2) * 35;
-    // Remove vertical offset to keep cards horizontally aligned
+    // Keep vertical offset at 0 to maintain horizontal alignment
     const verticalOffset = 0;
     return {
       translateX: horizontalOffset,
@@ -356,12 +357,14 @@ export default function DashboardPage() {
               const isExpanded = expandedStack === card.id;
 
               if (isStack && card.cards) {
-                // Render stack cards
+                // Render stack cards - Fixed to align with other cards
                 return (
                   <div
                     key={card.id}
-                    className="absolute transition-all duration-500 ease-out"
+                    className="absolute flex items-center justify-center transition-all duration-500 ease-out"
                     style={{
+                      width: '400px',
+                      height: '300px',
                       transform: `translateX(${(index - currentCard) * 400}px) scale(${isCentered ? 1 : 0.85})`,
                       opacity: isCentered ? 1 : 0.6,
                       zIndex: isCentered ? 10 : 1
@@ -382,7 +385,11 @@ export default function DashboardPage() {
                             boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
                             border: '1px solid rgba(255, 255, 255, 0.3)',
                             transform: `translate(${pos.translateX}px, ${pos.translateY}px) rotate(${pos.rotate}deg) scale(${pos.scale})`,
-                            transformOrigin: 'center center'
+                            transformOrigin: 'center center',
+                            top: '50%',
+                            left: '50%',
+                            marginLeft: '-200px',
+                            marginTop: '-150px'
                           }}
                         >
                           <div className="p-8">
@@ -546,3 +553,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+
