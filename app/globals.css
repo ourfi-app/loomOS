@@ -13,6 +13,11 @@
 @import '../design-tokens/motion.css';
 
 /* ============================================================================
+   WEBOS THEME - Authentic webOS styling
+   ============================================================================ */
+@import '../styles/webos-theme.css';
+
+/* ============================================================================
    CUSTOM ANIMATIONS
    ============================================================================ */
 @import './styles/loomos/animations.css';
@@ -385,13 +390,13 @@
     animation: slide-out-left-draggable 0.3s ease-in-out forwards;
   }
 
-  /* WebOS Container */
+  /* WebOS Container - Light gray background like authentic webOS */
   .loomos-container {
     @apply relative;
     height: 100vh;
     overflow: hidden;
-    /* Authentic webOS warm taupe gradient - subtle and sophisticated */
-    background: linear-gradient(to bottom right, hsl(30, 12%, 91%), hsl(30, 10%, 85%));
+    /* Authentic webOS light gray background from reference images */
+    background: #e8e8e8;
   }
   
   .loomos-touchscreen {
@@ -433,20 +438,18 @@
     bottom: 0;
   }
 
-  /* WebOS App Card - Consistent Styling */
+  /* WebOS App Card - Consistent Styling - Clean white like webOS */
   .loomos-app-card {
     @apply fixed;
     @apply w-[90%] max-w-5xl;
-    @apply rounded-3xl overflow-hidden;
+    @apply rounded-2xl overflow-hidden;
     @apply transition-all duration-300 ease-out;
-    /* Warm webOS pebble surface for app cards - enhanced shadows */
-    background: rgba(247, 246, 244, 0.98);
-    border: 1px solid rgba(207, 204, 199, 0.6);
-    backdrop-filter: blur(20px);
+    /* Clean white card like authentic webOS */
+    background: #ffffff;
+    border: 1px solid #d8d8d8;
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.15),
-      0 10px 20px var(--glass-black-10),
-      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.06);
     /* For mobile/multitasking mode - centered */
     left: 50%;
     top: 50%;
@@ -601,11 +604,11 @@
     @apply hover:bg-red-500/20 active:bg-red-500/30;
   }
 
-  /* WebOS App Card Body */
+  /* WebOS App Card Body - Clean white background */
   .loomos-app-card-body {
     @apply relative;
     height: calc(100% - 3rem);
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
   }
 
   .dark .loomos-app-card-body {
@@ -677,13 +680,22 @@
     @apply w-6 bg-primary;
   }
 
-  /* WebOS Cards */
+  /* WebOS Cards - Clean white with subtle shadows */
   .loomos-card {
-    @apply rounded-3xl shadow-2xl transition-all duration-300;
-    /* Warm off-white webOS pebble surface */
-    background: rgba(247, 246, 244, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(207, 204, 199, 0.4);
+    @apply rounded-2xl shadow-lg transition-all duration-300;
+    /* Clean white card like authentic webOS */
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  
+  .loomos-card:hover {
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.10);
+    transform: translateY(-1px);
   }
   
   .dark .loomos-card {
@@ -762,16 +774,16 @@
   .loomos-app-dock-content {
     @apply flex items-center gap-3 px-5 py-3;
     @apply rounded-3xl shadow-2xl pointer-events-auto;
-    /* Enhanced glass effect - WebOS authentic */
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+    /* Dark translucent dock like authentic webOS */
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
   }
   
   .dark .loomos-app-dock-content {
-    background: var(--glass-black-80);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .loomos-app-dock-item {

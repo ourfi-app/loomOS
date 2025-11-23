@@ -158,7 +158,7 @@ export default withAuth(
 
 export const config = {
   matcher: [
-    "/dashboard/:path*",
+    // "/dashboard/:path*", // Disabled for styling playground
     "/auth/:path*",
     "/api/admin/:path*",
     "/api/board/:path*",

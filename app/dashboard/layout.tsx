@@ -64,9 +64,9 @@ function SystemStatusBar({
       aria-label="System status bar"
       className="fixed top-0 left-0 right-0 h-10 sm:h-11 md:h-12 flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 z-50 transition-all duration-200"
       style={{ 
-        backgroundColor: 'var(--chrome-darker)',
-        borderBottom: '1px solid var(--glass-border-light)',
-        boxShadow: 'var(--shadow-md)'
+        backgroundColor: 'var(--chrome-dark)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
       }}
     >
       {/* Left Section: loomOS logo and hamburger menu */}
@@ -80,7 +80,7 @@ function SystemStatusBar({
           aria-expanded={showMobileMenu}
           data-menu="mobile"
         >
-          <Menu className="w-5 h-5" style={{ color: 'var(--chrome-text)' }} />
+          <Menu className="w-5 h-5" style={{ color: '#ffffff', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
         </button>
 
         {/* loomOS Logo */}
@@ -92,14 +92,18 @@ function SystemStatusBar({
         >
           <div 
             className="font-light text-xs sm:text-sm md:text-base tracking-wide truncate" 
-            style={{ color: 'var(--chrome-text)' }}
+            style={{ 
+              color: '#ffffff',
+              textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)'
+            }}
           >
             loomOS
           </div>
         </button>
       </div>
 
-      {/* Center Section: System icons - Hidden on mobile, visible on tablet+ */}
+      {/* Center Section: System icons - REMOVED/COMMENTED OUT */}
+      {/* 
       <div 
         className="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-4"
         role="toolbar"
@@ -148,13 +152,17 @@ function SystemStatusBar({
           <Battery className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
       </div>
+      */}
 
       {/* Right Section: Clock and user profile */}
       <div className="flex items-center gap-2 sm:gap-3 md:gap-4 min-w-0">
         {/* Clock - Adaptive display */}
         <div 
           className="text-xs sm:text-sm md:text-base font-light whitespace-nowrap hidden sm:block"
-          style={{ color: 'var(--chrome-text)' }}
+          style={{ 
+            color: '#ffffff',
+            textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)'
+          }}
           aria-live="polite"
           aria-atomic="true"
         >
@@ -179,11 +187,11 @@ function SystemStatusBar({
               className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-200" 
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
             >
-              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" style={{ color: 'var(--chrome-text)' }} />
+              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" style={{ color: '#ffffff', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
             </div>
             <ChevronDown 
               className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-200 ${showProfileMenu ? 'rotate-180' : ''}`}
-              style={{ color: 'var(--chrome-text-secondary)' }} 
+              style={{ color: 'rgba(255, 255, 255, 0.8)', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} 
             />
           </button>
           
@@ -229,9 +237,9 @@ function SystemStatusBar({
           aria-label="Mobile navigation menu"
           className="lg:hidden absolute left-0 top-full w-full sm:w-64 rounded-b-xl overflow-hidden animate-slideDown"
           style={{
-            backgroundColor: 'var(--bg-elevated)',
-            boxShadow: 'var(--shadow-modal)',
-            border: '1px solid var(--glass-border-light)',
+            backgroundColor: 'var(--chrome-dark)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             borderTop: 'none'
           }}
         >
@@ -239,41 +247,61 @@ function SystemStatusBar({
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
+              style={{ 
+                color: '#ffffff',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+                minHeight: '44px' 
+              }}
             >
-              <Mail className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
+              <Mail className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.8)', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
               Mail
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
+              style={{ 
+                color: '#ffffff',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+                minHeight: '44px' 
+              }}
             >
-              <MessageSquare className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
+              <MessageSquare className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.8)', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
               Messages
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
+              style={{ 
+                color: '#ffffff',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+                minHeight: '44px' 
+              }}
             >
-              <Music className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
+              <Music className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.8)', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
               Music
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
+              style={{ 
+                color: '#ffffff',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+                minHeight: '44px' 
+              }}
             >
-              <Wifi className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
+              <Wifi className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.8)', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
               WiFi
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
+              style={{ 
+                color: '#ffffff',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+                minHeight: '44px' 
+              }}
             >
-              <Battery className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
+              <Battery className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.8)', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
               Battery
             </button>
           </div>
@@ -760,27 +788,41 @@ export default function DashboardLayout({
   const router = useRouter();
   const [showAppLauncher, setShowAppLauncher] = useState(false);
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.replace('/auth/login');
+  // Disabled for styling playground
+  // useEffect(() => {
+  //   if (status === 'unauthenticated') {
+  //     router.replace('/auth/login');
+  //   }
+  // }, [status, router]);
+
+  // Disabled for styling playground - skip loading check
+  // if (status === 'loading') {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center" style={{ 
+  //       background: 'var(--bg-primary)'
+  //     }}>
+  //       <div className="text-center">
+  //         <div className="text-sm font-light" style={{ color: 'var(--text-secondary)' }}>Loading...</div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  // Disabled for styling playground - skip session check
+  // if (!session) {
+  //   return null;
+  // }
+
+  // Mock user for styling playground
+  const mockSession = session || {
+    user: {
+      id: 'mock-user',
+      name: 'Styling Playground User',
+      email: 'demo@loomos.com',
+      role: 'ADMIN',
+      organizationId: 'mock-org'
     }
-  }, [status, router]);
-
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ 
-        background: 'var(--bg-primary)'
-      }}>
-        <div className="text-center">
-          <div className="text-sm font-light" style={{ color: 'var(--text-secondary)' }}>Loading...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!session) {
-    return null;
-  }
+  };
 
   return (
     <div 
@@ -793,7 +835,7 @@ export default function DashboardLayout({
       {/* System Status Bar - Responsive - ALWAYS VISIBLE */}
       <SystemStatusBar 
         onOpenAppLauncher={() => setShowAppLauncher(true)}
-        currentUser={session.user}
+        currentUser={mockSession.user}
       />
 
       {/* Main Content - Responsive padding */}
@@ -885,4 +927,3 @@ export default function DashboardLayout({
     </div>
   );
 }
-
