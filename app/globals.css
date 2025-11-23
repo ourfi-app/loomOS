@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 /* ============================================================================
-   WEBOS DESIGN SYSTEM - Single Source of Truth
+   WEBOS DESIGN SYSTEM - Unified Design Tokens
    ============================================================================
-   All design tokens consolidated in one file.
+   All design tokens consolidated from the design-tokens directory.
    See /docs/DESIGN_SYSTEM.md for full documentation.
    ============================================================================ */
-@import '../styles/webos-design-system.css';
+@import '../design-tokens/core.css';
+@import '../design-tokens/semantic.css';
+@import '../design-tokens/motion.css';
 
 /* ============================================================================
    CUSTOM ANIMATIONS
@@ -16,22 +18,18 @@
 @import './styles/loomos/animations.css';
 
 /* ============================================================================
-   LEGACY IMPORTS (Deprecated - Will be removed in v2.0)
+   LEGACY IMPORTS (Deprecated - Removed in Design System Unification)
    ============================================================================
-   These imports are kept for backwards compatibility.
-   Please migrate to webos-design-system.css tokens.
-   See /docs/MIGRATION_GUIDE.md
+   All design tokens have been unified into the /design-tokens/ directory.
+   Old token files from /styles/ have been removed (PR #94).
+   
+   Current imports:
+   - ../design-tokens/core.css
+   - ../design-tokens/semantic.css
+   - ../design-tokens/motion.css
+   
+   See /docs/MIGRATION_GUIDE.md for migration details.
    ============================================================================ */
-
-/* Uncomment if you need backwards compatibility during migration:
-@import '../styles/webos-design-tokens.css';
-@import '../design-tokens/semantic.css';
-@import '../design-tokens/core.css';
-@import '../design-tokens/motion.css';
-@import '../styles/design-tokens.css';
-@import '../styles/loomos-tokens.css';
-@import '../styles/loomos-components.css';
-*/
 
 
 .animate-shimmer {

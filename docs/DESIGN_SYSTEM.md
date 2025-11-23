@@ -650,14 +650,15 @@ className="text-xl font-normal"   // 20px, weight 400
 **In `app/globals.css`:**
 
 ```css
-/* OLD: Multiple scattered imports */
+/* OLD: Multiple scattered imports from /styles/ */
 @import '../styles/webos-design-tokens.css';
 @import '../styles/design-tokens.css';
+@import '../styles/loomos-tokens.css';
+
+/* CURRENT: Unified design token imports from /design-tokens/ */
 @import '../design-tokens/core.css';
 @import '../design-tokens/semantic.css';
-
-/* NEW: Single consolidated import */
-@import '../styles/webos-design-system.css';
+@import '../design-tokens/motion.css';
 ```
 
 ### Step 2: Update Color References
