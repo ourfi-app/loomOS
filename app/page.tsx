@@ -854,28 +854,39 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     if (isOpen) {
       // Save current scroll position
       const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
+      
+      // Store scroll position in a data attribute for later restoration
+      document.documentElement.setAttribute('data-scroll-lock', scrollY.toString());
+      
+      // Prevent scrolling using overflow hidden (better than position: fixed)
+      // This doesn't affect the positioning context of fixed children
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
+      
+      // Prevent scroll on touch devices
+      document.body.style.touchAction = 'none';
     } else {
       // Restore scroll position
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      const scrollY = document.documentElement.getAttribute('data-scroll-lock');
+      
+      // Remove scroll lock
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      
+      // Restore scroll position
       if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        window.scrollTo(0, parseInt(scrollY));
+        document.documentElement.removeAttribute('data-scroll-lock');
       }
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      document.documentElement.removeAttribute('data-scroll-lock');
     };
   }, [isOpen]);
 
@@ -925,19 +936,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center px-4 backdrop-blur-md"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-md"
           style={{ 
-            background: 'rgba(0, 0, 0, 0.4)',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: 0,
-            padding: '1rem'
+            background: 'rgba(0, 0, 0, 0.4)'
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
