@@ -283,7 +283,7 @@ function SystemStatusBar({
   );
 }
 
-// App Launcher with grid view - Responsive
+// App Launcher with grid view - Enhanced with search, history, and pagination
 function AppLauncher({ 
   isOpen, 
   onClose 
@@ -292,6 +292,11 @@ function AppLauncher({
   onClose: () => void;
 }) {
   const [activeTab, setActiveTab] = useState('apps');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [sortBy, setSortBy] = useState<'name' | 'recent'>('name');
+  const [currentPage, setCurrentPage] = useState(0);
   const router = useRouter();
 
   const apps = [
@@ -303,7 +308,35 @@ function AppLauncher({
     { id: 'community', title: 'Community', icon: Building, path: '/dashboard/my-community', color: '#9a7ab5' },
     { id: 'chat', title: 'AI Chat', icon: MessageSquare, path: '/dashboard/chat', color: '#b57a9e' },
     { id: 'admin', title: 'Admin', icon: Shield, path: '/dashboard/admin', color: '#7a8ab5' },
+    { id: 'settings', title: 'Settings', icon: Settings, path: '/dashboard/settings', color: '#6a7a8a' },
+    { id: 'reports', title: 'Reports', icon: BarChart, path: '/dashboard/reports', color: '#8a6a7a' },
   ];
+
+  const APPS_PER_PAGE = 12;
+
+  // Filter and sort apps based on search query and sort preference
+  const filteredApps = apps
+    .filter(app => 
+      app.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortBy === 'name') {
+        return a.title.localeCompare(b.title);
+      }
+      return 0; // For 'recent', maintain original order
+    });
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredApps.length / APPS_PER_PAGE);
+  const paginatedApps = filteredApps.slice(
+    currentPage * APPS_PER_PAGE,
+    (currentPage + 1) * APPS_PER_PAGE
+  );
+
+  // Reset to first page when search changes
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [searchQuery]);
 
   useEffect(() => {
     if (isOpen) {
@@ -315,6 +348,22 @@ function AppLauncher({
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query && !searchHistory.includes(query)) {
+      setSearchHistory(prev => [query, ...prev].slice(0, 5)); // Keep last 5 searches
+    }
+  };
+
+  const handleAppClick = (app: typeof apps[0]) => {
+    router.push(app.path);
+    onClose();
+    // Add to search history if searched
+    if (searchQuery) {
+      handleSearch(searchQuery);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -331,9 +380,111 @@ function AppLauncher({
       onClick={onClose}
     >
       <div className="h-full flex flex-col" onClick={(e) => e.stopPropagation()}>
+        {/* Search Area with Sorting and History */}
+        <div 
+          className="px-4 sm:px-6 md:px-8 pt-12 sm:pt-14 md:pt-16 pb-3 sm:pb-4"
+          style={{ backgroundColor: 'rgba(90, 90, 90, 0.5)' }}
+        >
+          <div className="max-w-4xl mx-auto">
+            {/* Search Bar with Buttons */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Search Input */}
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  className="w-full px-12 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-light bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/15 focus:border-white/30 transition-all"
+                  style={{ minHeight: '44px' }}
+                  aria-label="Search apps"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setShowHistory(false);
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-all"
+                    style={{ minWidth: '44px', minHeight: '44px' }}
+                    aria-label="Clear search"
+                  >
+                    <X className="w-5 h-5 text-white/80" />
+                  </button>
+                )}
+              </div>
+
+              {/* App Sorting Button */}
+              <button
+                onClick={() => setSortBy(prev => prev === 'name' ? 'recent' : 'name')}
+                className="p-3 sm:p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 transition-all active:scale-95"
+                style={{ minWidth: '44px', minHeight: '44px' }}
+                aria-label="Sort apps"
+                title={sortBy === 'name' ? 'Sort by Recent' : 'Sort by Name'}
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4" />
+                </svg>
+              </button>
+
+              {/* Search History Button */}
+              <button
+                onClick={() => setShowHistory(!showHistory)}
+                className="p-3 sm:p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 transition-all active:scale-95 relative"
+                style={{ minWidth: '44px', minHeight: '44px' }}
+                aria-label="Search history"
+                title="Search History"
+              >
+                <ClockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                {searchHistory.length > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
+                    {searchHistory.length}
+                  </span>
+                )}
+              </button>
+            </div>
+
+            {/* Search History Dropdown */}
+            {showHistory && searchHistory.length > 0 && (
+              <div 
+                className="mt-2 p-2 rounded-xl bg-white/10 border border-white/20 animate-fadeIn"
+              >
+                <div className="text-xs sm:text-sm font-light text-white/60 px-3 py-1 uppercase tracking-wider">
+                  Recent Searches
+                </div>
+                {searchHistory.map((query, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSearchQuery(query);
+                      setShowHistory(false);
+                    }}
+                    className="w-full px-3 py-2 text-left text-white text-sm sm:text-base font-light hover:bg-white/10 rounded-lg transition-all flex items-center gap-2"
+                    style={{ minHeight: '44px' }}
+                  >
+                    <ClockIcon className="w-4 h-4 text-white/60" />
+                    {query}
+                  </button>
+                ))}
+                <button
+                  onClick={() => {
+                    setSearchHistory([]);
+                    setShowHistory(false);
+                  }}
+                  className="w-full px-3 py-2 text-center text-white/60 text-xs sm:text-sm font-light hover:bg-white/10 rounded-lg transition-all mt-1"
+                  style={{ minHeight: '44px' }}
+                >
+                  Clear History
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Tab navigation - Responsive */}
         <div 
-          className="flex items-center gap-1 px-2 sm:px-4 md:px-6 lg:px-8 pt-12 sm:pt-14 md:pt-16 pb-2 sm:pb-3 md:pb-4 overflow-x-auto"
+          className="flex items-center gap-1 px-2 sm:px-4 md:px-6 lg:px-8 pb-2 sm:pb-3 md:pb-4 overflow-x-auto"
           style={{ backgroundColor: '#5a5a5a' }}
           role="tablist"
         >
@@ -362,37 +513,87 @@ function AppLauncher({
           role="tabpanel"
           className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8"
         >
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-7xl mx-auto">
-            {apps.map((app) => {
-              const AppIcon = app.icon;
-              return (
-                <button
-                  key={app.id}
-                  onClick={() => {
-                    router.push(app.path);
-                    onClose();
-                  }}
-                  className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl hover:bg-white/5 active:bg-white/10 transition-all duration-200 active:scale-95"
-                  style={{ minHeight: '44px' }}
-                  aria-label={`Open ${app.title}`}
-                >
-                  <div 
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-transform duration-200 hover:scale-105"
-                    style={{
-                      backgroundColor: app.color,
-                      boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
-                    }}
+          {paginatedApps.length > 0 ? (
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-7xl mx-auto">
+              {paginatedApps.map((app) => {
+                const AppIcon = app.icon;
+                return (
+                  <button
+                    key={app.id}
+                    onClick={() => handleAppClick(app)}
+                    className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl hover:bg-white/5 active:bg-white/10 transition-all duration-200 active:scale-95"
+                    style={{ minHeight: '44px' }}
+                    aria-label={`Open ${app.title}`}
                   >
-                    <AppIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
-                  </div>
-                  <div className="text-white text-xs sm:text-sm font-light text-center line-clamp-2">
-                    {app.title}
-                  </div>
+                    <div 
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-transform duration-200 hover:scale-105"
+                      style={{
+                        backgroundColor: app.color,
+                        boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+                      }}
+                    >
+                      <AppIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                    </div>
+                    <div className="text-white text-xs sm:text-sm font-light text-center line-clamp-2">
+                      {app.title}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <Search className="w-16 h-16 mx-auto mb-4 text-white/30" />
+                <p className="text-white/60 text-base sm:text-lg font-light">No apps found</p>
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="mt-4 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-light transition-all"
+                  style={{ minHeight: '44px' }}
+                >
+                  Clear Search
                 </button>
-              );
-            })}
-          </div>
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div 
+            className="flex items-center justify-center gap-2 px-4 py-4 sm:py-5"
+            style={{ backgroundColor: '#4a4a4a' }}
+          >
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i)}
+                className="transition-all duration-200"
+                style={{
+                  width: currentPage === i ? '32px' : '12px',
+                  height: '12px',
+                  borderRadius: '6px',
+                  backgroundColor: currentPage === i ? '#fff' : 'rgba(255, 255, 255, 0.3)',
+                  minWidth: '44px',
+                  minHeight: '44px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                aria-label={`Go to page ${i + 1}`}
+                aria-current={currentPage === i ? 'page' : undefined}
+              >
+                <span style={{
+                  width: currentPage === i ? '32px' : '12px',
+                  height: '12px',
+                  borderRadius: '6px',
+                  backgroundColor: currentPage === i ? '#fff' : 'rgba(255, 255, 255, 0.3)',
+                  display: 'block'
+                }} />
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Close button for mobile */}
         <button
