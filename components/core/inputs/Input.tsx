@@ -139,7 +139,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         
         {helperText && !error && (
-          <p className="mt-1 text-xs font-light" style={{ color: '#8a8a8a' }}>
+          <p className="mt-1 text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
             {helperText}
           </p>
         )}
@@ -183,7 +183,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={{ color: '#8a8a8a' }}
+            style={{ color: 'var(--semantic-text-tertiary)' }}
           >
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.3-4.3" />
@@ -256,9 +256,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             className
           )}
           style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.6)',
+            backgroundColor: 'var(--glass-white-60)',
             border: '1px solid #d0d0d0',
-            color: '#4a4a4a',
+            color: 'var(--semantic-text-primary)',
           }}
           {...props}
         />
@@ -270,7 +270,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
         
         {helperText && !error && (
-          <p className="mt-1 text-xs font-light" style={{ color: '#8a8a8a' }}>
+          <p className="mt-1 text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
             {helperText}
           </p>
         )}

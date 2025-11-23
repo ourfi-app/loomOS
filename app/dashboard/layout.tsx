@@ -786,7 +786,7 @@ export default function DashboardLayout({
     <div 
       className="min-h-screen"
       style={{ 
-        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)',
+        background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)',
         fontFamily: '"Helvetica Neue", Arial, sans-serif'
       }}
     >
@@ -852,7 +852,7 @@ export default function DashboardLayout({
         }
 
         ::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
+          background: var(--glass-black-10);
           border-radius: 4px;
         }
 

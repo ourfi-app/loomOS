@@ -44,6 +44,18 @@
   --webos-gray-600: #a0a0a0;
   --webos-gray-700: #808080;
   --webos-gray-800: #404040;
+
+  /* Warm Gray Palette - For semantic backgrounds and text */
+  --warm-gray-50: #fafaf9;
+  --warm-gray-100: #f5f5f4;
+  --warm-gray-200: #e7e5e4;
+  --warm-gray-300: #d6d3d1;
+  --warm-gray-400: #a8a29e;
+  --warm-gray-500: #78716c;
+  --warm-gray-600: #57534e;
+  --warm-gray-700: #44403c;
+  --warm-gray-800: #292524;
+  --warm-gray-900: #1c1917;
   --webos-gray-900: #1a1a1a;
 
   /* ========================================
@@ -115,6 +127,28 @@
   --info-blue-light: #42A5F5;
   --info-blue-dark: #1976D2;
   --info-blue-subtle: #E3F2FD;
+
+  /* ========================================
+     LOOMOS BRAND COLORS
+     ======================================== */
+
+  /* loomOS Orange - Primary Brand Color */
+  --loomos-orange: #F18825;
+  --loomos-orange-light: #FF9A42;
+  --loomos-orange-dark: #D17515;
+  --loomos-orange-subtle: rgba(241, 136, 37, 0.1);
+
+  /* Trust Blue - Secondary Brand Color */
+  --trust-blue: #2B8ED9;
+  --trust-blue-light: #4DA3E6;
+  --trust-blue-dark: #1474B8;
+  --trust-blue-subtle: rgba(43, 142, 217, 0.1);
+
+  /* Growth Green - Tertiary Brand Color */
+  --growth-green: #4CAF50;
+  --growth-green-light: #66BB6A;
+  --growth-green-dark: #388E3C;
+  --growth-green-subtle: rgba(76, 175, 80, 0.1);
 
   /* ========================================
      ACTIVITY COLORS

@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
  * Card Component - Phase 1: Foundation
  * 
  * Base card component with glassmorphism support, following the new design system:
- * - Neutral color palette (#f5f5f5, #e8e8e8, #d8d8d8)
+ * - Neutral color palette (var(--semantic-surface-base), var(--semantic-bg-subtle), var(--semantic-bg-muted))
  * - Glassmorphism effects with backdrop blur
  * - Consistent border radius (24px for cards)
  * - Modern shadows
@@ -67,32 +67,32 @@ export function Card({
 }: CardProps) {
   // Base styles for the card
   const baseStyle: CSSProperties = {
-    borderRadius: '24px',
+    borderRadius: 'var(--radius-2xl)',
     ...style,
   };
 
   // Variant-specific styles - using design system tokens
   const variantStyles: Record<string, CSSProperties> = {
     default: {
-      backgroundColor: 'var(--color-neutral-100)',
-      border: '1px solid var(--glass-border)',
-      boxShadow: 'var(--shadow-xl)',
+      backgroundColor: 'var(--semantic-card-bg)',
+      border: '1px solid var(--semantic-card-border)',
+      boxShadow: 'var(--semantic-card-shadow)',
     },
     glass: {
-      backgroundColor: 'var(--glass-bg)',
-      backdropFilter: 'var(--glass-blur)',
-      WebkitBackdropFilter: 'var(--glass-blur)',
-      border: '1px solid var(--glass-border)',
-      boxShadow: 'var(--shadow-xl)',
+      backgroundColor: 'var(--glass-white-80)',
+      backdropFilter: 'blur(var(--blur-lg))',
+      WebkitBackdropFilter: 'blur(var(--blur-lg))',
+      border: '1px solid var(--glass-border-light)',
+      boxShadow: 'var(--shadow-glass)',
     },
     elevated: {
-      backgroundColor: 'var(--color-neutral-100)',
-      border: '1px solid var(--glass-border)',
+      backgroundColor: 'var(--semantic-card-bg)',
+      border: '1px solid var(--semantic-card-border)',
       boxShadow: 'var(--shadow-2xl)',
     },
     flat: {
-      backgroundColor: 'var(--color-neutral-100)',
-      border: '1px solid var(--color-neutral-200)',
+      backgroundColor: 'var(--semantic-card-bg)',
+      border: '1px solid var(--semantic-border-light)',
       boxShadow: 'none',
     },
   };
@@ -163,7 +163,7 @@ export function CardTitle({ children, className }: CardTitleProps) {
         'text-xs font-light tracking-wider uppercase',
         className
       )}
-      style={{ color: '#8a8a8a' }}
+      style={{ color: 'var(--semantic-text-tertiary)' }}
     >
       {children}
     </h3>

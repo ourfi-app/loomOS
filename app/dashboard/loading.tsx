@@ -12,13 +12,13 @@ export default function DashboardLoading() {
     <div 
       className="min-h-screen flex items-center justify-center"
       style={{ 
-        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)'
+        background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)'
       }}
     >
       <div 
         className="flex flex-col items-center space-y-8 p-12 rounded-3xl"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundColor: 'var(--glass-white-80)',
           backdropFilter: 'blur(12px)',
           border: '1px solid rgba(255, 255, 255, 0.3)',
           boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
@@ -71,7 +71,7 @@ export default function DashboardLoading() {
         <div 
           className="text-xs font-light tracking-[0.3em] uppercase"
           style={{ 
-            color: '#8a8a8a',
+            color: 'var(--semantic-text-tertiary)',
             animation: 'fade 1.5s ease-in-out infinite'
           }}
         >

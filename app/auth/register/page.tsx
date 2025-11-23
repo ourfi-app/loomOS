@@ -114,7 +114,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)' }}>
+    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)' }}>
       <div className="w-full max-w-md space-y-6">
         {/* Back to Home */}
         <Link 
@@ -201,7 +201,7 @@ export default function RegisterPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
+                className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[var(--semantic-primary)] focus:ring-[var(--semantic-primary)] text-[var(--semantic-text-primary)]"
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
@@ -218,7 +218,7 @@ export default function RegisterPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
+                className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[var(--semantic-primary)] focus:ring-[var(--semantic-primary)] text-[var(--semantic-text-primary)]"
                 disabled={isLoading || isGoogleLoading}
               />
             </div>
@@ -236,7 +236,7 @@ export default function RegisterPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[var(--semantic-primary)] focus:ring-[var(--semantic-primary)] text-[var(--semantic-text-primary)]"
                   disabled={isLoading || isGoogleLoading}
                 />
               </div>
@@ -253,7 +253,7 @@ export default function RegisterPage() {
                   value={formData.unitNumber}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)]"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[var(--semantic-primary)] focus:ring-[var(--semantic-primary)] text-[var(--semantic-text-primary)]"
                   disabled={isLoading || isGoogleLoading}
                 />
               </div>
@@ -272,7 +272,7 @@ export default function RegisterPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)] pr-10"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[var(--semantic-primary)] focus:ring-[var(--semantic-primary)] text-[var(--semantic-text-primary)] pr-10"
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
@@ -300,7 +300,7 @@ export default function RegisterPage() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[#F18825] focus:ring-[#F18825] text-[var(--semantic-text-primary)] pr-10"
+                  className="h-11 rounded-lg bg-[var(--semantic-surface-hover)] border-[var(--semantic-border-medium)] focus:border-[var(--semantic-primary)] focus:ring-[var(--semantic-primary)] text-[var(--semantic-text-primary)] pr-10"
                   disabled={isLoading || isGoogleLoading}
                 />
                 <button
@@ -331,7 +331,7 @@ export default function RegisterPage() {
             Already have an account?{' '}
             <Link 
               href="/auth/login" 
-              className="text-[#F18825] hover:text-[#1976D2] font-medium"
+              className="text-[var(--semantic-primary)] hover:text-[#1976D2] font-medium"
             >
               Sign in
             </Link>

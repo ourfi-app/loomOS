@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
     <div 
       className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden" 
       style={{ 
-        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)'
+        background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)'
       }}
     >
       <div className="w-full max-w-md space-y-6 relative z-10">
@@ -53,7 +53,7 @@ export default function ForgotPasswordPage() {
         <Link
           href="/auth/login"
           className="inline-flex items-center gap-2 text-sm font-light transition-colors duration-200 hover:opacity-70"
-          style={{ color: '#6a6a6a' }}
+          style={{ color: 'var(--semantic-text-secondary)' }}
         >
           <ArrowLeft className="w-4 h-4" />
           Back to login
@@ -63,17 +63,17 @@ export default function ForgotPasswordPage() {
         <GlassPanel variant="medium" blur="medium" rounded="3xl" padding="xl" className="text-center">
           {/* loomOS Logo */}
           <div className="mb-6">
-            <h1 className="text-4xl font-extralight tracking-tight" style={{ color: '#4a4a4a' }}>
+            <h1 className="text-4xl font-extralight tracking-tight" style={{ color: 'var(--semantic-text-primary)' }}>
               loomOS
             </h1>
-            <p className="text-xs mt-2 font-light tracking-wider uppercase" style={{ color: '#8a8a8a' }}>
+            <p className="text-xs mt-2 font-light tracking-wider uppercase" style={{ color: 'var(--semantic-text-tertiary)' }}>
               PASSWORD RESET
             </p>
           </div>
 
           <div className="mt-6">
-            <h2 className="text-2xl font-light" style={{ color: '#4a4a4a' }}>Forgot Password?</h2>
-            <p className="mt-2 text-sm font-light" style={{ color: '#6a6a6a' }}>
+            <h2 className="text-2xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>Forgot Password?</h2>
+            <p className="mt-2 text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
               Enter your email to receive a reset link
             </p>
           </div>
@@ -89,10 +89,10 @@ export default function ForgotPasswordPage() {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-light mb-2" style={{ color: '#4a4a4a' }}>
+                <h3 className="text-xl font-light mb-2" style={{ color: 'var(--semantic-text-primary)' }}>
                   Check Your Email
                 </h3>
-                <p className="text-sm font-light" style={{ color: '#6a6a6a' }}>
+                <p className="text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
                   We&apos;ve sent password reset instructions to <span className="font-medium">{email}</span>
                 </p>
               </div>
@@ -126,7 +126,7 @@ export default function ForgotPasswordPage() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-xs font-light tracking-wider uppercase" style={{ color: '#6a6a6a' }}>
+                  <label htmlFor="email" className="block text-xs font-light tracking-wider uppercase" style={{ color: 'var(--semantic-text-secondary)' }}>
                     EMAIL ADDRESS
                   </label>
                   <div className="relative">
@@ -139,13 +139,13 @@ export default function ForgotPasswordPage() {
                       required
                       className="w-full px-4 py-3 pl-11 rounded-xl outline-none text-sm font-light transition-all duration-200"
                       style={{ 
-                        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                        backgroundColor: 'var(--glass-white-60)',
                         border: '1px solid #d0d0d0',
-                        color: '#4a4a4a'
+                        color: 'var(--semantic-text-primary)'
                       }}
                       disabled={isLoading}
                     />
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: '#8a8a8a' }} />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--semantic-text-tertiary)' }} />
                   </div>
                 </div>
 
@@ -162,12 +162,12 @@ export default function ForgotPasswordPage() {
               </form>
 
               <div className="mt-6 text-center">
-                <p className="text-xs font-light" style={{ color: '#8a8a8a' }}>
+                <p className="text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
                   Remember your password?{' '}
                   <Link
                     href="/auth/login"
                     className="font-light transition-colors duration-200 hover:opacity-70"
-                    style={{ color: '#4a4a4a' }}
+                    style={{ color: 'var(--semantic-text-primary)' }}
                   >
                     Sign in
                   </Link>
@@ -180,9 +180,9 @@ export default function ForgotPasswordPage() {
         {/* Security Notice */}
         <GlassPanel variant="medium" blur="medium" rounded="2xl" padding="md">
           <div className="flex gap-3">
-            <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: '#6a6a6a' }} />
+            <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--semantic-text-secondary)' }} />
             <div>
-              <p className="text-xs font-light" style={{ color: '#6a6a6a' }}>
+              <p className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
                 <span className="font-medium">Security Notice:</span> If an account exists with this email, you will receive reset instructions. For security reasons, we don&apos;t disclose whether an account exists.
               </p>
             </div>

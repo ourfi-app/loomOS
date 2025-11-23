@@ -102,7 +102,7 @@ const COLOR_PALETTES = [
   { name: 'Forest', colors: ['#2D5016', '#6A994E', '#A7C957', '#FFFFFF'] },
   { name: 'Sunset', colors: ['#D62828', '#F77F00', '#FCBF49', '#FFFFFF'] },
   { name: 'Purple', colors: ['#4A148C', '#7B1FA2', '#BA68C8', '#FFFFFF'] },
-  { name: 'Monochrome', colors: ['#1A1A1A', '#4A4A4A', '#9E9E9E', '#FFFFFF'] },
+  { name: 'Monochrome', colors: ['#1A1A1A', 'var(--semantic-text-primary)', '#9E9E9E', '#FFFFFF'] },
 ];
 
 export default function BrandyApp() {
