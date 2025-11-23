@@ -1,7 +1,7 @@
 
 /* WebOS-Inspired Marketing Page Design (Phase 3) */
 
-/* WebOS Design Tokens are already imported from styles/webos-design-tokens.css */
+/* WebOS Design Tokens are imported from /design-tokens/ (core.css, semantic.css, motion.css) via app/globals.css */
 
 /* Base typography - WebOS Style */
 body {

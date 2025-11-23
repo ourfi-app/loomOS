@@ -357,16 +357,18 @@ className="font-light"  // Default for most text
 
 If you encounter critical issues, you can temporarily roll back:
 
-1. **Uncomment legacy imports** in `app/globals.css`:
+1. **Use unified design token imports** in `app/globals.css`:
 
 ```css
-/* Uncomment for backwards compatibility */
-@import '../styles/webos-design-tokens.css';
-@import '../design-tokens/semantic.css';
+/* All design tokens are now unified in /design-tokens/ */
 @import '../design-tokens/core.css';
+@import '../design-tokens/semantic.css';
+@import '../design-tokens/motion.css';
 ```
 
-2. **Test thoroughly** before removing legacy files.
+**Note:** Legacy token files from `/styles/` have been removed as of PR #94. All design tokens are now consolidated in the `/design-tokens/` directory.
+
+2. **Test thoroughly** after migration.
 
 3. **Migrate gradually** - one component/page at a time.
 
