@@ -114,7 +114,8 @@ function getStackCardPosition(cardIndex: number, totalCards: number, isExpanded:
   if (!isCentered || !isExpanded) {
     const rotationAngle = (cardIndex - (totalCards - 1) / 2) * 8;
     const horizontalOffset = (cardIndex - (totalCards - 1) / 2) * 35;
-    const verticalOffset = Math.abs(cardIndex - (totalCards - 1) / 2) * 15;
+    // Remove vertical offset to keep cards horizontally aligned
+    const verticalOffset = 0;
     return {
       translateX: horizontalOffset,
       translateY: verticalOffset,
