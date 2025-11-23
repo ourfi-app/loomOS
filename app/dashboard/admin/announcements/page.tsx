@@ -538,7 +538,7 @@ export default function AnnouncementsPage() {
                 }}
                 className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.6)',
+                  background: 'var(--glass-white-60)',
                   border: '1px solid var(--webos-border-secondary)',
                   color: 'var(--webos-text-primary)'
                 }}
@@ -618,7 +618,7 @@ export default function AnnouncementsPage() {
                     onClick={() => openEditDialog(selectedAnnouncement)}
                     className="rounded-xl font-light tracking-wide transition-all hover:opacity-90"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.6)',
+                      background: 'var(--glass-white-60)',
                       border: '1px solid var(--webos-border-secondary)',
                       color: 'var(--webos-text-primary)'
                     }}

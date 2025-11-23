@@ -26,7 +26,7 @@ const cardData = [
     id: 'browser',
     title: 'Browser',
     type: 'single',
-    color: '#f5f5f5',
+    color: 'var(--semantic-surface-base)',
     icon: 'globe',
     content: {
       url: 'sfchronicle.com',
@@ -54,7 +54,7 @@ const cardData = [
     id: 'calendar',
     title: 'Calendar',
     type: 'single',
-    color: '#f5f5f5',
+    color: 'var(--semantic-surface-base)',
     icon: 'calendar',
     content: {
       date: 'Today',
@@ -165,7 +165,7 @@ export default function DashboardPage() {
     <div 
       className="absolute inset-0 flex flex-col"
       style={{
-        backgroundColor: '#f5f5f5',
+        backgroundColor: 'var(--semantic-surface-base)',
         fontFamily: '"Helvetica Neue", Arial, sans-serif'
       }}
     >
@@ -173,16 +173,16 @@ export default function DashboardPage() {
       <div 
         className="flex items-center justify-between px-6 py-3"
         style={{
-          backgroundColor: '#e8e8e8',
-          borderBottom: '1px solid rgba(0,0,0,0.1)'
+          backgroundColor: 'var(--semantic-bg-subtle)',
+          borderBottom: '1px solid var(--glass-black-10)'
         }}
       >
         <div className="flex items-center gap-3">
-          <Mail className="w-5 h-5" style={{ color: '#4a4a4a' }} />
-          <span className="text-base font-light" style={{ color: '#4a4a4a' }}>Mail</span>
+          <Mail className="w-5 h-5" style={{ color: 'var(--semantic-text-primary)' }} />
+          <span className="text-base font-light" style={{ color: 'var(--semantic-text-primary)' }}>Mail</span>
         </div>
         <button onClick={() => setActiveApp(null)}>
-          <X className="w-5 h-5" style={{ color: '#6a6a6a' }} />
+          <X className="w-5 h-5" style={{ color: 'var(--semantic-text-secondary)' }} />
         </button>
       </div>
 
@@ -193,11 +193,11 @@ export default function DashboardPage() {
           className="w-48 border-r overflow-y-auto"
           style={{ 
             backgroundColor: '#f8f8f8',
-            borderColor: 'rgba(0,0,0,0.1)'
+            borderColor: 'var(--glass-black-10)'
           }}
         >
           <div className="p-3">
-            <div className="text-xs font-light tracking-wider uppercase mb-3" style={{ color: '#8a8a8a' }}>
+            <div className="text-xs font-light tracking-wider uppercase mb-3" style={{ color: 'var(--semantic-text-tertiary)' }}>
               FAVORITES
             </div>
             {emailData.folders.map((folder) => (
@@ -207,14 +207,14 @@ export default function DashboardPage() {
                 className="w-full flex items-center justify-between px-3 py-2 rounded-lg mb-1 transition-colors"
                 style={{
                   backgroundColor: selectedFolder === folder.id ? 'rgba(122, 158, 181, 0.2)' : 'transparent',
-                  color: '#4a4a4a'
+                  color: 'var(--semantic-text-primary)'
                 }}
               >
                 <div className="flex items-center gap-2">
                   {folder.isStarred && <Star className="w-3 h-3" style={{ color: '#b5a07a' }} />}
                   <span className="text-sm font-light">{folder.name}</span>
                 </div>
-                <span className="text-xs font-light" style={{ color: '#8a8a8a' }}>
+                <span className="text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
                   {folder.count}
                 </span>
               </button>
@@ -227,7 +227,7 @@ export default function DashboardPage() {
           className="w-80 border-r overflow-y-auto"
           style={{ 
             backgroundColor: '#fff',
-            borderColor: 'rgba(0,0,0,0.1)'
+            borderColor: 'var(--glass-black-10)'
           }}
         >
           {emailData.messages.map((message) => (
@@ -241,17 +241,17 @@ export default function DashboardPage() {
               }}
             >
               <div className="flex items-start justify-between mb-1">
-                <span className="text-sm font-light" style={{ color: '#4a4a4a' }}>
+                <span className="text-sm font-light" style={{ color: 'var(--semantic-text-primary)' }}>
                   {message.from}
                 </span>
-                <span className="text-xs font-light" style={{ color: '#8a8a8a' }}>
+                <span className="text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
                   {message.time}
                 </span>
               </div>
-              <div className="text-sm font-light mb-1" style={{ color: '#6a6a6a' }}>
+              <div className="text-sm font-light mb-1" style={{ color: 'var(--semantic-text-secondary)' }}>
                 {message.subject}
               </div>
-              <div className="text-xs font-light flex items-center gap-2" style={{ color: '#9a9a9a' }}>
+              <div className="text-xs font-light flex items-center gap-2" style={{ color: 'var(--semantic-text-muted)' }}>
                 {message.preview.substring(0, 50)}...
                 {message.hasAttachment && <Paperclip className="w-3 h-3" />}
               </div>
@@ -273,20 +273,20 @@ export default function DashboardPage() {
                   </span>
                 </div>
                 <div className="flex-1">
-                  <div className="text-base font-light mb-1" style={{ color: '#4a4a4a' }}>
+                  <div className="text-base font-light mb-1" style={{ color: 'var(--semantic-text-primary)' }}>
                     {selectedEmail.from}
                   </div>
-                  <div className="text-xs font-light" style={{ color: '#8a8a8a' }}>
+                  <div className="text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
                     {selectedEmail.date} at {selectedEmail.time}
                   </div>
                 </div>
               </div>
-              <h2 className="text-lg font-light mb-4" style={{ color: '#4a4a4a' }}>
+              <h2 className="text-lg font-light mb-4" style={{ color: 'var(--semantic-text-primary)' }}>
                 {selectedEmail.subject}
               </h2>
               <div 
                 className="text-sm font-light whitespace-pre-wrap"
-                style={{ color: '#6a6a6a', lineHeight: '1.6' }}
+                style={{ color: 'var(--semantic-text-secondary)', lineHeight: '1.6' }}
               >
                 {selectedEmail.body}
               </div>
@@ -295,7 +295,7 @@ export default function DashboardPage() {
             <div className="h-full flex items-center justify-center">
               <div className="text-center">
                 <Mail className="w-16 h-16 mx-auto mb-4" style={{ color: '#d0d0d0' }} />
-                <p className="text-sm font-light" style={{ color: '#9a9a9a' }}>
+                <p className="text-sm font-light" style={{ color: 'var(--semantic-text-muted)' }}>
                   Select a message to read
                 </p>
               </div>
@@ -320,7 +320,7 @@ export default function DashboardPage() {
     <div 
       className="h-full relative overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)',
+        background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)',
         fontFamily: '"Helvetica Neue", Arial, sans-serif'
       }}
     >
@@ -332,21 +332,21 @@ export default function DashboardPage() {
             onClick={handlePrevCard}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              backgroundColor: 'var(--glass-white-80)',
               boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
             }}
           >
-            <ChevronLeft className="w-6 h-6" style={{ color: '#4a4a4a' }} />
+            <ChevronLeft className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
           </button>
           <button
             onClick={handleNextCard}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              backgroundColor: 'var(--glass-white-80)',
               boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
             }}
           >
-            <ChevronRight className="w-6 h-6" style={{ color: '#4a4a4a' }} />
+            <ChevronRight className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
           </button>
 
           {/* Cards */}
@@ -393,10 +393,10 @@ export default function DashboardPage() {
                           }}
                         >
                           <div className="p-8">
-                            <h3 className="text-xl font-light mb-2" style={{ color: '#4a4a4a' }}>
+                            <h3 className="text-xl font-light mb-2" style={{ color: 'var(--semantic-text-primary)' }}>
                               {subCard.title}
                             </h3>
-                            <p className="text-3xl font-light" style={{ color: '#6a6a6a' }}>
+                            <p className="text-3xl font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
                               {subCard.count}
                             </p>
                           </div>
@@ -426,10 +426,10 @@ export default function DashboardPage() {
                   >
                     <div className="p-8 h-full flex flex-col">
                       <div className="flex items-center gap-3 mb-4">
-                        {card.icon === 'globe' && <Globe className="w-6 h-6" style={{ color: '#4a4a4a' }} />}
-                        {card.icon === 'mail' && <Mail className="w-6 h-6" style={{ color: '#4a4a4a' }} />}
-                        {card.icon === 'calendar' && <Calendar className="w-6 h-6" style={{ color: '#4a4a4a' }} />}
-                        <h3 className="text-xl font-light" style={{ color: '#4a4a4a' }}>
+                        {card.icon === 'globe' && <Globe className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />}
+                        {card.icon === 'mail' && <Mail className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />}
+                        {card.icon === 'calendar' && <Calendar className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />}
+                        <h3 className="text-xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>
                           {card.title}
                         </h3>
                       </div>
@@ -437,15 +437,15 @@ export default function DashboardPage() {
                       {/* Card content */}
                       {card.id === 'browser' && card.content && (
                         <div className="flex-1 overflow-hidden">
-                          <div className="text-xs font-light mb-3" style={{ color: '#8a8a8a' }}>
+                          <div className="text-xs font-light mb-3" style={{ color: 'var(--semantic-text-tertiary)' }}>
                             {card.content.url}
                           </div>
-                          <h4 className="text-base font-light mb-3" style={{ color: '#4a4a4a' }}>
+                          <h4 className="text-base font-light mb-3" style={{ color: 'var(--semantic-text-primary)' }}>
                             {card.content.title}
                           </h4>
                           <div className="space-y-2">
                             {card.content.headlines.map((headline: string, i: number) => (
-                              <div key={i} className="text-sm font-light" style={{ color: '#6a6a6a' }}>
+                              <div key={i} className="text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
                                 • {headline}
                               </div>
                             ))}
@@ -455,7 +455,7 @@ export default function DashboardPage() {
 
                       {card.id === 'calendar' && card.content && (
                         <div className="flex-1 overflow-hidden">
-                          <div className="text-xs font-light tracking-wider uppercase mb-3" style={{ color: '#8a8a8a' }}>
+                          <div className="text-xs font-light tracking-wider uppercase mb-3" style={{ color: 'var(--semantic-text-tertiary)' }}>
                             {card.content.date}
                           </div>
                           <div className="space-y-3">
@@ -468,10 +468,10 @@ export default function DashboardPage() {
                                 <div className="text-sm font-light mb-1" style={{ color: '#7a9eb5' }}>
                                   {event.time}
                                 </div>
-                                <div className="text-sm font-light mb-1" style={{ color: '#4a4a4a' }}>
+                                <div className="text-sm font-light mb-1" style={{ color: 'var(--semantic-text-primary)' }}>
                                   {event.title}
                                 </div>
-                                <div className="flex items-center gap-1 text-xs font-light" style={{ color: '#8a8a8a' }}>
+                                <div className="flex items-center gap-1 text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
                                   <MapPin className="w-3 h-3" />
                                   {event.location}
                                 </div>
@@ -485,7 +485,7 @@ export default function DashboardPage() {
                         <div className="flex-1 flex items-center justify-center">
                           <div className="text-center">
                             <Mail className="w-16 h-16 mx-auto mb-3" style={{ color: '#d0d0d0' }} />
-                            <p className="text-sm font-light" style={{ color: '#9a9a9a' }}>
+                            <p className="text-sm font-light" style={{ color: 'var(--semantic-text-muted)' }}>
                               Click to open Mail
                             </p>
                           </div>
@@ -504,7 +504,7 @@ export default function DashboardPage() {
       <div 
         className="fixed bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-2xl flex items-center gap-4"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.6)',
+          backgroundColor: 'var(--glass-white-60)',
           backdropFilter: 'blur(12px)',
           border: '1px solid rgba(255, 255, 255, 0.3)',
           boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
@@ -517,7 +517,7 @@ export default function DashboardPage() {
           >
             <Home className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xs font-light" style={{ color: '#6a6a6a' }}>Home</span>
+          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Home</span>
         </button>
         <button 
           onClick={() => setActiveApp('mail')}
@@ -529,7 +529,7 @@ export default function DashboardPage() {
           >
             <Mail className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xs font-light" style={{ color: '#6a6a6a' }}>Mail</span>
+          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Mail</span>
         </button>
         <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
           <div 
@@ -538,7 +538,7 @@ export default function DashboardPage() {
           >
             <MessageSquare className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xs font-light" style={{ color: '#6a6a6a' }}>Chat</span>
+          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Chat</span>
         </button>
         <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
           <div 
@@ -547,7 +547,7 @@ export default function DashboardPage() {
           >
             <Calendar className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xs font-light" style={{ color: '#6a6a6a' }}>Calendar</span>
+          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Calendar</span>
         </button>
       </div>
     </div>

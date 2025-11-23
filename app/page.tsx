@@ -57,7 +57,7 @@ const Navigation: React.FC<NavigationProps> = ({ onLoginClick }) => {
         scrolled ? 'backdrop-blur-md shadow-sm' : ''
       }`}
       style={{
-        background: scrolled ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
+        background: scrolled ? 'var(--glass-white-80)' : 'transparent',
         borderBottom: scrolled ? '1px solid var(--webos-border-primary)' : 'none'
       }}
       initial={{ y: -100 }}
@@ -71,7 +71,7 @@ const Navigation: React.FC<NavigationProps> = ({ onLoginClick }) => {
               className="w-10 h-10 rounded-xl flex items-center justify-center"
               style={{
                 background: 'linear-gradient(135deg, #9ca3a0, #b8bfbc)',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                boxShadow: '0 2px 8px var(--glass-black-10)'
               }}
               whileHover={{ scale: 1.05 }}
               transition={webOSTransition}
@@ -339,7 +339,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
         className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
         style={{
           background: 'linear-gradient(135deg, #9ca3a0, #b8bfbc)',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 2px 8px var(--glass-black-10)',
           color: 'var(--webos-text-white)'
         }}
       >
@@ -492,7 +492,7 @@ const DesignSystem = () => {
             <p className="text-[var(--semantic-text-secondary)] text-lg mb-6">
               Every element uses our distinctive{' '}
               <span className="bg-gradient-to-r from-loomos-orange to-loomos-orange-dark bg-clip-text text-transparent font-bold">
-                #F18825 orange accent
+                var(--semantic-primary) orange accent
               </span>{' '}
               paired with clean off-white backgrounds. Not garish. Not corporate. Just warm, inviting, and unmistakably loomOS.
             </p>
@@ -501,7 +501,7 @@ const DesignSystem = () => {
               <div className="flex items-center space-x-4">
                 <div className="w-16 h-16 bg-loomos-orange rounded-xl shadow-lg"></div>
                 <div>
-                  <div className="font-semibold text-[var(--semantic-text-primary)]">#F18825</div>
+                  <div className="font-semibold text-[var(--semantic-text-primary)]">var(--semantic-primary)</div>
                   <div className="text-sm text-[var(--semantic-text-secondary)]">Primary Orange</div>
                 </div>
               </div>

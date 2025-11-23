@@ -639,7 +639,7 @@ export default function ProfilePage() {
                   onClick={handleReset}
                   className="rounded-xl py-3 px-6 text-sm font-light tracking-wide uppercase transition-all hover:opacity-90"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.6)',
+                    background: 'var(--glass-white-60)',
                     border: '1px solid var(--webos-border-secondary)',
                     color: 'var(--webos-text-primary)',
                     boxShadow: 'var(--webos-shadow-sm)'

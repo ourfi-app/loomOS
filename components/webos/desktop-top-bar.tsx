@@ -43,7 +43,7 @@ export function DesktopTopBar() {
     >
       <div className="flex items-center justify-between px-6 py-2">
         {/* Left: Logo */}
-        <div className="flex items-center gap-2 font-light" style={{ color: '#e8e8e8', fontWeight: '300' }}>
+        <div className="flex items-center gap-2 font-light" style={{ color: 'var(--semantic-bg-subtle)', fontWeight: '300' }}>
           {/* loomOS Interlace Logo */}
           <svg
             width="20"
@@ -63,7 +63,7 @@ export function DesktopTopBar() {
         </div>
 
         {/* Right: Status Icons + Time */}
-        <div className="flex items-center gap-4 text-xs font-light" style={{ color: '#e8e8e8', fontWeight: '300' }}>
+        <div className="flex items-center gap-4 text-xs font-light" style={{ color: 'var(--semantic-bg-subtle)', fontWeight: '300' }}>
           <Wifi className="w-4 h-4" strokeWidth={2} />
           <Volume2 className="w-4 h-4" strokeWidth={2} />
           <Clock className="w-4 h-4" strokeWidth={2} />

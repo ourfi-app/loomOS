@@ -97,7 +97,7 @@ export default function DocumentsPage() {
           className="flex-none"
           style={{
             borderBottom: '1px solid var(--webos-border-primary)',
-            background: 'rgba(255, 255, 255, 0.6)',
+            background: 'var(--glass-white-60)',
             backdropFilter: 'blur(20px)'
           }}
         >
@@ -150,7 +150,7 @@ export default function DocumentsPage() {
               <button
                 className="rounded-xl p-2 transition-opacity hover:opacity-80"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.6)',
+                  background: 'var(--glass-white-60)',
                   border: '1px solid var(--webos-border-secondary)',
                   boxShadow: 'var(--webos-shadow-sm)'
                 }}

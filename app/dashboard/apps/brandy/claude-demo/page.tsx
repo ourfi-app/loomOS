@@ -135,7 +135,7 @@ export default function ClaudeHelperDemo() {
           className="mb-8"
         >
           <h1 className="text-4xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-            <Sparkles className="w-10 h-10 text-[#F18825]" />
+            <Sparkles className="w-10 h-10 text-[var(--semantic-primary)]" />
             Claude + Gemini: Dual-AI Brand Creation
           </h1>
           <p className="text-lg text-slate-600">
@@ -234,7 +234,7 @@ export default function ClaudeHelperDemo() {
                   <Button
                     onClick={handleStartWorkflow}
                     disabled={loading}
-                    className="w-full bg-[#F18825] hover:bg-[#d17620] text-white"
+                    className="w-full bg-[var(--semantic-primary)] hover:bg-[var(--semantic-primary-dark)] text-white"
                     size="lg"
                   >
                     {loading ? (
@@ -264,7 +264,7 @@ export default function ClaudeHelperDemo() {
               <Card className="shadow-xl">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Brain className="w-6 h-6 text-[#F18825]" />
+                    <Brain className="w-6 h-6 text-[var(--semantic-primary)]" />
                     Claude is analyzing your brand...
                   </CardTitle>
                 </CardHeader>
@@ -287,7 +287,7 @@ export default function ClaudeHelperDemo() {
                             <Card key={prompt.id}>
                               <CardContent className="pt-4">
                                 <div className="flex items-start gap-3">
-                                  <Badge className="bg-[#F18825]">{index + 1}</Badge>
+                                  <Badge className="bg-[var(--semantic-primary)]">{index + 1}</Badge>
                                   <div className="flex-1">
                                     <p className="font-medium mb-1">{prompt.expectedStyle}</p>
                                     <p className="text-sm text-slate-600 mb-2">{prompt.rationale}</p>
@@ -304,7 +304,7 @@ export default function ClaudeHelperDemo() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-center py-12">
-                      <Loader2 className="w-8 h-8 animate-spin text-[#F18825]" />
+                      <Loader2 className="w-8 h-8 animate-spin text-[var(--semantic-primary)]" />
                     </div>
                   )}
                 </CardContent>
@@ -425,7 +425,7 @@ function StageIndicator({
       <div
         className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
           active
-            ? 'bg-[#F18825] text-white'
+            ? 'bg-[var(--semantic-primary)] text-white'
             : complete
             ? 'bg-green-600 text-white'
             : 'bg-slate-200 text-slate-400'

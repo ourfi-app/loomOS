@@ -389,7 +389,7 @@ function ModeTab({ icon: Icon, label, active, onClick, disabled }: ModeTabProps)
       disabled={disabled}
       className={`
         relative flex items-center gap-2 px-6 py-3 font-semibold transition-colors min-h-[44px]
-        ${active ? 'text-[#F18825]' : 'text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)]'}
+        ${active ? 'text-[var(--semantic-primary)]' : 'text-[var(--semantic-text-secondary)] hover:text-[var(--semantic-text-primary)]'}
         ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
       `}
     >
@@ -397,7 +397,7 @@ function ModeTab({ icon: Icon, label, active, onClick, disabled }: ModeTabProps)
       {label}
       {active && (
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F18825]"
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--semantic-primary)]"
           layoutId="activeTab"
           transition={{ type: 'spring', ...LOOM_OS_SPRING }}
         />
@@ -416,11 +416,11 @@ function LoadingOverlay({ message, progress }: { message: string; progress: numb
     >
       <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full mx-4">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[var(--semantic-border-light)] border-t-[#F18825] mb-4" />
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[var(--semantic-border-light)] border-t-[var(--semantic-primary)] mb-4" />
           <p className="font-semibold text-lg mb-2">{message}</p>
           <div className="w-full bg-[var(--semantic-bg-muted)] rounded-full h-2 mb-2">
             <motion.div
-              className="bg-[#F18825] h-2 rounded-full"
+              className="bg-[var(--semantic-primary)] h-2 rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
@@ -469,7 +469,7 @@ function LogoMode(props: any) {
       className="flex items-center justify-center h-full p-8"
     >
       <div className="text-center max-w-2xl">
-        <Sparkles className="w-16 h-16 mx-auto mb-4 text-[#F18825]" />
+        <Sparkles className="w-16 h-16 mx-auto mb-4 text-[var(--semantic-primary)]" />
         <h2 className="text-2xl font-bold mb-4">Logo Studio</h2>
         <p className="text-[var(--semantic-text-secondary)] mb-8">
           Generate professional logos with AI, create brand identities, and prepare for web design.
@@ -477,7 +477,7 @@ function LogoMode(props: any) {
         {props.isComplete && !props.isGenerating && props.savedLogos.length === 0 && (
           <button
             onClick={props.onGenerateLogos}
-            className="px-6 py-3 bg-[#F18825] text-white rounded-lg hover:bg-[#E07515] min-h-[44px]"
+            className="px-6 py-3 bg-[var(--semantic-primary)] text-white rounded-lg hover:bg-[var(--semantic-primary-dark)] min-h-[44px]"
           >
             Generate Logo Concepts
           </button>
@@ -507,7 +507,7 @@ function WebMode(props: any) {
       className="flex items-center justify-center h-full p-8"
     >
       <div className="text-center max-w-2xl">
-        <Globe className="w-16 h-16 mx-auto mb-4 text-[#2B8ED9]" />
+        <Globe className="w-16 h-16 mx-auto mb-4 text-[var(--semantic-accent)]" />
         <h2 className="text-2xl font-bold mb-4">Web Builder</h2>
         <p className="text-[var(--semantic-text-secondary)] mb-8">
           Generate complete websites that match your brand identity.
@@ -523,7 +523,7 @@ function WebMode(props: any) {
                 </div>
                 <button
                   onClick={() => props.onExport(project.id)}
-                  className="px-4 py-2 bg-[#2B8ED9] text-white rounded-lg hover:bg-[#1474B8] flex items-center gap-2"
+                  className="px-4 py-2 bg-[var(--semantic-accent)] text-white rounded-lg hover:bg-[var(--semantic-accent-dark)] flex items-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Export

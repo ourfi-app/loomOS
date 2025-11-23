@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--glass-white-60);
   color: var(--webos-text-primary);
   border: 1px solid var(--webos-border-secondary);
   box-shadow: var(--webos-shadow-sm);

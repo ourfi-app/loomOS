@@ -1414,7 +1414,7 @@ export default function AppDesigner() {
                                 background: currentApp.designPatterns.headerStyle === 'gradient' 
                                   ? 'linear-gradient(180deg, #FAFAFA 0%, #ECECEC 100%)'
                                   : currentApp.designPatterns.headerStyle === 'flat'
-                                  ? '#F5F5F5'
+                                  ? 'var(--semantic-surface-base)'
                                   : '#FFFFFF'
                               }}
                             >

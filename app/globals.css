@@ -103,10 +103,10 @@
     --messaging: 280 60% 60%;         /* Magenta */
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 3px 0 var(--glass-black-10);
+    --shadow-md: 0 4px 6px -1px var(--glass-black-10);
+    --shadow-lg: 0 10px 15px -3px var(--glass-black-10);
+    --shadow-xl: 0 20px 25px -5px var(--glass-black-10);
     --shadow-focus: 0 0 0 3px rgba(43, 142, 217, 0.15);
   }
 
@@ -447,7 +447,7 @@
     backdrop-filter: blur(20px);
     box-shadow: 
       0 20px 40px rgba(0, 0, 0, 0.15),
-      0 10px 20px rgba(0, 0, 0, 0.1),
+      0 10px 20px var(--glass-black-10),
       0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     /* For mobile/multitasking mode - centered */
     left: 50%;
@@ -772,7 +772,7 @@
   }
   
   .dark .loomos-app-dock-content {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--glass-black-80);
     border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
 
@@ -883,7 +883,7 @@
       rgba(247, 246, 244, 0.92)
     );
     backdrop-filter: blur(40px) saturate(180%);
-    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    border: 1.5px solid var(--glass-white-80);
     box-shadow: 
       0 20px 40px rgba(0, 0, 0, 0.08),
       0 8px 16px rgba(0, 0, 0, 0.04),
@@ -928,7 +928,7 @@
   }
 
   .dark .loomos-dock-popover-header {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--glass-white-80);
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0.06),
@@ -1019,7 +1019,7 @@
     @apply w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0;
     @apply transition-all duration-200;
     box-shadow: 
-      0 2px 8px rgba(0, 0, 0, 0.1),
+      0 2px 8px var(--glass-black-10),
       0 1px 2px rgba(0, 0, 0, 0.06),
       inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
@@ -1447,7 +1447,7 @@
   .loomos-assistant-bubble {
     @apply w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl;
     @apply transition-all duration-300 hover:scale-110 cursor-pointer;
-    background: linear-gradient(135deg, #F18825, #F5A34E);
+    background: linear-gradient(135deg, var(--semantic-primary), #F5A34E);
   }
 
   .loomos-assistant-container {
@@ -1478,7 +1478,7 @@
 
   .loomos-assistant-header {
     @apply px-4 py-3 flex items-center justify-between;
-    background: linear-gradient(to right, #F18825, #F5A34E);
+    background: linear-gradient(to right, var(--semantic-primary), #F5A34E);
   }
 
   .loomos-assistant-welcome {
@@ -2276,7 +2276,7 @@ html {
 
 /* Card Header Refinements */
 .loomos-card-header-refined {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--glass-black-10);
   backdrop-filter: blur(10px);
 }
 
@@ -2630,7 +2630,7 @@ body:not(.using-mouse) *:focus {
 }
 
 .card-3d-switcher-area::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--glass-black-10);
   border-radius: 4px;
 }
 
@@ -2691,7 +2691,7 @@ body:not(.using-mouse) *:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--glass-white-80);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: none;
@@ -2704,7 +2704,7 @@ body:not(.using-mouse) *:focus {
 .card-spinner {
   width: 36px;
   height: 36px;
-  border: 4px solid rgba(0, 0, 0, 0.1);
+  border: 4px solid var(--glass-black-10);
   border-left-color: hsl(var(--primary));
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -2735,14 +2735,14 @@ body:not(.using-mouse) *:focus {
 
 /* Loom Icon */
 .loom-icon {
-  background: linear-gradient(135deg, #8a8a8a 0%, #666666 100%);
+  background: linear-gradient(135deg, var(--semantic-text-tertiary) 0%, #666666 100%);
   color: white;
   box-shadow: 0 5px 15px rgba(102, 102, 102, 0.4);
   transition: all 0.3s ease;
 }
 
 .loom-icon:hover {
-  background: linear-gradient(135deg, #666666 0%, #8a8a8a 100%);
+  background: linear-gradient(135deg, #666666 0%, var(--semantic-text-tertiary) 100%);
   transform: scale(1.2) translateY(-8px);
 }
 

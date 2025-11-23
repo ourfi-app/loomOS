@@ -155,7 +155,7 @@ export function WelcomeTutorial({ onComplete, onSkip }: WelcomeTutorialProps) {
             width: highlightElement.width + 16,
             height: highlightElement.height + 16,
             borderRadius: '12px',
-            boxShadow: '0 0 0 4px rgba(139, 92, 246, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.6)',
+            boxShadow: '0 0 0 4px rgba(139, 92, 246, 0.5), 0 0 0 9999px var(--glass-black-60)',
           }}
         />
       )}
