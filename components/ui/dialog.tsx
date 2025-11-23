@@ -25,7 +25,7 @@ const DialogOverlay = React.forwardRef<
       className
     )}
     style={{
-      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+      backgroundColor: 'var(--glass-black-40)',
       backdropFilter: 'blur(8px)',
       WebkitBackdropFilter: 'blur(8px)',
       ...style,
@@ -48,19 +48,19 @@ const DialogContent = React.forwardRef<
         className
       )}
       style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        backgroundColor: 'var(--bg-surface)',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.5)',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-        color: '#4a4a4a',
+        border: '1px solid var(--border-light)',
+        boxShadow: 'var(--shadow-modal)',
+        color: 'var(--text-primary)',
         ...style,
       }}
       {...props}
     >
       {children}
       <DialogPrimitive.Close className="absolute right-4 top-4 rounded-full opacity-70 transition-opacity hover:opacity-100 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-neutral-400 disabled:pointer-events-none p-2">
-        <X className="h-4 w-4" style={{ color: '#8a8a8a' }} />
+        <X className="h-4 w-4" style={{ color: 'var(--text-tertiary)' }} />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
@@ -106,7 +106,7 @@ const DialogTitle = React.forwardRef<
       'text-lg font-light leading-none tracking-tight',
       className
     )}
-    style={{ color: '#4a4a4a' }}
+    style={{ color: 'var(--text-primary)' }}
     {...props}
   />
 ));
@@ -119,7 +119,7 @@ const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     className={cn('text-sm font-light', className)}
-    style={{ color: '#6a6a6a' }}
+    style={{ color: 'var(--text-secondary)' }}
     {...props}
   />
 ));

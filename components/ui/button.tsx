@@ -34,29 +34,29 @@ const buttonVariants = cva(
 // Inline variant styles
 const variantStyles: Record<string, React.CSSProperties> = {
   default: {
-    backgroundColor: '#1a1a1a',
-    color: '#ffffff',
+    backgroundColor: 'var(--button-bg)',
+    color: 'var(--button-text)',
   },
   destructive: {
-    backgroundColor: '#dc3545',
-    color: '#ffffff',
+    backgroundColor: 'var(--status-error)',
+    color: 'var(--text-on-accent)',
   },
   outline: {
     backgroundColor: 'transparent',
-    color: '#4a4a4a',
-    borderColor: '#d0d0d0',
+    color: 'var(--text-primary)',
+    borderColor: 'var(--border-medium)',
   },
   secondary: {
-    backgroundColor: 'rgba(200, 200, 200, 0.5)',
-    color: '#4a4a4a',
+    backgroundColor: 'var(--bg-secondary)',
+    color: 'var(--text-primary)',
   },
   ghost: {
     backgroundColor: 'transparent',
-    color: '#4a4a4a',
+    color: 'var(--text-primary)',
   },
   link: {
     backgroundColor: 'transparent',
-    color: '#4a4a4a',
+    color: 'var(--semantic-text-link)',
   },
 }
 

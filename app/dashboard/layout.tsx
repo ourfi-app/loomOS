@@ -64,9 +64,9 @@ function SystemStatusBar({
       aria-label="System status bar"
       className="fixed top-0 left-0 right-0 h-10 sm:h-11 md:h-12 flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 z-50 transition-all duration-200"
       style={{ 
-        backgroundColor: '#1a1a1a',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
+        backgroundColor: 'var(--chrome-darker)',
+        borderBottom: '1px solid var(--glass-border-light)',
+        boxShadow: 'var(--shadow-md)'
       }}
     >
       {/* Left Section: loomOS logo and hamburger menu */}
@@ -80,7 +80,7 @@ function SystemStatusBar({
           aria-expanded={showMobileMenu}
           data-menu="mobile"
         >
-          <Menu className="w-5 h-5" style={{ color: '#ffffff' }} />
+          <Menu className="w-5 h-5" style={{ color: 'var(--chrome-text)' }} />
         </button>
 
         {/* loomOS Logo */}
@@ -92,7 +92,7 @@ function SystemStatusBar({
         >
           <div 
             className="font-light text-xs sm:text-sm md:text-base tracking-wide truncate" 
-            style={{ color: '#ffffff' }}
+            style={{ color: 'var(--chrome-text)' }}
           >
             loomOS
           </div>
@@ -110,42 +110,42 @@ function SystemStatusBar({
           style={{ minWidth: '44px', minHeight: '44px' }}
           aria-label="Mail"
         >
-          <Mail className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+          <Mail className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
         <button 
           className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
           style={{ minWidth: '44px', minHeight: '44px' }}
           aria-label="Messages"
         >
-          <MessageSquare className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+          <MessageSquare className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
         <button 
           className="hidden lg:block p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
           style={{ minWidth: '44px', minHeight: '44px' }}
           aria-label="Music"
         >
-          <Music className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+          <Music className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
         <button 
           className="hidden xl:block p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
           style={{ minWidth: '44px', minHeight: '44px' }}
           aria-label="Bluetooth"
         >
-          <Bluetooth className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+          <Bluetooth className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
         <button 
           className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
           style={{ minWidth: '44px', minHeight: '44px' }}
           aria-label="WiFi"
         >
-          <Wifi className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+          <Wifi className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
         <button 
           className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
           style={{ minWidth: '44px', minHeight: '44px' }}
           aria-label="Battery"
         >
-          <Battery className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+          <Battery className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'var(--chrome-text-secondary)' }} />
         </button>
       </div>
 
@@ -154,7 +154,7 @@ function SystemStatusBar({
         {/* Clock - Adaptive display */}
         <div 
           className="text-xs sm:text-sm md:text-base font-light whitespace-nowrap hidden sm:block"
-          style={{ color: 'rgba(255, 255, 255, 0.95)' }}
+          style={{ color: 'var(--chrome-text)' }}
           aria-live="polite"
           aria-atomic="true"
         >
@@ -179,11 +179,11 @@ function SystemStatusBar({
               className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-200" 
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
             >
-              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" style={{ color: '#ffffff' }} />
+              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" style={{ color: 'var(--chrome-text)' }} />
             </div>
             <ChevronDown 
               className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-200 ${showProfileMenu ? 'rotate-180' : ''}`}
-              style={{ color: 'rgba(255, 255, 255, 0.85)' }} 
+              style={{ color: 'var(--chrome-text-secondary)' }} 
             />
           </button>
           
@@ -194,17 +194,17 @@ function SystemStatusBar({
               aria-label="User menu"
               className="absolute right-0 top-full mt-2 w-56 sm:w-60 md:w-64 rounded-xl overflow-hidden animate-fadeIn"
               style={{
-                backgroundColor: '#2a2a2a',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                backgroundColor: 'var(--bg-elevated)',
+                boxShadow: 'var(--shadow-modal)',
+                border: '1px solid var(--glass-border-light)',
                 animation: 'fadeIn 0.15s ease-out'
               }}
             >
               <div className="p-3 sm:p-4 border-b border-white/10">
-                <div className="text-sm sm:text-base font-light truncate" style={{ color: '#ffffff' }}>
+                <div className="text-sm sm:text-base font-light truncate" style={{ color: 'var(--text-primary)' }}>
                   {currentUser?.name || 'User'}
                 </div>
-                <div className="text-xs sm:text-sm font-light truncate" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                <div className="text-xs sm:text-sm font-light truncate" style={{ color: 'var(--text-secondary)' }}>
                   {currentUser?.email || ''}
                 </div>
               </div>
@@ -212,7 +212,7 @@ function SystemStatusBar({
                 role="menuitem"
                 onClick={() => signOut()}
                 className="w-full px-3 sm:px-4 py-3 text-left text-sm sm:text-base font-light hover:bg-white/10 transition-colors flex items-center gap-2 sm:gap-3"
-                style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+                style={{ color: 'var(--text-primary)', minHeight: '44px' }}
               >
                 <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
                 Sign Out
@@ -229,9 +229,9 @@ function SystemStatusBar({
           aria-label="Mobile navigation menu"
           className="lg:hidden absolute left-0 top-full w-full sm:w-64 rounded-b-xl overflow-hidden animate-slideDown"
           style={{
-            backgroundColor: '#2a2a2a',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'var(--bg-elevated)',
+            boxShadow: 'var(--shadow-modal)',
+            border: '1px solid var(--glass-border-light)',
             borderTop: 'none'
           }}
         >
@@ -239,41 +239,41 @@ function SystemStatusBar({
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
             >
-              <Mail className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              <Mail className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
               Mail
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
             >
-              <MessageSquare className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              <MessageSquare className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
               Messages
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
             >
-              <Music className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              <Music className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
               Music
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
             >
-              <Wifi className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              <Wifi className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
               WiFi
             </button>
             <button 
               role="menuitem"
               className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
-              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+              style={{ color: 'var(--text-primary)', minHeight: '44px' }}
             >
-              <Battery className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              <Battery className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
               Battery
             </button>
           </div>
@@ -374,7 +374,7 @@ function AppLauncher({
       aria-label="App launcher"
       className="fixed inset-0 z-40 animate-fadeIn"
       style={{ 
-        backgroundColor: 'rgba(74, 74, 74, 0.95)',
+        backgroundColor: 'var(--glass-black-95)',
         backdropFilter: 'blur(8px)'
       }}
       onClick={onClose}
@@ -383,7 +383,7 @@ function AppLauncher({
         {/* Search Area with Sorting and History */}
         <div 
           className="px-4 sm:px-6 md:px-8 pt-12 sm:pt-14 md:pt-16 pb-3 sm:pb-4"
-          style={{ backgroundColor: 'rgba(90, 90, 90, 0.5)' }}
+          style={{ backgroundColor: 'var(--glass-black-60)' }}
         >
           <div className="max-w-4xl mx-auto">
             {/* Search Bar with Buttons */}
@@ -485,7 +485,7 @@ function AppLauncher({
         {/* Tab navigation - Responsive */}
         <div 
           className="flex items-center gap-1 px-2 sm:px-4 md:px-6 lg:px-8 pb-2 sm:pb-3 md:pb-4 overflow-x-auto"
-          style={{ backgroundColor: '#5a5a5a' }}
+          style={{ backgroundColor: 'var(--chrome-medium)' }}
           role="tablist"
         >
           {['apps', 'downloads', 'favorites', 'settings'].map((tab) => (
@@ -497,8 +497,8 @@ function AppLauncher({
               onClick={() => setActiveTab(tab)}
               className="px-3 sm:px-4 md:px-6 py-2 text-xs sm:text-sm font-light tracking-wider uppercase transition-all duration-200 rounded-t-lg whitespace-nowrap"
               style={{
-                color: activeTab === tab ? '#fff' : '#aaa',
-                backgroundColor: activeTab === tab ? '#4a4a4a' : 'transparent',
+                color: activeTab === tab ? 'var(--chrome-text)' : 'var(--text-tertiary)',
+                backgroundColor: activeTab === tab ? 'var(--chrome-dark)' : 'transparent',
                 minHeight: '44px'
               }}
             >
@@ -562,7 +562,7 @@ function AppLauncher({
         {totalPages > 1 && (
           <div 
             className="flex items-center justify-center gap-2 px-4 py-4 sm:py-5"
-            style={{ backgroundColor: '#4a4a4a' }}
+            style={{ backgroundColor: 'var(--chrome-dark)' }}
           >
             {Array.from({ length: totalPages }, (_, i) => (
               <button
@@ -573,7 +573,7 @@ function AppLauncher({
                   width: currentPage === i ? '32px' : '12px',
                   height: '12px',
                   borderRadius: '6px',
-                  backgroundColor: currentPage === i ? '#fff' : 'rgba(255, 255, 255, 0.3)',
+                  backgroundColor: currentPage === i ? 'var(--chrome-text)' : 'var(--glass-white-60)',
                   minWidth: '44px',
                   minHeight: '44px',
                   display: 'flex',
@@ -587,7 +587,7 @@ function AppLauncher({
                   width: currentPage === i ? '32px' : '12px',
                   height: '12px',
                   borderRadius: '6px',
-                  backgroundColor: currentPage === i ? '#fff' : 'rgba(255, 255, 255, 0.3)',
+                  backgroundColor: currentPage === i ? 'var(--chrome-text)' : 'var(--glass-white-60)',
                   display: 'block'
                 }} />
               </button>
@@ -600,7 +600,7 @@ function AppLauncher({
           onClick={onClose}
           className="lg:hidden fixed top-4 right-4 p-3 rounded-full hover:bg-white/10 transition-all duration-200 active:scale-95"
           style={{ 
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            backgroundColor: 'var(--glass-black-40)',
             minWidth: '44px',
             minHeight: '44px'
           }}
@@ -648,13 +648,13 @@ function GlobalSearch() {
         onClick={() => setIsExpanded(true)}
         className="md:hidden fixed top-14 right-4 p-3 rounded-full shadow-lg transition-all duration-200 active:scale-95 z-30"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          backgroundColor: 'var(--bg-surface)',
           minWidth: '44px',
           minHeight: '44px'
         }}
         aria-label="Open search"
       >
-        <Search className="w-5 h-5" style={{ color: '#5a5a5a' }} />
+        <Search className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
       </button>
 
       {/* Search bar - Responsive */}
@@ -668,16 +668,16 @@ function GlobalSearch() {
           role="search"
           className="rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-200"
           style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            backgroundColor: 'var(--bg-surface)',
             backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.5)',
+            border: '1px solid var(--border-light)',
             boxShadow: isFocused 
-              ? '0 12px 40px rgba(0,0,0,0.25)' 
-              : '0 8px 32px rgba(0,0,0,0.2)'
+              ? 'var(--shadow-modal)' 
+              : 'var(--shadow-card)'
           }}
         >
           <div className="flex items-center px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4">
-            <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 flex-shrink-0" style={{ color: '#5a5a5a' }} />
+            <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 flex-shrink-0" style={{ color: 'var(--text-secondary)' }} />
             <input
               type="text"
               placeholder="JUST TYPE"
@@ -687,7 +687,7 @@ function GlobalSearch() {
               onBlur={() => setTimeout(() => setIsFocused(false), 200)}
               className="flex-1 bg-transparent border-none outline-none text-sm sm:text-base md:text-lg font-light placeholder-gray-500"
               style={{ 
-                color: '#2a2a2a',
+                color: 'var(--text-primary)',
                 fontFamily: '"Helvetica Neue", Arial, sans-serif'
               }}
               aria-label="Search"
@@ -702,7 +702,7 @@ function GlobalSearch() {
                 style={{ minWidth: '44px', minHeight: '44px' }}
                 aria-label="Clear search"
               >
-                <X className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#5a5a5a' }} />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--text-secondary)' }} />
               </button>
             )}
           </div>
@@ -713,11 +713,11 @@ function GlobalSearch() {
               role="listbox"
               aria-label="Search results"
               className="border-t px-3 sm:px-4 md:px-6 py-3 sm:py-4 max-h-60 sm:max-h-80 md:max-h-96 overflow-y-auto"
-              style={{ borderColor: 'rgba(0, 0, 0, 0.15)' }}
+              style={{ borderColor: 'var(--border-light)' }}
             >
               {searchResults.apps && searchResults.apps.length > 0 && (
                 <div className="mb-3 sm:mb-4">
-                  <div className="text-xs sm:text-sm font-light tracking-wider uppercase mb-2" style={{ color: '#6a6a6a' }}>
+                  <div className="text-xs sm:text-sm font-light tracking-wider uppercase mb-2" style={{ color: 'var(--text-tertiary)' }}>
                     APPS
                   </div>
                   {searchResults.apps.map((app: any) => (
@@ -725,7 +725,7 @@ function GlobalSearch() {
                       key={app.id} 
                       role="option"
                       className="py-2 sm:py-2.5 text-sm sm:text-base font-light hover:bg-black/5 rounded px-2 -mx-2 cursor-pointer transition-colors"
-                      style={{ color: '#2a2a2a', minHeight: '44px' }}
+                      style={{ color: 'var(--text-primary)', minHeight: '44px' }}
                     >
                       {app.title}
                     </div>
@@ -769,10 +769,10 @@ export default function DashboardLayout({
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ 
-        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)'
+        background: 'var(--bg-primary)'
       }}>
         <div className="text-center">
-          <div className="text-sm font-light" style={{ color: '#8a8a8a' }}>Loading...</div>
+          <div className="text-sm font-light" style={{ color: 'var(--text-secondary)' }}>Loading...</div>
         </div>
       </div>
     );

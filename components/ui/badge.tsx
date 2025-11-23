@@ -25,29 +25,29 @@ const badgeVariants = cva(
 
 const badgeStyles: Record<string, React.CSSProperties> = {
   default: {
-    backgroundColor: 'rgba(74, 74, 74, 0.1)',
-    color: '#4a4a4a',
-    borderColor: 'rgba(74, 74, 74, 0.2)',
+    backgroundColor: 'var(--bg-secondary)',
+    color: 'var(--text-primary)',
+    borderColor: 'var(--border-medium)',
   },
   secondary: {
-    backgroundColor: '#e8e8e8',
-    color: '#4a4a4a',
-    borderColor: '#d0d0d0',
+    backgroundColor: 'var(--bg-secondary)',
+    color: 'var(--text-primary)',
+    borderColor: 'var(--border-medium)',
   },
   destructive: {
-    backgroundColor: 'rgba(220, 53, 69, 0.1)',
-    color: '#dc3545',
-    borderColor: 'rgba(220, 53, 69, 0.2)',
+    backgroundColor: 'var(--status-error-subtle)',
+    color: 'var(--status-error)',
+    borderColor: 'var(--status-error)',
   },
   outline: {
-    backgroundColor: 'white',
-    color: '#6a6a6a',
-    borderColor: '#d0d0d0',
+    backgroundColor: 'var(--bg-surface)',
+    color: 'var(--text-secondary)',
+    borderColor: 'var(--border-medium)',
   },
   success: {
-    backgroundColor: 'rgba(40, 167, 69, 0.1)',
-    color: '#28a745',
-    borderColor: 'rgba(40, 167, 69, 0.2)',
+    backgroundColor: 'var(--status-success-subtle)',
+    color: 'var(--status-success)',
+    borderColor: 'var(--status-success)',
   },
 }
 
