@@ -715,6 +715,152 @@
    Dark mode color overrides
    ============================================================================ */
 
+
+/* ============================================================================
+   DARK MODE - CLASS-BASED (.dark)
+   ============================================================================
+   Tailwind-compatible dark mode using .dark class selector
+   This works alongside the media query for maximum compatibility
+   ============================================================================ */
+
+.dark {
+  /* Inverted Neutrals */
+  --neutral-50: #1a1a1a;
+  --neutral-100: #2a2a2a;
+  --neutral-200: #3a3a3a;
+  --neutral-300: #4a4a4a;
+  --neutral-400: #5a5a5a;
+  --neutral-500: #6a6a6a;
+  --neutral-600: #808080;
+  --neutral-700: #999999;
+  --neutral-800: #b0b0b0;
+  --neutral-900: #e0e0e0;
+  --neutral-950: #f5f5f5;
+  
+  /* Inverted Backgrounds */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #3a3a3a;
+  --bg-surface: #2a2a2a;
+  --bg-elevated: #333333;
+  --bg-hover: #3a3a3a;
+  --bg-active: #4a4a4a;
+  --bg-subtle: #2a2a2a;
+  
+  /* Inverted Text */
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #808080;
+  --text-disabled: #5a5a5a;
+  --text-inverse: #1a1a1a;
+  --text-on-accent: #ffffff;
+  
+  /* Inverted Borders */
+  --border-lightest: #3a3a3a;
+  --border-light: #4a4a4a;
+  --border-medium: #5a5a5a;
+  --border-dark: #6a6a6a;
+  --border-focus: #5ba3f5;
+  
+  /* Stronger Shadows for Dark Mode */
+  --shadow-card: 0 2px 8px 0 rgba(0, 0, 0, 0.5),
+                 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 4px 16px 0 rgba(0, 0, 0, 0.6),
+                       0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  --shadow-dock: 0 -10px 40px 0 rgba(0, 0, 0, 0.7),
+                 0 -4px 12px 0 rgba(0, 0, 0, 0.5);
+  --shadow-navbar: 0 2px 12px 0 rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 20px 60px 0 rgba(0, 0, 0, 0.8),
+                  0 8px 24px 0 rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 40px 0 rgba(0, 0, 0, 0.7);
+  --shadow-focus: 0 0 0 3px rgba(91, 163, 245, 0.3);
+  
+  /* Glass Effects for Dark Mode */
+  --glass-white-95: rgba(42, 42, 42, 0.95);
+  --glass-white-90: rgba(42, 42, 42, 0.90);
+  --glass-white-80: rgba(42, 42, 42, 0.80);
+  --glass-white-70: rgba(42, 42, 42, 0.70);
+  --glass-white-60: rgba(42, 42, 42, 0.60);
+  
+  --glass-border-light: rgba(255, 255, 255, 0.1);
+  --glass-border-medium: rgba(255, 255, 255, 0.15);
+  --glass-border-dark: rgba(255, 255, 255, 0.05);
+  
+  /* Semantic Token Overrides for Dark Mode */
+  --semantic-bg-app: var(--bg-primary);
+  --semantic-bg-panel: var(--bg-secondary);
+  --semantic-bg-card: var(--bg-surface);
+  --semantic-bg-hover: var(--bg-hover);
+  --semantic-bg-active: var(--bg-active);
+  --semantic-bg-selected: rgba(74, 144, 226, 0.15);
+  --semantic-bg-subtle: var(--bg-subtle);
+  
+  --semantic-text-default: var(--text-primary);
+  --semantic-text-subtle: var(--text-secondary);
+  --semantic-text-hint: var(--text-tertiary);
+  --semantic-text-disabled: var(--text-disabled);
+  --semantic-text-inverse: var(--text-inverse);
+  --semantic-text-link: #5ba3f5;
+  --semantic-text-link-hover: #7bb5f7;
+  
+  --semantic-border-default: var(--border-light);
+  --semantic-border-subtle: var(--border-lightest);
+  --semantic-border-strong: var(--border-dark);
+  --semantic-border-focus: var(--border-focus);
+  
+  /* Component Overrides for Dark Mode */
+  --nav-bg: rgba(42, 42, 42, 0.95);
+  --nav-border: var(--border-light);
+  --nav-text: var(--text-primary);
+  --nav-text-hover: var(--accent-blue-light);
+  
+  --header-bg: rgba(42, 42, 42, 0.95);
+  --header-border: var(--border-light);
+  
+  --dock-bg: rgba(0, 0, 0, 0.90);
+  --dock-border: rgba(255, 255, 255, 0.1);
+  
+  --input-bg: var(--bg-surface);
+  --input-border: var(--border-light);
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-tertiary);
+  
+  --card-bg: var(--bg-surface);
+  --card-border: var(--border-light);
+  --card-shadow: var(--shadow-card);
+  
+  --button-bg: var(--bg-elevated);
+  --button-border: var(--border-medium);
+  --button-text: var(--text-primary);
+  --button-hover-bg: var(--bg-hover);
+  
+  --search-bg: var(--bg-surface);
+  --search-border: var(--border-light);
+  
+  /* Status Colors - Slightly Brighter for Dark Mode */
+  --status-success: #6cc36c;
+  --status-success-light: #7dd37d;
+  --status-success-subtle: rgba(108, 195, 108, 0.15);
+  
+  --status-error: #e36663;
+  --status-error-light: #eb7a77;
+  --status-error-subtle: rgba(227, 102, 99, 0.15);
+  
+  --status-warning: #f3bc6a;
+  --status-warning-light: #f5c87e;
+  --status-warning-subtle: rgba(243, 188, 106, 0.15);
+  
+  --status-info: #5ba3f5;
+  --status-info-light: #7bb5f7;
+  --status-info-subtle: rgba(91, 163, 245, 0.15);
+  
+  /* Accent Colors - Brighter for Dark Mode */
+  --accent-blue: #5ba3f5;
+  --accent-blue-light: #7bb5f7;
+  --accent-blue-dark: #4a90e2;
+  --accent-blue-subtle: rgba(91, 163, 245, 0.15);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     /* Inverted Neutrals */

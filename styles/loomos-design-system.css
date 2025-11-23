@@ -186,6 +186,55 @@
    DARK MODE OVERRIDES
    ======================================== */
 
+
+/* ========================================
+   DARK MODE - CLASS-BASED (.dark)
+   Tailwind-compatible dark mode
+   ======================================== */
+
+.dark {
+  --loomos-background: #1E1E1E;
+  --loomos-surface: #2A2A2A;
+  --loomos-surface-elevated: #333333;
+
+  --loomos-text-primary: #FFFFFF;
+  --loomos-text-secondary: #CCCCCC;
+  --loomos-text-tertiary: #999999;
+  --loomos-text-disabled: #666666;
+  --loomos-text-inverse: #1E1E1E;
+
+  --loomos-border-light: #3A3A3A;
+  --loomos-border-medium: #4A4A4A;
+  --loomos-border-dark: #5A5A5A;
+
+  /* Chrome Colors for Dark Mode */
+  --loomos-chrome-dark: #1A1A1A;
+  --loomos-chrome-light: #3A3A3A;
+  --loomos-chrome-transparent: rgba(26, 26, 26, 0.95);
+
+  /* Status Colors - Brighter for Dark Mode */
+  --loomos-success: #5cb85c;
+  --loomos-warning: #f0ad4e;
+  --loomos-error: #e36663;
+
+  /* Activity Colors - Adjusted for Dark Mode */
+  --loomos-activity-email: #5ba3f5;
+  --loomos-activity-calendar: #5cb85c;
+  --loomos-activity-tasks: #f3bc6a;
+  --loomos-activity-notes: #e36663;
+  --loomos-activity-social: #a855f7;
+
+  /* Shadows - Stronger for Dark Mode */
+  --loomos-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  --loomos-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
+  --loomos-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+  --loomos-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+  --loomos-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+  --loomos-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --loomos-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --loomos-shadow-card-active: 0 12px 32px rgba(0, 0, 0, 0.8);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --loomos-background: #1E1E1E;
