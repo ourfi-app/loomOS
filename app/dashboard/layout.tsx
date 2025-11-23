@@ -49,22 +49,22 @@ function SystemStatusBar({
         onClick={onOpenAppLauncher}
         className="flex items-center gap-2 hover:opacity-80 transition-opacity"
       >
-        <div className="text-white font-light text-sm tracking-wide">loomOS</div>
+        <div className="font-light text-sm tracking-wide" style={{ color: '#ffffff' }}>loomOS</div>
       </button>
 
       {/* Center: System icons */}
       <div className="flex items-center gap-4">
-        <Mail className="w-4 h-4 text-white/70" />
-        <MessageSquare className="w-4 h-4 text-white/70" />
-        <Music className="w-4 h-4 text-white/70" />
-        <Bluetooth className="w-4 h-4 text-white/70" />
-        <Wifi className="w-4 h-4 text-white/70" />
-        <Battery className="w-4 h-4 text-white/70" />
+        <Mail className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        <MessageSquare className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        <Music className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        <Bluetooth className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        <Wifi className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        <Battery className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
       </div>
 
       {/* Right: Clock and user profile */}
       <div className="flex items-center gap-4">
-        <div className="text-white/90 text-sm font-light">
+        <div className="text-sm font-light" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
           {formatTime(time)}
         </div>
         <div className="relative">
@@ -72,10 +72,10 @@ function SystemStatusBar({
             onClick={() => setShowProfileMenu(!showProfileMenu)}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-              <User className="w-4 h-4 text-white" />
+            <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}>
+              <User className="w-4 h-4" style={{ color: '#ffffff' }} />
             </div>
-            <ChevronDown className="w-3 h-3 text-white/70" />
+            <ChevronDown className="w-3 h-3" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
           </button>
           
           {showProfileMenu && (
@@ -88,16 +88,17 @@ function SystemStatusBar({
               }}
             >
               <div className="p-3 border-b border-white/10">
-                <div className="text-white text-sm font-light">
+                <div className="text-sm font-light" style={{ color: '#ffffff' }}>
                   {currentUser?.name || 'User'}
                 </div>
-                <div className="text-white/60 text-xs font-light">
+                <div className="text-xs font-light" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                   {currentUser?.email || ''}
                 </div>
               </div>
               <button
                 onClick={() => signOut()}
-                className="w-full px-3 py-2 text-left text-white/90 text-sm font-light hover:bg-white/10 transition-colors flex items-center gap-2"
+                className="w-full px-3 py-2 text-left text-sm font-light hover:bg-white/10 transition-colors flex items-center gap-2"
+                style={{ color: 'rgba(255, 255, 255, 0.9)' }}
               >
                 <LogOut className="w-4 h-4" />
                 Sign Out
@@ -229,14 +230,14 @@ function GlobalSearch() {
       <div
         className="rounded-2xl overflow-hidden"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.6)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+          backgroundColor: 'rgba(255, 255, 255, 0.85)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
         }}
       >
         <div className="flex items-center px-6 py-4">
-          <Search className="w-5 h-5 mr-3" style={{ color: '#8a8a8a' }} />
+          <Search className="w-5 h-5 mr-3" style={{ color: '#5a5a5a' }} />
           <input
             type="text"
             placeholder="JUST TYPE"
@@ -244,15 +245,15 @@ function GlobalSearch() {
             onChange={(e) => handleSearch(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-            className="flex-1 bg-transparent border-none outline-none text-base font-light"
+            className="flex-1 bg-transparent border-none outline-none text-base font-light placeholder-gray-500"
             style={{ 
-              color: '#4a4a4a',
+              color: '#2a2a2a',
               fontFamily: '"Helvetica Neue", Arial, sans-serif'
             }}
           />
           {searchQuery && (
-            <button onClick={() => handleSearch('')}>
-              <X className="w-4 h-4" style={{ color: '#8a8a8a' }} />
+            <button onClick={() => handleSearch('')} className="hover:opacity-70 transition-opacity">
+              <X className="w-4 h-4" style={{ color: '#5a5a5a' }} />
             </button>
           )}
         </div>
@@ -261,15 +262,15 @@ function GlobalSearch() {
         {searchResults && isFocused && (
           <div 
             className="border-t px-6 py-4 max-h-96 overflow-y-auto"
-            style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}
+            style={{ borderColor: 'rgba(0, 0, 0, 0.15)' }}
           >
             {searchResults.apps && searchResults.apps.length > 0 && (
               <div className="mb-4">
-                <div className="text-xs font-light tracking-wider uppercase mb-2" style={{ color: '#8a8a8a' }}>
+                <div className="text-xs font-light tracking-wider uppercase mb-2" style={{ color: '#6a6a6a' }}>
                   APPS
                 </div>
                 {searchResults.apps.map((app: any) => (
-                  <div key={app.id} className="py-2 text-sm font-light" style={{ color: '#4a4a4a' }}>
+                  <div key={app.id} className="py-2 text-sm font-light hover:bg-black/5 rounded px-2 -mx-2 cursor-pointer transition-colors" style={{ color: '#2a2a2a' }}>
                     {app.title}
                   </div>
                 ))}
