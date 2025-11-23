@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Modal Fix Demo - Before & After</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 300vh; /* Long page to demonstrate scrolling */
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 18px;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .demo-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .demo-card h2 {
+      margin-bottom: 15px;
+    }
+
+    .broken {
+      border: 3px solid #ff4757;
+    }
+
+    .fixed {
+      border: 3px solid #2ed573;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .badge-broken {
+      background: #ff4757;
+      color: white;
+    }
+
+    .badge-fixed {
+      background: #2ed573;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.02);
+    }
+
+    .btn-broken {
+      background: #ff4757;
+      color: white;
+    }
+
+    .btn-fixed {
+      background: #2ed573;
+      color: white;
+    }
+
+    .explanation {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    .code-block {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+
+    .code-bad {
+      border-left: 4px solid #ff4757;
+    }
+
+    .code-good {
+      border-left: 4px solid #2ed573;
+    }
+
+    .content-block {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 20px 0;
+      color: white;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.show .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      color: #667eea;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: #666;
+      width: auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modal-close:hover {
+      color: #333;
+      transform: scale(1.1);
+    }
+
+    .modal-body {
+      margin-bottom: 20px;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .modal-input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .modal-submit {
+      background: #667eea;
+      color: white;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .status-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px 25px;
+      border-radius: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .scroll-indicator {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      color: white;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🐛 Login Modal Fix Demo</h1>
+      <p class="subtitle">Interactive demonstration of the bug in PR #92 and the fix in PR #93</p>
+    </div>
+
+    <div class="scroll-indicator">
+      📜 Scroll down the page, then try opening each modal
+    </div>
+
+    <div class="demo-grid">
+      <div class="demo-card broken">
+        <span class="badge badge-broken">❌ BROKEN (PR #92)</span>
+        <h2>Position: Fixed Approach</h2>
+        <p>This uses <code>position: fixed</code> on the body element for scroll locking. The modal will be invisible!</p>
+        <button class="btn-broken" onclick="openBrokenModal()">
+          Open Broken Modal
+        </button>
+        <p style="margin-top: 15px; font-size: 14px; color: #666;">
+          ⚠️ The modal will open but you won't see it. The scroll will be locked though.
+        </p>
+      </div>
+
+      <div class="demo-card fixed">
+        <span class="badge badge-fixed">✅ FIXED (PR #93)</span>
+        <h2>Overflow: Hidden Approach</h2>
+        <p>This uses <code>overflow: hidden</code> for scroll locking. The modal will be visible and centered!</p>
+        <button class="btn-fixed" onclick="openFixedModal()">
+          Open Fixed Modal
+        </button>
+        <p style="margin-top: 15px; font-size: 14px; color: #666;">
+          ✅ The modal will appear centered in your viewport, immediately visible.
+        </p>
+      </div>
+    </div>
+
+    <div class="explanation">
+      <h2>🔍 What's the Difference?</h2>
+      
+      <h3 style="margin-top: 20px; color: #ff4757;">❌ Broken Approach (PR #92)</h3>
+      <div class="code-block code-bad">
+<span style="color: #c678dd;">// Setting position: fixed on body</span>
+<span style="color: #61afef;">document</span>.<span style="color: #61afef;">body</span>.<span style="color: #61afef;">style</span>.<span style="color: #e06c75;">position</span> = <span style="color: #98c379;">'fixed'</span>;
+<span style="color: #61afef;">document</span>.<span style="color: #61afef;">body</span>.<span style="color: #61afef;">style</span>.<span style="color: #e06c75;">top</span> = <span style="color: #98c379;">`-${scrollY}px`</span>;
+
+<span style="color: #c678dd;">// This creates a new positioning context!</span>
+<span style="color: #c678dd;">// Modal with position: fixed now positions relative to body, not viewport</span>
+<span style="color: #c678dd;">// Result: Modal is off-screen and invisible 👻</span>
+      </div>
+
+      <h3 style="margin-top: 20px; color: #2ed573;">✅ Fixed Approach (PR #93)</h3>
+      <div class="code-block code-good">
+<span style="color: #c678dd;">// Using overflow: hidden instead</span>
+<span style="color: #61afef;">document</span>.<span style="color: #61afef;">documentElement</span>.<span style="color: #61afef;">style</span>.<span style="color: #e06c75;">overflow</span> = <span style="color: #98c379;">'hidden'</span>;
+<span style="color: #61afef;">document</span>.<span style="color: #61afef;">body</span>.<span style="color: #61afef;">style</span>.<span style="color: #e06c75;">overflow</span> = <span style="color: #98c379;">'hidden'</span>;
+
+<span style="color: #c678dd;">// No positioning context change!</span>
+<span style="color: #c678dd;">// Modal with position: fixed still positions relative to viewport</span>
+<span style="color: #c678dd;">// Result: Modal is visible and centered ✨</span>
+      </div>
+
+      <h3 style="margin-top: 30px;">📚 Key Lesson</h3>
+      <p style="font-size: 16px; line-height: 1.8; color: #666;">
+        When an element has <code>position: fixed</code>, it normally positions relative to the viewport. 
+        However, if any ancestor element has <code>position: fixed</code>, <code>transform</code>, 
+        <code>perspective</code>, <code>filter</code>, or certain other properties, the fixed element 
+        positions relative to that ancestor instead of the viewport. This is what broke the modal in PR #92.
+      </p>
+    </div>
+
+    <div class="content-block">
+      <h2>Scroll down to test!</h2>
+      <p>The bug is most obvious when you've scrolled down the page before opening the modal.</p>
+    </div>
+
+    <div class="content-block" style="margin-top: 300px;">
+      <h2>Keep scrolling... 👇</h2>
+    </div>
+
+    <div class="content-block" style="margin-top: 300px;">
+      <h2>Almost there... 👇</h2>
+    </div>
+
+    <div class="content-block" style="margin-top: 300px;">
+      <h2>Now try the buttons at the top! ☝️</h2>
+      <p>Scroll back up and try opening both modals to see the difference</p>
+    </div>
+  </div>
+
+  <!-- Broken Modal (PR #92 approach) -->
+  <div id="brokenModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">❌ Broken Modal</h2>
+        <button class="modal-close" onclick="closeBrokenModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: #ff4757; font-weight: bold; margin-bottom: 15px;">
+          If you can see this, scroll up! The modal is positioned incorrectly.
+        </p>
+        <input type="email" class="modal-input" placeholder="Email">
+        <input type="password" class="modal-input" placeholder="Password">
+        <button class="modal-submit">Log In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Modal (PR #93 approach) -->
+  <div id="fixedModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">✅ Fixed Modal</h2>
+        <button class="modal-close" onclick="closeFixedModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: #2ed573; font-weight: bold; margin-bottom: 15px;">
+          This modal is perfectly centered in your viewport!
+        </p>
+        <input type="email" class="modal-input" placeholder="Email">
+        <input type="password" class="modal-input" placeholder="Password">
+        <button class="modal-submit">Log In</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="statusIndicator" class="status-indicator" style="display: none;">
+    Scroll Locked
+  </div>
+
+  <script>
+    // Broken approach (PR #92)
+    function openBrokenModal() {
+      const modal = document.getElementById('brokenModal');
+      const scrollY = window.scrollY;
+      
+      // ❌ BROKEN: Set position: fixed on body
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      modal.classList.add('show');
+      showStatus('Scroll Locked (Broken Method)');
+    }
+
+    function closeBrokenModal() {
+      const modal = document.getElementById('brokenModal');
+      const scrollY = document.body.style.top;
+      
+      // Restore
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+      
+      modal.classList.remove('show');
+      hideStatus();
+    }
+
+    // Fixed approach (PR #93)
+    function openFixedModal() {
+      const modal = document.getElementById('fixedModal');
+      const scrollY = window.scrollY;
+      
+      // ✅ FIXED: Use overflow: hidden
+      document.documentElement.setAttribute('data-scroll-lock', scrollY.toString());
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+      
+      modal.classList.add('show');
+      showStatus('Scroll Locked (Fixed Method)');
+    }
+
+    function closeFixedModal() {
+      const modal = document.getElementById('fixedModal');
+      const scrollY = document.documentElement.getAttribute('data-scroll-lock');
+      
+      // Restore
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY));
+        document.documentElement.removeAttribute('data-scroll-lock');
+      }
+      
+      modal.classList.remove('show');
+      hideStatus();
+    }
+
+    function showStatus(text) {
+      const status = document.getElementById('statusIndicator');
+      status.textContent = text;
+      status.style.display = 'block';
+    }
+
+    function hideStatus() {
+      const status = document.getElementById('statusIndicator');
+      status.style.display = 'none';
+    }
+
+    // Close modals when clicking overlay
+    document.getElementById('brokenModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBrokenModal();
+    });
+
+    document.getElementById('fixedModal').addEventListener('click', function(e) {
+      if (e.target === this) closeFixedModal();
+    });
+  </script>
+</body>
+</html>
