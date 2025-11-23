@@ -120,7 +120,7 @@ export function GlassPanel({
     WebkitBackdropFilter: `blur(${blurAmounts[blur]})`,
     border: `1px solid ${borderColors[variant]}`,
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-    color: variant === 'dark' ? '#e8e8e8' : '#4a4a4a',
+    color: variant === 'dark' ? 'var(--semantic-bg-subtle)' : 'var(--semantic-text-primary)',
     ...style,
   };
 
@@ -285,7 +285,7 @@ export function GlassSearchBar({
           onFocus={onFocus}
           onBlur={onBlur}
           className="flex-1 bg-transparent outline-none text-xs tracking-wide font-light"
-          style={{ color: '#4a4a4a' }}
+          style={{ color: 'var(--semantic-text-primary)' }}
         />
         <svg
           width="18"
@@ -296,7 +296,7 @@ export function GlassSearchBar({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          style={{ color: '#8a8a8a' }}
+          style={{ color: 'var(--semantic-text-tertiary)' }}
         >
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
