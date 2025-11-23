@@ -849,6 +849,36 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Restore scroll position
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
     setError('');
@@ -896,7 +926,19 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       {isOpen && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center px-4 backdrop-blur-md"
-          style={{ background: 'rgba(0, 0, 0, 0.4)' }}
+          style={{ 
+            background: 'rgba(0, 0, 0, 0.4)',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: 0,
+            padding: '1rem'
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -908,7 +950,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               backgroundColor: 'var(--webos-bg-glass)',
               backdropFilter: 'blur(16px)',
               boxShadow: 'var(--webos-shadow-xl)',
-              border: '1px solid var(--webos-border-glass)'
+              border: '1px solid var(--webos-border-glass)',
+              maxHeight: '90vh',
+              overflowY: 'auto'
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
