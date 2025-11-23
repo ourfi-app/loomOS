@@ -1,5 +1,5 @@
 
-// loomOS Dashboard Layout - Full Design System Implementation
+// loomOS Dashboard Layout - Full Design System Implementation with Responsive UI/UX
 'use client';
 
 import { useSession, signOut } from 'next-auth/react';
@@ -9,10 +9,10 @@ import {
   Home, Users, CreditCard, FileText, MessageSquare, Settings, 
   Bell, User, Shield, Upload, Calendar, BarChart, Building,
   Mail, Globe, Music, Bluetooth, Wifi, Battery, Search, X,
-  ChevronDown, LogOut, Clock as ClockIcon
+  ChevronDown, LogOut, Clock as ClockIcon, Menu
 } from 'lucide-react';
 
-// System status bar with live clock and user profile
+// System status bar with live clock and user profile - Fully Responsive
 function SystemStatusBar({ 
   onOpenAppLauncher, 
   currentUser 
@@ -22,10 +22,24 @@ function SystemStatusBar({
 }) {
   const [time, setTime] = useState(new Date());
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Close menus when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('[data-menu]')) {
+        setShowProfileMenu(false);
+        setShowMobileMenu(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   const formatTime = (date: Date) => {
@@ -36,81 +50,239 @@ function SystemStatusBar({
     });
   };
 
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric'
+    });
+  };
+
   return (
-    <div 
-      className="fixed top-0 left-0 right-0 h-10 flex items-center justify-between px-4 z-50"
+    <nav 
+      role="navigation"
+      aria-label="System status bar"
+      className="fixed top-0 left-0 right-0 h-10 sm:h-11 md:h-12 flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 z-50 transition-all duration-200"
       style={{ 
         backgroundColor: '#1a1a1a',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
       }}
     >
-      {/* Left: loomOS logo */}
-      <button
-        onClick={onOpenAppLauncher}
-        className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-      >
-        <div className="text-white font-light text-sm tracking-wide">loomOS</div>
-      </button>
+      {/* Left Section: loomOS logo and hamburger menu */}
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        {/* Hamburger menu for mobile */}
+        <button
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          className="lg:hidden p-2 -ml-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="Toggle mobile menu"
+          aria-expanded={showMobileMenu}
+          data-menu="mobile"
+        >
+          <Menu className="w-5 h-5" style={{ color: '#ffffff' }} />
+        </button>
 
-      {/* Center: System icons */}
-      <div className="flex items-center gap-4">
-        <Mail className="w-4 h-4 text-white/70" />
-        <MessageSquare className="w-4 h-4 text-white/70" />
-        <Music className="w-4 h-4 text-white/70" />
-        <Bluetooth className="w-4 h-4 text-white/70" />
-        <Wifi className="w-4 h-4 text-white/70" />
-        <Battery className="w-4 h-4 text-white/70" />
+        {/* loomOS Logo */}
+        <button
+          onClick={onOpenAppLauncher}
+          className="flex items-center gap-1.5 sm:gap-2 hover:bg-white/10 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minHeight: '44px' }}
+          aria-label="Open app launcher"
+        >
+          <div 
+            className="font-light text-xs sm:text-sm md:text-base tracking-wide truncate" 
+            style={{ color: '#ffffff' }}
+          >
+            loomOS
+          </div>
+        </button>
       </div>
 
-      {/* Right: Clock and user profile */}
-      <div className="flex items-center gap-4">
-        <div className="text-white/90 text-sm font-light">
+      {/* Center Section: System icons - Hidden on mobile, visible on tablet+ */}
+      <div 
+        className="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-4"
+        role="toolbar"
+        aria-label="System quick actions"
+      >
+        <button 
+          className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="Mail"
+        >
+          <Mail className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        </button>
+        <button 
+          className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="Messages"
+        >
+          <MessageSquare className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        </button>
+        <button 
+          className="hidden lg:block p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="Music"
+        >
+          <Music className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        </button>
+        <button 
+          className="hidden xl:block p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="Bluetooth"
+        >
+          <Bluetooth className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        </button>
+        <button 
+          className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="WiFi"
+        >
+          <Wifi className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        </button>
+        <button 
+          className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95"
+          style={{ minWidth: '44px', minHeight: '44px' }}
+          aria-label="Battery"
+        >
+          <Battery className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+        </button>
+      </div>
+
+      {/* Right Section: Clock and user profile */}
+      <div className="flex items-center gap-2 sm:gap-3 md:gap-4 min-w-0">
+        {/* Clock - Adaptive display */}
+        <div 
+          className="text-xs sm:text-sm md:text-base font-light whitespace-nowrap hidden sm:block"
+          style={{ color: 'rgba(255, 255, 255, 0.95)' }}
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span className="hidden lg:inline">{formatDate(time)} </span>
           {formatTime(time)}
         </div>
-        <div className="relative">
+
+        {/* User Profile Dropdown */}
+        <div className="relative" data-menu="profile">
           <button
-            onClick={() => setShowProfileMenu(!showProfileMenu)}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowProfileMenu(!showProfileMenu);
+            }}
+            className="flex items-center gap-1.5 sm:gap-2 hover:bg-white/10 px-2 py-1.5 sm:py-2 rounded-lg transition-all duration-200 active:scale-95"
+            style={{ minHeight: '44px' }}
+            aria-label="User profile menu"
+            aria-expanded={showProfileMenu}
+            aria-haspopup="true"
           >
-            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-              <User className="w-4 h-4 text-white" />
+            <div 
+              className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-200" 
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
+            >
+              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" style={{ color: '#ffffff' }} />
             </div>
-            <ChevronDown className="w-3 h-3 text-white/70" />
+            <ChevronDown 
+              className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-200 ${showProfileMenu ? 'rotate-180' : ''}`}
+              style={{ color: 'rgba(255, 255, 255, 0.85)' }} 
+            />
           </button>
           
+          {/* Profile Dropdown Menu */}
           {showProfileMenu && (
             <div 
-              className="absolute right-0 top-full mt-2 w-48 rounded-xl overflow-hidden"
+              role="menu"
+              aria-label="User menu"
+              className="absolute right-0 top-full mt-2 w-56 sm:w-60 md:w-64 rounded-xl overflow-hidden animate-fadeIn"
               style={{
                 backgroundColor: '#2a2a2a',
                 boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                animation: 'fadeIn 0.15s ease-out'
               }}
             >
-              <div className="p-3 border-b border-white/10">
-                <div className="text-white text-sm font-light">
+              <div className="p-3 sm:p-4 border-b border-white/10">
+                <div className="text-sm sm:text-base font-light truncate" style={{ color: '#ffffff' }}>
                   {currentUser?.name || 'User'}
                 </div>
-                <div className="text-white/60 text-xs font-light">
+                <div className="text-xs sm:text-sm font-light truncate" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                   {currentUser?.email || ''}
                 </div>
               </div>
               <button
+                role="menuitem"
                 onClick={() => signOut()}
-                className="w-full px-3 py-2 text-left text-white/90 text-sm font-light hover:bg-white/10 transition-colors flex items-center gap-2"
+                className="w-full px-3 sm:px-4 py-3 text-left text-sm sm:text-base font-light hover:bg-white/10 transition-colors flex items-center gap-2 sm:gap-3"
+                style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
                 Sign Out
               </button>
             </div>
           )}
         </div>
       </div>
-    </div>
+
+      {/* Mobile Menu Dropdown */}
+      {showMobileMenu && (
+        <div 
+          role="menu"
+          aria-label="Mobile navigation menu"
+          className="lg:hidden absolute left-0 top-full w-full sm:w-64 rounded-b-xl overflow-hidden animate-slideDown"
+          style={{
+            backgroundColor: '#2a2a2a',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: 'none'
+          }}
+        >
+          <div className="p-2">
+            <button 
+              role="menuitem"
+              className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
+              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+            >
+              <Mail className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              Mail
+            </button>
+            <button 
+              role="menuitem"
+              className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
+              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+            >
+              <MessageSquare className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              Messages
+            </button>
+            <button 
+              role="menuitem"
+              className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
+              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+            >
+              <Music className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              Music
+            </button>
+            <button 
+              role="menuitem"
+              className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
+              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+            >
+              <Wifi className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              WiFi
+            </button>
+            <button 
+              role="menuitem"
+              className="w-full px-3 py-3 text-left text-sm font-light hover:bg-white/10 rounded-lg transition-colors flex items-center gap-3"
+              style={{ color: 'rgba(255, 255, 255, 0.9)', minHeight: '44px' }}
+            >
+              <Battery className="w-5 h-5" style={{ color: 'rgba(255, 255, 255, 0.85)' }} />
+              Battery
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
 
-// App Launcher with grid view
+// App Launcher with grid view - Responsive
 function AppLauncher({ 
   isOpen, 
   onClose 
@@ -132,28 +304,50 @@ function AppLauncher({
     { id: 'admin', title: 'Admin', icon: Shield, path: '/dashboard/admin', color: '#7a8ab5' },
   ];
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
     <div 
-      className="fixed inset-0 z-40"
-      style={{ backgroundColor: 'rgba(74, 74, 74, 0.95)' }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="App launcher"
+      className="fixed inset-0 z-40 animate-fadeIn"
+      style={{ 
+        backgroundColor: 'rgba(74, 74, 74, 0.95)',
+        backdropFilter: 'blur(8px)'
+      }}
       onClick={onClose}
     >
       <div className="h-full flex flex-col" onClick={(e) => e.stopPropagation()}>
-        {/* Tab navigation */}
+        {/* Tab navigation - Responsive */}
         <div 
-          className="flex items-center gap-1 px-8 pt-16 pb-4"
+          className="flex items-center gap-1 px-2 sm:px-4 md:px-6 lg:px-8 pt-12 sm:pt-14 md:pt-16 pb-2 sm:pb-3 md:pb-4 overflow-x-auto"
           style={{ backgroundColor: '#5a5a5a' }}
+          role="tablist"
         >
           {['apps', 'downloads', 'favorites', 'settings'].map((tab) => (
             <button
               key={tab}
+              role="tab"
+              aria-selected={activeTab === tab}
+              aria-controls={`${tab}-panel`}
               onClick={() => setActiveTab(tab)}
-              className="px-6 py-2 text-xs font-light tracking-wider uppercase transition-colors rounded-t-lg"
+              className="px-3 sm:px-4 md:px-6 py-2 text-xs sm:text-sm font-light tracking-wider uppercase transition-all duration-200 rounded-t-lg whitespace-nowrap"
               style={{
                 color: activeTab === tab ? '#fff' : '#aaa',
-                backgroundColor: activeTab === tab ? '#4a4a4a' : 'transparent'
+                backgroundColor: activeTab === tab ? '#4a4a4a' : 'transparent',
+                minHeight: '44px'
               }}
             >
               {tab}
@@ -161,9 +355,13 @@ function AppLauncher({
           ))}
         </div>
 
-        {/* App grid */}
-        <div className="flex-1 overflow-y-auto p-8">
-          <div className="grid grid-cols-7 gap-6 max-w-6xl mx-auto">
+        {/* App grid - Responsive columns */}
+        <div 
+          id={`${activeTab}-panel`}
+          role="tabpanel"
+          className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8"
+        >
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-7xl mx-auto">
             {apps.map((app) => {
               const AppIcon = app.icon;
               return (
@@ -173,18 +371,20 @@ function AppLauncher({
                     router.push(app.path);
                     onClose();
                   }}
-                  className="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition-colors"
+                  className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl hover:bg-white/5 active:bg-white/10 transition-all duration-200 active:scale-95"
+                  style={{ minHeight: '44px' }}
+                  aria-label={`Open ${app.title}`}
                 >
                   <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-transform duration-200 hover:scale-105"
                     style={{
                       backgroundColor: app.color,
                       boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
                     }}
                   >
-                    <AppIcon className="w-8 h-8 text-white" />
+                    <AppIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                   </div>
-                  <div className="text-white text-xs font-light text-center">
+                  <div className="text-white text-xs sm:text-sm font-light text-center line-clamp-2">
                     {app.title}
                   </div>
                 </button>
@@ -192,16 +392,31 @@ function AppLauncher({
             })}
           </div>
         </div>
+
+        {/* Close button for mobile */}
+        <button
+          onClick={onClose}
+          className="lg:hidden fixed top-4 right-4 p-3 rounded-full hover:bg-white/10 transition-all duration-200 active:scale-95"
+          style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            minWidth: '44px',
+            minHeight: '44px'
+          }}
+          aria-label="Close app launcher"
+        >
+          <X className="w-6 h-6 text-white" />
+        </button>
       </div>
     </div>
   );
 }
 
-// Global search functionality
+// Global search functionality - Responsive
 function GlobalSearch() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -225,60 +440,112 @@ function GlobalSearch() {
   };
 
   return (
-    <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4 z-30">
-      <div
-        className="rounded-2xl overflow-hidden"
+    <>
+      {/* Mobile: Floating search button */}
+      <button
+        onClick={() => setIsExpanded(true)}
+        className="md:hidden fixed top-14 right-4 p-3 rounded-full shadow-lg transition-all duration-200 active:scale-95 z-30"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.6)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          minWidth: '44px',
+          minHeight: '44px'
         }}
+        aria-label="Open search"
       >
-        <div className="flex items-center px-6 py-4">
-          <Search className="w-5 h-5 mr-3" style={{ color: '#8a8a8a' }} />
-          <input
-            type="text"
-            placeholder="JUST TYPE"
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-            className="flex-1 bg-transparent border-none outline-none text-base font-light"
-            style={{ 
-              color: '#4a4a4a',
-              fontFamily: '"Helvetica Neue", Arial, sans-serif'
-            }}
-          />
-          {searchQuery && (
-            <button onClick={() => handleSearch('')}>
-              <X className="w-4 h-4" style={{ color: '#8a8a8a' }} />
-            </button>
-          )}
-        </div>
+        <Search className="w-5 h-5" style={{ color: '#5a5a5a' }} />
+      </button>
 
-        {/* Search results dropdown */}
-        {searchResults && isFocused && (
-          <div 
-            className="border-t px-6 py-4 max-h-96 overflow-y-auto"
-            style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}
-          >
-            {searchResults.apps && searchResults.apps.length > 0 && (
-              <div className="mb-4">
-                <div className="text-xs font-light tracking-wider uppercase mb-2" style={{ color: '#8a8a8a' }}>
-                  APPS
-                </div>
-                {searchResults.apps.map((app: any) => (
-                  <div key={app.id} className="py-2 text-sm font-light" style={{ color: '#4a4a4a' }}>
-                    {app.title}
-                  </div>
-                ))}
-              </div>
+      {/* Search bar - Responsive */}
+      <div 
+        className={`fixed top-14 sm:top-16 md:top-20 left-1/2 transform -translate-x-1/2 w-full px-4 sm:px-6 md:px-8 z-30 transition-all duration-300 ${
+          isExpanded ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none md:opacity-100 md:scale-100 md:pointer-events-auto'
+        }`}
+        style={{ maxWidth: '42rem' }}
+      >
+        <div
+          role="search"
+          className="rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-200"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255, 255, 255, 0.5)',
+            boxShadow: isFocused 
+              ? '0 12px 40px rgba(0,0,0,0.25)' 
+              : '0 8px 32px rgba(0,0,0,0.2)'
+          }}
+        >
+          <div className="flex items-center px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4">
+            <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 flex-shrink-0" style={{ color: '#5a5a5a' }} />
+            <input
+              type="text"
+              placeholder="JUST TYPE"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+              className="flex-1 bg-transparent border-none outline-none text-sm sm:text-base md:text-lg font-light placeholder-gray-500"
+              style={{ 
+                color: '#2a2a2a',
+                fontFamily: '"Helvetica Neue", Arial, sans-serif'
+              }}
+              aria-label="Search"
+            />
+            {(searchQuery || isExpanded) && (
+              <button 
+                onClick={() => {
+                  handleSearch('');
+                  setIsExpanded(false);
+                }} 
+                className="hover:bg-black/5 p-2 rounded-lg transition-all duration-200 active:scale-95 flex-shrink-0"
+                style={{ minWidth: '44px', minHeight: '44px' }}
+                aria-label="Clear search"
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#5a5a5a' }} />
+              </button>
             )}
           </div>
-        )}
+
+          {/* Search results dropdown - Responsive */}
+          {searchResults && isFocused && (
+            <div 
+              role="listbox"
+              aria-label="Search results"
+              className="border-t px-3 sm:px-4 md:px-6 py-3 sm:py-4 max-h-60 sm:max-h-80 md:max-h-96 overflow-y-auto"
+              style={{ borderColor: 'rgba(0, 0, 0, 0.15)' }}
+            >
+              {searchResults.apps && searchResults.apps.length > 0 && (
+                <div className="mb-3 sm:mb-4">
+                  <div className="text-xs sm:text-sm font-light tracking-wider uppercase mb-2" style={{ color: '#6a6a6a' }}>
+                    APPS
+                  </div>
+                  {searchResults.apps.map((app: any) => (
+                    <div 
+                      key={app.id} 
+                      role="option"
+                      className="py-2 sm:py-2.5 text-sm sm:text-base font-light hover:bg-black/5 rounded px-2 -mx-2 cursor-pointer transition-colors"
+                      style={{ color: '#2a2a2a', minHeight: '44px' }}
+                    >
+                      {app.title}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* Mobile search overlay backdrop */}
+      {isExpanded && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/30 z-20 animate-fadeIn"
+          onClick={() => {
+            setIsExpanded(false);
+            handleSearch('');
+          }}
+        />
+      )}
+    </>
   );
 }
 
@@ -321,25 +588,98 @@ export default function DashboardLayout({
         fontFamily: '"Helvetica Neue", Arial, sans-serif'
       }}
     >
-      {/* System Status Bar */}
+      {/* System Status Bar - Responsive */}
       <SystemStatusBar 
         onOpenAppLauncher={() => setShowAppLauncher(true)}
         currentUser={session.user}
       />
 
-      {/* Main Content */}
-      <div className="pt-10 h-screen overflow-hidden">
+      {/* Main Content - Responsive padding */}
+      <div className="pt-10 sm:pt-11 md:pt-12 h-screen overflow-hidden">
         {children}
       </div>
 
-      {/* Global Search */}
+      {/* Global Search - Responsive */}
       <GlobalSearch />
 
-      {/* App Launcher */}
+      {/* App Launcher - Responsive */}
       <AppLauncher 
         isOpen={showAppLauncher}
         onClose={() => setShowAppLauncher(false)}
       />
+
+      {/* Global Styles for Animations */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.2s ease-out;
+        }
+
+        /* Smooth scrolling for all scrollable areas */
+        * {
+          scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Focus visible for keyboard navigation */
+        *:focus-visible {
+          outline: 2px solid rgba(255, 255, 255, 0.5);
+          outline-offset: 2px;
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
