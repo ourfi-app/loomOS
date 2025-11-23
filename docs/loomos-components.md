@@ -365,7 +365,9 @@ import { useActivityManager, getMarketplace, getSynergy } from '@/lib/loomos';
 Add to your `app/layout.tsx` or global CSS:
 
 ```typescript
-import '@/styles/loomos-design-system.css';
+import '@/design-tokens/core.css';
+import '@/design-tokens/semantic.css';
+import '@/design-tokens/motion.css';
 ```
 
 ## 🚀 Examples
@@ -446,7 +448,7 @@ export function EmailApp() {
 
 ## 📚 Resources
 
-- **Design Tokens**: `/styles/loomos-design-system.css`
+- **Design Tokens**: `/design-tokens/` (core.css, semantic.css, motion.css)
 - **Theme Config**: `/lib/loomos-design-system.ts`
 - **Components**: `/components/loomos/`
 - **Architecture**: `/lib/loomos-activity-manager.ts`
