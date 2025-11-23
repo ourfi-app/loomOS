@@ -1,7 +1,9 @@
 
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import '@/styles/loomos-tokens.css';
+import '@/design-tokens/core.css';
+import '@/design-tokens/semantic.css';
+import '@/design-tokens/motion.css';
 import '@/styles/loomos-components.css';
 import '@/styles/webos-theme.css';
 import { Providers } from '@/components/providers';
