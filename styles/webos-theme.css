@@ -17,35 +17,36 @@
    ======================================== */
 
 :root {
-  /* Primary Background Colors - Light Gray Tones */
-  --webos-bg-primary: #e8e8e8;           /* Main background */
+  /* Primary Background Colors - Light Gray Tones - Based on webOS reference images */
+  --webos-bg-primary: #e8e8e8;           /* Main background - authentic webOS gray */
   --webos-bg-secondary: #ebebeb;         /* Secondary surfaces */
   --webos-bg-tertiary: #eeeeee;          /* Elevated surfaces */
+  --webos-bg-light: #f0f0f0;             /* Lightest gray */
   
-  /* Card/Surface Colors */
-  --webos-surface: #ffffff;              /* Card backgrounds */
-  --webos-surface-hover: #fafafa;        /* Hover state */
-  --webos-surface-active: #f5f5f5;       /* Active state */
-  --webos-surface-subtle: #f9f9f9;       /* Subtle backgrounds */
+  /* Card/Surface Colors - Pure white for clean webOS aesthetic */
+  --webos-surface: #ffffff;              /* Card backgrounds - pure white */
+  --webos-surface-hover: #f8f8f8;        /* Hover state - very subtle */
+  --webos-surface-active: #f3f3f3;       /* Active state */
+  --webos-surface-subtle: #fafafa;       /* Subtle backgrounds */
   
-  /* Text Colors */
-  --webos-text-primary: #000000;         /* Primary text */
-  --webos-text-secondary: #666666;       /* Secondary text */
-  --webos-text-tertiary: #999999;        /* Tertiary text */
-  --webos-text-disabled: #cccccc;        /* Disabled text */
+  /* Text Colors - Clean, readable hierarchy */
+  --webos-text-primary: #1a1a1a;         /* Primary text - near black */
+  --webos-text-secondary: #5a5a5a;       /* Secondary text - medium gray */
+  --webos-text-tertiary: #8a8a8a;        /* Tertiary text - light gray */
+  --webos-text-disabled: #c0c0c0;        /* Disabled text */
   --webos-text-inverse: #ffffff;         /* Light text on dark */
   
-  /* Border Colors */
-  --webos-border-light: #e0e0e0;         /* Light borders */
-  --webos-border-medium: #d4d4d4;        /* Medium borders */
-  --webos-border-dark: #b0b0b0;          /* Dark borders */
+  /* Border Colors - Very subtle, mimicking webOS */
+  --webos-border-light: #e5e5e5;         /* Light borders */
+  --webos-border-medium: #d8d8d8;        /* Medium borders */
+  --webos-border-dark: #c0c0c0;          /* Dark borders */
   --webos-border-subtle: #f0f0f0;        /* Very subtle borders */
   
-  /* Shadow Colors */
-  --webos-shadow-sm: rgba(0, 0, 0, 0.04);
-  --webos-shadow-md: rgba(0, 0, 0, 0.08);
-  --webos-shadow-lg: rgba(0, 0, 0, 0.12);
-  --webos-shadow-xl: rgba(0, 0, 0, 0.16);
+  /* Shadow Colors - Soft, delicate shadows like webOS */
+  --webos-shadow-sm: rgba(0, 0, 0, 0.03);
+  --webos-shadow-md: rgba(0, 0, 0, 0.06);
+  --webos-shadow-lg: rgba(0, 0, 0, 0.10);
+  --webos-shadow-xl: rgba(0, 0, 0, 0.14);
   
   /* Accent Colors (minimal usage) */
   --webos-accent-blue: #808080;          /* Links, selections - neutral gray */
@@ -86,16 +87,17 @@
   --webos-radius-full: 9999px;           /* Circular */
   
   /* ========================================
-     SHADOW SYSTEM
+     SHADOW SYSTEM - Authentic webOS soft shadows
      ======================================== */
   
-  --webos-shadow-card: 0 2px 8px var(--webos-shadow-sm),
+  --webos-shadow-card: 0 1px 3px var(--webos-shadow-sm),
                        0 1px 2px var(--webos-shadow-md);
-  --webos-shadow-card-hover: 0 4px 16px var(--webos-shadow-md),
-                             0 2px 4px var(--webos-shadow-lg);
-  --webos-shadow-elevated: 0 8px 24px var(--webos-shadow-lg),
-                           0 4px 8px var(--webos-shadow-md);
-  --webos-shadow-navbar: 0 2px 4px var(--webos-chrome-shadow);
+  --webos-shadow-card-hover: 0 2px 8px var(--webos-shadow-md),
+                             0 1px 3px var(--webos-shadow-lg);
+  --webos-shadow-elevated: 0 4px 12px var(--webos-shadow-lg),
+                           0 2px 4px var(--webos-shadow-md);
+  --webos-shadow-navbar: 0 1px 3px var(--webos-shadow-sm);
+  --webos-shadow-dock: 0 -2px 8px var(--webos-shadow-md);
   
   /* ========================================
      TYPOGRAPHY SYSTEM
@@ -220,26 +222,72 @@
   box-shadow: var(--webos-shadow-card);
   transition: all var(--webos-transition-base);
   overflow: hidden;
+  border: 1px solid var(--webos-border-subtle);
 }
 
 .webos-card:hover {
   box-shadow: var(--webos-shadow-card-hover);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .webos-card-header {
   padding: var(--webos-space-lg);
-  border-bottom: 1px solid var(--webos-border-subtle);
+  border-bottom: 1px solid var(--webos-border-light);
+  background: var(--webos-surface-subtle);
 }
 
 .webos-card-body {
   padding: var(--webos-space-lg);
+  background: var(--webos-surface);
 }
 
 .webos-card-footer {
   padding: var(--webos-space-lg);
-  border-top: 1px solid var(--webos-border-subtle);
+  border-top: 1px solid var(--webos-border-light);
   background: var(--webos-surface-subtle);
+}
+
+/* Multi-pane app layout - for Email, Calendar, Contacts */
+.webos-app-layout {
+  display: flex;
+  height: 100%;
+  background: var(--webos-bg-primary);
+  font-family: var(--webos-font-sans);
+  font-weight: 300;
+}
+
+.webos-app-sidebar {
+  width: 240px;
+  background: var(--webos-bg-light);
+  border-right: 1px solid var(--webos-border-light);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.webos-app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--webos-surface);
+  min-width: 0;
+}
+
+.webos-app-list {
+  width: 320px;
+  background: var(--webos-bg-secondary);
+  border-right: 1px solid var(--webos-border-light);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.webos-app-detail {
+  flex: 1;
+  background: var(--webos-surface);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 /* Card Carousel Layout */
@@ -355,7 +403,7 @@
   padding: var(--webos-space-md) var(--webos-space-lg);
 }
 
-/* Bottom Dock/Navigation */
+/* Bottom Dock/Navigation - Dark translucent like webOS */
 .webos-dock {
   position: fixed;
   bottom: var(--webos-space-lg);
@@ -364,12 +412,12 @@
   display: flex;
   gap: var(--webos-space-sm);
   padding: var(--webos-space-md);
-  background: var(--webos-chrome-bg);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--webos-radius-xl);
-  box-shadow: var(--webos-shadow-elevated);
-  border: 1px solid var(--webos-chrome-border);
+  box-shadow: var(--webos-shadow-dock);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: var(--webos-z-navbar);
 }
 
@@ -1019,4 +1067,402 @@ kbd.webos-kbd {
     padding: 0.625rem 1rem;
     font-size: 0.7rem;
   }
+}
+
+
+/* ========================================
+   WEBOS LIST ITEMS & CONTENT STYLING
+   Based on reference images
+   ======================================== */
+
+/* Email/Message List Item */
+.webos-list-item {
+  padding: var(--webos-space-md);
+  border-bottom: 1px solid var(--webos-border-subtle);
+  background: var(--webos-surface);
+  transition: background var(--webos-transition-fast);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--webos-space-md);
+}
+
+.webos-list-item:hover {
+  background: var(--webos-surface-hover);
+}
+
+.webos-list-item-selected {
+  background: var(--webos-surface-active);
+}
+
+.webos-list-item-title {
+  font-size: var(--webos-text-base);
+  font-weight: 400;
+  color: var(--webos-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.webos-list-item-subtitle {
+  font-size: var(--webos-text-sm);
+  font-weight: 300;
+  color: var(--webos-text-secondary);
+}
+
+.webos-list-item-meta {
+  font-size: var(--webos-text-xs);
+  font-weight: 300;
+  color: var(--webos-text-tertiary);
+  margin-top: 0.25rem;
+}
+
+/* Contact/Profile Card */
+.webos-contact-card {
+  padding: var(--webos-space-lg);
+  background: var(--webos-surface);
+}
+
+.webos-contact-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--webos-bg-secondary);
+  margin: 0 auto var(--webos-space-md);
+  overflow: hidden;
+}
+
+.webos-contact-name {
+  font-size: var(--webos-text-2xl);
+  font-weight: 300;
+  color: var(--webos-text-primary);
+  text-align: center;
+  margin-bottom: var(--webos-space-xs);
+}
+
+.webos-contact-title {
+  font-size: var(--webos-text-sm);
+  font-weight: 300;
+  color: var(--webos-text-secondary);
+  text-align: center;
+  margin-bottom: var(--webos-space-lg);
+}
+
+.webos-contact-info-group {
+  margin-bottom: var(--webos-space-lg);
+}
+
+.webos-contact-info-label {
+  font-size: var(--webos-text-xs);
+  font-weight: 400;
+  color: var(--webos-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--webos-space-xs);
+}
+
+.webos-contact-info-value {
+  font-size: var(--webos-text-base);
+  font-weight: 300;
+  color: var(--webos-text-primary);
+}
+
+/* Calendar Event Bubble */
+.webos-calendar-event {
+  padding: var(--webos-space-sm) var(--webos-space-md);
+  border-radius: var(--webos-radius-md);
+  margin-bottom: var(--webos-space-xs);
+  box-shadow: var(--webos-shadow-card);
+  transition: all var(--webos-transition-fast);
+  cursor: pointer;
+}
+
+.webos-calendar-event:hover {
+  box-shadow: var(--webos-shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+.webos-calendar-event-blue {
+  background: #a8c8e4;
+  border-left: 3px solid #6a9ed0;
+}
+
+.webos-calendar-event-red {
+  background: #f4a0a0;
+  border-left: 3px solid #e05050;
+}
+
+.webos-calendar-event-yellow {
+  background: #f4e4a0;
+  border-left: 3px solid #e0c850;
+}
+
+.webos-calendar-event-green {
+  background: #b0e4a0;
+  border-left: 3px solid #70c850;
+}
+
+.webos-calendar-event-title {
+  font-size: var(--webos-text-sm);
+  font-weight: 400;
+  color: var(--webos-text-primary);
+  margin-bottom: 0.125rem;
+}
+
+.webos-calendar-event-time {
+  font-size: var(--webos-text-xs);
+  font-weight: 300;
+  color: var(--webos-text-secondary);
+}
+
+.webos-calendar-event-location {
+  font-size: var(--webos-text-xs);
+  font-weight: 300;
+  color: var(--webos-text-secondary);
+  font-style: italic;
+}
+
+/* Section Header - Used in sidebar and lists */
+.webos-section-header {
+  padding: var(--webos-space-sm) var(--webos-space-md);
+  font-size: var(--webos-text-xs);
+  font-weight: 400;
+  color: var(--webos-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--webos-bg-light);
+  border-bottom: 1px solid var(--webos-border-subtle);
+}
+
+/* App Header Bar - Light gray gradient like webOS */
+.webos-app-header {
+  padding: var(--webos-space-md) var(--webos-space-lg);
+  background: linear-gradient(to bottom, #f5f5f5, #ebebeb);
+  border-bottom: 1px solid var(--webos-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.webos-app-header-title {
+  font-size: var(--webos-text-xl);
+  font-weight: 300;
+  color: var(--webos-text-primary);
+}
+
+/* Sidebar Navigation Item */
+.webos-sidebar-item {
+  padding: var(--webos-space-sm) var(--webos-space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--webos-space-sm);
+  color: var(--webos-text-secondary);
+  font-size: var(--webos-text-sm);
+  font-weight: 300;
+  cursor: pointer;
+  transition: all var(--webos-transition-fast);
+}
+
+.webos-sidebar-item:hover {
+  background: var(--webos-surface-hover);
+  color: var(--webos-text-primary);
+}
+
+.webos-sidebar-item-active {
+  background: var(--webos-surface-active);
+  color: var(--webos-text-primary);
+  font-weight: 400;
+}
+
+.webos-sidebar-item-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.webos-sidebar-item-badge {
+  margin-left: auto;
+  padding: 0.125rem 0.5rem;
+  font-size: var(--webos-text-xs);
+  font-weight: 400;
+  color: var(--webos-text-inverse);
+  background: var(--webos-text-tertiary);
+  border-radius: var(--webos-radius-full);
+}
+
+/* Input Fields - Light, clean webOS style */
+.webos-input {
+  width: 100%;
+  padding: var(--webos-space-sm) var(--webos-space-md);
+  font-size: var(--webos-text-base);
+  font-weight: 300;
+  font-family: var(--webos-font-sans);
+  color: var(--webos-text-primary);
+  background: var(--webos-surface);
+  border: 1px solid var(--webos-border-medium);
+  border-radius: var(--webos-radius-md);
+  transition: all var(--webos-transition-fast);
+  outline: none;
+}
+
+.webos-input:focus {
+  border-color: var(--webos-border-dark);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.webos-input::placeholder {
+  color: var(--webos-text-tertiary);
+  font-weight: 300;
+}
+
+/* Textarea */
+.webos-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--webos-space-md);
+  font-size: var(--webos-text-base);
+  font-weight: 300;
+  font-family: var(--webos-font-sans);
+  color: var(--webos-text-primary);
+  background: var(--webos-surface);
+  border: 1px solid var(--webos-border-medium);
+  border-radius: var(--webos-radius-md);
+  transition: all var(--webos-transition-fast);
+  outline: none;
+  resize: vertical;
+}
+
+.webos-textarea:focus {
+  border-color: var(--webos-border-dark);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Email Detail View */
+.webos-email-detail {
+  padding: var(--webos-space-lg);
+  background: var(--webos-surface);
+}
+
+.webos-email-header {
+  margin-bottom: var(--webos-space-lg);
+  padding-bottom: var(--webos-space-lg);
+  border-bottom: 1px solid var(--webos-border-light);
+}
+
+.webos-email-subject {
+  font-size: var(--webos-text-xl);
+  font-weight: 400;
+  color: var(--webos-text-primary);
+  margin-bottom: var(--webos-space-md);
+}
+
+.webos-email-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--webos-space-md);
+  font-size: var(--webos-text-sm);
+  color: var(--webos-text-secondary);
+}
+
+.webos-email-body {
+  font-size: var(--webos-text-base);
+  font-weight: 300;
+  line-height: var(--webos-leading-relaxed);
+  color: var(--webos-text-primary);
+  white-space: pre-wrap;
+}
+
+/* Calendar Grid */
+.webos-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--webos-border-light);
+  border: 1px solid var(--webos-border-light);
+}
+
+.webos-calendar-day {
+  aspect-ratio: 1;
+  padding: var(--webos-space-sm);
+  background: var(--webos-surface);
+  font-size: var(--webos-text-sm);
+  font-weight: 300;
+  color: var(--webos-text-primary);
+  cursor: pointer;
+  transition: background var(--webos-transition-fast);
+}
+
+.webos-calendar-day:hover {
+  background: var(--webos-surface-hover);
+}
+
+.webos-calendar-day-today {
+  background: var(--webos-surface-active);
+  font-weight: 400;
+}
+
+.webos-calendar-day-other-month {
+  color: var(--webos-text-tertiary);
+}
+
+.webos-calendar-day-number {
+  display: block;
+  margin-bottom: var(--webos-space-xs);
+}
+
+/* Toolbar at bottom - like webOS keyboard bar */
+.webos-toolbar {
+  padding: var(--webos-space-sm) var(--webos-space-md);
+  background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
+  border-top: 1px solid #3a3a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--webos-space-md);
+}
+
+.webos-toolbar-button {
+  padding: var(--webos-space-sm) var(--webos-space-md);
+  font-size: var(--webos-text-sm);
+  font-weight: 300;
+  color: var(--webos-text-inverse);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: var(--webos-radius-sm);
+  cursor: pointer;
+  transition: all var(--webos-transition-fast);
+}
+
+.webos-toolbar-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.webos-toolbar-button:active {
+  transform: scale(0.98);
+}
+
+/* Utility Classes */
+.webos-text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.webos-divider {
+  height: 1px;
+  background: var(--webos-border-light);
+  margin: var(--webos-space-md) 0;
+}
+
+.webos-divider-vertical {
+  width: 1px;
+  background: var(--webos-border-light);
+  height: 100%;
+}
+
+/* Accessibility - Focus visible */
+.webos-card:focus-visible,
+.webos-button:focus-visible,
+.webos-input:focus-visible,
+.webos-list-item:focus-visible {
+  outline: 2px solid var(--webos-text-secondary);
+  outline-offset: 2px;
 }

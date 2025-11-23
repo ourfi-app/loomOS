@@ -75,7 +75,8 @@
   --chrome-dark: #1a1a1a;             /* Top bar, dark chrome */
   --chrome-medium: #4a4a4a;           /* Medium chrome */
   --chrome-light: #5a5a5a;            /* Light chrome */
-  --chrome-text: #e8e8e8;             /* Text on dark chrome */
+  --chrome-text: #ffffff;             /* Primary text on dark chrome - high contrast white */
+  --chrome-text-secondary: rgba(255, 255, 255, 0.8); /* Secondary text on dark chrome */
 
   /* ========================================
      GLASSMORPHISM EFFECTS
