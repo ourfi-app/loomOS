@@ -1,100 +1,295 @@
-// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
+// loomOS Dashboard Layout - Full Design System Implementation
 'use client';
 
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { LoomOSContainer } from '@/components/webos/loomos-container';
-import { useCardManager } from '@/lib/card-manager-store';
-import { DesktopWidgets } from '@/components/webos/desktop-widgets';
-import { UniversalSearch } from '@/components/webos/universal-search';
-import { UserOnboardingModal } from '@/components/onboarding/user-onboarding-modal';
-import { ErrorBoundary } from '@/components/common/error-boundary';
-import { DesktopCustomizationPanel } from '@/components/webos/desktop-customization-panel';
-import { CardStackView } from '@/components/webos/card-stack-view';
-import { AnimatePresence } from 'framer-motion';
-import { MotionProvider } from '@/components/providers/motion-provider';
 import { 
-  Home, 
-  Users, 
-  CreditCard, 
-  FileText, 
-  MessageSquare, 
-  Settings, 
-  Bell, 
-  User, 
-  Shield, 
-  Upload,
-  Calendar,
-  BarChart,
-  Building
+  Home, Users, CreditCard, FileText, MessageSquare, Settings, 
+  Bell, User, Shield, Upload, Calendar, BarChart, Building,
+  Mail, Globe, Music, Bluetooth, Wifi, Battery, Search, X,
+  ChevronDown, LogOut, Clock as ClockIcon
 } from 'lucide-react';
 
-const ROUTE_TO_CARD_MAP: Record<string, { id: string; title: string; icon: any }> = {
-  '/dashboard': { id: 'dashboard', title: 'Dashboard', icon: Home },
-  '/dashboard/directory': { id: 'directory', title: 'Residents Directory', icon: Users },
-  '/dashboard/my-community': { id: 'my-community', title: 'My Community', icon: Users },
-  '/dashboard/payments': { id: 'payments', title: 'Payments', icon: CreditCard },
-  '/dashboard/documents': { id: 'documents', title: 'Documents', icon: FileText },
-  '/dashboard/chat': { id: 'chat', title: 'AI Chat', icon: MessageSquare },
-  '/dashboard/marketplace': { id: 'marketplace', title: 'Marketplace', icon: Building },
-  '/dashboard/messages': { id: 'messages', title: 'Messages', icon: MessageSquare },
-  '/dashboard/household': { id: 'household', title: 'My Household', icon: Home },
-  '/dashboard/my-household': { id: 'my-household', title: 'My Household', icon: Home },
-  '/dashboard/apps/calendar': { id: 'calendar', title: 'Calendar', icon: Calendar },
-  '/dashboard/apps/email': { id: 'email', title: 'Email', icon: MessageSquare },
-  '/dashboard/apps/notes': { id: 'notes', title: 'Notes', icon: FileText },
-  '/dashboard/ai-assistant': { id: 'ai-assistant', title: 'AI Assistant', icon: MessageSquare },
-  '/dashboard/notifications': { id: 'notifications', title: 'Notifications', icon: Bell },
-  '/dashboard/profile': { id: 'profile', title: 'My Profile', icon: User },
-  '/dashboard/admin': { id: 'admin', title: 'Admin Panel', icon: Shield },
-  '/dashboard/admin/users': { id: 'admin-users', title: 'User Management', icon: Users },
-  '/dashboard/admin/announcements': { id: 'admin-announcements', title: 'Announcements', icon: Bell },
-  '/dashboard/admin/association': { id: 'admin-association', title: 'Association', icon: Building },
-  '/dashboard/admin/directory-requests': { id: 'admin-directory-requests', title: 'Directory Requests', icon: Users },
-  '/dashboard/admin/import-units': { id: 'admin-import-units', title: 'Import Units', icon: Upload },
-  '/dashboard/admin/payments': { id: 'admin-payments', title: 'Payments', icon: CreditCard },
-  '/dashboard/admin/property-map': { id: 'admin-property-map', title: 'Property Map', icon: Building },
-  '/dashboard/admin/units': { id: 'admin-units', title: 'Unit Management', icon: Building },
-  '/dashboard/admin/settings': { id: 'admin-settings', title: 'Settings', icon: Settings },
-  '/dashboard/admin/reports': { id: 'admin-reports', title: 'Reports', icon: BarChart },
-  '/dashboard/admin/import': { id: 'admin-import', title: 'Import Data', icon: Upload },
-};
+// System status bar with live clock and user profile
+function SystemStatusBar({ 
+  onOpenAppLauncher, 
+  currentUser 
+}: { 
+  onOpenAppLauncher: () => void;
+  currentUser: any;
+}) {
+  const [time, setTime] = useState(new Date());
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-US', { 
+      hour: 'numeric', 
+      minute: '2-digit',
+      hour12: true 
+    });
+  };
+
+  return (
+    <div 
+      className="fixed top-0 left-0 right-0 h-10 flex items-center justify-between px-4 z-50"
+      style={{ 
+        backgroundColor: '#1a1a1a',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}
+    >
+      {/* Left: loomOS logo */}
+      <button
+        onClick={onOpenAppLauncher}
+        className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+      >
+        <div className="text-white font-light text-sm tracking-wide">loomOS</div>
+      </button>
+
+      {/* Center: System icons */}
+      <div className="flex items-center gap-4">
+        <Mail className="w-4 h-4 text-white/70" />
+        <MessageSquare className="w-4 h-4 text-white/70" />
+        <Music className="w-4 h-4 text-white/70" />
+        <Bluetooth className="w-4 h-4 text-white/70" />
+        <Wifi className="w-4 h-4 text-white/70" />
+        <Battery className="w-4 h-4 text-white/70" />
+      </div>
+
+      {/* Right: Clock and user profile */}
+      <div className="flex items-center gap-4">
+        <div className="text-white/90 text-sm font-light">
+          {formatTime(time)}
+        </div>
+        <div className="relative">
+          <button
+            onClick={() => setShowProfileMenu(!showProfileMenu)}
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
+            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+              <User className="w-4 h-4 text-white" />
+            </div>
+            <ChevronDown className="w-3 h-3 text-white/70" />
+          </button>
+          
+          {showProfileMenu && (
+            <div 
+              className="absolute right-0 top-full mt-2 w-48 rounded-xl overflow-hidden"
+              style={{
+                backgroundColor: '#2a2a2a',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+                border: '1px solid rgba(255, 255, 255, 0.1)'
+              }}
+            >
+              <div className="p-3 border-b border-white/10">
+                <div className="text-white text-sm font-light">
+                  {currentUser?.name || 'User'}
+                </div>
+                <div className="text-white/60 text-xs font-light">
+                  {currentUser?.email || ''}
+                </div>
+              </div>
+              <button
+                onClick={() => signOut()}
+                className="w-full px-3 py-2 text-left text-white/90 text-sm font-light hover:bg-white/10 transition-colors flex items-center gap-2"
+              >
+                <LogOut className="w-4 h-4" />
+                Sign Out
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// App Launcher with grid view
+function AppLauncher({ 
+  isOpen, 
+  onClose 
+}: { 
+  isOpen: boolean; 
+  onClose: () => void;
+}) {
+  const [activeTab, setActiveTab] = useState('apps');
+  const router = useRouter();
+
+  const apps = [
+    { id: 'inbox', title: 'Mail', icon: Mail, path: '/dashboard/messages', color: '#7a9eb5' },
+    { id: 'contacts', title: 'Contacts', icon: Users, path: '/dashboard/directory', color: '#b58a7a' },
+    { id: 'calendar', title: 'Calendar', icon: Calendar, path: '/dashboard/apps/calendar', color: '#b5a07a' },
+    { id: 'documents', title: 'Documents', icon: FileText, path: '/dashboard/documents', color: '#8ab57a' },
+    { id: 'payments', title: 'Payments', icon: CreditCard, path: '/dashboard/payments', color: '#7ab5a0' },
+    { id: 'community', title: 'Community', icon: Building, path: '/dashboard/my-community', color: '#9a7ab5' },
+    { id: 'chat', title: 'AI Chat', icon: MessageSquare, path: '/dashboard/chat', color: '#b57a9e' },
+    { id: 'admin', title: 'Admin', icon: Shield, path: '/dashboard/admin', color: '#7a8ab5' },
+  ];
+
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className="fixed inset-0 z-40"
+      style={{ backgroundColor: 'rgba(74, 74, 74, 0.95)' }}
+      onClick={onClose}
+    >
+      <div className="h-full flex flex-col" onClick={(e) => e.stopPropagation()}>
+        {/* Tab navigation */}
+        <div 
+          className="flex items-center gap-1 px-8 pt-16 pb-4"
+          style={{ backgroundColor: '#5a5a5a' }}
+        >
+          {['apps', 'downloads', 'favorites', 'settings'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className="px-6 py-2 text-xs font-light tracking-wider uppercase transition-colors rounded-t-lg"
+              style={{
+                color: activeTab === tab ? '#fff' : '#aaa',
+                backgroundColor: activeTab === tab ? '#4a4a4a' : 'transparent'
+              }}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* App grid */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <div className="grid grid-cols-7 gap-6 max-w-6xl mx-auto">
+            {apps.map((app) => {
+              const AppIcon = app.icon;
+              return (
+                <button
+                  key={app.id}
+                  onClick={() => {
+                    router.push(app.path);
+                    onClose();
+                  }}
+                  className="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition-colors"
+                >
+                  <div 
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                    style={{
+                      backgroundColor: app.color,
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+                    }}
+                  >
+                    <AppIcon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-white text-xs font-light text-center">
+                    {app.title}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Global search functionality
+function GlobalSearch() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<any>(null);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.length > 0) {
+      // Mock search results
+      setSearchResults({
+        apps: [
+          { id: 'mail', title: 'Mail', type: 'app' },
+          { id: 'calendar', title: 'Calendar', type: 'app' },
+        ],
+        contacts: [
+          { id: '1', name: 'John Doe', type: 'contact' },
+        ],
+        messages: [
+          { id: '1', subject: 'Meeting tomorrow', type: 'message' },
+        ]
+      });
+    } else {
+      setSearchResults(null);
+    }
+  };
+
+  return (
+    <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4 z-30">
+      <div
+        className="rounded-2xl overflow-hidden"
+        style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.6)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+        }}
+      >
+        <div className="flex items-center px-6 py-4">
+          <Search className="w-5 h-5 mr-3" style={{ color: '#8a8a8a' }} />
+          <input
+            type="text"
+            placeholder="JUST TYPE"
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+            className="flex-1 bg-transparent border-none outline-none text-base font-light"
+            style={{ 
+              color: '#4a4a4a',
+              fontFamily: '"Helvetica Neue", Arial, sans-serif'
+            }}
+          />
+          {searchQuery && (
+            <button onClick={() => handleSearch('')}>
+              <X className="w-4 h-4" style={{ color: '#8a8a8a' }} />
+            </button>
+          )}
+        </div>
+
+        {/* Search results dropdown */}
+        {searchResults && isFocused && (
+          <div 
+            className="border-t px-6 py-4 max-h-96 overflow-y-auto"
+            style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}
+          >
+            {searchResults.apps && searchResults.apps.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-light tracking-wider uppercase mb-2" style={{ color: '#8a8a8a' }}>
+                  APPS
+                </div>
+                {searchResults.apps.map((app: any) => (
+                  <div key={app.id} className="py-2 text-sm font-light" style={{ color: '#4a4a4a' }}>
+                    {app.title}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = useSession();
-  const status = session?.status || 'loading';
+  const { data: session, status } = useSession();
   const router = useRouter();
-  const pathname = usePathname();
-  const [onboardingChecked, setOnboardingChecked] = useState(false);
-  const [showUserOnboarding, setShowUserOnboarding] = useState(false);
-  const [showCustomization, setShowCustomization] = useState(false);
-  const [showCardStack, setShowCardStack] = useState(false);
-  const { launchApp, cards, toggleMultitaskingView, isMultitaskingView } = useCardManager();
-
-  // Keyboard shortcuts for card management
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // F3 or Cmd/Ctrl+Tab - Toggle card stack view
-      if (e.key === 'F3' || ((e.metaKey || e.ctrlKey) && e.key === 'Tab')) {
-        e.preventDefault();
-        setShowCardStack((prev) => !prev);
-      }
-      
-      // Escape - Close card stack view
-      if (e.key === 'Escape' && showCardStack) {
-        setShowCardStack(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showCardStack]);
+  const [showAppLauncher, setShowAppLauncher] = useState(false);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -102,95 +297,13 @@ export default function DashboardLayout({
     }
   }, [status, router]);
 
-  useEffect(() => {
-    const checkOnboarding = async () => {
-      if (status === 'authenticated' && session?.data?.user) {
-        const user = session?.data?.user as any;
-        
-        // Check system onboarding for admins
-        if (user.role === 'ADMIN') {
-          try {
-            const response = await fetch('/api/onboarding/status');
-            if (response.ok) {
-              const result = await response.json();
-              
-              if (result.settings && !result.settings.onboardingCompleted) {
-                router.replace('/onboarding');
-                return;
-              }
-            }
-          } catch (error) {
-            console.error('Error checking system onboarding status:', error);
-          }
-        }
-
-        // Check user onboarding for all users (board members and residents)
-        if (user.role === 'BOARD_MEMBER' || user.role === 'RESIDENT') {
-          try {
-            const response = await fetch('/api/user/onboarding/status');
-            if (response.ok) {
-              const result = await response.json();
-              
-              if (!result.onboardingCompleted) {
-                setShowUserOnboarding(true);
-              }
-            }
-          } catch (error) {
-            console.error('Error checking user onboarding status:', error);
-          }
-        }
-
-        setOnboardingChecked(true);
-      }
-    };
-
-    if (status === 'authenticated' && !onboardingChecked) {
-      checkOnboarding();
-    }
-  }, [status, session, router, onboardingChecked]);
-
-  const handleOnboardingComplete = async () => {
-    setShowUserOnboarding(false);
-    // No need to reload the page - just close the modal
-  };
-
-  // Add card based on current route
-  useEffect(() => {
-    if (pathname && ROUTE_TO_CARD_MAP[pathname]) {
-      const card = ROUTE_TO_CARD_MAP[pathname];
-      if (!card) return;
-      
-      // Skip launching card for dashboard home page
-      if (card.id === 'dashboard') {
-        return;
-      }
-      launchApp({
-        id: card.id,
-        title: card.title,
-        path: pathname,
-        color: 'from-cyan-500 via-blue-500 to-cyan-600', // Default gradient
-        icon: card.id,
-      });
-    }
-  }, [pathname, launchApp]);
-
-  if (status === 'loading' || (status === 'authenticated' && !onboardingChecked)) {
+  if (status === 'loading') {
     return (
-      <div
-        className="min-h-screen flex items-center justify-center"
-        style={{ backgroundColor: 'var(--surface-primary)' }}
-      >
+      <div className="min-h-screen flex items-center justify-center" style={{ 
+        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)'
+      }}>
         <div className="text-center">
-          <div className="webos-spinner"></div>
-          <p
-            style={{
-              color: 'var(--text-primary)',
-              fontWeight: 'var(--font-medium)',
-              marginTop: 'var(--space-md)'
-            }}
-          >
-            Loading...
-          </p>
+          <div className="text-sm font-light" style={{ color: '#8a8a8a' }}>Loading...</div>
         </div>
       </div>
     );
@@ -201,59 +314,32 @@ export default function DashboardLayout({
   }
 
   return (
-    <MotionProvider>
-      <LoomOSContainer
-        onOpenCustomization={() => setShowCustomization(true)}
-      >
-      {/* Show onboarding modal or dashboard content */}
-      {showUserOnboarding ? (
-        <>
-          {/* Blur background during onboarding */}
-          <div className="h-full overflow-hidden blur-sm pointer-events-none pt-10">
-            <ErrorBoundary>{children}</ErrorBoundary>
-          </div>
-          {/* User onboarding modal */}
-          <UserOnboardingModal 
-            open={showUserOnboarding} 
-            onComplete={handleOnboardingComplete} 
-          />
-        </>
-      ) : (
-        <>
-          <div id="desktop-main" className="h-full overflow-hidden pt-10">
-            <ErrorBoundary>
-              {/* Render dashboard home or active apps */}
-              {pathname === '/dashboard' && cards.length === 0 ? (
-                // Show dashboard home when no apps are open
-                children
-              ) : (
-                // Show app windows when apps are open
-                children
-              )}
-            </ErrorBoundary>
-          </div>
-          
-          {/* Desktop Widgets - Task widget, etc. */}
-          <DesktopWidgets />
-          
-          {/* Desktop Customization Panel - for changing background/widgets */}
-          <DesktopCustomizationPanel
-            isOpen={showCustomization}
-            onClose={() => setShowCustomization(false)}
-          />
-          
-          {/* Universal Search - "Just type" feature with Cmd/Ctrl+K */}
-          <UniversalSearch />
-          
-          {/* Card Stack View - webOS-style app switcher (F3 or Cmd/Ctrl+Tab) */}
-          <AnimatePresence>
-            {showCardStack && cards.length > 0 && (
-              <CardStackView onClose={() => setShowCardStack(false)} />
-            )}
-          </AnimatePresence>
-        </>
-      )}
-    </LoomOSContainer>
-    </MotionProvider>
+    <div 
+      className="min-h-screen"
+      style={{ 
+        background: 'linear-gradient(135deg, #d8d8d8 0%, #e8e8e8 50%, #d8d8d8 100%)',
+        fontFamily: '"Helvetica Neue", Arial, sans-serif'
+      }}
+    >
+      {/* System Status Bar */}
+      <SystemStatusBar 
+        onOpenAppLauncher={() => setShowAppLauncher(true)}
+        currentUser={session.user}
+      />
+
+      {/* Main Content */}
+      <div className="pt-10 h-screen overflow-hidden">
+        {children}
+      </div>
+
+      {/* Global Search */}
+      <GlobalSearch />
+
+      {/* App Launcher */}
+      <AppLauncher 
+        isOpen={showAppLauncher}
+        onClose={() => setShowAppLauncher(false)}
+      />
+    </div>
   );
 }
