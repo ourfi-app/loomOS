@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { cn } from '@/lib/utils';
+import { cn, formatMessageDate } from '@/lib/utils';
 import { format, isToday, isYesterday } from 'date-fns';
 import {
   LoomOSNavigationPane,
@@ -83,13 +83,6 @@ export default function MessagesTab() {
     } catch (error) {
       toastError('Failed to send message');
     }
-  };
-
-  const formatMessageDate = (dateString: string) => {
-    const date = new Date(dateString);
-    if (isToday(date)) return format(date, 'h:mm a');
-    if (isYesterday(date)) return 'Yesterday';
-    return format(date, 'MMM d');
   };
 
   return (

@@ -146,7 +146,6 @@ class WorkflowEngine {
         await this.callWebhook(action.config, triggerData);
         break;
       default:
-        console.warn(`Unknown action type: ${action.type}`);
     }
   }
 

@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { cn, formatDate, formatTime } from '@/lib/utils';
 import { 
   Calendar, 
   Wrench, 
@@ -17,7 +17,7 @@ import {
   ChevronRight,
   Filter
 } from 'lucide-react';
-import { format, isToday, isTomorrow, isPast, isFuture, parseISO } from 'date-fns';
+import { isToday, isTomorrow, isPast, isFuture, parseISO } from 'date-fns';
 import { useSession } from 'next-auth/react';
 
 interface FeedItem {
@@ -178,16 +178,6 @@ export function FeedWidget() {
       return feedItems.filter(item => isPast(item.date));
     }
     return feedItems;
-  };
-
-  const formatDate = (date: Date) => {
-    if (isToday(date)) return 'Today';
-    if (isTomorrow(date)) return 'Tomorrow';
-    return format(date, 'MMM d, yyyy');
-  };
-
-  const formatTime = (date: Date) => {
-    return format(date, 'h:mm a');
   };
 
   const filteredItems = getFilteredItems();

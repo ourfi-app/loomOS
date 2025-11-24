@@ -229,7 +229,6 @@ export function handleApiError(error: unknown, path?: string): NextResponse {
   if (error instanceof ApiError) {
     // Log operational errors at info level, non-operational at error level
     if (error.isOperational) {
-      console.info(`API Error [${error.code}]:`, error.message, error.details);
     } else {
       console.error(`API Error [${error.code}]:`, error.message, error.stack, error.details);
     }

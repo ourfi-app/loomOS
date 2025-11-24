@@ -103,7 +103,6 @@ export function PerformanceInitializer() {
         longTaskObserver = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
             if (entry.duration > 50) {
-              console.warn('[Performance] Long task detected:', {
                 duration: entry.duration,
                 startTime: entry.startTime,
               });

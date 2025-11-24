@@ -211,7 +211,6 @@ export function ensureMinimumTouchTarget(element: HTMLElement, minSize: number =
   const rect = element.getBoundingClientRect();
   
   if (rect.width < minSize || rect.height < minSize) {
-    console.warn(
       `Touch target too small: ${rect.width}×${rect.height}px (minimum ${minSize}×${minSize}px)`,
       element
     );

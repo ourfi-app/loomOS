@@ -1,3 +1,18 @@
+/**
+ * @deprecated This component is deprecated. Use UnifiedEmptyState from '@/components/common/unified-empty-state' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ * 
+ * Migration:
+ * ```
+ * // Before
+ * import { EmptyState } from '@/components/common/empty-state';
+ * 
+ * // After
+ * import { EmptyState } from '@/components/common/unified-empty-state';
+ * // or
+ * import { EmptyState } from '@/components/common';
+ * ```
+ */
 
 'use client';
 

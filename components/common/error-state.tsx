@@ -1,3 +1,18 @@
+/**
+ * @deprecated This component is deprecated. Use UnifiedErrorState from '@/components/common/unified-error-state' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ * 
+ * Migration:
+ * ```
+ * // Before
+ * import { ErrorState } from '@/components/common/error-state';
+ * 
+ * // After
+ * import { ErrorState } from '@/components/common/unified-error-state';
+ * // or
+ * import { ErrorState } from '@/components/common';
+ * ```
+ */
 
 'use client';
 

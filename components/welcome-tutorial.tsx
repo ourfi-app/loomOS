@@ -101,7 +101,6 @@ export function WelcomeTutorial({ onComplete, onSkip }: WelcomeTutorialProps) {
           // Scroll element into view
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          console.warn('Tutorial target element not found:', step.targetElement);
           setHighlightElement(null);
         }
       }, 100);
