@@ -213,6 +213,7 @@ export class PerformanceMonitor {
       const layoutShiftObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if ((entry as any).hadRecentInput) continue;
+          console.log({
             value: (entry as any).value,
             sources: (entry as any).sources,
           });
@@ -230,6 +231,7 @@ export class PerformanceMonitor {
         for (const entry of list.getEntries()) {
           const resource = entry as PerformanceResourceTiming;
           if (resource.duration > 1000) {
+            console.log({
               name: resource.name,
               duration: resource.duration,
               size: resource.transferSize,
