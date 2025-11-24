@@ -13,9 +13,12 @@
 @import '../design-tokens/motion.css';
 
 /* ============================================================================
-   WEBOS THEME - Authentic webOS styling
+   WEBOS THEME - DEPRECATED (Moved to semantic.css)
+   ============================================================================
+   The webOS theme tokens have been consolidated into design-tokens/semantic.css
+   To use webOS theme, apply [data-theme="webos"] to your components
    ============================================================================ */
-@import '../styles/webos-theme.css';
+/* @import '../styles/webos-theme.css'; */ /* DEPRECATED - Tokens moved to semantic.css */
 
 /* ============================================================================
    CUSTOM ANIMATIONS
