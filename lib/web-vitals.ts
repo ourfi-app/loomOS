@@ -199,7 +199,7 @@ export class PerformanceMonitor {
         for (const entry of list.getEntries()) {
           console.log({  duration: entry.duration,
             startTime: entry.startTime,
-          }));
+          })
         }
       });
       longTaskObserver.observe({ entryTypes: ['longtask'] });
