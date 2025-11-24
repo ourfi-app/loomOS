@@ -1,6 +1,19 @@
 /**
  * webOS Theme Design System
  * 
+ * ⚠️ DEPRECATED - This file is being phased out
+ * ⚠️ All tokens have been moved to /design-tokens/semantic.css
+ * ⚠️ Please use the semantic tokens instead of these direct tokens
+ * 
+ * Migration Path:
+ * - Use CSS variables from /design-tokens/core.css and /design-tokens/semantic.css
+ * - Apply [data-theme="webos"] to use webOS-specific semantic mappings
+ * - See /docs/DESIGN_SYSTEM.md for migration guide
+ * 
+ * This file is kept temporarily for backward compatibility only.
+ * It will be removed in a future release.
+ * 
+ * Original Description:
  * A clean, minimalist design system inspired by Palm/HP webOS
  * Based on the classic webOS interface with modern enhancements
  * 

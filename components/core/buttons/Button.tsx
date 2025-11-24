@@ -4,6 +4,21 @@ import React, { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
+ * @deprecated This button component is deprecated. Please use @/components/ui/button instead.
+ * 
+ * Migration Guide:
+ * - Replace: import { Button } from '@/components/core/buttons/Button'
+ * - With: import { Button } from '@/components/ui/button'
+ * 
+ * Variant Mapping:
+ * - 'primary' → 'primary'
+ * - 'secondary' → 'secondary'
+ * - 'ghost' → 'ghost'
+ * - 'icon' → size="icon"
+ * - 'navigation' → variant="navigation"
+ * 
+ * This file will be removed in a future release.
+ * 
  * Button Component - webOS Design System
  * 
  * Button component using the webOS design system tokens:
@@ -73,6 +88,14 @@ export function Button({
   loading = false,
   ...props
 }: ButtonProps) {
+  // Deprecation warning
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn(
+      '[DEPRECATED] components/core/buttons/Button is deprecated. ' +
+      'Please use @/components/ui/button instead. ' +
+      'See component documentation for migration guide.'
+    );
+  }
   // Size classes
   const sizeClasses = {
     sm: 'px-3 py-1.5 text-xs',

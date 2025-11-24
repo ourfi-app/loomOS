@@ -311,6 +311,101 @@
 }
 
 /* ========================================
+   ADDITIONAL SEMANTIC MAPPINGS FOR TAILWIND
+   Missing variables referenced in tailwind.config.ts
+   ======================================== */
+
+:root {
+  /* Radius tokens (already defined in core.css, but aliased for consistency) */
+  --radius-xs: 2px;
+  --radius-4xl: 32px;
+  
+  /* Shadow tokens */
+  --shadow-3xl: 0 32px 64px rgba(0, 0, 0, 0.2);
+  --shadow-inner-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-navbar: var(--shadow-sm);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-modal: var(--shadow-2xl);
+  --shadow-focus: 0 0 0 3px var(--semantic-primary-subtle);
+
+  /* Blur tokens */
+  --blur-xs: 4px;
+
+  /* Spacing tokens (consistent with core.css) */
+  --space-base: var(--space-4);  /* 16px */
+
+  /* Background semantic aliases for Tailwind */
+  --bg-primary: var(--semantic-bg-base);
+  --bg-secondary: var(--semantic-bg-subtle);
+  --bg-tertiary: var(--semantic-bg-muted);
+  --bg-surface: var(--semantic-surface-base);
+  --bg-elevated: var(--semantic-surface-elevated);
+  --bg-hover: var(--semantic-surface-hover);
+  --bg-active: var(--semantic-surface-active);
+  --bg-subtle: var(--semantic-bg-subtle);
+
+  /* Border semantic aliases */
+  --border-lightest: var(--semantic-border-light);
+  --border-light: var(--semantic-border-light);
+  --border-medium: var(--semantic-border-medium);
+  --border-dark: var(--semantic-border-strong);
+  --border-focus: var(--semantic-border-focus);
+
+  /* Text semantic aliases */
+  --text-on-accent: var(--semantic-text-inverse);
+
+  /* Accent aliases */
+  --accent-blue: var(--semantic-accent);
+  --accent-blue-light: var(--semantic-accent-light);
+  --accent-blue-dark: var(--semantic-accent-dark);
+  --accent-blue-subtle: var(--semantic-accent-subtle);
+
+  /* Status aliases */
+  --status-success: var(--semantic-success);
+  --status-success-light: var(--semantic-success-light);
+  --status-success-dark: var(--semantic-success-dark);
+  --status-success-subtle: var(--semantic-success-bg);
+  
+  --status-error: var(--semantic-error);
+  --status-error-light: var(--semantic-error-light);
+  --status-error-dark: var(--semantic-error-dark);
+  --status-error-subtle: var(--semantic-error-bg);
+  
+  --status-warning: var(--semantic-warning);
+  --status-warning-light: var(--semantic-warning-light);
+  --status-warning-dark: var(--semantic-warning-dark);
+  --status-warning-subtle: var(--semantic-warning-bg);
+  
+  --status-info: var(--semantic-info);
+  --status-info-light: var(--semantic-info-light);
+  --status-info-dark: var(--semantic-info-dark);
+  --status-info-subtle: var(--semantic-info-bg);
+
+  /* Chrome aliases */
+  --chrome-darkest: var(--chrome-dark);
+  --chrome-darker: var(--chrome-dark);
+
+  /* Glass aliases (map to core.css tokens) */
+  --glass-white-95: rgba(255, 255, 255, 0.95);
+  --glass-white-90: rgba(255, 255, 255, 0.9);
+  --glass-white-70: rgba(255, 255, 255, 0.7);
+  --glass-black-95: rgba(26, 26, 26, 0.95);
+  --glass-black-40: rgba(26, 26, 26, 0.4);
+  --glass-black-20: rgba(26, 26, 26, 0.2);
+
+  /* Transition/animation timing (map to motion.css) */
+  --ease-smooth: var(--ease-standard);
+  --duration-instant: 0ms;
+
+  /* Shadcn compatibility - using HSL format */
+  --primary: 24 90% 55%;  /* loomOS orange in HSL */
+  --primary-foreground: 0 0% 100%;  /* white */
+
+  /* Additional neutral shades */
+  --neutral-950: #1a1a1a;
+}
+
+/* ========================================
    WEBOS THEME OVERRIDES
    Apply webOS-specific semantic mappings
    ======================================== */
@@ -318,33 +413,52 @@
 [data-theme="webos"],
 .webos-theme {
   /* webOS Background Colors */
-  --semantic-bg-base: var(--webos-gray-300);        /* #e8e8e8 - Main background */
-  --semantic-bg-subtle: var(--webos-gray-200);      /* #eeeeee - Subtle areas */
-  --semantic-bg-muted: var(--webos-gray-400);       /* #e0e0e0 - Muted areas */
+  --semantic-bg-base: var(--webos-gray-100);        /* #e8e8e8 - Main background */
+  --semantic-bg-subtle: var(--webos-gray-50);       /* #f5f5f5 - Subtle areas */
+  --semantic-bg-muted: var(--webos-gray-200);       /* #e0e0e0 - Muted areas */
+  
+  /* Background aliases for Tailwind */
+  --bg-primary: var(--webos-gray-100);
+  --bg-secondary: var(--webos-gray-50);
+  --bg-tertiary: var(--webos-gray-200);
 
   /* webOS Surfaces */
   --semantic-surface-base: #FFFFFF;                  /* Pure white cards */
   --semantic-surface-elevated: #FFFFFF;              /* Elevated surfaces */
   --semantic-surface-overlay: rgba(255, 255, 255, 0.95);
-  --semantic-surface-sunken: var(--webos-gray-100); /* #f5f5f5 */
+  --semantic-surface-sunken: var(--webos-gray-50);  /* #f5f5f5 */
+  
+  /* Surface aliases */
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #FFFFFF;
 
   /* webOS Interactive Surfaces */
-  --semantic-surface-hover: var(--webos-gray-50);   /* #fafafa */
-  --semantic-surface-active: var(--webos-gray-100); /* #f5f5f5 */
+  --semantic-surface-hover: var(--webos-gray-50);   /* #f5f5f5 */
+  --semantic-surface-active: var(--webos-gray-100); /* #e8e8e8 */
   --semantic-surface-selected: rgba(122, 158, 181, 0.1); /* Gray-blue tint */
+  
+  /* Interactive surface aliases */
+  --bg-hover: var(--webos-gray-50);
+  --bg-active: var(--webos-gray-100);
 
   /* webOS Text Colors */
-  --semantic-text-primary: var(--webos-gray-900);   /* #000000 - Pure black */
-  --semantic-text-secondary: var(--webos-gray-700); /* #666666 */
-  --semantic-text-tertiary: var(--webos-gray-600);  /* #999999 */
-  --semantic-text-disabled: var(--webos-gray-500);  /* #cccccc */
+  --semantic-text-primary: var(--webos-gray-900);   /* #1a1a1a - Near black */
+  --semantic-text-secondary: var(--webos-gray-700); /* #808080 */
+  --semantic-text-tertiary: var(--webos-gray-600);  /* #a0a0a0 */
+  --semantic-text-disabled: var(--webos-gray-500);  /* #c0c0c0 */
   --semantic-text-inverse: #FFFFFF;
 
   /* webOS Borders */
-  --semantic-border-light: var(--webos-gray-400);   /* #e0e0e0 */
-  --semantic-border-medium: var(--webos-gray-500);  /* #cccccc */
-  --semantic-border-strong: var(--webos-gray-600);  /* #999999 */
+  --semantic-border-light: var(--webos-gray-200);   /* #e0e0e0 */
+  --semantic-border-medium: var(--webos-gray-300);  /* #d8d8d8 */
+  --semantic-border-strong: var(--webos-gray-400);  /* #d0d0d0 */
   --semantic-border-focus: #8a8a8a;                 /* webOS gray accent */
+  
+  /* Border aliases */
+  --border-lightest: var(--webos-gray-200);
+  --border-light: var(--webos-gray-200);
+  --border-medium: var(--webos-gray-300);
+  --border-dark: var(--webos-gray-400);
 
   /* webOS Accents - Minimal color usage */
   --semantic-primary: #7a9eb5;                      /* Gray-blue for links/selections */
@@ -356,6 +470,11 @@
   --semantic-accent-light: #8fabc4;
   --semantic-accent-dark: #6b8fa6;
   --semantic-accent-subtle: rgba(122, 158, 181, 0.08);
+  
+  /* Accent aliases */
+  --accent-blue: #7a9eb5;
+  --accent-blue-light: #8fabc4;
+  --accent-blue-dark: #6b8fa6;
 
   /* webOS Status Colors */
   --semantic-success: #5cb85c;
@@ -372,17 +491,17 @@
   --semantic-btn-primary-hover: #6b8fa6;
   
   --semantic-card-bg: #FFFFFF;
-  --semantic-card-border: var(--webos-gray-400);
+  --semantic-card-border: var(--webos-gray-200);
   
   --semantic-nav-bg: rgba(255, 255, 255, 0.95);
-  --semantic-nav-border: var(--webos-gray-400);
+  --semantic-nav-border: var(--webos-gray-200);
   
   --semantic-dock-bg: rgba(255, 255, 255, 0.95);
-  --semantic-dock-border: var(--webos-gray-400);
+  --semantic-dock-border: var(--webos-gray-200);
   
   /* webOS Input */
   --semantic-input-bg: #FFFFFF;
-  --semantic-input-border: var(--webos-gray-400);
-  --semantic-input-border-hover: var(--webos-gray-600);
+  --semantic-input-border: var(--webos-gray-200);
+  --semantic-input-border-hover: var(--webos-gray-300);
   --semantic-input-border-focus: #8a8a8a;
 }
