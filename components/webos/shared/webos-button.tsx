@@ -6,6 +6,22 @@ import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
 
 /**
+ * @deprecated This button component is deprecated. Please use @/components/ui/button instead.
+ * 
+ * Migration Guide:
+ * - Replace: import { WebOSButton } from '@/components/webos/shared/webos-button'
+ * - With: import { Button } from '@/components/ui/button'
+ * 
+ * Variant Mapping:
+ * - 'dark' → variant="dark"
+ * - 'light' → variant="light"
+ * - 'glass' → variant="glass"
+ * - 'outline' → variant="outline"
+ * - 'ghost' → variant="ghost"
+ * 
+ * All features (loading, icons) are supported in the unified component.
+ * This file will be removed in a future release.
+ * 
  * WebOS Button Component
  * 
  * A button component following WebOS design principles.
@@ -108,6 +124,15 @@ export const WebOSButton = React.forwardRef<
     },
     ref
   ) => {
+    // Deprecation warning
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        '[DEPRECATED] components/webos/shared/webos-button is deprecated. ' +
+        'Please use @/components/ui/button instead. ' +
+        'All webOS variants (glass, dark, light) are supported.'
+      );
+    }
+    
     const Comp = asChild ? Slot : 'button';
     const variantStyle = variantStyles[variant];
 

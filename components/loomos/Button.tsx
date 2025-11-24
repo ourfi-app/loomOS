@@ -1,4 +1,13 @@
 /**
+ * @deprecated This button component is deprecated. Please use @/components/ui/button instead.
+ * 
+ * Migration Guide:
+ * - Replace: import { Button } from '@/components/loomos/Button'
+ * - With: import { Button } from '@/components/ui/button'
+ * 
+ * All features (variants, sizes, loading, icons) are supported in the unified component.
+ * This file will be removed in a future release.
+ * 
  * loomOS Button Component
  *
  * Built on the loomOS Design System v1.0
@@ -41,6 +50,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    // Deprecation warning
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        '[DEPRECATED] components/loomos/Button is deprecated. ' +
+        'Please use @/components/ui/button instead. ' +
+        'All features are supported in the unified component.'
+      );
+    }
+    
     // Base styles using design tokens
     const baseStyles: React.CSSProperties = {
       display: 'inline-flex',
