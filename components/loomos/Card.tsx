@@ -1,4 +1,18 @@
 /**
+ * @deprecated This card component is deprecated. Please use @/components/ui/card instead.
+ * 
+ * Migration Guide:
+ * - Replace: import { Card } from '@/components/loomos/Card'
+ * - With: import { Card } from '@/components/ui/card'
+ * 
+ * Feature Mapping:
+ * - hoverable → hoverable
+ * - clickable → clickable
+ * - padding → padding (same values)
+ * 
+ * All features are supported in the unified component.
+ * This file will be removed in a future release.
+ * 
  * loomOS Card Component
  *
  * Built on the loomOS Design System v1.0
@@ -43,6 +57,15 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     },
     ref
   ) => {
+    // Deprecation warning
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        '[DEPRECATED] components/loomos/Card is deprecated. ' +
+        'Please use @/components/ui/card instead. ' +
+        'All features are supported in the unified component.'
+      );
+    }
+    
     const paddingMap = {
       none: '0',
       sm: 'var(--card-padding-sm)',
