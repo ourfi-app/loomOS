@@ -197,9 +197,9 @@ export class PerformanceMonitor {
     try {
       const longTaskObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-            duration: entry.duration,
+          console.log({  duration: entry.duration,
             startTime: entry.startTime,
-          });
+          }));
         }
       });
       longTaskObserver.observe({ entryTypes: ['longtask'] });
