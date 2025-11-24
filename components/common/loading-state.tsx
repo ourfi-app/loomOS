@@ -1,3 +1,18 @@
+/**
+ * @deprecated This component is deprecated. Use UnifiedLoadingState from '@/components/common/unified-loading-state' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ * 
+ * Migration:
+ * ```
+ * // Before
+ * import { LoadingState, LoadingSpinner } from '@/components/common/loading-state';
+ * 
+ * // After
+ * import { LoadingState, LoadingSpinner } from '@/components/common/unified-loading-state';
+ * // or
+ * import { LoadingState, LoadingSpinner } from '@/components/common';
+ * ```
+ */
 
 'use client';
 

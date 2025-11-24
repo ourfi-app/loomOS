@@ -1,3 +1,18 @@
+/**
+ * @deprecated This component is deprecated. Use UnifiedSectionHeader from '@/components/common/unified-section-header' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ * 
+ * Migration:
+ * ```
+ * // Before
+ * import { SectionHeader } from '@/components/common/section-header';
+ * 
+ * // After
+ * import { SectionHeader } from '@/components/common/unified-section-header';
+ * // or
+ * import { SectionHeader } from '@/components/common';
+ * ```
+ */
 
 'use client';
 
