@@ -117,7 +117,6 @@ export const useDesktopWidgets = create<DesktopWidgetState>()(
         
         // Check if widget type already exists
         if (widgets.some(w => w.widgetType === widgetType)) {
-          console.warn(`Widget type "${widgetType}" already exists`);
           return;
         }
         

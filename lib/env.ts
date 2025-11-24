@@ -117,7 +117,6 @@ function validateEnv() {
             if (typeof prop === 'string') {
               const value = process.env[prop];
               if (!value) {
-                console.warn(`⚠️  Accessing missing environment variable: ${prop}`);
               }
               return value || '';
             }

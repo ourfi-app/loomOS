@@ -367,8 +367,8 @@ function checkPerformance(code: string): ValidationSuggestion[] {
 function checkBestPractices(code: string): ValidationWarning[] {
   const warnings: ValidationWarning[] = [];
 
-  // Check for console.log statements
-  if (code.includes('console.log') || code.includes('console.error')) {
+  // Check for // console.log statements
+  if (code.includes('// console.log') || code.includes('console.error')) {
     warnings.push({
       type: 'best-practice',
       message: 'Remove console statements before production',

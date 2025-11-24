@@ -88,7 +88,7 @@ export function throttle<T extends (...args: any[]) => any>(
  * 
  * @example
  * const observer = createIntersectionObserver(
- *   (entries) => console.log('Element visible:', entries[0].isIntersecting),
+ *   (entries) => // console.log('Element visible:', entries[0].isIntersecting),
  *   { threshold: 0.5 }
  * );
  */
@@ -266,8 +266,8 @@ export function isInViewport(element: HTMLElement): boolean {
  * 
  * @example
  * preloadImage('/path/to/image.jpg')
- *   .then(() => console.log('Image loaded'))
- *   .catch(() => console.log('Image failed'));
+ *   .then(() => // console.log('Image loaded'))
+ *   .catch(() => // console.log('Image failed'));
  */
 export function preloadImage(src: string): Promise<void> {
   return new Promise((resolve, reject) => {

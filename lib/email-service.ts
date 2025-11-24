@@ -49,7 +49,6 @@ export async function sendEmail(options: EmailOptions): Promise<{ success: boole
   try {
     // Validate SendGrid is configured
     if (!SENDGRID_API_KEY) {
-      console.warn('SendGrid API key not configured. Email not sent.');
       return {
         success: false,
         error: 'Email service not configured. Please add SENDGRID_API_KEY to environment variables.',

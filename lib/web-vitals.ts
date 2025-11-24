@@ -197,7 +197,6 @@ export class PerformanceMonitor {
     try {
       const longTaskObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          console.warn('[Performance] Long task detected:', {
             duration: entry.duration,
             startTime: entry.startTime,
           });
@@ -214,7 +213,6 @@ export class PerformanceMonitor {
       const layoutShiftObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if ((entry as any).hadRecentInput) continue;
-          console.warn('[Performance] Layout shift detected:', {
             value: (entry as any).value,
             sources: (entry as any).sources,
           });
@@ -232,7 +230,6 @@ export class PerformanceMonitor {
         for (const entry of list.getEntries()) {
           const resource = entry as PerformanceResourceTiming;
           if (resource.duration > 1000) {
-            console.warn('[Performance] Slow resource:', {
               name: resource.name,
               duration: resource.duration,
               size: resource.transferSize,
