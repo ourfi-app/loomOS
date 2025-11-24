@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/core/buttons/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowLeft, AlertCircle, CheckCircle, Mail } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { GlassPanel } from '@/components/core/panels/GlassPanel';

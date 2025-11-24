@@ -1,11 +1,11 @@
 
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import '@/design-tokens/core.css';
-import '@/design-tokens/semantic.css';
-import '@/design-tokens/motion.css';
-import '@/styles/loomos-components.css';
-import '@/styles/webos-theme.css';
+// Phase 2 Migration: Removed redundant and deprecated CSS imports
+// - Removed duplicate design-token imports (already imported in globals.css)
+// - Removed @/styles/loomos-components.css (deprecated, styles use design-tokens)
+// - Removed @/styles/webos-theme.css (deprecated per Phase 1, tokens moved to design-tokens/semantic.css)
+// All design tokens are now centralized in globals.css via /design-tokens/
 import { Providers } from '@/components/providers';
 import { PWAInstallPrompt } from '@/components/webos/pwa-install-prompt';
 import { PWAUpdateNotification } from '@/components/webos/pwa-update-notification';

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Button } from '@/components/core/buttons/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowLeft, AlertCircle, Eye, EyeOff, Lock } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { GlassPanel } from '@/components/core/panels/GlassPanel';
