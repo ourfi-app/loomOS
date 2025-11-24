@@ -32,9 +32,29 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Add authorization check - only admins/developers should be able to import
-    // For now, require authenticated user
+    // Authorization check - only admins and super admins can import apps
     const userId = session.user.id;
+    
+    // Fetch user role from database
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { role: true, id: true }
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    // Only ADMIN and SUPER_ADMIN can import marketplace items
+    if (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN') {
+      return NextResponse.json(
+        { error: 'Forbidden: Only administrators can import marketplace items' },
+        { status: 403 }
+      );
+    }
 
     // Parse request body
     const body = await request.json();

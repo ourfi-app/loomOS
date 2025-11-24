@@ -11,6 +11,7 @@ import {
   logApiCall,
   ApiError
 } from '@/lib/api-utils';
+import { validateImageFile } from '@/lib/utils/file-validation';
 
 export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
@@ -34,21 +35,25 @@ export async function POST(request: NextRequest) {
       throw new ApiError('No file provided', 400);
     }
 
-    // Validate file type
-  // TODO: Add magic number validation for enhanced security
-    if (!file.type.startsWith('image/')) {
-      throw new ApiError('Only image files are allowed', 400);
-    }
-
     // Validate file size (max 5MB)
     if (file.size > 5 * 1024 * 1024) {
       throw new ApiError('File size must be less than 5MB', 400);
     }
 
-    const { folderPrefix } = getBucketConfig();
-
     // Convert to buffer
     const buffer = Buffer.from(await file.arrayBuffer());
+
+    // Validate file type with magic number validation for enhanced security
+    // This prevents file type spoofing by checking the actual file signature
+    const validation = await validateImageFile(file, buffer);
+    if (!validation.isValid) {
+      throw new ApiError(
+        validation.error || 'Invalid image file',
+        400
+      );
+    }
+
+    const { folderPrefix } = getBucketConfig();
     const fileName = `${folderPrefix}avatars/${userId}-${Date.now()}-${file.name}`;
 
     // Upload to S3
