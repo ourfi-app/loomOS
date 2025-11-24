@@ -22,12 +22,6 @@ export {
   type GlassCardFooterProps,
 } from './glass-card';
 
-// Button Components
-export {
-  WebOSButton,
-  type WebOSButtonProps,
-} from './webos-button';
-
 // Typography Components
 export {
   SectionHeader,
