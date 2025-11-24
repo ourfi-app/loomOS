@@ -1,16 +1,39 @@
+/**
+ * @deprecated This component is deprecated. Use UnifiedSectionHeader from '@/components/common/unified-section-header' instead.
+ * This file now re-exports from the unified component for backward compatibility.
+ * 
+ * Migration:
+ * ```
+ * // Before
+ * import { LoomOSSectionHeader } from '@/components/webos/loomos-section-header';
+ * 
+ * // After
+ * import { UnifiedSectionHeader } from '@/components/common/unified-section-header';
+ * <UnifiedSectionHeader variant="loomos" ... />
+ * // Or use the exported alias:
+ * import { LoomOSSectionHeader } from '@/components/common/unified-section-header';
+ * ```
+ */
+
 'use client';
 
-import React from 'react';
+import { useEffect } from 'react';
+import { LoomOSSectionHeader as UnifiedLoomOSSectionHeader } from '@/components/common/unified-section-header';
 
 interface LoomOSSectionHeaderProps {
   title: string;
   className?: string;
 }
 
-export function LoomOSSectionHeader({ title, className = '' }: LoomOSSectionHeaderProps) {
-  return (
-    <div className={`bg-gradient-to-r from-gray-600 to-gray-700 text-white px-3 py-2 text-[11px] font-bold tracking-wider ${className}`}>
-      {title.toUpperCase()}
-    </div>
-  );
+export function LoomOSSectionHeader(props: LoomOSSectionHeaderProps) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(
+        '[DEPRECATED] LoomOSSectionHeader from @/components/webos/loomos-section-header is deprecated. ' +
+        'Please use UnifiedSectionHeader from @/components/common/unified-section-header with variant="loomos" instead.'
+      );
+    }
+  }, []);
+
+  return <UnifiedLoomOSSectionHeader {...props} />;
 }

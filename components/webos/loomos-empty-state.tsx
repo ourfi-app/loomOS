@@ -1,8 +1,25 @@
+/**
+ * @deprecated This component is deprecated. Use UnifiedEmptyState from '@/components/common/unified-empty-state' instead.
+ * This file now re-exports from the unified component for backward compatibility.
+ * 
+ * Migration:
+ * ```
+ * // Before
+ * import { LoomOSEmptyState } from '@/components/webos/loomos-empty-state';
+ * 
+ * // After
+ * import { UnifiedEmptyState } from '@/components/common/unified-empty-state';
+ * <UnifiedEmptyState variant="loomos" ... />
+ * // Or use the exported alias:
+ * import { LoomOSEmptyState } from '@/components/common/unified-empty-state';
+ * ```
+ */
 
 'use client';
 
+import { useEffect } from 'react';
+import { LoomOSEmptyState as UnifiedLoomOSEmptyState } from '@/components/common/unified-empty-state';
 import { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
 
 interface LoomOSEmptyStateProps {
   icon: ReactNode;
@@ -12,21 +29,15 @@ interface LoomOSEmptyStateProps {
   className?: string;
 }
 
-export function LoomOSEmptyState({
-  icon,
-  title,
-  description,
-  action,
-  className,
-}: LoomOSEmptyStateProps) {
-  return (
-    <div className={cn('loomos-empty-state', className)}>
-      <div className="loomos-empty-state-icon">{icon}</div>
-      <div className="loomos-empty-state-title">{title}</div>
-      {description && (
-        <div className="loomos-empty-state-description">{description}</div>
-      )}
-      {action && <div className="mt-6">{action}</div>}
-    </div>
-  );
+export function LoomOSEmptyState(props: LoomOSEmptyStateProps) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(
+        '[DEPRECATED] LoomOSEmptyState from @/components/webos/loomos-empty-state is deprecated. ' +
+        'Please use UnifiedEmptyState from @/components/common/unified-empty-state with variant="loomos" instead.'
+      );
+    }
+  }, []);
+
+  return <UnifiedLoomOSEmptyState {...props} />;
 }
