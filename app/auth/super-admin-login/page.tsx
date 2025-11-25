@@ -62,8 +62,8 @@ export default function SuperAdminLoginPage() {
             45deg,
             transparent,
             transparent 10px,
-            rgba(255,255,255,0.1) 10px,
-            rgba(255,255,255,0.1) 20px
+            rgba(255, 255, 255, 0.95) 10px,
+            rgba(255, 255, 255, 0.95) 20px
           )`
         }} />
       </div>

@@ -20,8 +20,8 @@ export default function DashboardLoading() {
         style={{
           backgroundColor: 'var(--glass-white-80)',
           backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+          border: '1px solid rgba(255, 255, 255, 0.95)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)'
         }}
       >
         {/* Animated loomOS logo */}
@@ -36,7 +36,7 @@ export default function DashboardLoading() {
             height="120" 
             viewBox="0 0 120 120"
             style={{
-              filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.2))'
+              filter: 'drop-shadow(0 4px 16px rgba(0, 0, 0, 0.9))'
             }}
           >
             {/* loomOS logo - stylized "L" */}

@@ -201,7 +201,7 @@ export default function LoginScreen() {
             border: '1px solid var(--webos-border-glass)'
           }}
           whileHover={{
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)'
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.9)'
           }}
           transition={{ duration: 0.3 }}
         >
@@ -215,7 +215,7 @@ export default function LoginScreen() {
               <Alert 
                 className="mb-6 rounded-xl"
                 style={{
-                  backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                  backgroundColor: 'rgba(220, 53, 69, 0.6)',
                   border: '1px solid rgba(220, 53, 69, 0.3)'
                 }}
               >

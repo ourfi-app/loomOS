@@ -145,8 +145,8 @@ export function SearchAssistantBar() {
         <div className={cn(
           'flex items-center gap-3 px-5 py-3.5 rounded-2xl transition-all duration-500 ease-out',
           'bg-white/5 backdrop-blur-md border border-white/10',
-          'shadow-[0_8px_32px_rgba(0,0,0,0.12)]',
-          isFocused && 'bg-white/8 border-white/20 shadow-[0_12px_48px_rgba(0,0,0,0.16)]'
+          'shadow-[0_8px_32px_rgba(0, 0, 0, 0.9)]',
+          isFocused && 'bg-white/8 border-white/20 shadow-[0_12px_48px_rgba(0, 0, 0, 0.9)]'
         )}>
           {/* AI Assistant Icon - Clickable to open Universal Search in AI mode */}
           <button
@@ -163,8 +163,8 @@ export function SearchAssistantBar() {
             <div className={cn(
               "absolute inset-0 rounded-full transition-all duration-1000 ease-in-out",
               isFocused 
-                ? "shadow-[0_0_12px_rgba(251,191,36,0.3)]"
-                : "shadow-[0_0_8px_rgba(251,191,36,0.2)] animate-[pulse_4s_ease-in-out_infinite]"
+                ? "shadow-[0_0_12px_rgba(251, 191, 36, 0.3)]"
+                : "shadow-[0_0_8px_rgba(251, 191, 36, 0.2)] animate-[pulse_4s_ease-in-out_infinite]"
             )} />
             
             {/* AI icon with subtle warm gradient */}
@@ -176,7 +176,7 @@ export function SearchAssistantBar() {
               )} 
               style={{
                 filter: isFocused 
-                  ? 'drop-shadow(0 0 4px rgba(251, 191, 36, 0.4))' 
+                  ? 'drop-shadow(0 0 4px rgba(251, 191, 36, 0.2))' 
                   : 'drop-shadow(0 0 2px rgba(251, 191, 36, 0.3))',
               }}
             />

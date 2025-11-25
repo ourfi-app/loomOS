@@ -110,17 +110,17 @@
     --messaging: 280 60% 60%;         /* Magenta */
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --shadow-focus: 0 0 0 3px rgba(43, 142, 217, 0.15);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.9);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.9);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.9);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.9);
+    --shadow-focus: 0 0 0 3px rgba(43, 142, 217, 0.9);
     --shadow-glow: 0 0 30px 10px rgba(138, 138, 138, 0.3);
 
     /* Glass Effect Variables - Light Mode */
     --glass-bg: rgba(255, 255, 255, 0.88);
     --glass-blur: blur(20px);
-    --glass-border: rgba(0, 0, 0, 0.12);
+    --glass-border: rgba(0, 0, 0, 0.9);
     --glass-white-95: rgba(255, 255, 255, 0.95);
     --glass-white-90: rgba(255, 255, 255, 0.90);
     --glass-white-80: rgba(255, 255, 255, 0.80);
@@ -129,9 +129,9 @@
     --glass-black-95: rgba(0, 0, 0, 0.95);
     --glass-black-80: rgba(0, 0, 0, 0.80);
     --glass-black-60: rgba(0, 0, 0, 0.60);
-    --glass-black-40: rgba(0, 0, 0, 0.40);
-    --glass-black-20: rgba(0, 0, 0, 0.20);
-    --glass-black-10: rgba(0, 0, 0, 0.10);
+    --glass-black-40: rgba(0, 0, 0, 0.7);
+    --glass-black-20: rgba(0, 0, 0, 0.9);
+    --glass-black-10: rgba(0, 0, 0, 0.9);
   }
 
   .dark {
@@ -197,7 +197,7 @@
     /* Glass Effect Variables - Dark Mode */
     --glass-bg: rgba(48, 48, 48, 0.90);
     --glass-blur: blur(20px);
-    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.95);
     --glass-white-95: rgba(255, 255, 255, 0.95);
     --glass-white-90: rgba(255, 255, 255, 0.90);
     --glass-white-80: rgba(255, 255, 255, 0.80);
@@ -206,10 +206,10 @@
     --glass-black-95: rgba(0, 0, 0, 0.95);
     --glass-black-80: rgba(0, 0, 0, 0.80);
     --glass-black-60: rgba(0, 0, 0, 0.60);
-    --glass-black-40: rgba(0, 0, 0, 0.40);
-    --glass-black-20: rgba(0, 0, 0, 0.20);
-    --glass-black-10: rgba(0, 0, 0, 0.10);
-    --shadow-glow: 0 0 30px 10px rgba(138, 138, 138, 0.4);
+    --glass-black-40: rgba(0, 0, 0, 0.7);
+    --glass-black-20: rgba(0, 0, 0, 0.9);
+    --glass-black-10: rgba(0, 0, 0, 0.9);
+    --shadow-glow: 0 0 30px 10px rgba(138, 138, 138, 0.2);
   }
 }
 
@@ -486,8 +486,8 @@
     background: #ffffff;
     border: 1px solid #d8d8d8;
     box-shadow: 
-      0 2px 8px rgba(0, 0, 0, 0.08),
-      0 1px 3px rgba(0, 0, 0, 0.06);
+      0 2px 8px rgba(0, 0, 0, 0.9),
+      0 1px 3px rgba(0, 0, 0, 0.9);
     /* For mobile/multitasking mode - centered */
     left: 50%;
     top: 50%;
@@ -512,8 +512,8 @@
   /* Card being dragged or resized */
   .loomos-app-card-dragging {
     box-shadow: 
-      0 30px 60px rgba(0, 0, 0, 0.25),
-      0 15px 30px rgba(0, 0, 0, 0.15),
+      0 30px 60px rgba(0, 0, 0, 0.9),
+      0 15px 30px rgba(0, 0, 0, 0.9),
       0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     transition: none !important;
     cursor: grabbing;
@@ -523,9 +523,9 @@
     background: rgba(56, 56, 56, 0.98);
     border: 1px solid rgba(76, 76, 76, 0.6);
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.4),
-      0 10px 20px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      0 20px 40px rgba(0, 0, 0, 0.7),
+      0 10px 20px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(255, 255, 255, 0.95) inset;
   }
 
   .loomos-app-card-active {
@@ -542,11 +542,11 @@
   }
   
   .loomos-resize-handle:hover {
-    background: rgba(59, 130, 246, 0.15);
+    background: rgba(59, 130, 246, 0.9);
   }
   
   .loomos-resize-handle:active {
-    background: rgba(59, 130, 246, 0.25);
+    background: rgba(59, 130, 246, 0.9);
   }
   
   /* Top edge */
@@ -613,8 +613,8 @@
   .loomos-app-card-header {
     @apply h-12 px-4 flex items-center justify-between;
     @apply text-white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
     position: relative;
     z-index: 10;
   }
@@ -625,7 +625,7 @@
 
   .loomos-app-card-title {
     @apply text-sm font-semibold;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   }
 
   .loomos-app-card-control {
@@ -669,20 +669,20 @@
   }
 
   .loomos-app-card-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.9);
     border-radius: 4px;
   }
 
   .loomos-app-card-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.8);
   }
 
   .dark .loomos-app-card-content::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.95);
   }
 
   .dark .loomos-app-card-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.95);
   }
 
   /* WebOS App Card Preview */
@@ -700,7 +700,7 @@
     @apply px-6 py-3 rounded-2xl shadow-xl text-center z-50;
     /* Warm webOS surface for indicator */
     background: rgba(247, 246, 244, 0.98);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
@@ -725,20 +725,20 @@
     background: #ffffff;
     border: 1px solid #e5e5e5;
     box-shadow: 
-      0 1px 3px rgba(0, 0, 0, 0.06),
-      0 1px 2px rgba(0, 0, 0, 0.08);
+      0 1px 3px rgba(0, 0, 0, 0.9),
+      0 1px 2px rgba(0, 0, 0, 0.9);
   }
   
   .loomos-card:hover {
     box-shadow: 
-      0 2px 8px rgba(0, 0, 0, 0.08),
-      0 1px 3px rgba(0, 0, 0, 0.10);
+      0 2px 8px rgba(0, 0, 0, 0.9),
+      0 1px 3px rgba(0, 0, 0, 0.9);
     transform: translateY(-1px);
   }
   
   .dark .loomos-card {
     background: rgba(56, 56, 56, 0.95);
-    border: 1px solid rgba(76, 76, 76, 0.4);
+    border: 1px solid rgba(76, 76, 76, 0.2);
   }
 
   /* WebOS Pebble (Dock Icons) */
@@ -758,13 +758,13 @@
     @apply fixed top-0 left-0 right-0 h-14 px-6 flex items-center justify-between z-30;
     /* Warm translucent surface */
     background: rgba(247, 246, 244, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(207, 204, 199, 0.4);
+    backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(207, 204, 199, 0.2);
   }
   
   .dark .loomos-status-bar {
     background: rgba(46, 46, 46, 0.8);
-    border-bottom: 1px solid rgba(76, 76, 76, 0.4);
+    border-bottom: 1px solid rgba(76, 76, 76, 0.2);
   }
 
   /* Refined Status Bar - Transparent with subtle depth */
@@ -814,14 +814,14 @@
     @apply rounded-3xl shadow-2xl pointer-events-auto;
     /* Dark translucent dock like authentic webOS */
     background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.9);
   }
   
   .dark .loomos-app-dock-content {
     background: rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.95);
   }
 
   .loomos-app-dock-item {
@@ -850,7 +850,7 @@
     @apply absolute -top-1 -right-1 w-4 h-4 rounded-full;
     background: linear-gradient(135deg, #f59e0b, #d97706);
     border: 2px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   }
 
   /* Phase 2: Live Preview Card */
@@ -930,11 +930,11 @@
       rgba(255, 255, 255, 0.98),
       rgba(247, 246, 244, 0.96)
     );
-    backdrop-filter: blur(40px) saturate(180%);
-    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(50px) saturate(180%);
+    border: 1.5px solid rgba(0, 0, 0, 0.9);
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.12),
-      0 8px 16px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.9),
+      0 8px 16px rgba(0, 0, 0, 0.9),
       inset 0 1px 0 rgba(255, 255, 255, 0.95);
     /* Smooth fluid animation */
     animation: dock-popover-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -951,9 +951,9 @@
     );
     border: 1.5px solid rgba(76, 76, 76, 0.8);
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.4),
-      0 8px 16px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      0 20px 40px rgba(0, 0, 0, 0.7),
+      0 8px 16px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   
@@ -968,8 +968,8 @@
     color: rgba(0, 0, 0, 0.7);
     background: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.03),
-      rgba(0, 0, 0, 0.01)
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.9)
     );
     border-radius: 12px;
     letter-spacing: 0.01em;
@@ -979,8 +979,8 @@
     color: var(--glass-white-80);
     background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0.02)
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.95)
     );
   }
 
@@ -997,7 +997,7 @@
     @apply relative flex items-center gap-3.5 p-3 rounded-2xl;
     @apply border border-transparent cursor-pointer;
     @apply transition-all duration-200 ease-out;
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.9);
     /* Staggered animation */
     opacity: 0;
     animation: dock-app-card-enter 0.25s ease-out forwards;
@@ -1014,23 +1014,23 @@
   
   .loomos-dock-app-card:hover {
     background: rgba(255, 255, 255, 0.85);
-    border-color: rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.9);
     transform: translateX(3px) scale(1.01);
     box-shadow: 
-      0 6px 16px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(37, 99, 235, 0.08);
+      0 6px 16px rgba(0, 0, 0, 0.9),
+      0 2px 6px rgba(37, 99, 235, 0.9);
   }
 
   .dark .loomos-dock-app-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.95);
   }
 
   .dark .loomos-dock-app-card:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.95);
     border-color: rgba(96, 165, 250, 0.2);
     box-shadow: 
-      0 6px 16px rgba(0, 0, 0, 0.3),
-      0 2px 6px rgba(96, 165, 250, 0.15);
+      0 6px 16px rgba(0, 0, 0, 0.8),
+      0 2px 6px rgba(96, 165, 250, 0.9);
   }
 
   .loomos-dock-app-card:active {
@@ -1041,20 +1041,20 @@
   .loomos-dock-app-card-active {
     background: linear-gradient(
       to right,
-      rgba(37, 99, 235, 0.08),
-      rgba(37, 99, 235, 0.04)
+      rgba(37, 99, 235, 0.9),
+      rgba(37, 99, 235, 0.6)
     ) !important;
-    border-color: rgba(37, 99, 235, 0.25) !important;
+    border-color: rgba(37, 99, 235, 0.9) !important;
     box-shadow: 
-      0 4px 12px rgba(37, 99, 235, 0.08),
-      inset 0 1px 2px rgba(37, 99, 235, 0.1);
+      0 4px 12px rgba(37, 99, 235, 0.9),
+      inset 0 1px 2px rgba(37, 99, 235, 0.6);
   }
 
   .dark .loomos-dock-app-card-active {
     background: linear-gradient(
       to right,
-      rgba(96, 165, 250, 0.12),
-      rgba(96, 165, 250, 0.06)
+      rgba(96, 165, 250, 0.8),
+      rgba(96, 165, 250, 0.8)
     ) !important;
     border-color: rgba(96, 165, 250, 0.3) !important;
   }
@@ -1068,16 +1068,16 @@
     @apply transition-all duration-200;
     box-shadow: 
       0 2px 8px var(--glass-black-10),
-      0 1px 2px rgba(0, 0, 0, 0.06),
-      inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      inset 0 1px 1px rgba(255, 255, 255, 0.95);
   }
 
   .loomos-dock-app-card:hover .loomos-dock-app-icon {
     transform: scale(1.05);
     box-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.12),
-      0 2px 4px rgba(0, 0, 0, 0.08),
-      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+      0 4px 12px rgba(0, 0, 0, 0.9),
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      inset 0 1px 1px rgba(255, 255, 255, 0.95);
   }
 
   .loomos-dock-app-info {
@@ -1106,13 +1106,13 @@
   .loomos-dock-app-badge {
     @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
     @apply transition-all duration-150;
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(37, 99, 235, 0.6);
     color: rgba(37, 99, 235, 0.9);
-    border: 1px solid rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(37, 99, 235, 0.9);
   }
 
   .dark .loomos-dock-app-badge {
-    background: rgba(96, 165, 250, 0.15);
+    background: rgba(96, 165, 250, 0.9);
     color: rgba(96, 165, 250, 0.95);
     border-color: rgba(96, 165, 250, 0.2);
   }
@@ -1145,13 +1145,13 @@
     @apply relative h-64 rounded-2xl overflow-hidden cursor-pointer;
     @apply shadow-xl transition-all duration-300 group;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: 1px solid rgba(226, 232, 240, 0.8);
   }
   
   .loomos-multitasking-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
   }
 
   /* Universal Search */
@@ -1165,7 +1165,7 @@
     @apply rounded-3xl shadow-2xl mb-6;
     /* Warm webOS surface for search */
     background: rgba(247, 246, 244, 0.98);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
@@ -1456,7 +1456,7 @@
     @apply overflow-hidden max-h-[60vh] overflow-y-auto;
     /* Warm webOS surface for search results */
     background: rgba(247, 246, 244, 0.98);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
@@ -1507,7 +1507,7 @@
     @apply transition-all duration-300;
     /* Warm webOS surface for assistant */
     background: rgba(247, 246, 244, 0.98);
-    backdrop-filter: blur(32px);
+    backdrop-filter: blur(42px);
     border: 1px solid rgba(207, 204, 199, 0.6);
   }
   
@@ -1531,7 +1531,7 @@
 
   .loomos-assistant-welcome {
     @apply p-4 rounded-2xl;
-    background: linear-gradient(135deg, rgba(241, 136, 37, 0.08), rgba(245, 163, 78, 0.08));
+    background: linear-gradient(135deg, rgba(241, 136, 37, 0.9), rgba(245, 163, 78, 0.9));
     border: 1px solid rgba(241, 136, 37, 0.2);
   }
 
@@ -1554,7 +1554,7 @@
   /* Custom Scrollbar */
   .loomos-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    scrollbar-color: rgba(0, 0, 0, 0.9) transparent;
   }
 
   .loomos-scrollbar::-webkit-scrollbar {
@@ -1566,12 +1566,12 @@
   }
 
   .loomos-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.9);
     border-radius: 3px;
   }
 
   .loomos-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   /* WebOS Text Styles */
@@ -1585,11 +1585,11 @@
 
   /* WebOS Shadows */
   .loomos-shadow {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
   }
 
   .loomos-shadow-lg {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9);
   }
 }
 
@@ -2325,7 +2325,7 @@ html {
 /* Card Header Refinements */
 .loomos-card-header-refined {
   box-shadow: 0 1px 3px var(--glass-black-10);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 /* Card Content Area */
@@ -2740,8 +2740,8 @@ body:not(.using-mouse) *:focus {
   right: 0;
   bottom: 0;
   background: var(--glass-white-80);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: none;
   justify-content: center;
   align-items: center;
@@ -2763,17 +2763,17 @@ body:not(.using-mouse) *:focus {
 /* Glass morphism utility class */
 .glass-morphism {
   background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(0, 0, 0, 0.9);
 }
 
 /* Enhanced dock glass effect */
 .dock {
   background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.9) !important;
 }
 
 /* ========================================
@@ -2785,7 +2785,7 @@ body:not(.using-mouse) *:focus {
 .loom-icon {
   background: linear-gradient(135deg, var(--semantic-text-tertiary) 0%, #666666 100%);
   color: white;
-  box-shadow: 0 5px 15px rgba(102, 102, 102, 0.4);
+  box-shadow: 0 5px 15px rgba(102, 102, 102, 0.2);
   transition: all 0.3s ease;
 }
 

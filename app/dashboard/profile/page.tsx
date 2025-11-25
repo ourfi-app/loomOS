@@ -378,7 +378,7 @@ export default function ProfilePage() {
                   style={{
                     background: message.type === 'success' 
                       ? 'var(--webos-bg-secondary)' 
-                      : 'rgba(239, 68, 68, 0.1)',
+                      : 'rgba(239, 68, 68, 0.6)',
                     border: `1px solid ${message.type === 'success' 
                       ? 'var(--webos-border-primary)' 
                       : 'rgba(239, 68, 68, 0.3)'}`,

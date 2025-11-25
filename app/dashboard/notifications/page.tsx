@@ -232,7 +232,7 @@ export default function NotificationsPage() {
                   className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{
                     background: selectedNotification.notification.isUrgent 
-                      ? 'rgba(239, 68, 68, 0.1)' 
+                      ? 'rgba(239, 68, 68, 0.6)' 
                       : 'var(--webos-bg-secondary)'
                   }}
                 >

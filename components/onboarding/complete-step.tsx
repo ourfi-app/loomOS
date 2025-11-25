@@ -144,7 +144,7 @@ export default function CompleteStep({ onComplete }: CompleteStepProps) {
             }}
             className="absolute inset-0 opacity-30"
             style={{
-              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)',
+              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.6) 0%, transparent 50%)',
               backgroundSize: '200% 100%',
             }}
           />

@@ -247,7 +247,7 @@ export default function DashboardPage() {
               onClick={() => setSelectedEmail(message)}
               className="w-full px-4 py-3 border-b text-left transition-colors hover:bg-gray-50"
               style={{
-                borderColor: 'rgba(0,0,0,0.05)',
+                borderColor: 'rgba(0, 0, 0, 0.9)',
                 backgroundColor: selectedEmail?.id === message.id ? '#f0f8ff' : 'transparent'
               }}
             >
@@ -432,7 +432,7 @@ export default function DashboardPage() {
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
                 style={{
                   backgroundColor: 'var(--glass-white-80)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.9)'
                 }}
               >
                 <ChevronLeft className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
@@ -442,7 +442,7 @@ export default function DashboardPage() {
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
                 style={{
                   backgroundColor: 'var(--glass-white-80)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.9)'
                 }}
               >
                 <ChevronRight className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
@@ -467,8 +467,8 @@ export default function DashboardPage() {
                     height: '300px',
                     backgroundColor: app.color || 'var(--semantic-surface-base)',
                     borderRadius: '24px',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)',
+                    border: '1px solid rgba(255, 255, 255, 0.95)',
                     transform: `translateX(${(index - currentCard) * 420}px) scale(${isCentered ? 1 : 0.85})`,
                     opacity: isCentered ? 1 : 0.5,
                     zIndex: isCentered ? 10 : 1
@@ -481,7 +481,7 @@ export default function DashboardPage() {
                         <div 
                           className="w-12 h-12 rounded-xl flex items-center justify-center"
                           style={{ 
-                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
                             backdropFilter: 'blur(10px)'
                           }}
                         >
@@ -502,7 +502,7 @@ export default function DashboardPage() {
                         </div>
                       </div>
                       <div className="text-xs font-light px-2 py-1 rounded" style={{ 
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
                         color: 'var(--semantic-text-tertiary)'
                       }}>
                         {app.category}
@@ -517,7 +517,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* App Stats */}
-                    <div className="mt-4 pt-4 border-t" style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}>
+                    <div className="mt-4 pt-4 border-t" style={{ borderColor: 'rgba(0, 0, 0, 0.9)' }}>
                       <div className="flex items-center justify-between text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
                         <div className="flex items-center gap-4">
                           <span>Used {app.launchCount} times</span>
@@ -548,8 +548,8 @@ export default function DashboardPage() {
         style={{
           backgroundColor: 'var(--glass-white-60)',
           backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+          border: '1px solid rgba(255, 255, 255, 0.95)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)'
         }}
       >
         <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">

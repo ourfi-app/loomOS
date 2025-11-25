@@ -84,7 +84,7 @@ export default function ForgotPasswordPage() {
           {success ? (
             <div className="space-y-6 text-center">
               <div className="flex justify-center">
-                <div className="rounded-full p-4" style={{ backgroundColor: 'rgba(34, 197, 94, 0.1)' }}>
+                <div className="rounded-full p-4" style={{ backgroundColor: 'rgba(34, 197, 94, 0.6)' }}>
                   <CheckCircle className="h-12 w-12" style={{ color: '#22c55e' }} />
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function ForgotPasswordPage() {
                   We&apos;ve sent password reset instructions to <span className="font-medium">{email}</span>
                 </p>
               </div>
-              <Alert className="rounded-xl" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+              <Alert className="rounded-xl" style={{ backgroundColor: 'rgba(59, 130, 246, 0.6)', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
                 <Mail className="h-4 w-4" style={{ color: '#3b82f6' }} />
                 <AlertDescription className="text-sm font-light" style={{ color: '#1e40af' }}>
                   Didn&apos;t receive the email? Check your spam folder or try again in a few minutes.
@@ -118,7 +118,7 @@ export default function ForgotPasswordPage() {
           ) : (
             <>
               {error && (
-                <Alert className="rounded-xl mb-5" style={{ backgroundColor: 'rgba(220, 38, 38, 0.1)', border: '1px solid rgba(220, 38, 38, 0.3)' }}>
+                <Alert className="rounded-xl mb-5" style={{ backgroundColor: 'rgba(220, 38, 38, 0.6)', border: '1px solid rgba(220, 38, 38, 0.3)' }}>
                   <AlertCircle className="h-4 w-4" style={{ color: '#dc2626' }} />
                   <AlertDescription className="text-sm font-light" style={{ color: '#991b1b' }}>{error}</AlertDescription>
                 </Alert>
