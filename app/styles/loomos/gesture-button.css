@@ -1,0 +1,88 @@
+/**
+ * Gesture Button Animations
+ * 
+ * CSS animations for the glowing gesture button that reveals the dock.
+ * Inspired by classic webOS home button design.
+ */
+
+/* Pulsing glow animation */
+@keyframes gesture-glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(138, 138, 138, 0.4),
+      0 0 40px rgba(138, 138, 138, 0.2),
+      0 0 60px rgba(138, 138, 138, 0.1);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(138, 138, 138, 0.6),
+      0 0 60px rgba(138, 138, 138, 0.4),
+      0 0 90px rgba(138, 138, 138, 0.2);
+    opacity: 0.9;
+  }
+}
+
+/* Shimmer effect for inner glow */
+@keyframes gesture-shimmer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Apply animations to gesture button */
+.gesture-button-glow {
+  animation: gesture-glow-pulse 2s ease-in-out infinite;
+}
+
+.gesture-button-inner-glow {
+  animation: gesture-shimmer 3s ease-in-out infinite;
+}
+
+/* Hover state - intensify glow */
+.gesture-button-container:hover .gesture-button-glow {
+  animation: gesture-glow-pulse 1s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(138, 138, 138, 0.6),
+    0 0 60px rgba(138, 138, 138, 0.4),
+    0 0 90px rgba(138, 138, 138, 0.2) !important;
+}
+
+/* Dark mode adjustments */
+.dark .gesture-button-glow {
+  background: rgba(42, 42, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+@keyframes gesture-glow-pulse-dark {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(200, 200, 200, 0.3),
+      0 0 40px rgba(200, 200, 200, 0.15),
+      0 0 60px rgba(200, 200, 200, 0.08);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(200, 200, 200, 0.5),
+      0 0 60px rgba(200, 200, 200, 0.3),
+      0 0 90px rgba(200, 200, 200, 0.15);
+    opacity: 0.9;
+  }
+}
+
+.dark .gesture-button-glow {
+  animation: gesture-glow-pulse-dark 2s ease-in-out infinite;
+}
+
+.dark .gesture-button-container:hover .gesture-button-glow {
+  animation: gesture-glow-pulse-dark 1s ease-in-out infinite;
+}

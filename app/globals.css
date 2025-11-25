@@ -24,6 +24,7 @@
    CUSTOM ANIMATIONS
    ============================================================================ */
 @import './styles/loomos/animations.css';
+@import './styles/loomos/gesture-button.css';
 
 /* ============================================================================
    LEGACY IMPORTS (Deprecated - Removed in Design System Unification)

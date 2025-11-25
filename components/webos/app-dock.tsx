@@ -27,6 +27,7 @@ import { toast } from 'sonner';
 import { useLoomStore } from '@/lib/loom-store';
 import { LoomIcon } from './loom-icon';
 import { LoomContextMenu, LoomAIModal } from './loom-context-menu';
+import { GestureButton } from './gesture-button';
 
 /**
  * LoomOS-style Quick Launch Dock
@@ -546,6 +547,13 @@ export function AppDock() {
 
   return (
     <>
+      {/* Gesture Button - Shows when dock is hidden */}
+      <GestureButton
+        isDockVisible={isVisible}
+        onShowDock={() => setIsVisible(true)}
+        isHomePage={pathname === '/' || pathname === '/dashboard'}
+      />
+
       <motion.div
         ref={dockRef}
         initial={{ y: 100, opacity: 0 }}
