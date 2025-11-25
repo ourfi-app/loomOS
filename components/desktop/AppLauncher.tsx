@@ -1,3 +1,14 @@
+// ⚠️ DEPRECATED: This component has been replaced by the unified AppLauncher
+// Please use: import { AppLauncher } from '@/components/app-launcher';
+// This file is kept for backward compatibility and will be removed in a future release.
+//
+// Migration Guide:
+// 1. Replace import: import { AppLauncher } from '@/components/app-launcher';
+// 2. Update state management: use useState for isOpen instead of appStore
+// 3. Pass isOpen and onClose props to AppLauncher
+//
+// @deprecated Use AppLauncher from @/components/app-launcher instead
+
 'use client';
 
 import { useState, useMemo } from 'react';

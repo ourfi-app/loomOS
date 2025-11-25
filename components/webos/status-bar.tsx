@@ -22,7 +22,7 @@ import { cn } from '@/lib/utils';
 import { AccessibilityPanel } from './accessibility-panel';
 import { IntelligentSearch } from './intelligent-search';
 import { QuickAppSwitcher } from './quick-app-switcher';
-import { AppGridLauncher } from './app-grid-launcher';
+import { AppLauncher } from '@/components/app-launcher';
 
 // Export status bar height constant for use in other components
 export const STATUS_BAR_HEIGHT = 40;
@@ -670,7 +670,7 @@ export function StatusBar() {
       />
 
       {/* App Launcher */}
-      <AppGridLauncher 
+      <AppLauncher 
         isOpen={showAppLauncher} 
         onClose={() => setShowAppLauncher(false)} 
       />
