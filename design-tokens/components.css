@@ -1,0 +1,409 @@
+/**
+ * loomOS Component Design Tokens
+ * 
+ * Component-specific design tokens for consistent styling across the system.
+ * These tokens reference core and semantic tokens.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+:root {
+  /* ========================================
+     BUTTON TOKENS
+     ======================================== */
+
+  /* Button sizing */
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --button-height-xl: 56px;
+
+  --button-padding-sm: var(--space-2) var(--space-3);     /* 8px 12px */
+  --button-padding-md: var(--space-3) var(--space-4);     /* 12px 16px */
+  --button-padding-lg: var(--space-4) var(--space-6);     /* 16px 24px */
+  --button-padding-xl: var(--space-5) var(--space-8);     /* 20px 32px */
+
+  /* Button colors - Primary */
+  --button-primary-bg: var(--semantic-primary);
+  --button-primary-bg-hover: var(--semantic-primary-dark);
+  --button-primary-bg-active: var(--semantic-primary-dark);
+  --button-primary-text: #FFFFFF;
+  --button-primary-border: var(--semantic-primary);
+
+  /* Button colors - Secondary */
+  --button-secondary-bg: var(--semantic-surface-base);
+  --button-secondary-bg-hover: var(--semantic-surface-hover);
+  --button-secondary-bg-active: var(--semantic-surface-active);
+  --button-secondary-text: var(--semantic-text-primary);
+  --button-secondary-border: var(--semantic-border-medium);
+
+  /* Button colors - Ghost */
+  --button-ghost-bg: transparent;
+  --button-ghost-bg-hover: var(--semantic-surface-hover);
+  --button-ghost-bg-active: var(--semantic-surface-active);
+  --button-ghost-text: var(--semantic-text-primary);
+  --button-ghost-border: transparent;
+
+  /* Button colors - Outline */
+  --button-outline-bg: transparent;
+  --button-outline-bg-hover: var(--semantic-surface-hover);
+  --button-outline-bg-active: var(--semantic-surface-active);
+  --button-outline-text: var(--semantic-primary);
+  --button-outline-border: var(--semantic-primary);
+
+  /* Button colors - Destructive */
+  --button-destructive-bg: var(--semantic-error);
+  --button-destructive-bg-hover: var(--semantic-error-dark);
+  --button-destructive-bg-active: var(--semantic-error-dark);
+  --button-destructive-text: #FFFFFF;
+  --button-destructive-border: var(--semantic-error);
+
+  /* ========================================
+     CARD TOKENS
+     ======================================== */
+
+  /* Card sizing */
+  --card-padding-sm: var(--space-4);      /* 16px */
+  --card-padding-md: var(--space-6);      /* 24px */
+  --card-padding-lg: var(--space-8);      /* 32px */
+
+  /* Card colors */
+  --card-bg: var(--semantic-surface-base);
+  --card-bg-hover: var(--semantic-surface-base);
+  --card-border: var(--semantic-border-light);
+  --card-shadow: var(--shadow-card);
+  --card-shadow-hover: var(--shadow-card-hover);
+
+  /* Card header */
+  --card-header-padding: var(--space-6);
+  --card-header-border: var(--semantic-border-light);
+
+  /* Card footer */
+  --card-footer-padding: var(--space-6);
+  --card-footer-border: var(--semantic-border-light);
+  --card-footer-bg: var(--semantic-bg-subtle);
+
+  /* ========================================
+     INPUT TOKENS
+     ======================================== */
+
+  /* Input sizing */
+  --input-height-sm: 32px;
+  --input-height-md: 40px;
+  --input-height-lg: 48px;
+
+  --input-padding-sm: var(--space-2) var(--space-3);      /* 8px 12px */
+  --input-padding-md: var(--space-3) var(--space-4);      /* 12px 16px */
+  --input-padding-lg: var(--space-4) var(--space-5);      /* 16px 20px */
+
+  /* Input colors */
+  --input-bg: var(--semantic-surface-base);
+  --input-bg-disabled: var(--semantic-bg-muted);
+  --input-bg-focus: var(--semantic-surface-base);
+  --input-text: var(--semantic-text-primary);
+  --input-text-placeholder: var(--semantic-text-tertiary);
+  --input-border: var(--semantic-border-medium);
+  --input-border-hover: var(--semantic-border-strong);
+  --input-border-focus: var(--semantic-border-focus);
+  --input-border-error: var(--semantic-error);
+
+  /* ========================================
+     MODAL/DIALOG TOKENS
+     ======================================== */
+
+  /* Modal sizing */
+  --modal-width-sm: 400px;
+  --modal-width-md: 600px;
+  --modal-width-lg: 800px;
+  --modal-width-xl: 1000px;
+  --modal-width-full: 95vw;
+
+  --modal-padding: var(--space-6);        /* 24px */
+  --modal-padding-lg: var(--space-8);     /* 32px */
+
+  /* Modal colors */
+  --modal-bg: var(--semantic-surface-base);
+  --modal-backdrop: var(--overlay-dark);
+  --modal-shadow: var(--shadow-modal);
+  --modal-border: var(--semantic-border-light);
+
+  /* Modal header */
+  --modal-header-padding: var(--space-6);
+  --modal-header-border: var(--semantic-border-light);
+
+  /* Modal footer */
+  --modal-footer-padding: var(--space-6);
+  --modal-footer-border: var(--semantic-border-light);
+  --modal-footer-bg: var(--semantic-bg-subtle);
+
+  /* ========================================
+     DROPDOWN/POPOVER TOKENS
+     ======================================== */
+
+  /* Dropdown sizing */
+  --dropdown-min-width: 200px;
+  --dropdown-max-width: 400px;
+  --dropdown-max-height: 400px;
+  --dropdown-padding: var(--space-2);     /* 8px */
+
+  /* Dropdown colors */
+  --dropdown-bg: var(--semantic-surface-base);
+  --dropdown-border: var(--semantic-border-light);
+  --dropdown-shadow: var(--shadow-dropdown);
+
+  /* Dropdown item */
+  --dropdown-item-padding: var(--space-2) var(--space-3);  /* 8px 12px */
+  --dropdown-item-bg-hover: var(--semantic-surface-hover);
+  --dropdown-item-bg-active: var(--semantic-surface-active);
+  --dropdown-item-text: var(--semantic-text-primary);
+
+  /* ========================================
+     TOOLTIP TOKENS
+     ======================================== */
+
+  /* Tooltip sizing */
+  --tooltip-max-width: 300px;
+  --tooltip-padding: var(--space-2) var(--space-3);       /* 8px 12px */
+
+  /* Tooltip colors */
+  --tooltip-bg: var(--neutral-900);
+  --tooltip-text: #FFFFFF;
+  --tooltip-shadow: var(--shadow-tooltip);
+
+  /* ========================================
+     BADGE/TAG TOKENS
+     ======================================== */
+
+  /* Badge sizing */
+  --badge-height: 20px;
+  --badge-padding: var(--space-1) var(--space-2);         /* 4px 8px */
+  --badge-font-size: var(--text-xs);
+
+  /* Badge colors */
+  --badge-default-bg: var(--semantic-bg-muted);
+  --badge-default-text: var(--semantic-text-primary);
+  --badge-primary-bg: var(--semantic-primary);
+  --badge-primary-text: #FFFFFF;
+  --badge-success-bg: var(--semantic-success);
+  --badge-success-text: #FFFFFF;
+  --badge-error-bg: var(--semantic-error);
+  --badge-error-text: #FFFFFF;
+  --badge-warning-bg: var(--semantic-warning);
+  --badge-warning-text: #FFFFFF;
+
+  /* ========================================
+     AVATAR TOKENS
+     ======================================== */
+
+  /* Avatar sizing */
+  --avatar-size-xs: 24px;
+  --avatar-size-sm: 32px;
+  --avatar-size-md: 40px;
+  --avatar-size-lg: 48px;
+  --avatar-size-xl: 64px;
+  --avatar-size-2xl: 96px;
+
+  /* Avatar colors */
+  --avatar-bg: var(--semantic-bg-muted);
+  --avatar-text: var(--semantic-text-primary);
+  --avatar-border: var(--semantic-border-light);
+
+  /* ========================================
+     NAVIGATION TOKENS
+     ======================================== */
+
+  /* Top bar */
+  --topbar-height: 64px;
+  --topbar-bg: var(--chrome-dark);
+  --topbar-text: var(--chrome-text);
+  --topbar-border: var(--semantic-border-light);
+  --topbar-shadow: var(--shadow-topbar);
+
+  /* Sidebar */
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 64px;
+  --sidebar-bg: var(--semantic-surface-base);
+  --sidebar-text: var(--semantic-text-primary);
+  --sidebar-border: var(--semantic-border-light);
+  --sidebar-shadow: var(--shadow-sidebar);
+
+  /* Sidebar item */
+  --sidebar-item-padding: var(--space-3) var(--space-4);  /* 12px 16px */
+  --sidebar-item-bg-hover: var(--semantic-surface-hover);
+  --sidebar-item-bg-active: var(--semantic-surface-selected);
+
+  /* Dock */
+  --dock-height: 72px;
+  --dock-bg: var(--glass-white-80);
+  --dock-border: var(--border-glass);
+  --dock-shadow: var(--shadow-dock);
+  --dock-item-size: 56px;
+
+  /* ========================================
+     TABLE TOKENS
+     ======================================== */
+
+  /* Table sizing */
+  --table-cell-padding: var(--space-3) var(--space-4);    /* 12px 16px */
+  --table-header-padding: var(--space-3) var(--space-4);  /* 12px 16px */
+
+  /* Table colors */
+  --table-bg: var(--semantic-surface-base);
+  --table-header-bg: var(--semantic-bg-subtle);
+  --table-border: var(--semantic-border-light);
+  --table-row-hover: var(--semantic-surface-hover);
+  --table-row-selected: var(--semantic-surface-selected);
+
+  /* ========================================
+     PROGRESS/LOADING TOKENS
+     ======================================== */
+
+  /* Progress bar */
+  --progress-height: 8px;
+  --progress-bg: var(--semantic-bg-muted);
+  --progress-fill: var(--semantic-primary);
+  --progress-border-radius: var(--radius-full);
+
+  /* Spinner */
+  --spinner-size-sm: 16px;
+  --spinner-size-md: 24px;
+  --spinner-size-lg: 32px;
+  --spinner-color: var(--semantic-primary);
+  --spinner-track-color: var(--semantic-bg-muted);
+
+  /* ========================================
+     ALERT/NOTIFICATION TOKENS
+     ======================================== */
+
+  /* Alert sizing */
+  --alert-padding: var(--space-4);        /* 16px */
+  --alert-border-width: var(--border-1);
+
+  /* Alert colors */
+  --alert-info-bg: var(--semantic-info-bg);
+  --alert-info-border: var(--semantic-info);
+  --alert-info-text: var(--semantic-info-text);
+
+  --alert-success-bg: var(--semantic-success-bg);
+  --alert-success-border: var(--semantic-success);
+  --alert-success-text: var(--semantic-success-text);
+
+  --alert-warning-bg: var(--semantic-warning-bg);
+  --alert-warning-border: var(--semantic-warning);
+  --alert-warning-text: var(--semantic-warning-text);
+
+  --alert-error-bg: var(--semantic-error-bg);
+  --alert-error-border: var(--semantic-error);
+  --alert-error-text: var(--semantic-error-text);
+
+  /* Toast notification */
+  --toast-width: 360px;
+  --toast-padding: var(--space-4);        /* 16px */
+  --toast-bg: var(--semantic-surface-base);
+  --toast-shadow: var(--shadow-xl);
+
+  /* ========================================
+     FORM TOKENS
+     ======================================== */
+
+  /* Form group spacing */
+  --form-group-spacing: var(--space-4);   /* 16px */
+  --form-label-spacing: var(--space-2);   /* 8px */
+
+  /* Form label */
+  --form-label-font-size: var(--text-sm);
+  --form-label-font-weight: var(--font-medium);
+  --form-label-color: var(--semantic-text-primary);
+
+  /* Form help text */
+  --form-help-font-size: var(--text-xs);
+  --form-help-color: var(--semantic-text-tertiary);
+
+  /* Form error text */
+  --form-error-font-size: var(--text-xs);
+  --form-error-color: var(--semantic-error);
+
+  /* ========================================
+     SWITCH/TOGGLE TOKENS
+     ======================================== */
+
+  /* Switch sizing */
+  --switch-width: 44px;
+  --switch-height: 24px;
+  --switch-thumb-size: 20px;
+
+  /* Switch colors */
+  --switch-bg: var(--semantic-bg-muted);
+  --switch-bg-checked: var(--semantic-primary);
+  --switch-thumb-bg: #FFFFFF;
+
+  /* ========================================
+     CHECKBOX/RADIO TOKENS
+     ======================================== */
+
+  /* Checkbox sizing */
+  --checkbox-size: 20px;
+  --checkbox-border-width: var(--border-2);
+
+  /* Checkbox colors */
+  --checkbox-bg: var(--semantic-surface-base);
+  --checkbox-bg-checked: var(--semantic-primary);
+  --checkbox-border: var(--semantic-border-medium);
+  --checkbox-border-checked: var(--semantic-primary);
+  --checkbox-checkmark: #FFFFFF;
+
+  /* Radio sizing */
+  --radio-size: 20px;
+  --radio-dot-size: 10px;
+  --radio-border-width: var(--border-2);
+
+  /* Radio colors */
+  --radio-bg: var(--semantic-surface-base);
+  --radio-bg-checked: var(--semantic-surface-base);
+  --radio-border: var(--semantic-border-medium);
+  --radio-border-checked: var(--semantic-primary);
+  --radio-dot: var(--semantic-primary);
+
+  /* ========================================
+     SLIDER TOKENS
+     ======================================== */
+
+  /* Slider sizing */
+  --slider-height: 4px;
+  --slider-thumb-size: 20px;
+
+  /* Slider colors */
+  --slider-track-bg: var(--semantic-bg-muted);
+  --slider-fill-bg: var(--semantic-primary);
+  --slider-thumb-bg: #FFFFFF;
+  --slider-thumb-border: var(--semantic-primary);
+
+  /* ========================================
+     TABS TOKENS
+     ======================================== */
+
+  /* Tab sizing */
+  --tab-padding: var(--space-3) var(--space-4);           /* 12px 16px */
+  --tab-border-width: 2px;
+
+  /* Tab colors */
+  --tab-text: var(--semantic-text-secondary);
+  --tab-text-active: var(--semantic-primary);
+  --tab-border: transparent;
+  --tab-border-active: var(--semantic-primary);
+  --tab-bg-hover: var(--semantic-surface-hover);
+}
+
+/* ========================================
+   DARK MODE COMPONENT ADJUSTMENTS
+   ======================================== */
+
+.dark,
+[data-theme="dark"] {
+  /* Adjust component colors for dark mode */
+  --tooltip-bg: var(--neutral-800);
+  --card-footer-bg: var(--semantic-bg-base);
+  --modal-footer-bg: var(--semantic-bg-base);
+  --table-header-bg: var(--semantic-bg-base);
+}

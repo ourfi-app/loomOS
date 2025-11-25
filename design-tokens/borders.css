@@ -1,0 +1,192 @@
+/**
+ * loomOS Border Design Tokens
+ * 
+ * Comprehensive border system including widths, styles, and radii.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+:root {
+  /* ========================================
+     BORDER WIDTHS
+     ======================================== */
+
+  --border-0: 0;                  /* No border */
+  --border-1: 1px;                /* Hairline */
+  --border-2: 2px;                /* Thin */
+  --border-4: 4px;                /* Medium */
+  --border-8: 8px;                /* Thick */
+
+  /* Semantic border widths */
+  --border-hairline: var(--border-1);     /* 1px */
+  --border-thin: var(--border-1);         /* 1px */
+  --border-default: var(--border-1);      /* 1px */
+  --border-medium: var(--border-2);       /* 2px */
+  --border-thick: var(--border-4);        /* 4px */
+  --border-heavy: var(--border-8);        /* 8px */
+
+  /* ========================================
+     BORDER STYLES
+     ======================================== */
+
+  --border-style-solid: solid;
+  --border-style-dashed: dashed;
+  --border-style-dotted: dotted;
+  --border-style-double: double;
+  --border-style-none: none;
+
+  /* ========================================
+     BORDER RADIUS (Rounded Corners)
+     ======================================== */
+
+  --radius-none: 0;               /* 0 - Sharp corners */
+  --radius-xs: 2px;               /* 2px - Subtle */
+  --radius-sm: 4px;               /* 4px - Small */
+  --radius-md: 6px;               /* 6px - Medium */
+  --radius-base: 8px;             /* 8px - Base */
+  --radius-lg: 12px;              /* 12px - Large */
+  --radius-xl: 16px;              /* 16px - Extra large */
+  --radius-2xl: 20px;             /* 20px - 2X large */
+  --radius-3xl: 24px;             /* 24px - 3X large (webOS cards) */
+  --radius-4xl: 32px;             /* 32px - 4X large */
+  --radius-full: 9999px;          /* Full circle/pill */
+
+  /* ========================================
+     COMPONENT-SPECIFIC RADII
+     ======================================== */
+
+  /* Buttons */
+  --radius-button: var(--radius-lg);          /* 12px */
+  --radius-button-sm: var(--radius-md);       /* 6px */
+  --radius-button-lg: var(--radius-xl);       /* 16px */
+  --radius-button-pill: var(--radius-full);   /* Pill shape */
+
+  /* Cards */
+  --radius-card: var(--radius-xl);            /* 16px */
+  --radius-card-sm: var(--radius-lg);         /* 12px */
+  --radius-card-lg: var(--radius-3xl);        /* 24px - webOS style */
+
+  /* Inputs */
+  --radius-input: var(--radius-md);           /* 6px */
+  --radius-input-sm: var(--radius-sm);        /* 4px */
+  --radius-input-lg: var(--radius-lg);        /* 12px */
+
+  /* Modals & Dialogs */
+  --radius-modal: var(--radius-2xl);          /* 20px */
+  --radius-dialog: var(--radius-xl);          /* 16px */
+
+  /* Dropdowns & Popovers */
+  --radius-dropdown: var(--radius-lg);        /* 12px */
+  --radius-popover: var(--radius-lg);         /* 12px */
+  --radius-tooltip: var(--radius-md);         /* 6px */
+
+  /* Badges & Tags */
+  --radius-badge: var(--radius-full);         /* Pill shape */
+  --radius-tag: var(--radius-md);             /* 6px */
+
+  /* Images & Avatars */
+  --radius-avatar: var(--radius-full);        /* Circle */
+  --radius-image: var(--radius-lg);           /* 12px */
+
+  /* ========================================
+     BORDER COLORS (from semantic tokens)
+     ======================================== */
+
+  /* These reference semantic.css colors */
+  --border-default: var(--semantic-border-medium);
+  --border-light: var(--semantic-border-light);
+  --border-strong: var(--semantic-border-strong);
+  --border-focus: var(--semantic-border-focus);
+
+  /* Status borders */
+  --border-success: var(--semantic-success);
+  --border-error: var(--semantic-error);
+  --border-warning: var(--semantic-warning);
+  --border-info: var(--semantic-info);
+
+  /* ========================================
+     OUTLINE STYLES (for focus states)
+     ======================================== */
+
+  --outline-width: 2px;
+  --outline-offset: 2px;
+  --outline-style: solid;
+  --outline-color: var(--semantic-border-focus);
+
+  /* Focus ring */
+  --focus-ring: var(--outline-width) var(--outline-style) var(--outline-color);
+  --focus-ring-offset: var(--outline-offset);
+
+  /* ========================================
+     DIVIDER STYLES
+     ======================================== */
+
+  --divider-width: var(--border-1);
+  --divider-color: var(--semantic-border-light);
+  --divider-style: var(--border-style-solid);
+
+  /* ========================================
+     GLASSMORPHISM BORDERS
+     ======================================== */
+
+  --border-glass: 1px solid rgba(255, 255, 255, 0.2);
+  --border-glass-strong: 1px solid rgba(255, 255, 255, 0.3);
+  --border-glass-subtle: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   DARK MODE BORDERS
+   ======================================== */
+
+.dark,
+[data-theme="dark"] {
+  /* Adjust border colors for dark mode */
+  --border-glass: 1px solid rgba(255, 255, 255, 0.15);
+  --border-glass-strong: 1px solid rgba(255, 255, 255, 0.25);
+  --border-glass-subtle: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ========================================
+   BORDER UTILITY CLASSES
+   ======================================== */
+
+/* Border widths */
+.border-0 { border-width: var(--border-0); }
+.border-1 { border-width: var(--border-1); }
+.border-2 { border-width: var(--border-2); }
+.border-4 { border-width: var(--border-4); }
+.border { border-width: var(--border-default); }
+
+/* Border styles */
+.border-solid { border-style: var(--border-style-solid); }
+.border-dashed { border-style: var(--border-style-dashed); }
+.border-dotted { border-style: var(--border-style-dotted); }
+.border-none { border-style: var(--border-style-none); }
+
+/* Border radius */
+.rounded-none { border-radius: var(--radius-none); }
+.rounded-xs { border-radius: var(--radius-xs); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded { border-radius: var(--radius-base); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-2xl { border-radius: var(--radius-2xl); }
+.rounded-3xl { border-radius: var(--radius-3xl); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Divider */
+.divider {
+  border-top: var(--divider-width) var(--divider-style) var(--divider-color);
+}
+
+.divider-vertical {
+  border-left: var(--divider-width) var(--divider-style) var(--divider-color);
+}

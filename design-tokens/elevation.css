@@ -1,0 +1,198 @@
+/**
+ * loomOS Elevation Design Tokens
+ * 
+ * Comprehensive elevation system for depth and hierarchy.
+ * Includes shadows, z-index layers, and elevation utilities.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+:root {
+  /* ========================================
+     Z-INDEX LAYERS - Stacking Context
+     ======================================== */
+
+  /* Base Layers */
+  --z-base: 0;                    /* Default layer */
+  --z-below: -1;                  /* Below base (backgrounds) */
+  --z-raised: 1;                  /* Slightly raised */
+  --z-elevated: 10;               /* Elevated surfaces */
+
+  /* UI Layers */
+  --z-dropdown: 100;              /* Dropdowns, popovers */
+  --z-sticky: 200;                /* Sticky headers */
+  --z-fixed: 300;                 /* Fixed elements */
+  --z-overlay-backdrop: 400;      /* Modal backdrops */
+  --z-overlay: 500;               /* Modals, dialogs */
+  --z-popover: 600;               /* Popovers above modals */
+  --z-tooltip: 700;               /* Tooltips */
+  --z-notification: 800;          /* Toast notifications */
+  --z-top: 900;                   /* Highest layer */
+
+  /* Special Layers */
+  --z-dock: 1000;                 /* Dock/taskbar */
+  --z-app-launcher: 1100;         /* App launcher */
+  --z-context-menu: 1200;         /* Context menus */
+  --z-debug: 9999;                /* Debug overlays */
+
+  /* ========================================
+     SHADOW SYSTEM - Material Elevation
+     ======================================== */
+
+  /* Micro Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);                    /* Subtle depth */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+               0 1px 2px -1px rgba(0, 0, 0, 0.1);                   /* Small elevation */
+
+  /* Standard Shadows */
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+                 0 1px 2px -1px rgba(0, 0, 0, 0.1);                 /* Base card shadow */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+               0 2px 4px -2px rgba(0, 0, 0, 0.1);                   /* Medium elevation */
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+               0 4px 6px -4px rgba(0, 0, 0, 0.1);                   /* Large elevation */
+
+  /* Prominent Shadows */
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+               0 8px 10px -6px rgba(0, 0, 0, 0.1);                  /* Extra large */
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);             /* Maximum elevation */
+
+  /* ========================================
+     COMPONENT-SPECIFIC SHADOWS
+     ======================================== */
+
+  /* Cards */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08),
+                 0 1px 2px rgba(0, 0, 0, 0.06);                     /* Default card */
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12),
+                       0 4px 8px rgba(0, 0, 0, 0.08);               /* Card hover state */
+  --shadow-card-active: 0 4px 12px rgba(0, 0, 0, 0.1),
+                        0 2px 4px rgba(0, 0, 0, 0.06);              /* Card pressed */
+
+  /* Buttons */
+  --shadow-button: 0 1px 2px rgba(0, 0, 0, 0.05);                   /* Button default */
+  --shadow-button-hover: 0 4px 8px rgba(0, 0, 0, 0.12),
+                         0 2px 4px rgba(0, 0, 0, 0.08);             /* Button hover */
+  --shadow-button-active: inset 0 2px 4px rgba(0, 0, 0, 0.1);      /* Button pressed */
+
+  /* Modals & Overlays */
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.3),
+                  0 8px 24px rgba(0, 0, 0, 0.2);                    /* Modal dialog */
+  --shadow-overlay: 0 24px 80px rgba(0, 0, 0, 0.4);                 /* Full overlays */
+
+  /* Dropdowns & Popovers */
+  --shadow-dropdown: 0 10px 30px rgba(0, 0, 0, 0.15),
+                     0 4px 12px rgba(0, 0, 0, 0.1);                 /* Dropdown menus */
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.12),
+                    0 4px 8px rgba(0, 0, 0, 0.08);                  /* Popovers */
+
+  /* Tooltips */
+  --shadow-tooltip: 0 4px 12px rgba(0, 0, 0, 0.15);                 /* Tooltips */
+
+  /* Navigation */
+  --shadow-dock: 0 -4px 16px rgba(0, 0, 0, 0.1),
+                 0 -2px 8px rgba(0, 0, 0, 0.06);                    /* Dock/taskbar */
+  --shadow-topbar: 0 2px 8px rgba(0, 0, 0, 0.08);                   /* Top navigation */
+  --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.08);                  /* Sidebar */
+
+  /* Windows */
+  --shadow-window: 0 24px 60px rgba(0, 0, 0, 0.2),
+                   0 12px 24px rgba(0, 0, 0, 0.15);                 /* Window frames */
+  --shadow-window-active: 0 32px 80px rgba(0, 0, 0, 0.25),
+                          0 16px 32px rgba(0, 0, 0, 0.2);           /* Active window */
+
+  /* ========================================
+     GLASSMORPHISM SHADOWS
+     ======================================== */
+
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.12),
+                  0 4px 16px rgba(0, 0, 0, 0.08),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);           /* Glass effect */
+  --shadow-glass-hover: 0 12px 40px rgba(0, 0, 0, 0.15),
+                        0 6px 20px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);     /* Glass hover */
+
+  /* ========================================
+     INNER SHADOWS
+     ======================================== */
+
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.06);              /* Subtle inset */
+  --shadow-inset-strong: inset 0 2px 8px rgba(0, 0, 0, 0.1);        /* Strong inset */
+  --shadow-well: inset 0 2px 4px rgba(0, 0, 0, 0.08),
+                 inset 0 -1px 2px rgba(255, 255, 255, 0.5);         /* Input wells */
+
+  /* ========================================
+     COLORED SHADOWS (for emphasis)
+     ======================================== */
+
+  --shadow-primary: 0 4px 12px rgba(241, 136, 37, 0.3);             /* Primary color */
+  --shadow-success: 0 4px 12px rgba(76, 175, 80, 0.3);              /* Success green */
+  --shadow-error: 0 4px 12px rgba(239, 68, 68, 0.3);                /* Error red */
+  --shadow-warning: 0 4px 12px rgba(251, 191, 36, 0.3);             /* Warning amber */
+  --shadow-info: 0 4px 12px rgba(33, 150, 243, 0.3);                /* Info blue */
+
+  /* ========================================
+     FOCUS SHADOWS
+     ======================================== */
+
+  --shadow-focus: 0 0 0 3px rgba(241, 136, 37, 0.2);                /* Focus ring */
+  --shadow-focus-error: 0 0 0 3px rgba(239, 68, 68, 0.2);           /* Error focus */
+  --shadow-focus-success: 0 0 0 3px rgba(76, 175, 80, 0.2);         /* Success focus */
+}
+
+/* ========================================
+   DARK MODE ELEVATION
+   ======================================== */
+
+.dark,
+[data-theme="dark"] {
+  /* Enhanced shadows for dark mode */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4),
+               0 1px 2px -1px rgba(0, 0, 0, 0.4);
+
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4),
+                 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5),
+               0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6),
+               0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7),
+               0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+
+  /* Component shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4),
+                 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.5),
+                       0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.8),
+                  0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-dropdown: 0 10px 30px rgba(0, 0, 0, 0.6),
+                     0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-window: 0 24px 60px rgba(0, 0, 0, 0.7),
+                   0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Elevation utilities */
+.elevation-0 { box-shadow: none; }
+.elevation-1 { box-shadow: var(--shadow-xs); }
+.elevation-2 { box-shadow: var(--shadow-sm); }
+.elevation-3 { box-shadow: var(--shadow-base); }
+.elevation-4 { box-shadow: var(--shadow-md); }
+.elevation-5 { box-shadow: var(--shadow-lg); }
+.elevation-6 { box-shadow: var(--shadow-xl); }
+.elevation-7 { box-shadow: var(--shadow-2xl); }
+
+/* Component elevation classes */
+.shadow-card { box-shadow: var(--shadow-card); }
+.shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+.shadow-button { box-shadow: var(--shadow-button); }
+.shadow-modal { box-shadow: var(--shadow-modal); }
+.shadow-dropdown { box-shadow: var(--shadow-dropdown); }
+.shadow-glass { box-shadow: var(--shadow-glass); }

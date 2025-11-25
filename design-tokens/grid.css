@@ -1,0 +1,265 @@
+/**
+ * loomOS Grid & Layout Design Tokens
+ * 
+ * Comprehensive grid system, container widths, and layout utilities.
+ * Based on 4px base unit for consistent spacing.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+:root {
+  /* ========================================
+     BASE UNIT & GRID
+     ======================================== */
+
+  --base-unit: 4px;               /* 4px grid system */
+  --grid-unit: 8px;               /* 8px grid (2x base) */
+
+  /* ========================================
+     CONTAINER WIDTHS
+     ======================================== */
+
+  --container-xs: 320px;          /* Extra small devices */
+  --container-sm: 640px;          /* Small devices (mobile) */
+  --container-md: 768px;          /* Medium devices (tablet) */
+  --container-lg: 1024px;         /* Large devices (desktop) */
+  --container-xl: 1280px;         /* Extra large (wide desktop) */
+  --container-2xl: 1536px;        /* 2X large (ultra-wide) */
+  --container-full: 100%;         /* Full width */
+
+  /* Content widths */
+  --content-narrow: 640px;        /* Narrow content (articles) */
+  --content-normal: 768px;        /* Normal content */
+  --content-wide: 1024px;         /* Wide content */
+  --content-full: 100%;           /* Full width content */
+
+  /* ========================================
+     BREAKPOINTS (matches Tailwind)
+     ======================================== */
+
+  --breakpoint-xs: 320px;         /* Extra small */
+  --breakpoint-sm: 640px;         /* Small */
+  --breakpoint-md: 768px;         /* Medium */
+  --breakpoint-lg: 1024px;        /* Large */
+  --breakpoint-xl: 1280px;        /* Extra large */
+  --breakpoint-2xl: 1536px;       /* 2X large */
+
+  /* ========================================
+     GRID COLUMNS
+     ======================================== */
+
+  --grid-columns: 12;             /* 12-column grid */
+  --grid-gap: var(--space-md);    /* Default gap (16px) */
+  --grid-gap-sm: var(--space-sm); /* Small gap (8px) */
+  --grid-gap-lg: var(--space-lg); /* Large gap (24px) */
+
+  /* ========================================
+     SPACING SCALE (4px base)
+     ======================================== */
+
+  /* Micro spacing */
+  --space-0: 0;                   /* 0px */
+  --space-px: 1px;                /* 1px */
+  --space-0-5: 2px;               /* 2px (0.5 × 4) */
+
+  /* Standard spacing */
+  --space-1: 4px;                 /* 4px (1 × 4) */
+  --space-2: 8px;                 /* 8px (2 × 4) */
+  --space-3: 12px;                /* 12px (3 × 4) */
+  --space-4: 16px;                /* 16px (4 × 4) */
+  --space-5: 20px;                /* 20px (5 × 4) */
+  --space-6: 24px;                /* 24px (6 × 4) */
+  --space-7: 28px;                /* 28px (7 × 4) */
+  --space-8: 32px;                /* 32px (8 × 4) */
+  --space-9: 36px;                /* 36px (9 × 4) */
+  --space-10: 40px;               /* 40px (10 × 4) */
+  --space-11: 44px;               /* 44px (11 × 4) */
+  --space-12: 48px;               /* 48px (12 × 4) */
+  --space-14: 56px;               /* 56px (14 × 4) */
+  --space-16: 64px;               /* 64px (16 × 4) */
+  --space-20: 80px;               /* 80px (20 × 4) */
+  --space-24: 96px;               /* 96px (24 × 4) */
+  --space-28: 112px;              /* 112px (28 × 4) */
+  --space-32: 128px;              /* 128px (32 × 4) */
+  --space-36: 144px;              /* 144px (36 × 4) */
+  --space-40: 160px;              /* 160px (40 × 4) */
+  --space-44: 176px;              /* 176px (44 × 4) */
+  --space-48: 192px;              /* 192px (48 × 4) */
+  --space-52: 208px;              /* 208px (52 × 4) */
+  --space-56: 224px;              /* 224px (56 × 4) */
+  --space-60: 240px;              /* 240px (60 × 4) */
+  --space-64: 256px;              /* 256px (64 × 4) */
+  --space-72: 288px;              /* 288px (72 × 4) */
+  --space-80: 320px;              /* 320px (80 × 4) */
+  --space-96: 384px;              /* 384px (96 × 4) */
+
+  /* Semantic spacing aliases */
+  --space-xs: var(--space-2);     /* 8px */
+  --space-sm: var(--space-3);     /* 12px */
+  --space-md: var(--space-4);     /* 16px */
+  --space-base: var(--space-4);   /* 16px */
+  --space-lg: var(--space-6);     /* 24px */
+  --space-xl: var(--space-8);     /* 32px */
+  --space-2xl: var(--space-12);   /* 48px */
+  --space-3xl: var(--space-16);   /* 64px */
+  --space-4xl: var(--space-24);   /* 96px */
+
+  /* ========================================
+     COMPONENT SPACING
+     ======================================== */
+
+  /* Padding */
+  --padding-button: var(--space-3) var(--space-4);        /* 12px 16px */
+  --padding-button-sm: var(--space-2) var(--space-3);     /* 8px 12px */
+  --padding-button-lg: var(--space-4) var(--space-6);     /* 16px 24px */
+
+  --padding-card: var(--space-6);                         /* 24px */
+  --padding-card-sm: var(--space-4);                      /* 16px */
+  --padding-card-lg: var(--space-8);                      /* 32px */
+
+  --padding-input: var(--space-3) var(--space-4);         /* 12px 16px */
+  --padding-input-sm: var(--space-2) var(--space-3);      /* 8px 12px */
+  --padding-input-lg: var(--space-4) var(--space-5);      /* 16px 20px */
+
+  --padding-modal: var(--space-6);                        /* 24px */
+  --padding-modal-lg: var(--space-8);                     /* 32px */
+
+  /* Gaps */
+  --gap-xs: var(--space-2);       /* 8px */
+  --gap-sm: var(--space-3);       /* 12px */
+  --gap-md: var(--space-4);       /* 16px */
+  --gap-lg: var(--space-6);       /* 24px */
+  --gap-xl: var(--space-8);       /* 32px */
+
+  /* ========================================
+     LAYOUT DIMENSIONS
+     ======================================== */
+
+  /* Header/Navigation */
+  --header-height: 64px;          /* Top bar height */
+  --header-height-mobile: 56px;   /* Mobile header */
+  --sidebar-width: 280px;         /* Sidebar width */
+  --sidebar-width-collapsed: 64px; /* Collapsed sidebar */
+  --dock-height: 72px;            /* Dock height */
+
+  /* Touch targets */
+  --touch-target-min: 44px;       /* Minimum touch target (iOS) */
+  --touch-target-comfortable: 48px; /* Comfortable touch target */
+
+  /* Icon sizes */
+  --icon-xs: 12px;                /* Extra small icon */
+  --icon-sm: 16px;                /* Small icon */
+  --icon-md: 20px;                /* Medium icon */
+  --icon-base: 24px;              /* Base icon size */
+  --icon-lg: 32px;                /* Large icon */
+  --icon-xl: 40px;                /* Extra large icon */
+  --icon-2xl: 48px;               /* 2X large icon */
+
+  /* Avatar sizes */
+  --avatar-xs: 24px;              /* Extra small avatar */
+  --avatar-sm: 32px;              /* Small avatar */
+  --avatar-md: 40px;              /* Medium avatar */
+  --avatar-lg: 48px;              /* Large avatar */
+  --avatar-xl: 64px;              /* Extra large avatar */
+  --avatar-2xl: 96px;             /* 2X large avatar */
+
+  /* ========================================
+     ASPECT RATIOS
+     ======================================== */
+
+  --aspect-square: 1 / 1;         /* 1:1 */
+  --aspect-video: 16 / 9;         /* 16:9 */
+  --aspect-wide: 21 / 9;          /* 21:9 ultrawide */
+  --aspect-portrait: 3 / 4;       /* 3:4 */
+  --aspect-photo: 4 / 3;          /* 4:3 */
+  --aspect-golden: 1.618 / 1;     /* Golden ratio */
+
+  /* ========================================
+     MAX WIDTHS (for content)
+     ======================================== */
+
+  --max-width-xs: 20rem;          /* 320px */
+  --max-width-sm: 24rem;          /* 384px */
+  --max-width-md: 28rem;          /* 448px */
+  --max-width-lg: 32rem;          /* 512px */
+  --max-width-xl: 36rem;          /* 576px */
+  --max-width-2xl: 42rem;         /* 672px */
+  --max-width-3xl: 48rem;         /* 768px */
+  --max-width-4xl: 56rem;         /* 896px */
+  --max-width-5xl: 64rem;         /* 1024px */
+  --max-width-6xl: 72rem;         /* 1152px */
+  --max-width-7xl: 80rem;         /* 1280px */
+  --max-width-full: 100%;         /* Full width */
+  --max-width-prose: 65ch;        /* Optimal reading width */
+}
+
+/* ========================================
+   RESPONSIVE SPACING UTILITIES
+   ======================================== */
+
+/* Mobile-first spacing adjustments */
+@media (max-width: 640px) {
+  :root {
+    --padding-card: var(--space-4);     /* Reduce card padding on mobile */
+    --padding-modal: var(--space-4);    /* Reduce modal padding on mobile */
+    --gap-md: var(--space-3);           /* Reduce gaps on mobile */
+  }
+}
+
+/* ========================================
+   GRID UTILITY CLASSES
+   ======================================== */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container { max-width: var(--container-sm); }
+}
+
+@media (min-width: 768px) {
+  .container { max-width: var(--container-md); }
+}
+
+@media (min-width: 1024px) {
+  .container { max-width: var(--container-lg); }
+}
+
+@media (min-width: 1280px) {
+  .container { max-width: var(--container-xl); }
+}
+
+@media (min-width: 1536px) {
+  .container { max-width: var(--container-2xl); }
+}
+
+/* Grid system */
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--gap-sm); }
+.gap-md { gap: var(--gap-md); }
+.gap-lg { gap: var(--gap-lg); }
