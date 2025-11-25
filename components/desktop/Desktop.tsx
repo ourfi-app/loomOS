@@ -5,7 +5,7 @@ import { useAppStore } from '@/lib/store/appStore';
 import { AppLauncher } from './AppLauncher';
 import { AppWindow } from './AppWindow';
 import { MinimizedCarousel } from './MinimizedCarousel';
-import { Dock } from './Dock';
+import { Dock } from '@/components/dock';
 
 interface DesktopProps {
   children?: React.ReactNode;
