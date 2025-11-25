@@ -5,7 +5,8 @@ export * from './app-page-wrapper';
 export * from './desktop-app-window';
 export * from './status-bar';
 export * from './conditional-status-bar';
-export * from './app-dock';
+// Dock - Now using unified implementation from @/components/dock
+export { Dock } from '@/components/dock';
 export * from './unified-floating-menu';
 export * from './floating-assistant-bubble';
 

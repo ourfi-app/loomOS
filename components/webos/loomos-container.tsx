@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode, useEffect, useState } from 'react';
-import { AppDock } from './app-dock';
+import { Dock } from '@/components/dock';
 import { ModeBanner } from '@/components/mode-banner';
 import { MultitaskingView } from './multitasking-view';
 import { useDesktopCustomization } from '@/lib/desktop-customization-store';
@@ -92,7 +92,7 @@ export function LoomOSContainer({
         </div>
 
         {/* Minimalist App Dock with Glass Morphism */}
-        <AppDock />
+        <Dock />
       </div>
     </div>
   );

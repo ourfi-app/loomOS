@@ -1,3 +1,24 @@
+/**
+ * ⚠️ DEPRECATED: This component has been superseded by the unified Dock component
+ * 
+ * @deprecated Use `@/components/dock` instead
+ * 
+ * Migration:
+ * ```typescript
+ * // Old (deprecated)
+ * import { Dock } from '@/components/desktop/Dock';
+ * <Dock />
+ * 
+ * // New (recommended)
+ * import { Dock } from '@/components/dock';
+ * <Dock />
+ * ```
+ * 
+ * See components/dock/MIGRATION.md for full migration guide.
+ * 
+ * This file will be removed in v2.0
+ */
+
 'use client';
 
 import { motion } from 'framer-motion';

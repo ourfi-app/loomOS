@@ -12,7 +12,7 @@ import {
   Mail, Globe, Music, Bluetooth, Wifi, Battery, Search, X,
   ChevronDown, LogOut, Clock as ClockIcon, Menu
 } from 'lucide-react';
-import { AppDock } from '@/components/webos/app-dock';
+import { Dock } from '@/components/dock';
 
 // System status bar with live clock and user profile - Fully Responsive
 function SystemStatusBar({ 
@@ -955,7 +955,7 @@ export default function DashboardLayout({
       />
 
       {/* Floating Dock with Gesture Button - webOS Style */}
-      <AppDock />
+      <Dock />
 
       {/* Global Styles for Animations */}
       <style jsx global>{`
