@@ -83,11 +83,11 @@ export function GestureButton({
           'gesture-button-glow'
         )}
         style={{
-          background: 'rgba(255, 255, 255, 0.6)',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: '0 0 20px rgba(138, 138, 138, 0.4), 0 0 40px rgba(138, 138, 138, 0.2)',
+          background: 'rgba(255, 255, 255, 0.85)',
+          backdropFilter: 'blur(15px)',
+          WebkitBackdropFilter: 'blur(15px)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          boxShadow: '0 0 20px rgba(138, 138, 138, 0.5), 0 0 40px rgba(138, 138, 138, 0.3)',
         }}
       >
         {/* Inner glow element */}

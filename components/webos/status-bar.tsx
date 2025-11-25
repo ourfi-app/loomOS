@@ -424,12 +424,6 @@ export function StatusBar() {
   
   const unreadCount = notifications.filter((n) => !n.read).length;
   
-  // Handler to return to home dashboard
-  const handleReturnHome = () => {
-    closeAllCards();
-    router.push('/dashboard');
-  };
-
   // Handler to launch help app
   const handleLaunchHelp = () => {
     const helpApp = APP_REGISTRY.help;
@@ -515,25 +509,8 @@ export function StatusBar() {
         }}
       >
         <div className="h-full flex items-center justify-between max-w-screen-2xl mx-auto">
-          {/* Left: Home Button + Notifications */}
+          {/* Left: Notifications */}
           <div className="flex items-center gap-2">
-            <motion.button 
-              onClick={handleReturnHome}
-              className="flex items-center gap-2 transition-all cursor-pointer group px-2 py-1 rounded-md active:scale-95"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              title="Return to Home Dashboard"
-              style={{
-                color: 'var(--webos-text-primary)',
-                fontWeight: '300'
-              }}
-            >
-              <Home className="w-4 h-4" strokeWidth={2} style={{ color: 'var(--webos-app-blue)' }} />
-              <span className="text-xs tracking-wide font-light">Community Manager</span>
-            </motion.button>
-
-            <div className="h-5 w-px" style={{ backgroundColor: 'var(--webos-border-secondary)' }} />
-
             {/* Notifications */}
             <motion.button
               onClick={() => setShowNotifications(!showNotifications)}
