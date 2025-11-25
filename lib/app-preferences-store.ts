@@ -71,8 +71,9 @@ export const useAppPreferences = create<AppPreferences>()(
       viewMode: 'grid',
       sortMode: 'default',
       selectedCategories: [],
-      // Default Quick Launch Dock: 4 pre-installed essential apps (browser, mail, calendar, settings)
-      dockAppIds: ['browser', 'mail', 'calendar', 'settings'],
+      // Default Quick Launch Dock: 5 essential apps (home, browser, mail, calendar, settings)
+      // Note: App launcher is always shown as the 6th fixed position
+      dockAppIds: ['home', 'browser', 'mail', 'calendar', 'settings'],
       // Default Pinned Apps: Most used essentials
       pinnedAppIds: [],
       desktopWidgets: [],
@@ -98,7 +99,7 @@ export const useAppPreferences = create<AppPreferences>()(
       
       // Quick Launch Dock actions
       setDockApps: (appIds) => 
-        set({ dockAppIds: appIds.slice(0, 4) }), // Ensure exactly 4 apps
+        set({ dockAppIds: appIds.slice(0, 5) }), // Ensure exactly 5 apps
       
       addToDock: (appId, position) =>
         set((state) => {
@@ -111,14 +112,14 @@ export const useAppPreferences = create<AppPreferences>()(
           }
           
           // Add at position or at the end
-          if (position !== undefined && position >= 0 && position < 4) {
+          if (position !== undefined && position >= 0 && position < 5) {
             newDockAppIds.splice(position, 0, appId);
           } else {
             newDockAppIds.push(appId);
           }
           
-          // Keep only first 4
-          return { dockAppIds: newDockAppIds.slice(0, 4) };
+          // Keep only first 5
+          return { dockAppIds: newDockAppIds.slice(0, 5) };
         }),
       
       removeFromDock: (appId) =>
