@@ -146,7 +146,7 @@ const MapboxMap = forwardRef<MapboxMapRef, MapboxMapProps>(
           el.style.backgroundColor =
             statusColors[unit.occupancyStatus || 'occupied'] || '#6b7280';
           el.style.border = '3px solid white';
-          el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+          el.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.9)';
 
           const marker = new mapboxgl.Marker(el)
             .setLngLat([unit.longitude, unit.latitude])

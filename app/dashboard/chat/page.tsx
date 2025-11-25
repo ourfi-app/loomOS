@@ -239,7 +239,7 @@ export default function ChatPage() {
         className="fixed inset-0 backdrop-blur-md z-40 animate-fade-in"
         onClick={handleClose}
         style={{
-          background: 'rgba(0, 0, 0, 0.2)'
+          background: 'rgba(0, 0, 0, 0.9)'
         }}
       />
 
@@ -284,7 +284,7 @@ export default function ChatPage() {
                   variant="secondary" 
                   className="text-xs font-light tracking-wide uppercase"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.2)',
+                    background: 'rgba(255, 255, 255, 0.95)',
                     color: 'var(--webos-text-primary)',
                     border: '1px solid var(--webos-border-secondary)'
                   }}
@@ -307,7 +307,7 @@ export default function ChatPage() {
             className="rounded-xl font-light hover:opacity-90"
             style={{
               color: 'var(--webos-text-primary)',
-              background: 'rgba(255, 255, 255, 0.1)'
+              background: 'rgba(255, 255, 255, 0.95)'
             }}
           >
             <X className="h-5 w-5" />

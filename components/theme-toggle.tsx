@@ -89,7 +89,7 @@ export function ThemeToggle() {
         className="w-48 rounded-2xl p-2"
         style={{
           background: 'var(--glass-white-95)',
-          backdropFilter: 'blur(20px)',
+          backdropFilter: 'blur(30px)',
           border: '1px solid var(--border-light)',
           boxShadow: 'var(--shadow-dropdown)',
         }}

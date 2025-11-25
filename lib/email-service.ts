@@ -184,7 +184,7 @@ export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
           <h1 style="color: white; margin: 0;">{{title}}</h1>
         </div>
         <div style="padding: 30px; background: #f9fafb;">
-          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);">
             {{content}}
           </div>
           <div style="text-align: center; margin-top: 20px; color: #6b7280; font-size: 14px;">
@@ -204,7 +204,7 @@ export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
           <h1 style="color: #78350f; margin: 0;">⏰ Reminder</h1>
         </div>
         <div style="padding: 30px; background: #f9fafb;">
-          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);">
             {{content}}
           </div>
         </div>
@@ -221,7 +221,7 @@ export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
           <h1 style="color: white; margin: 0;">🚨 Urgent Notice</h1>
         </div>
         <div style="padding: 30px; background: #f9fafb;">
-          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #ef4444;">
+          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9); border-left: 4px solid #ef4444;">
             {{content}}
           </div>
         </div>

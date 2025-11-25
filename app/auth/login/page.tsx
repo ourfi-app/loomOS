@@ -93,7 +93,7 @@ export default function LoginPage() {
         {/* Login Form Card */}
         <GlassPanel variant="medium" blur="medium" rounded="3xl" padding="xl">
           {error && (
-            <Alert className="rounded-xl mb-5" style={{ backgroundColor: 'rgba(220, 38, 38, 0.1)', border: '1px solid rgba(220, 38, 38, 0.3)' }}>
+            <Alert className="rounded-xl mb-5" style={{ backgroundColor: 'rgba(220, 38, 38, 0.6)', border: '1px solid rgba(220, 38, 38, 0.3)' }}>
               <AlertCircle className="h-4 w-4" style={{ color: '#dc2626' }} />
               <AlertDescription className="text-sm font-light" style={{ color: '#991b1b' }}>{error}</AlertDescription>
             </Alert>

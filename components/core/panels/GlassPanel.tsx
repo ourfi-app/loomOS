@@ -119,7 +119,7 @@ export function GlassPanel({
     backdropFilter: `blur(${blurAmounts[blur]})`,
     WebkitBackdropFilter: `blur(${blurAmounts[blur]})`,
     border: `1px solid ${borderColors[variant]}`,
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)',
     color: variant === 'dark' ? 'var(--semantic-bg-subtle)' : 'var(--semantic-text-primary)',
     ...style,
   };
@@ -220,7 +220,7 @@ export function GlassOverlay({
         className
       )}
       style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
         backdropFilter: `blur(${blurAmounts[backdropBlur]})`,
         WebkitBackdropFilter: `blur(${blurAmounts[backdropBlur]})`,
       }}

@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   padding: 4rem 1rem 6rem;
   background: var(--webos-bg-glass);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   border-radius: 1.5rem;
   box-shadow: var(--webos-shadow-xl);
   border: 1px solid var(--webos-border-glass);
@@ -157,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 20rem;
   height: 28rem;
   background: var(--webos-bg-glass);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   border-radius: 1.5rem;
   box-shadow: var(--webos-shadow-lg);
   padding: 1.5rem;
@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
   position: absolute;
   background: var(--webos-bg-glass);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   box-shadow: var(--webos-shadow-xl);
   border-radius: 0.75rem;
   margin-top: 0.5rem;
@@ -302,7 +302,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Testimonial Cards - WebOS Glassmorphism */
 .testimonial-card {
   background: var(--webos-bg-glass);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   border-left: 4px solid var(--webos-ui-dark);
   padding: 2rem;
   border-radius: 1.5rem;
@@ -362,7 +362,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Feature Card Styles - WebOS Minimalism */
 .feature-card {
   background: var(--webos-bg-glass);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   border-radius: 1.5rem;
   box-shadow: var(--webos-shadow-lg);
   transition: all var(--webos-transition-base);
@@ -429,7 +429,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.5rem;
   transition: all var(--webos-transition-base);
   background: var(--webos-bg-glass);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   border: 1px solid var(--webos-border-glass);
 }
 

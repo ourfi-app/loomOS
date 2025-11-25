@@ -66,8 +66,8 @@ function SystemStatusBar({
       className="fixed top-0 left-0 right-0 h-10 sm:h-11 md:h-12 flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 z-50 transition-all duration-200"
       style={{ 
         backgroundColor: 'var(--chrome-dark)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.95)',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.9)'
       }}
     >
       {/* Left Section: loomOS logo and hamburger menu */}
@@ -186,7 +186,7 @@ function SystemStatusBar({
           >
             <div 
               className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-200" 
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}
             >
               <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" style={{ color: '#ffffff', filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))' }} />
             </div>
@@ -239,8 +239,8 @@ function SystemStatusBar({
           className="lg:hidden absolute left-0 top-full w-full sm:w-64 rounded-b-xl overflow-hidden animate-slideDown"
           style={{
             backgroundColor: 'var(--chrome-dark)',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.8)',
+            border: '1px solid rgba(255, 255, 255, 0.95)',
             borderTop: 'none'
           }}
         >
@@ -657,7 +657,7 @@ function AppLauncher({
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-transform duration-200 hover:scale-105"
                       style={{
                         backgroundColor: app.color || '#7a9eb5',
-                        boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+                        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.9)'
                       }}
                     >
                       <AppIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
@@ -1004,7 +1004,7 @@ export default function DashboardLayout({
         }
 
         ::-webkit-scrollbar-thumb {
-          background: rgba(0, 0, 0, 0.3);
+          background: rgba(0, 0, 0, 0.8);
           border-radius: 4px;
         }
 

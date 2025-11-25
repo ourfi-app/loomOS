@@ -91,7 +91,7 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
           className
         )}
         style={{
-          backgroundColor: `rgba(255, 255, 255, ${backgroundOpacity})`,
+          backgroundColor: `rgba(255, 255, 255, ${Math.max(backgroundOpacity, 0.85)})`,
           border: borderColor
             ? `1px solid ${borderColor}`
             : '1px solid var(--glass-border-light)',

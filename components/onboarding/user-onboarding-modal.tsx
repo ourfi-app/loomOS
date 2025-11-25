@@ -779,7 +779,7 @@ export function UserOnboardingModal({ open, onComplete }: UserOnboardingModalPro
             width: highlightElement.width + 16,
             height: highlightElement.height + 16,
             borderRadius: '12px',
-            boxShadow: '0 0 0 4px rgba(59, 130, 246, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.4)',
+            boxShadow: '0 0 0 4px rgba(59, 130, 246, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.7)',
           }}
         />
       )}

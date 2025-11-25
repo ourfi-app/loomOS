@@ -314,7 +314,7 @@ function SearchResultItem({ result, isSelected, onClick }: SearchResultItemProps
         isSelected && 'bg-[var(--semantic-primary-subtle)]'
       )}
       onClick={onClick}
-      whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}
+      whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
       whileTap={{ scale: 0.98 }}
     >
       {/* Icon */}

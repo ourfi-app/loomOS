@@ -109,7 +109,7 @@ export default function Error({
           <div 
             className="rounded-2xl p-4"
             style={{
-              background: 'rgba(122, 158, 181, 0.1)',
+              background: 'rgba(122, 158, 181, 0.6)',
               border: '1px solid rgba(122, 158, 181, 0.3)'
             }}
           >
