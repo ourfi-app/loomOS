@@ -311,6 +311,32 @@ function SystemStatusBar({
   );
 }
 
+// Type definition for installed app
+interface InstalledApp {
+  installationId: string;
+  appId: string;
+  name: string;
+  iconName: string;
+  path: string;
+  color: string;
+  isPinned: boolean;
+  launchCount: number;
+  lastUsedAt: string | null;
+  category: string;
+  shortDescription: string;
+}
+
+// Helper to dynamically import Lucide icons
+function getIconComponent(iconName: string) {
+  // Import all lucide-react icons dynamically
+  const icons: Record<string, any> = {
+    Mail, Users, Calendar, FileText, CreditCard, Building, MessageSquare,
+    Shield, Settings, BarChart, Home, Globe, Bell, Upload, ClockIcon
+  };
+  
+  return icons[iconName] || Home; // Default to Home if icon not found
+}
+
 // App Launcher with grid view - Enhanced with search, history, and pagination
 function AppLauncher({ 
   isOpen, 
@@ -325,33 +351,62 @@ function AppLauncher({
   const [showHistory, setShowHistory] = useState(false);
   const [sortBy, setSortBy] = useState<'name' | 'recent'>('name');
   const [currentPage, setCurrentPage] = useState(0);
+  const [apps, setApps] = useState<InstalledApp[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const apps = [
-    { id: 'inbox', title: 'Mail', icon: Mail, path: '/dashboard/messages', color: '#7a9eb5' },
-    { id: 'contacts', title: 'Contacts', icon: Users, path: '/dashboard/directory', color: '#b58a7a' },
-    { id: 'calendar', title: 'Calendar', icon: Calendar, path: '/dashboard/apps/calendar', color: '#b5a07a' },
-    { id: 'documents', title: 'Documents', icon: FileText, path: '/dashboard/documents', color: '#8ab57a' },
-    { id: 'payments', title: 'Payments', icon: CreditCard, path: '/dashboard/payments', color: '#7ab5a0' },
-    { id: 'community', title: 'Community', icon: Building, path: '/dashboard/my-community', color: '#9a7ab5' },
-    { id: 'chat', title: 'AI Chat', icon: MessageSquare, path: '/dashboard/chat', color: '#b57a9e' },
-    { id: 'admin', title: 'Admin', icon: Shield, path: '/dashboard/admin', color: '#7a8ab5' },
-    { id: 'settings', title: 'Settings', icon: Settings, path: '/dashboard/settings', color: '#6a7a8a' },
-    { id: 'reports', title: 'Reports', icon: BarChart, path: '/dashboard/reports', color: '#8a6a7a' },
-  ];
+  // Fetch user's installed apps
+  useEffect(() => {
+    async function fetchInstalledApps() {
+      if (!isOpen) return; // Only fetch when launcher is open
+      
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch('/api/user/installed-apps');
+        const result = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(result.error?.message || 'Failed to fetch installed apps');
+        }
+        
+        setApps(result.data || []);
+      } catch (err: any) {
+        console.error('Error fetching installed apps:', err);
+        setError(err.message || 'Failed to load apps');
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchInstalledApps();
+  }, [isOpen]);
 
   const APPS_PER_PAGE = 12;
 
   // Filter and sort apps based on search query and sort preference
   const filteredApps = apps
     .filter(app => 
-      app.title.toLowerCase().includes(searchQuery.toLowerCase())
+      app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      app.category.toLowerCase().includes(searchQuery.toLowerCase())
     )
     .sort((a, b) => {
+      // Pinned apps always come first
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+      
       if (sortBy === 'name') {
-        return a.title.localeCompare(b.title);
+        return a.name.localeCompare(b.name);
+      } else if (sortBy === 'recent') {
+        // Sort by last used date
+        if (!a.lastUsedAt && !b.lastUsedAt) return 0;
+        if (!a.lastUsedAt) return 1;
+        if (!b.lastUsedAt) return -1;
+        return new Date(b.lastUsedAt).getTime() - new Date(a.lastUsedAt).getTime();
       }
-      return 0; // For 'recent', maintain original order
+      return 0;
     });
 
   // Calculate pagination
@@ -384,7 +439,21 @@ function AppLauncher({
     }
   };
 
-  const handleAppClick = (app: typeof apps[0]) => {
+  const handleAppClick = async (app: InstalledApp) => {
+    // Track app usage
+    try {
+      await fetch('/api/user/installed-apps', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          appId: app.appId,
+          action: 'track-usage',
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to track app usage:', err);
+    }
+    
     router.push(app.path);
     onClose();
     // Add to search history if searched
@@ -541,29 +610,59 @@ function AppLauncher({
           role="tabpanel"
           className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8"
         >
-          {paginatedApps.length > 0 ? (
+          {loading ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="flex flex-col items-center gap-4">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+                <p className="text-white/60 text-base sm:text-lg font-light">Loading apps...</p>
+              </div>
+            </div>
+          ) : error ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <Bell className="w-16 h-16 mx-auto mb-4 text-red-400/50" />
+                <p className="text-white/80 text-base sm:text-lg font-light mb-2">Failed to Load Apps</p>
+                <p className="text-white/60 text-sm font-light mb-4">{error}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-light transition-all"
+                  style={{ minHeight: '44px' }}
+                >
+                  Retry
+                </button>
+              </div>
+            </div>
+          ) : paginatedApps.length > 0 ? (
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-7xl mx-auto">
               {paginatedApps.map((app) => {
-                const AppIcon = app.icon;
+                const AppIcon = getIconComponent(app.iconName);
                 return (
                   <button
-                    key={app.id}
+                    key={app.installationId}
                     onClick={() => handleAppClick(app)}
-                    className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl hover:bg-white/5 active:bg-white/10 transition-all duration-200 active:scale-95"
+                    className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl hover:bg-white/5 active:bg-white/10 transition-all duration-200 active:scale-95 relative"
                     style={{ minHeight: '44px' }}
-                    aria-label={`Open ${app.title}`}
+                    aria-label={`Open ${app.name}`}
                   >
+                    {/* Pinned indicator */}
+                    {app.isPinned && (
+                      <div className="absolute top-1 right-1 w-5 h-5 bg-yellow-500/80 rounded-full flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                    )}
                     <div 
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-transform duration-200 hover:scale-105"
                       style={{
-                        backgroundColor: app.color,
+                        backgroundColor: app.color || '#7a9eb5',
                         boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
                       }}
                     >
                       <AppIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <div className="text-white text-xs sm:text-sm font-light text-center line-clamp-2">
-                      {app.title}
+                      {app.name}
                     </div>
                   </button>
                 );
@@ -573,13 +672,15 @@ function AppLauncher({
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
                 <Search className="w-16 h-16 mx-auto mb-4 text-white/30" />
-                <p className="text-white/60 text-base sm:text-lg font-light">No apps found</p>
+                <p className="text-white/60 text-base sm:text-lg font-light">
+                  {searchQuery ? 'No apps found' : 'No apps installed'}
+                </p>
                 <button
-                  onClick={() => setSearchQuery('')}
+                  onClick={() => searchQuery ? setSearchQuery('') : router.push('/dashboard/apps')}
                   className="mt-4 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-light transition-all"
                   style={{ minHeight: '44px' }}
                 >
-                  Clear Search
+                  {searchQuery ? 'Clear Search' : 'Browse Apps'}
                 </button>
               </div>
             </div>
