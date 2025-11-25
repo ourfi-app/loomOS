@@ -73,7 +73,7 @@ export const useAppPreferences = create<AppPreferences>()(
       selectedCategories: [],
       // Default Quick Launch Dock: 5 essential apps (home, browser, mail, calendar, settings)
       // Note: App launcher is always shown as the 6th fixed position
-      dockAppIds: ['home', 'browser', 'mail', 'calendar', 'settings'],
+      dockAppIds: ['home', 'mail', 'calendar', 'settings'],
       // Default Pinned Apps: Most used essentials
       pinnedAppIds: [],
       desktopWidgets: [],
