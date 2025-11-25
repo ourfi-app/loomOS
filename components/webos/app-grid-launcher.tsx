@@ -1,3 +1,9 @@
+// ⚠️ DEPRECATED: This component has been replaced by the unified AppLauncher
+// Please use: import { AppLauncher } from '@/components/app-launcher';
+// This file is kept for backward compatibility and will be removed in a future release.
+//
+// Migration Guide: Simply replace AppGridLauncher with AppLauncher - the props are compatible.
+//
 // TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 // TODO: Review setTimeout calls for proper cleanup in useEffect return functions
 'use client';

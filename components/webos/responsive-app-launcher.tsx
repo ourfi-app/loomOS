@@ -1,3 +1,9 @@
+// ⚠️ DEPRECATED: This component has been replaced by the unified AppLauncher
+// Please use: import { AppLauncher } from '@/components/app-launcher';
+// This file is kept for backward compatibility and will be removed in a future release.
+//
+// Migration Guide: Replace ResponsiveAppLauncher with AppLauncher - similar props supported.
+//
 // TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
 
 'use client';
@@ -5,6 +11,8 @@
 /**
  * Responsive App Launcher
  * Demonstrates LoomOS-inspired responsive design patterns
+ * 
+ * @deprecated Use AppLauncher from @/components/app-launcher instead
  */
 
 import { useState, useMemo } from 'react';

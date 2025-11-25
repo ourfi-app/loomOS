@@ -12,7 +12,7 @@ import { useUniversalSearch } from '@/hooks/webos/use-universal-search';
 import { cn } from '@/lib/utils';
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AppGridLauncher } from './app-grid-launcher';
+import { AppLauncher } from '@/components/app-launcher';
 import { APP_REGISTRY, CATEGORIES, getAppsByCategory, type AppDefinition, getAppById } from '@/lib/enhanced-app-registry';
 import { useAppPreferences } from '@/lib/app-preferences-store';
 import { Maximize2, Minimize2, X, ExternalLink, Info, Pin, PinOff, PlayCircle, ArrowUp, Settings, Replace, Grid3x3 } from 'lucide-react';
@@ -721,7 +721,7 @@ export function AppDock() {
       </motion.div>
       
       {/* App Grid Launcher - Rendered at root level */}
-      <AppGridLauncher
+      <AppLauncher
         isOpen={isGridOpen}
         onClose={() => setIsGridOpen(false)}
         onAppLaunch={(app) => {

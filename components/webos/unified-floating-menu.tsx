@@ -8,7 +8,7 @@ import { useCardManager } from '@/lib/card-manager-store';
 import { cn } from '@/lib/utils';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronUp, Search, Grid3x3, Zap } from 'lucide-react';
-import { AppGridLauncher } from './app-grid-launcher';
+import { AppLauncher } from '@/components/app-launcher';
 import { IntelligentSearch } from './intelligent-search';
 import { QuickAppSwitcher } from './quick-app-switcher';
 import { APP_REGISTRY, type AppDefinition, getAppById } from '@/lib/enhanced-app-registry';
@@ -565,7 +565,7 @@ export function UnifiedFloatingMenu({ onOpenMissionControl }: UnifiedFloatingMen
       </div>
       
       {/* App Grid Launcher */}
-      <AppGridLauncher isOpen={isGridOpen} onClose={() => setIsGridOpen(false)} />
+      <AppLauncher isOpen={isGridOpen} onClose={() => setIsGridOpen(false)} />
 
       {/* Intelligent Search */}
       <IntelligentSearch 
