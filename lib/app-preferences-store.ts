@@ -71,8 +71,8 @@ export const useAppPreferences = create<AppPreferences>()(
       viewMode: 'grid',
       sortMode: 'default',
       selectedCategories: [],
-      // Default Quick Launch Dock: 4 essential apps
-      dockAppIds: ['home', 'ai-assistant', 'messages', 'calendar-app'],
+      // Default Quick Launch Dock: 4 pre-installed essential apps (browser, mail, calendar, settings)
+      dockAppIds: ['browser', 'mail', 'calendar', 'settings'],
       // Default Pinned Apps: Most used essentials
       pinnedAppIds: [],
       desktopWidgets: [],
