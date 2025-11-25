@@ -32,11 +32,12 @@ import { LoomContextMenu, LoomAIModal } from './loom-context-menu';
  * LoomOS-style Quick Launch Dock
  * 
  * Features:
- * - 5 icons total: 4 customizable app positions + 1 fixed app grid launcher
+ * - 6 icons total: 5 customizable app positions + 1 fixed app grid launcher
  * - Always visible when not in an app
  * - Can be brought up from within an app by swiping up on gesture area
- * - First 4 positions are customizable (long-press or right-click to replace)
- * - 5th position (app grid) is fixed and cannot be changed
+ * - First 5 positions are customizable (long-press or right-click to replace)
+ * - 6th position (app grid) is fixed and cannot be changed
+ * - Default apps: Home, Browser, Mail, Calendar, Settings + App Launcher
  */
 
 // Performance optimization: Memoized dock item component with webOS Wave animations
@@ -68,7 +69,7 @@ const DockItem = memo(({
   onCloseApp?: (appId: string) => void;
 }) => {
   const Icon = app.icon;
-  const canCustomize = isInDock && position !== undefined && position < 4;
+  const canCustomize = isInDock && position !== undefined && position < 5;
   
   return (
     <ContextMenu>
@@ -207,14 +208,14 @@ export function AppDock() {
   // Super admins always see admin features, regular admins need to toggle admin mode
   const showAdminFeatures = isSuperAdmin || (isAdmin && isAdminMode);
 
-  // Get pinned dock apps (4 customizable positions)
+  // Get pinned dock apps (5 customizable positions)
   const pinnedApps = dockAppIds
     .map(id => getAppById(id))
     .filter((app): app is AppDefinition => 
       app !== undefined && 
       (!app.requiresAdmin || (app.requiresAdmin && showAdminFeatures))
     )
-    .slice(0, 4); // Ensure exactly 4 apps max
+    .slice(0, 5); // Ensure exactly 5 apps max
   
   // Get minimized apps from card manager
   const minimizedCards = getMinimizedApps();
