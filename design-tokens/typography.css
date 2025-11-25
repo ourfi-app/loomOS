@@ -1,0 +1,321 @@
+/**
+ * loomOS Typography Design Tokens
+ * 
+ * Comprehensive typography system with font families, sizes, weights,
+ * line heights, letter spacing, and text utilities.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+:root {
+  /* ========================================
+     FONT FAMILIES
+     ======================================== */
+
+  /* System font stacks */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+               'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+               sans-serif;
+  
+  --font-serif: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+  
+  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono',
+               'Roboto Mono', 'Consolas', 'Courier New', monospace;
+  
+  --font-display: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+  /* webOS-specific fonts */
+  --font-webos: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  --font-webos-light: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+  /* ========================================
+     FONT SIZES (Type Scale)
+     ======================================== */
+
+  /* Micro text */
+  --text-2xs: 0.625rem;           /* 10px */
+  --text-xs: 0.6875rem;           /* 11px */
+
+  /* Body text */
+  --text-sm: 0.8125rem;           /* 13px */
+  --text-base: 0.875rem;          /* 14px - Base size */
+  --text-md: 1rem;                /* 16px */
+  --text-lg: 1.125rem;            /* 18px */
+
+  /* Headings */
+  --text-xl: 1.25rem;             /* 20px */
+  --text-2xl: 1.5rem;             /* 24px */
+  --text-3xl: 1.875rem;           /* 30px */
+  --text-4xl: 2.25rem;            /* 36px */
+  --text-5xl: 3rem;               /* 48px */
+  --text-6xl: 3.75rem;            /* 60px */
+  --text-7xl: 4.5rem;             /* 72px */
+  --text-8xl: 6rem;               /* 96px */
+  --text-9xl: 8rem;               /* 128px */
+
+  /* ========================================
+     FONT WEIGHTS
+     ======================================== */
+
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;              /* webOS default */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* ========================================
+     LINE HEIGHTS
+     ======================================== */
+
+  --leading-none: 1;              /* 1 */
+  --leading-tight: 1.25;          /* 1.25 */
+  --leading-snug: 1.375;          /* 1.375 */
+  --leading-normal: 1.5;          /* 1.5 - Default */
+  --leading-relaxed: 1.625;       /* 1.625 */
+  --leading-loose: 2;             /* 2 */
+
+  /* Semantic line heights */
+  --leading-heading: var(--leading-tight);    /* For headings */
+  --leading-body: var(--leading-normal);      /* For body text */
+  --leading-caption: var(--leading-snug);     /* For captions */
+
+  /* ========================================
+     LETTER SPACING (Tracking)
+     ======================================== */
+
+  --tracking-tighter: -0.05em;    /* -0.05em */
+  --tracking-tight: -0.025em;     /* -0.025em */
+  --tracking-normal: 0;           /* 0 */
+  --tracking-wide: 0.025em;       /* 0.025em */
+  --tracking-wider: 0.05em;       /* 0.05em */
+  --tracking-widest: 0.1em;       /* 0.1em */
+
+  /* webOS uppercase tracking */
+  --tracking-uppercase: 0.05em;   /* For uppercase labels */
+
+  /* ========================================
+     TEXT DECORATION
+     ======================================== */
+
+  --text-underline-offset: 0.2em;
+  --text-decoration-thickness: 1px;
+
+  /* ========================================
+     PARAGRAPH SPACING
+     ======================================== */
+
+  --paragraph-spacing: 1em;       /* Space between paragraphs */
+  --paragraph-indent: 0;          /* First line indent */
+
+  /* ========================================
+     TEXT STYLES (Semantic)
+     ======================================== */
+
+  /* Display text */
+  --text-display-size: var(--text-6xl);
+  --text-display-weight: var(--font-bold);
+  --text-display-leading: var(--leading-tight);
+  --text-display-tracking: var(--tracking-tight);
+
+  /* Headings */
+  --text-h1-size: var(--text-5xl);
+  --text-h1-weight: var(--font-bold);
+  --text-h1-leading: var(--leading-tight);
+  --text-h1-tracking: var(--tracking-tight);
+
+  --text-h2-size: var(--text-4xl);
+  --text-h2-weight: var(--font-semibold);
+  --text-h2-leading: var(--leading-tight);
+  --text-h2-tracking: var(--tracking-tight);
+
+  --text-h3-size: var(--text-3xl);
+  --text-h3-weight: var(--font-semibold);
+  --text-h3-leading: var(--leading-snug);
+  --text-h3-tracking: var(--tracking-normal);
+
+  --text-h4-size: var(--text-2xl);
+  --text-h4-weight: var(--font-medium);
+  --text-h4-leading: var(--leading-snug);
+  --text-h4-tracking: var(--tracking-normal);
+
+  --text-h5-size: var(--text-xl);
+  --text-h5-weight: var(--font-medium);
+  --text-h5-leading: var(--leading-normal);
+  --text-h5-tracking: var(--tracking-normal);
+
+  --text-h6-size: var(--text-lg);
+  --text-h6-weight: var(--font-medium);
+  --text-h6-leading: var(--leading-normal);
+  --text-h6-tracking: var(--tracking-normal);
+
+  /* Body text */
+  --text-body-size: var(--text-base);
+  --text-body-weight: var(--font-normal);
+  --text-body-leading: var(--leading-body);
+  --text-body-tracking: var(--tracking-normal);
+
+  --text-body-lg-size: var(--text-md);
+  --text-body-lg-weight: var(--font-normal);
+  --text-body-lg-leading: var(--leading-relaxed);
+
+  --text-body-sm-size: var(--text-sm);
+  --text-body-sm-weight: var(--font-normal);
+  --text-body-sm-leading: var(--leading-normal);
+
+  /* Labels & captions */
+  --text-label-size: var(--text-sm);
+  --text-label-weight: var(--font-medium);
+  --text-label-leading: var(--leading-snug);
+  --text-label-tracking: var(--tracking-normal);
+
+  --text-caption-size: var(--text-xs);
+  --text-caption-weight: var(--font-normal);
+  --text-caption-leading: var(--leading-snug);
+  --text-caption-tracking: var(--tracking-normal);
+
+  /* Overline (uppercase labels) */
+  --text-overline-size: var(--text-xs);
+  --text-overline-weight: var(--font-semibold);
+  --text-overline-leading: var(--leading-tight);
+  --text-overline-tracking: var(--tracking-widest);
+  --text-overline-transform: uppercase;
+
+  /* Code */
+  --text-code-size: var(--text-sm);
+  --text-code-weight: var(--font-normal);
+  --text-code-leading: var(--leading-normal);
+  --text-code-family: var(--font-mono);
+
+  /* ========================================
+     PROSE (Long-form content)
+     ======================================== */
+
+  --prose-font-size: var(--text-md);
+  --prose-line-height: var(--leading-relaxed);
+  --prose-max-width: 65ch;        /* Optimal reading width */
+  --prose-paragraph-spacing: 1.25em;
+
+  /* ========================================
+     WEBOS-SPECIFIC TYPOGRAPHY
+     ======================================== */
+
+  /* webOS default is light weight */
+  --webos-text-weight: var(--font-light);
+  --webos-heading-weight: var(--font-light);
+  --webos-label-weight: var(--font-light);
+  --webos-label-tracking: var(--tracking-uppercase);
+}
+
+/* ========================================
+   TYPOGRAPHY UTILITY CLASSES
+   ======================================== */
+
+/* Font families */
+.font-sans { font-family: var(--font-sans); }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+.font-display { font-family: var(--font-display); }
+
+/* Font sizes */
+.text-2xs { font-size: var(--text-2xs); }
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-md { font-size: var(--text-md); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+.text-5xl { font-size: var(--text-5xl); }
+.text-6xl { font-size: var(--text-6xl); }
+
+/* Font weights */
+.font-thin { font-weight: var(--font-thin); }
+.font-extralight { font-weight: var(--font-extralight); }
+.font-light { font-weight: var(--font-light); }
+.font-normal { font-weight: var(--font-normal); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
+
+/* Line heights */
+.leading-none { line-height: var(--leading-none); }
+.leading-tight { line-height: var(--leading-tight); }
+.leading-snug { line-height: var(--leading-snug); }
+.leading-normal { line-height: var(--leading-normal); }
+.leading-relaxed { line-height: var(--leading-relaxed); }
+.leading-loose { line-height: var(--leading-loose); }
+
+/* Letter spacing */
+.tracking-tighter { letter-spacing: var(--tracking-tighter); }
+.tracking-tight { letter-spacing: var(--tracking-tight); }
+.tracking-normal { letter-spacing: var(--tracking-normal); }
+.tracking-wide { letter-spacing: var(--tracking-wide); }
+.tracking-wider { letter-spacing: var(--tracking-wider); }
+.tracking-widest { letter-spacing: var(--tracking-widest); }
+
+/* Text styles */
+.text-display {
+  font-size: var(--text-display-size);
+  font-weight: var(--text-display-weight);
+  line-height: var(--text-display-leading);
+  letter-spacing: var(--text-display-tracking);
+}
+
+.text-h1 {
+  font-size: var(--text-h1-size);
+  font-weight: var(--text-h1-weight);
+  line-height: var(--text-h1-leading);
+  letter-spacing: var(--text-h1-tracking);
+}
+
+.text-h2 {
+  font-size: var(--text-h2-size);
+  font-weight: var(--text-h2-weight);
+  line-height: var(--text-h2-leading);
+  letter-spacing: var(--text-h2-tracking);
+}
+
+.text-h3 {
+  font-size: var(--text-h3-size);
+  font-weight: var(--text-h3-weight);
+  line-height: var(--text-h3-leading);
+  letter-spacing: var(--text-h3-tracking);
+}
+
+.text-overline {
+  font-size: var(--text-overline-size);
+  font-weight: var(--text-overline-weight);
+  line-height: var(--text-overline-leading);
+  letter-spacing: var(--text-overline-tracking);
+  text-transform: var(--text-overline-transform);
+}
+
+/* Prose styling */
+.prose {
+  font-size: var(--prose-font-size);
+  line-height: var(--prose-line-height);
+  max-width: var(--prose-max-width);
+}
+
+.prose p {
+  margin-bottom: var(--prose-paragraph-spacing);
+}
+
+/* webOS text style */
+.webos-text {
+  font-family: var(--font-webos);
+  font-weight: var(--webos-text-weight);
+}
+
+.webos-label {
+  font-weight: var(--webos-label-weight);
+  letter-spacing: var(--webos-label-tracking);
+  text-transform: uppercase;
+}

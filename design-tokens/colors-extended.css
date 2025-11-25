@@ -1,0 +1,278 @@
+/**
+ * loomOS Extended Color Palette
+ * 
+ * Additional color scales and semantic color mappings.
+ * Complements core.css with extended color options.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+:root {
+  /* ========================================
+     EXTENDED BRAND COLORS
+     ======================================== */
+
+  /* loomOS Orange Extended Scale */
+  --loomos-orange-50: #FFF7ED;
+  --loomos-orange-100: #FFEDD5;
+  --loomos-orange-200: #FED7AA;
+  --loomos-orange-300: #FDBA74;
+  --loomos-orange-400: #FB923C;
+  --loomos-orange-500: #F18825;   /* Primary */
+  --loomos-orange-600: #EA580C;
+  --loomos-orange-700: #C2410C;
+  --loomos-orange-800: #9A3412;
+  --loomos-orange-900: #7C2D12;
+
+  /* Trust Blue Extended Scale */
+  --trust-blue-50: #EFF6FF;
+  --trust-blue-100: #DBEAFE;
+  --trust-blue-200: #BFDBFE;
+  --trust-blue-300: #93C5FD;
+  --trust-blue-400: #60A5FA;
+  --trust-blue-500: #2196F3;      /* Primary */
+  --trust-blue-600: #1E88E5;
+  --trust-blue-700: #1976D2;
+  --trust-blue-800: #1565C0;
+  --trust-blue-900: #0D47A1;
+
+  /* Growth Green Extended Scale */
+  --growth-green-50: #F0FDF4;
+  --growth-green-100: #DCFCE7;
+  --growth-green-200: #BBF7D0;
+  --growth-green-300: #86EFAC;
+  --growth-green-400: #4ADE80;
+  --growth-green-500: #4CAF50;    /* Primary */
+  --growth-green-600: #16A34A;
+  --growth-green-700: #15803D;
+  --growth-green-800: #166534;
+  --growth-green-900: #14532D;
+
+  /* ========================================
+     SEMANTIC STATUS COLORS - Extended
+     ======================================== */
+
+  /* Success - Extended Green Scale */
+  --success-50: #F0FDF4;
+  --success-100: #DCFCE7;
+  --success-200: #BBF7D0;
+  --success-300: #86EFAC;
+  --success-400: #4ADE80;
+  --success-500: #22C55E;
+  --success-600: #16A34A;
+  --success-700: #15803D;
+  --success-800: #166534;
+  --success-900: #14532D;
+
+  /* Error - Extended Red Scale */
+  --error-50: #FEF2F2;
+  --error-100: #FEE2E2;
+  --error-200: #FECACA;
+  --error-300: #FCA5A5;
+  --error-400: #F87171;
+  --error-500: #EF4444;
+  --error-600: #DC2626;
+  --error-700: #B91C1C;
+  --error-800: #991B1B;
+  --error-900: #7F1D1D;
+
+  /* Warning - Extended Amber Scale */
+  --warning-50: #FFFBEB;
+  --warning-100: #FEF3C7;
+  --warning-200: #FDE68A;
+  --warning-300: #FCD34D;
+  --warning-400: #FBBF24;
+  --warning-500: #F59E0B;
+  --warning-600: #D97706;
+  --warning-700: #B45309;
+  --warning-800: #92400E;
+  --warning-900: #78350F;
+
+  /* Info - Extended Sky Blue Scale */
+  --info-50: #F0F9FF;
+  --info-100: #E0F2FE;
+  --info-200: #BAE6FD;
+  --info-300: #7DD3FC;
+  --info-400: #38BDF8;
+  --info-500: #0EA5E9;
+  --info-600: #0284C7;
+  --info-700: #0369A1;
+  --info-800: #075985;
+  --info-900: #0C4A6E;
+
+  /* ========================================
+     ADDITIONAL SEMANTIC COLORS
+     ======================================== */
+
+  /* Purple - For premium/pro features */
+  --purple-50: #FAF5FF;
+  --purple-100: #F3E8FF;
+  --purple-200: #E9D5FF;
+  --purple-300: #D8B4FE;
+  --purple-400: #C084FC;
+  --purple-500: #A855F7;
+  --purple-600: #9333EA;
+  --purple-700: #7E22CE;
+  --purple-800: #6B21A8;
+  --purple-900: #581C87;
+
+  /* Pink - For highlights/favorites */
+  --pink-50: #FDF2F8;
+  --pink-100: #FCE7F3;
+  --pink-200: #FBCFE8;
+  --pink-300: #F9A8D4;
+  --pink-400: #F472B6;
+  --pink-500: #EC4899;
+  --pink-600: #DB2777;
+  --pink-700: #BE185D;
+  --pink-800: #9D174D;
+  --pink-900: #831843;
+
+  /* Teal - For secondary actions */
+  --teal-50: #F0FDFA;
+  --teal-100: #CCFBF1;
+  --teal-200: #99F6E4;
+  --teal-300: #5EEAD4;
+  --teal-400: #2DD4BF;
+  --teal-500: #14B8A6;
+  --teal-600: #0D9488;
+  --teal-700: #0F766E;
+  --teal-800: #115E59;
+  --teal-900: #134E4A;
+
+  /* Indigo - For links/navigation */
+  --indigo-50: #EEF2FF;
+  --indigo-100: #E0E7FF;
+  --indigo-200: #C7D2FE;
+  --indigo-300: #A5B4FC;
+  --indigo-400: #818CF8;
+  --indigo-500: #6366F1;
+  --indigo-600: #4F46E5;
+  --indigo-700: #4338CA;
+  --indigo-800: #3730A3;
+  --indigo-900: #312E81;
+
+  /* ========================================
+     OVERLAY COLORS
+     ======================================== */
+
+  /* Backdrop overlays */
+  --overlay-light: rgba(0, 0, 0, 0.1);
+  --overlay-medium: rgba(0, 0, 0, 0.3);
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+  --overlay-heavy: rgba(0, 0, 0, 0.7);
+  --overlay-black: rgba(0, 0, 0, 0.9);
+
+  /* White overlays */
+  --overlay-white-light: rgba(255, 255, 255, 0.1);
+  --overlay-white-medium: rgba(255, 255, 255, 0.3);
+  --overlay-white-dark: rgba(255, 255, 255, 0.5);
+  --overlay-white-heavy: rgba(255, 255, 255, 0.7);
+  --overlay-white-opaque: rgba(255, 255, 255, 0.95);
+
+  /* ========================================
+     GRADIENT PRESETS
+     ======================================== */
+
+  /* Brand gradients */
+  --gradient-primary: linear-gradient(135deg, var(--loomos-orange-500) 0%, var(--loomos-orange-600) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--trust-blue-500) 0%, var(--trust-blue-600) 100%);
+  --gradient-success: linear-gradient(135deg, var(--success-500) 0%, var(--success-600) 100%);
+  --gradient-error: linear-gradient(135deg, var(--error-500) 0%, var(--error-600) 100%);
+  --gradient-warning: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-600) 100%);
+  --gradient-info: linear-gradient(135deg, var(--info-500) 0%, var(--info-600) 100%);
+
+  /* Multi-color gradients */
+  --gradient-rainbow: linear-gradient(135deg, 
+    var(--error-500) 0%, 
+    var(--warning-500) 25%, 
+    var(--success-500) 50%, 
+    var(--info-500) 75%, 
+    var(--purple-500) 100%);
+
+  --gradient-sunset: linear-gradient(135deg, 
+    var(--loomos-orange-500) 0%, 
+    var(--pink-500) 50%, 
+    var(--purple-500) 100%);
+
+  --gradient-ocean: linear-gradient(135deg, 
+    var(--trust-blue-500) 0%, 
+    var(--teal-500) 50%, 
+    var(--info-500) 100%);
+
+  /* Neutral gradients */
+  --gradient-gray: linear-gradient(135deg, var(--neutral-200) 0%, var(--neutral-300) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+
+  /* ========================================
+     CHART/DATA VISUALIZATION COLORS
+     ======================================== */
+
+  --chart-1: var(--trust-blue-500);
+  --chart-2: var(--loomos-orange-500);
+  --chart-3: var(--growth-green-500);
+  --chart-4: var(--purple-500);
+  --chart-5: var(--pink-500);
+  --chart-6: var(--teal-500);
+  --chart-7: var(--indigo-500);
+  --chart-8: var(--warning-500);
+
+  /* ========================================
+     SOCIAL MEDIA BRAND COLORS
+     ======================================== */
+
+  --social-facebook: #1877F2;
+  --social-twitter: #1DA1F2;
+  --social-instagram: #E4405F;
+  --social-linkedin: #0A66C2;
+  --social-youtube: #FF0000;
+  --social-github: #181717;
+  --social-discord: #5865F2;
+  --social-slack: #4A154B;
+}
+
+/* ========================================
+   DARK MODE COLOR ADJUSTMENTS
+   ======================================== */
+
+.dark,
+[data-theme="dark"] {
+  /* Adjust overlays for dark mode */
+  --overlay-light: rgba(255, 255, 255, 0.05);
+  --overlay-medium: rgba(255, 255, 255, 0.1);
+  --overlay-dark: rgba(255, 255, 255, 0.2);
+  --overlay-heavy: rgba(255, 255, 255, 0.3);
+
+  /* Invert white overlays to black */
+  --overlay-white-light: rgba(0, 0, 0, 0.1);
+  --overlay-white-medium: rgba(0, 0, 0, 0.3);
+  --overlay-white-dark: rgba(0, 0, 0, 0.5);
+  --overlay-white-heavy: rgba(0, 0, 0, 0.7);
+}
+
+/* ========================================
+   COLOR UTILITY CLASSES
+   ======================================== */
+
+/* Background colors */
+.bg-primary { background-color: var(--loomos-orange-500); }
+.bg-secondary { background-color: var(--trust-blue-500); }
+.bg-success { background-color: var(--success-500); }
+.bg-error { background-color: var(--error-500); }
+.bg-warning { background-color: var(--warning-500); }
+.bg-info { background-color: var(--info-500); }
+
+/* Text colors */
+.text-primary { color: var(--loomos-orange-500); }
+.text-secondary { color: var(--trust-blue-500); }
+.text-success { color: var(--success-600); }
+.text-error { color: var(--error-600); }
+.text-warning { color: var(--warning-600); }
+.text-info { color: var(--info-600); }
+
+/* Gradient backgrounds */
+.bg-gradient-primary { background: var(--gradient-primary); }
+.bg-gradient-secondary { background: var(--gradient-secondary); }
+.bg-gradient-sunset { background: var(--gradient-sunset); }
+.bg-gradient-ocean { background: var(--gradient-ocean); }

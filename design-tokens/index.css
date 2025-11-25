@@ -1,0 +1,82 @@
+/**
+ * loomOS Design Tokens - Complete System
+ * 
+ * Central import file for all design tokens.
+ * Import this file to get the complete design system.
+ * 
+ * Version: 1.0 - Phase 1C
+ * Last Updated: November 25, 2025
+ */
+
+/* ========================================
+   CORE TOKENS (Foundation)
+   ======================================== */
+@import './core.css';              /* Base colors, spacing, typography */
+@import './colors-extended.css';   /* Extended color palettes */
+
+/* ========================================
+   SEMANTIC TOKENS (Customizable)
+   ======================================== */
+@import './semantic.css';          /* Semantic color mappings */
+
+/* ========================================
+   LAYOUT & STRUCTURE
+   ======================================== */
+@import './grid.css';              /* Grid system, spacing, layout */
+@import './typography.css';        /* Typography system */
+@import './borders.css';           /* Borders, radii, outlines */
+@import './elevation.css';         /* Shadows, z-index, depth */
+
+/* ========================================
+   MOTION & ANIMATION
+   ======================================== */
+@import './motion.css';            /* Animation, transitions, gestures */
+
+/* ========================================
+   COMPONENTS
+   ======================================== */
+@import './components.css';        /* Component-specific tokens */
+
+/* ========================================
+   USAGE NOTES
+   ======================================== */
+
+/**
+ * QUICK START:
+ * 
+ * 1. Import in your global CSS:
+ *    @import '../design-tokens/index.css';
+ * 
+ * 2. Use semantic tokens in components:
+ *    background-color: var(--semantic-surface-base);
+ *    color: var(--semantic-text-primary);
+ *    padding: var(--space-lg);
+ *    border-radius: var(--radius-xl);
+ * 
+ * 3. Apply animations:
+ *    transition: var(--transition-all-normal);
+ * 
+ * 4. Use component tokens:
+ *    padding: var(--button-padding-md);
+ *    box-shadow: var(--card-shadow);
+ * 
+ * CUSTOMIZATION:
+ * 
+ * Override semantic tokens to create themes:
+ * 
+ * :root {
+ *   --semantic-primary: var(--trust-blue);
+ *   --semantic-accent: var(--loomos-orange);
+ * }
+ * 
+ * BEST PRACTICES:
+ * 
+ * ✓ Use semantic tokens (--semantic-*) in components
+ * ✓ Use component tokens (--button-*, --card-*) for consistency
+ * ✓ Use spacing scale (--space-*) for all spacing
+ * ✓ Use motion tokens (--transition-*, --duration-*) for animations
+ * 
+ * ✗ Don't use core tokens directly in components
+ * ✗ Don't hardcode colors, spacing, or timing values
+ * ✗ Don't override core tokens (they define the brand)
+ */
