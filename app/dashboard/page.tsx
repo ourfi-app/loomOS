@@ -2,70 +2,33 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   ChevronLeft, ChevronRight, Globe, Mail, Calendar, 
   MapPin, Paperclip, Star, Home, MessageSquare, 
-  Users, FileText, Settings, X, Minimize
+  Users, FileText, Settings, X, Minimize, LucideIcon,
+  Loader2, AlertCircle
 } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
-// Card data structure
-const cardData = [
-  {
-    id: 'work-orders',
-    title: 'Work Orders',
-    type: 'stack',
-    color: '#f0f8e8',
-    icon: 'wrench',
-    cards: [
-      { id: 'active', title: 'Active', count: 3, color: '#e8f8f0' },
-      { id: 'pending', title: 'Pending', count: 5, color: '#f8f0e8' }
-    ]
-  },
-  {
-    id: 'browser',
-    title: 'Browser',
-    type: 'single',
-    color: 'var(--semantic-surface-base)',
-    icon: 'globe',
-    content: {
-      url: 'sfchronicle.com',
-      title: 'San Francisco Chronicle',
-      headlines: [
-        'Tech Industry Sees Major Growth',
-        'Local Community Events This Weekend',
-        'Weather Update: Sunny Days Ahead'
-      ],
-      bookmarks: [
-        { name: 'News', url: 'news.com', icon: 'globe' },
-        { name: 'Weather', url: 'weather.com', icon: 'globe' },
-        { name: 'Sports', url: 'sports.com', icon: 'globe' }
-      ]
-    }
-  },
-  {
-    id: 'mail',
-    title: 'Mail',
-    type: 'single',
-    color: '#f8f8f8',
-    icon: 'mail'
-  },
-  {
-    id: 'calendar',
-    title: 'Calendar',
-    type: 'single',
-    color: 'var(--semantic-surface-base)',
-    icon: 'calendar',
-    content: {
-      date: 'Today',
-      events: [
-        { time: '9:00 AM', title: 'Team Meeting', location: 'Conference Room A', color: '#e8f0f8' },
-        { time: '2:00 PM', title: 'Project Review', location: 'Office 204', color: '#f8e8f0' },
-        { time: '4:30 PM', title: 'Client Call', location: 'Virtual', color: '#f0f8e8' }
-      ]
-    }
-  }
-];
+// Type definitions
+interface InstalledApp {
+  installationId: string;
+  installedAt: string;
+  lastUsedAt: string | null;
+  isPinned: boolean;
+  launchCount: number;
+  appId: string;
+  name: string;
+  slug: string;
+  shortDescription: string;
+  iconName: string;
+  color: string;
+  path: string;
+  category: string;
+  isSystem: boolean;
+}
 
 // Email data for Mail app
 const emailData = {
@@ -135,28 +98,76 @@ function getStackCardPosition(cardIndex: number, totalCards: number, isExpanded:
   }
 }
 
+// Helper function to get Lucide icon component from icon name
+function getIconComponent(iconName: string): LucideIcon {
+  const IconComponent = (LucideIcons as any)[iconName];
+  return IconComponent || Globe; // Default to Globe if icon not found
+}
+
 export default function DashboardPage() {
+  const router = useRouter();
+  const [apps, setApps] = useState<InstalledApp[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentCard, setCurrentCard] = useState(0);
-  const [expandedStack, setExpandedStack] = useState<string | null>(null);
   const [activeApp, setActiveApp] = useState<string | null>(null);
   const [selectedFolder, setSelectedFolder] = useState('all-inboxes');
   const [selectedEmail, setSelectedEmail] = useState<any>(null);
 
+  // Fetch user's installed apps
+  useEffect(() => {
+    async function fetchInstalledApps() {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch('/api/user/installed-apps');
+        const result = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(result.error?.message || 'Failed to fetch installed apps');
+        }
+        
+        setApps(result.data || []);
+      } catch (err: any) {
+        console.error('Error fetching installed apps:', err);
+        setError(err.message || 'Failed to load apps');
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchInstalledApps();
+  }, []);
+
   const handlePrevCard = () => {
-    setCurrentCard((prev) => (prev > 0 ? prev - 1 : cardData.length - 1));
-    setExpandedStack(null);
+    setCurrentCard((prev) => (prev > 0 ? prev - 1 : apps.length - 1));
   };
 
   const handleNextCard = () => {
-    setCurrentCard((prev) => (prev < cardData.length - 1 ? prev + 1 : 0));
-    setExpandedStack(null);
+    setCurrentCard((prev) => (prev < apps.length - 1 ? prev + 1 : 0));
   };
 
-  const handleCardClick = (card: any) => {
-    if (card.type === 'stack') {
-      setExpandedStack(expandedStack === card.id ? null : card.id);
+  const handleCardClick = async (app: InstalledApp) => {
+    // Track app usage
+    try {
+      await fetch('/api/user/installed-apps', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          appId: app.appId,
+          action: 'track-usage',
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to track app usage:', err);
+    }
+    
+    // Navigate to the app
+    if (app.slug === 'mail' || app.slug === 'messages') {
+      setActiveApp('mail');
     } else {
-      setActiveApp(card.id);
+      router.push(app.path);
     }
   };
 
@@ -315,6 +326,92 @@ export default function DashboardPage() {
     );
   }
 
+  // Loading state
+  if (loading) {
+    return (
+      <div 
+        className="h-full relative overflow-hidden flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)',
+          fontFamily: '"Helvetica Neue", Arial, sans-serif'
+        }}
+      >
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="w-12 h-12 animate-spin" style={{ color: 'var(--semantic-text-secondary)' }} />
+          <p className="text-base font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
+            Loading your apps...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div 
+        className="h-full relative overflow-hidden flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)',
+          fontFamily: '"Helvetica Neue", Arial, sans-serif'
+        }}
+      >
+        <div className="flex flex-col items-center gap-4 max-w-md text-center">
+          <AlertCircle className="w-16 h-16" style={{ color: '#ef4444' }} />
+          <h3 className="text-xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>
+            Failed to Load Apps
+          </h3>
+          <p className="text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
+            {error}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 rounded-lg font-light transition-colors"
+            style={{
+              backgroundColor: '#7a9eb5',
+              color: 'white',
+            }}
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Empty state
+  if (apps.length === 0) {
+    return (
+      <div 
+        className="h-full relative overflow-hidden flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)',
+          fontFamily: '"Helvetica Neue", Arial, sans-serif'
+        }}
+      >
+        <div className="flex flex-col items-center gap-4 max-w-md text-center">
+          <FileText className="w-16 h-16" style={{ color: 'var(--semantic-text-tertiary)' }} />
+          <h3 className="text-xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>
+            No Apps Installed
+          </h3>
+          <p className="text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
+            Visit the App Store to install apps and get started.
+          </p>
+          <button
+            onClick={() => router.push('/dashboard/apps')}
+            className="px-6 py-2 rounded-lg font-light transition-colors"
+            style={{
+              backgroundColor: '#7a9eb5',
+              color: 'white',
+            }}
+          >
+            Browse Apps
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // Main dashboard view with card carousel
   return (
     <div 
@@ -327,174 +424,119 @@ export default function DashboardPage() {
       {/* Card Carousel */}
       <div className="h-full flex items-center justify-center px-8 md:px-16">
         <div className="relative w-full max-w-5xl h-[500px]">
-          {/* Navigation buttons */}
-          <button
-            onClick={handlePrevCard}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
-            style={{
-              backgroundColor: 'var(--glass-white-80)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
-            }}
-          >
-            <ChevronLeft className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
-          </button>
-          <button
-            onClick={handleNextCard}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
-            style={{
-              backgroundColor: 'var(--glass-white-80)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
-            }}
-          >
-            <ChevronRight className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
-          </button>
+          {/* Navigation buttons - Only show if more than 1 app */}
+          {apps.length > 1 && (
+            <>
+              <button
+                onClick={handlePrevCard}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--glass-white-80)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+                }}
+              >
+                <ChevronLeft className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
+              </button>
+              <button
+                onClick={handleNextCard}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--glass-white-80)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+                }}
+              >
+                <ChevronRight className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
+              </button>
+            </>
+          )}
 
           {/* Cards */}
           <div className="relative h-full flex items-center justify-center">
-            {cardData.map((card, index) => {
+            {apps.map((app, index) => {
               const isCentered = index === currentCard;
-              const isStack = card.type === 'stack';
-              const isExpanded = expandedStack === card.id;
+              const IconComponent = getIconComponent(app.iconName);
 
-              if (isStack && card.cards) {
-                // Render stack cards - Fixed to align with other cards
-                return (
-                  <div
-                    key={card.id}
-                    className="absolute flex items-center justify-center transition-all duration-500 ease-out"
-                    style={{
-                      width: '400px',
-                      height: '300px',
-                      transform: `translateX(${(index - currentCard) * 400}px) scale(${isCentered ? 1 : 0.85})`,
-                      opacity: isCentered ? 1 : 0.6,
-                      zIndex: isCentered ? 10 : 1
-                    }}
-                  >
-                    {card.cards.map((subCard, subIndex) => {
-                      const pos = getStackCardPosition(subIndex, card.cards!.length, isExpanded, isCentered);
-                      return (
-                        <button
-                          key={subCard.id}
-                          onClick={() => isCentered && handleCardClick(card)}
-                          className="absolute transition-all duration-500"
-                          style={{
-                            width: '400px',
-                            height: '300px',
-                            backgroundColor: subCard.color,
-                            borderRadius: '24px',
-                            boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
-                            transform: `translate(${pos.translateX}px, ${pos.translateY}px) rotate(${pos.rotate}deg) scale(${pos.scale})`,
-                            transformOrigin: 'center center',
-                            top: '50%',
-                            left: '50%',
-                            marginLeft: '-200px',
-                            marginTop: '-150px'
+              // Render app card
+              return (
+                <button
+                  key={app.installationId}
+                  onClick={() => isCentered && handleCardClick(app)}
+                  className="absolute transition-all duration-500 ease-out cursor-pointer hover:shadow-2xl"
+                  style={{
+                    width: '400px',
+                    height: '300px',
+                    backgroundColor: app.color || 'var(--semantic-surface-base)',
+                    borderRadius: '24px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    transform: `translateX(${(index - currentCard) * 420}px) scale(${isCentered ? 1 : 0.85})`,
+                    opacity: isCentered ? 1 : 0.5,
+                    zIndex: isCentered ? 10 : 1
+                  }}
+                >
+                  <div className="p-8 h-full flex flex-col">
+                    {/* App Header */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div 
+                          className="w-12 h-12 rounded-xl flex items-center justify-center"
+                          style={{ 
+                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            backdropFilter: 'blur(10px)'
                           }}
                         >
-                          <div className="p-8">
-                            <h3 className="text-xl font-light mb-2" style={{ color: 'var(--semantic-text-primary)' }}>
-                              {subCard.title}
-                            </h3>
-                            <p className="text-3xl font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
-                              {subCard.count}
-                            </p>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                );
-              } else {
-                // Render single card
-                return (
-                  <button
-                    key={card.id}
-                    onClick={() => isCentered && handleCardClick(card)}
-                    className="absolute transition-all duration-500 ease-out"
-                    style={{
-                      width: '400px',
-                      height: '300px',
-                      backgroundColor: card.color,
-                      borderRadius: '24px',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      transform: `translateX(${(index - currentCard) * 400}px) scale(${isCentered ? 1 : 0.85})`,
-                      opacity: isCentered ? 1 : 0.6,
-                      zIndex: isCentered ? 10 : 1
-                    }}
-                  >
-                    <div className="p-8 h-full flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        {card.icon === 'globe' && <Globe className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />}
-                        {card.icon === 'mail' && <Mail className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />}
-                        {card.icon === 'calendar' && <Calendar className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />}
-                        <h3 className="text-xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>
-                          {card.title}
-                        </h3>
+                          <IconComponent className="w-6 h-6" style={{ color: 'var(--semantic-text-primary)' }} />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>
+                            {app.name}
+                          </h3>
+                          {app.isPinned && (
+                            <div className="flex items-center gap-1 mt-1">
+                              <Star className="w-3 h-3 fill-current" style={{ color: '#b5a07a' }} />
+                              <span className="text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
+                                Pinned
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       </div>
-
-                      {/* Card content */}
-                      {card.id === 'browser' && card.content && (
-                        <div className="flex-1 overflow-hidden">
-                          <div className="text-xs font-light mb-3" style={{ color: 'var(--semantic-text-tertiary)' }}>
-                            {card.content.url}
-                          </div>
-                          <h4 className="text-base font-light mb-3" style={{ color: 'var(--semantic-text-primary)' }}>
-                            {card.content.title}
-                          </h4>
-                          <div className="space-y-2">
-                            {card.content.headlines.map((headline: string, i: number) => (
-                              <div key={i} className="text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
-                                • {headline}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {card.id === 'calendar' && card.content && (
-                        <div className="flex-1 overflow-hidden">
-                          <div className="text-xs font-light tracking-wider uppercase mb-3" style={{ color: 'var(--semantic-text-tertiary)' }}>
-                            {card.content.date}
-                          </div>
-                          <div className="space-y-3">
-                            {card.content.events.slice(0, 2).map((event: any, i: number) => (
-                              <div 
-                                key={i}
-                                className="p-3 rounded-xl"
-                                style={{ backgroundColor: event.color }}
-                              >
-                                <div className="text-sm font-light mb-1" style={{ color: '#7a9eb5' }}>
-                                  {event.time}
-                                </div>
-                                <div className="text-sm font-light mb-1" style={{ color: 'var(--semantic-text-primary)' }}>
-                                  {event.title}
-                                </div>
-                                <div className="flex items-center gap-1 text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
-                                  <MapPin className="w-3 h-3" />
-                                  {event.location}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {card.id === 'mail' && (
-                        <div className="flex-1 flex items-center justify-center">
-                          <div className="text-center">
-                            <Mail className="w-16 h-16 mx-auto mb-3" style={{ color: '#d0d0d0' }} />
-                            <p className="text-sm font-light" style={{ color: 'var(--semantic-text-muted)' }}>
-                              Click to open Mail
-                            </p>
-                          </div>
-                        </div>
-                      )}
+                      <div className="text-xs font-light px-2 py-1 rounded" style={{ 
+                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        color: 'var(--semantic-text-tertiary)'
+                      }}>
+                        {app.category}
+                      </div>
                     </div>
-                  </button>
-                );
-              }
+
+                    {/* App Description */}
+                    <div className="flex-1 overflow-hidden">
+                      <p className="text-sm font-light line-clamp-3" style={{ color: 'var(--semantic-text-secondary)' }}>
+                        {app.shortDescription || 'No description available'}
+                      </p>
+                    </div>
+
+                    {/* App Stats */}
+                    <div className="mt-4 pt-4 border-t" style={{ borderColor: 'rgba(0, 0, 0, 0.1)' }}>
+                      <div className="flex items-center justify-between text-xs font-light" style={{ color: 'var(--semantic-text-tertiary)' }}>
+                        <div className="flex items-center gap-4">
+                          <span>Used {app.launchCount} times</span>
+                          {app.lastUsedAt && (
+                            <span>
+                              Last: {new Date(app.lastUsedAt).toLocaleDateString()}
+                            </span>
+                          )}
+                        </div>
+                        {isCentered && (
+                          <span className="text-sm" style={{ color: 'var(--semantic-text-primary)' }}>
+                            Click to open →
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              );
             })}
           </div>
         </div>
