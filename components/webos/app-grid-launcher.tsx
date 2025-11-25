@@ -335,7 +335,11 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          style={{ backgroundColor: 'var(--webos-bg-primary)' }}
+          style={{ 
+            // GLASSMORPHISM FIX: Nearly opaque backdrop for modal visibility
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            backdropFilter: 'blur(8px)',
+          }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
           onClick={onClose}
         >
@@ -345,9 +349,11 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             style={{ 
-              backgroundColor: 'var(--webos-surface)',
-              boxShadow: 'var(--webos-shadow-elevated)',
-              borderColor: 'var(--webos-border-light)'
+              // GLASSMORPHISM FIX: Nearly solid background (0.98 opacity) for content readability
+              backgroundColor: 'rgba(255, 255, 255, 0.98)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1)',
+              borderColor: 'rgba(0, 0, 0, 0.1)',
+              backdropFilter: 'blur(10px)',
             }}
             className="relative w-full max-w-7xl rounded-2xl border p-4 sm:p-6 flex flex-col max-h-[85vh]"
             onClick={(e) => e.stopPropagation()}
@@ -374,11 +380,12 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
-                    backgroundColor: 'var(--webos-surface)',
-                    borderColor: 'var(--webos-border-light)',
-                    color: 'var(--webos-text-primary)',
+                    // GLASSMORPHISM FIX: Solid white background for input visibility
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    borderColor: 'rgba(0, 0, 0, 0.15)',
+                    color: '#1a1a1a',
                   }}
-                  className="w-full h-10 sm:h-11 pl-10 pr-10 rounded-full border focus:outline-none transition-all placeholder:text-[var(--webos-text-tertiary)]"
+                  className="w-full h-10 sm:h-11 pl-10 pr-10 rounded-full border focus:outline-none transition-all placeholder:text-gray-500"
                 />
                 {searchQuery && (
                   <button
@@ -418,9 +425,10 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setActiveTab(tab.id)}
                       style={{
-                        backgroundColor: isActive ? 'var(--webos-surface-active)' : 'var(--webos-surface-hover)',
-                        color: isActive ? 'var(--webos-text-primary)' : 'var(--webos-text-secondary)',
-                        borderColor: isActive ? 'var(--webos-border-medium)' : 'transparent'
+                        // GLASSMORPHISM FIX: Solid backgrounds for tab visibility
+                        backgroundColor: isActive ? 'rgba(240, 240, 240, 0.95)' : 'rgba(250, 250, 250, 0.8)',
+                        color: isActive ? '#1a1a1a' : '#666666',
+                        borderColor: isActive ? 'rgba(0, 0, 0, 0.15)' : 'transparent'
                       }}
                       className={cn(
                         'relative flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all flex-1 sm:flex-initial border',

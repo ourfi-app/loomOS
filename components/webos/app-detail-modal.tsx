@@ -100,11 +100,23 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      style={{
+        // GLASSMORPHISM FIX: More opaque backdrop (0.75 alpha) for better modal visibility
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backdropFilter: 'blur(8px)',
+      }}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl bg-surface/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-border overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-3xl rounded-3xl border overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] flex flex-col"
+        style={{
+          // GLASSMORPHISM FIX: Nearly solid background (0.98 alpha) for content readability
+          backgroundColor: 'rgba(255, 255, 255, 0.98)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1)',
+          borderColor: 'rgba(0, 0, 0, 0.1)',
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with gradient */}
