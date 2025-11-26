@@ -1,3 +1,21 @@
+/**
+ * loomOS Tabs Component
+ * 
+ * Tabbed interface with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Tabs defaultValue="tab1">
+ *   <TabsList>
+ *     <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+ *     <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+ *   </TabsList>
+ *   <TabsContent value="tab1">Content 1</TabsContent>
+ *   <TabsContent value="tab2">Content 2</TabsContent>
+ * </Tabs>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';
