@@ -1,3 +1,23 @@
+/**
+ * loomOS Menubar Component
+ * 
+ * Application menubar with dropdown menus and Phase 1C design token integration.
+ * Uses Radix UI Menubar primitive.
+ * 
+ * @example
+ * ```tsx
+ * <Menubar>
+ *   <MenubarMenu>
+ *     <MenubarTrigger>File</MenubarTrigger>
+ *     <MenubarContent>
+ *       <MenubarItem>New</MenubarItem>
+ *       <MenubarItem>Open</MenubarItem>
+ *     </MenubarContent>
+ *   </MenubarMenu>
+ * </Menubar>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

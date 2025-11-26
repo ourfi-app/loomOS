@@ -1,3 +1,18 @@
+/**
+ * loomOS Resizable Component
+ * 
+ * Resizable panels with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <ResizablePanelGroup direction="horizontal">
+ *   <ResizablePanel>Panel 1</ResizablePanel>
+ *   <ResizableHandle />
+ *   <ResizablePanel>Panel 2</ResizablePanel>
+ * </ResizablePanelGroup>
+ * ```
+ */
+
 'use client';
 
 import { GripVertical } from 'lucide-react';

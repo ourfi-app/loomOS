@@ -1,3 +1,14 @@
+/**
+ * loomOS DateRangePicker Component
+ * 
+ * Date range picker with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <DateRangePicker />
+ * ```
+ */
+
 import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";

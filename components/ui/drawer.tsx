@@ -1,3 +1,21 @@
+/**
+ * loomOS Drawer Component
+ * 
+ * Drawer/sheet component with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Drawer>
+ *   <DrawerTrigger>Open</DrawerTrigger>
+ *   <DrawerContent>
+ *     <DrawerHeader>
+ *       <DrawerTitle>Title</DrawerTitle>
+ *     </DrawerHeader>
+ *   </DrawerContent>
+ * </Drawer>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

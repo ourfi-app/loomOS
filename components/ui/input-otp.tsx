@@ -1,3 +1,18 @@
+/**
+ * loomOS InputOTP Component
+ * 
+ * One-time password input with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <InputOTP maxLength={6}>
+ *   <InputOTPGroup>
+ *     <InputOTPSlot index={0} />
+ *   </InputOTPGroup>
+ * </InputOTP>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

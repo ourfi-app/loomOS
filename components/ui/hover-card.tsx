@@ -1,3 +1,17 @@
+/**
+ * loomOS HoverCard Component
+ * 
+ * Hover-triggered card with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <HoverCard>
+ *   <HoverCardTrigger>Hover me</HoverCardTrigger>
+ *   <HoverCardContent>Card content</HoverCardContent>
+ * </HoverCard>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

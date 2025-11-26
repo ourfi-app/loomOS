@@ -1,3 +1,25 @@
+/**
+ * loomOS Table Component
+ * 
+ * Data table with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Table>
+ *   <TableHeader>
+ *     <TableRow>
+ *       <TableHead>Header</TableHead>
+ *     </TableRow>
+ *   </TableHeader>
+ *   <TableBody>
+ *     <TableRow>
+ *       <TableCell>Cell</TableCell>
+ *     </TableRow>
+ *   </TableBody>
+ * </Table>
+ * ```
+ */
+
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';

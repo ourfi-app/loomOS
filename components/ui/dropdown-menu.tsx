@@ -1,3 +1,19 @@
+/**
+ * loomOS DropdownMenu Component
+ * 
+ * Dropdown menu with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <DropdownMenu>
+ *   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+ *   <DropdownMenuContent>
+ *     <DropdownMenuItem>Item 1</DropdownMenuItem>
+ *   </DropdownMenuContent>
+ * </DropdownMenu>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

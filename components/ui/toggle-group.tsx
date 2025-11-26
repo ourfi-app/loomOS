@@ -1,3 +1,17 @@
+/**
+ * loomOS ToggleGroup Component
+ * 
+ * Group of toggle buttons with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <ToggleGroup type="single">
+ *   <ToggleGroupItem value="a">A</ToggleGroupItem>
+ *   <ToggleGroupItem value="b">B</ToggleGroupItem>
+ * </ToggleGroup>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

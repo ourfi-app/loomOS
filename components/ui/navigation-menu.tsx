@@ -1,3 +1,24 @@
+/**
+ * loomOS NavigationMenu Component
+ * 
+ * Main navigation menu with dropdowns and Phase 1C design token integration.
+ * Uses Radix UI NavigationMenu primitive.
+ * 
+ * @example
+ * ```tsx
+ * <NavigationMenu>
+ *   <NavigationMenuList>
+ *     <NavigationMenuItem>
+ *       <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+ *       <NavigationMenuContent>
+ *         <NavigationMenuLink href="/">Link</NavigationMenuLink>
+ *       </NavigationMenuContent>
+ *     </NavigationMenuItem>
+ *   </NavigationMenuList>
+ * </NavigationMenu>
+ * ```
+ */
+
 import * as React from 'react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { cva } from 'class-variance-authority';

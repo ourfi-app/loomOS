@@ -1,3 +1,14 @@
+/**
+ * loomOS Calendar Component
+ * 
+ * Date picker calendar with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Calendar mode="single" selected={date} onSelect={setDate} />
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

@@ -1,3 +1,14 @@
+/**
+ * loomOS Textarea Component
+ * 
+ * Multi-line text input with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Textarea placeholder="Enter your message..." />
+ * ```
+ */
+
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
@@ -10,13 +21,14 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <textarea
         className={cn(
-          'flex min-h-[80px] w-full rounded-xl px-4 py-3 text-sm font-light placeholder:font-light resize-none transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50',
+          'flex min-h-[80px] w-full rounded-xl px-4 py-3 text-sm font-light placeholder:font-light resize-none transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50',
           className
         )}
         style={{
-          backgroundColor: 'var(--input-bg)',
-          border: '1px solid var(--input-border)',
-          color: 'var(--input-text)',
+          backgroundColor: 'var(--semantic-input-bg)',
+          border: '1px solid var(--semantic-input-border)',
+          color: 'var(--semantic-input-text)',
+          borderRadius: 'var(--radius-xl)',
           ...style,
         }}
         ref={ref}

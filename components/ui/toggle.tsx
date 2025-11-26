@@ -1,3 +1,15 @@
+/**
+ * loomOS Toggle Component
+ * 
+ * Toggle button with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Toggle>Toggle me</Toggle>
+ * <Toggle variant="outline">Outline toggle</Toggle>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

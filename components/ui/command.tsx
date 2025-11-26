@@ -1,3 +1,19 @@
+/**
+ * loomOS Command Component
+ * 
+ * Command palette with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Command>
+ *   <CommandInput placeholder="Search..." />
+ *   <CommandList>
+ *     <CommandItem>Item 1</CommandItem>
+ *   </CommandList>
+ * </Command>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';
