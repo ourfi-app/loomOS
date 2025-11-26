@@ -1,0 +1,148 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Getting Started" />
+
+# Getting Started with loomOS
+
+This guide will help you get started with the loomOS design system.
+
+## Installation
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/ourfi-app/loomOS.git
+cd loomOS
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
+
+```bash
+npm run dev
+```
+
+## Using Design Tokens
+
+Design tokens are the foundation of the loomOS design system. They provide consistent values for colors, spacing, typography, and more.
+
+### Importing Tokens
+
+Tokens are automatically available when you import the global CSS:
+
+```tsx
+import '@/app/globals.css';
+import '@/design-tokens/index.css';
+```
+
+### Using CSS Variables
+
+All design tokens are available as CSS variables:
+
+```css
+.my-component {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  padding: var(--spacing-4);
+  border-radius: var(--radius);
+}
+```
+
+### Using Tailwind Classes
+
+Tokens are integrated with Tailwind CSS:
+
+```tsx
+<div className="bg-background text-foreground p-4 rounded-lg">
+  Content
+</div>
+```
+
+## Using Components
+
+### Importing Components
+
+All UI components are available from `@/components/ui`:
+
+```tsx
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+```
+
+### Basic Usage
+
+```tsx
+export default function MyPage() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Welcome</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>This is a card component.</p>
+        <Button>Click me</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### Component Variants
+
+Many components support variants:
+
+```tsx
+<Button variant="default">Default</Button>
+<Button variant="destructive">Delete</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+```
+
+## Theming
+
+### Light and Dark Mode
+
+The design system supports both light and dark modes. Toggle between themes by adding the `dark` class to the root element:
+
+```tsx
+<html className="dark">
+  {/* Your app */}
+</html>
+```
+
+### Custom Theme Colors
+
+Customize theme colors in your `tailwind.config.ts`:
+
+```typescript
+theme: {
+  extend: {
+    colors: {
+      primary: {
+        DEFAULT: 'hsl(var(--primary))',
+        foreground: 'hsl(var(--primary-foreground))',
+      },
+      // Add more custom colors
+    },
+  },
+}
+```
+
+## Next Steps
+
+- Explore the [Component Library](/story/components-button--default)
+- Browse [Design Tokens](/story/design-system-design-tokens--colors)
+- Read [Best Practices](/story/documentation-best-practices)
+- Check [Accessibility Guidelines](/story/documentation-accessibility)

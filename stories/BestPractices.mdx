@@ -1,0 +1,302 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Best Practices" />
+
+# Best Practices
+
+Guidelines for using the loomOS design system effectively.
+
+## Design Tokens
+
+### Always Use Tokens
+
+❌ **Don't** use hardcoded values:
+
+```css
+.component {
+  color: #000000;
+  padding: 16px;
+  border-radius: 8px;
+}
+```
+
+✅ **Do** use design tokens:
+
+```css
+.component {
+  color: hsl(var(--foreground));
+  padding: var(--spacing-4);
+  border-radius: var(--radius);
+}
+```
+
+### Semantic Token Usage
+
+Use semantic tokens for their intended purpose:
+
+- `--background` / `--foreground` for main content areas
+- `--primary` / `--primary-foreground` for primary actions
+- `--destructive` / `--destructive-foreground` for destructive actions
+- `--muted` / `--muted-foreground` for less prominent content
+
+## Component Usage
+
+### Composition Over Customization
+
+❌ **Don't** heavily customize components:
+
+```tsx
+<Button 
+  style={{ 
+    backgroundColor: '#ff0000',
+    padding: '20px',
+    borderRadius: '0'
+  }}
+>
+  Custom Button
+</Button>
+```
+
+✅ **Do** use variants and compose components:
+
+```tsx
+<Button variant="destructive" size="lg">
+  Delete Item
+</Button>
+```
+
+### Accessibility First
+
+Always consider accessibility:
+
+```tsx
+// ✅ Good: Proper labels and ARIA attributes
+<div>
+  <Label htmlFor="email">Email Address</Label>
+  <Input 
+    id="email" 
+    type="email" 
+    aria-describedby="email-error"
+    aria-invalid={hasError}
+  />
+  {hasError && (
+    <span id="email-error" className="text-destructive">
+      Please enter a valid email
+    </span>
+  )}
+</div>
+```
+
+### Responsive Design
+
+Use responsive utilities:
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {/* Responsive grid */}
+</div>
+```
+
+## TypeScript
+
+### Type Safety
+
+Leverage TypeScript for type safety:
+
+```tsx
+import { ButtonProps } from '@/components/ui/button';
+
+interface MyComponentProps {
+  variant?: ButtonProps['variant'];
+  onAction: () => void;
+}
+
+export function MyComponent({ variant = 'default', onAction }: MyComponentProps) {
+  return <Button variant={variant} onClick={onAction}>Action</Button>;
+}
+```
+
+### Component Props
+
+Extend component props properly:
+
+```tsx
+import { ComponentPropsWithoutRef } from 'react';
+import { Button } from '@/components/ui/button';
+
+interface CustomButtonProps extends ComponentPropsWithoutRef<typeof Button> {
+  isLoading?: boolean;
+}
+
+export function CustomButton({ isLoading, children, ...props }: CustomButtonProps) {
+  return (
+    <Button disabled={isLoading} {...props}>
+      {isLoading ? 'Loading...' : children}
+    </Button>
+  );
+}
+```
+
+## Performance
+
+### Code Splitting
+
+Import components dynamically when needed:
+
+```tsx
+import dynamic from 'next/dynamic';
+
+const HeavyComponent = dynamic(() => import('@/components/HeavyComponent'), {
+  loading: () => <Skeleton />,
+});
+```
+
+### Memoization
+
+Use React.memo for expensive components:
+
+```tsx
+import { memo } from 'react';
+
+const ExpensiveComponent = memo(function ExpensiveComponent({ data }) {
+  // Expensive rendering logic
+  return <div>{/* ... */}</div>;
+});
+```
+
+## Testing
+
+### Component Testing
+
+Write tests for your components:
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import { Button } from '@/components/ui/button';
+
+describe('Button', () => {
+  it('renders with text', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument();
+  });
+
+  it('handles click events', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click</Button>);
+    screen.getByRole('button').click();
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+### Accessibility Testing
+
+Test for accessibility:
+
+```tsx
+import { render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+it('should not have accessibility violations', async () => {
+  const { container } = render(<MyComponent />);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+## File Organization
+
+### Component Structure
+
+```
+components/
+├── ui/                    # Base UI components
+│   ├── button.tsx
+│   ├── card.tsx
+│   └── ...
+├── features/              # Feature-specific components
+│   ├── auth/
+│   └── dashboard/
+└── layouts/               # Layout components
+    ├── header.tsx
+    └── footer.tsx
+```
+
+### Import Organization
+
+```tsx
+// 1. External imports
+import React from 'react';
+import { useRouter } from 'next/navigation';
+
+// 2. Internal imports - components
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+
+// 3. Internal imports - utilities
+import { cn } from '@/lib/utils';
+
+// 4. Types
+import type { MyComponentProps } from './types';
+
+// 5. Styles (if any)
+import styles from './styles.module.css';
+```
+
+## Common Patterns
+
+### Form Handling
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
+function MyForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          {...register('email', { required: true })}
+          aria-invalid={errors.email ? 'true' : 'false'}
+        />
+        {errors.email && (
+          <span className="text-sm text-destructive">Email is required</span>
+        )}
+      </div>
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
+```
+
+### Loading States
+
+```tsx
+import { Skeleton } from '@/components/ui/skeleton';
+
+function MyComponent({ isLoading, data }) {
+  if (isLoading) {
+    return (
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+      </div>
+    );
+  }
+
+  return <div>{data}</div>;
+}
+```
