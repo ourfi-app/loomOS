@@ -78,11 +78,11 @@ const cardVariants = cva(
   }
 )
 
-// Variant color styles using design tokens
+// Variant color styles using Phase 1C component tokens
 const variantColorStyles: Record<string, React.CSSProperties> = {
   default: {
-    backgroundColor: 'var(--semantic-card-bg)',
-    border: '1px solid var(--semantic-card-border)',
+    backgroundColor: 'var(--card-bg)',
+    border: '1px solid var(--card-border)',
     color: 'var(--semantic-text-primary)',
   },
   glass: {
@@ -93,17 +93,17 @@ const variantColorStyles: Record<string, React.CSSProperties> = {
   },
   elevated: {
     backgroundColor: 'var(--semantic-surface-elevated)',
-    border: '1px solid var(--semantic-border-light)',
+    border: '1px solid var(--card-border)',
     color: 'var(--semantic-text-primary)',
   },
   outline: {
-    backgroundColor: 'var(--semantic-card-bg)',
+    backgroundColor: 'var(--card-bg)',
     borderColor: 'var(--semantic-border-medium)',
     color: 'var(--semantic-text-primary)',
   },
   flat: {
-    backgroundColor: 'var(--semantic-card-bg)',
-    border: '1px solid var(--semantic-border-light)',
+    backgroundColor: 'var(--card-bg)',
+    border: '1px solid var(--card-border)',
     color: 'var(--semantic-text-primary)',
   },
 }
@@ -178,7 +178,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     
     if (isHoverable && isHovered) {
       interactiveStyles.transform = 'translateY(-2px)'
-      interactiveStyles.boxShadow = 'var(--semantic-card-shadow-hover)'
+      interactiveStyles.boxShadow = 'var(--card-shadow-hover)'
     }
     
     if (isClickable) {

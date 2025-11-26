@@ -23,31 +23,37 @@ const badgeVariants = cva(
   }
 )
 
+// Badge styles using Phase 1C component tokens
 const badgeStyles: Record<string, React.CSSProperties> = {
   default: {
-    backgroundColor: 'var(--bg-secondary)',
-    color: 'var(--text-primary)',
-    borderColor: 'var(--border-medium)',
+    backgroundColor: 'var(--badge-default-bg)',
+    color: 'var(--badge-default-text)',
+    borderColor: 'var(--semantic-border-medium)',
+    fontSize: 'var(--badge-font-size)',
   },
   secondary: {
-    backgroundColor: 'var(--bg-secondary)',
-    color: 'var(--text-primary)',
-    borderColor: 'var(--border-medium)',
+    backgroundColor: 'var(--semantic-bg-muted)',
+    color: 'var(--semantic-text-secondary)',
+    borderColor: 'var(--semantic-border-medium)',
+    fontSize: 'var(--badge-font-size)',
   },
   destructive: {
-    backgroundColor: 'var(--status-error-subtle)',
-    color: 'var(--status-error)',
-    borderColor: 'var(--status-error)',
+    backgroundColor: 'var(--badge-error-bg)',
+    color: 'var(--badge-error-text)',
+    borderColor: 'var(--semantic-error)',
+    fontSize: 'var(--badge-font-size)',
   },
   outline: {
-    backgroundColor: 'var(--bg-surface)',
-    color: 'var(--text-secondary)',
-    borderColor: 'var(--border-medium)',
+    backgroundColor: 'transparent',
+    color: 'var(--semantic-text-primary)',
+    borderColor: 'var(--semantic-border-medium)',
+    fontSize: 'var(--badge-font-size)',
   },
   success: {
-    backgroundColor: 'var(--status-success-subtle)',
-    color: 'var(--status-success)',
-    borderColor: 'var(--status-success)',
+    backgroundColor: 'var(--badge-success-bg)',
+    color: 'var(--badge-success-text)',
+    borderColor: 'var(--semantic-success)',
+    fontSize: 'var(--badge-font-size)',
   },
 }
 
