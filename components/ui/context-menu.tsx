@@ -1,3 +1,19 @@
+/**
+ * loomOS ContextMenu Component
+ * 
+ * Right-click context menu with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <ContextMenu>
+ *   <ContextMenuTrigger>Right click</ContextMenuTrigger>
+ *   <ContextMenuContent>
+ *     <ContextMenuItem>Item 1</ContextMenuItem>
+ *   </ContextMenuContent>
+ * </ContextMenu>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

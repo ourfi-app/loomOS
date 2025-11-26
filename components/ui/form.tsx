@@ -1,3 +1,28 @@
+/**
+ * loomOS Form Component
+ * 
+ * Form components with Phase 1C design token integration.
+ * Uses react-hook-form for form management.
+ * 
+ * @example
+ * ```tsx
+ * <Form {...form}>
+ *   <FormField
+ *     control={form.control}
+ *     name="username"
+ *     render={({ field }) => (
+ *       <FormItem>
+ *         <FormLabel>Username</FormLabel>
+ *         <FormControl>
+ *           <Input {...field} />
+ *         </FormControl>
+ *       </FormItem>
+ *     )}
+ *   />
+ * </Form>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

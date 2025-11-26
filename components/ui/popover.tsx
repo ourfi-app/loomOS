@@ -1,3 +1,17 @@
+/**
+ * loomOS Popover Component
+ * 
+ * Floating popover with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Popover>
+ *   <PopoverTrigger>Open</PopoverTrigger>
+ *   <PopoverContent>Popover content</PopoverContent>
+ * </Popover>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

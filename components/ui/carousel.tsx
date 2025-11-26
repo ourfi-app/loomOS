@@ -1,3 +1,19 @@
+/**
+ * loomOS Carousel Component
+ * 
+ * Image/content carousel with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Carousel>
+ *   <CarouselContent>
+ *     <CarouselItem>Item 1</CarouselItem>
+ *     <CarouselItem>Item 2</CarouselItem>
+ *   </CarouselContent>
+ * </Carousel>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';
