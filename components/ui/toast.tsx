@@ -1,3 +1,16 @@
+/**
+ * loomOS Toast Component
+ * 
+ * Toast notification with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * import { useToast } from '@/components/ui/use-toast'
+ * const { toast } = useToast()
+ * toast({ title: 'Success', description: 'Action completed' })
+ * ```
+ */
+
 
 "use client"
 

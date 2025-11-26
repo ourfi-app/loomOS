@@ -1,3 +1,14 @@
+/**
+ * loomOS Sonner Component
+ * 
+ * Toast notifications using Sonner library.
+ * 
+ * @example
+ * ```tsx
+ * <Toaster />
+ * ```
+ */
+
 'use client';
 
 import { useTheme } from 'next-themes';

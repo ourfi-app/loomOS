@@ -1,3 +1,15 @@
+/**
+ * loomOS Label Component
+ * 
+ * Form label with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <Label htmlFor="email">Email Address</Label>
+ * <Input id="email" type="email" />
+ * ```
+ */
+
 "use client"
 
 import * as React from "react"
@@ -18,7 +30,7 @@ const Label = React.forwardRef<
   <LabelPrimitive.Root
     ref={ref}
     className={cn(labelVariants(), className)}
-    style={{ color: 'var(--text-secondary)', ...style }}
+    style={{ color: 'var(--semantic-text-secondary)', ...style }}
     {...props}
   />
 ))

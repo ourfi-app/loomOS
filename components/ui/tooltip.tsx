@@ -1,3 +1,19 @@
+/**
+ * loomOS Tooltip Component
+ * 
+ * Contextual tooltip with Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <TooltipProvider>
+ *   <Tooltip>
+ *     <TooltipTrigger>Hover me</TooltipTrigger>
+ *     <TooltipContent>Tooltip text</TooltipContent>
+ *   </Tooltip>
+ * </TooltipProvider>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';

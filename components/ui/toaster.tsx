@@ -1,3 +1,15 @@
+/**
+ * loomOS Toaster Component
+ * 
+ * Toast container for displaying notifications.
+ * Add this to your app layout.
+ * 
+ * @example
+ * ```tsx
+ * <Toaster />
+ * ```
+ */
+
 
 "use client"
 
