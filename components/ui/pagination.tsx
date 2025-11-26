@@ -1,3 +1,27 @@
+/**
+ * loomOS Pagination Component
+ * 
+ * Pagination controls with Phase 1C design token integration.
+ * Uses button variants for consistent styling.
+ * 
+ * @example
+ * ```tsx
+ * <Pagination>
+ *   <PaginationContent>
+ *     <PaginationItem>
+ *       <PaginationPrevious href="#" />
+ *     </PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationLink href="#">1</PaginationLink>
+ *     </PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationNext href="#" />
+ *     </PaginationItem>
+ *   </PaginationContent>
+ * </Pagination>
+ * ```
+ */
+
 import * as React from 'react';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 

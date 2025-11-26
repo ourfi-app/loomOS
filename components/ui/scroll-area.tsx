@@ -1,3 +1,16 @@
+/**
+ * loomOS ScrollArea Component
+ * 
+ * Custom scrollable area with styled scrollbars and Phase 1C design token integration.
+ * 
+ * @example
+ * ```tsx
+ * <ScrollArea className="h-[200px]">
+ *   <div>Long content...</div>
+ * </ScrollArea>
+ * ```
+ */
+
 'use client';
 
 import * as React from 'react';
@@ -40,7 +53,12 @@ const ScrollBar = React.forwardRef<
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
+    <ScrollAreaPrimitive.ScrollAreaThumb 
+      className="relative flex-1 rounded-full" 
+      style={{
+        backgroundColor: 'var(--semantic-border-medium)',
+      }}
+    />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
