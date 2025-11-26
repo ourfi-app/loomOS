@@ -1,0 +1,411 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Migration Guide" />
+
+# Migration Guide
+
+Guide for migrating from hardcoded values to the loomOS design system.
+
+## Overview
+
+This guide will help you migrate existing code to use design tokens and components from the loomOS design system.
+
+## Phase 1: Design Tokens Migration
+
+### Step 1: Audit Current Styles
+
+Identify all hardcoded values in your codebase:
+
+```bash
+# Find hardcoded colors
+grep -r "#[0-9a-fA-F]\{6\}" --include="*.tsx" --include="*.css"
+
+# Find hardcoded spacing
+grep -r "padding:\|margin:" --include="*.css"
+```
+
+### Step 2: Replace Colors
+
+❌ **Before:**
+
+```css
+.component {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #e5e5e5;
+}
+```
+
+✅ **After:**
+
+```css
+.component {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+```
+
+Or using Tailwind:
+
+```tsx
+<div className="bg-background text-foreground border-border">
+  Content
+</div>
+```
+
+### Step 3: Replace Spacing
+
+❌ **Before:**
+
+```css
+.component {
+  padding: 16px;
+  margin: 24px;
+  gap: 8px;
+}
+```
+
+✅ **After:**
+
+```css
+.component {
+  padding: var(--spacing-4);
+  margin: var(--spacing-6);
+  gap: var(--spacing-2);
+}
+```
+
+Or using Tailwind:
+
+```tsx
+<div className="p-4 m-6 gap-2">
+  Content
+</div>
+```
+
+### Step 4: Replace Typography
+
+❌ **Before:**
+
+```css
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+```
+
+✅ **After:**
+
+```css
+.heading {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+```
+
+Or using Tailwind:
+
+```tsx
+<h2 className="text-2xl font-bold leading-tight">
+  Heading
+</h2>
+```
+
+### Step 5: Replace Border Radius
+
+❌ **Before:**
+
+```css
+.card {
+  border-radius: 8px;
+}
+```
+
+✅ **After:**
+
+```css
+.card {
+  border-radius: var(--radius);
+}
+```
+
+Or using Tailwind:
+
+```tsx
+<div className="rounded-lg">
+  Content
+</div>
+```
+
+## Phase 2: Component Migration
+
+### Step 1: Identify Component Patterns
+
+Find common UI patterns that can be replaced with design system components:
+
+- Custom buttons → `<Button>`
+- Custom cards → `<Card>`
+- Custom inputs → `<Input>`
+- Custom modals → `<Dialog>`
+- Custom dropdowns → `<Select>`
+
+### Step 2: Replace Custom Components
+
+#### Buttons
+
+❌ **Before:**
+
+```tsx
+<button
+  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+  onClick={handleClick}
+>
+  Click me
+</button>
+```
+
+✅ **After:**
+
+```tsx
+import { Button } from '@/components/ui/button';
+
+<Button onClick={handleClick}>
+  Click me
+</Button>
+```
+
+#### Cards
+
+❌ **Before:**
+
+```tsx
+<div className="bg-white rounded-lg shadow p-6">
+  <h3 className="text-xl font-bold mb-2">Title</h3>
+  <p className="text-gray-600">Description</p>
+  <div className="mt-4">
+    Content
+  </div>
+</div>
+```
+
+✅ **After:**
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+    <CardDescription>Description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    Content
+  </CardContent>
+</Card>
+```
+
+#### Forms
+
+❌ **Before:**
+
+```tsx
+<div>
+  <label className="block text-sm font-medium mb-1">
+    Email
+  </label>
+  <input
+    type="email"
+    className="w-full px-3 py-2 border rounded"
+  />
+</div>
+```
+
+✅ **After:**
+
+```tsx
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+
+<div className="space-y-2">
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" />
+</div>
+```
+
+#### Dialogs/Modals
+
+❌ **Before:**
+
+```tsx
+{isOpen && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+    <div className="bg-white rounded-lg p-6 max-w-md">
+      <h2 className="text-xl font-bold mb-4">Title</h2>
+      <p>Content</p>
+      <button onClick={() => setIsOpen(false)}>Close</button>
+    </div>
+  </div>
+)}
+```
+
+✅ **After:**
+
+```tsx
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+
+<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Title</DialogTitle>
+    </DialogHeader>
+    <p>Content</p>
+  </DialogContent>
+</Dialog>
+```
+
+## Phase 3: Theme Integration
+
+### Step 1: Update Global Styles
+
+Import design tokens in your global CSS:
+
+```css
+/* app/globals.css */
+@import '../design-tokens/index.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Step 2: Configure Tailwind
+
+Ensure your `tailwind.config.ts` extends the design tokens:
+
+```typescript
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        // ... other colors
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+    },
+  },
+};
+
+export default config;
+```
+
+### Step 3: Implement Dark Mode
+
+Add dark mode support:
+
+```tsx
+// app/layout.tsx
+import { ThemeProvider } from 'next-themes';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Migration Checklist
+
+### Design Tokens
+- [ ] Replace hardcoded colors with CSS variables
+- [ ] Replace hardcoded spacing with spacing tokens
+- [ ] Replace hardcoded typography with typography tokens
+- [ ] Replace hardcoded border radius with radius tokens
+- [ ] Replace hardcoded shadows with elevation tokens
+
+### Components
+- [ ] Replace custom buttons with `<Button>`
+- [ ] Replace custom cards with `<Card>`
+- [ ] Replace custom inputs with `<Input>`
+- [ ] Replace custom selects with `<Select>`
+- [ ] Replace custom modals with `<Dialog>`
+- [ ] Replace custom alerts with `<Alert>`
+- [ ] Replace custom badges with `<Badge>`
+- [ ] Replace custom tabs with `<Tabs>`
+
+### Theme
+- [ ] Import design tokens in global CSS
+- [ ] Configure Tailwind with design tokens
+- [ ] Implement dark mode support
+- [ ] Test all components in light and dark modes
+
+### Testing
+- [ ] Test visual consistency
+- [ ] Test responsive behavior
+- [ ] Test accessibility
+- [ ] Test dark mode
+- [ ] Update component tests
+
+## Common Issues
+
+### Issue: Colors look different
+
+**Solution:** Ensure you're using HSL format for colors:
+
+```css
+/* ❌ Wrong */
+color: var(--foreground);
+
+/* ✅ Correct */
+color: hsl(var(--foreground));
+```
+
+### Issue: Spacing doesn't match
+
+**Solution:** Check the spacing scale. The design system uses a 4px base unit:
+
+- `--spacing-1` = 4px
+- `--spacing-2` = 8px
+- `--spacing-4` = 16px
+- `--spacing-6` = 24px
+
+### Issue: Components don't have expected styles
+
+**Solution:** Ensure you've imported the global CSS:
+
+```tsx
+import '@/app/globals.css';
+```
+
+## Getting Help
+
+If you encounter issues during migration:
+
+1. Check the [Component Documentation](/story/components-button--default)
+2. Review [Best Practices](/story/documentation-best-practices)
+3. Open an issue on [GitHub](https://github.com/ourfi-app/loomOS/issues)

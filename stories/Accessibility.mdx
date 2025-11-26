@@ -1,0 +1,352 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Accessibility" />
+
+# Accessibility Guidelines
+
+The loomOS design system is built with accessibility as a core principle, following WCAG 2.1 AA standards.
+
+## Core Principles
+
+### 1. Perceivable
+
+Information and user interface components must be presentable to users in ways they can perceive.
+
+#### Color Contrast
+
+All color combinations meet WCAG AA standards:
+
+- **Normal text**: Minimum contrast ratio of 4.5:1
+- **Large text**: Minimum contrast ratio of 3:1
+- **UI components**: Minimum contrast ratio of 3:1
+
+```tsx
+// ✅ Good: Uses semantic colors with proper contrast
+<div className="bg-background text-foreground">
+  Content with proper contrast
+</div>
+
+// ❌ Bad: Custom colors without contrast verification
+<div style={{ background: '#ccc', color: '#ddd' }}>
+  Low contrast content
+</div>
+```
+
+#### Alternative Text
+
+Provide text alternatives for non-text content:
+
+```tsx
+// ✅ Good: Descriptive alt text
+<img src="chart.png" alt="Sales chart showing 20% increase in Q4" />
+
+// ✅ Good: Decorative images
+<img src="decoration.png" alt="" role="presentation" />
+
+// ❌ Bad: Missing or generic alt text
+<img src="chart.png" alt="image" />
+```
+
+### 2. Operable
+
+User interface components and navigation must be operable.
+
+#### Keyboard Navigation
+
+All interactive elements must be keyboard accessible:
+
+```tsx
+// ✅ Good: Native button element
+<Button onClick={handleClick}>Click me</Button>
+
+// ❌ Bad: Non-interactive element with click handler
+<div onClick={handleClick}>Click me</div>
+
+// ✅ Acceptable: Div with proper ARIA and keyboard support
+<div
+  role="button"
+  tabIndex={0}
+  onClick={handleClick}
+  onKeyDown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleClick();
+    }
+  }}
+>
+  Click me
+</div>
+```
+
+#### Focus Management
+
+Ensure visible focus indicators:
+
+```css
+/* All interactive elements have focus styles */
+.button:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+```
+
+#### Skip Links
+
+Provide skip navigation links:
+
+```tsx
+<a href="#main-content" className="sr-only focus:not-sr-only">
+  Skip to main content
+</a>
+```
+
+### 3. Understandable
+
+Information and operation of user interface must be understandable.
+
+#### Form Labels
+
+All form inputs must have associated labels:
+
+```tsx
+// ✅ Good: Explicit label association
+<div>
+  <Label htmlFor="email">Email Address</Label>
+  <Input id="email" type="email" />
+</div>
+
+// ✅ Good: aria-label for icon buttons
+<Button aria-label="Close dialog">
+  <X className="h-4 w-4" />
+</Button>
+
+// ❌ Bad: Input without label
+<Input type="email" placeholder="Email" />
+```
+
+#### Error Identification
+
+Clearly identify and describe errors:
+
+```tsx
+<div>
+  <Label htmlFor="password">Password</Label>
+  <Input
+    id="password"
+    type="password"
+    aria-invalid={hasError}
+    aria-describedby="password-error"
+  />
+  {hasError && (
+    <span id="password-error" className="text-destructive text-sm">
+      Password must be at least 8 characters
+    </span>
+  )}
+</div>
+```
+
+#### Consistent Navigation
+
+Maintain consistent navigation patterns:
+
+```tsx
+// Use consistent component patterns
+<nav aria-label="Main navigation">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+```
+
+### 4. Robust
+
+Content must be robust enough to be interpreted by a wide variety of user agents, including assistive technologies.
+
+#### Semantic HTML
+
+Use semantic HTML elements:
+
+```tsx
+// ✅ Good: Semantic elements
+<header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <article>
+    <h1>Article Title</h1>
+    <p>Content...</p>
+  </article>
+</main>
+<footer>
+  <p>&copy; 2024</p>
+</footer>
+
+// ❌ Bad: Generic divs
+<div className="header">
+  <div className="nav">
+    <div className="link">Home</div>
+  </div>
+</div>
+```
+
+#### ARIA Attributes
+
+Use ARIA attributes appropriately:
+
+```tsx
+// ✅ Good: ARIA for custom components
+<div
+  role="dialog"
+  aria-labelledby="dialog-title"
+  aria-describedby="dialog-description"
+  aria-modal="true"
+>
+  <h2 id="dialog-title">Confirm Action</h2>
+  <p id="dialog-description">Are you sure you want to proceed?</p>
+</div>
+
+// ✅ Good: Live regions for dynamic content
+<div aria-live="polite" aria-atomic="true">
+  {statusMessage}
+</div>
+```
+
+## Component-Specific Guidelines
+
+### Buttons
+
+```tsx
+// ✅ Text buttons
+<Button>Save Changes</Button>
+
+// ✅ Icon buttons with labels
+<Button aria-label="Delete item">
+  <Trash className="h-4 w-4" />
+</Button>
+
+// ✅ Loading state
+<Button disabled aria-busy="true">
+  <Loader className="mr-2 h-4 w-4 animate-spin" />
+  Loading...
+</Button>
+```
+
+### Dialogs
+
+```tsx
+<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>
+        Dialog description for screen readers
+      </DialogDescription>
+    </DialogHeader>
+    {/* Content */}
+  </DialogContent>
+</Dialog>
+```
+
+### Forms
+
+```tsx
+<form onSubmit={handleSubmit}>
+  <fieldset>
+    <legend>Personal Information</legend>
+    
+    <div className="space-y-2">
+      <Label htmlFor="name">Full Name *</Label>
+      <Input
+        id="name"
+        required
+        aria-required="true"
+        aria-invalid={errors.name ? 'true' : 'false'}
+        aria-describedby={errors.name ? 'name-error' : undefined}
+      />
+      {errors.name && (
+        <span id="name-error" className="text-destructive text-sm">
+          {errors.name.message}
+        </span>
+      )}
+    </div>
+  </fieldset>
+  
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+### Tables
+
+```tsx
+<Table>
+  <caption className="sr-only">User list</caption>
+  <TableHeader>
+    <TableRow>
+      <TableHead scope="col">Name</TableHead>
+      <TableHead scope="col">Email</TableHead>
+      <TableHead scope="col">Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>John Doe</TableCell>
+      <TableCell>john@example.com</TableCell>
+      <TableCell>Admin</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Testing for Accessibility
+
+### Automated Testing
+
+Use the Storybook a11y addon:
+
+```tsx
+// Stories automatically run accessibility checks
+export const MyStory: Story = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'color-contrast', enabled: true },
+          { id: 'label', enabled: true },
+        ],
+      },
+    },
+  },
+};
+```
+
+### Manual Testing
+
+1. **Keyboard Navigation**: Tab through all interactive elements
+2. **Screen Reader**: Test with NVDA, JAWS, or VoiceOver
+3. **Zoom**: Test at 200% zoom level
+4. **Color Blindness**: Use color blindness simulators
+
+### Testing Checklist
+
+- [ ] All interactive elements are keyboard accessible
+- [ ] Focus indicators are visible
+- [ ] All images have appropriate alt text
+- [ ] Form inputs have associated labels
+- [ ] Error messages are clear and associated with inputs
+- [ ] Color is not the only means of conveying information
+- [ ] Text has sufficient contrast
+- [ ] Content is readable at 200% zoom
+- [ ] Screen reader announces all important information
+- [ ] ARIA attributes are used correctly
+
+## Resources
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [axe DevTools](https://www.deque.com/axe/devtools/)

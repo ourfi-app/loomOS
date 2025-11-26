@@ -114,6 +114,7 @@ loomOS features a pluggable service architecture. Swap providers without changin
 
 ## 📚 Documentation
 
+### User & Developer Guides
 - **[Design Principles](docs/DESIGN_PRINCIPLES.md)** - webOS-inspired UX philosophy
 - **[App Development Guide](docs/APP_DEVELOPMENT_SPEC.md)** - Building apps for loomOS
 - **[Developer Portal Guide](docs/DEVELOPER_PORTAL.md)** - Publishing to marketplace
@@ -121,6 +122,12 @@ loomOS features a pluggable service architecture. Swap providers without changin
 - **[API Documentation](docs/API_SETUP_GUIDE.md)** - Platform APIs
 - **[Deployment Guide](docs/setup/DEPLOYMENT.md)** - Production deployment
 - **[Bundle Analysis Guide](BUNDLE_ANALYSIS.md)** - Optimize bundle size and performance
+
+### Design System Documentation
+- **[Interactive Component Library](http://localhost:6006)** - Storybook documentation (run `npm run storybook`)
+- **[Phase 1C: Design Tokens](PHASE1C_DESIGN_TOKENS_IMPLEMENTATION.md)** - 600+ design tokens
+- **[Phase 2: Component Library](PHASE2_COMPONENT_LIBRARY_IMPLEMENTATION.md)** - 47 UI components
+- **[Phase 3: Documentation & Testing](PHASE3_DOCUMENTATION_IMPLEMENTATION.md)** - Storybook, tests, and guides
 
 ---
 
