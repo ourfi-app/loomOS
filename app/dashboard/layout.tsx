@@ -65,9 +65,10 @@ function SystemStatusBar({
       aria-label="System status bar"
       className="fixed top-0 left-0 right-0 h-10 sm:h-11 md:h-12 flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 z-50 transition-all duration-200"
       style={{ 
-        backgroundColor: 'var(--chrome-dark)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.95)',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.9)'
+        background: 'linear-gradient(180deg, rgba(26, 26, 26, 0.98) 0%, rgba(26, 26, 26, 0.95) 100%)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
       }}
     >
       {/* Left Section: loomOS logo and hamburger menu */}
