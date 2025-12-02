@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 /* ============================================================================
-   LOOMOS DESIGN SYSTEM - Phase 1C Complete Token System
+   webOS DESIGN SYSTEM - Single Source of Truth
    ============================================================================
-   All design tokens consolidated and expanded in Phase 1C.
-   See /PHASE1C_DESIGN_TOKENS_IMPLEMENTATION.md for full documentation.
+   Complete design system based on classic Palm/HP webOS aesthetic
+   See /docs/DESIGN_SYSTEM.md for full documentation.
    ============================================================================ */
 
-/* Import complete design token system */
+/* Import webOS design system - single source of truth */
+@import '../styles/webos-design-system.css';
+
+/* Legacy design tokens for backwards compatibility */
+/* These will be gradually phased out as components migrate to webOS tokens */
 @import '../design-tokens/index.css';
 
 /* ============================================================================
@@ -19,30 +23,47 @@
 @import './styles/loomos/gesture-button.css';
 
 /* ============================================================================
-   PHASE 1C DESIGN TOKEN SYSTEM
+   webOS DESIGN TOKEN SYSTEM
    ============================================================================
    
-   The design token system now includes:
+   The webOS design system provides a unified, single source of truth:
    
-   ✅ Core tokens (colors, spacing, typography) - core.css
-   ✅ Extended colors (full palettes, gradients) - colors-extended.css
-   ✅ Semantic tokens (customizable mappings) - semantic.css
-   ✅ Grid & layout (spacing, containers, breakpoints) - grid.css
-   ✅ Typography (fonts, sizes, weights, line heights) - typography.css
-   ✅ Borders (widths, styles, radii) - borders.css
-   ✅ Elevation (shadows, z-index, depth) - elevation.css
-   ✅ Motion (animations, transitions, gestures) - motion.css
-   ✅ Components (button, card, input, modal, etc.) - components.css
+   ✅ Part 1: Core Tokens (Immutable)
+      - Pure neutral grays (no blue tints) following Palm webOS aesthetic
+      - Text colors (pure black #000000 for maximum contrast)
+      - Background colors (light neutral grays + pure white surfaces)
+      - Accent colors (minimal usage - blue for links only)
+      - Status colors (success, error, warning, info)
+      - Glass effects (translucent overlays with backdrop blur)
+      - Spacing scale (4px grid system)
+      - Typography (Helvetica Neue, light weights preferred)
+      - Shadows (glassmorphic effects)
+      - Border radius
+      - Animations & transitions
    
-   Total: 600+ design tokens across 10 files
+   ✅ Part 2: Semantic Tokens (Contextual)
+      - Semantic backgrounds, text, borders
+      - Semantic actions
+      - Themeable mappings
+   
+   ✅ Part 3: Component Tokens
+      - Button styling (primary, secondary, ghost)
+      - Card styling (surface, elevated)
+      - Input styling (focus states, placeholders)
+      - Navigation/Dock styling (glassmorphic)
+      - Modal styling (backdrop blur)
+      - Header & List styling
+   
+   ✅ Dark Mode Support
+      - Automatic color inversion via @media (prefers-color-scheme: dark)
    
    Usage:
-   - Use semantic tokens: var(--semantic-primary)
-   - Use component tokens: var(--button-padding-md)
-   - Use spacing scale: var(--space-lg)
-   - Use motion tokens: var(--transition-all-normal)
+   - Use design tokens: var(--bg-surface), var(--text-primary)
+   - Use component tokens: var(--button-height), var(--card-padding)
+   - Use spacing scale: var(--space-lg), var(--space-xl)
+   - Use Tailwind utilities: bg-surface, text-primary, shadow-card
    
-   See documentation: /PHASE1C_DESIGN_TOKENS_IMPLEMENTATION.md
+   See documentation: /docs/DESIGN_SYSTEM.md
    ============================================================================ */
 
 

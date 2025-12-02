@@ -1,0 +1,655 @@
+/**
+ * ============================================================================
+ * webOS Design System for loomOS
+ * ============================================================================
+ * 
+ * Single source of truth for all design tokens
+ * Based on classic Palm/HP webOS aesthetic
+ * 
+ * Version: 1.0.0
+ * Last Updated: December 2, 2025
+ * 
+ * Design Philosophy:
+ * - Pure neutral grays (no blue tints)
+ * - Minimalist, clean interface
+ * - Glassmorphic effects
+ * - Light typography (Helvetica Neue)
+ * - Maximum content focus
+ * 
+ * Token Hierarchy:
+ * 1. Core Tokens (Immutable) - Base design decisions
+ * 2. Semantic Tokens (Contextual) - Meaning-based mappings
+ * 3. Component Tokens - Pre-configured component styling
+ * 
+ * See: /docs/DESIGN_SYSTEM.md for full documentation
+ * ============================================================================
+ */
+
+:root {
+  /* ========================================
+     PART 1: CORE TOKENS (IMMUTABLE)
+     ======================================== */
+
+  /* ========================================
+     NEUTRAL COLOR PALETTE
+     Pure grays - NO blue tints (Palm webOS aesthetic)
+     ======================================== */
+
+  --neutral-50: #fafafa;    /* Ultra light surfaces - hover states */
+  --neutral-100: #f5f5f5;   /* Light surfaces - secondary backgrounds */
+  --neutral-200: #eeeeee;   /* Secondary backgrounds - panel backgrounds */
+  --neutral-300: #e8e8e8;   /* Primary background - main app background */
+  --neutral-400: #e0e0e0;   /* Borders, dividers - default borders */
+  --neutral-500: #d4d4d4;   /* Medium borders - emphasized borders */
+  --neutral-600: #b0b0b0;   /* Strong borders - strong dividers */
+  --neutral-700: #999999;   /* Tertiary text - hints, labels */
+  --neutral-800: #666666;   /* Secondary text - captions */
+  --neutral-900: #333333;   /* Primary text - body text */
+  --neutral-950: #1a1a1a;   /* Dark chrome - headers, toolbars */
+
+  /* ========================================
+     TEXT COLORS
+     ======================================== */
+
+  --text-primary: #000000;    /* Primary text (pure black) */
+  --text-secondary: #666666;  /* Secondary text, labels */
+  --text-tertiary: #999999;   /* Hints, placeholders */
+  --text-disabled: #cccccc;   /* Disabled state */
+  --text-inverse: #ffffff;    /* Text on dark backgrounds */
+  --text-on-accent: #ffffff;  /* Text on accent colors */
+
+  /* ========================================
+     BACKGROUND COLORS
+     ======================================== */
+
+  --bg-primary: #e8e8e8;      /* Main app background */
+  --bg-secondary: #eeeeee;    /* Secondary areas */
+  --bg-tertiary: #f5f5f5;     /* Tertiary areas */
+  --bg-surface: #ffffff;      /* Cards, panels (pure white) */
+  --bg-elevated: #ffffff;     /* Elevated surfaces */
+  --bg-hover: #fafafa;        /* Hover states */
+  --bg-active: #f5f5f5;       /* Active states */
+  --bg-subtle: #fafafa;       /* Subtle backgrounds */
+
+  /* ========================================
+     BORDER COLORS
+     ======================================== */
+
+  --border-lightest: #eeeeee;  /* Lightest borders */
+  --border-light: #e0e0e0;     /* Default borders */
+  --border-medium: #d4d4d4;    /* Medium borders */
+  --border-dark: #b0b0b0;      /* Strong borders */
+  --border-focus: #4a90e2;     /* Focus ring (accent blue) */
+
+  /* ========================================
+     ACCENT COLORS
+     Minimal usage - only for critical interactions
+     ======================================== */
+
+  /* Primary Accent (webOS Blue) */
+  --accent-blue: #4a90e2;                 /* Links, selections */
+  --accent-blue-light: #6ba3e8;           /* Light variant */
+  --accent-blue-dark: #3a7bc8;            /* Dark variant */
+  --accent-blue-subtle: rgba(74, 144, 226, 0.08);  /* Subtle background */
+
+  /* ========================================
+     STATUS COLORS
+     ======================================== */
+
+  /* Success */
+  --status-success: #5cb85c;
+  --status-success-light: #6bc86b;
+  --status-success-dark: #4da74d;
+  --status-success-subtle: rgba(92, 184, 92, 0.08);
+
+  /* Error */
+  --status-error: #d9534f;
+  --status-error-light: #e36562;
+  --status-error-dark: #c9403d;
+  --status-error-subtle: rgba(217, 83, 79, 0.08);
+
+  /* Warning */
+  --status-warning: #f0ad4e;
+  --status-warning-light: #f3bd6c;
+  --status-warning-dark: #ec9c3c;
+  --status-warning-subtle: rgba(240, 173, 78, 0.08);
+
+  /* Info */
+  --status-info: #4a90e2;
+  --status-info-light: #6ba3e8;
+  --status-info-dark: #3a7bc8;
+  --status-info-subtle: rgba(74, 144, 226, 0.08);
+
+  /* ========================================
+     CHROME/DARK UI COLORS
+     For dark toolbars, headers, navigation
+     ======================================== */
+
+  --chrome-darkest: #000000;           /* Darkest chrome */
+  --chrome-darker: #0d0d0d;            /* Darker chrome */
+  --chrome-dark: #1a1a1a;              /* Dark chrome - primary */
+  --chrome-medium: #333333;            /* Medium chrome */
+  --chrome-light: #4a4a4a;             /* Light chrome */
+  --chrome-text: #ffffff;              /* Primary text on chrome */
+  --chrome-text-secondary: rgba(255, 255, 255, 0.7);  /* Secondary text on chrome */
+
+  /* ========================================
+     GLASS EFFECTS
+     For overlays, modals, and floating elements
+     ======================================== */
+
+  /* Glass Backgrounds */
+  --glass-white-95: rgba(255, 255, 255, 0.95);  /* Near-opaque */
+  --glass-white-90: rgba(255, 255, 255, 0.90);  /* Very translucent */
+  --glass-white-80: rgba(255, 255, 255, 0.80);  /* Standard glass */
+  --glass-white-70: rgba(255, 255, 255, 0.70);  /* More transparent */
+  --glass-white-60: rgba(255, 255, 255, 0.60);  /* Lighter glass */
+
+  --glass-black-95: rgba(0, 0, 0, 0.95);        /* Near-opaque dark */
+  --glass-black-80: rgba(0, 0, 0, 0.80);        /* Dark overlays */
+  --glass-black-60: rgba(0, 0, 0, 0.60);        /* Medium dark */
+  --glass-black-40: rgba(0, 0, 0, 0.40);        /* Modal backdrops */
+  --glass-black-20: rgba(0, 0, 0, 0.20);        /* Light tint */
+  --glass-black-10: rgba(0, 0, 0, 0.10);        /* Subtle tint */
+
+  /* Glass Borders */
+  --glass-border-light: rgba(255, 255, 255, 0.5);
+  --glass-border-medium: rgba(255, 255, 255, 0.3);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+
+  /* Backdrop Blur */
+  --blur-xs: 4px;     /* Extra subtle blur */
+  --blur-sm: 8px;     /* Subtle blur */
+  --blur-md: 12px;    /* Standard blur */
+  --blur-lg: 20px;    /* Strong blur */
+  --blur-xl: 32px;    /* Extra strong blur */
+
+  /* ========================================
+     SPACING SCALE (4px grid)
+     ======================================== */
+
+  --space-0: 0px;
+  --space-1: 4px;      /* 0.25rem */
+  --space-2: 8px;      /* 0.5rem */
+  --space-3: 12px;     /* 0.75rem */
+  --space-4: 16px;     /* 1rem */
+  --space-6: 24px;     /* 1.5rem */
+  --space-8: 32px;     /* 2rem */
+  --space-12: 48px;    /* 3rem */
+  --space-16: 64px;    /* 4rem */
+  --space-24: 96px;    /* 6rem */
+
+  /* Semantic Spacing Aliases */
+  --space-xs: 4px;     /* Extra small */
+  --space-sm: 8px;     /* Small */
+  --space-md: 12px;    /* Medium */
+  --space-base: 16px;  /* Base (default) */
+  --space-lg: 24px;    /* Large */
+  --space-xl: 32px;    /* Extra large */
+  --space-2xl: 48px;   /* 2x extra large */
+  --space-3xl: 64px;   /* 3x extra large */
+  --space-4xl: 96px;   /* 4x extra large */
+
+  /* ========================================
+     TYPOGRAPHY SCALE
+     ======================================== */
+
+  /* Font Families */
+  --font-sans: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  --font-serif: Georgia, Cambria, 'Times New Roman', serif;
+  --font-mono: 'SF Mono', Monaco, Consolas, monospace;
+  --font-display: var(--font-sans);  /* Use Helvetica Neue for display */
+
+  /* Font Sizes */
+  --text-2xs: 10px;    /* Tiny labels */
+  --text-xs: 11px;     /* Small labels, fine print */
+  --text-sm: 13px;     /* Secondary text */
+  --text-base: 14px;   /* Base body text */
+  --text-md: 16px;     /* Emphasized body */
+  --text-lg: 18px;     /* Small headings */
+  --text-xl: 20px;     /* Headings */
+  --text-2xl: 24px;    /* Large headings */
+  --text-3xl: 30px;    /* Display text */
+  --text-4xl: 36px;    /* Hero text */
+  --text-5xl: 48px;    /* Large display */
+  --text-6xl: 60px;    /* Extra large display */
+
+  /* Font Weights - Prefer light weights for elegance */
+  --font-thin: 100;
+  --font-extralight: 200;   /* Large headings */
+  --font-light: 300;        /* Most text (default) */
+  --font-normal: 400;       /* Emphasis only */
+  --font-medium: 500;       /* Strong emphasis */
+  --font-semibold: 600;     /* Rare - critical UI only */
+  --font-bold: 700;         /* Avoid */
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;    /* Labels */
+  --tracking-wider: 0.05em;    /* Uppercase labels */
+  --tracking-widest: 0.1em;    /* "JUST TYPE" style */
+
+  /* ========================================
+     BORDER RADIUS SCALE
+     ======================================== */
+
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-base: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+  --radius-full: 9999px;
+
+  /* ========================================
+     SHADOW SCALE
+     ======================================== */
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.18);
+  --shadow-2xl: 0 24px 60px rgba(0, 0, 0, 0.2);
+  --shadow-3xl: 0 32px 80px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  --shadow-inner-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  /* Component Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-card-active: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-navbar: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.30);
+  --shadow-dock: 0 -10px 40px rgba(0, 0, 0, 0.15);
+  --shadow-focus: 0 0 0 3px var(--accent-blue-subtle);
+
+  /* ========================================
+     ANIMATION & TRANSITIONS
+     ======================================== */
+
+  /* Durations */
+  --duration-instant: 0ms;
+  --duration-fast: 100ms;
+  --duration-normal: 150ms;
+  --duration-moderate: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 400ms;
+  --duration-slowest: 500ms;
+
+  /* Easing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-standard: var(--ease-in-out);
+
+  /* Common Transitions */
+  --transition-fast: all var(--duration-fast) var(--ease-out);
+  --transition-normal: all var(--duration-normal) var(--ease-out);
+  --transition-slow: all var(--duration-slow) var(--ease-out);
+
+  /* ========================================
+     Z-INDEX LAYERS
+     ======================================== */
+
+  --z-base: 0;
+  --z-card: 10;
+  --z-raised: 20;
+  --z-dock: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-dropdown: 400;
+  --z-overlay: 500;
+  --z-modal-backdrop: 600;
+  --z-modal: 700;
+  --z-popover: 800;
+  --z-tooltip: 900;
+  --z-notification: 1000;
+
+  /* ========================================
+     PART 2: SEMANTIC TOKENS (CONTEXTUAL)
+     ======================================== */
+
+  /* These map core tokens to contextual meanings */
+  /* Apps can override these for theming */
+
+  /* Semantic Backgrounds */
+  --semantic-bg-primary: var(--bg-primary);
+  --semantic-bg-secondary: var(--bg-secondary);
+  --semantic-bg-tertiary: var(--bg-tertiary);
+  --semantic-surface: var(--bg-surface);
+  --semantic-surface-elevated: var(--bg-elevated);
+
+  /* Semantic Text */
+  --semantic-text-primary: var(--text-primary);
+  --semantic-text-secondary: var(--text-secondary);
+  --semantic-text-tertiary: var(--text-tertiary);
+
+  /* Semantic Borders */
+  --semantic-border-light: var(--border-light);
+  --semantic-border-medium: var(--border-medium);
+  --semantic-border-strong: var(--border-dark);
+
+  /* Semantic Actions */
+  --semantic-action-primary: var(--accent-blue);
+  --semantic-action-hover: var(--accent-blue-light);
+  --semantic-action-active: var(--accent-blue-dark);
+
+  /* ========================================
+     PART 3: COMPONENT TOKENS
+     ======================================== */
+
+  /* ========================================
+     BUTTON TOKENS
+     ======================================== */
+
+  --button-height: 48px;
+  --button-height-sm: 40px;
+  --button-height-lg: 56px;
+  --button-padding-x: 16px;
+  --button-padding-x-sm: 12px;
+  --button-padding-x-lg: 24px;
+  --button-radius: 8px;
+  --button-font-size: 14px;
+  --button-font-weight: 400;
+
+  /* Button Primary */
+  --button-primary-bg: var(--accent-blue);
+  --button-primary-text: var(--text-inverse);
+  --button-primary-border: var(--accent-blue);
+  --button-primary-hover-bg: var(--accent-blue-dark);
+  --button-primary-active-bg: var(--accent-blue-dark);
+
+  /* Button Secondary */
+  --button-secondary-bg: var(--bg-surface);
+  --button-secondary-text: var(--text-primary);
+  --button-secondary-border: var(--border-light);
+  --button-secondary-hover-bg: var(--bg-hover);
+  --button-secondary-active-bg: var(--bg-active);
+
+  /* Button Ghost */
+  --button-ghost-bg: transparent;
+  --button-ghost-text: var(--text-primary);
+  --button-ghost-hover-bg: var(--bg-hover);
+  --button-ghost-active-bg: var(--bg-active);
+
+  /* ========================================
+     CARD TOKENS
+     ======================================== */
+
+  --card-bg: var(--bg-surface);
+  --card-border: var(--border-lightest);
+  --card-radius: 12px;
+  --card-shadow: var(--shadow-card);
+  --card-shadow-hover: var(--shadow-card-hover);
+  --card-shadow-active: var(--shadow-card-active);
+  --card-padding: 16px;
+  --card-padding-sm: 12px;
+  --card-padding-lg: 24px;
+
+  /* ========================================
+     INPUT TOKENS
+     ======================================== */
+
+  --input-height: 48px;
+  --input-height-sm: 40px;
+  --input-height-lg: 56px;
+  --input-padding-x: 12px;
+  --input-radius: 8px;
+  --input-bg: var(--bg-surface);
+  --input-border: var(--border-light);
+  --input-border-hover: var(--border-medium);
+  --input-border-focus: var(--accent-blue);
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-tertiary);
+  --input-shadow-focus: var(--shadow-focus);
+
+  /* ========================================
+     NAVIGATION/DOCK TOKENS
+     ======================================== */
+
+  --dock-bg: var(--glass-black-80);
+  --dock-radius: 32px;
+  --dock-padding: 12px;
+  --dock-shadow: var(--shadow-dock);
+  --dock-icon-size: 56px;
+  --dock-backdrop-blur: 20px;
+
+  --nav-bg: var(--bg-surface);
+  --nav-border: var(--border-lightest);
+  --nav-item-height: 48px;
+  --nav-item-padding-x: 16px;
+  --nav-item-hover-bg: var(--bg-hover);
+  --nav-item-active-bg: var(--accent-blue-subtle);
+  --nav-item-active-text: var(--accent-blue);
+
+  /* ========================================
+     MODAL TOKENS
+     ======================================== */
+
+  --modal-bg: var(--bg-surface);
+  --modal-radius: 24px;
+  --modal-shadow: var(--shadow-modal);
+  --modal-padding: 24px;
+  --modal-backdrop: var(--glass-black-40);
+  --modal-backdrop-blur: 8px;
+  --modal-max-width: 600px;
+
+  /* ========================================
+     HEADER TOKENS
+     ======================================== */
+
+  --header-height: 56px;
+  --header-bg: var(--bg-surface);
+  --header-border: var(--border-lightest);
+  --header-shadow: var(--shadow-navbar);
+
+  /* ========================================
+     LIST TOKENS
+     ======================================== */
+
+  --list-item-height: 56px;
+  --list-item-padding-x: 16px;
+  --list-item-hover-bg: var(--bg-hover);
+  --list-item-active-bg: var(--bg-active);
+  --list-divider: var(--border-lightest);
+
+  /* ========================================
+     BREAKPOINTS (for JavaScript consumption)
+     ======================================== */
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ============================================================================
+   DARK MODE - Automatic Color Inversion
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Inverted Neutral Palette */
+    --neutral-50: #2a2a2a;
+    --neutral-100: #3a3a3a;
+    --neutral-200: #4a4a4a;
+    --neutral-300: #5a5a5a;
+    --neutral-400: #6a6a6a;
+    --neutral-500: #808080;
+    --neutral-600: #a0a0a0;
+    --neutral-700: #c0c0c0;
+    --neutral-800: #d8d8d8;
+    --neutral-900: #e8e8e8;
+    --neutral-950: #f5f5f5;
+
+    /* Inverted Text Colors */
+    --text-primary: #e8e8e8;
+    --text-secondary: #c0c0c0;
+    --text-tertiary: #a0a0a0;
+    --text-disabled: #808080;
+    --text-inverse: #1a1a1a;
+
+    /* Inverted Background Colors */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: #3a3a3a;
+    --bg-surface: #2a2a2a;
+    --bg-elevated: #3a3a3a;
+    --bg-hover: #333333;
+    --bg-active: #3a3a3a;
+    --bg-subtle: #2a2a2a;
+
+    /* Inverted Borders */
+    --border-lightest: #3a3a3a;
+    --border-light: #4a4a4a;
+    --border-medium: #5a5a5a;
+    --border-dark: #6a6a6a;
+
+    /* Adjusted Shadows for Dark Mode (stronger) */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-2xl: 0 24px 60px rgba(0, 0, 0, 0.7);
+    --shadow-3xl: 0 32px 80px rgba(0, 0, 0, 0.8);
+
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-card-active: 0 1px 4px rgba(0, 0, 0, 0.5);
+    --shadow-navbar: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.6);
+    --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.8);
+    --shadow-dock: 0 -10px 40px rgba(0, 0, 0, 0.6);
+
+    /* Inverted Glass Effects */
+    --glass-white-95: rgba(42, 42, 42, 0.95);
+    --glass-white-90: rgba(42, 42, 42, 0.90);
+    --glass-white-80: rgba(42, 42, 42, 0.80);
+    --glass-white-70: rgba(42, 42, 42, 0.70);
+    --glass-white-60: rgba(42, 42, 42, 0.60);
+
+    /* Chrome colors remain dark in dark mode */
+    --chrome-text: #e8e8e8;
+    --chrome-text-secondary: rgba(232, 232, 232, 0.7);
+
+    /* Component updates for dark mode */
+    --card-bg: var(--bg-surface);
+    --input-bg: var(--bg-surface);
+    --modal-bg: var(--bg-surface);
+    --nav-bg: var(--bg-surface);
+    --header-bg: var(--bg-surface);
+
+    --button-secondary-bg: var(--bg-surface);
+    --button-secondary-hover-bg: var(--bg-hover);
+  }
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Apply design tokens to common patterns */
+
+.webos-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  transition: var(--transition-normal);
+}
+
+.webos-card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.webos-button-primary {
+  height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border: 1px solid var(--button-primary-border);
+  border-radius: var(--button-radius);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  transition: var(--transition-fast);
+}
+
+.webos-button-primary:hover {
+  background-color: var(--button-primary-hover-bg);
+}
+
+.webos-button-secondary {
+  height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border: 1px solid var(--button-secondary-border);
+  border-radius: var(--button-radius);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  transition: var(--transition-fast);
+}
+
+.webos-button-secondary:hover {
+  background-color: var(--button-secondary-hover-bg);
+}
+
+.webos-input {
+  height: var(--input-height);
+  padding: 0 var(--input-padding-x);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  color: var(--input-text);
+  font-size: var(--text-base);
+  transition: var(--transition-fast);
+}
+
+.webos-input:hover {
+  border-color: var(--input-border-hover);
+}
+
+.webos-input:focus {
+  border-color: var(--input-border-focus);
+  box-shadow: var(--input-shadow-focus);
+  outline: none;
+}
+
+.webos-input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.webos-glass {
+  background-color: var(--glass-white-80);
+  backdrop-filter: blur(var(--blur-lg));
+  -webkit-backdrop-filter: blur(var(--blur-lg));
+}
+
+/* ============================================================================
+   END OF webOS DESIGN SYSTEM
+   ============================================================================ */

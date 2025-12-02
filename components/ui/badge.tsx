@@ -23,37 +23,38 @@ const badgeVariants = cva(
   }
 )
 
-// Badge styles using Phase 1C component tokens
+// Badge styles using webOS Design System tokens
+// See /docs/DESIGN_SYSTEM.md for full token documentation
 const badgeStyles: Record<string, React.CSSProperties> = {
   default: {
-    backgroundColor: 'var(--badge-default-bg)',
-    color: 'var(--badge-default-text)',
-    borderColor: 'var(--semantic-border-medium)',
-    fontSize: 'var(--badge-font-size)',
+    backgroundColor: 'var(--bg-surface)',
+    color: 'var(--text-primary)',
+    borderColor: 'var(--border-light)',
+    fontSize: 'var(--text-xs)', // 11px
   },
   secondary: {
-    backgroundColor: 'var(--semantic-bg-muted)',
-    color: 'var(--semantic-text-secondary)',
-    borderColor: 'var(--semantic-border-medium)',
-    fontSize: 'var(--badge-font-size)',
+    backgroundColor: 'var(--bg-secondary)',
+    color: 'var(--text-secondary)',
+    borderColor: 'var(--border-light)',
+    fontSize: 'var(--text-xs)',
   },
   destructive: {
-    backgroundColor: 'var(--badge-error-bg)',
-    color: 'var(--badge-error-text)',
-    borderColor: 'var(--semantic-error)',
-    fontSize: 'var(--badge-font-size)',
+    backgroundColor: 'var(--status-error-subtle)',
+    color: 'var(--status-error)',
+    borderColor: 'var(--status-error)',
+    fontSize: 'var(--text-xs)',
   },
   outline: {
     backgroundColor: 'transparent',
-    color: 'var(--semantic-text-primary)',
-    borderColor: 'var(--semantic-border-medium)',
-    fontSize: 'var(--badge-font-size)',
+    color: 'var(--text-primary)',
+    borderColor: 'var(--border-light)',
+    fontSize: 'var(--text-xs)',
   },
   success: {
-    backgroundColor: 'var(--badge-success-bg)',
-    color: 'var(--badge-success-text)',
-    borderColor: 'var(--semantic-success)',
-    fontSize: 'var(--badge-font-size)',
+    backgroundColor: 'var(--status-success-subtle)',
+    color: 'var(--status-success)',
+    borderColor: 'var(--status-success)',
+    fontSize: 'var(--text-xs)',
   },
 }
 
