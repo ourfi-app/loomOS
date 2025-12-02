@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { 
   ChevronLeft, ChevronRight, Globe, Mail, Calendar, 
   MapPin, Paperclip, Star, Home, MessageSquare, 
-  Users, FileText, Settings, X, Minimize, LucideIcon,
+  Users, Settings, X, Minimize, LucideIcon,
   Loader2, AlertCircle
 } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
@@ -379,33 +379,64 @@ export default function DashboardPage() {
     );
   }
 
-  // Empty state
+  // Empty state - Show clean desktop without prompt
   if (apps.length === 0) {
     return (
       <div 
-        className="h-full relative overflow-hidden flex items-center justify-center"
+        className="h-full relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, var(--semantic-bg-muted) 0%, var(--semantic-bg-subtle) 50%, var(--semantic-bg-muted) 100%)',
           fontFamily: '"Helvetica Neue", Arial, sans-serif'
         }}
       >
-        <div className="flex flex-col items-center gap-4 max-w-md text-center">
-          <FileText className="w-16 h-16" style={{ color: 'var(--semantic-text-tertiary)' }} />
-          <h3 className="text-xl font-light" style={{ color: 'var(--semantic-text-primary)' }}>
-            No Apps Installed
-          </h3>
-          <p className="text-sm font-light" style={{ color: 'var(--semantic-text-secondary)' }}>
-            Visit the App Store to install apps and get started.
-          </p>
-          <button
-            onClick={() => router.push('/dashboard/apps')}
-            className="px-6 py-2 rounded-lg font-light transition-colors"
-            style={{
-              backgroundColor: '#7a9eb5',
-              color: 'white',
-            }}
+        {/* Dock */}
+        <div 
+          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-2xl flex items-center gap-4"
+          style={{
+            backgroundColor: 'var(--glass-white-60)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255, 255, 255, 0.95)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)'
+          }}
+        >
+          <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ backgroundColor: '#7a9eb5' }}
+            >
+              <Home className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Home</span>
+          </button>
+          <button 
+            onClick={() => setActiveApp('mail')}
+            className="flex flex-col items-center gap-1 hover:scale-110 transition-transform"
           >
-            Browse Apps
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ backgroundColor: '#b58a7a' }}
+            >
+              <Mail className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Mail</span>
+          </button>
+          <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ backgroundColor: '#8ab57a' }}
+            >
+              <MessageSquare className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Chat</span>
+          </button>
+          <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ backgroundColor: '#b5a07a' }}
+            >
+              <Calendar className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Calendar</span>
           </button>
         </div>
       </div>
