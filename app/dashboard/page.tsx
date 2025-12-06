@@ -389,56 +389,6 @@ export default function DashboardPage() {
           fontFamily: '"Helvetica Neue", Arial, sans-serif'
         }}
       >
-        {/* Dock */}
-        <div 
-          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-2xl flex items-center gap-4"
-          style={{
-            backgroundColor: 'var(--glass-white-60)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.95)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)'
-          }}
-        >
-          <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-            <div 
-              className="w-12 h-12 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: '#7a9eb5' }}
-            >
-              <Home className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Home</span>
-          </button>
-          <button 
-            onClick={() => setActiveApp('mail')}
-            className="flex flex-col items-center gap-1 hover:scale-110 transition-transform"
-          >
-            <div 
-              className="w-12 h-12 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: '#b58a7a' }}
-            >
-              <Mail className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Mail</span>
-          </button>
-          <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-            <div 
-              className="w-12 h-12 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: '#8ab57a' }}
-            >
-              <MessageSquare className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Chat</span>
-          </button>
-          <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-            <div 
-              className="w-12 h-12 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: '#b5a07a' }}
-            >
-              <Calendar className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Calendar</span>
-          </button>
-        </div>
       </div>
     );
   }
@@ -573,56 +523,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Dock */}
-      <div 
-        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-2xl flex items-center gap-4"
-        style={{
-          backgroundColor: 'var(--glass-white-60)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.95)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9)'
-        }}
-      >
-        <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-          <div 
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
-            style={{ backgroundColor: '#7a9eb5' }}
-          >
-            <Home className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Home</span>
-        </button>
-        <button 
-          onClick={() => setActiveApp('mail')}
-          className="flex flex-col items-center gap-1 hover:scale-110 transition-transform"
-        >
-          <div 
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
-            style={{ backgroundColor: '#b58a7a' }}
-          >
-            <Mail className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Mail</span>
-        </button>
-        <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-          <div 
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
-            style={{ backgroundColor: '#8ab57a' }}
-          >
-            <MessageSquare className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Chat</span>
-        </button>
-        <button className="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-          <div 
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
-            style={{ backgroundColor: '#b5a07a' }}
-          >
-            <Calendar className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-xs font-light" style={{ color: 'var(--semantic-text-secondary)' }}>Calendar</span>
-        </button>
-      </div>
     </div>
   );
 }
