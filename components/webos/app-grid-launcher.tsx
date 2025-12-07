@@ -355,10 +355,10 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             style={{ 
-              // GLASSMORPHISM FIX: Nearly solid background (0.98 opacity) for content readability
-              backgroundColor: 'rgba(255, 255, 255, 0.98)',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1)',
-              borderColor: 'rgba(0, 0, 0, 0.1)',
+              // CONTRAST FIX: Use design tokens for proper visibility in both light and dark modes
+              backgroundColor: 'var(--modal-bg)',
+              boxShadow: 'var(--shadow-modal)',
+              borderColor: 'var(--border-light)',
               backdropFilter: 'blur(10px)',
             }}
             className="relative w-full max-w-7xl rounded-2xl border p-4 sm:p-6 flex flex-col max-h-[85vh]"
@@ -386,12 +386,12 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
-                    // GLASSMORPHISM FIX: Solid white background for input visibility
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    borderColor: 'rgba(0, 0, 0, 0.15)',
-                    color: '#1a1a1a',
+                    // CONTRAST FIX: Use design tokens for proper visibility in both light and dark modes
+                    backgroundColor: 'var(--bg-surface)',
+                    borderColor: 'var(--border-medium)',
+                    color: 'var(--text-primary)',
                   }}
-                  className="w-full h-10 sm:h-11 pl-10 pr-10 rounded-full border focus:outline-none transition-all placeholder:text-gray-500"
+                  className="w-full h-10 sm:h-11 pl-10 pr-10 rounded-full border focus:outline-none focus:border-[var(--accent-blue)] transition-all placeholder:text-[var(--text-tertiary)]"
                 />
                 {searchQuery && (
                   <button
@@ -431,10 +431,10 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setActiveTab(tab.id)}
                       style={{
-                        // GLASSMORPHISM FIX: Solid backgrounds for tab visibility
-                        backgroundColor: isActive ? 'rgba(240, 240, 240, 0.95)' : 'rgba(250, 250, 250, 0.8)',
-                        color: isActive ? '#1a1a1a' : '#666666',
-                        borderColor: isActive ? 'rgba(0, 0, 0, 0.15)' : 'transparent'
+                        // CONTRAST FIX: Use design tokens for proper visibility in both light and dark modes
+                        backgroundColor: isActive ? 'var(--bg-active)' : 'var(--bg-hover)',
+                        color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                        borderColor: isActive ? 'var(--border-medium)' : 'transparent'
                       }}
                       className={cn(
                         'relative flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all flex-1 sm:flex-initial border',
