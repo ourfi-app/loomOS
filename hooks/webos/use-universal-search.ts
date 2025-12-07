@@ -31,7 +31,8 @@ interface UniversalSearchState {
   isOpen: boolean;
   mode: 'search' | 'ai';
   searchableItems: SearchResult[];
-  openSearch: (initialMode?: 'search' | 'ai') => void;
+  initialQuery: string;
+  openSearch: (initialMode?: 'search' | 'ai', query?: string) => void;
   closeSearch: () => void;
   toggleSearch: () => void;
   setMode: (mode: 'search' | 'ai') => void;
@@ -204,9 +205,10 @@ export const useUniversalSearch = create<UniversalSearchState>((set, get) => ({
   isOpen: false,
   mode: 'search',
   searchableItems: defaultSearchableItems,
+  initialQuery: '',
 
-  openSearch: (initialMode = 'search') => set({ isOpen: true, mode: initialMode }),
-  closeSearch: () => set({ isOpen: false, mode: 'search' }),
+  openSearch: (initialMode = 'search', query = '') => set({ isOpen: true, mode: initialMode, initialQuery: query }),
+  closeSearch: () => set({ isOpen: false, mode: 'search', initialQuery: '' }),
   toggleSearch: () => set(state => ({ isOpen: !state.isOpen })),
   setMode: (mode) => set({ mode }),
 

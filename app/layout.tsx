@@ -6,6 +6,7 @@ import './globals.css';
 // - Removed @/styles/loomos-components.css (deprecated, styles use design-tokens)
 // - Removed @/styles/webos-theme.css (deprecated per Phase 1, tokens moved to design-tokens/semantic.css)
 // All design tokens are now centralized in globals.css via /design-tokens/
+import '@/styles/just-type-search.css';
 import { Providers } from '@/components/providers';
 import { PWAInstallPrompt } from '@/components/webos/pwa-install-prompt';
 import { PWAUpdateNotification } from '@/components/webos/pwa-update-notification';
@@ -14,6 +15,8 @@ import { ConditionalStatusBar } from '@/components/webos/conditional-status-bar'
 import { AccessibilityInitializer } from '@/components/accessibility-initializer';
 import { PerformanceInitializer } from '@/components/performance-initializer';
 import { SkipToContent } from '@/components/common/skip-to-content';
+import { JustTypeSearch } from '@/components/webos/just-type-search';
+import { GlobalSearchTrigger } from '@/components/webos/global-search-trigger';
 
 export const metadata: Metadata = {
   title: 'Self-Managed Condo Software for Chicago | Community Manager',
@@ -71,6 +74,8 @@ export default function RootLayout({
           <NetworkStatusBanner />
           <PWAUpdateNotification />
           <PWAInstallPrompt />
+          <GlobalSearchTrigger />
+          <JustTypeSearch />
           <main id="main-content">
             {children}
           </main>
