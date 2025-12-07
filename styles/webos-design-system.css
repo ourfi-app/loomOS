@@ -356,6 +356,37 @@
   --semantic-action-active: var(--accent-blue-dark);
 
   /* ========================================
+     WEBOS COMPONENT ALIASES
+     Legacy aliases for backward compatibility
+     ======================================== */
+
+  /* Text color aliases */
+  --webos-text-primary: var(--text-primary);
+  --webos-text-secondary: var(--text-secondary);
+  --webos-text-tertiary: var(--text-tertiary);
+
+  /* Surface color aliases */
+  --webos-surface: var(--bg-surface);
+  --webos-surface-hover: var(--bg-hover);
+  --webos-surface-active: var(--bg-active);
+
+  /* Border color aliases */
+  --webos-border-light: var(--border-light);
+  --webos-border-medium: var(--border-medium);
+  --webos-border-primary: var(--border-medium);
+  --webos-border-secondary: var(--border-light);
+  --webos-border-glass: var(--glass-border-light);
+
+  /* Icon color aliases */
+  --webos-icon-default: var(--text-secondary);
+
+  /* Semantic color aliases for status */
+  --semantic-success: var(--status-success);
+  --semantic-warning: var(--status-warning);
+  --semantic-error: var(--status-error);
+  --semantic-info: var(--status-info);
+
+  /* ========================================
      PART 3: COMPONENT TOKENS
      ======================================== */
 
@@ -565,6 +596,20 @@
 
     --button-secondary-bg: var(--bg-surface);
     --button-secondary-hover-bg: var(--bg-hover);
+
+    /* webOS aliases for dark mode */
+    --webos-text-primary: var(--text-primary);
+    --webos-text-secondary: var(--text-secondary);
+    --webos-text-tertiary: var(--text-tertiary);
+    --webos-surface: var(--bg-surface);
+    --webos-surface-hover: var(--bg-hover);
+    --webos-surface-active: var(--bg-active);
+    --webos-border-light: var(--border-light);
+    --webos-border-medium: var(--border-medium);
+    --webos-border-primary: var(--border-medium);
+    --webos-border-secondary: var(--border-light);
+    --webos-border-glass: var(--glass-border-light);
+    --webos-icon-default: var(--text-secondary);
   }
 }
 
