@@ -16,7 +16,7 @@ export function AppLayout({ children, sidebar, windowTitle = 'Condo Manager' }: 
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[#1e1e1e] p-6 flex items-center justify-center">
+    <div className="min-h-screen bg-[var(--chrome-dark)] p-6 flex items-center justify-center">
       <div className="macos-window w-full max-w-[1800px] h-[90vh] flex flex-col">
         <WindowChrome 
           title={windowTitle}

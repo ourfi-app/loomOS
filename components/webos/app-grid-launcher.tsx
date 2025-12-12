@@ -343,7 +343,7 @@ export function AppGridLauncher({ isOpen, onClose, onAppLaunch }: AppGridLaunche
           transition={{ duration: 0.2 }}
           style={{ 
             // GLASSMORPHISM FIX: Nearly opaque backdrop for modal visibility
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            backgroundColor: 'var(--glass-black-75)',
             backdropFilter: 'blur(8px)',
           }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"

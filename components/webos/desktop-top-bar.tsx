@@ -37,7 +37,7 @@ export function DesktopTopBar() {
       transition={{ duration: 0.2 }}
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        backgroundColor: '#1a1a1a',
+        backgroundColor: 'var(--chrome-dark)',
         fontFamily: 'Helvetica Neue, Arial, sans-serif'
       }}
     >
