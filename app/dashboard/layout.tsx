@@ -744,143 +744,7 @@ function AppLauncher({
   );
 }
 
-// Global search functionality - Responsive
-function GlobalSearch() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<any>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    if (query.length > 0) {
-      // Mock search results
-      setSearchResults({
-        apps: [
-          { id: 'mail', title: 'Mail', type: 'app' },
-          { id: 'calendar', title: 'Calendar', type: 'app' },
-        ],
-        contacts: [
-          { id: '1', name: 'John Doe', type: 'contact' },
-        ],
-        messages: [
-          { id: '1', subject: 'Meeting tomorrow', type: 'message' },
-        ]
-      });
-    } else {
-      setSearchResults(null);
-    }
-  };
-
-  return (
-    <>
-      {/* Mobile: Floating search button */}
-      <button
-        onClick={() => setIsExpanded(true)}
-        className="md:hidden fixed top-14 right-4 p-3 rounded-full shadow-lg transition-all duration-200 active:scale-95 z-30"
-        style={{
-          backgroundColor: 'var(--bg-surface)',
-          minWidth: '44px',
-          minHeight: '44px'
-        }}
-        aria-label="Open search"
-      >
-        <Search className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
-      </button>
-
-      {/* Search bar - Responsive */}
-      <div 
-        className={`fixed top-14 sm:top-16 md:top-20 left-1/2 transform -translate-x-1/2 w-full px-4 sm:px-6 md:px-8 z-30 transition-all duration-300 ${
-          isExpanded ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none md:opacity-100 md:scale-100 md:pointer-events-auto'
-        }`}
-        style={{ maxWidth: '42rem' }}
-      >
-        <div
-          role="search"
-          className="rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-200"
-          style={{
-            backgroundColor: 'var(--bg-surface)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid var(--border-light)',
-            boxShadow: isFocused 
-              ? 'var(--shadow-modal)' 
-              : 'var(--shadow-card)'
-          }}
-        >
-          <div className="flex items-center px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4">
-            <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 flex-shrink-0" style={{ color: 'var(--text-secondary)' }} />
-            <input
-              type="text"
-              placeholder="JUST TYPE"
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-              className="flex-1 bg-transparent border-none outline-none text-sm sm:text-base md:text-lg font-light placeholder-gray-500"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontFamily: '"Helvetica Neue", Arial, sans-serif'
-              }}
-              aria-label="Search"
-            />
-            {(searchQuery || isExpanded) && (
-              <button 
-                onClick={() => {
-                  handleSearch('');
-                  setIsExpanded(false);
-                }} 
-                className="hover:bg-black/5 p-2 rounded-lg transition-all duration-200 active:scale-95 flex-shrink-0"
-                style={{ minWidth: '44px', minHeight: '44px' }}
-                aria-label="Clear search"
-              >
-                <X className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--text-secondary)' }} />
-              </button>
-            )}
-          </div>
-
-          {/* Search results dropdown - Responsive */}
-          {searchResults && isFocused && (
-            <div 
-              role="listbox"
-              aria-label="Search results"
-              className="border-t px-3 sm:px-4 md:px-6 py-3 sm:py-4 max-h-60 sm:max-h-80 md:max-h-96 overflow-y-auto"
-              style={{ borderColor: 'var(--border-light)' }}
-            >
-              {searchResults.apps && searchResults.apps.length > 0 && (
-                <div className="mb-3 sm:mb-4">
-                  <div className="text-xs sm:text-sm font-light tracking-wider uppercase mb-2" style={{ color: 'var(--text-tertiary)' }}>
-                    APPS
-                  </div>
-                  {searchResults.apps.map((app: any) => (
-                    <div 
-                      key={app.id} 
-                      role="option"
-                      className="py-2 sm:py-2.5 text-sm sm:text-base font-light hover:bg-black/5 rounded px-2 -mx-2 cursor-pointer transition-colors"
-                      style={{ color: 'var(--text-primary)', minHeight: '44px' }}
-                    >
-                      {app.title}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Mobile search overlay backdrop */}
-      {isExpanded && (
-        <div 
-          className="md:hidden fixed inset-0 bg-black/30 z-20 animate-fadeIn"
-          onClick={() => {
-            setIsExpanded(false);
-            handleSearch('');
-          }}
-        />
-      )}
-    </>
-  );
-}
 
 export default function DashboardLayout({
   children,
@@ -946,8 +810,7 @@ export default function DashboardLayout({
         {children}
       </div>
 
-      {/* Global Search - Responsive */}
-      <GlobalSearch />
+      {/* Global Search - Removed */}
 
       {/* App Launcher - Responsive */}
       <AppLauncher 
