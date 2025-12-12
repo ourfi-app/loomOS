@@ -126,7 +126,7 @@ export default function LoginScreen() {
         <motion.div
           className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-20"
           style={{
-            background: 'linear-gradient(135deg, #9ca3a0, #b8bfbc)',
+            background: 'var(--gradient-auth-primary)',
             filter: 'blur(80px)'
           }}
           animate={{
@@ -142,7 +142,7 @@ export default function LoginScreen() {
         <motion.div
           className="absolute bottom-20 right-10 w-96 h-96 rounded-full opacity-20"
           style={{
-            background: 'linear-gradient(135deg, #b8bfbc, #9ca3a0)',
+            background: 'var(--gradient-auth-secondary)',
             filter: 'blur(80px)'
           }}
           animate={{
@@ -169,7 +169,7 @@ export default function LoginScreen() {
           <motion.div
             className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4"
             style={{
-              background: 'linear-gradient(135deg, #9ca3a0, #b8bfbc)',
+              background: 'var(--gradient-auth-primary)',
               boxShadow: '0 4px 16px var(--glass-black-10)'
             }}
             whileHover={{ scale: 1.05, rotate: 5 }}
@@ -201,7 +201,7 @@ export default function LoginScreen() {
             border: '1px solid var(--webos-border-glass)'
           }}
           whileHover={{
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.9)'
+            boxShadow: '0 20px 60px var(--glass-black-80)'
           }}
           transition={{ duration: 0.3 }}
         >
@@ -215,12 +215,12 @@ export default function LoginScreen() {
               <Alert 
                 className="mb-6 rounded-xl"
                 style={{
-                  backgroundColor: 'rgba(220, 53, 69, 0.6)',
-                  border: '1px solid rgba(220, 53, 69, 0.3)'
+                  backgroundColor: 'var(--status-error-alt-60)',
+                  border: '1px solid var(--status-error-alt-30)'
                 }}
               >
-                <AlertCircle className="h-4 w-4" style={{ color: '#DC3545' }} />
-                <AlertDescription style={{ color: '#DC3545' }}>
+                <AlertCircle className="h-4 w-4" style={{ color: 'var(--status-error-alt)' }} />
+                <AlertDescription style={{ color: 'var(--status-error-alt)' }}>
                   {error}
                 </AlertDescription>
               </Alert>
@@ -253,9 +253,9 @@ export default function LoginScreen() {
                   }}
                   className="w-full pl-12 pr-4 py-3 rounded-xl text-sm font-light transition-all"
                   style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    backgroundColor: 'var(--glass-white-50)',
                     border: formErrors.email 
-                      ? '2px solid #DC3545' 
+                      ? '2px solid var(--status-error-alt)' 
                       : '1px solid var(--webos-border-primary)',
                     color: 'var(--webos-text-primary)'
                   }}
@@ -268,7 +268,7 @@ export default function LoginScreen() {
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xs mt-1"
-                  style={{ color: '#DC3545' }}
+                  style={{ color: 'var(--status-error-alt)' }}
                 >
                   {formErrors.email}
                 </motion.p>
@@ -299,9 +299,9 @@ export default function LoginScreen() {
                   }}
                   className="w-full pl-12 pr-12 py-3 rounded-xl text-sm font-light transition-all"
                   style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    backgroundColor: 'var(--glass-white-50)',
                     border: formErrors.password 
-                      ? '2px solid #DC3545' 
+                      ? '2px solid var(--status-error-alt)' 
                       : '1px solid var(--webos-border-primary)',
                     color: 'var(--webos-text-primary)'
                   }}
@@ -323,7 +323,7 @@ export default function LoginScreen() {
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xs mt-1"
-                  style={{ color: '#DC3545' }}
+                  style={{ color: 'var(--status-error-alt)' }}
                 >
                   {formErrors.password}
                 </motion.p>
@@ -415,12 +415,12 @@ export default function LoginScreen() {
               disabled={isGoogleLoading || isLoading}
               className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl transition-all"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                backgroundColor: 'var(--glass-white-50)',
                 border: '1px solid var(--webos-border-primary)'
               }}
               whileHover={{ 
                 scale: 1.02,
-                backgroundColor: 'rgba(255, 255, 255, 0.7)'
+                backgroundColor: 'var(--glass-white-70)'
               }}
               whileTap={{ scale: 0.98 }}
               transition={webOSTransition}
@@ -443,12 +443,12 @@ export default function LoginScreen() {
               disabled={isLoading || isGoogleLoading}
               className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl transition-all"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                backgroundColor: 'var(--glass-white-50)',
                 border: '1px solid var(--webos-border-primary)'
               }}
               whileHover={{ 
                 scale: 1.02,
-                backgroundColor: 'rgba(255, 255, 255, 0.7)'
+                backgroundColor: 'var(--glass-white-70)'
               }}
               whileTap={{ scale: 0.98 }}
               transition={webOSTransition}

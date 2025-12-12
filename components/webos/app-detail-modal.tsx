@@ -103,7 +103,7 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       style={{
         // GLASSMORPHISM FIX: More opaque backdrop (0.75 alpha) for better modal visibility
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'var(--glass-black-75)',
         backdropFilter: 'blur(8px)',
       }}
       onClick={onClose}
@@ -112,10 +112,10 @@ export function AppDetailModal({ app, onClose }: AppDetailModalProps) {
         className="relative w-full max-w-3xl rounded-3xl border overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] flex flex-col"
         style={{
           // GLASSMORPHISM FIX: Nearly solid background (0.98 alpha) for content readability
-          backgroundColor: 'rgba(255, 255, 255, 0.98)',
+          backgroundColor: 'var(--glass-white-98)',
           backdropFilter: 'blur(10px)',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1)',
-          borderColor: 'rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 20px 60px var(--glass-black-30), 0 0 1px var(--glass-black-10)',
+          borderColor: 'var(--glass-black-10)',
         }}
         onClick={(e) => e.stopPropagation()}
       >

@@ -46,9 +46,9 @@ export function AppLauncherTabs({
             aria-controls={`tabpanel-${tab.id}`}
             aria-label={A11Y_LABELS.tabButton(tab.label)}
             style={{
-              backgroundColor: isActive ? 'rgba(240, 240, 240, 0.95)' : 'rgba(250, 250, 250, 0.8)',
-              color: isActive ? '#1a1a1a' : '#666666',
-              borderColor: isActive ? 'rgba(0, 0, 0, 0.15)' : 'transparent'
+              backgroundColor: isActive ? 'var(--glass-white-95)' : 'var(--glass-white-80)',
+              color: isActive ? 'var(--chrome-dark)' : 'var(--text-secondary)',
+              borderColor: isActive ? 'var(--glass-black-15)' : 'transparent'
             }}
             className={cn(
               'relative flex items-center gap-2',

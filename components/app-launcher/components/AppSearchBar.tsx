@@ -28,9 +28,9 @@ export function AppSearchBar({
         autoFocus={autoFocus}
         aria-label={A11Y_LABELS.searchInput}
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          borderColor: 'rgba(0, 0, 0, 0.15)',
-          color: '#1a1a1a',
+          backgroundColor: 'var(--glass-white-95)',
+          borderColor: 'var(--glass-black-15)',
+          color: 'var(--chrome-dark)',
         }}
         className={cn(
           'w-full h-10 sm:h-11',

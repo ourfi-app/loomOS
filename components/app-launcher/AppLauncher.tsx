@@ -194,7 +194,7 @@ export function AppLauncher({
           animate="visible"
           exit="exit"
           style={{ 
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            backgroundColor: 'var(--glass-black-75)',
             backdropFilter: 'blur(8px)',
           }}
           className={cn(
@@ -213,9 +213,9 @@ export function AppLauncher({
             animate="visible"
             exit="exit"
             style={{ 
-              backgroundColor: 'rgba(255, 255, 255, 0.98)',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1)',
-              borderColor: 'rgba(0, 0, 0, 0.1)',
+              backgroundColor: 'var(--glass-white-98)',
+              boxShadow: '0 20px 60px var(--glass-black-30), 0 0 1px var(--glass-black-10)',
+              borderColor: 'var(--glass-black-10)',
               backdropFilter: 'blur(10px)',
             }}
             className={cn(
