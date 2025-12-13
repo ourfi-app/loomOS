@@ -500,11 +500,12 @@ export function StatusBar() {
         }}
         className="fixed top-0 left-0 right-0 h-10 z-[100] px-4"
         style={{
-          background: 'var(--glass-bg)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid var(--webos-border-secondary)',
-          boxShadow: 'var(--webos-shadow-sm)',
+          // True glassmorphic background - semi-transparent with strong blur
+          background: 'var(--glass-white-70)',
+          backdropFilter: 'blur(var(--blur-xl)) saturate(180%)',
+          WebkitBackdropFilter: 'blur(var(--blur-xl)) saturate(180%)',
+          borderBottom: '1px solid var(--glass-border-light)',
+          boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)',
           fontFamily: 'Helvetica Neue, Arial, sans-serif'
         }}
       >
