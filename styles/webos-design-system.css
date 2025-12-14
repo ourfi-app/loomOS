@@ -592,12 +592,12 @@
     --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.8);
     --shadow-dock: 0 -10px 40px rgba(0, 0, 0, 0.6);
 
-    /* Inverted Glass Effects */
-    --glass-white-95: rgba(42, 42, 42, 0.95);
-    --glass-white-90: rgba(42, 42, 42, 0.90);
-    --glass-white-80: rgba(42, 42, 42, 0.80);
-    --glass-white-70: rgba(42, 42, 42, 0.70);
-    --glass-white-60: rgba(42, 42, 42, 0.60);
+    /* Inverted Glass Effects - More translucent for better glassmorphic appearance */
+    --glass-white-95: rgba(26, 26, 26, 0.85);  /* Reduced opacity for translucency */
+    --glass-white-90: rgba(26, 26, 26, 0.80);  /* More translucent */
+    --glass-white-80: rgba(26, 26, 26, 0.70);  /* Lighter glass effect */
+    --glass-white-70: rgba(26, 26, 26, 0.60);  /* More transparent */
+    --glass-white-60: rgba(26, 26, 26, 0.50);  /* Very translucent */
 
     /* Chrome colors remain dark in dark mode */
     --chrome-text: #e8e8e8;
