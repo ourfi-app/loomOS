@@ -101,6 +101,16 @@
   --blur-lg: 16px;
   --blur-xl: 24px;
 
+  /* Backdrop filter effects */
+  --backdrop-saturate: saturate(180%);
+  --backdrop-saturate-subtle: saturate(150%);
+
+  /* UI element opacity */
+  --opacity-icon: 0.85;
+  --opacity-icon-hover: 1;
+  --opacity-disabled: 0.5;
+  --opacity-overlay: 0.9;
+
   /* ========================================
      SEMANTIC STATUS COLORS
      ======================================== */

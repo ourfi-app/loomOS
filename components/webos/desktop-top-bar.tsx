@@ -48,12 +48,12 @@ export function DesktopTopBar() {
         // True glassmorphic background - 70% opacity for translucency
         backgroundColor: 'var(--glass-white-70)',
         // Strong backdrop blur for frosted glass effect
-        backdropFilter: 'blur(var(--blur-xl)) saturate(180%)',
-        WebkitBackdropFilter: 'blur(var(--blur-xl)) saturate(180%)',
+        backdropFilter: `blur(var(--blur-xl)) var(--backdrop-saturate)`,
+        WebkitBackdropFilter: `blur(var(--blur-xl)) var(--backdrop-saturate)`,
         // Subtle border with transparency
         borderBottom: '1px solid var(--glass-border-light)',
         // Soft shadow for depth
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)',
+        boxShadow: 'var(--shadow-topbar)',
         fontFamily: 'var(--font-sans)'
       }}
     >
@@ -85,7 +85,7 @@ export function DesktopTopBar() {
             strokeWidth="2.5"
             strokeLinecap="round"
             style={{
-              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))'
+              filter: 'var(--logo-shadow)'
             }}
           >
             <path d="M6 10h12" />
@@ -98,7 +98,7 @@ export function DesktopTopBar() {
               fontSize: 'var(--text-sm)',
               letterSpacing: '0.02em',
               fontWeight: 500,
-              textShadow: '0 1px 2px rgba(0, 0, 0, 0.05)'
+              textShadow: 'var(--text-shadow-subtle)'
             }}
           >
             loomOS
@@ -119,28 +119,28 @@ export function DesktopTopBar() {
             className="w-4 h-4" 
             strokeWidth={2.5} 
             style={{ 
-              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08))',
-              opacity: 0.85
+              filter: 'var(--icon-shadow-subtle)',
+              opacity: 'var(--opacity-icon)'
             }} 
           />
           <Volume2 
             className="w-4 h-4" 
             strokeWidth={2.5}
             style={{ 
-              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08))',
-              opacity: 0.85
+              filter: 'var(--icon-shadow-subtle)',
+              opacity: 'var(--opacity-icon)'
             }}
           />
           <Clock 
             className="w-4 h-4" 
             strokeWidth={2.5}
             style={{ 
-              filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08))',
-              opacity: 0.85
+              filter: 'var(--icon-shadow-subtle)',
+              opacity: 'var(--opacity-icon)'
             }}
           />
           <span style={{
-            textShadow: '0 1px 2px rgba(0, 0, 0, 0.05)',
+            textShadow: 'var(--text-shadow-subtle)',
             fontVariantNumeric: 'tabular-nums'
           }}>
             {currentTime}
