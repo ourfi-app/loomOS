@@ -1,4 +1,3 @@
-
 export interface ColorPalette {
   id: string;
   name: string;
@@ -7,101 +6,116 @@ export interface ColorPalette {
     primary: string;
     secondary: string;
     accent: string;
-    highlight: string;
-    background: string;
+    success: string;
+    warning: string;
+    error: string;
   };
   gradient: string;
 }
 
-export const COLOR_PALETTES: Record<string, ColorPalette> = {
-  default: {
+export const COLOR_PALETTES: ColorPalette[] = [
+  {
     id: 'default',
-    name: 'Ocean Breeze',
-    description: 'Professional and modern with ocean-inspired blues',
+    name: 'loomOS Orange',
+    description: 'Default loomOS theme with warm orange tones',
     colors: {
-      primary: '#FF6B35',
-      secondary: '#F7C59F',
-      accent: '#EFEFD0',
-      highlight: '#004E89',
-      background: '#1A659E',
+      primary: '#F18825',
+      secondary: '#2B8ED9',
+      accent: '#4CAF50',
+      success: '#4CAF50',
+      warning: '#FF9800',
+      error: '#F44336',
     },
-    gradient: 'from-blue-500 to-blue-600',
+    gradient: 'from-orange-400 via-orange-500 to-orange-600',
   },
-  
-  tropical: {
-    id: 'tropical',
-    name: 'Tropical Paradise',
-    description: 'Warm and inviting with earthy tones',
+  {
+    id: 'ocean',
+    name: 'Ocean Blue',
+    description: 'Cool and calming ocean-inspired palette',
     colors: {
-      primary: '#264653',
-      secondary: '#2A9D8F',
-      accent: '#E9C46A',
-      highlight: '#F4A261',
-      background: '#E76F51',
+      primary: '#0077BE',
+      secondary: '#00A8E8',
+      accent: '#00D9FF',
+      success: '#00C49A',
+      warning: '#FFA62B',
+      error: '#FF5A5F',
     },
-    gradient: 'from-teal-600 to-orange-500',
+    gradient: 'from-blue-400 via-cyan-500 to-teal-600',
   },
-  
-  sunset: {
+  {
+    id: 'forest',
+    name: 'Forest Green',
+    description: 'Natural earthy tones inspired by forests',
+    colors: {
+      primary: '#2D5016',
+      secondary: '#4A7C59',
+      accent: '#7CB342',
+      success: '#66BB6A',
+      warning: '#FFB300',
+      error: '#E53935',
+    },
+    gradient: 'from-green-600 via-green-500 to-lime-500',
+  },
+  {
     id: 'sunset',
-    name: 'Sunset Glow',
-    description: 'Bold and energetic with warm sunset hues',
+    name: 'Sunset',
+    description: 'Warm sunset colors with purple and pink hues',
     colors: {
-      primary: '#5F0F40',
-      secondary: '#9A031E',
-      accent: '#FB8B24',
-      highlight: '#E36414',
-      background: '#0F4C5C',
+      primary: '#FF6B6B',
+      secondary: '#C44569',
+      accent: '#8B5CF6',
+      success: '#10B981',
+      warning: '#F59E0B',
+      error: '#EF4444',
     },
-    gradient: 'from-red-700 to-orange-500',
+    gradient: 'from-red-400 via-pink-500 to-purple-600',
   },
-  
-  vibrant: {
-    id: 'vibrant',
-    name: 'Vibrant Energy',
-    description: 'Fresh and dynamic with vibrant colors',
+  {
+    id: 'corporate',
+    name: 'Corporate Blue',
+    description: 'Professional corporate blue palette',
     colors: {
-      primary: '#EF476F',
-      secondary: '#FFD166',
-      accent: '#06D6A0',
-      highlight: '#118AB2',
-      background: '#073B4C',
+      primary: '#1E3A8A',
+      secondary: '#3B82F6',
+      accent: '#60A5FA',
+      success: '#059669',
+      warning: '#D97706',
+      error: '#DC2626',
     },
-    gradient: 'from-pink-500 to-cyan-500',
+    gradient: 'from-blue-700 via-blue-600 to-blue-500',
   },
-  
-  midnight: {
-    id: 'midnight',
-    name: 'Midnight Sky',
-    description: 'Sophisticated and elegant with deep contrasts',
+  {
+    id: 'monochrome',
+    name: 'Monochrome',
+    description: 'Elegant grayscale palette',
     colors: {
-      primary: '#011627',
-      secondary: '#FDFFFC',
-      accent: '#2EC4B6',
-      highlight: '#FF9F1C',
-      background: '#E71D36',
+      primary: '#374151',
+      secondary: '#6B7280',
+      accent: '#9CA3AF',
+      success: '#10B981',
+      warning: '#F59E0B',
+      error: '#EF4444',
     },
-    gradient: 'from-slate-900 to-red-600',
+    gradient: 'from-gray-700 via-gray-600 to-gray-500',
   },
-};
+];
 
 export function getPaletteById(id: string): ColorPalette {
-  return (COLOR_PALETTES[id] ?? COLOR_PALETTES.default) as ColorPalette;
+  return COLOR_PALETTES.find(p => p.id === id) || COLOR_PALETTES[0];
 }
 
-export function getAllPalettes(): ColorPalette[] {
-  return Object.values(COLOR_PALETTES);
-}
-
-// Generate CSS variables for a palette
 export function generatePaletteCSS(palette: ColorPalette): string {
   return `
     :root {
-      --palette-primary: ${palette.colors.primary};
-      --palette-secondary: ${palette.colors.secondary};
-      --palette-accent: ${palette.colors.accent};
-      --palette-highlight: ${palette.colors.highlight};
-      --palette-background: ${palette.colors.background};
+      --loomos-orange: ${palette.colors.primary};
+      --trust-blue: ${palette.colors.secondary};
+      --growth-green: ${palette.colors.accent};
+      --semantic-primary: ${palette.colors.primary};
+      --semantic-accent: ${palette.colors.secondary};
+      --semantic-tertiary: ${palette.colors.accent};
+      --success-green: ${palette.colors.success};
+      --warning-orange: ${palette.colors.warning};
+      --error-red: ${palette.colors.error};
     }
   `;
 }
