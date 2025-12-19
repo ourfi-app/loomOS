@@ -1,90 +1,29 @@
-// TODO: Review and replace type safety bypasses (as any, @ts-expect-error) with proper types
+import { NextResponse } from 'next/server';
 
-import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
-import { getServerSession } from 'next-auth';
-import { authOptions, hasAdminAccess } from '@/lib/auth';
-import { prisma } from '@/lib/db';
-import { getCurrentOrganizationId } from '@/lib/tenant-context';
-import { getPaletteById } from '@/lib/color-palettes';
+// This is a simple in-memory store for the palette ID
+// In a real application, this would be stored in a database
+let currentPaletteId = 'default';
 
-export const dynamic = 'force-dynamic';
 export async function GET() {
-  try {
-    // Get the current palette setting (public access - no auth required)
-    const settings = await prisma.associationSettings.findFirst({
-      orderBy: { createdAt: 'desc' },
-    });
-
-    return NextResponse.json({
-      paletteId: settings?.colorPalette || 'default',
-    });
-  } catch (error) {
-    console.error('Error fetching palette:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch palette' },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json({ paletteId: currentPaletteId });
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
-    const user = session?.user as any;
-
-    if (!user || !hasAdminAccess(user.role)) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    const body = await request.json();
+    const { paletteId } = body;
     
-    const organizationId = await getCurrentOrganizationId();
-    const { paletteId } = await request.json();
-
     if (!paletteId) {
       return NextResponse.json(
         { error: 'Palette ID is required' },
         { status: 400 }
       );
     }
-
-    // Validate the palette exists
-    const palette = getPaletteById(paletteId);
-    if (!palette) {
-      return NextResponse.json(
-        { error: 'Invalid palette ID' },
-        { status: 400 }
-      );
-    }
-
-    // Update or create settings
-    const existingSettings = await prisma.associationSettings.findFirst({
-      where: { organizationId },
-      orderBy: { createdAt: 'desc' },
-    });
-
-    let settings;
-    if (existingSettings) {
-      settings = await prisma.associationSettings.update({
-        where: {
-          id: existingSettings.id
-        },
-        data: { colorPalette: paletteId },
-      });
-    } else {
-      settings = await prisma.associationSettings.create({
-        data: {
-          organizationId,
-          colorPalette: paletteId
-        },
-      });
-    }
-
-    return NextResponse.json({
-      success: true,
-      paletteId: settings.colorPalette,
-    });
+    
+    currentPaletteId = paletteId;
+    
+    return NextResponse.json({ success: true, paletteId });
   } catch (error) {
-    console.error('Error updating palette:', error);
     return NextResponse.json(
       { error: 'Failed to update palette' },
       { status: 500 }
