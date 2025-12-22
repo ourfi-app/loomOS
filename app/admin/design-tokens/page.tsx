@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { AdminRouteGuard } from '@/components/admin-route-guard';
 import { useDesignTokenStore, applyTokensToDocument, DEFAULT_TOKENS } from '@/lib/design-token-store';
 import { ColorTokensEditor } from '@/components/design-token-editor/color-tokens-editor';
@@ -12,10 +14,11 @@ import { MotionTokensEditor } from '@/components/design-token-editor/motion-toke
 import { RadiusTokensEditor } from '@/components/design-token-editor/radius-tokens-editor';
 import { PaletteSelector } from '@/components/palette-selector';
 import { COLOR_PALETTES, getPaletteById } from '@/lib/color-palettes';
-import { Download, RotateCcw, Save, Eye } from 'lucide-react';
+import { Download, RotateCcw, Save, Eye, ArrowLeft, Home, ChevronRight } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 export default function DesignTokensPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('colors');
   const [previewMode, setPreviewMode] = useState(false);
   const [selectedPaletteId, setSelectedPaletteId] = useState('default');
@@ -107,6 +110,32 @@ export default function DesignTokensPage() {
           boxShadow: 'var(--shadow-sm)',
         }}>
           <div className="max-w-7xl mx-auto px-6 py-4">
+            {/* Navigation Links */}
+            <div className="flex items-center gap-4 mb-4">
+              <button
+                onClick={() => router.back()}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all hover:bg-black/5"
+                style={{
+                  color: 'var(--text-secondary)',
+                }}
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span className="text-sm">Back</span>
+              </button>
+              
+              <div className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                <Link 
+                  href="/" 
+                  className="flex items-center gap-1 hover:text-[var(--semantic-primary)] transition-colors"
+                >
+                  <Home className="h-4 w-4" />
+                  <span>Home</span>
+                </Link>
+                <ChevronRight className="h-4 w-4" />
+                <span style={{ color: 'var(--text-primary)' }}>Design Tokens</span>
+              </div>
+            </div>
+
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
