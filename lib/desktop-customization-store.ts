@@ -32,6 +32,10 @@ interface DesktopCustomizationState {
   wallpaper: DesktopWallpaper;
   theme: DesktopTheme;
   layout: DesktopLayout;
+  hasHydrated: boolean;
+  
+  // Hydration
+  setHasHydrated: (state: boolean) => void;
   
   // Wallpaper actions
   setWallpaper: (wallpaper: Partial<DesktopWallpaper>) => void;
@@ -87,6 +91,9 @@ export const useDesktopCustomization = create<DesktopCustomizationState>()(
       wallpaper: DEFAULT_WALLPAPER,
       theme: DEFAULT_THEME,
       layout: DEFAULT_LAYOUT,
+      hasHydrated: false,
+      
+      setHasHydrated: (state) => set({ hasHydrated: state }),
       
       setWallpaper: (wallpaper) => {
         set(state => ({
@@ -177,6 +184,9 @@ export const useDesktopCustomization = create<DesktopCustomizationState>()(
     }),
     {
       name: 'desktop-customization-storage',
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

@@ -130,6 +130,8 @@ export const DEFAULT_TOKENS: DesignTokens = {
 
 interface DesignTokenStore {
   tokens: DesignTokens;
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
   setTokens: (tokens: Partial<DesignTokens>) => void;
   updateTokenCategory: <K extends keyof DesignTokens>(
     category: K,
@@ -142,6 +144,8 @@ interface DesignTokenStore {
 export const useDesignTokenStore = create<DesignTokenStore>()(persist(
   (set, get) => ({
     tokens: DEFAULT_TOKENS,
+    hasHydrated: false,
+    setHasHydrated: (state) => set({ hasHydrated: state }),
     setTokens: (tokens) => {
       set((state) => ({
         tokens: {
@@ -171,6 +175,9 @@ export const useDesignTokenStore = create<DesignTokenStore>()(persist(
   }),
   {
     name: 'design-token-storage',
+    onRehydrateStorage: () => (state) => {
+      state?.setHasHydrated(true);
+    },
   }
 ));
 
