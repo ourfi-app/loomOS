@@ -32,6 +32,10 @@ interface AppPreferences {
   // Usage tracking
   appUsage: Record<string, AppUsage>;
   recentSearches: string[];
+  
+  // Hydration
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 
   // Actions
   setViewMode: (mode: ViewMode) => void;
@@ -81,6 +85,9 @@ export const useAppPreferences = create<AppPreferences>()(
       favoriteAppIds: ['home', 'assistant', 'notifications', 'profile', 'payments'],
       appUsage: {},
       recentSearches: [],
+      hasHydrated: false,
+      
+      setHasHydrated: (state) => set({ hasHydrated: state }),
       
       setViewMode: (mode) => set({ viewMode: mode }),
       setSortMode: (mode) => set({ sortMode: mode }),
@@ -217,6 +224,9 @@ export const useAppPreferences = create<AppPreferences>()(
     }),
     {
       name: 'app-preferences-storage',
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

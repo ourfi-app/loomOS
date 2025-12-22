@@ -27,6 +27,11 @@ export interface AccessibilitySettings {
 }
 
 interface AccessibilityState extends AccessibilitySettings {
+  hasHydrated: boolean;
+  
+  // Hydration
+  setHasHydrated: (state: boolean) => void;
+  
   // Actions
   setReducedMotion: (value: boolean) => void;
   setHighContrast: (value: boolean) => void;
@@ -63,6 +68,9 @@ export const useAccessibilityStore = create<AccessibilityState>()(
   persist(
     (set) => ({
       ...defaultSettings,
+      hasHydrated: false,
+      
+      setHasHydrated: (state) => set({ hasHydrated: state }),
       
       setReducedMotion: (value) => set({ reducedMotion: value }),
       setHighContrast: (value) => set({ highContrast: value }),
@@ -92,6 +100,9 @@ export const useAccessibilityStore = create<AccessibilityState>()(
     }),
     {
       name: 'montrecott-accessibility',
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );
