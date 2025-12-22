@@ -14,11 +14,13 @@ export function ConditionalStatusBar() {
   // 2. On auth pages (/auth/login, /auth/register)
   // 3. On onboarding page
   // 4. On home page (/)
+  // 5. On admin pages (/admin/*) - they have their own headers
   const shouldHideStatusBar = 
     status === 'unauthenticated' ||
     pathname === '/' ||
     pathname?.startsWith('/auth') ||
-    pathname?.startsWith('/onboarding');
+    pathname?.startsWith('/onboarding') ||
+    pathname?.startsWith('/admin');
 
   if (shouldHideStatusBar) {
     return null;
