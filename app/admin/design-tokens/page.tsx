@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { AdminRouteGuard } from '@/components/admin-route-guard';
 import { useDesignTokenStore, applyTokensToDocument, DEFAULT_TOKENS } from '@/lib/design-token-store';
 import { ColorTokensEditor } from '@/components/design-token-editor/color-tokens-editor';
@@ -12,10 +14,11 @@ import { MotionTokensEditor } from '@/components/design-token-editor/motion-toke
 import { RadiusTokensEditor } from '@/components/design-token-editor/radius-tokens-editor';
 import { PaletteSelector } from '@/components/palette-selector';
 import { COLOR_PALETTES, getPaletteById } from '@/lib/color-palettes';
-import { Download, RotateCcw, Save, Eye } from 'lucide-react';
+import { Download, RotateCcw, Save, Eye, ArrowLeft, Home } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 export default function DesignTokensPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('colors');
   const [previewMode, setPreviewMode] = useState(false);
   const [selectedPaletteId, setSelectedPaletteId] = useState('default');
@@ -107,6 +110,57 @@ export default function DesignTokensPage() {
           boxShadow: 'var(--shadow-sm)',
         }}>
           <div className="max-w-7xl mx-auto px-6 py-4">
+            {/* Navigation Bar */}
+            <div className="flex items-center gap-4 mb-4">
+              <button
+                onClick={() => router.back()}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all hover:bg-opacity-80"
+                style={{
+                  background: 'transparent',
+                  color: 'var(--text-secondary)',
+                  border: '1px solid var(--semantic-border-medium)',
+                }}
+                title="Go back"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span className="text-sm">Back</span>
+              </button>
+              
+              <Link 
+                href="/"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all hover:bg-opacity-80"
+                style={{
+                  background: 'transparent',
+                  color: 'var(--text-secondary)',
+                  border: '1px solid var(--semantic-border-medium)',
+                }}
+                title="Go to home"
+              >
+                <Home className="h-4 w-4" />
+                <span className="text-sm">Home</span>
+              </Link>
+              
+              <div className="h-6 w-px" style={{ background: 'var(--semantic-border-medium)' }} />
+              
+              <nav className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                <Link 
+                  href="/"
+                  className="hover:underline transition-colors"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  Home
+                </Link>
+                <span>/</span>
+                <Link 
+                  href="/admin/design-tokens"
+                  className="hover:underline transition-colors"
+                  style={{ color: 'var(--text-primary)' }}
+                >
+                  Design Tokens
+                </Link>
+              </nav>
+            </div>
+            
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
